@@ -25,7 +25,7 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
     <div class="wrapper">
-        <!--//////// Header -->
+        <!-- Header -->
         <header class="main-header">
             <a class="logo">
                 <span class="logo-mini"></span>
@@ -104,7 +104,7 @@
                             <i class="fa fa-home"></i> <span>Add Company</span>
                         </a>
                     </li>
-                    <br />
+
 
 
                     <li @(ViewContext.RouteData.Values["action"].ToString().Equals("ManageInquiry") ? "class=active" : "")>
@@ -112,7 +112,7 @@
                             <i class="fa fa-cart-plus"></i> <span title="Add Item">Add Item  @ViewBag.AddItem</span>
                         </a>
                     </li>
-                    <br />
+
 
                     <li @(ViewContext.RouteData.Values["action"].ToString().Equals("ManageApplication") ? "class=active" : "")>
                         <a href="@Url.Action("ManageApplication", "Administrationsection")">
@@ -120,7 +120,7 @@
                         </a>
 
                     </li>
-                    <br />
+
 
 
                     @* <li @(ViewContext.RouteData.Values["action"].ToString().Equals("ManageApplication") ? "class=active" : "")>
@@ -157,7 +157,7 @@
                     </li>
 
 
-                    <br />
+
                     @* <li @(ViewContext.RouteData.Values["action"].ToString().Equals("ManageApplication") ? "class=active" : "")>
                             <a href="@Url.Action("ManageApplication", "Administrationsection")">
                                 <i class="fa fa-truck"></i> <span title="Purchase">Purchase @ViewBag.Purchase<i class="fa fa-caret-down"></i></span>
@@ -194,7 +194,7 @@
                     </li>
 
 
-                    <br />
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
@@ -214,7 +214,7 @@
                         </ul>
                     </li>
 
-                    <br />
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-line-chart"></i>
@@ -233,7 +233,7 @@
 
                         </ul>
                     </li>
-                    <br />
+
 
                     @*    <li @(ViewContext.RouteData.Values["action"].ToString().Equals("ManageApplication") ? "class=active" : "")>
                             <a href="@Url.Action("ManageApplication", "Administrationsection")">
@@ -279,7 +279,7 @@
                             <i class="fa fa-cog"></i> <span title="Settings">Settings @ViewBag.Settings</span>
                         </a>
                     </li>
-                    <br />
+
 
                     <li @(ViewContext.RouteData.Values["action"].ToString().Equals("ManageApplication") ? "class=active" : "")>
                         <a href="@Url.Action("ManageApplication", "Administrationsection")">
