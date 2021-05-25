@@ -950,7 +950,7 @@
     <Content Include="Assets\plugins\ionslider\ion.rangeSlider.skinNice.css" />
     <Content Include="Assets\plugins\JquerMasking\inputmask.js" />
     <Content Include="Assets\plugins\JquerMasking\jquery.maskedinput.min.js" />
-    <Content Include="Assets\plugins\jQueryUI\jquery-ui.js" />
+    <Content Include="Assets\plugins\jQueryUI\jQuery\jquery-ui.js" />
     <Content Include="Assets\plugins\jQueryUI\jquery-ui.min.js" />
     <Content Include="Assets\plugins\jQueryUI\jQuery\jquery-2.2.3.min.js" />
     <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-1.2.2.css" />
@@ -1028,13 +1028,150 @@
     <Content Include="Assets\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Assets\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Assets\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\DevExpress.Charts.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.CodeParser.v20.1.dll" />
+    <Content Include="bin\DevExpress.Data.Desktop.v20.1.dll" />
+    <Content Include="bin\DevExpress.Data.Desktop.v20.1.xml" />
     <Content Include="bin\DevExpress.Data.v20.1.dll" />
+    <Content Include="bin\DevExpress.Data.v20.1.xml" />
+    <Content Include="bin\DevExpress.DataAccess.v20.1.dll" />
+    <Content Include="bin\DevExpress.DataAccess.v20.1.xml" />
+    <Content Include="bin\DevExpress.Images.v20.1.dll" />
+    <Content Include="bin\DevExpress.Office.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.Office.v20.1.Core.xml" />
+    <Content Include="bin\DevExpress.Pdf.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.Pdf.v20.1.Core.xml" />
+    <Content Include="bin\DevExpress.Pdf.v20.1.Drawing.dll" />
+    <Content Include="bin\DevExpress.Pdf.v20.1.Drawing.xml" />
+    <Content Include="bin\DevExpress.PivotGrid.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.PivotGrid.v20.1.Core.xml" />
     <Content Include="bin\DevExpress.Printing.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.Printing.v20.1.Core.xml" />
     <Content Include="bin\DevExpress.RichEdit.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.RichEdit.v20.1.Core.xml" />
     <Content Include="bin\DevExpress.RichEdit.v20.1.Export.dll" />
+    <Content Include="bin\DevExpress.Sparkline.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.Sparkline.v20.1.Core.xml" />
+    <Content Include="bin\DevExpress.SpellChecker.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.SpellChecker.v20.1.Core.xml" />
+    <Content Include="bin\DevExpress.Spreadsheet.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.Spreadsheet.v20.1.Core.xml" />
+    <Content Include="bin\DevExpress.Web.ASPxDiagram.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxDiagram.v20.1.xml" />
+    <Content Include="bin\DevExpress.Web.ASPxGantt.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxGantt.v20.1.xml" />
+    <Content Include="bin\DevExpress.Web.ASPxHtmlEditor.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxHtmlEditor.v20.1.xml" />
+    <Content Include="bin\DevExpress.Web.ASPxPivotGrid.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxPivotGrid.v20.1.xml" />
+    <Content Include="bin\DevExpress.Web.ASPxRichEdit.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxRichEdit.v20.1.xml" />
+    <Content Include="bin\DevExpress.Web.ASPxScheduler.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxScheduler.v20.1.xml" />
+    <Content Include="bin\DevExpress.Web.ASPxSpellChecker.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxSpellChecker.v20.1.xml" />
+    <Content Include="bin\DevExpress.Web.ASPxSpreadsheet.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxSpreadsheet.v20.1.xml" />
     <Content Include="bin\DevExpress.Web.ASPxThemes.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxTreeList.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.ASPxTreeList.v20.1.xml" />
     <Content Include="bin\DevExpress.Web.Mvc5.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.Mvc5.v20.1.xml" />
+    <Content Include="bin\DevExpress.Web.Resources.v20.1.dll" />
     <Content Include="bin\DevExpress.Web.v20.1.dll" />
+    <Content Include="bin\DevExpress.Web.v20.1.xml" />
+    <Content Include="bin\DevExpress.Xpo.v20.1.dll" />
+    <Content Include="bin\DevExpress.Xpo.v20.1.xml" />
+    <Content Include="bin\DevExpress.XtraCharts.v20.1.dll" />
+    <Content Include="bin\DevExpress.XtraCharts.v20.1.Web.dll" />
+    <Content Include="bin\DevExpress.XtraCharts.v20.1.Web.xml" />
+    <Content Include="bin\DevExpress.XtraCharts.v20.1.xml" />
+    <Content Include="bin\DevExpress.XtraGauges.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.XtraGauges.v20.1.Core.xml" />
+    <Content Include="bin\DevExpress.XtraReports.v20.1.dll" />
+    <Content Include="bin\DevExpress.XtraReports.v20.1.Web.dll" />
+    <Content Include="bin\DevExpress.XtraReports.v20.1.Web.WebForms.dll" />
+    <Content Include="bin\DevExpress.XtraReports.v20.1.Web.WebForms.xml" />
+    <Content Include="bin\DevExpress.XtraReports.v20.1.Web.xml" />
+    <Content Include="bin\DevExpress.XtraReports.v20.1.xml" />
+    <Content Include="bin\DevExpress.XtraScheduler.v20.1.Core.dll" />
+    <Content Include="bin\DevExpress.XtraScheduler.v20.1.Core.xml" />
+    <Content Include="bin\de\DevExpress.Data.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.DataAccess.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Office.v20.1.Core.resources.dll" />
+    <Content Include="bin\de\DevExpress.Pdf.v20.1.Core.resources.dll" />
+    <Content Include="bin\de\DevExpress.PivotGrid.v20.1.Core.resources.dll" />
+    <Content Include="bin\de\DevExpress.Printing.v20.1.Core.resources.dll" />
+    <Content Include="bin\de\DevExpress.RichEdit.v20.1.Core.resources.dll" />
+    <Content Include="bin\de\DevExpress.Sparkline.v20.1.Core.resources.dll" />
+    <Content Include="bin\de\DevExpress.Spreadsheet.v20.1.Core.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.ASPxDiagram.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.ASPxGantt.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.ASPxHtmlEditor.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.ASPxRichEdit.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.ASPxScheduler.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.ASPxSpellChecker.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.ASPxSpreadsheet.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.ASPxTreeList.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.Resources.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Web.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.Xpo.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.XtraCharts.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.XtraGauges.v20.1.Core.resources.dll" />
+    <Content Include="bin\de\DevExpress.XtraReports.v20.1.resources.dll" />
+    <Content Include="bin\de\DevExpress.XtraReports.v20.1.Web.resources.dll" />
+    <Content Include="bin\de\DevExpress.XtraScheduler.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.Data.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.DataAccess.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Office.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.Pdf.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.PivotGrid.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.Printing.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.RichEdit.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.Sparkline.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.Spreadsheet.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.ASPxDiagram.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.ASPxGantt.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.ASPxHtmlEditor.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.ASPxRichEdit.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.ASPxScheduler.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.ASPxSpellChecker.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.ASPxSpreadsheet.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.ASPxTreeList.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.Resources.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Web.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.Xpo.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.XtraCharts.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.XtraGauges.v20.1.Core.resources.dll" />
+    <Content Include="bin\es\DevExpress.XtraReports.v20.1.resources.dll" />
+    <Content Include="bin\es\DevExpress.XtraReports.v20.1.Web.resources.dll" />
+    <Content Include="bin\es\DevExpress.XtraScheduler.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Data.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.DataAccess.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Office.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Pdf.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.PivotGrid.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Printing.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.RichEdit.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Sparkline.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Spreadsheet.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.ASPxDiagram.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.ASPxGantt.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.ASPxHtmlEditor.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.ASPxRichEdit.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.ASPxScheduler.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.ASPxSpellChecker.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.ASPxSpreadsheet.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.ASPxTreeList.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.Resources.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Web.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.Xpo.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.XtraCharts.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.XtraGauges.v20.1.Core.resources.dll" />
+    <Content Include="bin\ja\DevExpress.XtraReports.v20.1.resources.dll" />
+    <Content Include="bin\ja\DevExpress.XtraReports.v20.1.Web.resources.dll" />
+    <Content Include="bin\ja\DevExpress.XtraScheduler.v20.1.Core.resources.dll" />
     <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
     <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
     <Content Include="bin\Microsoft.AI.DependencyCollector.xml" />
@@ -1057,11 +1194,40 @@
     <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
     <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
     <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
     <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\ru\DevExpress.Data.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.DataAccess.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Office.v20.1.Core.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Pdf.v20.1.Core.resources.dll" />
+    <Content Include="bin\ru\DevExpress.PivotGrid.v20.1.Core.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Printing.v20.1.Core.resources.dll" />
+    <Content Include="bin\ru\DevExpress.RichEdit.v20.1.Core.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Sparkline.v20.1.Core.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Spreadsheet.v20.1.Core.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.ASPxDiagram.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.ASPxGantt.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.ASPxHtmlEditor.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.ASPxRichEdit.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.ASPxScheduler.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.ASPxSpellChecker.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.ASPxSpreadsheet.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.ASPxTreeList.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.Resources.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Web.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.Xpo.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.XtraCharts.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.XtraGauges.v20.1.Core.resources.dll" />
+    <Content Include="bin\ru\DevExpress.XtraReports.v20.1.resources.dll" />
+    <Content Include="bin\ru\DevExpress.XtraReports.v20.1.Web.resources.dll" />
+    <Content Include="bin\ru\DevExpress.XtraScheduler.v20.1.Core.resources.dll" />
     <Content Include="bin\SalesAndInentoryWeb_Application.dll" />
+    <Content Include="bin\SalesAndInentoryWeb_Application.dll.config" />
     <Content Include="bin\SalesAndInentoryWeb_Application.pdb" />
     <Content Include="bin\System.Net.Http.Formatting.dll" />
     <Content Include="bin\System.Net.Http.Formatting.xml" />
@@ -1072,6 +1238,8 @@
     <Content Include="bin\System.Web.Http.WebHost.xml" />
     <Content Include="bin\System.Web.Http.xml" />
     <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.Extensions.dll" />
+    <Content Include="bin\System.Web.Mvc.Extensions.xml" />
     <Content Include="bin\System.Web.Mvc.xml" />
     <Content Include="bin\System.Web.Razor.dll" />
     <Content Include="bin\System.Web.Razor.xml" />
@@ -1083,6 +1251,8 @@
     <Content Include="bin\System.Web.Webpages.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\notify.css" />
+    <Content Include="Content\notify.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -1127,16 +1297,37 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\MyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+      <LastGenOutput>MyModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\MyModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+      <LastGenOutput>MyModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Party.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Party.edmx</DependentUpon>
+      <LastGenOutput>Party.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Party.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Party.edmx</DependentUpon>
+      <LastGenOutput>Party.cs</LastGenOutput>
+    </Content>
+    <Content Include="obj\Debug\SalesAndInentoryWeb_Application.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\SalesAndInentoryWeb_Application.dll" />
+    <Content Include="obj\Debug\SalesAndInentoryWeb_Application.pdb" />
+    <Content Include="obj\Debug\TempPE\Models.BankToBank.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.BankToBank.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.Model1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.Model1.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.MyModel.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.MyModel.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.Party.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.Party.Designer.cs.dll" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -1188,23 +1379,30 @@
     <Content Include="Assets\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Assets\plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="Assets\plugins\slider\js\.jshintrc" />
-    <Content Include="bin\ApplicationInsights.config" />
-    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
-    <Content Include="bin\SalesAndInentoryWeb_Application.dll.config" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\MyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\MyModel.edmx.diagram">
+      <DependentUpon>MyModel.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\Party.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Party.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Party.edmx.diagram">
+      <DependentUpon>Party.edmx</DependentUpon>
+    </Content>
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\SalesAndInentoryWeb_Application.csprojResolveAssemblyReference.cache" />
     <None Include="scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="scripts\jquery-1.12.4.js" />
     <Content Include="scripts\jquery-1.12.4.min.js" />
     <Content Include="scripts\jquery-1.12.4.min.map" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery-notify.js" />
+    <Content Include="scripts\jquery-notify.min.js" />
     <Content Include="scripts\jquery-ui-1.12.1.js" />
     <Content Include="scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="scripts\jquery.validate.js" />
@@ -1218,29 +1416,59 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BankAccountController.cs" />
+    <Compile Include="Controllers\BankAdjustmentController.cs" />
+    <Compile Include="Controllers\BankToBankController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PartyMasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\Model1.Context.cs">
+    <Compile Include="Models\MyModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>MyModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
+    <Compile Include="Models\MyModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
+    <Compile Include="Models\MyModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Party.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Party.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Party.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Party.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Party.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Party.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_BankAccount.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_BankAdjustment.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_BanktoBankTransfer.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PartyGroup.cs">
+      <DependentUpon>Party.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PartyMaster.cs">
+      <DependentUpon>Party.tt</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -1263,6 +1491,12 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\BankAccount\Index.cshtml" />
     <Content Include="Views\BankAccount\AddOrEdit.cshtml" />
+    <Content Include="Views\BankToBank\Index.cshtml" />
+    <Content Include="Views\BankToBank\AddOrEdit.cshtml" />
+    <Content Include="Views\BankAdjustment\Index.cshtml" />
+    <Content Include="Views\BankAdjustment\AddOrEdit.cshtml" />
+    <Content Include="Views\PartyMaster\Index.cshtml" />
+    <Content Include="Views\PartyMaster\AddOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

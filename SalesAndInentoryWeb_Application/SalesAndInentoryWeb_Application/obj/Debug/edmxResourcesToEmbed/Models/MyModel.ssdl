@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="idealtec_inventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_BankAccount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar(max)" />
+    <Property Name="BankName" Type="nvarchar(max)" />
+    <Property Name="AccountNo" Type="nvarchar(max)" />
+    <Property Name="OpeningBal" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_BankAdjustment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankAccount" Type="nvarchar(max)" />
+    <Property Name="EntryType" Type="nvarchar(max)" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_BanktoBankTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FromBank" Type="nvarchar(max)" />
+    <Property Name="ToBank" Type="nvarchar(max)" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Descripition" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="idealtec_inventoryModelStoreContainer">
+    <EntitySet Name="tbl_BankAccount" EntityType="Self.tbl_BankAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BankAdjustment" EntityType="Self.tbl_BankAdjustment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BanktoBankTransfer" EntityType="Self.tbl_BanktoBankTransfer" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -13,10 +13,10 @@ namespace SalesAndInentoryWeb_Application.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class idealtec_inventoryEntities : DbContext
+    public partial class idealtec_inventoryEntities3 : DbContext
     {
-        public idealtec_inventoryEntities()
-            : base("name=idealtec_inventoryEntities")
+        public idealtec_inventoryEntities3()
+            : base("name=idealtec_inventoryEntities3")
         {
         }
     
@@ -26,5 +26,7 @@ namespace SalesAndInentoryWeb_Application.Models
         }
     
         public virtual DbSet<tbl_BankAccount> tbl_BankAccount { get; set; }
+        public virtual DbSet<tbl_BankAdjustment> tbl_BankAdjustment { get; set; }
+        public virtual DbSet<tbl_BanktoBankTransfer> tbl_BanktoBankTransfer { get; set; }
     }
 }

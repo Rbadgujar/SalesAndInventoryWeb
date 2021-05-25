@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="idealtec_inventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_BankAccount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BankName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OpeningBal" Type="Double" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="DeleteData" Type="Boolean" />
+    <Property Name="Company_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_BankAdjustment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankAccount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EntryType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeleteData" Type="Boolean" />
+    <Property Name="Company_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_BanktoBankTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FromBank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ToBank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Descripition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeleteData" Type="Boolean" />
+    <Property Name="Company_ID" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="idealtec_inventoryEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_BankAccount" EntityType="Self.tbl_BankAccount" />
+    <EntitySet Name="tbl_BankAdjustment" EntityType="Self.tbl_BankAdjustment" />
+    <EntitySet Name="tbl_BanktoBankTransfer" EntityType="Self.tbl_BanktoBankTransfer" />
+  </EntityContainer>
+</Schema>
