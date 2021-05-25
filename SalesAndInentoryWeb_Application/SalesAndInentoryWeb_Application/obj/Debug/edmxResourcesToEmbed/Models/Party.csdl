@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="idealtec_inventoryModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_PartyGroup">
+    <Key>
+      <PropertyRef Name="PartyGroupID" />
+    </Key>
+    <Property Name="PartyGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddPartyGroup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeleteData" Type="Boolean" />
+    <Property Name="Company_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_PartyMaster">
+    <Key>
+      <PropertyRef Name="PartiesID" />
+    </Key>
+    <Property Name="PartiesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BillingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GSTType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OpeningBal" Type="Double" />
+    <Property Name="AsOfDate" Type="DateTime" Precision="0" />
+    <Property Name="AddRemainder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PartyType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PartyGroup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeleteData" Type="Boolean" />
+    <Property Name="Company_ID" Type="Int32" />
+    <Property Name="PaidStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Customertype" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="idealtec_inventoryEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_PartyGroup" EntityType="Self.tbl_PartyGroup" />
+    <EntitySet Name="tbl_PartyMaster" EntityType="Self.tbl_PartyMaster" />
+  </EntityContainer>
+</Schema>

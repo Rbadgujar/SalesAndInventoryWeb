@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="idealtec_inventoryModelStoreContainer" CdmEntityContainer="idealtec_inventoryEntities3">
+    <EntitySetMapping Name="tbl_BankAccount">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_BankAccount">
+        <MappingFragment StoreEntitySet="tbl_BankAccount">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BankAdjustment">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_BankAdjustment">
+        <MappingFragment StoreEntitySet="tbl_BankAdjustment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+          <ScalarProperty Name="EntryType" ColumnName="EntryType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BanktoBankTransfer">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_BanktoBankTransfer">
+        <MappingFragment StoreEntitySet="tbl_BanktoBankTransfer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FromBank" ColumnName="FromBank" />
+          <ScalarProperty Name="ToBank" ColumnName="ToBank" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Descripition" ColumnName="Descripition" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

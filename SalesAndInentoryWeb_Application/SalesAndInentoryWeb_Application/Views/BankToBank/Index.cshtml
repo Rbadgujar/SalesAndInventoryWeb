@@ -9,35 +9,27 @@
 <div class="container">
     <nav class="navbar navbar-default ">
         <div class="container-fluid">
-            <div class="collapse navbar-collapse ">              
-              
-                         <a class="btn btn-success pull-right row" style="margin-top:6.5px;" onclick="PopupForm('@Url.Action("AddOrEdit","BankAccount")')"><i class="fa fa-plus"></i> Add Bank Account</a>
-                        <a class="btn btn-info pull-left row" style="margin-top:6.5px; " href="@Url.Action("Index","BankAdjustment")"><i class="fa fa-plus"></i>Adjust Bank </a>
-                    <a class="btn btn-info row pull-left" style="margin-top:6.5px; margin-left:30px; " href="@Url.Action("Index","BankToBank")"><i class="fa fa-plus"></i>Bank To Bank </a>
-                   
-           </div>
-        </div>
-    </nav>
-       
-    <nav class="navbar navbar-default ">
-        <div class="container-fluid">
             <div class="collapse navbar-collapse ">
-                <table id="bankaccount" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Bank Name</th>
-                            <th>Account Name</th>
-                            <th>Account No</th>
-                            <th>Opening Bal</th>
-                            <th>Date</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
+
+                <a class="btn btn-success pull-right row" style="margin-top:6.5px;" onclick="PopupForm('@Url.Action("AddOrEdit","BankToBank")')"><i class="fa fa-plus"></i> Bank To Bank Transfer</a>
+                @*<a class="btn btn-info pull-right row" style="margin-top:6.5px; " href="@Url.Action("BankToBank","BankToBank")"><i class="fa fa-plus"></i> Bank To Bank</a>*@
+
             </div>
         </div>
     </nav>
 
+    <table id="bankTobank" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>From Bank</th>
+                <th>To Bank</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
 </div>
 <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -49,20 +41,20 @@
     <script>
         var Popup, dataTable;
         $(document).ready(function () {
-            dataTable =  $("#bankaccount").DataTable({
+            dataTable =  $("#bankTobank").DataTable({
                 "ajax": {
-                    "url": "/BankAccount/Data",
+                    "url": "/BankToBank/GetData",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "BankName" },
-                    { "data": "AccountName" },
-                    { "data": "AccountNo" },
-                    { "data": "OpeningBal" },
+                    { "data": "FromBank" },
+                    { "data": "ToBank" },
+                    { "data": "Amount" },
                     { "data": "Date" },
+                    { "data": "Descripition" },
                     {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankToBank")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -86,7 +78,7 @@
                 Popup = formDiv.dialog({
                     autoOpen: true,
                     resizable: false,
-                    title: 'Fill Bank Details',
+                    title: 'Fill Bank TO Bank Details',
                     height: 500,
                     width: 700,
                     close: function () {
@@ -127,7 +119,7 @@
             {
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("Delete","BankAccount")/' + id,
+                    url: '@Url.Action("Delete","BankToBank")/' + id,
                     success: function (data) {
                         if (data.success)
                         {

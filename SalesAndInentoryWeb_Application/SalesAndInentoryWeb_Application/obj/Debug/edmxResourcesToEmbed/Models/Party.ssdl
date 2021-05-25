@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="idealtec_inventoryModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_PartyGroup">
+    <Key>
+      <PropertyRef Name="PartyGroupID" />
+    </Key>
+    <Property Name="PartyGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddPartyGroup" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_PartyMaster">
+    <Key>
+      <PropertyRef Name="PartiesID" />
+    </Key>
+    <Property Name="PartiesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="ContactNo" Type="nvarchar(max)" />
+    <Property Name="BillingAddress" Type="nvarchar(max)" />
+    <Property Name="EmailID" Type="nvarchar(max)" />
+    <Property Name="GSTType" Type="nvarchar(max)" />
+    <Property Name="State" Type="nvarchar(max)" />
+    <Property Name="OpeningBal" Type="float" />
+    <Property Name="AsOfDate" Type="date" />
+    <Property Name="AddRemainder" Type="nvarchar(max)" />
+    <Property Name="PartyType" Type="nvarchar(max)" />
+    <Property Name="ShippingAddress" Type="nvarchar(max)" />
+    <Property Name="PartyGroup" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="PaidStatus" Type="nvarchar(max)" />
+    <Property Name="Customertype" Type="nvarchar" MaxLength="1" />
+    <Property Name="type" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="idealtec_inventoryModel1StoreContainer">
+    <EntitySet Name="tbl_PartyGroup" EntityType="Self.tbl_PartyGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PartyMaster" EntityType="Self.tbl_PartyMaster" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

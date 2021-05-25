@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="idealtec_inventoryModel1StoreContainer" CdmEntityContainer="idealtec_inventoryEntities4">
+    <EntitySetMapping Name="tbl_PartyGroup">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel1.tbl_PartyGroup">
+        <MappingFragment StoreEntitySet="tbl_PartyGroup">
+          <ScalarProperty Name="PartyGroupID" ColumnName="PartyGroupID" />
+          <ScalarProperty Name="AddPartyGroup" ColumnName="AddPartyGroup" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PartyMaster">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel1.tbl_PartyMaster">
+        <MappingFragment StoreEntitySet="tbl_PartyMaster">
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="GSTType" ColumnName="GSTType" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="AsOfDate" ColumnName="AsOfDate" />
+          <ScalarProperty Name="AddRemainder" ColumnName="AddRemainder" />
+          <ScalarProperty Name="PartyType" ColumnName="PartyType" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="PartyGroup" ColumnName="PartyGroup" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="PaidStatus" ColumnName="PaidStatus" />
+          <ScalarProperty Name="Customertype" ColumnName="Customertype" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
