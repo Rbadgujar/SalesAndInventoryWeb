@@ -1,52 +1,53 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
+
 <br>
 
 <div class="container">
-    <nav class="navbar navbar-default ">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse ">              
-              
-                         <a class="btn btn-success pull-right row" style="margin-top:6.5px;" onclick="PopupForm('@Url.Action("AddOrEdit","BankAccount")')"><i class="fa fa-plus"></i> Add Bank Account</a>
-                        <a class="btn btn-info pull-left row" style="margin-top:6.5px; " href="@Url.Action("Index","BankAdjustment")"><i class="fa fa-plus"></i>Adjust Bank </a>
-                    <a class="btn btn-info row pull-left" style="margin-top:6.5px; margin-left:30px; " href="@Url.Action("Index","BankToBank")"><i class="fa fa-plus"></i>Bank To Bank </a>
-                   
-           </div>
-        </div>
-    </nav>
-       
-    <nav class="navbar navbar-default ">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse ">
-                <table id="bankaccount" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Bank Name</th>
-                            <th>Account Name</th>
-                            <th>Account No</th>
-                            <th>Opening Bal</th>
-                            <th>Date</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </nav>
+	<nav class="navbar navbar-default ">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse ">
+
+				<a class="btn btn-success pull-right row" style="margin-top:6.5px;" onclick="PopupForm('@Url.Action("AddOrEdit","BankAccount")')"><i class="fa fa-plus"></i> Add Bank Account</a>
+				<a class="btn btn-info pull-left row" style="margin-top:6.5px; " href="@Url.Action("Index","BankAdjustment")"><i class="fa fa-plus"></i>Adjust Bank </a>
+				<a class="btn btn-info row pull-left" style="margin-top:6.5px; margin-left:30px; " href="@Url.Action("Index","BankToBank")"><i class="fa fa-plus"></i>Bank To Bank </a>
+
+			</div>
+		</div>
+	</nav>
+
+	<nav class="navbar navbar-default ">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse ">
+				<table id="bankaccount" class="table table-striped table-bordered" style="width:100%">
+					<thead>
+						<tr>
+							<th>Bank Name</th>
+							<th>Account Name</th>
+							<th>Account No</th>
+							<th>Opening Bal</th>
+							<th>Date</th>
+							<th></th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</nav>
 
 </div>
 <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
-    <script>
+	<script>
         var Popup, dataTable;
         $(document).ready(function () {
             dataTable =  $("#bankaccount").DataTable({
@@ -144,6 +145,6 @@
                 });
             }
         }
-    </script>
+	</script>
 }
 
