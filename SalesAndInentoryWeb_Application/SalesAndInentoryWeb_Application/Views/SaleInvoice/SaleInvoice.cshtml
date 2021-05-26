@@ -27,8 +27,7 @@
                     <table class="tabel table-sm" column-gap="40px">
                         <tbody>
 
-                            <tr>
-                                
+                            <tr>                              
                                 <td style="padding:0 15px 0 15px">                                   
                                     <div class="form-group text-right ">
                                         @Html.DevExpress().Label(settings =>
@@ -254,10 +253,142 @@
                             </tr>
                            
                             
+                            <nav class="navbar navbar-default ">
+                                <div class="container-fluid">
+                                    <div class="collapse navbar-collapse ">
+                                        <tr>
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-right ">
+                                                    @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label20";
+                                                           settings.Text = "Item Name   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <center>
+                                                    <div class="form-group text-center">
+                                                        @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label21";
+                                                           settings.Text = "MRP   :";
+
+                                                       }).GetHtml()
+                                                    </div>
+                                                </center>
+
+                                            </td>
+
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-left">
+                                                   @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label22";
+                                                           settings.Text = "Discount   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-left">
+                                                    @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label23";
+                                                           settings.Text = "Tax( % )   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-left">
+                                                    @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label23";
+                                                           settings.Text = "Qty   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-left">
+                                                    @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label23";
+                                                           settings.Text = "Qty   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-left">
+                                                    @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label24";
+                                                           settings.Text = "Qty   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-left">
+                                                    @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label25";
+                                                           settings.Text = "Discount Amt   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-left">
+                                                    @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label26";
+                                                           settings.Text = "Tax Amt   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+                                            <td style="padding:0 15px 0 15px" class="col-md-1">
+                                                <div class="form-group text-left">
+                                                    @Html.DevExpress().Label(settings =>
+                                                       {
+                                                           settings.Style["font-weight"] = "bold";
+
+                                                           settings.Name = "Label23";
+                                                           settings.Text = "Total   :";
+
+                                                       }).GetHtml()
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                </div>
+                            </nav>
                             
                             
-                            
-                             <tr>
+                             @*<tr>
                                 <td style="padding:0 15px 0 15px">
                                     <div class="form-group text-right ">
                                         @Html.DevExpress().Label(settings =>
@@ -443,7 +574,7 @@
                                         </div>
                                     </center>
                                 </td>
-                            </tr>
+                            </tr>*@
                         </tbody>
                     </table>
                 </center>
