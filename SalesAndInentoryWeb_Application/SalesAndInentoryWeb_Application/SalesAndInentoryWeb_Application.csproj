@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1297,15 +1298,15 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\MyModel.Context.tt">
+    <Content Include="Models\Bank.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyModel.edmx</DependentUpon>
-      <LastGenOutput>MyModel.Context.cs</LastGenOutput>
+      <DependentUpon>Bank.edmx</DependentUpon>
+      <LastGenOutput>Bank.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\MyModel.tt">
+    <Content Include="Models\Bank.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyModel.edmx</DependentUpon>
-      <LastGenOutput>MyModel.cs</LastGenOutput>
+      <DependentUpon>Bank.edmx</DependentUpon>
+      <LastGenOutput>Bank.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Party.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1379,13 +1380,6 @@
     <Content Include="Assets\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Assets\plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="Assets\plugins\slider\js\.jshintrc" />
-    <EntityDeploy Include="Models\MyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\MyModel.edmx.diagram">
-      <DependentUpon>MyModel.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\Party.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Party.Designer.cs</LastGenOutput>
@@ -1396,6 +1390,13 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\SalesAndInentoryWeb_Application.csprojResolveAssemblyReference.cache" />
+    <EntityDeploy Include="Models\Bank.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Bank.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Bank.edmx.diagram">
+      <DependentUpon>Bank.edmx</DependentUpon>
+    </Content>
     <None Include="scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="scripts\jquery-1.12.4.js" />
     <Content Include="scripts\jquery-1.12.4.min.js" />
@@ -1421,25 +1422,32 @@
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
+    <Compile Include="Data_Access\Bank.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Bank.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bank.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bank.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bank.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bank.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankAccountSelect_Result.cs">
+      <DependentUpon>Bank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Banktobank_Result.cs">
+      <DependentUpon>Bank.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\MyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Party.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1456,13 +1464,16 @@
       <DependentUpon>Party.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_BankAccount.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Bank.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_BankAdjustment.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Bank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_BankAdjustmentselect_Result.cs">
+      <DependentUpon>Bank.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_BanktoBankTransfer.cs">
-      <DependentUpon>MyModel.tt</DependentUpon>
+      <DependentUpon>Bank.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_PartyGroup.cs">
       <DependentUpon>Party.tt</DependentUpon>

@@ -415,7 +415,6 @@ C:\Users\ideal Tech Info\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\ideal Tech Info\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\SalesAndInentoryWeb_Application.pdb
 C:\Users\ideal Tech Info\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\EntityFramework.dll
 C:\Users\ideal Tech Info\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\EntityFramework.SqlServer.dll
-C:\Users\ideal Tech Info\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Web.Mvc.Extensions.dll
 C:\Users\ideal Tech Info\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Pdf.v20.1.Core.dll
 C:\Users\ideal Tech Info\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Pdf.v20.1.Drawing.dll
 C:\Users\ideal Tech Info\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Office.v20.1.Core.dll

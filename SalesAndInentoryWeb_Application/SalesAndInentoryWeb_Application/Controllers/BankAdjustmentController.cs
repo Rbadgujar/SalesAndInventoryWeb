@@ -17,7 +17,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult BankData()
         {
-            using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+            using (idealtec_inventoryEntities6 db = new idealtec_inventoryEntities6())
             {
                 List<tbl_BankAdjustment> BankData = db.tbl_BankAdjustment.ToList<tbl_BankAdjustment>();
                 return Json(new { data = BankData }, JsonRequestBehavior.AllowGet);
@@ -30,7 +30,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(new tbl_BankAdjustment());
             else
             {
-                using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+                using (idealtec_inventoryEntities6 db = new idealtec_inventoryEntities6())
                 {
                     return View(db.tbl_BankAdjustment.Where(x => x.ID == id).FirstOrDefault<tbl_BankAdjustment>());
                 }
@@ -40,7 +40,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(tbl_BankAdjustment emp)
         {
-            using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+            using (idealtec_inventoryEntities6 db = new idealtec_inventoryEntities6())
             {
                 if (emp.ID == 0)
                 {
@@ -62,7 +62,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+            using (idealtec_inventoryEntities6 db = new idealtec_inventoryEntities6())
             {
                 tbl_BankAdjustment emp = db.tbl_BankAdjustment.Where(x => x.ID == id).FirstOrDefault<tbl_BankAdjustment>();
                 db.tbl_BankAdjustment.Remove(emp);

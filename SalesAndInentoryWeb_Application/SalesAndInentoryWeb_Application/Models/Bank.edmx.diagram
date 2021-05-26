@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6e70ff34450246fc9e665eb8e492e07d" Name="Diagram1">
+      <Diagram DiagramId="72e77d7a44e344b4a90cd3a15716d34d" Name="Diagram1">
         <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_BankAccount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_BankAdjustment" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_BanktoBankTransfer" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

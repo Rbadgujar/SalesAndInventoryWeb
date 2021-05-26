@@ -44,6 +44,36 @@
           <Property Name="DeleteData" Type="bit" />
           <Property Name="Company_ID" Type="int" />
         </EntityType>
+        <Function Name="BankAccountSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="AccountName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="BankName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AccountNo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="OpeningBal" Type="float" Mode="In" />
+          <Parameter Name="Date" Type="date" Mode="In" />
+          <Parameter Name="compid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Banktobank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="FromBank" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ToBank" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Amount" Type="float" Mode="In" />
+          <Parameter Name="Date" Type="date" Mode="In" />
+          <Parameter Name="Descripition" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="compid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tbl_BankAdjustmentselect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="BankAccount" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="EntryType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Amount" Type="float" Mode="In" />
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="compid" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="idealtec_inventoryModelStoreContainer">
           <EntitySet Name="tbl_BankAccount" EntityType="Self.tbl_BankAccount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_BankAdjustment" EntityType="Self.tbl_BankAdjustment" Schema="dbo" store:Type="Tables" />
@@ -93,17 +123,71 @@
           <Property Name="DeleteData" Type="Boolean" />
           <Property Name="Company_ID" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="idealtec_inventoryEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="idealtec_inventoryEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_BankAccount" EntityType="Self.tbl_BankAccount" />
           <EntitySet Name="tbl_BankAdjustment" EntityType="Self.tbl_BankAdjustment" />
           <EntitySet Name="tbl_BanktoBankTransfer" EntityType="Self.tbl_BanktoBankTransfer" />
+          <FunctionImport Name="BankAccountSelect" ReturnType="Collection(idealtec_inventoryModel.BankAccountSelect_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="AccountName" Mode="In" Type="String" />
+            <Parameter Name="BankName" Mode="In" Type="String" />
+            <Parameter Name="AccountNo" Mode="In" Type="String" />
+            <Parameter Name="OpeningBal" Mode="In" Type="Double" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="compid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Banktobank" ReturnType="Collection(idealtec_inventoryModel.Banktobank_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="FromBank" Mode="In" Type="String" />
+            <Parameter Name="ToBank" Mode="In" Type="String" />
+            <Parameter Name="Amount" Mode="In" Type="Double" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Descripition" Mode="In" Type="String" />
+            <Parameter Name="compid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tbl_BankAdjustmentselect" ReturnType="Collection(idealtec_inventoryModel.tbl_BankAdjustmentselect_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="BankAccount" Mode="In" Type="String" />
+            <Parameter Name="EntryType" Mode="In" Type="String" />
+            <Parameter Name="Amount" Mode="In" Type="Double" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="compid" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="BankAccountSelect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="AccountName" Nullable="true" />
+          <Property Type="String" Name="BankName" Nullable="true" />
+          <Property Type="String" Name="AccountNo" Nullable="true" />
+          <Property Type="Double" Name="OpeningBal" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Banktobank_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="FromBank" Nullable="true" />
+          <Property Type="String" Name="ToBank" Nullable="true" />
+          <Property Type="Double" Name="Amount" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="String" Name="Descripition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="tbl_BankAdjustmentselect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BankAccount" Nullable="true" />
+          <Property Type="String" Name="EntryType" Nullable="true" />
+          <Property Type="Double" Name="Amount" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Description" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="idealtec_inventoryModelStoreContainer" CdmEntityContainer="idealtec_inventoryEntities3">
+        <EntityContainerMapping StorageEntityContainer="idealtec_inventoryModelStoreContainer" CdmEntityContainer="idealtec_inventoryEntities6">
           <EntitySetMapping Name="tbl_BankAccount">
             <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_BankAccount">
               <MappingFragment StoreEntitySet="tbl_BankAccount">
@@ -146,6 +230,42 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BankAccountSelect" FunctionName="idealtec_inventoryModel.Store.BankAccountSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="idealtec_inventoryModel.BankAccountSelect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Banktobank" FunctionName="idealtec_inventoryModel.Store.Banktobank">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="idealtec_inventoryModel.Banktobank_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FromBank" ColumnName="FromBank" />
+                <ScalarProperty Name="ToBank" ColumnName="ToBank" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Descripition" ColumnName="Descripition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tbl_BankAdjustmentselect" FunctionName="idealtec_inventoryModel.Store.tbl_BankAdjustmentselect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_BankAdjustmentselect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+                <ScalarProperty Name="EntryType" ColumnName="EntryType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

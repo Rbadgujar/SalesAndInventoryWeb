@@ -10,17 +10,14 @@
 namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbl_BankAccount
+    public partial class Banktobank_Result
     {
         public int ID { get; set; }
-        public string AccountName { get; set; }
-        public string BankName { get; set; }
-        public string AccountNo { get; set; }
-        public Nullable<double> OpeningBal { get; set; }
-        public string Date { get; set; }
-        public Nullable<bool> DeleteData { get; set; }
-        public Nullable<int> Company_ID { get; set; }
+        public string FromBank { get; set; }
+        public string ToBank { get; set; }
+        public Nullable<double> Amount { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public string Descripition { get; set; }
     }
 }

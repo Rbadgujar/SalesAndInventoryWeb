@@ -10,9 +10,8 @@
 namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbl_BankAccount
+    public partial class BankAccountSelect_Result
     {
         public int ID { get; set; }
         public string AccountName { get; set; }
@@ -20,7 +19,6 @@ namespace SalesAndInentoryWeb_Application.Models
         public string AccountNo { get; set; }
         public Nullable<double> OpeningBal { get; set; }
         public string Date { get; set; }
-        public Nullable<bool> DeleteData { get; set; }
-        public Nullable<int> Company_ID { get; set; }
-    }
+		public Nullable<bool> DeleteData { get; set; }
+	}
 }
