@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -46,6 +47,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-       
     }
+
 }

@@ -16,7 +16,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult Data()
         {
-            using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities3())
             {
                 List<tbl_BankAccount> bank = db.tbl_BankAccount.ToList<tbl_BankAccount>();
                 return Json(new { data = bank }, JsonRequestBehavior.AllowGet);
