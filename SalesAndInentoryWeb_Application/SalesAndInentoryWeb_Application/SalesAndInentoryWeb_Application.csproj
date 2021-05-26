@@ -1403,6 +1403,7 @@
     <Compile Include="Controllers\BankToBankController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemMasterController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
     <Compile Include="Controllers\SaleInvoiceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1734,6 +1735,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ItemMaster\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
