@@ -17,7 +17,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult GetData()
         {
-            using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
                 List<tbl_BanktoBankTransfer> empList = db.tbl_BanktoBankTransfer.ToList<tbl_BanktoBankTransfer>();
                 return Json(new { data = empList }, JsonRequestBehavior.AllowGet);
@@ -30,7 +30,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(new tbl_BanktoBankTransfer());
             else
             {
-                using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
                 {
                     return View(db.tbl_BanktoBankTransfer.Where(x => x.ID == id).FirstOrDefault<tbl_BanktoBankTransfer>());
                 }
@@ -40,7 +40,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(tbl_BanktoBankTransfer emp)
         {
-            using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
                 if (emp.ID == 0)
                 {
@@ -62,7 +62,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            using (idealtec_inventoryEntities3 db = new idealtec_inventoryEntities3())
+            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
                 tbl_BanktoBankTransfer emp = db.tbl_BanktoBankTransfer.Where(x => x.ID == id).FirstOrDefault<tbl_BanktoBankTransfer>();
                 db.tbl_BanktoBankTransfer.Remove(emp);
