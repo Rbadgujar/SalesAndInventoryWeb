@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="58300d2097844f7ebb563b5b2eafde03" Name="Diagram1">
+        <EntityTypeShape EntityType="idealtec_inventoryModel.CompanyBankAccount" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.ReferralCode1" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_BankAccount" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_BankAdjustment" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_BanktoBankTransfer" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_CashAdjustment" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_CashInhand" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_CategoryMaster" Width="1.5" PointX="0.75" PointY="47.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_CompanyMaster" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_CreditNote1" Width="1.5" PointX="3" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_CreditNoteInner" Width="1.5" PointX="5.25" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_DebitNote" Width="1.5" PointX="6" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_DebitNoteInner" Width="1.5" PointX="8.25" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_DeliveryChallan" Width="1.5" PointX="13.5" PointY="63.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_DeliveryChallanInner" Width="1.5" PointX="5.25" PointY="70.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_ExpenseCategory" Width="1.5" PointX="7.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_Expenses" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_ExpensesInner" Width="1.5" PointX="12.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_ItemAdjustement" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_ItemMaster" Width="1.5" PointX="3" PointY="68.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_ItemServicemaster" Width="1.5" PointX="10" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_LoanBank" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_LoginPasssword" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_MakePayment" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_OtherIncome" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_otherIncomeCaategory" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_OtherIncomeInner" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_OtherIncomeInner1" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_OtherIncomeInner3" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_PartyGroup" Width="1.5" PointX="14.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_PartyMaster" Width="1.5" PointX="11.25" PointY="67.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_PaymentIn" Width="1.5" PointX="13.5" PointY="75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_PaymentLink" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_Paymentout" Width="1.5" PointX="13.5" PointY="80" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_PurchaseBill" Width="1.5" PointX="13.5" PointY="51.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_PurchaseBillInner" Width="1.5" PointX="5.25" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_PurchaseOrder" Width="1.5" PointX="16.5" PointY="51.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_PurchaseOrderInner" Width="1.5" PointX="8.25" PointY="59.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_QuotationInner" Width="1.5" PointX="8.25" PointY="70.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_SaleInvoice" Width="1.5" PointX="19.5" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_SaleInvoiceInner" Width="1.5" PointX="11.25" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_SaleOrder" Width="1.5" PointX="9" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_SaleOrderInner" Width="1.5" PointX="11.25" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_TransactionPasssword" Width="1.5" PointX="15.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_TransactionPrefix" Width="1.5" PointX="15.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_UnitConversion" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_UnitMaster" Width="1.5" PointX="7.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tble_NewCompany" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tblQuotation" Width="1.5" PointX="16.5" PointY="62.875" IsExpanded="true" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_ItemMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_ItemMaster_tbl_ItemMaster3" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_PurchaseBill_tbl_CategoryMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_PurchaseOrder_tbl_PartyMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleInvoice_tbl_PartyMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleOrder_tbl_PartyMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_CategoryMaster_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_CreditNote1_Parties" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_DebitNote_Parties" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_DeliveryChallan_Parties" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_PurchaseBillInner_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_PurchaseOrderInner_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_SaleInvoiceInner_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_SaleOrderInner_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tblQuotation_Parties" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_LoanBank_tbl_CompanyMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_CreditNoteInner_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.tbl_CreditNote1_Parties" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_DebitNote_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_DebitNote_tbl_DebitNoteInner" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK__tbl_Deliv__Chall__68D28DBC" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_DeliveryChallan_tbl_DeliveryChallanInner" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_DeliveryChallanInner_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_Expenses_tbl_ExpenseCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_Expenses_tbl_Expenses" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_ExpensesInner_tbl_Expenses" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_PurchaseBillInner_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_PurchaseOrderInner_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_QuotationInner_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_SaleInvoiceInner_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_ItemServicemaster_tbl_UnitMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK__tbl_OtherIn__ID2__0A338187" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_OtherIncome" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_otherIncomeCaategory" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_otherIncomeCaategory1" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_otherIncomeCaategory2" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_OtherIncomeInner3_tbl_OtherIncome" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_PaymentIn_tbl_PartyMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_Paymentout_tbl_PartyMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_PurchaseBill_tbl_PartyMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK__tbl_Purch__BillN__1B9317B3" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_PurchaseBill_tbl_PurchaseBillInner" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK__tbl_Purch__Order__0C1BC9F9" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_PurchaseOrder_tbl_PurchaseOrderInner" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tbl_QuotationInner_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.PK_tblQuotation_tbl_QuotationInner" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleInvoice_tbl_SaleInvoiceInner" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleInvoiceInner_tbl_SaleInvoice" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleInvoiceInner_tbl_SaleInvoiceInner" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK__tbl_SaleO__Order__54CB950F" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK__tbl_SaleO__Order__589C25F3" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleOrder_tbl_SaleOrderInner" ManuallyRouted="false" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleOrderInner_tbl_SaleOrderInner" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

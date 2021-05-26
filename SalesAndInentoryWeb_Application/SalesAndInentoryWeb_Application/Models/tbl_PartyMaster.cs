@@ -14,6 +14,14 @@ namespace SalesAndInentoryWeb_Application.Models
     
     public partial class tbl_PartyMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_PartyMaster()
+        {
+            this.tbl_PaymentIn = new HashSet<tbl_PaymentIn>();
+            this.tbl_Paymentout = new HashSet<tbl_Paymentout>();
+            this.tbl_PurchaseBill = new HashSet<tbl_PurchaseBill>();
+        }
+    
         public int PartiesID { get; set; }
         public string PartyName { get; set; }
         public string ContactNo { get; set; }
@@ -32,5 +40,12 @@ namespace SalesAndInentoryWeb_Application.Models
         public string PaidStatus { get; set; }
         public string Customertype { get; set; }
         public string type { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PaymentIn> tbl_PaymentIn { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Paymentout> tbl_Paymentout { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PurchaseBill> tbl_PurchaseBill { get; set; }
     }
 }
