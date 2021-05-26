@@ -1,6 +1,7 @@
-﻿@model SalesAndInentoryWeb_Application.Models.Company
+﻿@model SalesAndInentoryWeb_Application.Models.tbl_PartyMaster
+
 @{
-    ViewBag.Title = "Company";
+    ViewBag.Title = "Party";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,10 +19,11 @@
 </head>
 <body>
     <br><br>
+    <div class="container">
     @using (Html.BeginForm())
     {
         <div class="panel panel-primary">
-            <div class="panel-heading text-center"><h4>Company Details</h4></div>
+            <div class="panel-heading text-center"><h4>Party Master</h4></div>
             <div class="panel-body text-center">
                 <center>
                     <table class="tabel table-sm" column-gap="40px">
@@ -44,7 +46,7 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center">
-                                            @Html.DevExpress().TextBoxFor(m => m.CompanyName, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.PartyName, settings =>
                                    {
 
                                        settings.Properties.NullText = "Enter Party Name...";
@@ -68,7 +70,7 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center">
-                                            @Html.DevExpress().TextBoxFor(m => m.Address, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.BillingAddress, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
                                        settings.Properties.NullText = "Enter Billing Address...";
@@ -129,14 +131,7 @@
                                         </div>
                                     </center>
                                 </td>
-                                <td style="padding:0 20px 20px 20px">
-
-                                    <div class="form-group text-center">
-                                        @Html.EditorFor(model => model.AddLogo, new { htmlAttributes = new { @class = "form-cotrol" } })
-                                        <input type="file" name="imageload" />
-                                    </div>
-
-                                </td>
+                               
                             </tr>
                             <tr>
                                 <td style="padding:0 15px 0 15px">
@@ -154,7 +149,7 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.RefferalCode, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.GSTType, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
                                        settings.Properties.NullText = "Enter GST No....";
@@ -177,7 +172,7 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center">
-                                            @Html.DevExpress().TextBoxFor(m => m.BusinessType, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.PartyType, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
                                        settings.Properties.NullText = "Enter Party Type...";
@@ -203,11 +198,16 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.OwnerName, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Party Group....";
-                                   }).GetHtml()
+                                            @Html.DevExpress().DropDownEditFor(m => m.PartyGroup, settings =>
+                                       {
+                                           settings.Properties.NullText = "Select Party Group";
+                                           settings.ControlStyle.CssClass = "form-control";
+
+                                           settings.SetDropDownWindowTemplateContent(c =>
+                                           {
+                                               ViewContext.Writer.Write("DropDown content");
+                                           });
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -218,7 +218,7 @@
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label8";
-                                   settings.Text = "GST Number   :";
+                                   settings.Text = "State   :";
 
                                }).GetHtml()
                                     </div>
@@ -229,28 +229,25 @@
 
                                     <center>
                                         <div class="form-group text-center">
-                                            @Html.DevExpress().TextBoxFor(m => m.GSTNumber, settings =>
+
+                                            @Html.DevExpress().DropDownEditFor(m => m.State, settings =>
                                        {
+                                           settings.Properties.NullText = "Select State";
                                            settings.ControlStyle.CssClass = "form-control";
-                                           settings.Properties.NullText = "Enter GST Number...";
+
+                                           settings.SetDropDownWindowTemplateContent(c =>
+                                           {
+                                               ViewContext.Writer.Write("DropDown content");
+                                           });
                                        }).GetHtml()
+
+
                                         </div>
                                     </center>
 
                                 </td>
 
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-left">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "Label18";
-                                   settings.Text = "Signature   :";
-
-                               }).GetHtml()
-                                    </div>
-                                </td>
+                                
                             </tr>
                             <tr>
                                 <td style="padding:0 15px 0 15px">
@@ -260,7 +257,7 @@
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label9";
-                                   settings.Text = "City  :";
+                                   settings.Text = "Opening Bal  :";
 
                                }).GetHtml()
                                     </div>
@@ -268,10 +265,10 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.City, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.OpeningBal, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter City....";
+                                       settings.Properties.NullText = "Enter Opening Bal....";
                                    }).GetHtml()
                                         </div>
                                     </center>
@@ -283,7 +280,7 @@
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label10";
-                                   settings.Text = "State   :";
+                                   settings.Text = "Paid Status   :";
 
                                }).GetHtml()
                                     </div>
@@ -291,29 +288,16 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center">
-
-                                            @Html.DevExpress().DropDownEditFor(m => m.State, settings =>
-                                   {
-                                       settings.SetDropDownWindowTemplateContent(c =>
-                                       {
-                                           ViewContext.Writer.Write("DropDown content");
-
-                                       });
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "---Select State---";
-                                   }).GetHtml()
-
+                                            @Html.DevExpress().TextBoxFor(m => m.PaidStatus, settings =>
+                                           {
+                                               settings.ControlStyle.CssClass = "form-control";
+                                               settings.Properties.NullText = "Enter Paid Status....";
+                                           }).GetHtml()
 
                                         </div>
                                     </center>
                                 </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group">
-                                        @Html.EditorFor(model => model.AddLogo, new { htmlAttributes = new { @class = "form-cotrol" } })
-                                        <input type="file" name="imageload" />
-                                    </div>
-
-                                </td>
+                               
                             </tr>
                             <tr>
                                 <td style="padding:0 15px 0 15px">
@@ -323,7 +307,7 @@
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label11";
-                                   settings.Text = "Bank Name  :";
+                                   settings.Text = "As Of Date  :";
 
                                }).GetHtml()
                                     </div>
@@ -331,16 +315,12 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-                                            @Html.DevExpress().DropDownEditFor(m => m.BankName, settings =>
-                                   {
-                                       settings.SetDropDownWindowTemplateContent(c =>
-                                       {
-                                           ViewContext.Writer.Write("DropDown content");
 
-                                       });
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "---Select BankName---";
-                                   }).GetHtml()
+                                            @Html.DevExpress().DateEditFor(m => m.AsOfDate, settings =>
+                                            {
+                                            }).GetHtml()
+
+
                                         </div>
                                     </center>
                                 </td>
@@ -351,7 +331,7 @@
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label12";
-                                   settings.Text = "Account No   :";
+                                   settings.Text = "Shipping Address   :";
 
                                }).GetHtml()
                                     </div>
@@ -360,10 +340,10 @@
                                     <center>
                                         <div class="form-group text-center">
 
-                                            @Html.DevExpress().TextBoxFor(m => m.AccountNo, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.ShippingAddress, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Account No....";
+                                       settings.Properties.NullText = "Enter Shipping Address....";
                                    }).GetHtml()
                                         </div>
                                     </center>
@@ -378,7 +358,7 @@
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label13";
-                                   settings.Text = "IFSC Code   :";
+                                   settings.Text = "Add Remainder   :";
 
                                }).GetHtml()
                                     </div>
@@ -387,10 +367,10 @@
                                     <center>
                                         <div class="form-group text-center">
 
-                                            @Html.DevExpress().TextBoxFor(m => m.IFSCCode, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.AddRemainder, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter IFSC Code....";
+                                       settings.Properties.NullText = "Enter Add Remainder....";
                                    }).GetHtml()
                                         </div>
                                     </center>
@@ -401,15 +381,14 @@
                 </center>
                 <div class="text-center">
                     <button class="btn btn-primary" type="submit">Save</button>
+                    <a class="text-right btn btn-info" href="@Url.Action("Index","PartyMaster")">Back To List</a>
                 </div>
 
             </div>
 
         </div>
-        <div class="text-right">
-            <a class="text-right" href="Grid">Back To List</a>
-        </div>
     }
+        </div>
 </body>
 </html>
 

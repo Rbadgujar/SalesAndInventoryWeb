@@ -21,6 +21,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return Json(new { data = bank }, JsonRequestBehavior.AllowGet);
             }
         }
+        public ActionResult PartyGroupData()
+        {
+            using (idealtec_inventoryEntities4 db = new idealtec_inventoryEntities4())
+            {
+                List<tbl_PartyGroup> party = db.tbl_PartyGroup.ToList<tbl_PartyGroup>();
+                return Json(new { data = party }, JsonRequestBehavior.AllowGet);
+            }
+        }
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {
@@ -34,5 +42,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 }
             }
         }
+        public ActionResult PartyGroup()
+        {
+            return View();
+        }
+       
     }
 }
