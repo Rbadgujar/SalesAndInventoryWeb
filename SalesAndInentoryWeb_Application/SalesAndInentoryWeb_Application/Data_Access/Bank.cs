@@ -12,10 +12,10 @@ namespace SalesAndInentoryWeb_Application.Data_Access
 {
 	public class Bank
 	{
-		SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["idealtec_inventoryEntities6"].ConnectionString);
+		SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["idealtec_inventoryEntities"].ConnectionString);
 		// SqlConnection con = new SqlConnection("data source=103.83.81.80;initial catalog=idealtec_inventory;user id=idealtec_inventory;password=Mpiti@123;MultipleActiveResultSets=True;App=EntityFramework");
 
-		idealtec_inventoryEntities6 dc = new idealtec_inventoryEntities6();
+		idealtec_inventoryEntities10 dc = new idealtec_inventoryEntities10();
 
 		public DataSet show_data()
 		{
