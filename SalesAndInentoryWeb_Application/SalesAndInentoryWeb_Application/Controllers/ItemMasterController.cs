@@ -23,7 +23,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         // GET: ItemMaster/Create
         public ActionResult Create()
         {
-            return View();
+            return View("ItemMaster");
         }
 
         // POST: ItemMaster/Create
