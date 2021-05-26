@@ -1,0 +1,2051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="idealtec_inventoryModelStoreContainer" CdmEntityContainer="idealtec_inventoryEntities10">
+    <EntitySetMapping Name="CompanyBankAccounts">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.CompanyBankAccount">
+        <MappingFragment StoreEntitySet="CompanyBankAccount">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReferralCode1">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.ReferralCode1">
+        <MappingFragment StoreEntitySet="ReferralCode1">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BankAccount">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_BankAccount">
+        <MappingFragment StoreEntitySet="tbl_BankAccount">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BankAdjustment">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_BankAdjustment">
+        <MappingFragment StoreEntitySet="tbl_BankAdjustment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+          <ScalarProperty Name="EntryType" ColumnName="EntryType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BanktoBankTransfer">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_BanktoBankTransfer">
+        <MappingFragment StoreEntitySet="tbl_BanktoBankTransfer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FromBank" ColumnName="FromBank" />
+          <ScalarProperty Name="ToBank" ColumnName="ToBank" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Descripition" ColumnName="Descripition" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CashAdjustment">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_CashAdjustment">
+        <MappingFragment StoreEntitySet="tbl_CashAdjustment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CashAdjustment" ColumnName="CashAdjustment" />
+          <ScalarProperty Name="CashAmount" ColumnName="CashAmount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CashInhand">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_CashInhand">
+        <MappingFragment StoreEntitySet="tbl_CashInhand">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Adjustment" ColumnName="Adjustment" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AdditionalFeild" ColumnName="AdditionalFeild" />
+          <ScalarProperty Name="AdditionalFeild1" ColumnName="AdditionalFeild1" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CategoryMaster">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_CategoryMaster">
+        <MappingFragment StoreEntitySet="tbl_CategoryMaster">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CompanyMaster">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_CompanyMaster">
+        <MappingFragment StoreEntitySet="tbl_CompanyMaster">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="ReferaleCode" ColumnName="ReferaleCode" />
+          <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="GSTNumber" ColumnName="GSTNumber" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="AddLogo" ColumnName="AddLogo" />
+          <ScalarProperty Name="AdditinalFeild1" ColumnName="AdditinalFeild1" />
+          <ScalarProperty Name="AdditinalFeild2" ColumnName="AdditinalFeild2" />
+          <ScalarProperty Name="AdditinalFeild3" ColumnName="AdditinalFeild3" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="Defulatcompany" ColumnName="Defulatcompany" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CreditNote1">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_CreditNote1">
+        <MappingFragment StoreEntitySet="tbl_CreditNote1">
+          <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+          <ScalarProperty Name="PODate" ColumnName="PODate" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="ComapnyID" ColumnName="ComapnyID" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CreditNoteInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_CreditNoteInner">
+        <MappingFragment StoreEntitySet="tbl_CreditNoteInner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_DebitNote">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_DebitNote">
+        <MappingFragment StoreEntitySet="tbl_DebitNote">
+          <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+          <ScalarProperty Name="PODate" ColumnName="PODate" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_DebitNoteInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_DebitNoteInner">
+        <MappingFragment StoreEntitySet="tbl_DebitNoteInner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_DeliveryChallan">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_DeliveryChallan">
+        <MappingFragment StoreEntitySet="tbl_DeliveryChallan">
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="PartyAddress" ColumnName="PartyAddress" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_DeliveryChallanInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_DeliveryChallanInner">
+        <MappingFragment StoreEntitySet="tbl_DeliveryChallanInner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ExpenseCategory">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_ExpenseCategory">
+        <MappingFragment StoreEntitySet="tbl_ExpenseCategory">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Expenses">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_Expenses">
+        <MappingFragment StoreEntitySet="tbl_Expenses">
+          <ScalarProperty Name="ID1" ColumnName="ID1" />
+          <ScalarProperty Name="ExpenseCategory" ColumnName="ExpenseCategory" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="AdditinalFeild1" ColumnName="AdditinalFeild1" />
+          <ScalarProperty Name="AdditionalFeild2" ColumnName="AdditionalFeild2" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ExpensesInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_ExpensesInner">
+        <MappingFragment StoreEntitySet="tbl_ExpensesInner">
+          <ScalarProperty Name="Id_inner" ColumnName="Id_inner" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="ID1" ColumnName="ID1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ItemAdjustement">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_ItemAdjustement">
+        <MappingFragment StoreEntitySet="tbl_ItemAdjustement">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="AdjustmentType" ColumnName="AdjustmentType" />
+          <ScalarProperty Name="AdjustmentDate" ColumnName="AdjustmentDate" />
+          <ScalarProperty Name="AtPrice" ColumnName="AtPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ItemMaster">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_ItemMaster">
+        <MappingFragment StoreEntitySet="tbl_ItemMaster">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="SecondaryUnit" ColumnName="SecondaryUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+          <ScalarProperty Name="TaxForPurchase" ColumnName="TaxForPurchase" />
+          <ScalarProperty Name="PurchaseTaxAmount" ColumnName="PurchaseTaxAmount" />
+          <ScalarProperty Name="OpeningQty" ColumnName="OpeningQty" />
+          <ScalarProperty Name="atPrice" ColumnName="atPrice" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ItemLocation" ColumnName="ItemLocation" />
+          <ScalarProperty Name="TrackingMRP" ColumnName="TrackingMRP" />
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="MFgdate" ColumnName="MFgdate" />
+          <ScalarProperty Name="Expdate" ColumnName="Expdate" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MinimumStock" ColumnName="MinimumStock" />
+          <ScalarProperty Name="Image1" ColumnName="Image1" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="Cess" ColumnName="Cess" />
+          <ScalarProperty Name="Profit" ColumnName="Profit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ItemServicemaster">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_ItemServicemaster">
+        <MappingFragment StoreEntitySet="tbl_ItemServicemaster">
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemHSNCOde" ColumnName="ItemHSNCOde" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Subunit" ColumnName="Subunit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_LoanBank">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_LoanBank">
+        <MappingFragment StoreEntitySet="tbl_LoanBank">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LendarBank" ColumnName="LendarBank" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="CurrentBal" ColumnName="CurrentBal" />
+          <ScalarProperty Name="BalAsOf" ColumnName="BalAsOf" />
+          <ScalarProperty Name="LoanReceive" ColumnName="LoanReceive" />
+          <ScalarProperty Name="Interest" ColumnName="Interest" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="ProcessingFees" ColumnName="ProcessingFees" />
+          <ScalarProperty Name="PaidBy" ColumnName="PaidBy" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_LoginPasssword">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_LoginPasssword">
+        <MappingFragment StoreEntitySet="tbl_LoginPasssword">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NewPassword" ColumnName="NewPassword" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_MakePayment">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_MakePayment">
+        <MappingFragment StoreEntitySet="tbl_MakePayment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PrincipleAmount" ColumnName="PrincipleAmount" />
+          <ScalarProperty Name="InterestAmount" ColumnName="InterestAmount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PaidFrom" ColumnName="PaidFrom" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_OtherIncome">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_OtherIncome">
+        <MappingFragment StoreEntitySet="tbl_OtherIncome">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IncomeCategory" ColumnName="IncomeCategory" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="RoundOFF" ColumnName="RoundOFF" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="AdditionalFeild1" ColumnName="AdditionalFeild1" />
+          <ScalarProperty Name="Additional2" ColumnName="Additional2" />
+          <ScalarProperty Name="Additional3" ColumnName="Additional3" />
+          <ScalarProperty Name="Additional4" ColumnName="Additional4" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_otherIncomeCaategory">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_otherIncomeCaategory">
+        <MappingFragment StoreEntitySet="tbl_otherIncomeCaategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OtherIncome" ColumnName="OtherIncome" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_OtherIncomeInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_OtherIncomeInner">
+        <MappingFragment StoreEntitySet="tbl_OtherIncomeInner">
+          <ScalarProperty Name="ID1" ColumnName="ID1" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_OtherIncomeInner1">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_OtherIncomeInner1">
+        <MappingFragment StoreEntitySet="tbl_OtherIncomeInner1">
+          <ScalarProperty Name="ID1" ColumnName="ID1" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="ID2" ColumnName="ID2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_OtherIncomeInner3">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_OtherIncomeInner3">
+        <MappingFragment StoreEntitySet="tbl_OtherIncomeInner3">
+          <ScalarProperty Name="Id_inner" ColumnName="Id_inner" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PartyGroup">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PartyGroup">
+        <MappingFragment StoreEntitySet="tbl_PartyGroup">
+          <ScalarProperty Name="PartyGroupID" ColumnName="PartyGroupID" />
+          <ScalarProperty Name="AddPartyGroup" ColumnName="AddPartyGroup" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PartyMaster">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PartyMaster">
+        <MappingFragment StoreEntitySet="tbl_PartyMaster">
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="GSTType" ColumnName="GSTType" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="AsOfDate" ColumnName="AsOfDate" />
+          <ScalarProperty Name="AddRemainder" ColumnName="AddRemainder" />
+          <ScalarProperty Name="PartyType" ColumnName="PartyType" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="PartyGroup" ColumnName="PartyGroup" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="PaidStatus" ColumnName="PaidStatus" />
+          <ScalarProperty Name="Customertype" ColumnName="Customertype" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PaymentIn">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PaymentIn">
+        <MappingFragment StoreEntitySet="tbl_PaymentIn">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ReceivedAmount" ColumnName="ReceivedAmount" />
+          <ScalarProperty Name="UnusedAmount" ColumnName="UnusedAmount" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PaymentLink">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PaymentLink">
+        <MappingFragment StoreEntitySet="tbl_PaymentLink">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+          <ScalarProperty Name="LinkAmount" ColumnName="LinkAmount" />
+          <ScalarProperty Name="UnusedCash" ColumnName="UnusedCash" />
+          <ScalarProperty Name="AdditinalFeild1" ColumnName="AdditinalFeild1" />
+          <ScalarProperty Name="AdditionalFeild2" ColumnName="AdditionalFeild2" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Paymentout">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_Paymentout">
+        <MappingFragment StoreEntitySet="tbl_Paymentout">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PurchaseBill">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseBill">
+        <MappingFragment StoreEntitySet="tbl_PurchaseBill">
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="PONo" ColumnName="PONo" />
+          <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+          <ScalarProperty Name="PoDate" ColumnName="PoDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="ComapanyID" ColumnName="ComapanyID" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="reverschecharges" ColumnName="reverschecharges" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PurchaseBillInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseBillInner">
+        <MappingFragment StoreEntitySet="tbl_PurchaseBillInner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="E_WayBillno" ColumnName="E_WayBillno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PurchaseOrder">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseOrder">
+        <MappingFragment StoreEntitySet="tbl_PurchaseOrder">
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ComapanyID" ColumnName="ComapanyID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PurchaseOrderInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseOrderInner">
+        <MappingFragment StoreEntitySet="tbl_PurchaseOrderInner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_QuotationInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_QuotationInner">
+        <MappingFragment StoreEntitySet="tbl_QuotationInner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_SaleInvoice">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_SaleInvoice">
+        <MappingFragment StoreEntitySet="tbl_SaleInvoice">
+          <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="PoNumber" ColumnName="PoNumber" />
+          <ScalarProperty Name="PoDate" ColumnName="PoDate" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="ParitesID" ColumnName="ParitesID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="Count1" ColumnName="Count1" />
+          <ScalarProperty Name="Due_Date" ColumnName="Due_Date" />
+          <ScalarProperty Name="PaymentTerm" ColumnName="PaymentTerm" />
+          <ScalarProperty Name="EwayBillNo" ColumnName="EwayBillNo" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TaxAmountShow" ColumnName="TaxAmountShow" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TotalSgst" ColumnName="TotalSgst" />
+          <ScalarProperty Name="TotalCgst" ColumnName="TotalCgst" />
+          <ScalarProperty Name="TotalIgst" ColumnName="TotalIgst" />
+          <ScalarProperty Name="E_Way_Bill" ColumnName="E_Way_Bill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_SaleInvoiceInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_SaleInvoiceInner">
+        <MappingFragment StoreEntitySet="tbl_SaleInvoiceInner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="Count1" ColumnName="Count1" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_SaleOrder">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_SaleOrder">
+        <MappingFragment StoreEntitySet="tbl_SaleOrder">
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="companyID" ColumnName="companyID" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_SaleOrderInner">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_SaleOrderInner">
+        <MappingFragment StoreEntitySet="tbl_SaleOrderInner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="ItemTotal" ColumnName="ItemTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_TransactionPasssword">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_TransactionPasssword">
+        <MappingFragment StoreEntitySet="tbl_TransactionPasssword">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NewPassword" ColumnName="NewPassword" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_TransactionPrefix">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_TransactionPrefix">
+        <MappingFragment StoreEntitySet="tbl_TransactionPrefix">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Frim" ColumnName="Frim" />
+          <ScalarProperty Name="Sale" ColumnName="Sale" />
+          <ScalarProperty Name="creditNote" ColumnName="creditNote" />
+          <ScalarProperty Name="PurchaseOrder" ColumnName="PurchaseOrder" />
+          <ScalarProperty Name="SaleOrder" ColumnName="SaleOrder" />
+          <ScalarProperty Name="Estimate" ColumnName="Estimate" />
+          <ScalarProperty Name="DeliveryChallan" ColumnName="DeliveryChallan" />
+          <ScalarProperty Name="PaymentIn" ColumnName="PaymentIn" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UnitConversion">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_UnitConversion">
+        <MappingFragment StoreEntitySet="tbl_UnitConversion">
+          <ScalarProperty Name="UnitConversionID" ColumnName="UnitConversionID" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="SecondaryUnit" ColumnName="SecondaryUnit" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UnitMaster">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_UnitMaster">
+        <MappingFragment StoreEntitySet="tbl_UnitMaster">
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="SubUnitName" ColumnName="SubUnitName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tble_NewCompany">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tble_NewCompany">
+        <MappingFragment StoreEntitySet="tble_NewCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+          <ScalarProperty Name="Image1" ColumnName="Image1" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblQuotations">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tblQuotation">
+        <MappingFragment StoreEntitySet="tblQuotation">
+          <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ComapnyID" ColumnName="ComapnyID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="Itemcatgory" ColumnName="Itemcatgory" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="addcompany" FunctionName="idealtec_inventoryModel.Store.addcompany">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.addcompany_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+          <ScalarProperty Name="Image1" ColumnName="Image1" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BankAccountSelect" FunctionName="idealtec_inventoryModel.Store.BankAccountSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.BankAccountSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Banktobank" FunctionName="idealtec_inventoryModel.Store.Banktobank">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.Banktobank_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FromBank" ColumnName="FromBank" />
+          <ScalarProperty Name="ToBank" ColumnName="ToBank" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Descripition" ColumnName="Descripition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReferralCodeSelect" FunctionName="idealtec_inventoryModel.Store.ReferralCodeSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.ReferralCodeSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CompanyBanckAccount" FunctionName="idealtec_inventoryModel.Store.sp_CompanyBanckAccount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.sp_CompanyBanckAccount_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CompanyBankAccount" FunctionName="idealtec_inventoryModel.Store.sp_CompanyBankAccount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.sp_CompanyBankAccount_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_loginpassword" FunctionName="idealtec_inventoryModel.Store.Sp_loginpassword" />
+    <FunctionImportMapping FunctionImportName="tbl_BankAdjustmentselect" FunctionName="idealtec_inventoryModel.Store.tbl_BankAdjustmentselect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_BankAdjustmentselect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+          <ScalarProperty Name="EntryType" ColumnName="EntryType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_CashAdjustmentselect" FunctionName="idealtec_inventoryModel.Store.tbl_CashAdjustmentselect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_CashAdjustmentselect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="CashAdjustment" ColumnName="CashAdjustment" />
+          <ScalarProperty Name="CashAmount" ColumnName="CashAmount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_CashInhandSelect" FunctionName="idealtec_inventoryModel.Store.tbl_CashInhandSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_CashInhandSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Adjustment" ColumnName="Adjustment" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_CategoryMasterSelect" FunctionName="idealtec_inventoryModel.Store.tbl_CategoryMasterSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_CategoryMasterSelect_Result">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_CompanyMasterSelect" FunctionName="idealtec_inventoryModel.Store.tbl_CompanyMasterSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_CompanyMasterSelect_Result">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="ReferaleCode" ColumnName="ReferaleCode" />
+          <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="GSTNumber" ColumnName="GSTNumber" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="AddLogo" ColumnName="AddLogo" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="IFSC_Code" ColumnName="IFSC_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_CreditNote1Select" FunctionName="idealtec_inventoryModel.Store.tbl_CreditNote1Select" />
+    <FunctionImportMapping FunctionImportName="tbl_CreditNoteInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_CreditNoteInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_CreditNoteInnersp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_DebitNoteInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_DebitNoteInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_DebitNoteInnersp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_DebitNoteSelect" FunctionName="idealtec_inventoryModel.Store.tbl_DebitNoteSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_DebitNoteSelect_Result">
+          <ScalarProperty Name="ReturnNo" ColumnName="ReturnNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+          <ScalarProperty Name="PODate" ColumnName="PODate" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_DeliveryChallanInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_DeliveryChallanInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_DeliveryChallanInnersp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_DeliveryChallanSelect" FunctionName="idealtec_inventoryModel.Store.tbl_DeliveryChallanSelect" />
+    <FunctionImportMapping FunctionImportName="tbl_ExpenseCategorySelect" FunctionName="idealtec_inventoryModel.Store.tbl_ExpenseCategorySelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_ExpenseCategorySelect_Result">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_ExpensesInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_ExpensesInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_ExpensesInnersp_Result">
+          <ScalarProperty Name="Id_inner" ColumnName="Id_inner" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="ID1" ColumnName="ID1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_ExpensesSelect" FunctionName="idealtec_inventoryModel.Store.tbl_ExpensesSelect" />
+    <FunctionImportMapping FunctionImportName="tbl_ItemAdjustementSelect" FunctionName="idealtec_inventoryModel.Store.tbl_ItemAdjustementSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_ItemAdjustementSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="AdjustmentType" ColumnName="AdjustmentType" />
+          <ScalarProperty Name="AdjustmentDate" ColumnName="AdjustmentDate" />
+          <ScalarProperty Name="AtPrice" ColumnName="AtPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_Itemexport" FunctionName="idealtec_inventoryModel.Store.tbl_Itemexport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_Itemexport_Result">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="SecondaryUnit" ColumnName="SecondaryUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="TaxForPurchase" ColumnName="TaxForPurchase" />
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+          <ScalarProperty Name="PurchaseTaxAmount" ColumnName="PurchaseTaxAmount" />
+          <ScalarProperty Name="OpeningQty" ColumnName="OpeningQty" />
+          <ScalarProperty Name="atPrice" ColumnName="atPrice" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ItemLocation" ColumnName="ItemLocation" />
+          <ScalarProperty Name="TrackingMRP" ColumnName="TrackingMRP" />
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="MFgdate" ColumnName="MFgdate" />
+          <ScalarProperty Name="Expdate" ColumnName="Expdate" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MinimumStock" ColumnName="MinimumStock" />
+          <ScalarProperty Name="Image1" ColumnName="Image1" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_ItemMasterSelect" FunctionName="idealtec_inventoryModel.Store.tbl_ItemMasterSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_ItemMasterSelect_Result">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="SecondaryUnit" ColumnName="SecondaryUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+          <ScalarProperty Name="TaxForPurchase" ColumnName="TaxForPurchase" />
+          <ScalarProperty Name="PurchaseTaxAmount" ColumnName="PurchaseTaxAmount" />
+          <ScalarProperty Name="OpeningQty" ColumnName="OpeningQty" />
+          <ScalarProperty Name="atPrice" ColumnName="atPrice" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ItemLocation" ColumnName="ItemLocation" />
+          <ScalarProperty Name="TrackingMRP" ColumnName="TrackingMRP" />
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="MFgdate" ColumnName="MFgdate" />
+          <ScalarProperty Name="Expdate" ColumnName="Expdate" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MinimumStock" ColumnName="MinimumStock" />
+          <ScalarProperty Name="Image1" ColumnName="Image1" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="Cess" ColumnName="Cess" />
+          <ScalarProperty Name="Profit" ColumnName="Profit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_ItemServicemasterSelect" FunctionName="idealtec_inventoryModel.Store.tbl_ItemServicemasterSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_ItemServicemasterSelect_Result">
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemHSNCOde" ColumnName="ItemHSNCOde" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Subunit" ColumnName="Subunit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_LoanBankSelect" FunctionName="idealtec_inventoryModel.Store.tbl_LoanBankSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_LoanBankSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LendarBank" ColumnName="LendarBank" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="CurrentBal" ColumnName="CurrentBal" />
+          <ScalarProperty Name="LoanReceive" ColumnName="LoanReceive" />
+          <ScalarProperty Name="Interest" ColumnName="Interest" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="ProcessingFees" ColumnName="ProcessingFees" />
+          <ScalarProperty Name="PaidBy" ColumnName="PaidBy" />
+          <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="BalAsOf" ColumnName="BalAsOf" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_LoginPassswordSelect" FunctionName="idealtec_inventoryModel.Store.tbl_LoginPassswordSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_LoginPassswordSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NewPassword" ColumnName="NewPassword" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_MakePaymentSelect" FunctionName="idealtec_inventoryModel.Store.tbl_MakePaymentSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_MakePaymentSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="PrincipleAmount" ColumnName="PrincipleAmount" />
+          <ScalarProperty Name="InterestAmount" ColumnName="InterestAmount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PaidFrom" ColumnName="PaidFrom" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_otherIncomeCategorySelect" FunctionName="idealtec_inventoryModel.Store.tbl_otherIncomeCategorySelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_otherIncomeCategorySelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OtherIncome" ColumnName="OtherIncome" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_OtherIncomeInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_OtherIncomeInnersp" />
+    <FunctionImportMapping FunctionImportName="tbl_OtherIncomeSelect" FunctionName="idealtec_inventoryModel.Store.tbl_OtherIncomeSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_OtherIncomeSelect_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IncomeCategory" ColumnName="IncomeCategory" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="RoundOFF" ColumnName="RoundOFF" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="AdditionalFeild1" ColumnName="AdditionalFeild1" />
+          <ScalarProperty Name="Additional2" ColumnName="Additional2" />
+          <ScalarProperty Name="Additional3" ColumnName="Additional3" />
+          <ScalarProperty Name="Additional4" ColumnName="Additional4" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_PartyGroupSelect" FunctionName="idealtec_inventoryModel.Store.tbl_PartyGroupSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_PartyGroupSelect_Result">
+          <ScalarProperty Name="PartyGroupID" ColumnName="PartyGroupID" />
+          <ScalarProperty Name="AddPartyGroup" ColumnName="AddPartyGroup" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_PartyMasterSelect" FunctionName="idealtec_inventoryModel.Store.tbl_PartyMasterSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_PartyMasterSelect_Result">
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+          <ScalarProperty Name="AsOfDate" ColumnName="AsOfDate" />
+          <ScalarProperty Name="AddRemainder" ColumnName="AddRemainder" />
+          <ScalarProperty Name="PartyType" ColumnName="PartyType" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="PartyGroup" ColumnName="PartyGroup" />
+          <ScalarProperty Name="PaidStatus" ColumnName="PaidStatus" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_PaymentInSelect" FunctionName="idealtec_inventoryModel.Store.tbl_PaymentInSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_PaymentInSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ReceivedAmount" ColumnName="ReceivedAmount" />
+          <ScalarProperty Name="UnusedAmount" ColumnName="UnusedAmount" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_PaymentLinkselect" FunctionName="idealtec_inventoryModel.Store.tbl_PaymentLinkselect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_PaymentLinkselect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+          <ScalarProperty Name="LinkAmount" ColumnName="LinkAmount" />
+          <ScalarProperty Name="UnusedCash" ColumnName="UnusedCash" />
+          <ScalarProperty Name="AdditinalFeild1" ColumnName="AdditinalFeild1" />
+          <ScalarProperty Name="AdditionalFeild2" ColumnName="AdditionalFeild2" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_Paymentoutselect" FunctionName="idealtec_inventoryModel.Store.tbl_Paymentoutselect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_Paymentoutselect_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_PurchaseBillInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_PurchaseBillInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseBillInnersp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="E_WayBillno" ColumnName="E_WayBillno" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_PurchaseBillselect" FunctionName="idealtec_inventoryModel.Store.tbl_PurchaseBillselect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseBillselect_Result">
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="PONo" ColumnName="PONo" />
+          <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+          <ScalarProperty Name="PoDate" ColumnName="PoDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="ComapanyID" ColumnName="ComapanyID" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="reverschecharges" ColumnName="reverschecharges" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_PurchaseOrderInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_PurchaseOrderInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseOrderInnersp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_PurchaseOrderSelect" FunctionName="idealtec_inventoryModel.Store.tbl_PurchaseOrderSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseOrderSelect_Result">
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StateofSupply" ColumnName="StateofSupply" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="TransportName" ColumnName="TransportName" />
+          <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="Deliverydate" ColumnName="Deliverydate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransportCharges" ColumnName="TransportCharges" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+          <ScalarProperty Name="TaxAmount1" ColumnName="TaxAmount1" />
+          <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+          <ScalarProperty Name="DiscountAmount1" ColumnName="DiscountAmount1" />
+          <ScalarProperty Name="RoundFigure" ColumnName="RoundFigure" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="RemainingBal" ColumnName="RemainingBal" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="Feild1" ColumnName="Feild1" />
+          <ScalarProperty Name="Feild2" ColumnName="Feild2" />
+          <ScalarProperty Name="Feild3" ColumnName="Feild3" />
+          <ScalarProperty Name="Feild4" ColumnName="Feild4" />
+          <ScalarProperty Name="Feild5" ColumnName="Feild5" />
+          <ScalarProperty Name="PartiesID" ColumnName="PartiesID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ComapanyID" ColumnName="ComapanyID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="TaxShow" ColumnName="TaxShow" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_QuotationInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_QuotationInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_QuotationInnersp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_QuotationSelect" FunctionName="idealtec_inventoryModel.Store.tbl_QuotationSelect" />
+    <FunctionImportMapping FunctionImportName="tbl_SaleInvoiceInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_SaleInvoiceInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_SaleInvoiceInnersp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="Count1" ColumnName="Count1" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="CalTotal" ColumnName="CalTotal" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_SaleInvoiceSelect" FunctionName="idealtec_inventoryModel.Store.tbl_SaleInvoiceSelect" />
+    <FunctionImportMapping FunctionImportName="tbl_SaleOrderInnersp" FunctionName="idealtec_inventoryModel.Store.tbl_SaleOrderInnersp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_SaleOrderInnersp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="TaxForSale" ColumnName="TaxForSale" />
+          <ScalarProperty Name="SaleTaxAmount" ColumnName="SaleTaxAmount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="freeQty" ColumnName="freeQty" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+          <ScalarProperty Name="IGST" ColumnName="IGST" />
+          <ScalarProperty Name="ItemTotal" ColumnName="ItemTotal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_SaleOrderSelect" FunctionName="idealtec_inventoryModel.Store.tbl_SaleOrderSelect" />
+    <FunctionImportMapping FunctionImportName="tbl_TransactionPassswordSelect" FunctionName="idealtec_inventoryModel.Store.tbl_TransactionPassswordSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_TransactionPassswordSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NewPassword" ColumnName="NewPassword" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_TransactionPrefixSelect" FunctionName="idealtec_inventoryModel.Store.tbl_TransactionPrefixSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_TransactionPrefixSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Frim" ColumnName="Frim" />
+          <ScalarProperty Name="Sale" ColumnName="Sale" />
+          <ScalarProperty Name="creditNote" ColumnName="creditNote" />
+          <ScalarProperty Name="PurchaseOrder" ColumnName="PurchaseOrder" />
+          <ScalarProperty Name="SaleOrder" ColumnName="SaleOrder" />
+          <ScalarProperty Name="Estimate" ColumnName="Estimate" />
+          <ScalarProperty Name="DeliveryChallan" ColumnName="DeliveryChallan" />
+          <ScalarProperty Name="PaymentIn" ColumnName="PaymentIn" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_UnitConversionSelect" FunctionName="idealtec_inventoryModel.Store.tbl_UnitConversionSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_UnitConversionSelect_Result">
+          <ScalarProperty Name="UnitConversionID" ColumnName="UnitConversionID" />
+          <ScalarProperty Name="BasicUnit" ColumnName="BasicUnit" />
+          <ScalarProperty Name="SecondaryUnit" ColumnName="SecondaryUnit" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tbl_UnitMasterUnit" FunctionName="idealtec_inventoryModel.Store.tbl_UnitMasterUnit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="idealtec_inventoryModel.tbl_UnitMasterUnit_Result">
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="SubUnitName" ColumnName="SubUnitName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,3127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="idealtec_inventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CompanyBankAccount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountNo" Type="nvarchar(max)" />
+    <Property Name="OpeningBal" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="DeleteData" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'idealtec_inventory.dbo.Item_Seeting' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Item_Seeting">
+          <Property Name="MRP" Type="varchar" MaxLength="50" />
+          <Property Name="Batch_No" Type="varchar" MaxLength="50" />
+          <Property Name="Serial_No" Type="varchar" MaxLength="50" />
+          <Property Name="Mef_Date" Type="varchar" MaxLength="50" />
+          <Property Name="Exp_date" Type="varchar" MaxLength="50" />
+          <Property Name="Size" Type="varchar" MaxLength="50" />
+          <Property Name="Company_ID" Type="int" />
+          <Property Name="Expdaate" Type="int" />
+          <Property Name="MFDAte" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'idealtec_inventory.dbo.PasswordCheek' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PasswordCheek">
+          <Property Name="ID" Type="nchar" MaxLength="10" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Company_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Feild1" Type="varchar" MaxLength="50" />
+          <Property Name="Feald2" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="ReferralCode1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReferralCode" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Setting_Table">
+          <Property Name="ID" Type="nchar" MaxLength="10" />
+          <Property Name="Enable_Launch" Type="nchar" MaxLength="10" />
+          <Property Name="Gst_In" Type="nchar" MaxLength="10" />
+          <Property Name="Estiment" Type="nchar" MaxLength="10" />
+          <Property Name="ChangeCurrency" Type="nchar" MaxLength="10" />
+          <Property Name="Amount" Type="nchar" MaxLength="10" />
+          <Property Name="Sale_purches" Type="nchar" MaxLength="10" />
+          <Property Name="OtheIncome" Type="nchar" MaxLength="10" />
+          <Property Name="Delliverychallen" Type="nchar" MaxLength="10" />
+          <Property Name="GoodsReturn" Type="nchar" MaxLength="10" />
+          <Property Name="Print_Amount" Type="nchar" MaxLength="10" />
+          <Property Name="Autobackup" Type="nchar" MaxLength="10" />
+          <Property Name="AutoForms" Type="nchar" MaxLength="10" />
+          <Property Name="Company_ID" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceNo" Type="nchar" MaxLength="10" />
+          <Property Name="CashSalebyDefualt" Type="nchar" MaxLength="10" />
+          <Property Name="billingNumberBy" Type="nchar" MaxLength="10" />
+          <Property Name="CustomerPONo" Type="nchar" MaxLength="10" />
+          <Property Name="Inclusive/Exclusive" Type="nchar" MaxLength="10" />
+          <Property Name="Display Purchase " Type="nchar" MaxLength="10" />
+          <Property Name="Show_last_5" Type="nchar" MaxLength="10" />
+          <Property Name="DisplayFreeQuantity" Type="nchar" MaxLength="10" />
+          <Property Name="Countdata" Type="nchar" MaxLength="10" />
+          <Property Name="Transaction_Wise" Type="nchar" MaxLength="10" />
+          <Property Name="Transaction_Discount" Type="nchar" MaxLength="10" />
+          <Property Name="Round_Off" Type="nchar" MaxLength="10" />
+          <Property Name="Do_Not_Invoce" Type="nchar" MaxLength="10" />
+          <Property Name="Enable_Transaction" Type="nchar" MaxLength="10" />
+          <Property Name="Discount_During_payment" Type="nchar" MaxLength="10" />
+          <Property Name="link_Payement" Type="nchar" MaxLength="10" />
+          <Property Name="Due_date" Type="nchar" MaxLength="10" />
+          <Property Name="SendSms" Type="nchar" MaxLength="10" />
+          <Property Name="SendSmsCopy" Type="nchar" MaxLength="10" />
+          <Property Name="MRPDate" Type="int" />
+          <Property Name="BatchNo" Type="int" />
+          <Property Name="SerialNo" Type="int" />
+          <Property Name="MnfDate" Type="int" />
+          <Property Name="ExpDate" Type="int" />
+          <Property Name="Size" Type="int" />
+          <Property Name="Size1" Type="int" />
+          <Property Name="Size2" Type="int" />
+          <Property Name="ItemWiseDiscount" Type="int" />
+          <Property Name="ItemwisTax" Type="int" />
+          <Property Name="Discription" Type="int" />
+          <Property Name="Partywise" Type="int" />
+          <Property Name="barcode" Type="int" />
+          <Property Name="Stockmantance" Type="int" />
+          <Property Name="ItemCategory" Type="int" />
+          <Property Name="Partygroup" Type="int" />
+          <Property Name="REMINDER" Type="int" />
+          <Property Name="dayreminder" Type="int" />
+          <Property Name="notifyday" Type="int" />
+          <Property Name="remindermessage" Type="varchar" MaxLength="500" />
+          <Property Name="itemwisetax" Type="int" />
+          <Property Name="cashremoinder" Type="int" />
+          <Property Name="reverschecharges" Type="int" />
+        </EntityType>-->
+  <EntityType Name="tbl_BankAccount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar(max)" />
+    <Property Name="BankName" Type="nvarchar(max)" />
+    <Property Name="AccountNo" Type="nvarchar(max)" />
+    <Property Name="OpeningBal" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_BankAdjustment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BankAccount" Type="nvarchar(max)" />
+    <Property Name="EntryType" Type="nvarchar(max)" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_BanktoBankTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FromBank" Type="nvarchar(max)" />
+    <Property Name="ToBank" Type="nvarchar(max)" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Descripition" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_CashAdjustment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CashAdjustment" Type="nvarchar(max)" />
+    <Property Name="CashAmount" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="BankName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_CashInhand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Adjustment" Type="nvarchar(max)" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="AdditionalFeild" Type="nvarchar(max)" />
+    <Property Name="AdditionalFeild1" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_CategoryMaster">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_CompanyMaster">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar(max)" />
+    <Property Name="PhoneNo" Type="nvarchar(max)" />
+    <Property Name="EmailID" Type="nvarchar(max)" />
+    <Property Name="ReferaleCode" Type="nvarchar(max)" />
+    <Property Name="BusinessType" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="City" Type="nvarchar(max)" />
+    <Property Name="State" Type="nvarchar(max)" />
+    <Property Name="GSTNumber" Type="nvarchar(max)" />
+    <Property Name="OwnerName" Type="nvarchar(max)" />
+    <Property Name="Signature" Type="image" />
+    <Property Name="AddLogo" Type="image" />
+    <Property Name="AdditinalFeild1" Type="nvarchar(max)" />
+    <Property Name="AdditinalFeild2" Type="nvarchar(max)" />
+    <Property Name="AdditinalFeild3" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="Defulatcompany" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_CreditNote1">
+    <Key>
+      <PropertyRef Name="ReturnNo" />
+    </Key>
+    <Property Name="ReturnNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNo" Type="int" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="BillingName" Type="nvarchar(max)" />
+    <Property Name="PONumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="PODate" Type="datetime" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="StateofSupply" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="TransportName" Type="nvarchar(max)" />
+    <Property Name="DeliveryLocation" Type="nvarchar(max)" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deliverydate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransportCharges" Type="float" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Tax1" Type="nvarchar(max)" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="TaxAmount1" Type="float" />
+    <Property Name="TotalDiscount" Type="int" />
+    <Property Name="DiscountAmount1" Type="float" />
+    <Property Name="RoundFigure" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Received" Type="float" />
+    <Property Name="RemainingBal" Type="float" />
+    <Property Name="PaymentTerms" Type="nvarchar(max)" />
+    <Property Name="Feild1" Type="nvarchar(max)" />
+    <Property Name="Feild2" Type="nvarchar(max)" />
+    <Property Name="Feild3" Type="nvarchar(max)" />
+    <Property Name="Feild4" Type="nvarchar(max)" />
+    <Property Name="Feild5" Type="nvarchar(max)" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" />
+    <Property Name="ItemCategory" Type="nvarchar(max)" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="ComapnyID" Type="bit" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="TaxShow" Type="float" />
+    <Property Name="Discount" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_CreditNoteInner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="ItemAmount" Type="int" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="ReturnNo" Type="int" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="CalTotal" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_DebitNote">
+    <Key>
+      <PropertyRef Name="ReturnNo" />
+    </Key>
+    <Property Name="ReturnNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNo" Type="int" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="BillingName" Type="nvarchar(max)" />
+    <Property Name="PONumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="PODate" Type="datetime" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="StateofSupply" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="TransportName" Type="nvarchar(max)" />
+    <Property Name="DeliveryLocation" Type="nvarchar(max)" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deliverydate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransportCharges" Type="float" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Tax1" Type="nvarchar(max)" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="TaxAmount1" Type="float" />
+    <Property Name="TotalDiscount" Type="int" />
+    <Property Name="DiscountAmount1" Type="float" />
+    <Property Name="RoundFigure" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Received" Type="float" />
+    <Property Name="RemainingBal" Type="float" />
+    <Property Name="PaymentTerms" Type="nvarchar(max)" />
+    <Property Name="Feild1" Type="nvarchar(max)" />
+    <Property Name="Feild2" Type="nvarchar(max)" />
+    <Property Name="Feild3" Type="nvarchar(max)" />
+    <Property Name="Feild4" Type="nvarchar(max)" />
+    <Property Name="Feild5" Type="nvarchar(max)" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="categoryID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="CompanyID" Type="bit" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="ItemCategory" Type="nvarchar(max)" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="TaxShow" Type="float" />
+    <Property Name="Discount" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_DebitNoteInner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="ItemAmount" Type="int" />
+    <Property Name="TaxType" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="ReturnNo" Type="int" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="CGST" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_DeliveryChallan">
+    <Key>
+      <PropertyRef Name="ChallanNo" />
+    </Key>
+    <Property Name="ChallanNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="BillingName" Type="nvarchar(max)" />
+    <Property Name="BillingAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartyAddress" Type="nvarchar(max)" />
+    <Property Name="InvoiceDate" Type="date" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="StateofSupply" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="TransportName" Type="nvarchar(max)" />
+    <Property Name="DeliveryLocation" Type="nvarchar(max)" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deliverydate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransportCharges" Type="float" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Tax1" Type="nvarchar(max)" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="TaxAmount1" Type="float" />
+    <Property Name="TotalDiscount" Type="int" />
+    <Property Name="DiscountAmount1" Type="float" />
+    <Property Name="RoundFigure" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Received" Type="float" />
+    <Property Name="RemainingBal" Type="float" />
+    <Property Name="PaymentTerms" Type="nvarchar(max)" />
+    <Property Name="Feild1" Type="nvarchar(max)" />
+    <Property Name="Feild2" Type="nvarchar(max)" />
+    <Property Name="Feild3" Type="nvarchar(max)" />
+    <Property Name="Feild4" Type="nvarchar(max)" />
+    <Property Name="Feild5" Type="nvarchar(max)" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="ID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="ItemCategory" Type="nvarchar(max)" />
+    <Property Name="CompanyID" Type="bit" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="TaxShow" Type="float" />
+    <Property Name="Discount" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_DeliveryChallanInner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="ItemAmount" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="ChallanNo" Type="int" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="CalTotal" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_ExpenseCategory">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Expenses">
+    <Key>
+      <PropertyRef Name="ID1" />
+    </Key>
+    <Property Name="ID1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpenseCategory" Type="nvarchar(max)" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Total" Type="float" />
+    <Property Name="AdditinalFeild1" Type="nvarchar(max)" />
+    <Property Name="AdditionalFeild2" Type="nvarchar(max)" />
+    <Property Name="Paid" Type="float" />
+    <Property Name="Balance" Type="float" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_ExpensesInner">
+    <Key>
+      <PropertyRef Name="Id_inner" />
+    </Key>
+    <Property Name="Id_inner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="ItemAmount" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="ID1" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_ItemAdjustement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="AdjustmentType" Type="nvarchar(max)" />
+    <Property Name="AdjustmentDate" Type="date" />
+    <Property Name="AtPrice" Type="float" />
+    <Property Name="Quantity" Type="nvarchar(max)" />
+    <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_ItemMaster">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="HSNCode" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="SecondaryUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="ItemCategory" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="PurchasePrice" Type="float" />
+    <Property Name="TaxForPurchase" Type="nvarchar(max)" />
+    <Property Name="PurchaseTaxAmount" Type="float" />
+    <Property Name="OpeningQty" Type="float" />
+    <Property Name="atPrice" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="ItemLocation" Type="nvarchar(max)" />
+    <Property Name="TrackingMRP" Type="float" />
+    <Property Name="BatchNo" Type="nvarchar(max)" />
+    <Property Name="SerialNo" Type="nvarchar(max)" />
+    <Property Name="MFgdate" Type="date" />
+    <Property Name="Expdate" Type="date" />
+    <Property Name="Size" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="MinimumStock" Type="int" />
+    <Property Name="Image1" Type="image" />
+    <Property Name="UnitID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="Cess" Type="float" />
+    <Property Name="Profit" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_ItemServicemaster">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="ItemHSNCOde" Type="nvarchar(max)" />
+    <Property Name="Unit" Type="nvarchar(max)" />
+    <Property Name="Subunit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="Category" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxType" Type="nvarchar(max)" />
+    <Property Name="TaxRate" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="image" />
+    <Property Name="UnitID" Type="int" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_LoanBank">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar(max)" />
+    <Property Name="AccountNo" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="LendarBank" Type="nvarchar(max)" />
+    <Property Name="FirmName" Type="nvarchar(max)" />
+    <Property Name="CurrentBal" Type="float" />
+    <Property Name="BalAsOf" Type="date" />
+    <Property Name="LoanReceive" Type="nvarchar(max)" />
+    <Property Name="Interest" Type="nvarchar(max)" />
+    <Property Name="Duration" Type="nvarchar(max)" />
+    <Property Name="ProcessingFees" Type="float" />
+    <Property Name="PaidBy" Type="nvarchar(max)" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="LoanAmount" Type="float" />
+    <Property Name="Total" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_LoginPasssword">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewPassword" Type="nvarchar(max)" />
+    <Property Name="ConfirmPassword" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_MakePayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrincipleAmount" Type="float" />
+    <Property Name="InterestAmount" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="TotalAmount" Type="float" />
+    <Property Name="PaidFrom" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountName" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_OtherIncome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IncomeCategory" Type="nvarchar(max)" />
+    <Property Name="Date" Type="date" />
+    <Property Name="paymentType" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="image" />
+    <Property Name="RoundOFF" Type="float" />
+    <Property Name="total" Type="float" />
+    <Property Name="AdditionalFeild1" Type="nvarchar(max)" />
+    <Property Name="Additional2" Type="nvarchar(max)" />
+    <Property Name="Additional3" Type="nvarchar(max)" />
+    <Property Name="Additional4" Type="nvarchar(max)" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Received" Type="float" />
+    <Property Name="Balance" Type="float" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_otherIncomeCaategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OtherIncome" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_OtherIncomeInner">
+    <Key>
+      <PropertyRef Name="ID1" />
+    </Key>
+    <Property Name="ID1" Type="int" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="date" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="ItemAmount" Type="float" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="DeleteData" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_OtherIncomeInner1">
+    <Key>
+      <PropertyRef Name="ID1" />
+    </Key>
+    <Property Name="ID1" Type="int" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalePrice" Type="int" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="ItemAmount" Type="float" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="ID2" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_OtherIncomeInner3">
+    <Key>
+      <PropertyRef Name="Id_inner" />
+    </Key>
+    <Property Name="Id_inner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="Qty" Type="float" />
+    <Property Name="ItemAmount" Type="float" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="DeleteData" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_PartyGroup">
+    <Key>
+      <PropertyRef Name="PartyGroupID" />
+    </Key>
+    <Property Name="PartyGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddPartyGroup" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_PartyMaster">
+    <Key>
+      <PropertyRef Name="PartiesID" />
+    </Key>
+    <Property Name="PartiesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="ContactNo" Type="nvarchar(max)" />
+    <Property Name="BillingAddress" Type="nvarchar(max)" />
+    <Property Name="EmailID" Type="nvarchar(max)" />
+    <Property Name="GSTType" Type="nvarchar(max)" />
+    <Property Name="State" Type="nvarchar(max)" />
+    <Property Name="OpeningBal" Type="float" />
+    <Property Name="AsOfDate" Type="date" />
+    <Property Name="AddRemainder" Type="nvarchar(max)" />
+    <Property Name="PartyType" Type="nvarchar(max)" />
+    <Property Name="ShippingAddress" Type="nvarchar(max)" />
+    <Property Name="PartyGroup" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="PaidStatus" Type="nvarchar(max)" />
+    <Property Name="Customertype" Type="nvarchar" MaxLength="1" />
+    <Property Name="type" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_PaymentIn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="ReceiptNo" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ReceivedAmount" Type="float" />
+    <Property Name="UnusedAmount" Type="float" />
+    <Property Name="image" Type="image" />
+    <Property Name="Total" Type="float" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="CompanyID" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_PaymentLink">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar(max)" />
+    <Property Name="Received" Type="nvarchar(max)" />
+    <Property Name="Date" Type="nvarchar(max)" />
+    <Property Name="Type" Type="nvarchar(max)" />
+    <Property Name="InvoiceNo" Type="nvarchar(max)" />
+    <Property Name="Total" Type="float" />
+    <Property Name="BalanceAmount" Type="float" />
+    <Property Name="LinkAmount" Type="float" />
+    <Property Name="UnusedCash" Type="float" />
+    <Property Name="AdditinalFeild1" Type="nvarchar(max)" />
+    <Property Name="AdditionalFeild2" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Paymentout">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="ReceiptNo" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Paid" Type="float" />
+    <Property Name="Discount" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="image" Type="image" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="CompanyID" Type="bit" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_PurchaseBill">
+    <Key>
+      <PropertyRef Name="BillNo" />
+    </Key>
+    <Property Name="BillNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="BillingName" Type="nvarchar(max)" />
+    <Property Name="ContactNo" Type="nvarchar(max)" />
+    <Property Name="PONo" Type="nvarchar(max)" />
+    <Property Name="BillDate" Type="date" />
+    <Property Name="PoDate" Type="date" />
+    <Property Name="DueDate" Type="date" />
+    <Property Name="StateofSupply" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="TransportName" Type="nvarchar(max)" />
+    <Property Name="DeliveryLocation" Type="nvarchar(max)" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deliverydate" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransportCharges" Type="float" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Tax1" Type="nvarchar(max)" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="TaxAmount1" Type="float" />
+    <Property Name="TotalDiscount" Type="int" />
+    <Property Name="DiscountAmount1" Type="float" />
+    <Property Name="RoundFigure" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Paid" Type="float" />
+    <Property Name="RemainingBal" Type="float" />
+    <Property Name="PaymentTerms" Type="nvarchar(max)" />
+    <Property Name="Feild1" Type="nvarchar(max)" />
+    <Property Name="Feild2" Type="nvarchar(max)" />
+    <Property Name="Feild3" Type="nvarchar(max)" />
+    <Property Name="Feild4" Type="nvarchar(max)" />
+    <Property Name="Feild5" Type="nvarchar(max)" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="ComapanyID" Type="bit" />
+    <Property Name="ItemCategory" Type="nvarchar(max)" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="Discount" Type="float" />
+    <Property Name="TaxShow" Type="float" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="reverschecharges" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_PurchaseBillInner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="ItemAmount" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="CategoryType" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="BillNo" Type="int" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="E_WayBillno" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_PurchaseOrder">
+    <Key>
+      <PropertyRef Name="OrderNo" />
+    </Key>
+    <Property Name="OrderNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="BillingName" Type="nvarchar(max)" />
+    <Property Name="ContactNo" Type="nvarchar(max)" />
+    <Property Name="OrderDate" Type="date" />
+    <Property Name="DueDate" Type="date" />
+    <Property Name="StateofSupply" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="TransportName" Type="nvarchar(max)" />
+    <Property Name="DeliveryLocation" Type="nvarchar(max)" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deliverydate" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransportCharges" Type="float" />
+    <Property Name="Image" Type="image" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="Tax1" Type="nvarchar(max)" />
+    <Property Name="TaxAmount1" Type="float" />
+    <Property Name="TotalDiscount" Type="int" />
+    <Property Name="DiscountAmount1" Type="float" />
+    <Property Name="RoundFigure" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Paid" Type="float" />
+    <Property Name="RemainingBal" Type="float" />
+    <Property Name="PaymentTerms" Type="nvarchar(max)" />
+    <Property Name="Feild1" Type="nvarchar(max)" />
+    <Property Name="Feild2" Type="nvarchar(max)" />
+    <Property Name="Feild3" Type="nvarchar(max)" />
+    <Property Name="Feild4" Type="nvarchar(max)" />
+    <Property Name="Feild5" Type="nvarchar(max)" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" />
+    <Property Name="ComapanyID" Type="bit" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="ItemCategory" Type="nvarchar(max)" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="TaxShow" Type="float" />
+    <Property Name="Discount" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_PurchaseOrderInner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="ItemAmount" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="CategoryType" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="OrderNo" Type="int" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="CalTotal" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_QuotationInner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="ItemAmount" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="CategoryType" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="RefNo" Type="int" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="CalTotal" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_SaleInvoice">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="BillingName" Type="nvarchar(max)" />
+    <Property Name="ContactNo" Type="nvarchar(max)" />
+    <Property Name="PoNumber" Type="nvarchar(max)" />
+    <Property Name="PoDate" Type="date" />
+    <Property Name="InvoiceDate" Type="date" />
+    <Property Name="StateofSupply" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="TransportName" Type="nvarchar(max)" />
+    <Property Name="DeliveryLocation" Type="nvarchar(max)" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deliverydate" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransportCharges" Type="float" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Tax1" Type="nvarchar(max)" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="TaxAmount1" Type="float" />
+    <Property Name="TotalDiscount" Type="int" />
+    <Property Name="DiscountAmount1" Type="float" />
+    <Property Name="RoundFigure" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Received" Type="float" />
+    <Property Name="RemainingBal" Type="float" />
+    <Property Name="PaymentTerms" Type="nvarchar(max)" />
+    <Property Name="DueDate" Type="date" />
+    <Property Name="Feild1" Type="nvarchar(max)" />
+    <Property Name="Feild2" Type="nvarchar(max)" />
+    <Property Name="Feild3" Type="nvarchar(max)" />
+    <Property Name="Feild4" Type="nvarchar(max)" />
+    <Property Name="Feild5" Type="nvarchar(max)" />
+    <Property Name="ParitesID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" />
+    <Property Name="ItemCategory" Type="nvarchar(max)" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="CompanyID" Type="bit" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="Count1" Type="int" />
+    <Property Name="Due_Date" Type="date" />
+    <Property Name="PaymentTerm" Type="nvarchar(max)" />
+    <Property Name="EwayBillNo" Type="int" />
+    <Property Name="Discount" Type="float" />
+    <Property Name="TaxAmountShow" Type="float" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="TotalSgst" Type="float" />
+    <Property Name="TotalCgst" Type="float" />
+    <Property Name="TotalIgst" Type="float" />
+    <Property Name="E_Way_Bill" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="tbl_SaleInvoiceInner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="ItemAmount" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="CategoryType" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="InvoiceID" Type="int" />
+    <Property Name="stock" Type="float" />
+    <Property Name="Count1" Type="int" />
+    <Property Name="DueDate" Type="date" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="IGST" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_SaleOrder">
+    <Key>
+      <PropertyRef Name="OrderNo" />
+    </Key>
+    <Property Name="OrderNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="BillingName" Type="nvarchar(max)" />
+    <Property Name="ContactNo" Type="nvarchar(max)" />
+    <Property Name="OrderDate" Type="date" />
+    <Property Name="DueDate" Type="date" />
+    <Property Name="StateofSupply" Type="nvarchar(max)" />
+    <Property Name="PaymentType" Type="nvarchar(max)" />
+    <Property Name="TransportName" Type="nvarchar(max)" />
+    <Property Name="DeliveryLocation" Type="nvarchar(max)" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deliverydate" Type="date" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransportCharges" Type="float" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Tax1" Type="nvarchar(max)" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="TaxAmount1" Type="float" />
+    <Property Name="TotalDiscount" Type="int" />
+    <Property Name="DiscountAmount1" Type="float" />
+    <Property Name="RoundFigure" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Received" Type="float" />
+    <Property Name="RemainingBal" Type="float" />
+    <Property Name="PaymentTerms" Type="nvarchar(max)" />
+    <Property Name="Feild1" Type="nvarchar(max)" />
+    <Property Name="Feild2" Type="nvarchar(max)" />
+    <Property Name="Feild3" Type="nvarchar(max)" />
+    <Property Name="Feild4" Type="nvarchar(max)" />
+    <Property Name="Feild5" Type="nvarchar(max)" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" />
+    <Property Name="ItemCategory" Type="nvarchar(max)" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="companyID" Type="bit" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="TaxShow" Type="float" />
+    <Property Name="Discount" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_SaleOrderInner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="ItemName" Type="nvarchar(max)" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="ItemCode" Type="nvarchar(max)" />
+    <Property Name="SalePrice" Type="float" />
+    <Property Name="TaxForSale" Type="nvarchar(max)" />
+    <Property Name="SaleTaxAmount" Type="float" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="freeQty" Type="int" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiscountAmount" Type="float" />
+    <Property Name="ItemAmount" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="CategoryType" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="OrderNo" Type="int" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="IGST" Type="float" />
+    <Property Name="ItemTotal" Type="float" />
+  </EntityType>
+  <EntityType Name="tbl_TransactionPasssword">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewPassword" Type="nvarchar(max)" />
+    <Property Name="ConfirmPassword" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_TransactionPrefix">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Frim" Type="nvarchar(max)" />
+    <Property Name="Sale" Type="float" />
+    <Property Name="creditNote" Type="float" />
+    <Property Name="PurchaseOrder" Type="float" />
+    <Property Name="SaleOrder" Type="float" />
+    <Property Name="Estimate" Type="float" />
+    <Property Name="DeliveryChallan" Type="float" />
+    <Property Name="PaymentIn" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_UnitConversion">
+    <Key>
+      <PropertyRef Name="UnitConversionID" />
+    </Key>
+    <Property Name="UnitConversionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BasicUnit" Type="nvarchar(max)" />
+    <Property Name="SecondaryUnit" Type="nvarchar(max)" />
+    <Property Name="Rate" Type="float" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_UnitMaster">
+    <Key>
+      <PropertyRef Name="UnitID" />
+    </Key>
+    <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitName" Type="nvarchar(max)" />
+    <Property Name="SubUnitName" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tble_NewCompany">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReferralCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image1" Type="image" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="tblQuotation">
+    <Key>
+      <PropertyRef Name="RefNo" />
+    </Key>
+    <Property Name="RefNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyName" Type="nvarchar(max)" />
+    <Property Name="BillingAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="date" />
+    <Property Name="StateofSupply" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Tax1" Type="nvarchar(max)" />
+    <Property Name="CGST" Type="float" />
+    <Property Name="SGST" Type="float" />
+    <Property Name="TaxAmount1" Type="float" />
+    <Property Name="TotalDiscount" Type="int" />
+    <Property Name="DiscountAmount1" Type="float" />
+    <Property Name="RoundFigure" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Feild1" Type="nvarchar(max)" />
+    <Property Name="Feild2" Type="nvarchar(max)" />
+    <Property Name="Feild3" Type="nvarchar(max)" />
+    <Property Name="Feild4" Type="nvarchar(max)" />
+    <Property Name="Feild5" Type="nvarchar(max)" />
+    <Property Name="PartiesID" Type="int" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="TableName" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" />
+    <Property Name="ComapnyID" Type="bit" />
+    <Property Name="Barcode" Type="nvarchar(max)" />
+    <Property Name="Itemcatgory" Type="nvarchar(max)" />
+    <Property Name="DeleteData" Type="bit" />
+    <Property Name="Company_ID" Type="int" />
+    <Property Name="CalTotal" Type="float" />
+    <Property Name="TaxShow" Type="float" />
+    <Property Name="Discount" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TransactionTableSetting">
+          <Property Name="InvoiceOrBill" Type="bit" />
+          <Property Name="CashSaleByDefault" Type="bit" />
+          <Property Name="BillingNameByParties" Type="bit" />
+          <Property Name="CustomerPoDetails" Type="bit" />
+          <Property Name="InclusiveOrExclusive" Type="bit" />
+          <Property Name="DisplayPurchasePriseOnItem" Type="bit" />
+          <Property Name="ShowLastSaleItem" Type="bit" />
+          <Property Name="DisplayFreeQty" Type="bit" />
+          <Property Name="Count" Type="bit" />
+          <Property Name="TransactionWiseTax" Type="bit" />
+          <Property Name="TransactionWiseDiscount" Type="bit" />
+          <Property Name="RoundOff" Type="bit" />
+          <Property Name="DoNotShowInvoicePreview" Type="bit" />
+          <Property Name="PasscodeToTransaction" Type="bit" />
+          <Property Name="DiscountDuringPayment" Type="bit" />
+          <Property Name="DueDatesAndPaymentTerms" Type="bit" />
+          <Property Name="Company_ID" Type="int" />
+          <Property Name="SendSMSToParty" Type="bit" />
+          <Property Name="SendSMSToSelf" Type="bit" />
+          <Property Name="DeliveryDate" Type="int" />
+          <Property Name="TransportName" Type="int" />
+          <Property Name="DeliveryLocation" Type="bit" />
+          <Property Name="VehicleNo" Type="bit" />
+          <Property Name="ShippingAddress" Type="bit" />
+          <Property Name="PrintShippingAddress" Type="bit" />
+          <Property Name="HSN" Type="bit" />
+          <Property Name="PlaceofSupply" Type="bit" />
+          <Property Name="EwayBill" Type="bit" />
+          <Property Name="EnableGst" Type="bit" />
+          <Property Name="Cess" Type="bit" />
+        </EntityType>-->
+  <Association Name="FK__tbl_Deliv__Chall__68D28DBC">
+    <End Role="tbl_DeliveryChallan" Type="Self.tbl_DeliveryChallan" Multiplicity="0..1" />
+    <End Role="tbl_DeliveryChallanInner" Type="Self.tbl_DeliveryChallanInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_DeliveryChallan">
+        <PropertyRef Name="ChallanNo" />
+      </Principal>
+      <Dependent Role="tbl_DeliveryChallanInner">
+        <PropertyRef Name="ChallanNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_OtherIn__ID2__0A338187">
+    <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="0..1" />
+    <End Role="tbl_OtherIncomeInner1" Type="Self.tbl_OtherIncomeInner1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_OtherIncome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_OtherIncomeInner1">
+        <PropertyRef Name="ID2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Purch__BillN__1B9317B3">
+    <End Role="tbl_PurchaseBill" Type="Self.tbl_PurchaseBill" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseBillInner" Type="Self.tbl_PurchaseBillInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PurchaseBill">
+        <PropertyRef Name="BillNo" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseBillInner">
+        <PropertyRef Name="BillNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Purch__Order__0C1BC9F9">
+    <End Role="tbl_PurchaseOrder" Type="Self.tbl_PurchaseOrder" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseOrderInner" Type="Self.tbl_PurchaseOrderInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PurchaseOrder">
+        <PropertyRef Name="OrderNo" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseOrderInner">
+        <PropertyRef Name="OrderNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_SaleO__Order__54CB950F">
+    <End Role="tbl_SaleOrder" Type="Self.tbl_SaleOrder" Multiplicity="0..1" />
+    <End Role="tbl_SaleOrderInner" Type="Self.tbl_SaleOrderInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SaleOrder">
+        <PropertyRef Name="OrderNo" />
+      </Principal>
+      <Dependent Role="tbl_SaleOrderInner">
+        <PropertyRef Name="OrderNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_SaleO__Order__589C25F3">
+    <End Role="tbl_SaleOrder" Type="Self.tbl_SaleOrder" Multiplicity="0..1" />
+    <End Role="tbl_SaleOrderInner" Type="Self.tbl_SaleOrderInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SaleOrder">
+        <PropertyRef Name="OrderNo" />
+      </Principal>
+      <Dependent Role="tbl_SaleOrderInner">
+        <PropertyRef Name="OrderNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Expenses_tbl_ExpenseCategory">
+    <End Role="tbl_ExpenseCategory" Type="Self.tbl_ExpenseCategory" Multiplicity="0..1" />
+    <End Role="tbl_Expenses" Type="Self.tbl_Expenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ExpenseCategory">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_Expenses">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Expenses_tbl_Expenses">
+    <End Role="tbl_Expenses" Type="Self.tbl_Expenses" Multiplicity="1" />
+    <End Role="tbl_Expenses1" Type="Self.tbl_Expenses" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Expenses">
+        <PropertyRef Name="ID1" />
+      </Principal>
+      <Dependent Role="tbl_Expenses1">
+        <PropertyRef Name="ID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_ExpensesInner_tbl_Expenses">
+    <End Role="tbl_Expenses" Type="Self.tbl_Expenses" Multiplicity="0..1" />
+    <End Role="tbl_ExpensesInner" Type="Self.tbl_ExpensesInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Expenses">
+        <PropertyRef Name="ID1" />
+      </Principal>
+      <Dependent Role="tbl_ExpensesInner">
+        <PropertyRef Name="ID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_ItemMaster">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_ItemMaster">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_ItemMaster_tbl_ItemMaster3">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_ItemMaster">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_ItemServicemaster_tbl_UnitMaster">
+    <End Role="tbl_UnitMaster" Type="Self.tbl_UnitMaster" Multiplicity="0..1" />
+    <End Role="tbl_ItemServicemaster" Type="Self.tbl_ItemServicemaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UnitMaster">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="tbl_ItemServicemaster">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LoanBank_tbl_CompanyMaster">
+    <End Role="tbl_CompanyMaster" Type="Self.tbl_CompanyMaster" Multiplicity="0..1" />
+    <End Role="tbl_LoanBank" Type="Self.tbl_LoanBank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CompanyMaster">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="tbl_LoanBank">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_OtherIncome_tbl_OtherIncome">
+    <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="1" />
+    <End Role="tbl_OtherIncome1" Type="Self.tbl_OtherIncome" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_OtherIncome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_OtherIncome1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory">
+    <End Role="tbl_otherIncomeCaategory" Type="Self.tbl_otherIncomeCaategory" Multiplicity="0..1" />
+    <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_otherIncomeCaategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_OtherIncome">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory1">
+    <End Role="tbl_otherIncomeCaategory" Type="Self.tbl_otherIncomeCaategory" Multiplicity="0..1" />
+    <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_otherIncomeCaategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_OtherIncome">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory2">
+    <End Role="tbl_otherIncomeCaategory" Type="Self.tbl_otherIncomeCaategory" Multiplicity="0..1" />
+    <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_otherIncomeCaategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_OtherIncome">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_OtherIncomeInner3_tbl_OtherIncome">
+    <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="0..1" />
+    <End Role="tbl_OtherIncomeInner3" Type="Self.tbl_OtherIncomeInner3" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_OtherIncome">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_OtherIncomeInner3">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PaymentIn_tbl_PartyMaster">
+    <End Role="tbl_PartyMaster" Type="Self.tbl_PartyMaster" Multiplicity="0..1" />
+    <End Role="tbl_PaymentIn" Type="Self.tbl_PaymentIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PartyMaster">
+        <PropertyRef Name="PartiesID" />
+      </Principal>
+      <Dependent Role="tbl_PaymentIn">
+        <PropertyRef Name="PartiesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Paymentout_tbl_PartyMaster">
+    <End Role="tbl_PartyMaster" Type="Self.tbl_PartyMaster" Multiplicity="0..1" />
+    <End Role="tbl_Paymentout" Type="Self.tbl_Paymentout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PartyMaster">
+        <PropertyRef Name="PartiesID" />
+      </Principal>
+      <Dependent Role="tbl_Paymentout">
+        <PropertyRef Name="PartiesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PurchaseBill_tbl_CategoryMaster">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseBill" Type="Self.tbl_PurchaseBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseBill">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PurchaseBill_tbl_PartyMaster">
+    <End Role="tbl_PartyMaster" Type="Self.tbl_PartyMaster" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseBill" Type="Self.tbl_PurchaseBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PartyMaster">
+        <PropertyRef Name="PartiesID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseBill">
+        <PropertyRef Name="PartiesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PurchaseBill_tbl_PurchaseBillInner">
+    <End Role="tbl_PurchaseBillInner" Type="Self.tbl_PurchaseBillInner" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseBill" Type="Self.tbl_PurchaseBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PurchaseBillInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseBill">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PurchaseOrder_tbl_PartyMaster">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseOrder" Type="Self.tbl_PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseOrder">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PurchaseOrder_tbl_PurchaseOrderInner">
+    <End Role="tbl_PurchaseOrderInner" Type="Self.tbl_PurchaseOrderInner" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseOrder" Type="Self.tbl_PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PurchaseOrderInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseOrder">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SaleInvoice_tbl_PartyMaster">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_SaleInvoice" Type="Self.tbl_SaleInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_SaleInvoice">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SaleInvoice_tbl_SaleInvoiceInner">
+    <End Role="tbl_SaleInvoiceInner" Type="Self.tbl_SaleInvoiceInner" Multiplicity="0..1" />
+    <End Role="tbl_SaleInvoice" Type="Self.tbl_SaleInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SaleInvoiceInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_SaleInvoice">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SaleInvoiceInner_tbl_SaleInvoice">
+    <End Role="tbl_SaleInvoice" Type="Self.tbl_SaleInvoice" Multiplicity="0..1" />
+    <End Role="tbl_SaleInvoiceInner" Type="Self.tbl_SaleInvoiceInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SaleInvoice">
+        <PropertyRef Name="InvoiceID" />
+      </Principal>
+      <Dependent Role="tbl_SaleInvoiceInner">
+        <PropertyRef Name="InvoiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SaleInvoiceInner_tbl_SaleInvoiceInner">
+    <End Role="tbl_SaleInvoiceInner" Type="Self.tbl_SaleInvoiceInner" Multiplicity="1" />
+    <End Role="tbl_SaleInvoiceInner1" Type="Self.tbl_SaleInvoiceInner" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SaleInvoiceInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_SaleInvoiceInner1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SaleOrder_tbl_PartyMaster">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_SaleOrder" Type="Self.tbl_SaleOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_SaleOrder">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SaleOrder_tbl_SaleOrderInner">
+    <End Role="tbl_SaleOrderInner" Type="Self.tbl_SaleOrderInner" Multiplicity="0..1" />
+    <End Role="tbl_SaleOrder" Type="Self.tbl_SaleOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SaleOrderInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_SaleOrder">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SaleOrderInner_tbl_SaleOrderInner">
+    <End Role="tbl_SaleOrderInner" Type="Self.tbl_SaleOrderInner" Multiplicity="1" />
+    <End Role="tbl_SaleOrderInner1" Type="Self.tbl_SaleOrderInner" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SaleOrderInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_SaleOrderInner1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_CategoryMaster_Categories">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="1" />
+    <End Role="tbl_CategoryMaster1" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_CategoryMaster1">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_CreditNote1_Parties">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_CreditNote1" Type="Self.tbl_CreditNote1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_CreditNote1">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_CreditNoteInner_Item">
+    <End Role="tbl_CreditNote1" Type="Self.tbl_CreditNote1" Multiplicity="0..1" />
+    <End Role="tbl_CreditNoteInner" Type="Self.tbl_CreditNoteInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CreditNote1">
+        <PropertyRef Name="ReturnNo" />
+      </Principal>
+      <Dependent Role="tbl_CreditNoteInner">
+        <PropertyRef Name="ReturnNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_DebitNote_Item">
+    <End Role="tbl_DebitNote" Type="Self.tbl_DebitNote" Multiplicity="0..1" />
+    <End Role="tbl_DebitNoteInner" Type="Self.tbl_DebitNoteInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_DebitNote">
+        <PropertyRef Name="ReturnNo" />
+      </Principal>
+      <Dependent Role="tbl_DebitNoteInner">
+        <PropertyRef Name="ReturnNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_DebitNote_Parties">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_DebitNote" Type="Self.tbl_DebitNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_DebitNote">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_DebitNote_tbl_DebitNoteInner">
+    <End Role="tbl_DebitNoteInner" Type="Self.tbl_DebitNoteInner" Multiplicity="0..1" />
+    <End Role="tbl_DebitNote" Type="Self.tbl_DebitNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_DebitNoteInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_DebitNote">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_DeliveryChallan_Parties">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_DeliveryChallan" Type="Self.tbl_DeliveryChallan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_DeliveryChallan">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_DeliveryChallan_tbl_DeliveryChallanInner">
+    <End Role="tbl_DeliveryChallanInner" Type="Self.tbl_DeliveryChallanInner" Multiplicity="0..1" />
+    <End Role="tbl_DeliveryChallan" Type="Self.tbl_DeliveryChallan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_DeliveryChallanInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_DeliveryChallan">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_DeliveryChallanInner_Item">
+    <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+    <End Role="tbl_DeliveryChallanInner" Type="Self.tbl_DeliveryChallanInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ItemMaster">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="tbl_DeliveryChallanInner">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_PurchaseBillInner_Category">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseBillInner" Type="Self.tbl_PurchaseBillInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseBillInner">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_PurchaseBillInner_Item">
+    <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseBillInner" Type="Self.tbl_PurchaseBillInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ItemMaster">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseBillInner">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_PurchaseOrderInner_Category">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseOrderInner" Type="Self.tbl_PurchaseOrderInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseOrderInner">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_PurchaseOrderInner_Item">
+    <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+    <End Role="tbl_PurchaseOrderInner" Type="Self.tbl_PurchaseOrderInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ItemMaster">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="tbl_PurchaseOrderInner">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_QuotationInner_Category">
+    <End Role="tblQuotation" Type="Self.tblQuotation" Multiplicity="0..1" />
+    <End Role="tbl_QuotationInner" Type="Self.tbl_QuotationInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblQuotation">
+        <PropertyRef Name="RefNo" />
+      </Principal>
+      <Dependent Role="tbl_QuotationInner">
+        <PropertyRef Name="RefNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_QuotationInner_Item">
+    <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+    <End Role="tbl_QuotationInner" Type="Self.tbl_QuotationInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ItemMaster">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="tbl_QuotationInner">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_SaleInvoiceInner_Category">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_SaleInvoiceInner" Type="Self.tbl_SaleInvoiceInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_SaleInvoiceInner">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_SaleInvoiceInner_Item">
+    <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+    <End Role="tbl_SaleInvoiceInner" Type="Self.tbl_SaleInvoiceInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ItemMaster">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="tbl_SaleInvoiceInner">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tbl_SaleOrderInner_Category">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tbl_SaleOrderInner" Type="Self.tbl_SaleOrderInner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_SaleOrderInner">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tblQuotation_Parties">
+    <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+    <End Role="tblQuotation" Type="Self.tblQuotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tblQuotation">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_tblQuotation_tbl_QuotationInner">
+    <End Role="tbl_QuotationInner" Type="Self.tbl_QuotationInner" Multiplicity="0..1" />
+    <End Role="tblQuotation" Type="Self.tblQuotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_QuotationInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblQuotation">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tbl_CreditNote1_Parties">
+    <End Role="tbl_CreditNoteInner" Type="Self.tbl_CreditNoteInner" Multiplicity="0..1" />
+    <End Role="tbl_CreditNote1" Type="Self.tbl_CreditNote1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_CreditNoteInner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbl_CreditNote1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="addcompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EmailId" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ReferralCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Image1" Type="image" Mode="In" />
+  </Function>
+  <Function Name="BankAccountSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="AccountName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BankName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AccountNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="OpeningBal" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Banktobank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="FromBank" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ToBank" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Amount" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Descripition" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ReferralCodeSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ReferralCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CompanyBanckAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="BankName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AccountName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AccountNo" Type="int" Mode="In" />
+    <Parameter Name="OpeningBal" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CompanyBankAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="BankName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AccountName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AccountNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="OpeningBal" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_loginpassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ComId" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="tbl_BankAdjustmentselect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="BankAccount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EntryType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Amount" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_CashAdjustmentselect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="CashAdjustment" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CashAmount" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BankName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_CashInhandSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Adjustment" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Amount" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdditionalFeild" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdditionalFeild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_CategoryMasterSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+    <Parameter Name="CategoryName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_CompanyMasterSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PhoneNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EmailID" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ReferaleCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BusinessType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="City" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="State" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="GSTNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="OwnerName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Signature" Type="image" Mode="In" />
+    <Parameter Name="AddLogo" Type="image" Mode="In" />
+    <Parameter Name="AdditinalFeild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdditinalFeild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdditinalFeild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="def" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_CreditNote1Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="int" Mode="In" />
+    <Parameter Name="ReturnNo" Type="int" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PONumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="PODate" Type="datetime" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="DueDate" Type="datetime" Mode="In" />
+    <Parameter Name="StateofSupply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DeliveryLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Deliverydate" Type="datetime" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportCharges" Type="float" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Tax1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TaxAmount1" Type="float" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="TotalDiscount" Type="int" Mode="In" />
+    <Parameter Name="DiscountAmount1" Type="float" Mode="In" />
+    <Parameter Name="RoundFigure" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Received" Type="float" Mode="In" />
+    <Parameter Name="RemainingBal" Type="float" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild5" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="CalTotal" Type="float" Mode="In" />
+    <Parameter Name="TaxShow" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_CreditNoteInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="freeQty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="ReturnNo" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="CalTotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_DebitNoteInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="freeQty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="TaxType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="returnNo" Type="varchar" Mode="In" />
+    <Parameter Name="Deletedata" Type="int" Mode="In" />
+    <Parameter Name="cgst" Type="float" Mode="In" />
+    <Parameter Name="sgst" Type="float" Mode="In" />
+    <Parameter Name="igst" Type="float" Mode="In" />
+    <Parameter Name="itemtotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_DebitNoteSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="int" Mode="In" />
+    <Parameter Name="ReturnNo" Type="int" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PONumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PODate" Type="datetime" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="DueDate" Type="datetime" Mode="In" />
+    <Parameter Name="StateofSupply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DeliveryLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Deliverydate" Type="datetime" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportCharges" Type="float" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Tax1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TaxAmount1" Type="float" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="TotalDiscount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount1" Type="float" Mode="In" />
+    <Parameter Name="RoundFigure" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Received" Type="float" Mode="In" />
+    <Parameter Name="RemainingBal" Type="float" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild5" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="calotal" Type="float" Mode="In" />
+    <Parameter Name="taxshow" Type="float" Mode="In" />
+    <Parameter Name="discount" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_DeliveryChallanInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="freeQty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="ChallanNo" Type="int" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="CalTotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_DeliveryChallanSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ChallanNo" Type="int" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingAddress" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PartyAddress" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="DueDate" Type="datetime" Mode="In" />
+    <Parameter Name="StateofSupply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DeliveryLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Deliverydate" Type="datetime" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportCharges" Type="float" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Tax1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TaxAmount1" Type="float" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="TotalDiscount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount1" Type="float" Mode="In" />
+    <Parameter Name="RoundFigure" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Received" Type="float" Mode="In" />
+    <Parameter Name="RemainingBal" Type="float" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild5" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="CalTotal" Type="float" Mode="In" />
+    <Parameter Name="TaxShow" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_ExpenseCategorySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+    <Parameter Name="CategoryName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_ExpensesInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="Id_inner" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="ID1" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_ExpensesSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID1" Type="int" Mode="In" />
+    <Parameter Name="ExpenseCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Paid" Type="float" Mode="In" />
+    <Parameter Name="Balance" Type="float" Mode="In" />
+    <Parameter Name="AdditinalFeild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdditionalFeild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_ItemAdjustementSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdjustmentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdjustmentDate" Type="date" Mode="In" />
+    <Parameter Name="AtPrice" Type="float" Mode="In" />
+    <Parameter Name="Quantity" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Details" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_Itemexport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="HSNCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SecondaryUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="PurchasePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForPurchase" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PurchaseTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="OpeningQty" Type="float" Mode="In" />
+    <Parameter Name="atPrice" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="ItemLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TrackingMRP" Type="float" Mode="In" />
+    <Parameter Name="BatchNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SerialNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="MFgdate" Type="date" Mode="In" />
+    <Parameter Name="Expdate" Type="date" Mode="In" />
+    <Parameter Name="Size" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="MinimumStock" Type="int" Mode="In" />
+    <Parameter Name="Image1" Type="image" Mode="In" />
+    <Parameter Name="Image2" Type="image" Mode="In" />
+    <Parameter Name="Image3" Type="image" Mode="In" />
+    <Parameter Name="Image4" Type="image" Mode="In" />
+    <Parameter Name="Image5" Type="image" Mode="In" />
+    <Parameter Name="UnitID" Type="int" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_ItemMasterSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="HSNCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SecondaryUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="PurchasePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForPurchase" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PurchaseTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="OpeningQty" Type="float" Mode="In" />
+    <Parameter Name="atPrice" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Cess" Type="float" Mode="In" />
+    <Parameter Name="ItemLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TrackingMRP" Type="float" Mode="In" />
+    <Parameter Name="BatchNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SerialNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="MFgdate" Type="date" Mode="In" />
+    <Parameter Name="Expdate" Type="date" Mode="In" />
+    <Parameter Name="Size" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="MinimumStock" Type="int" Mode="In" />
+    <Parameter Name="Image1" Type="image" Mode="In" />
+    <Parameter Name="Image2" Type="image" Mode="In" />
+    <Parameter Name="Image3" Type="image" Mode="In" />
+    <Parameter Name="Image4" Type="image" Mode="In" />
+    <Parameter Name="Image5" Type="image" Mode="In" />
+    <Parameter Name="UnitID" Type="int" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_ItemServicemasterSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ServiceID" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemHSNCOde" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Unit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Subunit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Category" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TaxRate" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_LoanBankSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="AccountName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AccountNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LendarBank" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="FirmName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CurrentBal" Type="float" Mode="In" />
+    <Parameter Name="BalAsOf" Type="date" Mode="In" />
+    <Parameter Name="LoanReceive" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Interest" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Duration" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ProcessingFees" Type="float" Mode="In" />
+    <Parameter Name="PaidBy" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="loanamount" Type="float" Mode="In" />
+    <Parameter Name="total" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_LoginPassswordSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="NewPassword" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ConfirmPassword" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="tbl_MakePaymentSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="PrincipleAmount" Type="float" Mode="In" />
+    <Parameter Name="InterestAmount" Type="float" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="PaidFrom" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AccountName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_otherIncomeCategorySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="OtherIncome" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_OtherIncomeInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="Id_inner" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_OtherIncomeSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IncomeCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="paymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="RoundOFF" Type="float" Mode="In" />
+    <Parameter Name="total" Type="float" Mode="In" />
+    <Parameter Name="Received" Type="float" Mode="In" />
+    <Parameter Name="Balance" Type="float" Mode="In" />
+    <Parameter Name="AdditionalFeild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Additional2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Additional3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Additional4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_PartyGroupSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="PartyGroupID" Type="int" Mode="In" />
+    <Parameter Name="AddPartyGroup" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_PartyMasterSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="PartiesID" Type="int" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingAddress" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EmailID" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="GSTType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="State" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="OpeningBal" Type="float" Mode="In" />
+    <Parameter Name="AsOfDate" Type="date" Mode="In" />
+    <Parameter Name="AddRemainder" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PartyType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ShippingAddress" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PartyGroup" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="paidstatus" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="type" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="tbl_PaymentInSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ReceiptNo" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ReceivedAmount" Type="float" Mode="In" />
+    <Parameter Name="UnusedAmount" Type="float" Mode="In" />
+    <Parameter Name="image" Type="image" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_PaymentLinkselect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Received" Type="nvarchar" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Type" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="BalanceAmount" Type="float" Mode="In" />
+    <Parameter Name="LinkAmount" Type="float" Mode="In" />
+    <Parameter Name="UnusedCash" Type="float" Mode="In" />
+    <Parameter Name="AdditinalFeild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdditionalFeild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_Paymentoutselect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiptNo" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Paid" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="image" Type="image" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_PurchaseBillInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="CategoryType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="freeQty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="BillNo" Type="int" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="float" Mode="In" />
+    <Parameter Name="month" Type="varchar" Mode="In" />
+    <Parameter Name="cgst" Type="float" Mode="In" />
+    <Parameter Name="sgst" Type="float" Mode="In" />
+    <Parameter Name="igst" Type="float" Mode="In" />
+    <Parameter Name="caltotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_PurchaseBillselect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="BillNo" Type="int" Mode="In" />
+    <Parameter Name="PONo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillDate" Type="date" Mode="In" />
+    <Parameter Name="PoDate" Type="date" Mode="In" />
+    <Parameter Name="DueDate" Type="date" Mode="In" />
+    <Parameter Name="StateofSupply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DeliveryLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Deliverydate" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportCharges" Type="float" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Tax1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="TaxAmount1" Type="float" Mode="In" />
+    <Parameter Name="TotalDiscount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount1" Type="float" Mode="In" />
+    <Parameter Name="RoundFigure" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Paid" Type="float" Mode="In" />
+    <Parameter Name="RemainingBal" Type="float" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild5" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+    <Parameter Name="TaxShow" Type="float" Mode="In" />
+    <Parameter Name="reverschecharges" Type="float" Mode="In" />
+    <Parameter Name="CalTotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_PurchaseOrderInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="CategoryType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="freeQty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="OrderNo" Type="int" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="cgst" Type="float" Mode="In" />
+    <Parameter Name="sgst" Type="float" Mode="In" />
+    <Parameter Name="igst" Type="float" Mode="In" />
+    <Parameter Name="ItemTotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_PurchaseOrderSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="OrderNo" Type="int" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="OrderDate" Type="date" Mode="In" />
+    <Parameter Name="DueDate" Type="date" Mode="In" />
+    <Parameter Name="StateofSupply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DeliveryLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Deliverydate" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportCharges" Type="float" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Tax1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="TaxAmount1" Type="float" Mode="In" />
+    <Parameter Name="TotalDiscount" Type="int" Mode="In" />
+    <Parameter Name="DiscountAmount1" Type="float" Mode="In" />
+    <Parameter Name="RoundFigure" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Paid" Type="float" Mode="In" />
+    <Parameter Name="RemainingBal" Type="float" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild5" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="calotal" Type="float" Mode="In" />
+    <Parameter Name="taxshow" Type="float" Mode="In" />
+    <Parameter Name="discount" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_QuotationInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="CategoryType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="freeQty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="RefNo" Type="int" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="CalTotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_QuotationSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="RefNo" Type="int" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingAddress" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <Parameter Name="StateofSupply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Tax1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TaxAmount1" Type="float" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="TotalDiscount" Type="int" Mode="In" />
+    <Parameter Name="DiscountAmount1" Type="float" Mode="In" />
+    <Parameter Name="RoundFigure" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Feild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild5" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="Itemcatgory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CalTotal" Type="float" Mode="In" />
+    <Parameter Name="TaxShow" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_SaleInvoiceInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="freeQty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="float" Mode="In" />
+    <Parameter Name="count" Type="int" Mode="In" />
+    <Parameter Name="ItemTotal" Type="float" Mode="In" />
+    <Parameter Name="cgst" Type="float" Mode="In" />
+    <Parameter Name="sgst" Type="float" Mode="In" />
+    <Parameter Name="igst" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_SaleInvoiceSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PoNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PoDate" Type="date" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="date" Mode="In" />
+    <Parameter Name="StateofSupply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DeliveryLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Deliverydate" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportCharges" Type="float" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Tax1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="TaxAmount1" Type="float" Mode="In" />
+    <Parameter Name="TotalDiscount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount1" Type="float" Mode="In" />
+    <Parameter Name="RoundFigure" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Received" Type="float" Mode="In" />
+    <Parameter Name="RemainingBal" Type="float" Mode="In" />
+    <Parameter Name="DueDate" Type="date" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild5" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+    <Parameter Name="TaxAmountShow" Type="float" Mode="In" />
+    <Parameter Name="Caltotal" Type="float" Mode="In" />
+    <Parameter Name="totalcgst" Type="float" Mode="In" />
+    <Parameter Name="totalsgst" Type="float" Mode="In" />
+    <Parameter Name="totaligst" Type="float" Mode="In" />
+    <Parameter Name="E_Way_Bill" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="tbl_SaleOrderInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemID" Type="int" Mode="In" />
+    <Parameter Name="CategoryType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ItemCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SalePrice" Type="float" Mode="In" />
+    <Parameter Name="TaxForSale" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SaleTaxAmount" Type="float" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="freeQty" Type="int" Mode="In" />
+    <Parameter Name="ItemAmount" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="OrderNo" Type="int" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="ItemTotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_SaleOrderSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="OrderNo" Type="int" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BillingName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="OrderDate" Type="date" Mode="In" />
+    <Parameter Name="DueDate" Type="date" Mode="In" />
+    <Parameter Name="StateofSupply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DeliveryLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Deliverydate" Type="date" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TransportCharges" Type="float" Mode="In" />
+    <Parameter Name="Image" Type="image" Mode="In" />
+    <Parameter Name="Tax1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CGST" Type="float" Mode="In" />
+    <Parameter Name="SGST" Type="float" Mode="In" />
+    <Parameter Name="TaxAmount1" Type="float" Mode="In" />
+    <Parameter Name="TotalDiscount" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DiscountAmount1" Type="float" Mode="In" />
+    <Parameter Name="RoundFigure" Type="float" Mode="In" />
+    <Parameter Name="Total" Type="float" Mode="In" />
+    <Parameter Name="Received" Type="float" Mode="In" />
+    <Parameter Name="RemainingBal" Type="float" Mode="In" />
+    <Parameter Name="PaymentTerms" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild3" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Feild5" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ItemCategory" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="IGST" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="TaxShow" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+    <Parameter Name="CalTotal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_TransactionPassswordSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="NewPassword" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ConfirmPassword" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="tbl_TransactionPrefixSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Frim" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="sale" Type="float" Mode="In" />
+    <Parameter Name="creditNote" Type="float" Mode="In" />
+    <Parameter Name="PurchaseOrder" Type="float" Mode="In" />
+    <Parameter Name="SaleOrder" Type="float" Mode="In" />
+    <Parameter Name="Estimate" Type="float" Mode="In" />
+    <Parameter Name="DeliveryChallan" Type="float" Mode="In" />
+    <Parameter Name="PaymentIn" Type="float" Mode="In" />
+  </Function>
+  <Function Name="tbl_UnitConversionSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="UnitConversionID" Type="int" Mode="In" />
+    <Parameter Name="BasicUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SecondaryUnit" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Rate" Type="float" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="tbl_UnitMasterUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="UnitID" Type="int" Mode="In" />
+    <Parameter Name="UnitName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SubUnitName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdditionalFeild1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AdditionalFeild2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="compid" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="idealtec_inventoryModelStoreContainer">
+    <EntitySet Name="CompanyBankAccount" EntityType="Self.CompanyBankAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReferralCode1" EntityType="Self.ReferralCode1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BankAccount" EntityType="Self.tbl_BankAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BankAdjustment" EntityType="Self.tbl_BankAdjustment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_BanktoBankTransfer" EntityType="Self.tbl_BanktoBankTransfer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CashAdjustment" EntityType="Self.tbl_CashAdjustment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CashInhand" EntityType="Self.tbl_CashInhand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CategoryMaster" EntityType="Self.tbl_CategoryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CompanyMaster" EntityType="Self.tbl_CompanyMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CreditNote1" EntityType="Self.tbl_CreditNote1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CreditNoteInner" EntityType="Self.tbl_CreditNoteInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_DebitNote" EntityType="Self.tbl_DebitNote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_DebitNoteInner" EntityType="Self.tbl_DebitNoteInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_DeliveryChallan" EntityType="Self.tbl_DeliveryChallan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_DeliveryChallanInner" EntityType="Self.tbl_DeliveryChallanInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ExpenseCategory" EntityType="Self.tbl_ExpenseCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Expenses" EntityType="Self.tbl_Expenses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ExpensesInner" EntityType="Self.tbl_ExpensesInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ItemAdjustement" EntityType="Self.tbl_ItemAdjustement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ItemMaster" EntityType="Self.tbl_ItemMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ItemServicemaster" EntityType="Self.tbl_ItemServicemaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_LoanBank" EntityType="Self.tbl_LoanBank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_LoginPasssword" EntityType="Self.tbl_LoginPasssword" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_MakePayment" EntityType="Self.tbl_MakePayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_OtherIncome" EntityType="Self.tbl_OtherIncome" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_otherIncomeCaategory" EntityType="Self.tbl_otherIncomeCaategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_OtherIncomeInner" EntityType="Self.tbl_OtherIncomeInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_OtherIncomeInner1" EntityType="Self.tbl_OtherIncomeInner1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_OtherIncomeInner3" EntityType="Self.tbl_OtherIncomeInner3" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PartyGroup" EntityType="Self.tbl_PartyGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PartyMaster" EntityType="Self.tbl_PartyMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PaymentIn" EntityType="Self.tbl_PaymentIn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PaymentLink" EntityType="Self.tbl_PaymentLink" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Paymentout" EntityType="Self.tbl_Paymentout" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PurchaseBill" EntityType="Self.tbl_PurchaseBill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PurchaseBillInner" EntityType="Self.tbl_PurchaseBillInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PurchaseOrder" EntityType="Self.tbl_PurchaseOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PurchaseOrderInner" EntityType="Self.tbl_PurchaseOrderInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_QuotationInner" EntityType="Self.tbl_QuotationInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SaleInvoice" EntityType="Self.tbl_SaleInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SaleInvoiceInner" EntityType="Self.tbl_SaleInvoiceInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SaleOrder" EntityType="Self.tbl_SaleOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SaleOrderInner" EntityType="Self.tbl_SaleOrderInner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_TransactionPasssword" EntityType="Self.tbl_TransactionPasssword" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_TransactionPrefix" EntityType="Self.tbl_TransactionPrefix" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_UnitConversion" EntityType="Self.tbl_UnitConversion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_UnitMaster" EntityType="Self.tbl_UnitMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tble_NewCompany" EntityType="Self.tble_NewCompany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblQuotation" EntityType="Self.tblQuotation" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tbl_Deliv__Chall__68D28DBC" Association="Self.FK__tbl_Deliv__Chall__68D28DBC">
+      <End Role="tbl_DeliveryChallan" EntitySet="tbl_DeliveryChallan" />
+      <End Role="tbl_DeliveryChallanInner" EntitySet="tbl_DeliveryChallanInner" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_OtherIn__ID2__0A338187" Association="Self.FK__tbl_OtherIn__ID2__0A338187">
+      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
+      <End Role="tbl_OtherIncomeInner1" EntitySet="tbl_OtherIncomeInner1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Purch__BillN__1B9317B3" Association="Self.FK__tbl_Purch__BillN__1B9317B3">
+      <End Role="tbl_PurchaseBill" EntitySet="tbl_PurchaseBill" />
+      <End Role="tbl_PurchaseBillInner" EntitySet="tbl_PurchaseBillInner" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Purch__Order__0C1BC9F9" Association="Self.FK__tbl_Purch__Order__0C1BC9F9">
+      <End Role="tbl_PurchaseOrder" EntitySet="tbl_PurchaseOrder" />
+      <End Role="tbl_PurchaseOrderInner" EntitySet="tbl_PurchaseOrderInner" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_SaleO__Order__54CB950F" Association="Self.FK__tbl_SaleO__Order__54CB950F">
+      <End Role="tbl_SaleOrder" EntitySet="tbl_SaleOrder" />
+      <End Role="tbl_SaleOrderInner" EntitySet="tbl_SaleOrderInner" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_SaleO__Order__589C25F3" Association="Self.FK__tbl_SaleO__Order__589C25F3">
+      <End Role="tbl_SaleOrder" EntitySet="tbl_SaleOrder" />
+      <End Role="tbl_SaleOrderInner" EntitySet="tbl_SaleOrderInner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Expenses_tbl_ExpenseCategory" Association="Self.FK_tbl_Expenses_tbl_ExpenseCategory">
+      <End Role="tbl_ExpenseCategory" EntitySet="tbl_ExpenseCategory" />
+      <End Role="tbl_Expenses" EntitySet="tbl_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Expenses_tbl_Expenses" Association="Self.FK_tbl_Expenses_tbl_Expenses">
+      <End Role="tbl_Expenses" EntitySet="tbl_Expenses" />
+      <End Role="tbl_Expenses1" EntitySet="tbl_Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_ExpensesInner_tbl_Expenses" Association="Self.FK_tbl_ExpensesInner_tbl_Expenses">
+      <End Role="tbl_Expenses" EntitySet="tbl_Expenses" />
+      <End Role="tbl_ExpensesInner" EntitySet="tbl_ExpensesInner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_ItemMaster" Association="Self.FK_tbl_ItemMaster">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_ItemMaster_tbl_ItemMaster3" Association="Self.FK_tbl_ItemMaster_tbl_ItemMaster3">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_ItemServicemaster_tbl_UnitMaster" Association="Self.FK_tbl_ItemServicemaster_tbl_UnitMaster">
+      <End Role="tbl_UnitMaster" EntitySet="tbl_UnitMaster" />
+      <End Role="tbl_ItemServicemaster" EntitySet="tbl_ItemServicemaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LoanBank_tbl_CompanyMaster" Association="Self.FK_tbl_LoanBank_tbl_CompanyMaster">
+      <End Role="tbl_CompanyMaster" EntitySet="tbl_CompanyMaster" />
+      <End Role="tbl_LoanBank" EntitySet="tbl_LoanBank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_OtherIncome_tbl_OtherIncome" Association="Self.FK_tbl_OtherIncome_tbl_OtherIncome">
+      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
+      <End Role="tbl_OtherIncome1" EntitySet="tbl_OtherIncome" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory" Association="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory">
+      <End Role="tbl_otherIncomeCaategory" EntitySet="tbl_otherIncomeCaategory" />
+      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory1" Association="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory1">
+      <End Role="tbl_otherIncomeCaategory" EntitySet="tbl_otherIncomeCaategory" />
+      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory2" Association="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory2">
+      <End Role="tbl_otherIncomeCaategory" EntitySet="tbl_otherIncomeCaategory" />
+      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_OtherIncomeInner3_tbl_OtherIncome" Association="Self.FK_tbl_OtherIncomeInner3_tbl_OtherIncome">
+      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
+      <End Role="tbl_OtherIncomeInner3" EntitySet="tbl_OtherIncomeInner3" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PaymentIn_tbl_PartyMaster" Association="Self.FK_tbl_PaymentIn_tbl_PartyMaster">
+      <End Role="tbl_PartyMaster" EntitySet="tbl_PartyMaster" />
+      <End Role="tbl_PaymentIn" EntitySet="tbl_PaymentIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Paymentout_tbl_PartyMaster" Association="Self.FK_tbl_Paymentout_tbl_PartyMaster">
+      <End Role="tbl_PartyMaster" EntitySet="tbl_PartyMaster" />
+      <End Role="tbl_Paymentout" EntitySet="tbl_Paymentout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PurchaseBill_tbl_CategoryMaster" Association="Self.FK_tbl_PurchaseBill_tbl_CategoryMaster">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_PurchaseBill" EntitySet="tbl_PurchaseBill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PurchaseBill_tbl_PartyMaster" Association="Self.FK_tbl_PurchaseBill_tbl_PartyMaster">
+      <End Role="tbl_PartyMaster" EntitySet="tbl_PartyMaster" />
+      <End Role="tbl_PurchaseBill" EntitySet="tbl_PurchaseBill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PurchaseBill_tbl_PurchaseBillInner" Association="Self.FK_tbl_PurchaseBill_tbl_PurchaseBillInner">
+      <End Role="tbl_PurchaseBillInner" EntitySet="tbl_PurchaseBillInner" />
+      <End Role="tbl_PurchaseBill" EntitySet="tbl_PurchaseBill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PurchaseOrder_tbl_PartyMaster" Association="Self.FK_tbl_PurchaseOrder_tbl_PartyMaster">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_PurchaseOrder" EntitySet="tbl_PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PurchaseOrder_tbl_PurchaseOrderInner" Association="Self.FK_tbl_PurchaseOrder_tbl_PurchaseOrderInner">
+      <End Role="tbl_PurchaseOrderInner" EntitySet="tbl_PurchaseOrderInner" />
+      <End Role="tbl_PurchaseOrder" EntitySet="tbl_PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SaleInvoice_tbl_PartyMaster" Association="Self.FK_tbl_SaleInvoice_tbl_PartyMaster">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_SaleInvoice" EntitySet="tbl_SaleInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SaleInvoice_tbl_SaleInvoiceInner" Association="Self.FK_tbl_SaleInvoice_tbl_SaleInvoiceInner">
+      <End Role="tbl_SaleInvoiceInner" EntitySet="tbl_SaleInvoiceInner" />
+      <End Role="tbl_SaleInvoice" EntitySet="tbl_SaleInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SaleInvoiceInner_tbl_SaleInvoice" Association="Self.FK_tbl_SaleInvoiceInner_tbl_SaleInvoice">
+      <End Role="tbl_SaleInvoice" EntitySet="tbl_SaleInvoice" />
+      <End Role="tbl_SaleInvoiceInner" EntitySet="tbl_SaleInvoiceInner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SaleInvoiceInner_tbl_SaleInvoiceInner" Association="Self.FK_tbl_SaleInvoiceInner_tbl_SaleInvoiceInner">
+      <End Role="tbl_SaleInvoiceInner" EntitySet="tbl_SaleInvoiceInner" />
+      <End Role="tbl_SaleInvoiceInner1" EntitySet="tbl_SaleInvoiceInner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SaleOrder_tbl_PartyMaster" Association="Self.FK_tbl_SaleOrder_tbl_PartyMaster">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_SaleOrder" EntitySet="tbl_SaleOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SaleOrder_tbl_SaleOrderInner" Association="Self.FK_tbl_SaleOrder_tbl_SaleOrderInner">
+      <End Role="tbl_SaleOrderInner" EntitySet="tbl_SaleOrderInner" />
+      <End Role="tbl_SaleOrder" EntitySet="tbl_SaleOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SaleOrderInner_tbl_SaleOrderInner" Association="Self.FK_tbl_SaleOrderInner_tbl_SaleOrderInner">
+      <End Role="tbl_SaleOrderInner" EntitySet="tbl_SaleOrderInner" />
+      <End Role="tbl_SaleOrderInner1" EntitySet="tbl_SaleOrderInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_CategoryMaster_Categories" Association="Self.PK_tbl_CategoryMaster_Categories">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_CategoryMaster1" EntitySet="tbl_CategoryMaster" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_CreditNote1_Parties" Association="Self.PK_tbl_CreditNote1_Parties">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_CreditNote1" EntitySet="tbl_CreditNote1" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_CreditNoteInner_Item" Association="Self.PK_tbl_CreditNoteInner_Item">
+      <End Role="tbl_CreditNote1" EntitySet="tbl_CreditNote1" />
+      <End Role="tbl_CreditNoteInner" EntitySet="tbl_CreditNoteInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_DebitNote_Item" Association="Self.PK_tbl_DebitNote_Item">
+      <End Role="tbl_DebitNote" EntitySet="tbl_DebitNote" />
+      <End Role="tbl_DebitNoteInner" EntitySet="tbl_DebitNoteInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_DebitNote_Parties" Association="Self.PK_tbl_DebitNote_Parties">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_DebitNote" EntitySet="tbl_DebitNote" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_DebitNote_tbl_DebitNoteInner" Association="Self.PK_tbl_DebitNote_tbl_DebitNoteInner">
+      <End Role="tbl_DebitNoteInner" EntitySet="tbl_DebitNoteInner" />
+      <End Role="tbl_DebitNote" EntitySet="tbl_DebitNote" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_DeliveryChallan_Parties" Association="Self.PK_tbl_DeliveryChallan_Parties">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_DeliveryChallan" EntitySet="tbl_DeliveryChallan" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_DeliveryChallan_tbl_DeliveryChallanInner" Association="Self.PK_tbl_DeliveryChallan_tbl_DeliveryChallanInner">
+      <End Role="tbl_DeliveryChallanInner" EntitySet="tbl_DeliveryChallanInner" />
+      <End Role="tbl_DeliveryChallan" EntitySet="tbl_DeliveryChallan" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_DeliveryChallanInner_Item" Association="Self.PK_tbl_DeliveryChallanInner_Item">
+      <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+      <End Role="tbl_DeliveryChallanInner" EntitySet="tbl_DeliveryChallanInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_PurchaseBillInner_Category" Association="Self.PK_tbl_PurchaseBillInner_Category">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_PurchaseBillInner" EntitySet="tbl_PurchaseBillInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_PurchaseBillInner_Item" Association="Self.PK_tbl_PurchaseBillInner_Item">
+      <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+      <End Role="tbl_PurchaseBillInner" EntitySet="tbl_PurchaseBillInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_PurchaseOrderInner_Category" Association="Self.PK_tbl_PurchaseOrderInner_Category">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_PurchaseOrderInner" EntitySet="tbl_PurchaseOrderInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_PurchaseOrderInner_Item" Association="Self.PK_tbl_PurchaseOrderInner_Item">
+      <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+      <End Role="tbl_PurchaseOrderInner" EntitySet="tbl_PurchaseOrderInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_QuotationInner_Category" Association="Self.PK_tbl_QuotationInner_Category">
+      <End Role="tblQuotation" EntitySet="tblQuotation" />
+      <End Role="tbl_QuotationInner" EntitySet="tbl_QuotationInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_QuotationInner_Item" Association="Self.PK_tbl_QuotationInner_Item">
+      <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+      <End Role="tbl_QuotationInner" EntitySet="tbl_QuotationInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_SaleInvoiceInner_Category" Association="Self.PK_tbl_SaleInvoiceInner_Category">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_SaleInvoiceInner" EntitySet="tbl_SaleInvoiceInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_SaleInvoiceInner_Item" Association="Self.PK_tbl_SaleInvoiceInner_Item">
+      <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+      <End Role="tbl_SaleInvoiceInner" EntitySet="tbl_SaleInvoiceInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tbl_SaleOrderInner_Category" Association="Self.PK_tbl_SaleOrderInner_Category">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tbl_SaleOrderInner" EntitySet="tbl_SaleOrderInner" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tblQuotation_Parties" Association="Self.PK_tblQuotation_Parties">
+      <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+      <End Role="tblQuotation" EntitySet="tblQuotation" />
+    </AssociationSet>
+    <AssociationSet Name="PK_tblQuotation_tbl_QuotationInner" Association="Self.PK_tblQuotation_tbl_QuotationInner">
+      <End Role="tbl_QuotationInner" EntitySet="tbl_QuotationInner" />
+      <End Role="tblQuotation" EntitySet="tblQuotation" />
+    </AssociationSet>
+    <AssociationSet Name="tbl_CreditNote1_Parties" Association="Self.tbl_CreditNote1_Parties">
+      <End Role="tbl_CreditNoteInner" EntitySet="tbl_CreditNoteInner" />
+      <End Role="tbl_CreditNote1" EntitySet="tbl_CreditNote1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
