@@ -1718,7 +1718,6 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\BankAccount\Index.cshtml" />
     <Content Include="Views\BankAccount\AddOrEdit.cshtml" />
-    <Content Include="Views\BankToBank\Index.cshtml" />
     <Content Include="Views\BankToBank\AddOrEdit.cshtml" />
     <Content Include="Views\BankAdjustment\Index.cshtml" />
     <Content Include="Views\BankAdjustment\AddOrEdit.cshtml" />
@@ -1727,8 +1726,8 @@
     <Content Include="Views\PartyMaster\PartyGroup.cshtml" />
     <Content Include="Views\SaleInvoice\SaleInvoice.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
-    <Content Include="Views\ItemMaster\ItemMaster.cshtml" />
     <Content Include="Views\ItemMaster\Index.cshtml" />
+    <Content Include="Views\ItemMaster\ItemMaster.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

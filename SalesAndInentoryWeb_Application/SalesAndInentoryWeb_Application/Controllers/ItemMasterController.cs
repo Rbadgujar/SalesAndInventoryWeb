@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SalesAndInentoryWeb_Application.Models;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ItemMasterController : Controller
     {
+        idealtec_inventoryEntities10 ew = new idealtec_inventoryEntities10();
+        
         // GET: ItemMaster
         public ActionResult Index()
         {
-            return View();
+            return View(ew.tbl_ItemMaster.ToList());
+
         }
 
         // GET: ItemMaster/Details/5
