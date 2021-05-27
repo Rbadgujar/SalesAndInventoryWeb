@@ -83,7 +83,7 @@ $(function () {
       }]
     },
     onRegionLabelShow: function (e, el, code) {
-      if (typeof visitorsData[code] != "undefined")
+      if (typeof visitorsData[code] !== "undefined")
         el.html(el.html() + ': ' + visitorsData[code] + ' new visitors');
     }
   });

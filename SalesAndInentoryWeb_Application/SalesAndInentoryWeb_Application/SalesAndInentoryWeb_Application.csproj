@@ -1401,7 +1401,9 @@
     <Compile Include="Controllers\BankAccountController.cs" />
     <Compile Include="Controllers\BankAdjustmentController.cs" />
     <Compile Include="Controllers\BankToBankController.cs" />
+    <Compile Include="Controllers\ChequeController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\EstimateQuatationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
@@ -1729,6 +1731,9 @@
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\ItemMaster\ItemMaster.cshtml" />
     <Content Include="Views\ItemMaster\Index.cshtml" />
+    <Content Include="Views\Cheque\Index.cshtml" />
+    <Content Include="Views\EstimateQuatation\Index.cshtml" />
+    <Content Include="Views\EstimateQuatation\AddOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
