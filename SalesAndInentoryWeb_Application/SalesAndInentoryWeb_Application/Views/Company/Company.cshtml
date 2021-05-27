@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tble_NewCompany
+﻿@model SalesAndInentoryWeb_Application.Models.tbl_CompanyMaster
 @{
     ViewBag.Title = "Company";
     Layout = "~/Views/Shared/_Layout1.cshtml";
@@ -107,7 +107,7 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.ContactNo, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.PhoneNo, settings =>
                                    {
                                        // settings.Width = 300;
                                        settings.ControlStyle.CssClass = "form-control";
@@ -167,7 +167,7 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.RefferalCode, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.ReferaleCode, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
                                        settings.Properties.NullText = "Enter Refferal Code....";
@@ -227,13 +227,13 @@
                                 <td style="padding:0 15px 0 15px">
                                     <div class="form-group text-right ">
                                         @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
+                                       {
+                                           settings.Style["font-weight"] = "bold";
 
-                                   settings.Name = "Label8";
-                                   settings.Text = "GST Number   :";
+                                           settings.Name = "Label8";
+                                           settings.Text = "GST Number   :";
 
-                               }).GetHtml()
+                                       }).GetHtml()
                                     </div>
                                 </td>
 
@@ -344,7 +344,7 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-                                            @Html.DevExpress().DropDownEditFor(m => m.BankName, settings =>
+                                            @Html.DevExpress().DropDownEditFor(m => m.AdditinalFeild1, settings =>
                                    {
                                        settings.SetDropDownWindowTemplateContent(c =>
                                        {
@@ -373,7 +373,7 @@
                                     <center>
                                         <div class="form-group text-center">
 
-                                            @Html.DevExpress().TextBoxFor(m => m.AccountNo, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.AdditinalFeild2, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
                                        settings.Properties.NullText = "Enter Account No....";
@@ -400,7 +400,7 @@
                                     <center>
                                         <div class="form-group text-center">
 
-                                            @Html.DevExpress().TextBoxFor(m => m.IFSCCode, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.AdditinalFeild3, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
                                        settings.Properties.NullText = "Enter IFSC Code....";
