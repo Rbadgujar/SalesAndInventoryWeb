@@ -14,18 +14,20 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-        public ActionResult PartyData()
+        public ActionResult Data()
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
-                List<tbl_PartyMaster> bank = db.tbl_PartyMaster.ToList<tbl_PartyMaster>();
-                return Json(new { data = bank }, JsonRequestBehavior.AllowGet);
+                db.Configuration.LazyLoadingEnabled = false;
+                List<tbl_PartyGroup> party = db.tbl_PartyGroup.ToList<tbl_PartyGroup>();
+                return Json(new { data = party }, JsonRequestBehavior.AllowGet);
             }
         }
         public ActionResult PartyGroupData()
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
+                db.Configuration.LazyLoadingEnabled = false;
                 List<tbl_PartyGroup> party = db.tbl_PartyGroup.ToList<tbl_PartyGroup>();
                 return Json(new { data = party }, JsonRequestBehavior.AllowGet);
             }
