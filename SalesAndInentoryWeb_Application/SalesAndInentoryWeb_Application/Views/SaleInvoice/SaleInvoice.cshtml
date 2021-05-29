@@ -184,12 +184,13 @@
                                    </div>
                                    <div class="form-group col-xs-4">
                                        @Html.DevExpress().TextBoxFor(m => m.Barcode, settings =>
-                      {
-                          settings.Name = "mytext";
-                          settings.ClientVisible = false;
-                          settings.Properties.NullText = "Enter Barcode...";
-                          settings.ControlStyle.CssClass = "form-control";
-                      }).GetHtml()
+                                  {
+                                      settings.Name = "mytext";
+                                      settings.ClientVisible = false;
+                                      settings.Properties.NullText = "Enter Barcode...";
+                                      settings.ControlStyle.CssClass = "form-control";
+                                      settings.SkinID = "1";
+                                  }).GetHtml()
                                    </div>
                                </div>
 

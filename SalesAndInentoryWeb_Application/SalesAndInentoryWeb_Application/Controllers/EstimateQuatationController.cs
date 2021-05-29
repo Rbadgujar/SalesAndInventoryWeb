@@ -19,6 +19,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
+                db.Configuration.LazyLoadingEnabled = false;
                 List<tblQuotation> estimate = db.tblQuotations.ToList<tblQuotation>();
                 return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
             }
