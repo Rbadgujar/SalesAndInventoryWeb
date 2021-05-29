@@ -2219,7 +2219,7 @@
     <Content Include="Views\PartyMaster\PartyGroup.cshtml" />
     <Content Include="Views\SaleInvoice\SaleInvoice.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
-    <Content Include="Views\ItemMaster\ItemMaster.cshtml" />
+    <Content Include="Views\ItemMaster\AddOrEdit.cshtml" />
     <Content Include="Views\ItemMaster\Index.cshtml" />
     <Content Include="Views\Cheque\Index.cshtml" />
     <Content Include="Views\EstimateQuatation\Index.cshtml" />
