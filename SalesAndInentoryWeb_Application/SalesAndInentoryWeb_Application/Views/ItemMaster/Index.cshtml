@@ -1,220 +1,186 @@
-﻿@model IEnumerable<SalesAndInentoryWeb_Application.Models.tbl_ItemMaster>
+﻿
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout1.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<h2>Index</h2>
+<br>
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    @Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
+    )
+    @Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.Editors }
+    )
+</head>
+<div class="container">
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse ">
+                <div class="row">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HSNCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BasicUnit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SecondaryUnit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemCategory)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SalePrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaxForSale)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SaleTaxAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PurchasePrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaxForPurchase)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PurchaseTaxAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpeningQty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.atPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrackingMRP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BatchNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SerialNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MFgdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Expdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MinimumStock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Barcode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeleteData)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Company_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cess)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Profit)
-        </th>
-        <th></th>
-    </tr>
+                    <div class="form-group col-md-2">
+                        @Html.DevExpress().DropDownEdit(settings =>
+                        {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HSNCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BasicUnit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecondaryUnit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemCategory)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SalePrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaxForSale)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SaleTaxAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PurchasePrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaxForPurchase)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PurchaseTaxAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OpeningQty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.atPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrackingMRP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BatchNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SerialNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MFgdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Expdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MinimumStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Barcode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeleteData)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cess)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Profit)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ItemID }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.ItemID  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item. })
-        </td>
-    </tr>
+                            settings.Style["margin-top"] = "15px";
+                            settings.ControlStyle.CssClass = "form-control";
+                            settings.Name = "DropDownEdit1";
+                            settings.SetDropDownWindowTemplateContent(c =>
+                            {
+                                ViewContext.Writer.Write("DropDown content");
+                            });
+                        }).GetHtml()
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.DevExpress().DateEdit(settings =>
+                   {
+                       settings.ControlStyle.CssClass = "form-control";
+                       settings.Style["margin-top"] = "15px";
+                       settings.Name = "DateEdit";
+                       settings.Properties.NullText = "dd/MM/YYYY";
+                   }).GetHtml()
+                    </div>
+                    <a class="btn btn-success pull-left row" style="margin-top:15px;margin-left:5px;" onclick=""><span class="glyphicon glyphicon-print"></span> Print </a>
+                    <a class="btn btn-info row pull-right" style="margin-top:15px; margin-right:5px; " href="@Url.Action("AddOrEdit", "ItemMaster")"><i class="fa fa-plus"></i>Add Estimate</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse ">
+                <table id="estimate" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Hsn Code</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </nav>
+
+</div>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        var Popup, dataTable;
+        $(document).ready(function () {
+            dataTable =  $("#estimate").DataTable({
+                "ajax": {
+                    "url": "/ItemMaster/itemdata",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "ItemName" },
+                    { "data": "HSNCode" },
+                    { "data": "BasicUnit" },
+                    { "data": "ItemCode" },
+                    {"data":"ItemID" , "render" : function (data) {
+                        return "<a class='btn btn-default btn-sm' href="@Url.Action("AddOrEdit", "ItemMaster")/" + data + ""><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+
+                ],
+                "language": {
+
+                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                }
+            });
+        });
+
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Fill Bank Details',
+                    height: 500,
+                    width: 700,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+
+                });
+            });
+        }
+
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if($(form).valid()){
+                $.ajax({
+                    type : "POST",
+                    url : form.action,
+                    data : $(form).serialize(),
+                    success : function (data) {
+                        if(data.success)
+                        {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message,{
+                                globalPosition :"top center",
+                                className : "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+
+        function Delete(id) {
+            if(confirm('Are You Sure to Delete this Employee Record ?'))
+            {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Delete", "ItemMAster")/' + id,
+                    success: function (data) {
+                        if (data.success)
+                        {
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+
+                });
+            }
+        }
+    </script>
 }
 
-</table>
