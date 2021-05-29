@@ -47,7 +47,9 @@
       <HintPath>..\packages\datatables.mvc5.0.1.0\lib\net45\DataTables.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -1891,6 +1893,8 @@
     <Compile Include="Controllers\BankToBankController.cs" />
     <Compile Include="Controllers\ChequeController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CreditnoteController.cs" />
+    <Compile Include="Controllers\DebitNoteController.cs" />
     <Compile Include="Controllers\EstimateQuatationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
@@ -2228,6 +2232,10 @@
     <Content Include="Views\PaymentOut\AddOrEdit.cshtml" />
     <Content Include="Views\PaymentIn\Index.cshtml" />
     <Content Include="Views\PaymentIn\AddOrEdit.cshtml" />
+    <Content Include="Views\Creditnote\CreditNote.cshtml" />
+    <Content Include="Views\DebitNote\DebitNote.cshtml" />
+    <Content Include="Views\Shared\ideal.cshtml" />
+    <Content Include="Views\Creditnote\show.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2236,11 +2244,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="bin\App_Data\" />
+    <Folder Include="bower_components\dist\" />
     <Folder Include="css\" />
+    <Folder Include="Views\index\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
