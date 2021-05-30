@@ -1897,6 +1897,7 @@
     <Compile Include="Controllers\PartyMasterController.cs" />
     <Compile Include="Controllers\PaymentInController.cs" />
     <Compile Include="Controllers\PaymentOutController.cs" />
+    <Compile Include="Controllers\PurchaseBillController.cs" />
     <Compile Include="Controllers\SaleInvoiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2228,6 +2229,8 @@
     <Content Include="Views\PaymentOut\AddOrEdit.cshtml" />
     <Content Include="Views\PaymentIn\Index.cshtml" />
     <Content Include="Views\PaymentIn\AddOrEdit.cshtml" />
+    <Content Include="Views\PurchaseBill\Index.cshtml" />
+    <Content Include="Views\PurchaseBill\AddOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
