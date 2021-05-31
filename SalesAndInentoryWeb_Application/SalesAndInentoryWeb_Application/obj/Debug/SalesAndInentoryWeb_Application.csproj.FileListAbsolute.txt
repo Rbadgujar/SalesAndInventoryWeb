@@ -33,7 +33,6 @@ C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Ap
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraReports.v20.1.Web.dll
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraReports.v20.1.Web.WebForms.dll
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraReports.v20.1.dll
-C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.DataAccess.v20.1.dll
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxRichEdit.v20.1.dll
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxScheduler.v20.1.dll
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraScheduler.v20.1.Core.dll
@@ -725,7 +724,6 @@ C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.dll
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.pdb
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DataTables.Mvc.dll
-C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DataTables.Mvc.dll
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Dashboard.v20.1.Core.dll
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Map.v20.1.Core.dll
@@ -742,3 +740,18 @@ C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.Map.v20.1.Core.resources.dll
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.Map.v20.1.Core.resources.dll
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.dll.licenses
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Dashboard.v20.1.Core.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Map.v20.1.Core.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.TreeMap.v20.1.Core.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Dashboard.v20.1.Core.xml
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Map.v20.1.Core.xml
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.TreeMap.v20.1.Core.xml
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\de\DevExpress.Dashboard.v20.1.Core.resources.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.Dashboard.v20.1.Core.resources.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.Dashboard.v20.1.Core.resources.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.Dashboard.v20.1.Core.resources.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\de\DevExpress.Map.v20.1.Core.resources.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.Map.v20.1.Core.resources.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.Map.v20.1.Core.resources.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.Map.v20.1.Core.resources.dll
+C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.dll.licenses

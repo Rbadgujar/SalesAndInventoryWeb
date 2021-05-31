@@ -3,7 +3,7 @@
     
 @{
     ViewBag.Title = "SaleInvoice";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/ideal.cshtml";
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,7 +25,7 @@
     @using (Html.BeginForm())
     {
         <div class="panel panel-primary container">
-            <div class="panel-heading text-center"><h4>Sale Invoice</h4></div>
+            <div class="panel-heading text-center" style="height:40px;"><h4>Sale Invoice</h4></div>
                <div class="panel border-box">
                    <nav class="navbar navbar-default ">
                        <div class="container-fluid">
@@ -612,7 +612,7 @@
                    </nav>
                    <div >
                        <div>
-                           <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; margin-top:2px; " />
+                           <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; margin-bottom:50px; " />
                            <a class="text-right btn btn-success"  href="Grid">Back To List</a>
                        </div>
                    </div>
