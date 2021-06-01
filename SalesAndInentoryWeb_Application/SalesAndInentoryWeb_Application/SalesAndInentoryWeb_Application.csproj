@@ -1255,6 +1255,9 @@
     <Content Include="bin\System.Web.Webpages.Razor.dll" />
     <Content Include="bin\System.Web.Webpages.Razor.xml" />
     <Content Include="bin\System.Web.Webpages.xml" />
+    <Content Include="bower_components\bootstrap\dist\fonts\excel %281%29.png" />
+    <Content Include="bower_components\bootstrap\dist\fonts\excel.png" />
+    <Content Include="bower_components\bootstrap\dist\fonts\upload %281%29.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -1696,6 +1699,7 @@
     </EntityDeploy>
     <Content Include="Models\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
@@ -1898,11 +1902,14 @@
     <Compile Include="Controllers\EstimateQuatationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
+    <Compile Include="Controllers\ParchaseOrderController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
     <Compile Include="Controllers\PaymentInController.cs" />
     <Compile Include="Controllers\PaymentOutController.cs" />
     <Compile Include="Controllers\PurchaseBillController.cs" />
     <Compile Include="Controllers\SaleInvoiceController.cs" />
+    <Compile Include="Controllers\SaleOrderController.cs" />
+    <Compile Include="Controllers\UtilitiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2234,11 +2241,20 @@
     <Content Include="Views\PaymentIn\Index.cshtml" />
     <Content Include="Views\PaymentIn\AddOrEdit.cshtml" />
     <Content Include="Views\Creditnote\CreditNote.cshtml" />
-    <Content Include="Views\DebitNote\DebitNote.cshtml" />
     <Content Include="Views\Shared\ideal.cshtml" />
-    <Content Include="Views\Creditnote\show.cshtml" />
+    <Content Include="Views\Creditnote\AddOrEdit.cshtml" />
     <Content Include="Views\PurchaseBill\AddOrEdit.cshtml" />
     <Content Include="Views\PurchaseBill\Index.cshtml" />
+    <Content Include="Views\DebitNote\DebitNote.cshtml" />
+    <Content Include="Views\DebitNote\AddOrEdit.cshtml" />
+    <Content Include="Views\ParchaseOrder\PurchaseOrder.cshtml" />
+    <Content Include="Views\ParchaseOrder\AddOrEdit.cshtml" />
+    <Content Include="Views\SaleOrder\SaleOrder.cshtml" />
+    <Content Include="Views\SaleOrder\AddOrEdit.cshtml" />
+    <Content Include="Views\Utilities\ImportParty.cshtml" />
+    <Content Include="Views\Utilities\_GridViewPartial.cshtml" />
+    <Content Include="Views\Utilities\_DataViewPartial.cshtml" />
+    <Content Include="Views\Utilities\Importitem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
