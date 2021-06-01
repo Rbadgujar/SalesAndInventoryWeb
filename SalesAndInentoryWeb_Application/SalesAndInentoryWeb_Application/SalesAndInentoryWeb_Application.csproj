@@ -2249,6 +2249,7 @@
     <Content Include="Views\Expence\Index.cshtml" />
     <Content Include="Views\Expence\AddOrEdit.cshtml" />
     <Content Include="Views\LoanAccount\AddOrEdit.cshtml" />
+    <Content Include="Views\MakePayment\MakePayment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2261,7 +2262,6 @@
     <Folder Include="bower_components\dist\" />
     <Folder Include="css\" />
     <Folder Include="Views\index\" />
-    <Folder Include="Views\MakePayment\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
