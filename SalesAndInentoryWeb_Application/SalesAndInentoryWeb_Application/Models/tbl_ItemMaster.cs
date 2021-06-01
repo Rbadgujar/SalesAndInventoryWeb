@@ -11,7 +11,8 @@ namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity;
+
     public partial class tbl_ItemMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -70,5 +71,9 @@ namespace SalesAndInentoryWeb_Application.Models
         public virtual ICollection<tbl_QuotationInner> tbl_QuotationInner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_SaleInvoiceInner> tbl_SaleInvoiceInner { get; set; }
+        public class CompanyListIdDBContext : DbContext
+        {
+            public DbSet<tbl_ItemMaster> Contacts { get; set; }
+        }
     }
 }

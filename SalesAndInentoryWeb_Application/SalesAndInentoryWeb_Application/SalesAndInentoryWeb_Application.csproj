@@ -1896,8 +1896,12 @@
     <Compile Include="Controllers\CreditnoteController.cs" />
     <Compile Include="Controllers\DebitNoteController.cs" />
     <Compile Include="Controllers\EstimateQuatationController.cs" />
+    <Compile Include="Controllers\ExpenceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
+    <Compile Include="Controllers\LoanAccountController.cs" />
+    <Compile Include="Controllers\MakePaymentController.cs" />
+    <Compile Include="Controllers\OtherIncomeController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
     <Compile Include="Controllers\PaymentInController.cs" />
     <Compile Include="Controllers\PaymentOutController.cs" />
@@ -1933,6 +1937,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemList.cs" />
     <Compile Include="Models\ReferralCode1.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -2239,6 +2244,11 @@
     <Content Include="Views\Creditnote\show.cshtml" />
     <Content Include="Views\PurchaseBill\AddOrEdit.cshtml" />
     <Content Include="Views\PurchaseBill\Index.cshtml" />
+    <Content Include="Views\OtherIncome\Index.cshtml" />
+    <Content Include="Views\OtherIncome\AddOrEdit.cshtml" />
+    <Content Include="Views\Expence\Index.cshtml" />
+    <Content Include="Views\Expence\AddOrEdit.cshtml" />
+    <Content Include="Views\LoanAccount\AddOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2251,6 +2261,7 @@
     <Folder Include="bower_components\dist\" />
     <Folder Include="css\" />
     <Folder Include="Views\index\" />
+    <Folder Include="Views\MakePayment\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
