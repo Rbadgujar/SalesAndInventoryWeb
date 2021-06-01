@@ -1034,7 +1034,9 @@
     <Content Include="Assets\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Assets\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Assets\plugins\timepicker\bootstrap-timepicker.min.js" />
-    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\ApplicationInsights.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="bin\DevExpress.Charts.v20.1.Core.dll" />
     <Content Include="bin\DevExpress.CodeParser.v20.1.dll" />
     <Content Include="bin\DevExpress.Data.Desktop.v20.1.dll" />
