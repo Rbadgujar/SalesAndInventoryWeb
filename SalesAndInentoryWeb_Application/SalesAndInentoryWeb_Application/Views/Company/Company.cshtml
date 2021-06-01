@@ -3,7 +3,8 @@
     ViewBag.Title = "Company";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-
+<br>
+<br>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
@@ -20,7 +21,7 @@
   
     @using (Html.BeginForm())
     {
-        <div class="panel panel-primary">
+        <div class="panel panel-primary" style="height:100%; width:100%;">
             <div class="panel-heading text-center"><h4>Company Details</h4></div>
             <div class="panel-body text-center">
                 <center>
@@ -412,8 +413,9 @@
                         </tbody>
                     </table>
                 </center>
-                <div class="text-center">
-                    <button class="btn btn-primary" type="submit">Save</button>
+                <div>
+                    <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; margin-top:2px; " />
+                    <a class="btn btn-success" href=@Url.Action("Index","PaymentOut") style="margin-right:1100px;">Back To List</a>
                 </div>
 
             </div>

@@ -24,8 +24,8 @@
 
     @using (Html.BeginForm())
     {
-        <div class="panel panel-primary container">
-            <div class="panel-heading text-center" style="height:40px;"><h4 style="margin-top:-4px;">Purchase Bill</h4></div>
+        <div class="panel panel-primary container" style="height:100%; width:100%;">
+            <div class="panel-heading text-center"><h4 style="">Purchase Bill</h4></div>
             <div class="panel border-box">
                 <nav class="navbar navbar-default ">
                     <div class="container-fluid">
@@ -637,8 +637,8 @@
                 </nav>
                 <div>
                     <div>
-                        <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; margin-bottom:50px; " />
-                        <a class="text-right btn btn-success" href="Grid">Back To List</a>
+                        <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px;" />
+                        <a class="text-right btn btn-success" href=@Url.Action("Index","PurchaseBill")>Back To List</a>
                     </div>
                 </div>
             </div>

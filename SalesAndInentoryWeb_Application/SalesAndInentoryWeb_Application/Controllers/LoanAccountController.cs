@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SalesAndInentoryWeb_Application.Models;
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-    public class SaleInvoiceController : Controller
+    public class LoanAccountController : Controller
     {
-        // GET: SaleInvoice
+        // GET: LoanAccount
         public ActionResult Index()
         {
-           
             return View();
         }
-       
-        public ActionResult SaleInvoice()
+        public ActionResult AddOrEdit()
         {
-           
             return View();
         }
     }
