@@ -2019,6 +2019,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="bin\App_Data\" />
     <Folder Include="bower_components\dist\" />
     <Folder Include="css\" />
