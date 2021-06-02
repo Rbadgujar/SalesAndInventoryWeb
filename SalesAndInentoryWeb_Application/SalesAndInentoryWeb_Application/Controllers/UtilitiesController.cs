@@ -17,8 +17,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult Importitem()
         {
             return View();
-        }
-
-       
+        }      
     }
 }
