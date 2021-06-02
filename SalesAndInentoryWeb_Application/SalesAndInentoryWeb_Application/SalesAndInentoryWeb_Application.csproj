@@ -1671,6 +1671,7 @@
     <Compile Include="Controllers\PaymentOutController.cs" />
     <Compile Include="Controllers\PurchaseBillController.cs" />
     <Compile Include="Controllers\SaleInvoiceController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2011,6 +2012,7 @@
     <Content Include="Views\Expence\AddOrEdit.cshtml" />
     <Content Include="Views\LoanAccount\AddOrEdit.cshtml" />
     <Content Include="Views\MakePayment\Makepayment.cshtml" />
+    <Content Include="Views\Setting\GenrelSeeting.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
