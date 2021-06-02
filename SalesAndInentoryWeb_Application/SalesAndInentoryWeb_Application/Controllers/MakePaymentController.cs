@@ -13,5 +13,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+        public ActionResult Makepayment()
+        {
+            return View();
+        }
     }
 }

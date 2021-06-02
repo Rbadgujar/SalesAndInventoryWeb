@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
-
 }
 <br>
 
@@ -66,14 +65,13 @@
                      { "data": "OpeningBal" },
                      { "data": "AsOfDate" },
                       { "data": "ShippingAddress" },                    
-                    {                   "data": "PartiesID", "render": function (data) {
+                    {"data": "PartiesID", "render": function (data) {
                         return "<a class='btn btn-default btn-sm' href=('@Url.Action("AddOrEdit","PartyMaster")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
                         "width":"150px"
                     }
-
                 ],
                 "language": {
 
@@ -87,13 +85,12 @@
             $.get(url)
             .done(function (response) {
                 formDiv.html(response);
-
                 Popup = formDiv.dialog({
                     autoOpen: true,
                     resizable: false,
                     title: 'Fill Adjust Bank Details',
                     height: 700,
-                    width: 1000,
+                    width: 900,
                     close: function () {
                         Popup.dialog('destroy').remove();
                     }
@@ -137,15 +134,12 @@
                         if (data.success)
                         {
                             dataTable.ajax.reload();
-
                             $.notify(data.message, {
                                 globalPosition: "top center",
                                 className: "success"
                             })
-
                         }
                     }
-
                 });
             }
         }
