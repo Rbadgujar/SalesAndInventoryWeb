@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
@@ -21,14 +20,15 @@
     )
 </head>
 <nav>
-    <div style="text-align:center"><h3><b>Debit Note</b></h3></div></nav>
-            <div class="container">
-                <nav class="navbar navbar-default ">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse ">
-                            <div class="row">
-                                <div class="form-group col-md-2">
-                                    @Html.DevExpress().Label(settings =>
+    <div style="text-align:center"><h3><b>Purchase Order</b></h3></div>
+</nav>
+<div class="container">
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse ">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        @Html.DevExpress().Label(settings =>
                    {
                        settings.Style["margin-top"] = "15px";
                        settings.ControlStyle.CssClass = "form-control";
@@ -37,12 +37,12 @@
                    }).GetHtml()
 
 
-                                </div>
+                    </div>
 
-                                <div class="form-group col-xs-2">
+                    <div class="form-group col-xs-2">
 
 
-                                    @Html.DevExpress().DateEdit(settings =>
+                        @Html.DevExpress().DateEdit(settings =>
                    {
                        settings.ControlStyle.CssClass = "form-control";
                        settings.Style["margin-top"] = "15px";
@@ -50,75 +50,75 @@
                        settings.Properties.NullText = "From";
                    }).GetHtml()
 
-                                </div>
+                    </div>
 
 
-                                <div class="form-group col-xs-2">
+                    <div class="form-group col-xs-2">
 
 
-                                    @Html.DevExpress().DateEdit(settings =>
-                   {
-                       settings.ControlStyle.CssClass = "form-control";
-                       settings.Style["margin-top"] = "15px";
-                       settings.Name = "DateEdi";
-                       settings.Properties.NullText = "to";
-                    
-                   }).GetHtml()
+                        @Html.DevExpress().DateEdit(settings =>
+                               {
+                                   settings.ControlStyle.CssClass = "form-control";
+                                   settings.Style["margin-top"] = "15px";
+                                   settings.Name = "DateEdi";
+                                   settings.Properties.NullText = "to";
 
-                                </div>
-                                <div class="form-group col-md-3">
-                                  
+                               }).GetHtml()
 
-                                    @Html.DevExpress().TextBox(settings =>
+                    </div>
+                    <div class="form-group col-md-3">
+
+
+                        @Html.DevExpress().TextBox(settings =>
                                {
                                    settings.ControlStyle.CssClass = "form-control";
                                    settings.Style["margin-top"] = "15px";
                                    settings.Name = "Serchdata";
                                    settings.Properties.NullText = "Serach Transaction..";
                                }).GetHtml()
-                            </div>
-                                <a class="btn btn-success pull-right" style="margin-top:15px;margin-left:5px;" onclick=""><span class="glyphicon glyphicon-print"></span> Print </a>
-                                <a class="btn btn-info row pull-right" style="margin-top:15px; margin-right:5px; " href="@Url.Action("AddOrEdit", "DebitNote")"><i class="fa fa-plus"></i>Add DebitNote</a>
-                            </div>
-
-                        </div>
                     </div>
-                </nav>
-
-                <nav class="navbar navbar-default ">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse ">
-                            <table id="estimate" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Invoice Date</th>
-                                        <th>Return No</th>
-                                        <th>Party Name</th>
-                                        <th>Total</th>
-                                        <th>Recived</th>
-                                        <th>Status</th>
-                                        <th>DueDate</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </nav>
+                    <a class="btn btn-success pull-right" style="margin-top:15px;margin-left:5px;" onclick=""><span class="glyphicon glyphicon-print"></span> Print </a>
+                    <a class="btn btn-info row pull-right" style="margin-top:15px; margin-right:5px; " href="@Url.Action("AddOrEdit", "PurchaseOrder")"><i class="fa fa-plus"></i>Add Purchase Order</a>
+                </div>
 
             </div>
-            <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        </div>
+    </nav>
 
-            @section scripts{
-                <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-                <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse ">
+                <table id="estimate" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Invoice Date</th>
+                            <th>Return No</th>
+                            <th>Party Name</th>
+                            <th>Total</th>
+                            <th>Recived</th>
+                            <th>Status</th>
+                            <th>DueDate</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </nav>
 
-                <script>
+</div>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
                     var Popup, dataTable;
                     $(document).ready(function () {
                         dataTable =  $("#estimate").DataTable({
                             "ajax": {
-                                "url": "/DebitNote/DebitNote",
+                                "url": "/PurchaseOrder/PurchaseOrder",
                                 "type": "GET",
                                 "datatype": "json"
                             },
@@ -212,8 +212,8 @@
                             });
                         }
                     }
-                </script>
-            }
+    </script>
+}
 
 
 

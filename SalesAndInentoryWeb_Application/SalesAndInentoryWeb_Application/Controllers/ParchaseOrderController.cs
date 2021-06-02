@@ -8,45 +8,45 @@ using System.Data.Entity;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-    public class DebitNoteController : Controller
+    public class ParchaseOrderController : Controller
     {
-        // GET: DebitNote
-        public ActionResult DebitNote()
+        // GET: ParchaseOrder
+        public ActionResult PurchaseOrder()
         {
             return View();
         }
 
-        public ActionResult itemdata()
+        public ActionResult EstimateData()
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
-                List<tbl_DebitNote> estimate = db.tbl_DebitNote.ToList<tbl_DebitNote>();
+                db.Configuration.LazyLoadingEnabled = false;
+                List<tbl_PurchaseOrder> estimate = db.tbl_PurchaseOrder.ToList<tbl_PurchaseOrder>();
                 return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
             }
         }
-
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)
-                return View(new tbl_CreditNote1());
+                return View(new tbl_PurchaseOrder());
             else
             {
                 using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
                 {
-                    return View(db.tbl_CreditNote1.Where(x => x.InvoiceNo == id).FirstOrDefault<tbl_CreditNote1>());
+                    return View(db.tbl_PurchaseOrder.Where(x => x.OrderNo == id).FirstOrDefault<tbl_PurchaseOrder>());
                 }
             }
         }
 
         [HttpPost]
-        public ActionResult AddOrEdit(tbl_DebitNote emp)
+        public ActionResult AddOrEdit(tbl_PurchaseOrder emp)
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
-                if (emp.InvoiceNo == 0)
+                if (emp.OrderNo == 0)
                 {
-                    db.tbl_DebitNote.Add(emp);
+                    db.tbl_PurchaseOrder.Add(emp);
                     db.SaveChanges();
                     return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
                 }
@@ -58,22 +58,21 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 }
             }
 
+
         }
-
-
-        // GET: DebitNote/Details/5
+        // GET: ParchaseOrder/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: DebitNote/Create
+        // GET: ParchaseOrder/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: DebitNote/Create
+        // POST: ParchaseOrder/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -89,13 +88,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-        // GET: DebitNote/Edit/5
+        // GET: ParchaseOrder/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: DebitNote/Edit/5
+        // POST: ParchaseOrder/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -111,13 +110,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-        // GET: DebitNote/Delete/5
+        // GET: ParchaseOrder/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: DebitNote/Delete/5
+        // POST: ParchaseOrder/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
