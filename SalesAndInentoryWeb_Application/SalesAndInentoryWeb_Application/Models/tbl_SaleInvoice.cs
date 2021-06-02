@@ -80,5 +80,6 @@ namespace SalesAndInentoryWeb_Application.Models
         public virtual tbl_SaleInvoiceInner tbl_SaleInvoiceInner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_SaleInvoiceInner> tbl_SaleInvoiceInner1 { get; set; }
+        public virtual ICollection<tbl_ItemMaster> tbl_ItemMaster { get; set; }
     }
 }
