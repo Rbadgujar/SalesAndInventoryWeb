@@ -2021,6 +2021,14 @@
     <Content Include="Views\Expence\AddOrEdit.cshtml" />
     <Content Include="Views\LoanAccount\AddOrEdit.cshtml" />
     <Content Include="Views\MakePayment\Makepayment.cshtml" />
+    <Content Include="Views\ParchaseOrder\AddOrEdit.cshtml" />
+    <Content Include="Views\ParchaseOrder\PurchaseOrder.cshtml" />
+    <Content Include="Views\SaleOrder\AddOrEdit.cshtml" />
+    <Content Include="Views\SaleOrder\SaleOrder.cshtml" />
+    <Content Include="Views\Utilities\Importitem.cshtml" />
+    <Content Include="Views\Utilities\ImportParty.cshtml" />
+    <Content Include="Views\Utilities\_DataViewPartial.cshtml" />
+    <Content Include="Views\Utilities\_GridViewPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
