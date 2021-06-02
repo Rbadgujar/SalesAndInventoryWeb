@@ -1,7 +1,9 @@
 ﻿@model SalesAndInentoryWeb_Application.Models.tbl_SaleInvoice
+
+    
 @{
     ViewBag.Title = "SaleInvoice";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/ideal.cshtml";
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,234 +12,191 @@
         new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
     )
-    @Html.DevExpress().GetScripts(
+        @Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.Editors }
     )
+    <style>
+        .scrolldown {
+    overflow-y:scroll;
+    height:100px;
+}   
+    </style>
+
+        <script src="~/scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnaddtolist").click(function () {
+                AddToItem();
+            });
+        });
+        function RemoveItem(ItemName)
+        {
+            $(ItemName).closest('tr').remove();
+        }
+        function AddToItem()
+        {
+            var tableitemlist = $("#tblSaleInvoice");
+            var ItemName=$("#dp").val();
+            var mrp = $("#sp").val();
+            var tax = $("#ts").val();
+            var dis = $("#ds").val();
+            var qty = $("#qty").val();
+            var disamt = $("#da").val();
+            var taxmat = $("#sa").val();
+            var total = $("#ca").val();
+
+            var itemlist = "<tr><div class='scrollit'><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
+            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
+            tableitemlist.append(itemlist);
+            reset();
+        }
+        function reset()
+        {
+            $("#dp").val('');
+            $("#sp").val('');
+            $("#ts").val('');
+            $("#ds").val('');
+            $("#qty").val('');
+            $("#da").val('');
+            $("#sa").val('');
+            $("#ca").val('');
+        }
+    </script>
 </head>
 <body>
-    <br><br>
     @using (Html.BeginForm())
     {
-        <div class="panel panel-primary">
-            <div class="panel-heading text-center"><h4>Sale Invoice</h4></div>
-            <div class="panel-body text-center">
-                <center>
+        <div class="panel panel-primary container" style="height:100%; width:100%;">
+            <div class="panel-heading text-center" style="height:50px;"><h4>Sale Invoice</h4></div>
+               <div class="panel border-box">
+                   <nav class="navbar navbar-default ">
+                       <div class="container-fluid">
+                           <div class="collapse navbar-collapse ">
+                               <div class="row">
+                                   <div class="form-group col-md-3">
+                                       @Html.DevExpress().Label(settings =>
+                               {
+                                   settings.Style["font-weight"] = "bold";
 
-                    <table class="tabel table-sm" column-gap="40px">
-                        <tbody>
+                                   settings.Name = "Label1";
+                                   settings.Text = "Party Name   :";
 
-                            <tr>                              
-                                <td style="padding:0 15px 0 15px">                                   
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
+
+                               }).GetHtml()
+                                       @Html.DevExpress().DropDownEditFor(m => m.PartyName, settings =>
+                                       {
+                                           settings.Properties.NullText = "Select Party";
+                                           settings.ControlStyle.CssClass = "form-control";
+
+                                           settings.SetDropDownWindowTemplateContent(c =>
                                            {
-                                               settings.Style["font-weight"] = "bold";
-
-                                               settings.Name = "Label1";
-                                               settings.Text = "Customer Name   :";
-
-
-                                           }).GetHtml()
-                                    </div>
-                                </td>
-
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center">
-                                            @Html.DevExpress().DropDownEditFor(m => m.PartyName, settings =>
-                                           {
-                                               settings.SetDropDownWindowTemplateContent(c =>
-                                               {
-                                                   ViewContext.Writer.Write("DropDown content");
-
-                                               });
-                                               settings.ControlStyle.CssClass = "form-control";
-                                               settings.Properties.NullText = "---Select State---";
-                                           }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right">
-                                        @Html.DevExpress().Label(settings =>
+                                               ViewContext.Writer.Write("DropDown content");
+                                           });
+                                       }).GetHtml()
+                                   </div>
+                                   <div class="form-group col-xs-2">
+                                       @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label2";
-                                   settings.Text = "Address   :";
+                                   settings.Text = "Po No   :";
 
                                }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center">
-                                            @Html.DevExpress().TextBoxFor(m => m.PoNumber, settings =>
+                                       @Html.DevExpress().TextBoxFor(m => m.PoNumber, settings =>
                                    {
                                        settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Po No...";
+                                       settings.Properties.NullText = "Enter Po Number...";
                                    }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-left">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "Label17";
-                                   settings.Text = "Invoice Date   :";
-
-                               }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-left">
-                                        @Html.DevExpress().DateEditFor(m => m.InvoiceDate, settings =>
-                                            {
-                                            }).GetHtml()
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
+                                   </div>
+                                   <div class="form-group col-xs-2">
+                                       @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label3";
-                                   settings.Text = "Billing Address  :";
+                                   settings.Text = "Po Date :";
 
                                }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.BillingName, settings =>
-                                   {
-                                       // settings.Width = 300;
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Billing Address....";
-                                   }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "Label4";
-                                   settings.Text = "Po Date   :";
+                                       @Html.DevExpress().DateEditFor(m => m.PoDate, settings =>
+                        {
+                            settings.ControlStyle.CssClass = "form-control";
+                            settings.Properties.NullText = "dd/MM/YYYY";
 
-                               }).GetHtml()
-
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center">
-                                            @Html.DevExpress().DateEditFor(m => m.PoDate, settings =>
-                                            {
-                                            }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 20px 20px 20px">
-
-                                    <div class="form-group text-center">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "Label4";
-                                   settings.Text = "Eway No   :";
-
-                               }).GetHtml()
-                                    </div>
-
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.EwayBillNo, settings =>
-                                   {
-                                       // settings.Width = 300;
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Eway No....";
-                                   }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
+                        }).GetHtml()
+                                   </div>
+                                   <div class="form-group col-xs-2">
+                                       @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
 
-                                   settings.Name = "Label5";
-                                   settings.Text = "Contact No  :";
+                                   settings.Name = "Label90";
+                                   settings.Text = "Invoice Date :";
 
                                }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.ContactNo, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Contact No....";
-                                   }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
+                                       @Html.DevExpress().DateEditFor(m => m.InvoiceDate, settings =>
+                        {
+                            settings.ControlStyle.CssClass = "form-control";
+                            settings.Properties.NullText = "dd/MM/YYYY";
+
+                        }).GetHtml()
+                                   </div>
+                                   <div class="form-group col-md-3">
+                                       @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
-
                                    settings.Name = "Label6";
-                                   settings.Text = "Barcode Scanning   :";
-
+                                   settings.Text = "Eway No   :";
                                }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center">
-                                            @Html.DevExpress().TextBoxFor(m => m.Barcode, settings =>
+                                       @Html.DevExpress().TextBoxFor(m => m.EwayBillNo, settings =>
                                    {
+                                       settings.Properties.NullText = "Enter Eway No...";
                                        settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Barcode....";
                                    }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
+                                   </div>
+                               </div>
+
+                               <div class="row">
+                                   <div class="form-group col-xs-4">
+                                       @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
 
-                                   settings.Name = "Label7";
-                                   settings.Text = "State Of Supply  :";
+                                   settings.Name = "Label4";
+                                   settings.Text = "Billing Address   :";
+
 
                                }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center ">
 
-                                            @Html.DevExpress().DropDownEditFor(m => m.StateofSupply, settings =>
+                                       @Html.DevExpress().TextBoxFor(m => m.BillingName, settings =>
+                                   {
+                                       settings.Properties.NullText = "Enter Billing Address...";
+                                       settings.ControlStyle.CssClass = "form-control";
+                                   }).GetHtml()
+                                   </div>
+                                   <div class="form-group col-xs-4">
+                                       @Html.DevExpress().Label(settings =>
+                               {
+                                   settings.Style["font-weight"] = "bold";
+                                   settings.Name = "Label7";
+                                   settings.Text = "Contact No   :";
+                               }).GetHtml()
+
+                                       @Html.DevExpress().TextBoxFor(m => m.ContactNo, settings =>
+                                   {
+                                       settings.Properties.NullText = "Enter Contact No...";
+                                       settings.ControlStyle.CssClass = "form-control";
+                                   }).GetHtml()
+                                   </div>
+                                   <div class="form-group col-xs-4">
+                                       @Html.DevExpress().Label(settings =>
+                               {
+                                   settings.Style["font-weight"] = "bold";
+                                   settings.Name = "Label9";
+                                   settings.Text = "State Of Supply   :";
+                               }).GetHtml()
+                                       @Html.DevExpress().DropDownEditFor(m => m.StateofSupply, settings =>
                                        {
                                            settings.Properties.NullText = "Select State";
                                            settings.ControlStyle.CssClass = "form-control";
@@ -247,347 +206,429 @@
                                                ViewContext.Writer.Write("DropDown content");
                                            });
                                        }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                            </tr>
-                           
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="form-group col-xs-4">
+
+                                       @Html.DevExpress().CheckBox(settings =>
+                      {
+                          settings.Style["font-weight"] = "bold";
+                          settings.Name = "CheckBox";
+                          settings.Checked = false;
+                          settings.Text = "Barcode";
+
+
+                          settings.Properties.ClientSideEvents.CheckedChanged = "function (s, e){ mytext.SetVisible(!mytext.GetVisible());}";
+                          // settings.Properties.ClientSideEvents.CheckedChanged = "function (s, e){ mylbl.SetVisible(!mylbl.GetVisible());}";
+                      }).GetHtml()
+
+
+                                   </div>
+                                   <div class="form-group col-xs-4">
+                                       @Html.DevExpress().TextBoxFor(m => m.Barcode, settings =>
+                                  {
+                                      settings.Name = "mytext";
+                                      settings.ClientVisible = false;
+                                      settings.Properties.NullText = "Enter Barcode...";
+                                      settings.ControlStyle.CssClass = "form-control";
+                                      settings.SkinID = "1";
+                                  }).GetHtml()
+                                   </div>
+                               </div>
+
+                           </div>
+                       </div>
+                   </nav>
+                     
+                   <nav class="navbar navbar-default ">
+                       <div class="container-fluid">
+                           <div class="collapse navbar-collapse ">
+                               <div class="row">
+                                   <div class="form-group col-xs-2">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
+
+                                               settings.Name = "Label10";
+                                               settings.Text = "Item Name";
+                                           }).GetHtml()
+
+                                       <select name="cars" id="dp" class="form-control">
+                                           <option value="volvo">Volvo</option>
+                                           <option value="saab">Saab</option>
+                                           <option value="mercedes">Mercedes</option>
+                                           <option value="audi">Audi</option>
+                                       </select>
+
+                                   </div>
+
+                                   <div class="form-group col-xs-2">
+
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
+
+                                               settings.Name = "Label11";
+                                               settings.Text = "MRP";
+                                           }).GetHtml()
+
+                                       <input type="text" id="sp" name="" class="form-control">
+
+                                   </div>
+                                   <div class="form-group col-xs-1">
+
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
+
+                                               settings.Name = "Label13";
+                                               settings.Text = "Tax(%)";
+                                           }).GetHtml()
+
+                                       <input type="text" id="ts" name="" class="form-control">
+
+
+                                   </div>
+                                   <div class="form-group col-xs-1">
+
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
+
+                                               settings.Name = "Label16";
+                                               settings.Text = "Discount";
+                                           }).GetHtml()
+
+                                       <input type="text" id="ds" name="" class="form-control">
+
+
+                                   </div>
+                                   <div class="form-group col-xs-1">
+
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
+
+                                               settings.Name = "Label14";
+                                               settings.Text = "Qty";
+                                           }).GetHtml()
+
+                                       <input type="text" id="qty" name="" class="form-control">
+
+
+                                   </div>
+                                   <div class="form-group col-xs-1">
+
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
+
+                                               settings.Name = "Label15";
+                                               settings.Text = "Dis Amt";
+                                           }).GetHtml()
+
+                                       <input type="text" id="da" name="" class="form-control">
+
+                                   </div>
+                                   <div class="form-group col-xs-1">
+
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
+
+                                               settings.Name = "Label17";
+                                               settings.Text = "Tax Amt";
+                                           }).GetHtml()
+
+                                       <input type="text" id="sa" name="" class="form-control">
+
+
+                                   </div>
+                                   <div class="form-group col-xs-2">
+
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
+
+                                               settings.Name = "Label18";
+                                               settings.Text = "Total";
+                                           }).GetHtml()
+
+                                       <input type="text" id="ca" name="" class="form-control">
+                                   </div>
+                   
+                                       <div class="col-xs-1">
+                                           <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
+                                       </div>
+                               </div>        
+                           </div>
+                       </div>
+                   </nav>
+                   <nav class="navbar navbar-default ">
+                       <div class="container-fluid">
+                           <div class="collapse navbar-collapse ">
+                              <div class="form-group scrolldown">
+                                  <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
+                                          <thead>
+                                              <tr>
+                                                  <th>Item Name</th>
+                                                  <th>MRP</th>
+                                                  <th>Tax</th>
+                                                  <th>Discount</th>
+                                                  <th>Qty</th>
+                                                  <th>Discount Amt</th>
+                                                  <th>Tax Amt</th>
+                                                  <th>Total</th>
+                                              </tr>
+                                          </thead>
+                                  </table>
+                                  </div>
+                           </div>
+                       </div>
+                   </nav>
+                   <nav class="navbar navbar-default ">
+                       <div class="container-fluid">
+                           <div class="collapse navbar-collapse ">
+                               <div class="row">
                             
-                            <nav class="navbar navbar-default ">
-                                <div class="container-fluid">
-                                    <div class="collapse navbar-collapse ">
-                                        <tr>
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-right ">
-                                                    @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
+                                   <div class="col-md-1 form-group" style="margin-top:8px;">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                                                           settings.Name = "Label20";
-                                                           settings.Text = "Item Name   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <center>
-                                                    <div class="form-group text-center">
-                                                        @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label21";
-                                                           settings.Text = "MRP   :";
-
-                                                       }).GetHtml()
-                                                    </div>
-                                                </center>
-
-                                            </td>
-
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-left">
-                                                   @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label22";
-                                                           settings.Text = "Discount   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-left">
-                                                    @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label23";
-                                                           settings.Text = "Tax( % )   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-left">
-                                                    @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label23";
-                                                           settings.Text = "Qty   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-left">
-                                                    @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label23";
-                                                           settings.Text = "Qty   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-left">
-                                                    @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label24";
-                                                           settings.Text = "Qty   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-left">
-                                                    @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label25";
-                                                           settings.Text = "Discount Amt   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-left">
-                                                    @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label26";
-                                                           settings.Text = "Tax Amt   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-                                            <td style="padding:0 15px 0 15px" class="col-md-1">
-                                                <div class="form-group text-left">
-                                                    @Html.DevExpress().Label(settings =>
-                                                       {
-                                                           settings.Style["font-weight"] = "bold";
-
-                                                           settings.Name = "Label23";
-                                                           settings.Text = "Total   :";
-
-                                                       }).GetHtml()
-                                                </div>
-                                            </td>
-                                        </tr>
+                                               settings.Name = "Label40";
+                                               settings.Text = "PaymentType:";
+                                           }).GetHtml()
+                                   </div>
+                                   <div class="col-md-3" >
+                                    @Html.DevExpress().DropDownEditFor(m => m.PaymentType, settings =>
+                                     {
+                                         settings.Properties.NullText = "Select PaymentType";
+                                         settings.ControlStyle.CssClass = "form-control";
+                                         settings.SetDropDownWindowTemplateContent(c =>
+                                         {
+                                             ViewContext.Writer.Write("DropDown content");
+                                         });
+                                     }).GetHtml()
+                                       <div class="col-xs-2">
+                                       
+                                           </div>
                                     </div>
-                                </div>
-                            </nav>
-                            
-                            
-                             @*<tr>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
+                                  
+                               </div>
+                               @*<div class="row">
+                                   <div class="col-md-1 form-group" style="margin-top:8px;">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                                   settings.Name = "Label8";
-                                   settings.Text = "GST Number   :";
+                                               settings.Name = "Label41";
+                                               settings.Text = "Description:";
+                                           }).GetHtml()
+                                   </div>
+                                   <div class="col-md-3" >
+                                       @Html.DevExpress().TextBoxFor(m => m.Description, settings =>
+                                   {
+                                       settings.Properties.NullText = "Enter Description";
+                                       settings.ControlStyle.CssClass = "form-control";
+                                   }).GetHtml()
+                                       <div class="col-xs-2">
+                                         
+                                       </div>
+                                   </div>
+                                  
+                               </div>*@
+                               <div class="row">
+                                   <div class="col-md-1 form-group" style="margin-top:8px;">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                               }).GetHtml()
-                                    </div>
-                                </td>
-
-                                <td style="padding:0 15px 0 15px">
-
-
-                                    <center>
-                                        <div class="form-group text-center">
-                                            @Html.DevExpress().TextBoxFor(m => m.GSTNumber, settings =>
+                                               settings.Name = "Label44";
+                                               settings.Text = "TransportName:";
+                                           }).GetHtml()
+                                   </div>
+                                   <div class="col-md-3">                               
+                                       @Html.DevExpress().TextBoxFor(m => m.TransportName, settings =>
                                        {
+                                           settings.Properties.NullText = "Enter TransportName";
                                            settings.ControlStyle.CssClass = "form-control";
-                                           settings.Properties.NullText = "Enter GST Number...";
                                        }).GetHtml()
-                                        </div>
-                                    </center>
+                                       </div>
+                                   <div class="col-md-4">
 
-                                </td>
+                                   </div>
+                                   <div class="col-md-1 form-group" style="margin-top:8px; ">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-left">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
+                                               settings.Name = "Label88";
+                                               settings.Text = "Total:";
+                                           }).GetHtml()
+                                   </div>
+                                   <div class="col-md-3 pull-right">
+                                       @Html.DevExpress().TextBoxFor(m => m.CalTotal,settings=>
+                                          {
+                                           settings.Properties.NullText = "0";
 
-                                   settings.Name = "Label18";
-                                   settings.Text = "Signature   :";
+                                           settings.ControlStyle.CssClass = "form-control";
+                                       }).GetHtml()
+                                
+                                   </div>
+                                       <div class="col-xs-2">
+                                   
+                                       </div>
+                                
+                               </div>
+                               <div class="row">
+                                   <div class="col-md-1 form-group" style="margin-top:8px; ">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                               }).GetHtml()
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
+                                               settings.Name = "Label45";
+                                               settings.Text = "DeliveryLoc:";
+                                           }).GetHtml()
+                                   </div>
+                                   <div class="col-md-3">
+                                       
 
-                                   settings.Name = "Label9";
-                                   settings.Text = "City  :";
-
-                               }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.City, settings =>
+                                       @Html.DevExpress().TextBoxFor(m => m.DeliveryLocation, settings =>
                                    {
+                                       settings.Properties.NullText = "Enter Delivery Location";
                                        settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter City....";
                                    }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
+                                   </div>
+                                       <div class="col-md-4">
 
-                                   settings.Name = "Label10";
-                                   settings.Text = "State   :";
+                                       </div>
+                                   <div class="col-md-1 form-group" style="margin-top:8px; ">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                               }).GetHtml()
+                                               settings.Name = "Label82";
+                                               settings.Text = "Received:";
+                                           }).GetHtml()
+                                   </div>
+                                       <div class="col-md-3 pull-right">
+                                           @Html.DevExpress().TextBoxFor(m => m.Received, settings =>
+                                          {
+                                              settings.Properties.NullText = "";
+                                              settings.ReadOnly = true;
+                                              settings.ControlStyle.CssClass = "form-control";
+                                          }).GetHtml()
+                                        
+                                       </div>
+                             
+                                       <div class="col-xs-2">
+                                       
+                                       </div>
+                                   
+                               </div>
+                               <div class="row">
+                                   <div class="col-md-1 form-group" style="margin-top:8px; ">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center">
+                                               settings.Name = "Label48";
+                                               settings.Text = "VehicleNO:";
+                                           }).GetHtml()
+                                   </div>
+                                   <div class="col-md-3">
 
-                                            @Html.DevExpress().DropDownEditFor(m => m.State, settings =>
-                                   {
-                                       settings.SetDropDownWindowTemplateContent(c =>
+                                       @Html.DevExpress().TextBoxFor(m => m.VehicleNumber, settings =>
                                        {
-                                           ViewContext.Writer.Write("DropDown content");
+                                           settings.Properties.NullText = "Enter Vehicle Number";
+                                           settings.ControlStyle.CssClass = "form-control";
+                                       }).GetHtml()
+                                   </div>
 
-                                       });
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "---Select State---";
-                                   }).GetHtml()
+                                       <div class="col-md-4">
+                                       </div>
+                                   <div class="col-md-1 form-group" style="margin-top:8px; ">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
+                                               settings.Name = "Label81";
+                                               settings.Text = "RemainingBal:";
+                                           }).GetHtml()
+                                   </div>
+                                       <div class="col-md-3 pull-right">
+                                           @Html.DevExpress().TextBoxFor(m => m.RemainingBal, settings =>
+                                          {
+                                              settings.Properties.NullText = "";
+                                              settings.ReadOnly = true;
+                                              settings.ControlStyle.CssClass = "form-control";
+                                          }).GetHtml()
+                                     
+                                       </div>
 
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group">
-                                        @Html.EditorFor(model => model.AddLogo, new { htmlAttributes = new { @class = "form-cotrol" } })
-                                        <input type="file" name="imageload" />
-                                    </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-md-1 form-group" style="margin-top:8px; ">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "Label11";
-                                   settings.Text = "Bank Name  :";
-
-                               }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center ">
-                                            @Html.DevExpress().DropDownEditFor(m => m.BankName, settings =>
-                                   {
-                                       settings.SetDropDownWindowTemplateContent(c =>
+                                               settings.Name = "Label49";
+                                               settings.Text = "DeliveryDate:";
+                                           }).GetHtml()
+                                   </div>
+                                   <div class="col-md-3">
+                                       
+                                       @Html.DevExpress().DateEditFor(m => m.Deliverydate, settings =>
                                        {
-                                           ViewContext.Writer.Write("DropDown content");
+                                           settings.Properties.NullText = "dd/MM/YYYY";
 
-                                       });
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "---Select BankName---";
-                                   }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
+                                           settings.ControlStyle.CssClass = "form-control";
 
-                                   settings.Name = "Label12";
-                                   settings.Text = "Account No   :";
+                                       }).GetHtml()
+                                   </div>
+                                       <div class="col-md-4">
+                                           
+                                       </div>
+                                   <div class="col-md-1 form-group" style="margin-top:8px; ">
+                                       @Html.DevExpress().Label(settings =>
+                                           {
+                                               settings.Style["font-weight"] = "bold";
 
-                               }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center">
-
-                                            @Html.DevExpress().TextBoxFor(m => m.AccountNo, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Account No....";
-                                   }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "Label13";
-                                   settings.Text = "IFSC Code   :";
-
-                               }).GetHtml()
-                                    </div>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <center>
-                                        <div class="form-group text-center">
-
-                                            @Html.DevExpress().TextBoxFor(m => m.IFSCCode, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter IFSC Code....";
-                                   }).GetHtml()
-                                        </div>
-                                    </center>
-                                </td>
-                            </tr>*@
-                        </tbody>
-                    </table>
-                </center>
-                <div class="text-center">
-                    <button class="btn btn-primary" type="submit">Save</button>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="text-right">
-            <a class="text-right" href="Grid">Back To List</a>
-        </div>
+                                               settings.Name = "Label47";
+                                               settings.Text = "Status:";
+                                           }).GetHtml()
+                                   </div>
+                                       <div class="col-md-3 pull-right ">
+                                            @Html.DevExpress().DropDownEditFor(m => m.Status, settings =>
+                                             {
+                                                 settings.Properties.NullText = "Select Status";
+                                                 settings.ControlStyle.CssClass = "form-control";
+                                                 settings.SetDropDownWindowTemplateContent(c =>
+                                                 {
+                                                     ViewContext.Writer.Write("DropDown content");
+                                                 });
+                                             }).GetHtml()
+                                       </div>
+                                       <div class="col-xs-2">
+                                      
+                                       </div>
+                                  
+                               </div>
+                           </div>
+                       </div>
+                   </nav>
+                   <div >
+                       <div>
+                           <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; " />
+                           <a class="text-right btn btn-success"  href="Grid">Back To List</a>
+                       </div>
+                   </div>
+          </div>
+       </div>
+       
     }
 </body>
 </html>

@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@Page.Title</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+        <title>Sidebar template</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+        <link href="~/css/mm.css" rel="stylesheet" />
+        @RenderSection("head", required: false)
+        <style>
+            .bg {
+  background: url('https://images.unsplash.com/photo-1445127040028-b1bdb9acd16e?crop=entropy&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1125') center top no-repeat;
+  display: block;
+  background-size: cover;
+  height: 768px;
+  width: 100%;
+  position: relative;
+}
+#txtserch {
+  background: rgba(255,255,255,0.4);
+  border: none;
+ 
+  outline: none;
+  width: 450px;
+  height: 30px;
+  top: 250px;
+  margin: 0 auto;
+  padding: 10px;
+  color: #333;
+  
+
+}
+::-webkit-input-placeholder { color: #666;} 
+:-moz-placeholder { color: #666; }
+::-moz-placeholder { color: #666; }
+:-ms-input-placeholder { color: #666; }
+
+#btn1{
+  background-color: DodgerBlue;
+  border: 1px solid;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width:150px;
+  border-radius: 16px;
+}
+#bt2{
+  background-color: DodgerBlue;
+  color: white;
+  padding: 11px 10px;
+  
+  cursor: pointer; 
+}
+        </style>
+    </head>
+<body>
+    <!--/.Navbar -->
+    <div class="page-wrapper chiller-theme toggled">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+            <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div class="sidebar-brand">
+                    <a href="#">pro sidebar</a>
+                    <div id="close-sidebar">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+                             alt="User picture">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">
+
+                            <strong> Ideal Tech Info </strong>
+                        </span>
+                        <span class="user-role">Owner</span>
+
+                    </div>
+                </div>
+                <!-- sidebar-header  -->
+                <!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-home"></i>
+                                <span>Add Company</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-cart-plus"></i>
+                                <span>Add Items</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user"></i>
+                                <span>Add Parties</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Sales</span>
+
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            Sale Invoice
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Sale Orders</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Payment In</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Credit Note</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-truck"></i>
+                                <span>Purchaes</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Purchase Bill</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Purchase Order</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Payment Out</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Debit Note</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-handshake"></i>
+                                <span>Bank Details</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Bank Account</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Loan Account</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Company Bank </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Cash In Hand </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-chart-line"></i>
+                                <span>Reports</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Sale Invoice Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Sale Order Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Purches Order Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Purches Bill Report </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-globe"></i>
+                                <span>Utility</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Emport Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Export Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Export Parties</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Backup To Drive</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Backup To Computer</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-cog"></i>
+                                <span>Setting</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- sidebar-menu  -->
+            </div>
+            <!-- sidebar-content  -->
+            <div class="sidebar-footer">
+                <a href="#">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-pill badge-warning notification">3</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge badge-pill badge-success notification">7</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-cog"></i>
+                    <span class="badge-sonar"></span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </div>
+
+            <div id="content">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-white" style="margin-top:1px; margin-left:240px; border: 1px solid">
+                    <div class="container-fluid">
+
+                        <i class="fa fa-search icon">
+
+                            <input type="text" id="txtserch" placeholder="Search Transactions.." />
+                        </i>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <button class="btn" id="btn1" style="background-color:red"><i class="fa fa-plus-circle"></i> Add Purchase </button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="btn" id="btn1" style="background-color:cornflowerblue"><i class="fa fa-plus-circle"></i> Add Sale  </button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="btn" id="btn1" style="background-color:white;color:black"><i class="fa fa-plus-circle"></i>Add More </button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="btn" id="bt2" style="background-color:white;color:black"><i class="fa fa-bell"></i></button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="btn" id="bt2" style="background-color:white;color:black"><i class="fa fa-cog"></i></button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="btn" id="bt2" style="background-color:white;color:black"><i class="fa fa-print"></i></button>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </nav>
+
+        </nav>
+        <!-- sidebar-wrapper  -->
+        <!-- page-content" -->
+
+        <main class="page-content">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+        </div>
+        <!-- page-wrapper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <script src="~/scripts/jquery.validate.min.js"></script>
+        <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script src="~/Scripts/notify.min.js"></script>
+        @RenderSection("scripts", required: false)
+        <script type="text/javascript">
+
+
+            $(".sidebar-dropdown > a").click(function () {
+                $(".sidebar-submenu").slideUp(200);
+                if (
+                  $(this)
+                    .parent()
+                    .hasClass("active")
+                ) {
+                    $(".sidebar-dropdown").removeClass("active");
+                    $(this)
+                      .parent()
+                      .removeClass("active");
+                } else {
+                    $(".sidebar-dropdown").removeClass("active");
+                    $(this)
+                      .next(".sidebar-submenu")
+                      .slideDown(200);
+                    $(this)
+                      .parent()
+                      .addClass("active");
+                }
+            });
+
+            $("#close-sidebar").click(function () {
+                $(".page-wrapper").removeClass("toggled");
+            });
+            $("#show-sidebar").click(function () {
+                $(".page-wrapper").addClass("toggled");
+            });
+
+
+
+
+        </script>
+
+</body>
+
+</html>
