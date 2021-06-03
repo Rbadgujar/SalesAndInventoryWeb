@@ -6,7 +6,6 @@
 
 @using (Html.BeginForm("AddOrEdit", "BankToBank", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
 {
-    <div>
     @Html.HiddenFor(model => model.ID)
     <div class="form-group">
         @Html.LabelFor(model => model.FromBank, new { @class = "control-label" })
@@ -38,6 +37,5 @@
         <input type="submit" value="Submit" class="btn btn-primary" />
         <input type="reset" value="Reset" class="btn" />
     </div>
-  </div>
 }
 
