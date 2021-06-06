@@ -6,34 +6,48 @@ using System.Web.Mvc;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-    public class UtilitiesController : Controller
+    public class SeetingController : Controller
     {
-        // GET: Utilities
+        // GET: Seeting
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Importitem()
+
+        public ActionResult GenrailSeeting()
         {
             return View();
         }
-        public ActionResult ImportParty()
+        public ActionResult TransactionSeting()
         {
             return View();
         }
-        // GET: Utilities/Details/5
+        public ActionResult PartySetting()
+        {
+            return View();
+        }
+        public ActionResult ItemSeeting()
+        {
+            return View();
+        }
+        public ActionResult taxGsstSetting()
+        {
+            return View();
+        }
+
+        // GET: Seeting/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Utilities/Create
+        // GET: Seeting/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Utilities/Create
+        // POST: Seeting/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -49,13 +63,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-        // GET: Utilities/Edit/5
+        // GET: Seeting/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Utilities/Edit/5
+        // POST: Seeting/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -71,13 +85,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-        // GET: Utilities/Delete/5
+        // GET: Seeting/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Utilities/Delete/5
+        // POST: Seeting/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

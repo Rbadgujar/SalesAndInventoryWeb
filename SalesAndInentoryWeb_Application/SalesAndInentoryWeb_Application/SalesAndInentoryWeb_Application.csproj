@@ -1680,6 +1680,8 @@
     <Compile Include="Controllers\PaymentOutController.cs" />
     <Compile Include="Controllers\PurchaseBillController.cs" />
     <Compile Include="Controllers\SaleInvoiceController.cs" />
+    <Compile Include="Controllers\SeetingController.cs" />
+    <Compile Include="Controllers\UtilitiesController.cs" />
     <Compile Include="Data_Access\Bank.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2029,6 +2031,11 @@
     <Content Include="Views\Utilities\ImportParty.cshtml" />
     <Content Include="Views\Utilities\_DataViewPartial.cshtml" />
     <Content Include="Views\Utilities\_GridViewPartial.cshtml" />
+    <Content Include="Views\Seeting\GenrailSeeting.cshtml" />
+    <Content Include="Views\Seeting\TransactionSeting.cshtml" />
+    <Content Include="Views\Seeting\PartySetting.cshtml" />
+    <Content Include="Views\Seeting\ItemSeeting.cshtml" />
+    <Content Include="Views\Seeting\taxGsstSetting.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
