@@ -488,15 +488,20 @@ desired effect
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
          user experience. -->
+    
+    <script src="~/scripts/jquery.validate.min.js"></script>
+   
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+   
+    <script src="~/scripts/jquery-1.12.4.min.js"></script>
+   
+    <script src="~/scripts/bootstrap.min.js"></script>
     <script src="~/scripts/jquery.validate.min.js"></script>
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script src="~/Scripts/notify.min.js"></script>
+    <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/scripts/jquery-notify.min.js"></script>
     @RenderSection("scripts", required: false)
-    @RenderSection("FooterScript", false)
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" /> 
 </body>
 </html>
