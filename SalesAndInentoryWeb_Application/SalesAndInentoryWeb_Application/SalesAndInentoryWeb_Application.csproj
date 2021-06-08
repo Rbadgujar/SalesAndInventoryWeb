@@ -1447,6 +1447,7 @@
     <Compile Include="Controllers\PurchaseBillController.cs" />
     <Compile Include="Controllers\SaleInvoiceController.cs" />
     <Compile Include="Controllers\SaleOrderController.cs" />
+    <Compile Include="Controllers\Seeting1Controller.cs" />
     <Compile Include="Controllers\UtilitiesController.cs" />
     <Compile Include="Data_Access\Bank.cs" />
     <Compile Include="Global.asax.cs">
