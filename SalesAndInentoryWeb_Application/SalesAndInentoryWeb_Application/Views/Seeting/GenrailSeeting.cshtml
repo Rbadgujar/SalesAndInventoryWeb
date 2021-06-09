@@ -1,0 +1,261 @@
+﻿
+@{
+    ViewBag.Title = "GenrailSeeting";
+    Layout = "~/Views/Shared/ideal.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .main {
+            display: block;
+            position: relative;
+            font-weight: normal;
+            padding-left: 45px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+ background-color:blue;
+  cursor: pointer;
+}
+        /* Hide the default checkbox */
+        input[type=checkbox] {
+            visibility: hidden;
+        }
+
+        /* Creating a custom checkbox
+        based on demand */
+        .geekmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: gray;
+        }
+
+        /* Specify the background color to be
+        shown when hovering over checkbox */
+        .main:hover input ~ .geekmark {
+            background-color: black;
+        }
+
+        /* Specify the background color to be
+        shown when checkbox is active */
+        .main input:active ~ .geekmark {
+            background-color: red;
+        }
+
+        /* Specify the background color to be
+        shown when checkbox is checked */
+        .main input:checked ~ .geekmark {
+            background-color: green;
+        }
+
+        /* Checkmark to be shown in checkbox */
+        /* It is not be shown when not checked */
+        .geekmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Display checkmark when checked */
+        .main input:checked ~ .geekmark:after {
+            display: block;
+        }
+
+        /* Styling the checkmark using webkit */
+        /* Rotated the rectangle by 45 degree and
+        showing only two border to make it look
+        like a tickmark */
+        .main .geekmark:after {
+            left: 8px;
+            bottom: 5px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 4px 4px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        #select1 {
+  // A reset of styles, including removing the default dropdown arrow
+  appearance: none;
+  // Additional resets for further consistency
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+}
+    </style>
+
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        <div class="panel panel-primary container" style="width:100%">
+            <div class="panel-heading text-center"><h3 style="margin-top:-4px;">General Settings</h3></div>
+            <div class="panel border-box">
+                <nav class="navbar navbar-default ">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse ">
+                            <div class="row">
+
+                                <div class="form-group col-md-4">
+
+                                    <h4>
+                                        Applications
+                                    </h4>
+
+                                    <hr>
+                                </div>
+                                <div class="form-group col-md-4">
+
+                                    <h4>
+                                        Multifroms
+                                    </h4>
+
+                                    <hr>
+
+                                </div>
+                                <div class="form-group col-md-4">
+
+                                    <h4> Backup</h4>
+                                    <hr>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="form-group col-md-4">
+                                    <label class="main">
+                                        Passcode 
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                      <label class="main">
+                                        Change Currency :
+                                        <select name="example" style="width:70px">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="-">Other</option>
+                                        </select>
+                                    </label>
+                                    <label class="main">
+                                        Amount:
+                                        <select name="example" style="width:70px">
+                                            <option value="A">1</option>
+                                            <option value="B">2</option>
+                                            <option value="-">3</option>
+                                        </select>
+                                    </label>
+
+                                    <label class="main">
+                                        Enable Lunch
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    <label class="main">
+                                        Gst In Number
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    <label>
+                                        <h3>    More Transactions :</h3>
+                                        <hr />
+                                    </label>
+                                    <label class="main">
+                                        Estiment And Qurtation
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    <label class="main">
+                                        Sale And PUrchase
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+
+                                    <label class="main">
+                                        Other Income
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    <label class="main">
+                                        Dilivery Chalan
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    </div>
+
+
+                                <div class="from-group col-md-4">
+
+                                    <div class="select">
+                                        <select id="standard-select">
+                                            <option value="Option 1">Ideal Tech Info</option>
+                                            <option value="Option 2">Vits and Brothers</option>
+
+                                            <option value="Option length">Option that has too long of a value to fit</option>
+                                        </select>
+                                        <br />
+                                        <br />
+                                        <input type="button" value="Set As Defualte" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="main">
+                                        Auto Backup :<input type="date" id="birthday" name="birthday">
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    <label>
+                                        <h5>
+                                            Auto Backup Every :
+                                          <input type="number" step="1" style="width:75px" /> Days
+                                        </h5>
+
+                                    </label>
+                                    <label>
+                                        <h5>
+                                            Manual  Backup Reminder :
+                                            <input type="number" step="1"  style="width:75px"/> Days
+                                        </h5>
+
+                                    </label>
+                                </div>
+
+                              
+                            </div>
+                              
+                            </div>
+                        </div>
+</nav>
+            </div>
+        </div>
+    }
+</body>
+</html>
+
+

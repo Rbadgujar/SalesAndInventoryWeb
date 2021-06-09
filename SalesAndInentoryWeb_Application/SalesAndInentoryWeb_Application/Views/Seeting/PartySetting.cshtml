@@ -1,0 +1,303 @@
+﻿
+@{
+    ViewBag.Title = "PartySetting";
+    Layout = "~/Views/Shared/ideal.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .main {
+            display: block;
+            position: relative;
+            font-weight: normal;
+            padding-left: 45px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height:15px;
+  width: 15px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            background-color: blue;
+            cursor: pointer;
+        }
+        /* Hide the default checkbox */
+        input[type=checkbox] {
+            visibility: hidden;
+        }
+
+        /* Creating a custom checkbox
+        based on demand */
+        .geekmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: gray;
+        }
+
+        /* Specify the background color to be
+        shown when hovering over checkbox */
+        .main:hover input ~ .geekmark {
+            background-color: black;
+        }
+
+        /* Specify the background color to be
+        shown when checkbox is active */
+        .main input:active ~ .geekmark {
+            background-color: red;
+        }
+
+        /* Specify the background color to be
+        shown when checkbox is checked */
+        .main input:checked ~ .geekmark {
+            background-color: green;
+        }
+
+        /* Checkmark to be shown in checkbox */
+        /* It is not be shown when not checked */
+        .geekmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Display checkmark when checked */
+        .main input:checked ~ .geekmark:after {
+            display: block;
+        }
+
+        /* Styling the checkmark using webkit */
+        /* Rotated the rectangle by 45 degree and
+        showing only two border to make it look
+        like a tickmark */
+        .main .geekmark:after {
+            left: 8px;
+            bottom: 5px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 4px 4px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        #select1 {
+            // A reset of styles, including removing the default dropdown arrow appearance: none;
+            // Additional resets for further consistency background-color: transparent;
+            border: none;
+            padding: 0 1em 0 0;
+            margin: 0;
+            width: 100%;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: inherit;
+            line-height: inherit;
+        }
+    </style>
+
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        <div class="panel panel-primary container" style="width:100%">
+            <div class="panel-heading text-center"><h3 style="margin-top:-4px;">Party Settings</h3></div>
+            <div class="panel border-box">
+                <nav class="navbar navbar-default ">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse ">
+                            <div class="row">
+
+                                <div class="form-group col-md-4">
+
+                                    <h4>
+                                      Party Seeting
+                                    </h4>
+
+                                    <hr>
+                                </div>
+                                <div class="form-group col-md-4">
+
+                                    <h4>
+                                      Additional Fieldes
+                                    </h4>
+
+                                    <hr>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="form-group col-md-4">
+                                    <label class="main">
+                                      Party Grouping
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    <label class="main">
+                                       Shiping Address
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    <label class="main">
+                                        Print Shiping Address
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+                                    <label class="main">
+                                       Cutemer Enable Payment Reminder
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                    </label>
+
+                                    <label>
+                                        <h5>
+                                          Reminder me for Payment due to in
+                                            <select name="example">
+                                                <option value="A">1</option>
+                                                <option value="B">2</option>
+                                                <option value="-">3</option>
+                                            </select> Days
+                                        </h5>
+
+                                    </label>
+
+                                    <label class="main">
+                                        <a href="">
+                                            Reminder Messege>>
+                                        </a>
+
+                                    </label>
+                                    </div>
+                                <div class="form-group col-md-5">
+                                    <label class="main">
+                                       Additional Feild1
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                        <input type="text"  value=""/>
+                                        <h5>
+                                            Show In Print  :<label class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </h5>
+                                    </label>
+                                    <label class="main">
+                                        Additional Feild2
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                        <input type="text" value="" />
+                                        <h5>
+                                            Show In Print  :<label class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </h5>
+                                    </label>
+                                    <label class="main">
+                                        Additional Feild3
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                        <input type="text" value="" />
+                                       <h5> Show In Print  :<label class="switch">
+    <input type="checkbox">
+    <span class="slider round"></span>
+</label></h5>
+                                    </label>
+                                    <label class="main">
+                                        Additional Feild4
+                                        <input type="checkbox">
+                                        <span class="geekmark"></span>
+                                        <input type="text" value="" />
+                                        <h5>
+                                            Show In Print  :<label class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </h5>
+                                    </label>
+                                </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+</nav>
+                </div>
+            </div>
+    }
+            </body>
+            </html>
+
