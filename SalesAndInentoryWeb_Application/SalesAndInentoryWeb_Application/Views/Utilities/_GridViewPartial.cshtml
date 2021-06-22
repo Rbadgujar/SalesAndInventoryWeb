@@ -1,0 +1,56 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView";
+        settings.CallbackRouteValues = new { Controller = "Utilities", Action = "GridViewPartial" };
+		
+				settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Utilities", Action = "GridViewPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Utilities", Action = "GridViewPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Utilities", Action = "GridViewPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+		
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+				
+		settings.KeyFieldName = "PartiesID";
+		
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = false;
+		settings.Settings.ShowFilterRow = false;
+		settings.SettingsBehavior.AllowSelectByRowClick = false;
+
+		settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+		settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+		settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 10;
+		settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+		settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+		
+				settings.Columns.Add("PartiesID");
+				settings.Columns.Add("PartyName");
+				settings.Columns.Add("ContactNo");
+				settings.Columns.Add("BillingAddress");
+				settings.Columns.Add("EmailID");
+				settings.Columns.Add("GSTType");
+				settings.Columns.Add("State");
+				settings.Columns.Add("OpeningBal");
+				settings.Columns.Add("AsOfDate");
+				settings.Columns.Add("AddRemainder");
+				settings.Columns.Add("PartyType");
+				settings.Columns.Add("ShippingAddress");
+				settings.Columns.Add("PartyGroup");
+				settings.Columns.Add("DeleteData");
+				settings.Columns.Add("Company_ID");
+				settings.Columns.Add("PaidStatus");
+				settings.Columns.Add("Customertype");
+				settings.Columns.Add("type");
+				settings.Columns.Add("tbl_PaymentIn");
+				settings.Columns.Add("tbl_Paymentout");
+				settings.Columns.Add("tbl_PurchaseBill");
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+	}
+@grid.Bind(Model).GetHtml()

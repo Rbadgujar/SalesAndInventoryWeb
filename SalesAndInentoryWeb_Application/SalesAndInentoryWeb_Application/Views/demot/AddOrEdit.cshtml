@@ -1,0 +1,41 @@
+﻿
+@model SalesAndInentoryWeb_Application.Models.tbl_BanktoBankTransfer
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddOrEdit", "BankToBank", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model => model.ID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.FromBank, new { @class = "control-label" })
+        @Html.EditorFor(model => model.FromBank, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FromBank)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ToBank, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ToBank, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ToBank)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Amount, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "control-label" })
+        </div>
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Descripition, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Descripition, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+        <input type="reset" value="Reset" class="btn" />
+    </div>
+}
+

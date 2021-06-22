@@ -29,9 +29,10 @@
                 <br>
                 <nav class="navbar navbar-default ">
                     <div class="container-fluid">
-                        <div class="collapse navbar-collapse ">
+                        <div class="collapse navbar-collapse " >
                             <br>
-                            <div class="row">
+                           
+                            <div class="row" style="margin-left:250px">
                                 <div class="form-group col-md-4">
                                     @Html.DevExpress().Label(settings =>
                                {
@@ -53,7 +54,7 @@
                                    });
                                }).GetHtml()
                                 </div>
-                                <div class="form-group col-xs-4">
+                                <div class="form-group col-xs-4"  style="margin-left:30px">
                                     @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
@@ -69,24 +70,10 @@
 
                                }).GetHtml()
                                 </div>
-                                <div class="form-group col-xs-4">
-                                    @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "Label56";
-                                   settings.Text = "Principal Amount   :";
-                               }).GetHtml()
-
-                                    @Html.DevExpress().TextBoxFor(m => m.PrincipleAmount, settings =>
-                               {
-                                   settings.Properties.NullText = "Enter Principal Amount...";
-                                   settings.ControlStyle.CssClass = "form-control";
-                               }).GetHtml()
-
-
-                                </div>
+                                
                             </div>
-                            <div class="row">
+                              
+                            <div class="row" style="margin-left:250px">
                                 <div class="form-group col-xs-4">
                                     @Html.DevExpress().Label(settings =>
                                {
@@ -103,7 +90,7 @@
                                }).GetHtml()
                                 </div>
 
-                                <div class="form-group col-xs-4">
+                                <div class="form-group col-xs-4" style="margin-left:30px">
                                     @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
@@ -118,25 +105,27 @@
                                    settings.ControlStyle.CssClass = "form-control";
                                }).GetHtml()
                                 </div>
-                                <div class="form-group col-xs-4">
-                                    @Html.DevExpress().Label(settings =>
+                                
+                            </div>
+
+                            <div class="row" style="margin-left:250px">
+                          
+                                    <div class="form-group col-xs-4">
+                                        @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
                                    settings.Name = "Label69";
                                    settings.Text = "Principal Amount   :";
                                }).GetHtml()
 
-                                    @Html.DevExpress().TextBoxFor(m => m.PrincipleAmount, settings =>
+                                        @Html.DevExpress().TextBoxFor(m => m.PrincipleAmount, settings =>
                                {
                                    settings.Properties.NullText = "Enter Principal Amount...";
                                    settings.ControlStyle.CssClass = "form-control";
                                }).GetHtml()
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-xs-4">
-                                    @Html.DevExpress().Label(settings =>
+                                    </div>
+                                    <div class="form-group col-xs-4" style="margin-left:30px">
+                                        @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
 
@@ -146,7 +135,7 @@
 
                                }).GetHtml()
 
-                                    @Html.DevExpress().DropDownEditFor(m => m.PaidFrom, settings =>
+                                        @Html.DevExpress().DropDownEditFor(m => m.PaidFrom, settings =>
                                {
                                    settings.Properties.NullText = "Select Paid From";
                                    settings.ControlStyle.CssClass = "form-control";
@@ -156,31 +145,24 @@
                                        ViewContext.Writer.Write("DropDown content");
                                    });
                                }).GetHtml()
-                                </div>
-                                <div class="form-group col-xs-4">
-                                    @Html.DevExpress().Label(settings =>
+                                    </div>                            
+                        </div>
+                        <div class="row" style="margin-left:250px">
+                            <div class="form-group col-xs-4" style="margin-left:3px;">
+                                @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
                                    settings.Name = "Label7";
                                    settings.Text = "Interst Amount   :";
                                }).GetHtml()
-                                   @Html.DevExpress().TextBoxFor(m => m.InterestAmount, settings =>
+                                @Html.DevExpress().TextBoxFor(m => m.InterestAmount, settings =>
                                {
                                    settings.Properties.NullText = "0";
                                    settings.ControlStyle.CssClass = "form-control";
                                }).GetHtml()
-                                </div>
-                               
-                                </div>
                             </div>
-                            <div class="row">
-                               
-
-
-                               
-                               
+                        </div>
                             </div>
-                            
                     </div>
                 </nav>
                 <div>

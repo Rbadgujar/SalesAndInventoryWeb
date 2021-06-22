@@ -19,7 +19,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
                 db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_PartyGroup> party = db.tbl_PartyGroup.ToList<tbl_PartyGroup>();
+                List<tbl_PartyMaster> party = db.tbl_PartyMaster.ToList<tbl_PartyMaster>();
                 return Json(new { data = party }, JsonRequestBehavior.AllowGet);
             }
         }

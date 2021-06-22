@@ -74,7 +74,7 @@ desired effect
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>I</b>TI</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Ideal Tech Info</b></span>
+                <span class="logo-lg"><b></b></span>
             </a>
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -283,9 +283,10 @@ desired effect
                         </a>
                         <ul class="treeview-menu">
                             <li><a href=@Url.Action("SaleInvoice", "SaleInvoice")>SALE INVOICE</a></li>
-                            <li><a href="#">SALE ORDER</a></li>
+                            <li><a href="@Url.Action("SaleOrder", "SaleOrder")">SALE ORDER</a></li>
                             <li><a href="@Url.Action("Index", "PaymentIn")">PAYMENT IN</a></li>
                             <li><a href=@Url.Action("Index", "CreditNote")>CREDIT NOTE</a></li>
+                            <li><a href=@Url.Action("Index", "DeliveryChallan")>Delivery Challan</a></li>
                         </ul>
                     </li>
 
@@ -299,7 +300,7 @@ desired effect
                         </a>
                         <ul class="treeview-menu ">
                             <li><a href=@Url.Action("Index","PurchaseBill")>PURCHASE BILL</a></li>
-                            <li><a href="#">PURCHASE ORDER</a></li>
+                            <li><a href="@Url.Action("PurchaseOrder", "PurchaseOrder")">PURCHASE ORDER</a></li>
                             <li><a href="@Url.Action("Index","PaymentOut")">PAYMENT OUT</a></li>
                             <li><a href=@Url.Action("Index", "DebitNote")>DEBIT NOTE</a></li>
                         </ul>
@@ -313,9 +314,9 @@ desired effect
                         </a>
                         <ul class="treeview-menu ">
                             <li><a href=@Url.Action("Index","BankAccount")>BANK ACCOUNT</a></li>
-                            <li><a href="#">LOAN ACCOUNT</a></li>
+                            <li><a href="@Url.Action("Index","LoanAccount")">LOAN ACCOUNT</a></li>
                             <li><a href="#">COMPANY BANK</a></li>
-                            <li><a href="#">CASH IN HAND</a></li>
+                            <li><a href="@Url.Action("Index","CashInHand")">CASH IN HAND</a></li>
                         </ul>
                     </li>
 
@@ -342,13 +343,13 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu active">
-                            <li><a href="#">IMPORT ITEM</a></li>
+                            <li><a href="~/Utilities/Importitem">IMPORT ITEM</a></li>
                             <li><a href="#">EXPORT ITEM</a></li>
-                            <li><a href="#">EXPORT PARTIES</a></li>                       
+                            <li><a href="~/Utilities/ImportParty">Import PARTIES</a></li>                       
                         </ul>
+                        
                     </li>
-
-                    <li class="treeview ">
+                     <li class="treeview ">
                         <a href="#" class="active">
                             <i class="fa fa-cloud"></i> <span>BACKUP</span>
                             <span class="pull-right-container">
@@ -362,8 +363,23 @@ desired effect
                         </ul>
                     </li>
 
-                    <li class=""><a href="#"><i class="fa fa-cog"></i> <span>SEETING</span></a></li>
-
+                    <li class="treeview ">
+                        <a href="#" class="active">
+                            <i class="fa fa-cog"></i> <span>Setting</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                           <ul class="treeview-menu ">
+                            <li><a href="~/Seeting/GenrailSeeting">General Seetings</a></li>
+                            <li><a href="~/Seeting/TransactionSeting">Transactionl Settings</a></li>
+                            <li><a href="~/Seeting/PartySetting"> Party seetings</a></li>
+                            <li><a href="~/Seeting/ItemSeeting">Item Setting</a></li>
+                            <li><a href="">Print settings</a></li>
+                            <li><a href="~/Seeting/taxGsstSetting">Taxes And Gst </a></li>
+                        </ul>
+                    </li>
+                    
                     <li class=""><a href="#"><i class="fa fa-info-circle"></i> <span>help</span></a></li>
 
 
@@ -473,15 +489,20 @@ desired effect
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
          user experience. -->
+    
+    <script src="~/scripts/jquery.validate.min.js"></script>
+   
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+   
+    <script src="~/scripts/jquery-1.12.4.min.js"></script>
+   
+    <script src="~/scripts/bootstrap.min.js"></script>
     <script src="~/scripts/jquery.validate.min.js"></script>
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script src="~/Scripts/notify.min.js"></script>
+    <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/scripts/jquery-notify.min.js"></script>
     @RenderSection("scripts", required: false)
-    @RenderSection("FooterScript", false)
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" /> 
 </body>
 </html>
