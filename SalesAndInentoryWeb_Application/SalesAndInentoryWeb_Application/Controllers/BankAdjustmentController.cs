@@ -15,14 +15,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-        public ActionResult BankData()
-        {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                List<tbl_BankAdjustment> BankData = db.tbl_BankAdjustment.ToList<tbl_BankAdjustment>();
-                return Json(new { data = BankData }, JsonRequestBehavior.AllowGet);
-            }
-        }
+        //public ActionResult BankData()
+        //{
+        //    using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+        //    {
+        //        List<tbl_BankAdjustment> BankData = db.tbl_BankAdjustment.ToList<tbl_BankAdjustment>();
+        //        return Json(new { data = BankData }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {
