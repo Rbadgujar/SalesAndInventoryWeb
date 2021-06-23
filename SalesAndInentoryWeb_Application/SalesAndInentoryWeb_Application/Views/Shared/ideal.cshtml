@@ -357,9 +357,9 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu ">
-                            <li><a href="#">BACKUP TO DRIVE</a></li>
-                            <li><a href="#">BACKUP TO COMPUTER</a></li>
-                            
+                            <li><a href="#" onclick="PopupForm1('@Url.Action("backuptpdrive","Backup")')">BACKUP TO DRIVE</a></li>
+                            <li><a href="#" onclick="PopupForm2('@Url.Action("backupdatabase","Backup")')">BACKUP TO COMPUTER</a></li>
+                            <li><a href="#" onclick="PopupForm3('@Url.Action("Restoredatabase","Backup")')">Restore Database</a></li>
                         </ul>
                     </li>
 
@@ -371,12 +371,12 @@ desired effect
                             </span>
                         </a>
                            <ul class="treeview-menu ">
-                            <li><a href="~/Seeting/GenrailSeeting">General Seetings</a></li>
-                            <li><a href="~/Seeting/TransactionSeting">Transactionl Settings</a></li>
-                            <li><a href="~/Seeting/PartySetting"> Party seetings</a></li>
-                            <li><a href="~/Seeting/ItemSeeting">Item Setting</a></li>
+                            <li><a href="~/Seeting1/GenrailSeeting">General Seetings</a></li>
+                            <li><a href="~/Seeting1/TransactionSeting">Transactionl Settings</a></li>
+                            <li><a href="~/Seeting1/PartySetting"> Party seetings</a></li>
+                            <li><a href="~/Seeting1/ItemSeeting">Item Setting</a></li>
                             <li><a href="">Print settings</a></li>
-                            <li><a href="~/Seeting/taxGsstSetting">Taxes And Gst </a></li>
+                            <li><a href="~/Seeting1/taxGsstSetting">Taxes And Gst </a></li>
                         </ul>
                     </li>
                     
@@ -416,17 +416,12 @@ desired effect
             <div class="tab-content">
                 <!-- Home tab content -->
                 <div class="tab-pane active" id="control-sidebar-home-tab">
-                    <h3 class="control-sidebar-heading">Recent Activity</h3>
+                    <h3 class="control-sidebar-heading">Reports</h3>
                     <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="javascript:;">
-                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-                                <div class="menu-info">
-                                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                                    <p>Will be 23 on April 24th</p>
-                                </div>
-                            </a>
-                        </li>
+                                         <li class="active"><a href="~/Seeting1/GenrailSeeting">General Seetings</a></li>
+                        <li class="active"><a href="~/Seeting1/PartySetting">Sale Report</a></li>
+
+                        
                     </ul>
                     <!-- /.control-sidebar-menu -->
                     <h3 class="control-sidebar-heading">Tasks Progress</h3>
@@ -501,8 +496,82 @@ desired effect
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/scripts/jquery-notify.min.js"></script>
+   
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+        <script>
+
+            var Popup;
+            function PopupForm1(url) {
+                var formDiv = $('<div/>');
+                $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: 'Backup To Drive',
+                        height:270,
+                        width:500,
+                        close: function () {
+                            Popup.dialog('destroy').remove();
+                        }
+
+                    });
+                });
+            }
+
+            var pop;
+            function PopupForm2(url) {
+                var formDiv = $('<div/>');
+                $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+
+                    pop = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: 'Backup Database',
+                        height: 390,
+                        width: 500,
+                        close: function () {
+                            pop.dialog('destroy').remove();
+                        }
+                    });
+                });
+            }
+            var popp;
+            function PopupForm3(url) {
+                var formDiv = $('<div/>');
+                $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+
+                    popp = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: 'Restore Database',
+                        height: 390,
+                        width: 500,
+                        close: function () {
+                            popp.dialog('destroy').remove();
+                        }
+
+                    });
+                });
+            }
+    </script>
+    
+
+
+
+
     @RenderSection("scripts", required: false)
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" /> 
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+
 </body>
 </html>

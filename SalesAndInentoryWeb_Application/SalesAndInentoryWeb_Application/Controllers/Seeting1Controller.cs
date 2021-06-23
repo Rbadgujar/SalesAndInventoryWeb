@@ -6,14 +6,13 @@ using System.Web.Mvc;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-    public class SeetingController : Controller
+    public class Seeting1Controller : Controller
     {
-        // GET: Seeting
+        // GET: Seeting1
         public ActionResult Index()
         {
             return View();
         }
-
         public ActionResult GenrailSeeting()
         {
             return View();
@@ -34,20 +33,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
-        // GET: Seeting/Details/5
+        // GET: Seeting1/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Seeting/Create
+        // GET: Seeting1/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Seeting/Create
+        // POST: Seeting1/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -63,13 +61,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-        // GET: Seeting/Edit/5
+        // GET: Seeting1/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Seeting/Edit/5
+        // POST: Seeting1/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -85,13 +83,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-        // GET: Seeting/Delete/5
+        // GET: Seeting1/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Seeting/Delete/5
+        // POST: Seeting1/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
