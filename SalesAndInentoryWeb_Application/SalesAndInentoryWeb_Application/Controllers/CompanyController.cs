@@ -15,7 +15,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult Company()
         {
-            show();
             return View();
         }
     }
