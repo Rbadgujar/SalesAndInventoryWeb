@@ -1,0 +1,230 @@
+﻿
+@{
+    ViewBag.Title = "BarcodePrint";
+    Layout = "~/Views/Shared/ideal.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        [type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid black;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: blue;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+    </style>
+</head>
+<body style="background-color:white">
+    <div class="panel panel-primary container" style="height:100%; width:100%;">
+        <div class="panel-heading text-center"><h4> Barcode Print</h4><a class="btn-primary pull-right" style="margin-top:-45px;"> <i class="fa fa-times" style="color:white; font-size:20px;"></i></a></div>
+        <div class="panel border-box">
+            <nav class="navbar navbar-default " style="background-color:white">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse ">
+                        <br />
+                        <div style="text-align:center">
+
+                            
+                                <input type="text" placeholder="Search Item..." style="width:500px;height:35px">
+
+                          
+                                <button class="w3-btn w3-blue" style="width:200px; height:37px;">Search</button>
+
+                            </div>
+
+                       
+                        <br />
+
+                        
+                        <div class="row">
+
+                            <div class="form-group col-md-3" style="text-align:center">
+                               
+                                <h4><label >Select Barcode Size :</label></h4>
+                               
+                                <div style=" border:1px solid; width:100%;height:250px;">
+                                    <br />
+                                    <fieldset id="group1">
+                                        <p>
+
+                                            <input type="radio" id="r1" name="radio-group1">
+                                            <label for="r1" style="font-size:16px; color:black;">25 mm * 50 mm</label>
+
+                                        </p>
+                                        <br />
+                                        <p>
+
+                                            <input type="radio" id="r2" name="radio-group1">
+                                            <label for="r2" style="font-size:16px; color:black;">70 mm * 50 mm</label>
+
+                                        </p>
+                                        <br />
+                                        <p>
+
+                                            <input type="radio" id="r3" name="radio-group1">
+                                            <label for="r3" style="font-size:16px; color:black;">100 mm * 100 mm</label>
+
+                                        </p>
+                                    </fieldset>
+</div>
+                               
+                            </div>
+                            <div class="form-group col-md-3" style="text-align:center">
+
+                               <h4> <label>Select A4 Print :</label></h4>
+                               
+                                <div style="border:1PX solid; width:100%;height:250px">
+                                    <br />
+                                    <p>
+
+                                        <input type="radio" id="r4" name="radio-group2">
+                                        <label for="r4" style="font-size:16px; color:black;">A4 25*50</label>
+
+                                    </p>
+                                    <br />
+                                    <p>
+
+                                        <input type="radio" id="r5" name="radio-group2">
+                                        <label for="r5" style="font-size:16px; color:black;">A4 50*70</label>
+
+                                    </p>
+                                    <br />
+                                    <p>
+
+                                        <input type="radio" id="r6" name="radio-group2">
+                                        <label for="r6" style="font-size:16px; color:black;">A4 100*100</label>
+
+                                    </p>
+                                </div>
+                                </div>
+                            <div class="form-group col-md-3" style="text-align:center">
+
+                                <h4>
+                                    <label>Select Lines :</label></h4>
+
+    <div style="border:1px solid; width:100%;height:250px">
+        <br />
+        <p>
+
+            <input type="radio" id="r7" name="radio-group3">
+            <label for="r7" style="font-size:16px; color:black;">1 Line Print</label>
+
+        </p>
+        <br />
+        <p>
+
+            <input type="radio" id="r8" name="radio-group3">
+            <label for="r8" style="font-size:16px; color:black;">2 Line Print</label>
+
+        </p>
+        <br />
+        <p>
+
+            <input type="radio" id="r9" name="radio-group3">
+            <label for="r9" style="font-size:16px; color:black;">3 Line Print</label>
+
+        </p>
+        <br />
+        <p>
+
+            <input type="radio" id="r10" name="radio-group3">
+            <label for="r10" style="font-size:16px; color:black;">4 Line Print</label>
+
+        </p>
+    </div>
+</div>
+                            <div class="form-group col-md-3"style="text-align:center">
+
+                                <h4>
+                                    <label> Barcode Postion :</label></h4>
+
+                                    <div style="border:1px solid; width:100%;height:250px">
+                                        <br />
+                                        <p>
+
+                                            <input type="radio" id="top" name="radio-group4">
+                                            <label for="top" style="font-size:16px; color:black;">Top</label>
+
+                                        </p>
+                                        <br />
+                                        <p>
+
+                                            <input type="radio" id="bootom" name="radio-group4">
+                                            <label for="bootom" style="font-size:16px; color:black;">Bottom</label>
+
+                                        </p>
+                                    
+                                      </div>
+
+
+</div>
+                         
+                            <div style="text-align:center">
+
+
+                                <input type="text" placeholder="Count..." style="width:200px;height:35px">
+
+                                <br />
+                               
+                               <br />
+
+                                <button class="w3-btn w3-blue" style="width:150px; height:37px;">Print</button>
+                                <button class="w3-btn w3-blue" style="width:150px; height:37px;">Cancel</button>
+                                
+                            </div>
+                            <br />
+                        </div>
+                        </div>
+                    </div>
+</nav>
+        </div>   
+      </div>
+    </body>
+</html>
