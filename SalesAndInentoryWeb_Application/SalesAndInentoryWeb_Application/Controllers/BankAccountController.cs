@@ -13,6 +13,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
 	public class BankAccountController : Controller
 	{
+
 		Data_Access.Bank DA = new Data_Access.Bank();
 		public ActionResult Index()
 		{
@@ -21,12 +22,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
 		public JsonResult Data()
 		{
-			idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10();
+			DataSet ds=DA.show_data();
 			List<tbl_BankAccount> tb = new List<tbl_BankAccount>();
-			db.Configuration.LazyLoadingEnabled = false;
-			DataSet ds = new DataSet();
-
-			ds = DA.show_data();
+			
 			foreach (DataRow dr in ds.Tables[0].Rows)
 			{
 				tb.Add(new tbl_BankAccount
@@ -37,59 +35,37 @@ namespace SalesAndInentoryWeb_Application.Controllers
 					AccountNo = dr["AccountNo"].ToString(),
 					OpeningBal = float.Parse(dr["OpeningBal"].ToString()),
 					Date = dr["Date"].ToString(),
-					
 				});
 			}
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
 		[HttpGet]
-		public ActionResult AddOrEdit(int id = 0)
-		{
-			if (id == 0)
-				return View(new tbl_BankAccount());
-			else
-			{
-				using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-				{
-					return View(db.tbl_BankAccount.Where(x => x.ID == id).FirstOrDefault<tbl_BankAccount>());
-				}
-			}
+		public ActionResult AddOrEdit()
+		{		
+			return View();
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit(tbl_BankAccount emp)
+		public ActionResult AddOrEdit(FormCollection emp)
 		{
-			using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-			{
-				if (emp.ID == 0)
-				{
-					db.tbl_BankAccount.Add(emp);
-					db.SaveChanges();
-					return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-				}
-				else
-				{
-					db.Entry(emp).State = EntityState.Modified;
-					db.SaveChanges();
-					return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-				}
-			}
+			tbl_BankAccount reg = new tbl_BankAccount();			
+			reg.BankName = emp["BankName"];
+			reg.AccountName = emp["AccountName"];
+			reg.AccountNo = emp["AccountNo"];
+			reg.OpeningBal = float.Parse(emp["OpeningBal"]);
+			reg.Date = emp["Date"];
+			DA.InsertData(reg);
+			TempData["msg"] = "Inserted";
+			return View();			
 		}
-	[HttpPost]
-	public ActionResult Delete(int id)
-	{
-		using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+
+		[HttpPost]
+		public ActionResult Delete(int id)
 		{
-			tbl_BankAccount emp = db.tbl_BankAccount.Where(x => x.ID == id).FirstOrDefault<tbl_BankAccount>();
-			db.tbl_BankAccount.Remove(emp);
-			db.SaveChanges();
-			return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+			DA.DeleteData(id);
+			return View();
 		}
-	}
-	public ActionResult BankToBank()
-	{
-		return View();
-	}
 	}
 }
+
