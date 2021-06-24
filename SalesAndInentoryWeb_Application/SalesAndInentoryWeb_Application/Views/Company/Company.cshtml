@@ -3,10 +3,10 @@
     ViewBag.Title = "Company";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-<br />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+   
          @Html.DevExpress().GetStyleSheets(
         new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
@@ -15,14 +15,19 @@
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.Editors }
     )   
+ 
 </head>
 <body>
   
     @using (Html.BeginForm())
     {
+        
         <div class="panel panel-primary" style="height:100%; width:100%;">
-            <div class="panel-heading text-center"><h4>Company Details</h4></div>
-            <div class="panel-body text-center">
+       
+        
+            <div class="panel-heading "><a class="btn btn-success" href=@Url.Action("Index","PaymentOut") >Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Company Master</p></div>
+          <br />
+                <div class="panel-body text-center">
                 <center>
                     <table class="tabel table-sm" column-gap="40px">
                         <tbody>
@@ -34,22 +39,20 @@
                                    settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label1";
-                                   settings.Text = "Company Name   :";
-
-
+                                   settings.Text = "Company Name";
                                }).GetHtml()
                                     </div>
                                 </td>
-
+                                
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center">
                                             @Html.DevExpress().TextBoxFor(m => m.CompanyName, settings =>
-                                   {
-
-                                       settings.Properties.NullText = "Enter Company Name...";
-                                       settings.ControlStyle.CssClass = "form-control";
-                                   }).GetHtml()
+                                       {
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter Company Name...";
+                                           settings.Style["border"] = "1px solid black";
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -69,10 +72,11 @@
                                     <center>
                                         <div class="form-group text-center">
                                             @Html.DevExpress().TextBoxFor(m => m.Address, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Address...";
-                                   }).GetHtml()
+                                       {
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter Address...";
+                                           settings.Style["border"] = "1px solid black";
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -108,11 +112,12 @@
                                     <center>
                                         <div class="form-group text-center ">
                                             @Html.DevExpress().TextBoxFor(m => m.PhoneNo, settings =>
-                                   {
-                                       // settings.Width = 300;
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Contact No....";
-                                   }).GetHtml()
+                                       {
+                                           // settings.Width = 300;
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter Contact No....";
+                                           settings.Style["border"] = "1px solid black";
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -132,13 +137,14 @@
                                     <center>
                                         <div class="form-group text-center">
                                             @Html.DevExpress().TextBoxFor(m => m.EmailID, settings =>
-                                   {
+                                       {
 
 
-                                       // settings.Width = 300;
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Email ID...";
-                                   }).GetHtml()
+                                           // settings.Width = 300;
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter Email ID...";
+                                           settings.Style["border"] = "1px solid black";
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -168,10 +174,11 @@
                                     <center>
                                         <div class="form-group text-center ">
                                             @Html.DevExpress().TextBoxFor(m => m.ReferaleCode, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Refferal Code....";
-                                   }).GetHtml()
+                                       {
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter Refferal Code....";
+                                           settings.Style["border"] = "1px solid black";
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -191,10 +198,11 @@
                                     <center>
                                         <div class="form-group text-center">
                                             @Html.DevExpress().TextBoxFor(m => m.BusinessType, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Business Type...";
-                                   }).GetHtml()
+                                       {
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter Business Type...";
+                                           settings.Style["border"] = "1px solid black";
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -217,10 +225,11 @@
                                     <center>
                                         <div class="form-group text-center ">
                                             @Html.DevExpress().TextBoxFor(m => m.OwnerName, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Owner Name....";
-                                   }).GetHtml()
+                                       {
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter Owner Name....";
+                                           settings.Style["border"] = "1px solid black";
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -232,6 +241,7 @@
 
                                            settings.Name = "Label8";
                                            settings.Text = "GST Number   :";
+
 
                                        }).GetHtml()
                                     </div>
@@ -246,6 +256,7 @@
                                        {
                                            settings.ControlStyle.CssClass = "form-control";
                                            settings.Properties.NullText = "Enter GST Number...";
+                                           settings.Style["border"] = "1px solid black";
                                        }).GetHtml()
                                         </div>
                                     </center>
@@ -282,10 +293,11 @@
                                     <center>
                                         <div class="form-group text-center ">
                                             @Html.DevExpress().TextBoxFor(m => m.City, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter City....";
-                                   }).GetHtml()
+                                       {
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter City....";
+                                           settings.Style["border"] = "1px solid black";
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -305,17 +317,44 @@
                                     <center>
                                         <div class="form-group text-center">
 
-                                            @Html.DevExpress().DropDownEditFor(m => m.State, settings =>
-                                   {
-                                       settings.SetDropDownWindowTemplateContent(c =>
-                                       {
-                                           ViewContext.Writer.Write("DropDown content");
-
-                                       });
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "---Select State---";
-                                   }).GetHtml()
-
+                                            <select name="state" id="state" class="form-control"  style="border: 1px solid black";>
+                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chandigarh">Chandigarh</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                                <option value="Daman and Diu">Daman and Diu</option>
+                                                <option value="Delhi">Delhi</option>
+                                                <option value="Lakshadweep">Lakshadweep</option>
+                                                <option value="Puducherry">Puducherry</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Odisha">Odisha</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Rajasthan">Rajasthan</option>
+                                                <option value="Sikkim">Sikkim</option>
+                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                <option value="Telangana">Telangana</option>
+                                                <option value="Tripura">Tripura</option>
+                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="Uttarakhand">Uttarakhand</option>
+                                                <option value="West Bengal">West Bengal</option>
+                                            </select>
 
                                         </div>
                                     </center>
@@ -343,17 +382,47 @@
                                 </td>
                                 <td style="padding:0 15px 0 15px">
                                     <center>
-                                        <div class="form-group text-center ">
-                                            @Html.DevExpress().DropDownEditFor(m => m.AdditinalFeild1, settings =>
-                                   {
-                                       settings.SetDropDownWindowTemplateContent(c =>
-                                       {
-                                           ViewContext.Writer.Write("DropDown content");
-
-                                       });
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "---Select BankName---";
-                                   }).GetHtml()
+                                        <div class="form-group text-center">
+                                            <select name="bankname" class="form-control"  style="border: 1px solid black">
+                                                <option selected="selected" value="0">--Select --</option>
+                                                <option value="1">ALLAHABAD BANK </option>
+                                                <option value="2">ANDHRA BANK</option>
+                                                <option value="3">AXIS BANK</option>
+                                                <option value="29">STATE BANK OF INDIA</option>
+                                                <option value="4">BANK OF BARODA</option>
+                                                <option value="29">UCO BANK</option>
+                                                <option value="29">UNION BANK OF INDIA</option>
+                                                <option value="5">BANK OF INDIA</option>
+                                                <option value="20">BANDHAN BANK LIMITED</option>
+                                                <option value="7">CANARA BANK</option>
+                                                <option value="32">GRAMIN VIKASH BANK</option>
+                                                <option value="8">CORPORATION BANK</option>
+                                                <option value="9">INDIAN BANK</option>
+                                                <option value="10">INDIAN OVERSEAS BANK</option>
+                                                <option value="11">ORIENTAL BANK OF COMMERCE</option>
+                                                <option value="12">PUNJAB AND SIND BANK</option>
+                                                <option value="13">PUNJAB NATIONAL BANK</option>
+                                                <option value="14">RESERVE BANK OF INDIA</option>
+                                                <option value="15">SOUTH INDIAN BANK</option>
+                                                <option value="16">UNITED BANK OF INDIA</option>
+                                                <option value="17">CENTRAL BANK OF INDIA</option>
+                                                <option value="18">VIJAYA BANK</option>
+                                                <option value="19">DENA BANK</option>
+                                                <option value="21">BHARATIYA MAHILA BANK LIMITED</option>
+                                                <option value="22">FEDERAL BANK LTD </option>
+                                                <option value="23">HDFC BANK LTD</option>
+                                                <option value="24">ICICI BANK LTD</option>
+                                                <option value="25">IDBI BANK LTD</option>
+                                                <option value="66">PAYTM BANK</option>
+                                                <option value="29">FINO PAYMENT BANK</option>
+                                                <option value="26">INDUSIND BANK LTD</option>
+                                                <option value="27">KARNATAKA BANK LTD</option>
+                                                <option value="28">KOTAK MAHINDRA BANK</option>
+                                                <option value="30">YES BANK LTD</option>
+                                                <option value="31">SYNDICATE BANK</option>
+                                                <option value="5">BANK OF INDIA</option>
+                                                <option value="6">BANK OF MAHARASHTRA</option>
+                                            </select>
                                         </div>
                                     </center>
                                 </td>
@@ -374,10 +443,12 @@
                                         <div class="form-group text-center">
 
                                             @Html.DevExpress().TextBoxFor(m => m.AdditinalFeild2, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter Account No....";
-                                   }).GetHtml()
+                                       {
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter Account No....";
+                                           settings.Style["border"] = "1px solid black";
+
+                                       }).GetHtml()
                                         </div>
                                     </center>
                                 </td>
@@ -401,29 +472,37 @@
                                         <div class="form-group text-center">
 
                                             @Html.DevExpress().TextBoxFor(m => m.AdditinalFeild3, settings =>
-                                   {
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Properties.NullText = "Enter IFSC Code....";
-                                   }).GetHtml()
+                                       {
+                                           settings.ControlStyle.CssClass = "form-control";
+                                           settings.Properties.NullText = "Enter IFSC Code....";
+                                           settings.Style["border"] = "1px solid black";
+
+                                       }).GetHtml()
                                         </div>
                                     </center>
+                                </td>
+                                <td></td>
+                                <td style="padding:0 15px 0 15px">
+                                    
+                                        <input type="submit" value="Save" class="btn btn-primary"style ="font-weight:bold;  width:100px;font-size:18px; margin-top:-20px;" />
+                                    <input type="reset" value="Clear" class="btn btn-primary" style="font-weight:bold;  width:100px;font-size:18px; margin-top:-20px;" />
+
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </center>
-                <div>
-                    <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; margin-top:2px; " />
-                    <a class="btn btn-success" href=@Url.Action("Index","PaymentOut") style="margin-right:1100px;">Back To List</a>
-                </div>
+               
 
             </div>
 
         </div>
-        <div class="text-right">
-            <a class="text-right" href="Grid">Back To List</a>
-        </div>
+        
     }
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     </body>
 </html>
 

@@ -13,6 +13,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+        public ActionResult com()
+        {
+            return View();
+                 
+        }
         public ActionResult Company()
         {
             return View();
