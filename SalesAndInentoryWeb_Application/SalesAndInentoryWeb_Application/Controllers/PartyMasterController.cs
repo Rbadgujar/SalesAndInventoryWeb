@@ -16,11 +16,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult Data()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            //using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            //{
+            //    db.Configuration.LazyLoadingEnabled = false;
+            //    List<tbl_PartyMaster> party = db.tbl_PartyMaster.ToList<tbl_PartyMaster>();
+            //    return Json(new { data = party }, JsonRequestBehavior.AllowGet);
+            //}
+            using (idealtec_inventoryEntities10 entities = new idealtec_inventoryEntities10())
             {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_PartyMaster> party = db.tbl_PartyMaster.ToList<tbl_PartyMaster>();
-                return Json(new { data = party }, JsonRequestBehavior.AllowGet);
+                List<tbl_PartyMaster> party = entities.PartyMasterCrud("Select", null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null).ToList();
+
+                //Add a Dummy Row.
+                party.Insert(0, new tbl_PartyMaster());
+                return View(party.ToList());
             }
         }
         public ActionResult PartyGroupData()
@@ -32,7 +40,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return Json(new { data = party }, JsonRequestBehavior.AllowGet);
             }
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)

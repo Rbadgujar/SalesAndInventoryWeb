@@ -3822,5 +3822,151 @@ namespace SalesAndInentoryWeb_Application.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_UnitMasterUnit_Result>("tbl_UnitMasterUnit", actionParameter, unitIDParameter, unitNameParameter, subUnitNameParameter, additionalFeild1Parameter, additionalFeild2Parameter, compidParameter);
         }
+    
+        public virtual ObjectResult<tbl_PartyMaster> PartyMasterCrud(string action, Nullable<int> partiesID, string partyName, string contactNo, string billingAddress, string emailID, string gSTType, string state, Nullable<double> openingBal, Nullable<System.DateTime> asOfDate, string addRemainder, string partyType, string shippingAddress, string partyGroup, Nullable<int> compid, string paidstatus, string type)
+        {
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            var partiesIDParameter = partiesID.HasValue ?
+                new ObjectParameter("PartiesID", partiesID) :
+                new ObjectParameter("PartiesID", typeof(int));
+    
+            var partyNameParameter = partyName != null ?
+                new ObjectParameter("PartyName", partyName) :
+                new ObjectParameter("PartyName", typeof(string));
+    
+            var contactNoParameter = contactNo != null ?
+                new ObjectParameter("ContactNo", contactNo) :
+                new ObjectParameter("ContactNo", typeof(string));
+    
+            var billingAddressParameter = billingAddress != null ?
+                new ObjectParameter("BillingAddress", billingAddress) :
+                new ObjectParameter("BillingAddress", typeof(string));
+    
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var gSTTypeParameter = gSTType != null ?
+                new ObjectParameter("GSTType", gSTType) :
+                new ObjectParameter("GSTType", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var openingBalParameter = openingBal.HasValue ?
+                new ObjectParameter("OpeningBal", openingBal) :
+                new ObjectParameter("OpeningBal", typeof(double));
+    
+            var asOfDateParameter = asOfDate.HasValue ?
+                new ObjectParameter("AsOfDate", asOfDate) :
+                new ObjectParameter("AsOfDate", typeof(System.DateTime));
+    
+            var addRemainderParameter = addRemainder != null ?
+                new ObjectParameter("AddRemainder", addRemainder) :
+                new ObjectParameter("AddRemainder", typeof(string));
+    
+            var partyTypeParameter = partyType != null ?
+                new ObjectParameter("PartyType", partyType) :
+                new ObjectParameter("PartyType", typeof(string));
+    
+            var shippingAddressParameter = shippingAddress != null ?
+                new ObjectParameter("ShippingAddress", shippingAddress) :
+                new ObjectParameter("ShippingAddress", typeof(string));
+    
+            var partyGroupParameter = partyGroup != null ?
+                new ObjectParameter("PartyGroup", partyGroup) :
+                new ObjectParameter("PartyGroup", typeof(string));
+    
+            var compidParameter = compid.HasValue ?
+                new ObjectParameter("compid", compid) :
+                new ObjectParameter("compid", typeof(int));
+    
+            var paidstatusParameter = paidstatus != null ?
+                new ObjectParameter("paidstatus", paidstatus) :
+                new ObjectParameter("paidstatus", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_PartyMaster>("PartyMasterCrud", actionParameter, partiesIDParameter, partyNameParameter, contactNoParameter, billingAddressParameter, emailIDParameter, gSTTypeParameter, stateParameter, openingBalParameter, asOfDateParameter, addRemainderParameter, partyTypeParameter, shippingAddressParameter, partyGroupParameter, compidParameter, paidstatusParameter, typeParameter);
+        }
+    
+        public virtual ObjectResult<tbl_PartyMaster> PartyMasterCrud(string action, Nullable<int> partiesID, string partyName, string contactNo, string billingAddress, string emailID, string gSTType, string state, Nullable<double> openingBal, Nullable<System.DateTime> asOfDate, string addRemainder, string partyType, string shippingAddress, string partyGroup, Nullable<int> compid, string paidstatus, string type, MergeOption mergeOption)
+        {
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            var partiesIDParameter = partiesID.HasValue ?
+                new ObjectParameter("PartiesID", partiesID) :
+                new ObjectParameter("PartiesID", typeof(int));
+    
+            var partyNameParameter = partyName != null ?
+                new ObjectParameter("PartyName", partyName) :
+                new ObjectParameter("PartyName", typeof(string));
+    
+            var contactNoParameter = contactNo != null ?
+                new ObjectParameter("ContactNo", contactNo) :
+                new ObjectParameter("ContactNo", typeof(string));
+    
+            var billingAddressParameter = billingAddress != null ?
+                new ObjectParameter("BillingAddress", billingAddress) :
+                new ObjectParameter("BillingAddress", typeof(string));
+    
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var gSTTypeParameter = gSTType != null ?
+                new ObjectParameter("GSTType", gSTType) :
+                new ObjectParameter("GSTType", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var openingBalParameter = openingBal.HasValue ?
+                new ObjectParameter("OpeningBal", openingBal) :
+                new ObjectParameter("OpeningBal", typeof(double));
+    
+            var asOfDateParameter = asOfDate.HasValue ?
+                new ObjectParameter("AsOfDate", asOfDate) :
+                new ObjectParameter("AsOfDate", typeof(System.DateTime));
+    
+            var addRemainderParameter = addRemainder != null ?
+                new ObjectParameter("AddRemainder", addRemainder) :
+                new ObjectParameter("AddRemainder", typeof(string));
+    
+            var partyTypeParameter = partyType != null ?
+                new ObjectParameter("PartyType", partyType) :
+                new ObjectParameter("PartyType", typeof(string));
+    
+            var shippingAddressParameter = shippingAddress != null ?
+                new ObjectParameter("ShippingAddress", shippingAddress) :
+                new ObjectParameter("ShippingAddress", typeof(string));
+    
+            var partyGroupParameter = partyGroup != null ?
+                new ObjectParameter("PartyGroup", partyGroup) :
+                new ObjectParameter("PartyGroup", typeof(string));
+    
+            var compidParameter = compid.HasValue ?
+                new ObjectParameter("compid", compid) :
+                new ObjectParameter("compid", typeof(int));
+    
+            var paidstatusParameter = paidstatus != null ?
+                new ObjectParameter("paidstatus", paidstatus) :
+                new ObjectParameter("paidstatus", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_PartyMaster>("PartyMasterCrud", mergeOption, actionParameter, partiesIDParameter, partyNameParameter, contactNoParameter, billingAddressParameter, emailIDParameter, gSTTypeParameter, stateParameter, openingBalParameter, asOfDateParameter, addRemainderParameter, partyTypeParameter, shippingAddressParameter, partyGroupParameter, compidParameter, paidstatusParameter, typeParameter);
+        }
     }
 }

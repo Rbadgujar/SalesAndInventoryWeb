@@ -6246,6 +6246,25 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
             <Parameter Name="AdditionalFeild2" Mode="In" Type="String" />
             <Parameter Name="compid" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="PartyMasterCrud" EntitySet="tbl_PartyMaster" ReturnType="Collection(idealtec_inventoryModel.tbl_PartyMaster)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="PartiesID" Mode="In" Type="Int32" />
+            <Parameter Name="PartyName" Mode="In" Type="String" />
+            <Parameter Name="ContactNo" Mode="In" Type="String" />
+            <Parameter Name="BillingAddress" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="GSTType" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="OpeningBal" Mode="In" Type="Double" />
+            <Parameter Name="AsOfDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AddRemainder" Mode="In" Type="String" />
+            <Parameter Name="PartyType" Mode="In" Type="String" />
+            <Parameter Name="ShippingAddress" Mode="In" Type="String" />
+            <Parameter Name="PartyGroup" Mode="In" Type="String" />
+            <Parameter Name="compid" Mode="In" Type="Int32" />
+            <Parameter Name="paidstatus" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="addcompany_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -8986,6 +9005,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PartyMasterCrud" FunctionName="idealtec_inventoryModel.Store.tbl_PartyMasterSelect" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
