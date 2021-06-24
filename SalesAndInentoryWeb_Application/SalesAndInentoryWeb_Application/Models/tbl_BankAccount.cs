@@ -18,9 +18,9 @@ namespace SalesAndInentoryWeb_Application.Models
         public string AccountName { get; set; }
         public string BankName { get; set; }
         public string AccountNo { get; set; }
-        public float OpeningBal { get; set; }
-        public string Date { get; set; }
+        public Nullable<double> OpeningBal { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public Nullable<bool> DeleteData { get; set; }
-        public int Company_ID { get; set; }
+        public Nullable<int> Company_ID { get; set; }
     }
 }

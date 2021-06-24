@@ -2047,5 +2047,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="bankadjust" FunctionName="idealtec_inventoryModel.Store.tbl_BankAdjustmentselect" />
   </EntityContainerMapping>
 </Mapping>
