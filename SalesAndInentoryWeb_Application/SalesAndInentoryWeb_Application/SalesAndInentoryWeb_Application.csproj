@@ -3001,6 +3001,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
     <Compile Include="Controllers\ItemReportByPartyController.cs" />
+    <Compile Include="Controllers\ItemServicesController.cs" />
     <Compile Include="Controllers\ItemTrackingReportController.cs" />
     <Compile Include="Controllers\ItemWisePorLController.cs" />
     <Compile Include="Controllers\LoanAccountController.cs" />
@@ -3031,6 +3032,7 @@
     <Compile Include="Controllers\TaxRateReportController.cs" />
     <Compile Include="Controllers\TaxReportController.cs" />
     <Compile Include="Controllers\TransactionSearchController.cs" />
+    <Compile Include="Controllers\UnitHomepageController.cs" />
     <Compile Include="Controllers\UtilitiesController.cs" />
     <Compile Include="Data_Access\Bank.cs" />
     <Compile Include="Global.asax.cs">
@@ -3427,6 +3429,10 @@
     <Content Include="Views\TaxReport\Index.cshtml" />
     <Content Include="Views\TransactionSearch\Index.cshtml" />
     <Content Include="Views\StockSummaryreportbyItemCategory\Index.cshtml" />
+    <Content Include="Views\UnitHomepage\Index.cshtml" />
+    <Content Include="Views\UnitHomepage\AddUnit.cshtml" />
+    <Content Include="Views\ItemServices\Index.cshtml" />
+    <Content Include="Views\ItemServices\AddServices.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

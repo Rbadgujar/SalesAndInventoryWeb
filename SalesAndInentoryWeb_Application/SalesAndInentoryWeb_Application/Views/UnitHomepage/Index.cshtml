@@ -1,10 +1,9 @@
-﻿@model  SalesAndInentoryWeb_Application.Models.tbl_CashAdjustment
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
 
 }
-<label style="font-size:20px; margin-left:15px ">Stock Summary report by ItemCategory</label>
 
 <head>
     <title>Bootstrap Example</title>
@@ -23,40 +22,14 @@
     )
 </head>
 <div class="container" style="height:100%; width:100%;">
+    
 
-
-    <nav class="navbar navbar-default " style="border:none; background-color:white">
-        <nav class="navbar navbar-default " style="border:none; background-color:white">
+    <nav class="navbar navbar-default " style="border:none; background-color:white;">
+        <nav class="navbar navbar-default " style="border:none; background-color:white;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
-                    <div class="row">
-                        <div class="form-group col-md-2">
-                            @Html.DevExpress().DropDownEditFor(m => m.BankName, settings =>
-                   {
-                       settings.Properties.NullText = "All Category";
-                       settings.ControlStyle.CssClass = "form-control";
-                       settings.Style["margin-top"] = "15px";
-
-                       settings.SetDropDownWindowTemplateContent(c =>
-                       {
-                           ViewContext.Writer.Write("DropDown content");
-                       });
-                   }).GetHtml()
-                        </div>
-                        <div class="form-group col-md-2">
-                            @Html.DevExpress().DropDownEditFor(m => m.CashAdjustment, settings =>
-                       {
-                           settings.Properties.NullText = "Select Category";
-                           settings.ControlStyle.CssClass = "form-control";
-                           settings.Style["margin-top"] = "15px";
-                           settings.SetDropDownWindowTemplateContent(c =>
-                           {
-                               ViewContext.Writer.Write("DropDown content");
-                           });
-                       }).GetHtml()
-                        </div>
-                        <a class="btn btn-success pull-right row" style="margin-top:15px;margin-right:5px;" onclick=""><span class="glyphicon glyphicon-print"></span> Print </a>
-                    </div>
+                    <a class="btn btn-success pull-right row" style="margin-top:15px;margin-right:2px;" onclick="PopupForm('@Url.Action("AddUnit","UnitHomepage")')"><i class="fa fa-plus"></i> Add Unit</a>
+                    @* <a class="btn btn-info row pull-right" style="margin-top:15px; margin-right:5px; " href="@Url.Action("AddOrEdit","DeliveryChallan")"><i class="fa fa-plus"></i>Add Payment Out</a>*@
                 </div>
             </div>
         </nav>
@@ -65,11 +38,10 @@
                 <table id="cash" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Item Name</th>
-                            <th>Opening Qty</th>
-                            <th>Minimum Stock</th>
-                            <th>At Price</th>
-                            <th></th>
+                            <th>ID</th>
+                            <th>Add Unit</th>
+                            <th>Add Sub Unit</th>   
+                            <th>Actions</th>
                         </tr>
                     </thead>
                 </table>
@@ -86,19 +58,20 @@
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
     <script>
-        @*var Popup, dataTable;
+        var Popup, dataTable;
         $(document).ready(function () {
             dataTable =  $("#cash").DataTable({
                 "ajax": {
-                    "url": "/CashInHand/Data",
+                    "url": "/CompanyBankAccount/Data",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "TableName" },
-                    { "data": "PartyName" },
-                    { "data": "InvoiceDate" },
-                    { "data": "Total" },
+                    { "data": "BankName" },
+                    { "data": "AccountName" },
+                    { "data": "AccountNo" },
+                    { "data": "OpeningBal" },
+                     { "data": "Date" },
                     {"data":"ID" , "render" : function (data) {
                         return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
@@ -113,7 +86,7 @@
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
             });
-        });*@
+        });
 
         function PopupForm(url) {
             var formDiv = $('<div/>');
@@ -125,7 +98,7 @@
                     autoOpen: true,
                     resizable: false,
                     title: 'Fill Cash In Hand Details',
-                    height: 500,
+                    height: 300,
                     width: 500,
                     close: function () {
                         Popup.dialog('destroy').remove();
