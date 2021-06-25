@@ -3112,6 +3112,16 @@
       <Parameter Name="AdditionalFeild2" Mode="In" Type="String" />
       <Parameter Name="compid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="bankadjust" EntitySet="tbl_BankAdjustment" ReturnType="Collection(idealtec_inventoryModel.tbl_BankAdjustment)">
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="BankAccount" Mode="In" Type="String" />
+      <Parameter Name="EntryType" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Double" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="compid" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="addcompany_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />

@@ -6,19 +6,24 @@ using System.Web.Mvc;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-    public class CompanyController : Controller
+    public class BackupController : Controller
     {
-        // GET: Company
+        // GET: Backup
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult com()
-        {
-            return View();
-                 
+
+        public ActionResult backuptpdrive(){
+             return View();
         }
-        public ActionResult Company()
+
+
+       public ActionResult backupdatabase()
+        {
+            return View();                 
+        }
+        public ActionResult Restoredatabase()
         {
             return View();
         }

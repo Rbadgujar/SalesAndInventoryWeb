@@ -6,54 +6,93 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using SalesAndInentoryWeb_Application.Models;
-
+using System.Web.Mvc;
+using System.Data.Common;
 
 namespace SalesAndInentoryWeb_Application.Data_Access
 {
 	public class Bank
 	{
-		SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["idealtec_inventoryEntities"].ConnectionString);
-		// SqlConnection con = new SqlConnection("data source=103.83.81.80;initial catalog=idealtec_inventory;user id=idealtec_inventory;password=Mpiti@123;MultipleActiveResultSets=True;App=EntityFramework");
 
-		idealtec_inventoryEntities10 dc = new idealtec_inventoryEntities10();
-
+		SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["idealtec_inventoryEntities10"].ToString());
 		public DataSet show_data()
 		{
+			string qry = string.Format("select * from tbl_BankAccount where DeleteData='1'");
+			SqlCommand cmd = new SqlCommand(qry, con);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
+			DataSet ds = new DataSet();
+			da.Fill(ds);
+			return ds;
 
-			
+			//SqlCommand cmd = new SqlCommand("BankAccountSelect", con);
+			//cmd.CommandType = CommandType.StoredProcedure;
+			//cmd.Parameters.AddWithValue("@Action", "select");
+			////cmd.Parameters.AddWithValue("@ID", null);
+			////cmd.Parameters.AddWithValue("@BankName", null);
+			////cmd.Parameters.AddWithValue("@AccountName", null);
+			////cmd.Parameters.AddWithValue("@AccountNo", null);
+			////cmd.Parameters.AddWithValue("@OpeningBal", null);
+			////cmd.Parameters.AddWithValue("@Date", null);
+			//SqlDataAdapter da = new SqlDataAdapter(cmd);
+			//DataSet ds = new DataSet();
+			//da.Fill(ds);
+			//return ds;
+		 }
 
+		public void InsertData(tbl_BankAccount objcust)
+		{
 			SqlCommand cmd = new SqlCommand("BankAccountSelect", con);
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.Parameters.AddWithValue("@Action", "Select");
+			cmd.Parameters.AddWithValue("@BankName", objcust.BankName);
+			cmd.Parameters.AddWithValue("@AccountName", objcust.AccountName);
+			cmd.Parameters.AddWithValue("@AccountNo", objcust.AccountNo);
+			cmd.Parameters.AddWithValue("@OpeningBal", objcust.OpeningBal);
+			cmd.Parameters.AddWithValue("@Date", objcust.Date);
+			cmd.Parameters.AddWithValue("@Action", "Insert");
+			con.Open();
+			cmd.ExecuteNonQuery();
+			con.Close();
+		}
+
+		public void Updatedata(tbl_BankAccount objcust)
+		{
+			SqlCommand cmd = new SqlCommand("BankAccountSelect", con);
+			cmd.CommandType = CommandType.StoredProcedure;
+			cmd.Parameters.AddWithValue("@ID", objcust.ID);
+			cmd.Parameters.AddWithValue("@BankName", objcust.BankName);
+			cmd.Parameters.AddWithValue("@AccountName", objcust.AccountName);
+			cmd.Parameters.AddWithValue("@AccountNo", objcust.AccountNo);
+			cmd.Parameters.AddWithValue("@OpeningBal", objcust.OpeningBal);
+			cmd.Parameters.AddWithValue("@Date", objcust.Date);
+			cmd.Parameters.AddWithValue("@Action", "Update");
+			con.Open();
+			cmd.ExecuteNonQuery();
+			con.Close();
+		}
+
+		public DataSet SelectID(int id)
+		{
+			SqlCommand cmd = new SqlCommand("BankAccountSelect", con);
+			cmd.CommandType = CommandType.StoredProcedure;
+			cmd.Parameters.AddWithValue("@ID", id);
 			SqlDataAdapter da = new SqlDataAdapter(cmd);
 			DataSet ds = new DataSet();
 			da.Fill(ds);
 			return ds;
 		}
 
-		public List<BankAccountSelect_Result> SelectBank()
-		{
-			var daac = dc.BankAccountSelect("Select", null, null, null, null, null, null,null).ToList();
-			return daac.ToList();
-
-		}
-		
-
-		public void AddOrEdit(tbl_BankAccount bk)
+		public void DeleteData(int id)
 		{
 			SqlCommand cmd = new SqlCommand("BankAccountSelect", con);
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.Parameters.AddWithValue("@Action", "Insert");
-			//cmd.Parameters.AddWithValue("@ID", id);
-			cmd.Parameters.AddWithValue("@BankName", bk.BankName);
-			cmd.Parameters.AddWithValue("@AccountName", bk.AccountName);
-			cmd.Parameters.AddWithValue("@AccountNo", bk.AccountNo);
-			//cmd.Parameters.AddWithValue("@OpeningBal", bk.OpeningBal);
-			cmd.Parameters.AddWithValue("@Date", bk.Date);
+			cmd.Parameters.AddWithValue("@ID", id);
+			cmd.Parameters.AddWithValue("@Action", "Delete");
 			con.Open();
 			cmd.ExecuteNonQuery();
 			con.Close();
 		}
-		
 	}
 }
+
+		
+

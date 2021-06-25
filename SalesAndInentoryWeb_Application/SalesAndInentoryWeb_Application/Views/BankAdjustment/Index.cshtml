@@ -18,7 +18,7 @@
             </div>
         </div>
     </nav>
-
+   vithoba 
     <nav class="navbar navbar-default ">
         <div class="container-fluid">
             <div class="collapse navbar-collapse ">
@@ -31,6 +31,7 @@
                             <th>Date</th>
                             <th>Description</th>
                             <th></th>
+							<th></th>
                         </tr>
                     </thead>
                 </table>
@@ -60,8 +61,9 @@
                     { "data": "EntryType" },
                     { "data": "Amount" },
                     { "data": "Date" },
-                    { "data": "Description" },
-                    {"data":"ID" , "render" : function (data) {
+					{ "data": "Description" },
+					{ "data": "compid" },
+                    { "data":"ID" , "render" : function (data) {
                         return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAdjustment")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
