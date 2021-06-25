@@ -3005,6 +3005,7 @@
     <Compile Include="Controllers\ItemWisePorLController.cs" />
     <Compile Include="Controllers\LoanAccountController.cs" />
     <Compile Include="Controllers\LowStockSummaryController.cs" />
+    <Compile Include="Controllers\MainLoginController.cs" />
     <Compile Include="Controllers\MakePaymentController.cs" />
     <Compile Include="Controllers\OIncomeCategoryReportController.cs" />
     <Compile Include="Controllers\OIncomeItemReportController.cs" />
@@ -3025,6 +3026,11 @@
     <Compile Include="Controllers\SPPartyGroupController.cs" />
     <Compile Include="Controllers\SPReportByItemCategoryController.cs" />
     <Compile Include="Controllers\SPReportByItemController.cs" />
+    <Compile Include="Controllers\StockSummaryreportbyItemCategoryController.cs" />
+    <Compile Include="Controllers\StockSummeryController.cs" />
+    <Compile Include="Controllers\TaxRateReportController.cs" />
+    <Compile Include="Controllers\TaxReportController.cs" />
+    <Compile Include="Controllers\TransactionSearchController.cs" />
     <Compile Include="Controllers\UtilitiesController.cs" />
     <Compile Include="Data_Access\Bank.cs" />
     <Compile Include="Global.asax.cs">
@@ -3415,6 +3421,12 @@
     <Content Include="Views\Seeting1\taxGsstSetting.cshtml" />
     <Content Include="Views\Seeting1\TransactionSeting.cshtml" />
     <Content Include="Views\Company\com.cshtml" />
+    <Content Include="Views\MainLogin\Index.cshtml" />
+    <Content Include="Views\StockSummery\Index.cshtml" />
+    <Content Include="Views\TaxRateReport\Index.cshtml" />
+    <Content Include="Views\TaxReport\Index.cshtml" />
+    <Content Include="Views\TransactionSearch\Index.cshtml" />
+    <Content Include="Views\StockSummaryreportbyItemCategory\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3426,6 +3438,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\App_Data\" />
     <Folder Include="Views\index\" />
+    <Folder Include="Views\Seeting\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
