@@ -3822,5 +3822,79 @@ namespace SalesAndInentoryWeb_Application.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_UnitMasterUnit_Result>("tbl_UnitMasterUnit", actionParameter, unitIDParameter, unitNameParameter, subUnitNameParameter, additionalFeild1Parameter, additionalFeild2Parameter, compidParameter);
         }
+    
+        public virtual ObjectResult<tbl_BankAdjustment> bankadjust(string action, Nullable<int> iD, string bankAccount, string entryType, Nullable<double> amount, Nullable<System.DateTime> date, string description, Nullable<int> compid)
+        {
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var bankAccountParameter = bankAccount != null ?
+                new ObjectParameter("BankAccount", bankAccount) :
+                new ObjectParameter("BankAccount", typeof(string));
+    
+            var entryTypeParameter = entryType != null ?
+                new ObjectParameter("EntryType", entryType) :
+                new ObjectParameter("EntryType", typeof(string));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("Amount", amount) :
+                new ObjectParameter("Amount", typeof(double));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var compidParameter = compid.HasValue ?
+                new ObjectParameter("compid", compid) :
+                new ObjectParameter("compid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_BankAdjustment>("bankadjust", actionParameter, iDParameter, bankAccountParameter, entryTypeParameter, amountParameter, dateParameter, descriptionParameter, compidParameter);
+        }
+    
+        public virtual ObjectResult<tbl_BankAdjustment> bankadjust(string action, Nullable<int> iD, string bankAccount, string entryType, Nullable<double> amount, Nullable<System.DateTime> date, string description, Nullable<int> compid, MergeOption mergeOption)
+        {
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var bankAccountParameter = bankAccount != null ?
+                new ObjectParameter("BankAccount", bankAccount) :
+                new ObjectParameter("BankAccount", typeof(string));
+    
+            var entryTypeParameter = entryType != null ?
+                new ObjectParameter("EntryType", entryType) :
+                new ObjectParameter("EntryType", typeof(string));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("Amount", amount) :
+                new ObjectParameter("Amount", typeof(double));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var compidParameter = compid.HasValue ?
+                new ObjectParameter("compid", compid) :
+                new ObjectParameter("compid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_BankAdjustment>("bankadjust", mergeOption, actionParameter, iDParameter, bankAccountParameter, entryTypeParameter, amountParameter, dateParameter, descriptionParameter, compidParameter);
+        }
     }
 }

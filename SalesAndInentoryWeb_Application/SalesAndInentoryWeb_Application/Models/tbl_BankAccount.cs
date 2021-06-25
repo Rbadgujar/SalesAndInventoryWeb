@@ -21,6 +21,6 @@ namespace SalesAndInentoryWeb_Application.Models
         public float OpeningBal { get; set; }
         public string Date { get; set; }
         public Nullable<bool> DeleteData { get; set; }
-        public int Company_ID { get; set; }
+        public Nullable<int> Company_ID { get; set; }
     }
 }
