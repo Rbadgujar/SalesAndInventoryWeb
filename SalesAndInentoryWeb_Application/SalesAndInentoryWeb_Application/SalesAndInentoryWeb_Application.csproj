@@ -3057,6 +3057,7 @@
     <Compile Include="Controllers\MakePaymentController.cs" />
     <Compile Include="Controllers\OIncomeCategoryReportController.cs" />
     <Compile Include="Controllers\OIncomeItemReportController.cs" />
+    <Compile Include="Controllers\OnlineStoreController.cs" />
     <Compile Include="Controllers\OtherIncomeController.cs" />
     <Compile Include="Controllers\OtherIncomeReportController.cs" />
     <Compile Include="Controllers\ParchaseOrderController.cs" />
@@ -3495,6 +3496,8 @@
     <Content Include="Views\SaleAging\Index.cshtml" />
     <Content Include="Views\CompanyList\Index.cshtml" />
     <Content Include="Views\CompanyList\NewCompany.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\OnlineStore\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -4,8 +4,6 @@
     Layout = "~/Views/Shared/ideal.cshtml";
 
 }
-<label style="font-size:20px; margin-left:15px ">Item By Party Report</label>
-
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -37,11 +35,11 @@
                 </table>
             </div>
         </div>
-        <nav class="navbar navbar-default ">
+        <nav class="navbar navbar-default " style="background-color:white; border:none;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
-                    <a class="btn btn-success pull-right row" style="margin-top:15px;margin-right:10px;" onclick=""> Restore </a>
-                    <a class="btn btn-success pull-right row" style="margin-top:15px;margin-right:10px;" onclick="PopupForm('@Url.Action("NewCompany","CompanyList")')"> New Company </a>
+                    <center><a class="btn btn-success row" style="margin-top:15px;margin-right:20px;" onclick=""> Restore </a>
+                    <a class="btn btn-success row" style="margin-top:15px;margin-right:10px;" onclick="PopupForm('@Url.Action("NewCompany","CompanyList")')"> New Company </a></center>
                 </div>
             </div>
         </nav>
@@ -94,8 +92,8 @@
                 Popup = formDiv.dialog({
                     autoOpen: true,
                     resizable: false,
-                    title: 'Fill Cash In Hand Details',
-                    height: 500,
+                    title: 'Company Login',
+                    height: 410,
                     width: 500,
                     close: function () {
                         Popup.dialog('destroy').remove();
