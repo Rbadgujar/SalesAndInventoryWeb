@@ -6,18 +6,14 @@ using System.Web.Mvc;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-    public class LoanAccountController : Controller
+    public class ItemAdjustHomepageController : Controller
     {
-        // GET: LoanAccount
+        // GET: ItemAdjustHomepage
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult AddOrEdit()
-        {
-            return View();
-        }
-        public ActionResult LoanStatement()
+        public ActionResult AdjustItem()
         {
             return View();
         }

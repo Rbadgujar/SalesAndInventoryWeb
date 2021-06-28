@@ -3005,6 +3005,7 @@
     <Compile Include="Controllers\ChequeController.cs" />
     <Compile Include="Controllers\CompanyBankAccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CompanyListController.cs" />
     <Compile Include="Controllers\CreditnoteController.cs" />
     <Compile Include="Controllers\DayBookController.cs" />
     <Compile Include="Controllers\DebitNoteController.cs" />
@@ -3016,6 +3017,7 @@
     <Compile Include="Controllers\ExpenseCategoryReportController.cs" />
     <Compile Include="Controllers\ExpenseItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemAdjustHomepageController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
     <Compile Include="Controllers\ItemReportByPartyController.cs" />
     <Compile Include="Controllers\ItemServicesController.cs" />
@@ -3031,10 +3033,12 @@
     <Compile Include="Controllers\OtherIncomeReportController.cs" />
     <Compile Include="Controllers\ParchaseOrderController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
+    <Compile Include="Controllers\PartyStatementController.cs" />
     <Compile Include="Controllers\PaymentInController.cs" />
     <Compile Include="Controllers\PaymentOutController.cs" />
     <Compile Include="Controllers\ProfitAndLossController.cs" />
     <Compile Include="Controllers\PurchaseBillController.cs" />
+    <Compile Include="Controllers\SaleAgingController.cs" />
     <Compile Include="Controllers\SaleInvoiceController.cs" />
     <Compile Include="Controllers\SaleOrderController.cs" />
     <Compile Include="Controllers\Seeting1Controller.cs" />
@@ -3455,6 +3459,13 @@
     <Content Include="Views\UnitHomepage\AddUnit.cshtml" />
     <Content Include="Views\ItemServices\Index.cshtml" />
     <Content Include="Views\ItemServices\AddServices.cshtml" />
+    <Content Include="Views\ItemAdjustHomepage\Index.cshtml" />
+    <Content Include="Views\ItemAdjustHomepage\AdjustItem.cshtml" />
+    <Content Include="Views\LoanAccount\Index.cshtml" />
+    <Content Include="Views\LoanAccount\LoanStatement.cshtml" />
+    <Content Include="Views\PartyStatement\Index.cshtml" />
+    <Content Include="Views\SaleAging\Index.cshtml" />
+    <Content Include="Views\CompanyList\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
