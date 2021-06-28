@@ -1,0 +1,65 @@
+﻿@model SalesAndInentoryWeb_Application.Models.tbl_ItemAdjustement
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AdjustItem", "ItemAdjustHomepage", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model => model.ID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.ItemName, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ItemName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Item Name....." } })
+        @Html.ValidationMessageFor(model => model.ItemName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AdjustmentType, new { @class = "control-label" })
+        @{
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem
+            {
+                Text = "Add Srock",
+                Value = "Add Srock"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Reduce Stock",
+                Value = "Reduce Stock",
+                Selected = true
+            });
+
+        }
+        <div class="form-group">
+            @Html.DropDownListFor(model => model.AdjustmentType, listItems, "-- Select Adjustment Type --", new { htmlAttributes = new { @class = "form-control"} })
+
+            @Html.ValidationMessageFor(model => model.AdjustmentType)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AdjustmentDate, new { @class = "control-label" })
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.AdjustmentDate, new { @type = "date", @class = "control-label" })
+        </div>
+      
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AtPrice, new { @class = "control-label" })
+        @Html.EditorFor(model => model.AtPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter At Price....." } })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Quantity, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Quantity....." } })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Details, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Details....." } })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+        <input type="reset" value="Reset" class="btn" />
+    </div>
+            }

@@ -44,8 +44,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.Designer.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Charts.Designer.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\DevExpress.CodeParser.v20.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Dashboard.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\DevExpress.Data.v20.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.DataAccess.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -94,6 +105,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -2551,10 +2563,22 @@
     <Content Include="bower_components\jvectormap\tests\index.html" />
     <Content Include="bower_components\jvectormap\tests\markers.html" />
     <Content Include="bower_components\jvectormap\tests\reverse-projection.html" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\notify.css" />
     <Content Include="Content\notify.min.css" />
     <Content Include="Content\Site.css" />
@@ -2600,7 +2624,6 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="css\mm.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Models\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -2682,16 +2705,6 @@
     <Content Include="Models\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="bower_components\bootstrap\.bower.json" />
     <Content Include="bower_components\bootstrap\bower.json" />
     <Content Include="bower_components\bootstrap\CHANGELOG.md" />
@@ -2946,6 +2959,39 @@
     <Content Include="bower_components\jvectormap\README.md" />
     <Content Include="bower_components\dist\css\adminlte.css.map" />
     <Content Include="bower_components\dist\css\adminlte.min.css.map" />
+    <Content Include="DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="scripts\bootstrap.bundle.js" />
+    <Content Include="scripts\bootstrap.bundle.min.js" />
+    <Content Include="scripts\bootstrap.esm.js" />
+    <Content Include="scripts\bootstrap.esm.min.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\bootstrap.min.js.map" />
+    <Content Include="scripts\bootstrap.js.map" />
+    <Content Include="scripts\bootstrap.esm.min.js.map" />
+    <Content Include="scripts\bootstrap.esm.js.map" />
+    <Content Include="scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\jquery-1.12.4.js" />
     <Content Include="scripts\jquery-1.12.4.min.js" />
@@ -2970,7 +3016,6 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2988,6 +3033,7 @@
     <Compile Include="Controllers\ChequeController.cs" />
     <Compile Include="Controllers\CompanyBankAccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CompanyListController.cs" />
     <Compile Include="Controllers\CreditnoteController.cs" />
     <Compile Include="Controllers\DayBookController.cs" />
     <Compile Include="Controllers\DebitNoteController.cs" />
@@ -2999,12 +3045,15 @@
     <Compile Include="Controllers\ExpenseCategoryReportController.cs" />
     <Compile Include="Controllers\ExpenseItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemAdjustHomepageController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
     <Compile Include="Controllers\ItemReportByPartyController.cs" />
+    <Compile Include="Controllers\ItemServicesController.cs" />
     <Compile Include="Controllers\ItemTrackingReportController.cs" />
     <Compile Include="Controllers\ItemWisePorLController.cs" />
     <Compile Include="Controllers\LoanAccountController.cs" />
     <Compile Include="Controllers\LowStockSummaryController.cs" />
+    <Compile Include="Controllers\MainLoginController.cs" />
     <Compile Include="Controllers\MakePaymentController.cs" />
     <Compile Include="Controllers\OIncomeCategoryReportController.cs" />
     <Compile Include="Controllers\OIncomeItemReportController.cs" />
@@ -3012,10 +3061,12 @@
     <Compile Include="Controllers\OtherIncomeReportController.cs" />
     <Compile Include="Controllers\ParchaseOrderController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
+    <Compile Include="Controllers\PartyStatementController.cs" />
     <Compile Include="Controllers\PaymentInController.cs" />
     <Compile Include="Controllers\PaymentOutController.cs" />
     <Compile Include="Controllers\ProfitAndLossController.cs" />
     <Compile Include="Controllers\PurchaseBillController.cs" />
+    <Compile Include="Controllers\SaleAgingController.cs" />
     <Compile Include="Controllers\SaleInvoiceController.cs" />
     <Compile Include="Controllers\SaleOrderController.cs" />
     <Compile Include="Controllers\Seeting1Controller.cs" />
@@ -3025,7 +3076,18 @@
     <Compile Include="Controllers\SPPartyGroupController.cs" />
     <Compile Include="Controllers\SPReportByItemCategoryController.cs" />
     <Compile Include="Controllers\SPReportByItemController.cs" />
+    <Compile Include="Controllers\StockSummaryreportbyItemCategoryController.cs" />
+    <Compile Include="Controllers\StockSummeryController.cs" />
+    <Compile Include="Controllers\TaxRateReportController.cs" />
+    <Compile Include="Controllers\TaxReportController.cs" />
+    <Compile Include="Controllers\TransactionSearchController.cs" />
+    <Compile Include="Controllers\UnitHomepageController.cs" />
     <Compile Include="Controllers\UtilitiesController.cs" />
+    <Compile Include="DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Data_Access\Bank.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3415,6 +3477,24 @@
     <Content Include="Views\Seeting1\taxGsstSetting.cshtml" />
     <Content Include="Views\Seeting1\TransactionSeting.cshtml" />
     <Content Include="Views\Company\com.cshtml" />
+    <Content Include="Views\MainLogin\Index.cshtml" />
+    <Content Include="Views\StockSummery\Index.cshtml" />
+    <Content Include="Views\TaxRateReport\Index.cshtml" />
+    <Content Include="Views\TaxReport\Index.cshtml" />
+    <Content Include="Views\TransactionSearch\Index.cshtml" />
+    <Content Include="Views\StockSummaryreportbyItemCategory\Index.cshtml" />
+    <Content Include="Views\UnitHomepage\Index.cshtml" />
+    <Content Include="Views\UnitHomepage\AddUnit.cshtml" />
+    <Content Include="Views\ItemServices\Index.cshtml" />
+    <Content Include="Views\ItemServices\AddServices.cshtml" />
+    <Content Include="Views\ItemAdjustHomepage\Index.cshtml" />
+    <Content Include="Views\ItemAdjustHomepage\AdjustItem.cshtml" />
+    <Content Include="Views\LoanAccount\Index.cshtml" />
+    <Content Include="Views\LoanAccount\LoanStatement.cshtml" />
+    <Content Include="Views\PartyStatement\Index.cshtml" />
+    <Content Include="Views\SaleAging\Index.cshtml" />
+    <Content Include="Views\CompanyList\Index.cshtml" />
+    <Content Include="Views\CompanyList\NewCompany.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3426,11 +3506,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\App_Data\" />
     <Folder Include="Views\index\" />
+    <Folder Include="Views\Seeting\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Content>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>

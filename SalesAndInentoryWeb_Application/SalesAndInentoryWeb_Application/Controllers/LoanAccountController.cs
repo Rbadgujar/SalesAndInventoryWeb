@@ -17,5 +17,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+        public ActionResult LoanStatement()
+        {
+            return View();
+        }
     }
 }

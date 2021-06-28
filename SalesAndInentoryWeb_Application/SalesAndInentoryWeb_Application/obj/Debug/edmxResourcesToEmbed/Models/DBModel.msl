@@ -2047,7 +2047,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="PartyMasterCrud" FunctionName="idealtec_inventoryModel.Store.tbl_PartyMasterSelect" />
-    <FunctionImportMapping FunctionImportName="PerformCRUD_Comp" FunctionName="idealtec_inventoryModel.Store.tbl_CompanyMasterSelect" />
+    <FunctionImportMapping FunctionImportName="bankadjust" FunctionName="idealtec_inventoryModel.Store.tbl_BankAdjustmentselect" />
   </EntityContainerMapping>
 </Mapping>

@@ -3112,44 +3112,15 @@
       <Parameter Name="AdditionalFeild2" Mode="In" Type="String" />
       <Parameter Name="compid" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="PartyMasterCrud" EntitySet="tbl_PartyMaster" ReturnType="Collection(idealtec_inventoryModel.tbl_PartyMaster)">
+    <FunctionImport Name="bankadjust" EntitySet="tbl_BankAdjustment" ReturnType="Collection(idealtec_inventoryModel.tbl_BankAdjustment)">
       <Parameter Name="Action" Mode="In" Type="String" />
-      <Parameter Name="PartiesID" Mode="In" Type="Int32" />
-      <Parameter Name="PartyName" Mode="In" Type="String" />
-      <Parameter Name="ContactNo" Mode="In" Type="String" />
-      <Parameter Name="BillingAddress" Mode="In" Type="String" />
-      <Parameter Name="EmailID" Mode="In" Type="String" />
-      <Parameter Name="GSTType" Mode="In" Type="String" />
-      <Parameter Name="State" Mode="In" Type="String" />
-      <Parameter Name="OpeningBal" Mode="In" Type="Double" />
-      <Parameter Name="AsOfDate" Mode="In" Type="DateTime" />
-      <Parameter Name="AddRemainder" Mode="In" Type="String" />
-      <Parameter Name="PartyType" Mode="In" Type="String" />
-      <Parameter Name="ShippingAddress" Mode="In" Type="String" />
-      <Parameter Name="PartyGroup" Mode="In" Type="String" />
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="BankAccount" Mode="In" Type="String" />
+      <Parameter Name="EntryType" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Double" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Description" Mode="In" Type="String" />
       <Parameter Name="compid" Mode="In" Type="Int32" />
-      <Parameter Name="paidstatus" Mode="In" Type="String" />
-      <Parameter Name="type" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="PerformCRUD_Comp" EntitySet="tbl_CompanyMaster" ReturnType="Collection(idealtec_inventoryModel.tbl_CompanyMaster)">
-      <Parameter Name="Action" Mode="In" Type="String" />
-      <Parameter Name="CompanyID" Mode="In" Type="Int32" />
-      <Parameter Name="CompanyName" Mode="In" Type="String" />
-      <Parameter Name="PhoneNo" Mode="In" Type="String" />
-      <Parameter Name="EmailID" Mode="In" Type="String" />
-      <Parameter Name="ReferaleCode" Mode="In" Type="String" />
-      <Parameter Name="BusinessType" Mode="In" Type="String" />
-      <Parameter Name="Address" Mode="In" Type="String" />
-      <Parameter Name="City" Mode="In" Type="String" />
-      <Parameter Name="State" Mode="In" Type="String" />
-      <Parameter Name="GSTNumber" Mode="In" Type="String" />
-      <Parameter Name="OwnerName" Mode="In" Type="String" />
-      <Parameter Name="Signature" Mode="In" Type="Binary" />
-      <Parameter Name="AddLogo" Mode="In" Type="Binary" />
-      <Parameter Name="AdditinalFeild1" Mode="In" Type="String" />
-      <Parameter Name="AdditinalFeild2" Mode="In" Type="String" />
-      <Parameter Name="AdditinalFeild3" Mode="In" Type="String" />
-      <Parameter Name="def" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="addcompany_Result">

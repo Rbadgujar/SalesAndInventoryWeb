@@ -3823,304 +3823,78 @@ namespace SalesAndInentoryWeb_Application.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_UnitMasterUnit_Result>("tbl_UnitMasterUnit", actionParameter, unitIDParameter, unitNameParameter, subUnitNameParameter, additionalFeild1Parameter, additionalFeild2Parameter, compidParameter);
         }
     
-        public virtual ObjectResult<tbl_PartyMaster> PartyMasterCrud(string action, Nullable<int> partiesID, string partyName, string contactNo, string billingAddress, string emailID, string gSTType, string state, Nullable<double> openingBal, Nullable<System.DateTime> asOfDate, string addRemainder, string partyType, string shippingAddress, string partyGroup, Nullable<int> compid, string paidstatus, string type)
+        public virtual ObjectResult<tbl_BankAdjustment> bankadjust(string action, Nullable<int> iD, string bankAccount, string entryType, Nullable<double> amount, Nullable<System.DateTime> date, string description, Nullable<int> compid)
         {
             var actionParameter = action != null ?
                 new ObjectParameter("Action", action) :
                 new ObjectParameter("Action", typeof(string));
     
-            var partiesIDParameter = partiesID.HasValue ?
-                new ObjectParameter("PartiesID", partiesID) :
-                new ObjectParameter("PartiesID", typeof(int));
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
     
-            var partyNameParameter = partyName != null ?
-                new ObjectParameter("PartyName", partyName) :
-                new ObjectParameter("PartyName", typeof(string));
+            var bankAccountParameter = bankAccount != null ?
+                new ObjectParameter("BankAccount", bankAccount) :
+                new ObjectParameter("BankAccount", typeof(string));
     
-            var contactNoParameter = contactNo != null ?
-                new ObjectParameter("ContactNo", contactNo) :
-                new ObjectParameter("ContactNo", typeof(string));
+            var entryTypeParameter = entryType != null ?
+                new ObjectParameter("EntryType", entryType) :
+                new ObjectParameter("EntryType", typeof(string));
     
-            var billingAddressParameter = billingAddress != null ?
-                new ObjectParameter("BillingAddress", billingAddress) :
-                new ObjectParameter("BillingAddress", typeof(string));
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("Amount", amount) :
+                new ObjectParameter("Amount", typeof(double));
     
-            var emailIDParameter = emailID != null ?
-                new ObjectParameter("EmailID", emailID) :
-                new ObjectParameter("EmailID", typeof(string));
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
     
-            var gSTTypeParameter = gSTType != null ?
-                new ObjectParameter("GSTType", gSTType) :
-                new ObjectParameter("GSTType", typeof(string));
-    
-            var stateParameter = state != null ?
-                new ObjectParameter("State", state) :
-                new ObjectParameter("State", typeof(string));
-    
-            var openingBalParameter = openingBal.HasValue ?
-                new ObjectParameter("OpeningBal", openingBal) :
-                new ObjectParameter("OpeningBal", typeof(double));
-    
-            var asOfDateParameter = asOfDate.HasValue ?
-                new ObjectParameter("AsOfDate", asOfDate) :
-                new ObjectParameter("AsOfDate", typeof(System.DateTime));
-    
-            var addRemainderParameter = addRemainder != null ?
-                new ObjectParameter("AddRemainder", addRemainder) :
-                new ObjectParameter("AddRemainder", typeof(string));
-    
-            var partyTypeParameter = partyType != null ?
-                new ObjectParameter("PartyType", partyType) :
-                new ObjectParameter("PartyType", typeof(string));
-    
-            var shippingAddressParameter = shippingAddress != null ?
-                new ObjectParameter("ShippingAddress", shippingAddress) :
-                new ObjectParameter("ShippingAddress", typeof(string));
-    
-            var partyGroupParameter = partyGroup != null ?
-                new ObjectParameter("PartyGroup", partyGroup) :
-                new ObjectParameter("PartyGroup", typeof(string));
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
     
             var compidParameter = compid.HasValue ?
                 new ObjectParameter("compid", compid) :
                 new ObjectParameter("compid", typeof(int));
     
-            var paidstatusParameter = paidstatus != null ?
-                new ObjectParameter("paidstatus", paidstatus) :
-                new ObjectParameter("paidstatus", typeof(string));
-    
-            var typeParameter = type != null ?
-                new ObjectParameter("type", type) :
-                new ObjectParameter("type", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_PartyMaster>("PartyMasterCrud", actionParameter, partiesIDParameter, partyNameParameter, contactNoParameter, billingAddressParameter, emailIDParameter, gSTTypeParameter, stateParameter, openingBalParameter, asOfDateParameter, addRemainderParameter, partyTypeParameter, shippingAddressParameter, partyGroupParameter, compidParameter, paidstatusParameter, typeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_BankAdjustment>("bankadjust", actionParameter, iDParameter, bankAccountParameter, entryTypeParameter, amountParameter, dateParameter, descriptionParameter, compidParameter);
         }
     
-        public virtual ObjectResult<tbl_PartyMaster> PartyMasterCrud(string action, Nullable<int> partiesID, string partyName, string contactNo, string billingAddress, string emailID, string gSTType, string state, Nullable<double> openingBal, Nullable<System.DateTime> asOfDate, string addRemainder, string partyType, string shippingAddress, string partyGroup, Nullable<int> compid, string paidstatus, string type, MergeOption mergeOption)
+        public virtual ObjectResult<tbl_BankAdjustment> bankadjust(string action, Nullable<int> iD, string bankAccount, string entryType, Nullable<double> amount, Nullable<System.DateTime> date, string description, Nullable<int> compid, MergeOption mergeOption)
         {
             var actionParameter = action != null ?
                 new ObjectParameter("Action", action) :
                 new ObjectParameter("Action", typeof(string));
     
-            var partiesIDParameter = partiesID.HasValue ?
-                new ObjectParameter("PartiesID", partiesID) :
-                new ObjectParameter("PartiesID", typeof(int));
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
     
-            var partyNameParameter = partyName != null ?
-                new ObjectParameter("PartyName", partyName) :
-                new ObjectParameter("PartyName", typeof(string));
+            var bankAccountParameter = bankAccount != null ?
+                new ObjectParameter("BankAccount", bankAccount) :
+                new ObjectParameter("BankAccount", typeof(string));
     
-            var contactNoParameter = contactNo != null ?
-                new ObjectParameter("ContactNo", contactNo) :
-                new ObjectParameter("ContactNo", typeof(string));
+            var entryTypeParameter = entryType != null ?
+                new ObjectParameter("EntryType", entryType) :
+                new ObjectParameter("EntryType", typeof(string));
     
-            var billingAddressParameter = billingAddress != null ?
-                new ObjectParameter("BillingAddress", billingAddress) :
-                new ObjectParameter("BillingAddress", typeof(string));
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("Amount", amount) :
+                new ObjectParameter("Amount", typeof(double));
     
-            var emailIDParameter = emailID != null ?
-                new ObjectParameter("EmailID", emailID) :
-                new ObjectParameter("EmailID", typeof(string));
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
     
-            var gSTTypeParameter = gSTType != null ?
-                new ObjectParameter("GSTType", gSTType) :
-                new ObjectParameter("GSTType", typeof(string));
-    
-            var stateParameter = state != null ?
-                new ObjectParameter("State", state) :
-                new ObjectParameter("State", typeof(string));
-    
-            var openingBalParameter = openingBal.HasValue ?
-                new ObjectParameter("OpeningBal", openingBal) :
-                new ObjectParameter("OpeningBal", typeof(double));
-    
-            var asOfDateParameter = asOfDate.HasValue ?
-                new ObjectParameter("AsOfDate", asOfDate) :
-                new ObjectParameter("AsOfDate", typeof(System.DateTime));
-    
-            var addRemainderParameter = addRemainder != null ?
-                new ObjectParameter("AddRemainder", addRemainder) :
-                new ObjectParameter("AddRemainder", typeof(string));
-    
-            var partyTypeParameter = partyType != null ?
-                new ObjectParameter("PartyType", partyType) :
-                new ObjectParameter("PartyType", typeof(string));
-    
-            var shippingAddressParameter = shippingAddress != null ?
-                new ObjectParameter("ShippingAddress", shippingAddress) :
-                new ObjectParameter("ShippingAddress", typeof(string));
-    
-            var partyGroupParameter = partyGroup != null ?
-                new ObjectParameter("PartyGroup", partyGroup) :
-                new ObjectParameter("PartyGroup", typeof(string));
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
     
             var compidParameter = compid.HasValue ?
                 new ObjectParameter("compid", compid) :
                 new ObjectParameter("compid", typeof(int));
     
-            var paidstatusParameter = paidstatus != null ?
-                new ObjectParameter("paidstatus", paidstatus) :
-                new ObjectParameter("paidstatus", typeof(string));
-    
-            var typeParameter = type != null ?
-                new ObjectParameter("type", type) :
-                new ObjectParameter("type", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_PartyMaster>("PartyMasterCrud", mergeOption, actionParameter, partiesIDParameter, partyNameParameter, contactNoParameter, billingAddressParameter, emailIDParameter, gSTTypeParameter, stateParameter, openingBalParameter, asOfDateParameter, addRemainderParameter, partyTypeParameter, shippingAddressParameter, partyGroupParameter, compidParameter, paidstatusParameter, typeParameter);
-        }
-    
-        public virtual ObjectResult<tbl_CompanyMaster> PerformCRUD_Comp(string action, Nullable<int> companyID, string companyName, string phoneNo, string emailID, string referaleCode, string businessType, string address, string city, string state, string gSTNumber, string ownerName, byte[] signature, byte[] addLogo, string additinalFeild1, string additinalFeild2, string additinalFeild3, Nullable<int> def)
-        {
-            var actionParameter = action != null ?
-                new ObjectParameter("Action", action) :
-                new ObjectParameter("Action", typeof(string));
-    
-            var companyIDParameter = companyID.HasValue ?
-                new ObjectParameter("CompanyID", companyID) :
-                new ObjectParameter("CompanyID", typeof(int));
-    
-            var companyNameParameter = companyName != null ?
-                new ObjectParameter("CompanyName", companyName) :
-                new ObjectParameter("CompanyName", typeof(string));
-    
-            var phoneNoParameter = phoneNo != null ?
-                new ObjectParameter("PhoneNo", phoneNo) :
-                new ObjectParameter("PhoneNo", typeof(string));
-    
-            var emailIDParameter = emailID != null ?
-                new ObjectParameter("EmailID", emailID) :
-                new ObjectParameter("EmailID", typeof(string));
-    
-            var referaleCodeParameter = referaleCode != null ?
-                new ObjectParameter("ReferaleCode", referaleCode) :
-                new ObjectParameter("ReferaleCode", typeof(string));
-    
-            var businessTypeParameter = businessType != null ?
-                new ObjectParameter("BusinessType", businessType) :
-                new ObjectParameter("BusinessType", typeof(string));
-    
-            var addressParameter = address != null ?
-                new ObjectParameter("Address", address) :
-                new ObjectParameter("Address", typeof(string));
-    
-            var cityParameter = city != null ?
-                new ObjectParameter("City", city) :
-                new ObjectParameter("City", typeof(string));
-    
-            var stateParameter = state != null ?
-                new ObjectParameter("State", state) :
-                new ObjectParameter("State", typeof(string));
-    
-            var gSTNumberParameter = gSTNumber != null ?
-                new ObjectParameter("GSTNumber", gSTNumber) :
-                new ObjectParameter("GSTNumber", typeof(string));
-    
-            var ownerNameParameter = ownerName != null ?
-                new ObjectParameter("OwnerName", ownerName) :
-                new ObjectParameter("OwnerName", typeof(string));
-    
-            var signatureParameter = signature != null ?
-                new ObjectParameter("Signature", signature) :
-                new ObjectParameter("Signature", typeof(byte[]));
-    
-            var addLogoParameter = addLogo != null ?
-                new ObjectParameter("AddLogo", addLogo) :
-                new ObjectParameter("AddLogo", typeof(byte[]));
-    
-            var additinalFeild1Parameter = additinalFeild1 != null ?
-                new ObjectParameter("AdditinalFeild1", additinalFeild1) :
-                new ObjectParameter("AdditinalFeild1", typeof(string));
-    
-            var additinalFeild2Parameter = additinalFeild2 != null ?
-                new ObjectParameter("AdditinalFeild2", additinalFeild2) :
-                new ObjectParameter("AdditinalFeild2", typeof(string));
-    
-            var additinalFeild3Parameter = additinalFeild3 != null ?
-                new ObjectParameter("AdditinalFeild3", additinalFeild3) :
-                new ObjectParameter("AdditinalFeild3", typeof(string));
-    
-            var defParameter = def.HasValue ?
-                new ObjectParameter("def", def) :
-                new ObjectParameter("def", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_CompanyMaster>("PerformCRUD_Comp", actionParameter, companyIDParameter, companyNameParameter, phoneNoParameter, emailIDParameter, referaleCodeParameter, businessTypeParameter, addressParameter, cityParameter, stateParameter, gSTNumberParameter, ownerNameParameter, signatureParameter, addLogoParameter, additinalFeild1Parameter, additinalFeild2Parameter, additinalFeild3Parameter, defParameter);
-        }
-    
-        public virtual ObjectResult<tbl_CompanyMaster> PerformCRUD_Comp(string action, Nullable<int> companyID, string companyName, string phoneNo, string emailID, string referaleCode, string businessType, string address, string city, string state, string gSTNumber, string ownerName, byte[] signature, byte[] addLogo, string additinalFeild1, string additinalFeild2, string additinalFeild3, Nullable<int> def, MergeOption mergeOption)
-        {
-            var actionParameter = action != null ?
-                new ObjectParameter("Action", action) :
-                new ObjectParameter("Action", typeof(string));
-    
-            var companyIDParameter = companyID.HasValue ?
-                new ObjectParameter("CompanyID", companyID) :
-                new ObjectParameter("CompanyID", typeof(int));
-    
-            var companyNameParameter = companyName != null ?
-                new ObjectParameter("CompanyName", companyName) :
-                new ObjectParameter("CompanyName", typeof(string));
-    
-            var phoneNoParameter = phoneNo != null ?
-                new ObjectParameter("PhoneNo", phoneNo) :
-                new ObjectParameter("PhoneNo", typeof(string));
-    
-            var emailIDParameter = emailID != null ?
-                new ObjectParameter("EmailID", emailID) :
-                new ObjectParameter("EmailID", typeof(string));
-    
-            var referaleCodeParameter = referaleCode != null ?
-                new ObjectParameter("ReferaleCode", referaleCode) :
-                new ObjectParameter("ReferaleCode", typeof(string));
-    
-            var businessTypeParameter = businessType != null ?
-                new ObjectParameter("BusinessType", businessType) :
-                new ObjectParameter("BusinessType", typeof(string));
-    
-            var addressParameter = address != null ?
-                new ObjectParameter("Address", address) :
-                new ObjectParameter("Address", typeof(string));
-    
-            var cityParameter = city != null ?
-                new ObjectParameter("City", city) :
-                new ObjectParameter("City", typeof(string));
-    
-            var stateParameter = state != null ?
-                new ObjectParameter("State", state) :
-                new ObjectParameter("State", typeof(string));
-    
-            var gSTNumberParameter = gSTNumber != null ?
-                new ObjectParameter("GSTNumber", gSTNumber) :
-                new ObjectParameter("GSTNumber", typeof(string));
-    
-            var ownerNameParameter = ownerName != null ?
-                new ObjectParameter("OwnerName", ownerName) :
-                new ObjectParameter("OwnerName", typeof(string));
-    
-            var signatureParameter = signature != null ?
-                new ObjectParameter("Signature", signature) :
-                new ObjectParameter("Signature", typeof(byte[]));
-    
-            var addLogoParameter = addLogo != null ?
-                new ObjectParameter("AddLogo", addLogo) :
-                new ObjectParameter("AddLogo", typeof(byte[]));
-    
-            var additinalFeild1Parameter = additinalFeild1 != null ?
-                new ObjectParameter("AdditinalFeild1", additinalFeild1) :
-                new ObjectParameter("AdditinalFeild1", typeof(string));
-    
-            var additinalFeild2Parameter = additinalFeild2 != null ?
-                new ObjectParameter("AdditinalFeild2", additinalFeild2) :
-                new ObjectParameter("AdditinalFeild2", typeof(string));
-    
-            var additinalFeild3Parameter = additinalFeild3 != null ?
-                new ObjectParameter("AdditinalFeild3", additinalFeild3) :
-                new ObjectParameter("AdditinalFeild3", typeof(string));
-    
-            var defParameter = def.HasValue ?
-                new ObjectParameter("def", def) :
-                new ObjectParameter("def", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_CompanyMaster>("PerformCRUD_Comp", mergeOption, actionParameter, companyIDParameter, companyNameParameter, phoneNoParameter, emailIDParameter, referaleCodeParameter, businessTypeParameter, addressParameter, cityParameter, stateParameter, gSTNumberParameter, ownerNameParameter, signatureParameter, addLogoParameter, additinalFeild1Parameter, additinalFeild2Parameter, additinalFeild3Parameter, defParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_BankAdjustment>("bankadjust", mergeOption, actionParameter, iDParameter, bankAccountParameter, entryTypeParameter, amountParameter, dateParameter, descriptionParameter, compidParameter);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class HomeController : Controller
@@ -17,5 +18,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+
     }
 }
