@@ -2987,7 +2987,6 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -3466,6 +3465,7 @@
     <Content Include="Views\PartyStatement\Index.cshtml" />
     <Content Include="Views\SaleAging\Index.cshtml" />
     <Content Include="Views\CompanyList\Index.cshtml" />
+    <Content Include="Views\CompanyList\NewCompany.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
