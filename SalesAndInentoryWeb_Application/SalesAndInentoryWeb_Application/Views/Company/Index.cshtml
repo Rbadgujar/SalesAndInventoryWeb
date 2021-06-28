@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
@@ -49,7 +50,7 @@
                             <th>Bank Name</th>
                             <th>Account No</th>
                             <th>IFSC Code</th>
-                            <th></th>
+                            
                         </tr>
                     </thead>
                 </table>
@@ -66,36 +67,45 @@
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
     <script>
-                @*var Popup, dataTable;
-                $(document).ready(function () {
-                    dataTable =  $("#otherincome").DataTable({
-                        "ajax": {
-                            "url": "/OtherIncome/LoadData",
-                            "type": "GET",
-                            "datatype": "json"
+        var Popup, dataTable;
+        $(document).ready(function () {
+            dataTable = $("#otherincome").DataTable({
+                "ajax": {
+                    "url": "/Home/ShowData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "CompanyName" },
+                    { "data": "Address" },
+                    { "data": "PhoneNo" },
+                    { "data": "EmailID" },
+                    { "data": "RefferalCode" },
+                    { "data": "BusinessType" },
+                    { "data": "OwnerName" },
+                    { "data": "GSTNumber" },
+                    { "data": "City" },
+                    { "data": "State" },
+                    { "data": "AdditinalFeild1" },
+                    { "data": "AdditinalFeild2" },
+                    { "data": "AdditinalFeild3" }, 
+
+                    {
+                        "data": "CompanyID", "render": function (data) {
+                            return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("Index","Home")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
                         },
-                        "columns": [
-                            { "data": "Date" },
-                            { "data": "IncomeCategory" },
-                            { "data": "Total" },
-                            { "data": "Received" },
-                            { "data": "Balence" },
+                        "orderable": false,
+                        "searchable": false,
+                        "width": "150px"
+                    }
 
-                            {"data":"Id" , "render" : function (data) {
-                                return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                            },
-                                "orderable": false,
-                                "searchable":false,
-                                "width":"150px"
-                            }
+                ],
+                "language": {
 
-                        ],
-                        "language": {
-
-                            "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
-                        }
-                    });
-                });*@
+                    "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                }
+            });
+        });
 
                 function PopupForm(url) {
                     var formDiv = $('<div/>');
@@ -147,7 +157,7 @@
                     {
                         $.ajax({
                             type: "POST",
-                            url: '@Url.Action("Delete","BankAccount")/' + id,
+                            url: '@Url.Action("Delete","Company")/' + id,
                             success: function (data) {
                                 if (data.success)
                                 {
