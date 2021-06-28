@@ -32,9 +32,9 @@ $(document).ready(function(){
 <body>
     @using (Html.BeginForm())
     {
-        <div class="panel panel-primary container" style="height:100%; width:100%;background-color:white">
+        <div class="panel panel-primary container" style="width:100%;background-color:white">
             @*<div class="panel-heading text-center"><h4>Item Master</h4><a class="btn-primary pull-right" style="margin-top:-45px;"> <i class="fa fa-times" style="color:white; font-size:20px;"></i></a></div>*@
-            <div class="panel-heading "><a class="btn btn-success" href=@Url.Action("Index","PaymentOut")>Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Item Master</p></div>
+            <div class="panel-heading "><a class="btn" href=@Url.Action("Index","PaymentOut") style="background-color:#D4F1F4;color:black">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Item Master</p></div>
 
              <div class="panel border-box">
                 <nav class="navbar navbar-default " style="background-color:white;border:none" >
@@ -50,7 +50,6 @@ $(document).ready(function(){
                                    settings.Name = "Label1";
                                    settings.Text = "Item Name   :";
                                   
-
                                }).GetHtml()
                                         </div>
                                     </div>
@@ -400,14 +399,7 @@ $(document).ready(function(){
                                 </div>
                                 <div class="form-group col-md-4">
 
-                                    @Html.DevExpress().DateEdit(settings =>
-                               {
-                                   settings.Name = "DateEdit";
-                                   settings.Properties.NullText = "Select Date ";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-
+                                    <input type="date" class="form-control" style="border: 1px solid black" />
 
                                 </div>
                             </div>
@@ -415,14 +407,7 @@ $(document).ready(function(){
                                 <div class="form-group col-md-2 " style="text-align:right;">
                                     <div style="margin-top:10px;">
 
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = " qtys";
-                                   settings.Text = "Item Tracking :";
-
-                               }).GetHtml()
+                                     
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -437,20 +422,13 @@ $(document).ready(function(){
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="reset" value="Clear" class="btn btn-primary pull-left" style="margin-right:12px; margin-top:2px; width:20% " />
+                                    <input type="reset" value="Clear" class="btn btn-primary pull-left" style="margin-right:12px; margin-top:2px; width:35%;color:black " />
 
 
-                                    <input type="submit" value="Save" class="btn btn-primary pull-left" style="margin-right:12px; margin-top:2px;width:20% " />
+                                    <input type="submit" value="Save" class="btn btn-primary pull-left" style="margin-right:12px;margin-top:2px;width:35% ;color:black" />
                                  
                                 </div>
-                            </div>
-
-
-
-
-
-
-                                    
+                            </div>              
                              
                                     <div class="row" style="background-color:white; border:1px solid; display:none" id="itemtracking">
                                         <div class="form-group col-md-2">
