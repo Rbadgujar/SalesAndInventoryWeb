@@ -23,5 +23,7 @@ namespace SalesAndInentoryWeb_Application.Models
         public string AccountName { get; set; }
         public Nullable<bool> DeleteData { get; set; }
         public Nullable<int> Company_ID { get; set; }
+
+        public virtual tbl_LoanBank tbl_LoanBank { get; set; }
     }
 }
