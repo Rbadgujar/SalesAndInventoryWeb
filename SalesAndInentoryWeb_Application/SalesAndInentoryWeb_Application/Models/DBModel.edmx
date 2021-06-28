@@ -6265,6 +6265,26 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
             <Parameter Name="paidstatus" Mode="In" Type="String" />
             <Parameter Name="type" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PerformCRUD_Comp" EntitySet="tbl_CompanyMaster" ReturnType="Collection(idealtec_inventoryModel.tbl_CompanyMaster)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="PhoneNo" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="ReferaleCode" Mode="In" Type="String" />
+            <Parameter Name="BusinessType" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="GSTNumber" Mode="In" Type="String" />
+            <Parameter Name="OwnerName" Mode="In" Type="String" />
+            <Parameter Name="Signature" Mode="In" Type="Binary" />
+            <Parameter Name="AddLogo" Mode="In" Type="Binary" />
+            <Parameter Name="AdditinalFeild1" Mode="In" Type="String" />
+            <Parameter Name="AdditinalFeild2" Mode="In" Type="String" />
+            <Parameter Name="AdditinalFeild3" Mode="In" Type="String" />
+            <Parameter Name="def" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="addcompany_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -9006,6 +9026,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PartyMasterCrud" FunctionName="idealtec_inventoryModel.Store.tbl_PartyMasterSelect" />
+          <FunctionImportMapping FunctionImportName="PerformCRUD_Comp" FunctionName="idealtec_inventoryModel.Store.tbl_CompanyMasterSelect" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

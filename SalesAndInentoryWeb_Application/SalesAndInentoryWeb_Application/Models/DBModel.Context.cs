@@ -3968,5 +3968,159 @@ namespace SalesAndInentoryWeb_Application.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_PartyMaster>("PartyMasterCrud", mergeOption, actionParameter, partiesIDParameter, partyNameParameter, contactNoParameter, billingAddressParameter, emailIDParameter, gSTTypeParameter, stateParameter, openingBalParameter, asOfDateParameter, addRemainderParameter, partyTypeParameter, shippingAddressParameter, partyGroupParameter, compidParameter, paidstatusParameter, typeParameter);
         }
+    
+        public virtual ObjectResult<tbl_CompanyMaster> PerformCRUD_Comp(string action, Nullable<int> companyID, string companyName, string phoneNo, string emailID, string referaleCode, string businessType, string address, string city, string state, string gSTNumber, string ownerName, byte[] signature, byte[] addLogo, string additinalFeild1, string additinalFeild2, string additinalFeild3, Nullable<int> def)
+        {
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            var companyIDParameter = companyID.HasValue ?
+                new ObjectParameter("CompanyID", companyID) :
+                new ObjectParameter("CompanyID", typeof(int));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("CompanyName", companyName) :
+                new ObjectParameter("CompanyName", typeof(string));
+    
+            var phoneNoParameter = phoneNo != null ?
+                new ObjectParameter("PhoneNo", phoneNo) :
+                new ObjectParameter("PhoneNo", typeof(string));
+    
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var referaleCodeParameter = referaleCode != null ?
+                new ObjectParameter("ReferaleCode", referaleCode) :
+                new ObjectParameter("ReferaleCode", typeof(string));
+    
+            var businessTypeParameter = businessType != null ?
+                new ObjectParameter("BusinessType", businessType) :
+                new ObjectParameter("BusinessType", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var gSTNumberParameter = gSTNumber != null ?
+                new ObjectParameter("GSTNumber", gSTNumber) :
+                new ObjectParameter("GSTNumber", typeof(string));
+    
+            var ownerNameParameter = ownerName != null ?
+                new ObjectParameter("OwnerName", ownerName) :
+                new ObjectParameter("OwnerName", typeof(string));
+    
+            var signatureParameter = signature != null ?
+                new ObjectParameter("Signature", signature) :
+                new ObjectParameter("Signature", typeof(byte[]));
+    
+            var addLogoParameter = addLogo != null ?
+                new ObjectParameter("AddLogo", addLogo) :
+                new ObjectParameter("AddLogo", typeof(byte[]));
+    
+            var additinalFeild1Parameter = additinalFeild1 != null ?
+                new ObjectParameter("AdditinalFeild1", additinalFeild1) :
+                new ObjectParameter("AdditinalFeild1", typeof(string));
+    
+            var additinalFeild2Parameter = additinalFeild2 != null ?
+                new ObjectParameter("AdditinalFeild2", additinalFeild2) :
+                new ObjectParameter("AdditinalFeild2", typeof(string));
+    
+            var additinalFeild3Parameter = additinalFeild3 != null ?
+                new ObjectParameter("AdditinalFeild3", additinalFeild3) :
+                new ObjectParameter("AdditinalFeild3", typeof(string));
+    
+            var defParameter = def.HasValue ?
+                new ObjectParameter("def", def) :
+                new ObjectParameter("def", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_CompanyMaster>("PerformCRUD_Comp", actionParameter, companyIDParameter, companyNameParameter, phoneNoParameter, emailIDParameter, referaleCodeParameter, businessTypeParameter, addressParameter, cityParameter, stateParameter, gSTNumberParameter, ownerNameParameter, signatureParameter, addLogoParameter, additinalFeild1Parameter, additinalFeild2Parameter, additinalFeild3Parameter, defParameter);
+        }
+    
+        public virtual ObjectResult<tbl_CompanyMaster> PerformCRUD_Comp(string action, Nullable<int> companyID, string companyName, string phoneNo, string emailID, string referaleCode, string businessType, string address, string city, string state, string gSTNumber, string ownerName, byte[] signature, byte[] addLogo, string additinalFeild1, string additinalFeild2, string additinalFeild3, Nullable<int> def, MergeOption mergeOption)
+        {
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            var companyIDParameter = companyID.HasValue ?
+                new ObjectParameter("CompanyID", companyID) :
+                new ObjectParameter("CompanyID", typeof(int));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("CompanyName", companyName) :
+                new ObjectParameter("CompanyName", typeof(string));
+    
+            var phoneNoParameter = phoneNo != null ?
+                new ObjectParameter("PhoneNo", phoneNo) :
+                new ObjectParameter("PhoneNo", typeof(string));
+    
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var referaleCodeParameter = referaleCode != null ?
+                new ObjectParameter("ReferaleCode", referaleCode) :
+                new ObjectParameter("ReferaleCode", typeof(string));
+    
+            var businessTypeParameter = businessType != null ?
+                new ObjectParameter("BusinessType", businessType) :
+                new ObjectParameter("BusinessType", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var gSTNumberParameter = gSTNumber != null ?
+                new ObjectParameter("GSTNumber", gSTNumber) :
+                new ObjectParameter("GSTNumber", typeof(string));
+    
+            var ownerNameParameter = ownerName != null ?
+                new ObjectParameter("OwnerName", ownerName) :
+                new ObjectParameter("OwnerName", typeof(string));
+    
+            var signatureParameter = signature != null ?
+                new ObjectParameter("Signature", signature) :
+                new ObjectParameter("Signature", typeof(byte[]));
+    
+            var addLogoParameter = addLogo != null ?
+                new ObjectParameter("AddLogo", addLogo) :
+                new ObjectParameter("AddLogo", typeof(byte[]));
+    
+            var additinalFeild1Parameter = additinalFeild1 != null ?
+                new ObjectParameter("AdditinalFeild1", additinalFeild1) :
+                new ObjectParameter("AdditinalFeild1", typeof(string));
+    
+            var additinalFeild2Parameter = additinalFeild2 != null ?
+                new ObjectParameter("AdditinalFeild2", additinalFeild2) :
+                new ObjectParameter("AdditinalFeild2", typeof(string));
+    
+            var additinalFeild3Parameter = additinalFeild3 != null ?
+                new ObjectParameter("AdditinalFeild3", additinalFeild3) :
+                new ObjectParameter("AdditinalFeild3", typeof(string));
+    
+            var defParameter = def.HasValue ?
+                new ObjectParameter("def", def) :
+                new ObjectParameter("def", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tbl_CompanyMaster>("PerformCRUD_Comp", mergeOption, actionParameter, companyIDParameter, companyNameParameter, phoneNoParameter, emailIDParameter, referaleCodeParameter, businessTypeParameter, addressParameter, cityParameter, stateParameter, gSTNumberParameter, ownerNameParameter, signatureParameter, addLogoParameter, additinalFeild1Parameter, additinalFeild2Parameter, additinalFeild3Parameter, defParameter);
+        }
     }
 }
