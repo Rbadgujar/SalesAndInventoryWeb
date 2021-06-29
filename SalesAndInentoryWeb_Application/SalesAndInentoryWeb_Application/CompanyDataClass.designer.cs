@@ -30,6 +30,9 @@ namespace SalesAndInentoryWeb_Application
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void Inserttbl_CompanyMaster(tbl_CompanyMaster instance);
+    partial void Updatetbl_CompanyMaster(tbl_CompanyMaster instance);
+    partial void Deletetbl_CompanyMaster(tbl_CompanyMaster instance);
     #endregion
 		
 		public CompanyDataClassDataContext() : 
@@ -62,6 +65,14 @@ namespace SalesAndInentoryWeb_Application
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<tbl_CompanyMaster> tbl_CompanyMasters
+		{
+			get
+			{
+				return this.GetTable<tbl_CompanyMaster>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_CompanyMasterSelect")]
 		public ISingleResult<tbl_CompanyMasterSelectResult> tbl_CompanyMasterSelect(
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
@@ -85,6 +96,500 @@ namespace SalesAndInentoryWeb_Application
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, companyID, companyName, phoneNo, emailID, referaleCode, businessType, address, city, state, gSTNumber, ownerName, signature, addLogo, additinalFeild1, additinalFeild2, additinalFeild3, def);
 			return ((ISingleResult<tbl_CompanyMasterSelectResult>)(result.ReturnValue));
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_CompanyMaster")]
+	public partial class tbl_CompanyMaster : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CompanyID;
+		
+		private string _CompanyName;
+		
+		private string _PhoneNo;
+		
+		private string _EmailID;
+		
+		private string _ReferaleCode;
+		
+		private string _BusinessType;
+		
+		private string _Address;
+		
+		private string _City;
+		
+		private string _State;
+		
+		private string _GSTNumber;
+		
+		private string _OwnerName;
+		
+		private System.Data.Linq.Binary _Signature;
+		
+		private System.Data.Linq.Binary _AddLogo;
+		
+		private string _AdditinalFeild1;
+		
+		private string _AdditinalFeild2;
+		
+		private string _AdditinalFeild3;
+		
+		private System.Nullable<bool> _DeleteData;
+		
+		private System.Nullable<int> _Company_ID;
+		
+		private System.Nullable<int> _Defulatcompany;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCompanyIDChanging(int value);
+    partial void OnCompanyIDChanged();
+    partial void OnCompanyNameChanging(string value);
+    partial void OnCompanyNameChanged();
+    partial void OnPhoneNoChanging(string value);
+    partial void OnPhoneNoChanged();
+    partial void OnEmailIDChanging(string value);
+    partial void OnEmailIDChanged();
+    partial void OnReferaleCodeChanging(string value);
+    partial void OnReferaleCodeChanged();
+    partial void OnBusinessTypeChanging(string value);
+    partial void OnBusinessTypeChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    partial void OnGSTNumberChanging(string value);
+    partial void OnGSTNumberChanged();
+    partial void OnOwnerNameChanging(string value);
+    partial void OnOwnerNameChanged();
+    partial void OnSignatureChanging(System.Data.Linq.Binary value);
+    partial void OnSignatureChanged();
+    partial void OnAddLogoChanging(System.Data.Linq.Binary value);
+    partial void OnAddLogoChanged();
+    partial void OnAdditinalFeild1Changing(string value);
+    partial void OnAdditinalFeild1Changed();
+    partial void OnAdditinalFeild2Changing(string value);
+    partial void OnAdditinalFeild2Changed();
+    partial void OnAdditinalFeild3Changing(string value);
+    partial void OnAdditinalFeild3Changed();
+    partial void OnDeleteDataChanging(System.Nullable<bool> value);
+    partial void OnDeleteDataChanged();
+    partial void OnCompany_IDChanging(System.Nullable<int> value);
+    partial void OnCompany_IDChanged();
+    partial void OnDefulatcompanyChanging(System.Nullable<int> value);
+    partial void OnDefulatcompanyChanged();
+    #endregion
+		
+		public tbl_CompanyMaster()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CompanyID
+		{
+			get
+			{
+				return this._CompanyID;
+			}
+			set
+			{
+				if ((this._CompanyID != value))
+				{
+					this.OnCompanyIDChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyID = value;
+					this.SendPropertyChanged("CompanyID");
+					this.OnCompanyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(MAX)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this.OnCompanyNameChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyName = value;
+					this.SendPropertyChanged("CompanyName");
+					this.OnCompanyNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(MAX)")]
+		public string PhoneNo
+		{
+			get
+			{
+				return this._PhoneNo;
+			}
+			set
+			{
+				if ((this._PhoneNo != value))
+				{
+					this.OnPhoneNoChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNo = value;
+					this.SendPropertyChanged("PhoneNo");
+					this.OnPhoneNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailID", DbType="NVarChar(MAX)")]
+		public string EmailID
+		{
+			get
+			{
+				return this._EmailID;
+			}
+			set
+			{
+				if ((this._EmailID != value))
+				{
+					this.OnEmailIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmailID = value;
+					this.SendPropertyChanged("EmailID");
+					this.OnEmailIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReferaleCode", DbType="NVarChar(MAX)")]
+		public string ReferaleCode
+		{
+			get
+			{
+				return this._ReferaleCode;
+			}
+			set
+			{
+				if ((this._ReferaleCode != value))
+				{
+					this.OnReferaleCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ReferaleCode = value;
+					this.SendPropertyChanged("ReferaleCode");
+					this.OnReferaleCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BusinessType", DbType="NVarChar(MAX)")]
+		public string BusinessType
+		{
+			get
+			{
+				return this._BusinessType;
+			}
+			set
+			{
+				if ((this._BusinessType != value))
+				{
+					this.OnBusinessTypeChanging(value);
+					this.SendPropertyChanging();
+					this._BusinessType = value;
+					this.SendPropertyChanged("BusinessType");
+					this.OnBusinessTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(MAX)")]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(MAX)")]
+		public string State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GSTNumber", DbType="NVarChar(MAX)")]
+		public string GSTNumber
+		{
+			get
+			{
+				return this._GSTNumber;
+			}
+			set
+			{
+				if ((this._GSTNumber != value))
+				{
+					this.OnGSTNumberChanging(value);
+					this.SendPropertyChanging();
+					this._GSTNumber = value;
+					this.SendPropertyChanged("GSTNumber");
+					this.OnGSTNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerName", DbType="NVarChar(MAX)")]
+		public string OwnerName
+		{
+			get
+			{
+				return this._OwnerName;
+			}
+			set
+			{
+				if ((this._OwnerName != value))
+				{
+					this.OnOwnerNameChanging(value);
+					this.SendPropertyChanging();
+					this._OwnerName = value;
+					this.SendPropertyChanged("OwnerName");
+					this.OnOwnerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Signature", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Signature
+		{
+			get
+			{
+				return this._Signature;
+			}
+			set
+			{
+				if ((this._Signature != value))
+				{
+					this.OnSignatureChanging(value);
+					this.SendPropertyChanging();
+					this._Signature = value;
+					this.SendPropertyChanged("Signature");
+					this.OnSignatureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddLogo", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary AddLogo
+		{
+			get
+			{
+				return this._AddLogo;
+			}
+			set
+			{
+				if ((this._AddLogo != value))
+				{
+					this.OnAddLogoChanging(value);
+					this.SendPropertyChanging();
+					this._AddLogo = value;
+					this.SendPropertyChanged("AddLogo");
+					this.OnAddLogoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditinalFeild1", DbType="NVarChar(MAX)")]
+		public string AdditinalFeild1
+		{
+			get
+			{
+				return this._AdditinalFeild1;
+			}
+			set
+			{
+				if ((this._AdditinalFeild1 != value))
+				{
+					this.OnAdditinalFeild1Changing(value);
+					this.SendPropertyChanging();
+					this._AdditinalFeild1 = value;
+					this.SendPropertyChanged("AdditinalFeild1");
+					this.OnAdditinalFeild1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditinalFeild2", DbType="NVarChar(MAX)")]
+		public string AdditinalFeild2
+		{
+			get
+			{
+				return this._AdditinalFeild2;
+			}
+			set
+			{
+				if ((this._AdditinalFeild2 != value))
+				{
+					this.OnAdditinalFeild2Changing(value);
+					this.SendPropertyChanging();
+					this._AdditinalFeild2 = value;
+					this.SendPropertyChanged("AdditinalFeild2");
+					this.OnAdditinalFeild2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditinalFeild3", DbType="NVarChar(MAX)")]
+		public string AdditinalFeild3
+		{
+			get
+			{
+				return this._AdditinalFeild3;
+			}
+			set
+			{
+				if ((this._AdditinalFeild3 != value))
+				{
+					this.OnAdditinalFeild3Changing(value);
+					this.SendPropertyChanging();
+					this._AdditinalFeild3 = value;
+					this.SendPropertyChanged("AdditinalFeild3");
+					this.OnAdditinalFeild3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteData", DbType="Bit")]
+		public System.Nullable<bool> DeleteData
+		{
+			get
+			{
+				return this._DeleteData;
+			}
+			set
+			{
+				if ((this._DeleteData != value))
+				{
+					this.OnDeleteDataChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteData = value;
+					this.SendPropertyChanged("DeleteData");
+					this.OnDeleteDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Company_ID", DbType="Int")]
+		public System.Nullable<int> Company_ID
+		{
+			get
+			{
+				return this._Company_ID;
+			}
+			set
+			{
+				if ((this._Company_ID != value))
+				{
+					this.OnCompany_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Company_ID = value;
+					this.SendPropertyChanged("Company_ID");
+					this.OnCompany_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Defulatcompany", DbType="Int")]
+		public System.Nullable<int> Defulatcompany
+		{
+			get
+			{
+				return this._Defulatcompany;
+			}
+			set
+			{
+				if ((this._Defulatcompany != value))
+				{
+					this.OnDefulatcompanyChanging(value);
+					this.SendPropertyChanging();
+					this._Defulatcompany = value;
+					this.SendPropertyChanged("Defulatcompany");
+					this.OnDefulatcompanyChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
