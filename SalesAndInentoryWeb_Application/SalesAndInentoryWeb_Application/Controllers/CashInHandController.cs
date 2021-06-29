@@ -18,6 +18,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
+                
                 db.Configuration.LazyLoadingEnabled = false;
                 List<tbl_SaleInvoice> party = db.tbl_SaleInvoice.ToList<tbl_SaleInvoice>();
                 return Json(new { data = party }, JsonRequestBehavior.AllowGet);

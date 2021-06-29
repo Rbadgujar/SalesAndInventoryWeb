@@ -16,14 +16,12 @@
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.Editors }
     )
-    
     <style>
         .scrolldown {
     overflow-y:scroll;
     height:100px;
 }   
     </style>
-   
         <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -64,8 +62,6 @@
             $("#ca").val('');
         }
     </script>
-
-   
 </head>
 <body>
     @using (Html.BeginForm())
@@ -87,28 +83,16 @@
 
 
                                }).GetHtml()
+                                       @Html.DevExpress().DropDownEditFor(m => m.PartyName, settings =>
+                                       {
+                                           settings.Properties.NullText = "Select Party";
+                                           settings.ControlStyle.CssClass = "form-control";
 
-                                       <div class="form-outline">
-                                           <input type="text" id="form1" class="form-control" />
-                                           <label class="form-label" for="form1">Example label</label>
-                                       </div>
-
-
-                                       <br />
-                                       @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "Address:";
-                                   settings.Text = "Address:";
-
-
-                               }).GetHtml()
-                                       @Html.DevExpress().TextBoxFor(m => m.BillingName, settings =>
-                                   {
-                                       settings.Properties.NullText = "Enter Billing Address...";
-                                       settings.ControlStyle.CssClass = "form-control";
-                                   }).GetHtml()
+                                           settings.SetDropDownWindowTemplateContent(c =>
+                                           {
+                                               ViewContext.Writer.Write("DropDown content");
+                                           });
+                                       }).GetHtml()
                                    </div>
                                    <div class="form-group col-xs-2">
                                        @Html.DevExpress().Label(settings =>
@@ -184,11 +168,11 @@
 
                                }).GetHtml()
 
-                                       @*@Html.DevExpress().TextBoxFor(m => m.BillingName, settings =>
+                                       @Html.DevExpress().TextBoxFor(m => m.BillingName, settings =>
                                    {
                                        settings.Properties.NullText = "Enter Billing Address...";
                                        settings.ControlStyle.CssClass = "form-control";
-                                   }).GetHtml()*@
+                                   }).GetHtml()
                                    </div>
                                    <div class="form-group col-xs-4">
                                        @Html.DevExpress().Label(settings =>
@@ -643,10 +627,8 @@
                    </div>
           </div>
        </div>
-    
-
+       
     }
-    
 </body>
 </html>
 

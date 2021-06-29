@@ -1,0 +1,164 @@
+﻿@model IEnumerable<SalesAndInentoryWeb_Application.tbl_CompanyMasterSelectResult>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/ideal.cshtml";
+
+}
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   
+  
+</head>
+<div class="container" style="height:100%; width:100%;">
+   
+
+    <nav class="navbar navbar-default " style="border:none; background-color:white;">
+        <nav class="navbar navbar-default " style="border:none; background-color:white;">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse ">
+                    <a class="btn btn-info row pull-right" style="margin-top:15px; margin-right:5px; " href=@Url.Action("Company","Company")><i class="fa fa-plus"></i>Add Company</a>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse ">
+                <table id="companydata" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Company ID</th>
+                            <th>Company Name</th>
+                            <th>Address</th>
+                            <th>Phone no</th>
+                            <th>Email ID</th>
+                            <th>Owner Name</th>
+                            <th>GST Number</th>
+                            <th>City</th>
+                            <th>State</th>                          
+                            <th>Actions</th>                    
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </nav>
+
+</div>
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+
+
+@section scripts{
+   
+
+<script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+
+<script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
+        
+
+    <script>
+                var Popup, dataTable;
+                $(document).ready(function () {
+                    dataTable =  $("#companydata").DataTable({
+                        "ajax": {
+                            "url": "/Company/showdata",
+                            "type": "GET",
+                            "datatype": "json"
+                        },
+                        "columns": [
+                              { "data": "CompanyID" },
+                            { "data": "CompanyName" },
+                            { "data": "Address" },
+                            { "data": "ContactNo" },
+                            { "data": "EmailID" },                   
+                             { "data": "OwnerName" },
+                              { "data": "GSTNumber" },
+                               { "data": "City" },
+                               { "data": "State" },
+                            {"data":"CompanyID" , "render" : function (data) {
+                                return "<a class='btn btn-default btn-sm' href=@Url.Action("Company","Company")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                            },
+                                "orderable": false,
+                                "searchable":false,
+                                "width":"150px"
+                            }
+
+                        ],
+                        "language": {
+
+                            "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                        }
+                    });
+                });
+
+                function PopupForm(url) {
+                    var formDiv = $('<div/>');
+                    $.get(url)
+                    .done(function (response) {
+                        formDiv.html(response);
+
+                        Popup = formDiv.dialog({
+                            autoOpen: true,
+                            resizable: false,
+                            title: 'Fill Bank Details',
+                            height: 500,
+                            width: 700,
+                            close: function () {
+                                Popup.dialog('destroy').remove();
+                            }
+
+                        });
+                    });
+                }
+
+                function SubmitForm(form) {
+                    $.validator.unobtrusive.parse(form);
+                    if($(form).valid()){
+                        $.ajax({
+                            type : "POST",
+                            url : form.action,
+                            data : $(form).serialize(),
+                            success : function (data) {
+                                if(data.success)
+                                {
+                                    Popup.dialog('close');
+                                    dataTable.ajax.reload();
+
+                                    $.notify(data.message,{
+                                        globalPosition :"top center",
+                                        className : "success"
+                                    })
+
+                                }
+                            }
+                        });
+                    }
+                    return false;
+                }
+
+                function Delete(id) {
+                    if(confirm('Are You Sure to Delete this Employee Record ?'))
+                    {
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("Delete","BankAccount")/' + id,
+                            success: function (data) {
+                                if (data.success)
+                                {
+                                    dataTable.ajax.reload();
+
+                                    $.notify(data.message, {
+                                        globalPosition: "top center",
+                                        className: "success"
+                                    })
+
+                                }
+                            }
+
+                        });
+                    }
+                }
+    </script>
+}
+

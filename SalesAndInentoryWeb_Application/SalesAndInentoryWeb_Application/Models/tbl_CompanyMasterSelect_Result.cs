@@ -29,5 +29,6 @@ namespace SalesAndInentoryWeb_Application.Models
         public string BankName { get; set; }
         public string AccountNo { get; set; }
         public string IFSC_Code { get; set; }
+
     }
 }
