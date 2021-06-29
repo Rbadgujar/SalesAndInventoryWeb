@@ -71,11 +71,11 @@
         }
     </script>
 </head>
-<body style="overflow-y:scroll;">
+<body>
     @using (Html.BeginForm())
     {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
-            <div class="panel-heading"><a class="btn" href=@Url.Action("Index","PaymentOut") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Sale Invoice</p></div>
+            <div class="panel-heading"><a class="btn" href=@Url.Action("Index","PaymentOut") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;"><input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; " />Sale Invoice</p></div>
                <div class="panel border-box">
                    
                        <div class="container-fluid">
@@ -555,9 +555,7 @@
                            </div>
                        </div>
                    <div >
-                       <div>
-                           <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; " />
-                       </div>
+                      
                    </div>
           </div>
        </div>
