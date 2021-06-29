@@ -13,7 +13,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
 	public class BankAccountController : Controller
 	{
-	 
+		idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10();
+		//CompanyDataClassDataContext db = new CompanyDataClassDataContext();
 		//Data_Access.Bank DA = new Data_Access.Bank();
 		public ActionResult Index()
 		{
@@ -22,8 +23,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
 		public JsonResult Data()
 		{
-			
-			
+
+			var tb = db.BankAccountSelect("Select",null,null,null,null,null,null,null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
