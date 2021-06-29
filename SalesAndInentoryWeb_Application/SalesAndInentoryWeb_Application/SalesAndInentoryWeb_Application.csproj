@@ -3744,6 +3744,7 @@
     <Content Include="Views\CompanyList\NewCompany.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\OnlineStore\Index.cshtml" />
+    <Content Include="Views\Creditnote\AddOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
