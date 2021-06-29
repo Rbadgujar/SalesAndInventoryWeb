@@ -14,6 +14,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+
         public ActionResult Data()
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
@@ -23,6 +24,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return Json(new { data = party }, JsonRequestBehavior.AllowGet);
             }
         }
+
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {

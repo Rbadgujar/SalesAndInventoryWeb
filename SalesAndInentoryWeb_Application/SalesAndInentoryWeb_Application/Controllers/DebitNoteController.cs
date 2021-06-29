@@ -16,7 +16,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
-        public ActionResult itemdata()
+        public ActionResult DebitNoteData()
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
