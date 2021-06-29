@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="idealtec_inventory" Class="DataClassesCompanyDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=103.83.81.80;Initial Catalog=idealtec_inventory;User ID=idealtec_inventory" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="idealtec_inventoryConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CompanyID" Parameter="companyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CompanyName" Parameter="companyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PhoneNo" Parameter="phoneNo" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="EmailID" Parameter="emailID" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ReferaleCode" Parameter="referaleCode" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="BusinessType" Parameter="businessType" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="State" Parameter="state" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="GSTNumber" Parameter="gSTNumber" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="OwnerName" Parameter="ownerName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Signature" Parameter="signature" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="AddLogo" Parameter="addLogo" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="AdditinalFeild1" Parameter="additinalFeild1" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="AdditinalFeild2" Parameter="additinalFeild2" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="AdditinalFeild3" Parameter="additinalFeild3" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="def" Type="System.Int32" DbType="Int" />
+    <ElementType Name="tbl_CompanyMasterSelectResult">
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ContactNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EmailID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReferaleCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BusinessType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OwnerName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GSTNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AddLogo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="BankName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AccountNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IFSC_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

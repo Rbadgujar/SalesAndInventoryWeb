@@ -3121,18 +3121,8 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="scripts\bootstrap.bundle.js" />
-    <Content Include="scripts\bootstrap.bundle.min.js" />
-    <Content Include="scripts\bootstrap.esm.js" />
-    <Content Include="scripts\bootstrap.esm.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="scripts\bootstrap.min.js.map" />
-    <Content Include="scripts\bootstrap.js.map" />
-    <Content Include="scripts\bootstrap.esm.min.js.map" />
-    <Content Include="scripts\bootstrap.esm.js.map" />
-    <Content Include="scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="scripts\bootstrap.bundle.js.map" />
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
