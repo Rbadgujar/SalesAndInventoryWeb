@@ -16,13 +16,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
-        public ActionResult EstimateData()
+        public ActionResult Purchaseorderdata()
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
                 db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_PurchaseOrder> estimate = db.tbl_PurchaseOrder.ToList<tbl_PurchaseOrder>();
-                return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
+                List<tbl_PurchaseOrder> order = db.tbl_PurchaseOrder.ToList<tbl_PurchaseOrder>();
+                return Json(new { data = order  }, JsonRequestBehavior.AllowGet);
             }
         }
         [HttpGet]

@@ -28,22 +28,22 @@
         <nav class="navbar navbar-default " style="border:none; background-color:white;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
-                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Credit Note </h3></label>
-                    <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","Creditnote")"><i class="fa fa-plus"></i>Add CreditNote</a>
+                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Sale Invoices </h3></label>
+                    <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Add Sale</a>
                     <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
                     <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
                     <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
-                </div>
-            </div>    
-        </nav>
 
+                </div>
+            </div>
+        </nav>
         <div class="container-fluid">
             <div class="collapse navbar-collapse ">
-                <table id="creditnote" class="table table-striped table-bordered" style="width:100%">
+                <table id="Saleorder" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Return No</th>
+                            <th>Invoice No</th>
                             <th>Party Name</th>
                             <th>Contact No</th>
                             <th>Invoice Date</th>
@@ -70,14 +70,14 @@
     <script>
         var Popup, dataTable;
         $(document).ready(function () {
-            dataTable = $("#creditnote").DataTable({
+            dataTable = $("#Saleorder").DataTable({
                 "ajax": {
-                    "url": "/Creditnote/creditnotedata",
+                    "url": "/SaleInvoice/saleinvoicedata",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "ReturnNo" },
+                    { "data": "InvoiceID" },
                     { "data": "PartyName" },
                     { "data": "ContactNo" },
                     { "data": "InvoiceDate" },
@@ -85,7 +85,7 @@
 					{ "data": "Received" },
                     { "data": "RemainingBal" },
                     { "data": "Total" },
-                    { "data":"ReturnNo" , "render" : function (data) {
+                    { "data":"InvoiceID" , "render" : function (data) {
                         return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAdjustment")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,

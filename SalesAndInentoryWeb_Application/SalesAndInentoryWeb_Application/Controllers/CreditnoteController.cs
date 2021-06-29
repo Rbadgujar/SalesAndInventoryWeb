@@ -21,12 +21,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
-        public ActionResult itemdata()
+        public ActionResult creditnotedata()
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
-                List <tbl_CreditNote1> estimate = db.tbl_CreditNote1.ToList<tbl_CreditNote1>();
-                return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
+                List <tbl_CreditNote1> creditnote = db.tbl_CreditNote1.ToList<tbl_CreditNote1>();
+                return Json(new { data = creditnote }, JsonRequestBehavior.AllowGet);
             }
         }
 

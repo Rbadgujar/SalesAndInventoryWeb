@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
+using System.Data.Entity;
+
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class SaleInvoiceController : Controller
@@ -14,8 +17,21 @@ namespace SalesAndInentoryWeb_Application.Controllers
            
             return View();
         }
-       
-        public ActionResult SaleInvoice()
+
+        public ActionResult saleinvoicedata()
+        {
+            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            {
+                db.Configuration.LazyLoadingEnabled = false;
+                List<tbl_SaleInvoice> saleinvoice = db.tbl_SaleInvoice.ToList<tbl_SaleInvoice>();
+                return Json(new { data = saleinvoice }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult SaleIndexpage()
+        {
+            return View();
+        }
+                   public ActionResult SaleInvoice()
         {
            
             return View();
