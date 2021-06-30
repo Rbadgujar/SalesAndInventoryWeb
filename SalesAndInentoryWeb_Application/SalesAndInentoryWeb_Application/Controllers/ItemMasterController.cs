@@ -11,12 +11,21 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ItemMasterController : Controller
     {
-        idealtec_inventoryEntities10 ew = new idealtec_inventoryEntities10();
-        
+        // idealtec_inventoryEntities10 ew = new idealtec_inventoryEntities10();
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
         // GET: ItemMaster
         public ActionResult Index()
         {
             return View();
+
+        }
+
+        [HttpGet]
+        public ActionResult Data()
+        {
+
+            var getdata = db.tbl_CompanyMasterSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
         }
 
