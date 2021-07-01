@@ -19,7 +19,7 @@ namespace SalesAndInentoryWeb_Application.Models
         public string BankName { get; set; }
         public string AccountNo { get; set; }
         public Nullable<double> OpeningBal { get; set; }
-        public string Date { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public Nullable<bool> DeleteData { get; set; }
         public Nullable<int> Company_ID { get; set; }
     }
