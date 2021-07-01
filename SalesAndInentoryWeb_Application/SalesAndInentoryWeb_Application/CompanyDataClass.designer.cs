@@ -40,7 +40,12 @@ namespace SalesAndInentoryWeb_Application
 		{
 			OnCreated();
 		}
-		
+
+		internal object BankAccountSelect(string v, string id, string accountName, string bankName, string accountNo, double? openingBal, DateTime? date, object p)
+		{
+			throw new NotImplementedException();
+		}
+
 		public CompanyDataClassDataContext(string connection) : 
 				base(connection, mappingSource)
 		{

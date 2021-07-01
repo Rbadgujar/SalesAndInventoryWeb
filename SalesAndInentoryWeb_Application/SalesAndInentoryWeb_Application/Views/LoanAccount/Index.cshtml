@@ -1,69 +1,70 @@
-﻿
+﻿@model IEnumerable<SalesAndInentoryWeb_Application.tbl_LoanBankSelectResult>
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/ideal.cshtml";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/ideal.cshtml";
 
 }
 <div class="container" style="height:100%; width:100%;">
-    <nav class="navbar navbar-default " style="border:none; background-color:white;">
-        <br />
-        <nav class="navbar navbar-default " style="border:none; background-color:white;">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse ">
-                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Loan Account Details</h3></label>
-                    <a class="btn btn-success pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","LoanAccount")"><i class="fa fa-plus"></i>Loan Account</a>
-                    <a class="btn btn-primary pull-right row" style="margin-top:6.5px;margin-right:21px;" href="@Url.Action("LoanStatement","LoanAccount")"><i class="fa fa-plus"></i>Loan Statement</a>
-                    <a class="btn btn-primary pull-right row" style="margin-top:6.5px;margin-right:22px; " href="@Url.Action("Makepayment","MakePayment")"><i class="fa fa-plus"></i>Make Payment</a>
-                </div>
-            </div>
-        </nav>
+	<nav class="navbar navbar-default " style="border:none; background-color:white;">
+		<br />
+		<nav class="navbar navbar-default " style="border:none; background-color:white;">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse ">
+					<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Loan Account Details</h3></label>
+					<a class="btn btn-success pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","LoanAccount")"><i class="fa fa-plus"></i>Loan Account</a>
+					<a class="btn btn-primary pull-right row" style="margin-top:6.5px;margin-right:21px;" href="@Url.Action("LoanStatement","LoanAccount")"><i class="fa fa-plus"></i>Loan Statement</a>
+					<a class="btn btn-primary pull-right row" style="margin-top:6.5px;margin-right:22px; " href="@Url.Action("Makepayment","MakePayment")"><i class="fa fa-plus"></i>Make Payment</a>
+				</div>
+			</div>
+		</nav>
 
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse ">
-                <table id="bankadjustment" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Bank Name</th>
-                            <th>Account No</th>
-                            <th>Bal As Of</th>
-                            <th>Lender Bank</th>
-                            <th>Current Balence</th>
-                            <th>Interest</th>
-                            <th>Duration</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </nav>
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse ">
+				<table id="loanAccount" class="table table-striped table-bordered" style="width:100%">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Account Name</th>
+							<th>Account No</th>
+							<th>Lender Bank</th>
+							<th>Firm Name</th>
+							<th>Current Balance</th>
+							<th>Interest</th>
+							<th>Duration</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</nav>
 
 </div>
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+	<script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+	<script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
-    <script>
+	<script>
         var Popup, dataTable;
         $(document).ready(function () {
-            dataTable =  $("#bankadjustment").DataTable({
+            dataTable =  $("#loanAccount").DataTable({
                 "ajax": {
-                    "url": "/BankAdjustment/BankData",
+                    "url": "/LoanAccount/BankData",
                     "type": "GET",
                     "datatype": "json"
                 },
-                "columns": [
-                    { "data": "BankAccount" },
-                    { "data": "EntryType" },
-                    { "data": "Amount" },
-                    { "data": "Date" },
-					{ "data": "Description" },
-					{ "data": "compid" },
+				"columns": [
+					{ "data": "ID" },
+                    { "data": "AccountName" },
+                    { "data": "AccountNo" },
+                    { "data": "LendarBank" },
+                    { "data": "FirmName" },
+					{ "data": "CurrentBal" },
+					{ "data": "Interest" },
+					{ "data": "Duration" },
                     { "data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAdjustment")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "LoanAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -87,7 +88,7 @@
                 Popup = formDiv.dialog({
                     autoOpen: true,
                     resizable: false,
-                    title: 'Fill Adjust Bank Details',
+                    title: 'Fill Loan Account Details',
                     height: 550,
                     width: 700,
                     close: function () {
@@ -128,7 +129,7 @@
             {
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("Delete","BankAdjustment")/' + id,
+                    url: '@Url.Action("Delete", "LoanAccount")/' + id,
                     success: function (data) {
                         if (data.success)
                         {
@@ -145,6 +146,6 @@
                 });
             }
         }
-    </script>
+	</script>
 }
 

@@ -1,10 +1,13 @@
-﻿
+﻿@model IEnumerable<SalesAndInentoryWeb_Application.BankAccountSelectResult>
 @{
 	ViewBag.Title = "Index";
 	Layout = "~/Views/Shared/ideal.cshtml";
 
 }
-
+@*<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>*@
 <div class="container" style="height:100%; width:100%;">
 
 	<nav class="navbar navbar-default " style="background-color:white;">
@@ -29,12 +32,13 @@
 				<table id="bankaccount" class="table table-striped table-bordered" style="width:100%">
 					<thead>
 						<tr>
-							<th>Bank Name</th>
+							<th>ID</th>
 							<th>Account Name</th>
+							<th>Bank Name</th>
 							<th>Account No</th>
 							<th>Opening Bal</th>
 							<th>Date</th>
-							<th></th>
+							<th>Action</th>
 						</tr>
 					</thead>
 				</table>
@@ -43,21 +47,15 @@
 	</nav>
 
 </div>
-@*<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-	@section scripts{
-		<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-		<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>*@
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
-@section scripts
-	{
+@section scripts{
 	<script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
 	<script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 	<script>
         var Popup, dataTable;
         $(document).ready(function () {
-            dataTable =  $("#bankaccount").DataTable({
+			dataTable = $("#bankaccount").DataTable({
                 "ajax": {
 					"url": "/BankAccount/Data",
                     "type": "GET",
@@ -65,9 +63,9 @@
 
                 },
 				"columns": [
-
-                    { "data": "BankName" },
-                    { "data": "AccountName" },
+					{ "data": "ID" },
+					{ "data": "AccountName" },
+					{ "data": "BankName" },
                     { "data": "AccountNo" },
                     { "data": "OpeningBal" },
 					{ "data": "Date" },
@@ -97,8 +95,8 @@
                     autoOpen: true,
                     resizable: false,
                     title: 'Fill Bank Details',
-                    height: 490,
-                    width:500,
+                    height: 500,
+                    width:700,
                     close: function () {
                         Popup.dialog('destroy').remove();
                     }
