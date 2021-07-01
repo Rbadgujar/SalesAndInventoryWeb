@@ -9,6 +9,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class PaymentInController : Controller
     {
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+
         // GET: PaymentIn
         public ActionResult Index()
         {
@@ -23,6 +25,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpGet]
+        public ActionResult ShowData()
+        {
+            var getdata = db.tbl_PaymentInSelect("Select1",null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {
