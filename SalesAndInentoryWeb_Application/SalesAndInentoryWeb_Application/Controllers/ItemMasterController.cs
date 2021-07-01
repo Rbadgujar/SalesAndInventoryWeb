@@ -53,6 +53,27 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
+        public ActionResult AddOrEdit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddOrEdit(int id, tbl_ItemMasterSelectResult item)
+        {
+            try
+            {
+              //                      ItemName,HSNCode ,BasicUnit,SecondaryUnit,ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,Date,ItemLocation,TrackingMRP,BatchNo,SerialNo,MFgdate,Expdate,Size ,Description                                                           ,MinimumStock ,Image1,Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
+                db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.TaxForPurchase, item.PurchaseTaxAmount, item.OpeningQty, item.atPrice, item.Date, item.TrackingMRP,item.BatchNo, item.SerialNo,item.MFgdate,item.Expdate,item.Size,item.Description,item.MinimumStock,item.Image1,null,null,null,null,null,item.Barcode,null,item.Cess,item.saleTax,item.PurchaseTax,item.Profit);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         //[HttpGet]
         //public ActionResult AddOrEdit(int id = 0)
         //{
@@ -92,10 +113,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         // GET: ItemMaster/Details/5
 
-        public ActionResult AddOrEdit()
-        {
-            return View();
-        }
 
         //[HttpPost]
         //public ActionResult AddOrEdit(tbl_ItemMasterSelectResult item)
@@ -113,83 +130,5 @@ namespace SalesAndInentoryWeb_Application.Controllers
         //        return View();
         //    }
         //}
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: ItemMaster/Create
-        public ActionResult Create()
-        {
-            return View("ItemMaster");
-        }
-
-        // POST: ItemMaster/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ItemMaster/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ItemMaster/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ItemMaster/Delete/5
-        public ActionResult Delete(int id)
-        {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                tbl_ItemMaster emp = db.tbl_ItemMaster.Where(x => x.ItemID == id).FirstOrDefault<tbl_ItemMaster>();
-                db.tbl_ItemMaster.Remove(emp);
-                db.SaveChanges();
-                return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        // POST: ItemMaster/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-      
     }
 }
