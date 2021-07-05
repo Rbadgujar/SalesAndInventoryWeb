@@ -3736,6 +3736,7 @@
     <Content Include="Views\OnlineStore\Index.cshtml" />
     <Content Include="Views\Creditnote\AddOrEdit.cshtml" />
     <Content Include="Views\SaleInvoice\SaleIndexpage.cshtml" />
+    <Content Include="Views\DebitNote\AddOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

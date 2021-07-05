@@ -29,12 +29,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)
-                return View(new tbl_CreditNote1());
+                return View(new tbl_DebitNote());
             else
             {
                 using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
                 {
-                    return View(db.tbl_CreditNote1.Where(x => x.InvoiceNo == id).FirstOrDefault<tbl_CreditNote1>());
+                    return View(db.tbl_DebitNote.Where(x => x.InvoiceNo == id).FirstOrDefault<tbl_DebitNote>());
                 }
             }
         }
