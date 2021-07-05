@@ -64,7 +64,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             try
             {
               //                      ItemName,HSNCode ,BasicUnit,SecondaryUnit,ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,Date,ItemLocation,TrackingMRP,BatchNo,SerialNo,MFgdate,Expdate,Size ,Description                                                           ,MinimumStock ,Image1,Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
-                db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.TaxForPurchase, item.PurchaseTaxAmount, item.OpeningQty, item.atPrice, item.Date, item.TrackingMRP,item.BatchNo, item.SerialNo,item.MFgdate,item.Expdate,item.Size,item.Description,item.MinimumStock,item.Image1,null,null,null,null,null,item.Barcode,null,item.Cess,item.saleTax,item.PurchaseTax,item.Profit);
+              //  db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.TaxForPurchase, item.PurchaseTaxAmount, item.OpeningQty, item.atPrice, item.Date, item.TrackingMRP,item.BatchNo, item.SerialNo,item.MFgdate,item.Expdate,item.Size,item.Description,item.MinimumStock,item.Image1,null,null,null,null,null,item.Barcode,null,item.Cess,item.saleTax,item.PurchaseTax,item.Profit);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }
