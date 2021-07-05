@@ -73,14 +73,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View();
                 // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
-            
-            //using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            //{
-            //    tbl_PaymentIn emp = db.tbl_PaymentIn.Where(x => x.ID == id).FirstOrDefault<tbl_PaymentIn>();
-            //    db.tbl_PaymentIn.Remove(emp);
-            //    db.SaveChanges();
-            //    return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
-            //}
         }
     }
 }
