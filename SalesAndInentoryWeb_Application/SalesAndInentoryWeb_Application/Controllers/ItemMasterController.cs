@@ -58,7 +58,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
-        [HttpPost]
+       
         public ActionResult AddOrEdit(int id, tbl_ItemMasterSelectResult item)
         {
             try
