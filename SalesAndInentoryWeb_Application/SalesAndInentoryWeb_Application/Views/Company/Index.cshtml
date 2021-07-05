@@ -85,7 +85,7 @@
                         Popup = formDiv.dialog({
                             autoOpen: true,
                             resizable: false,
-                            title: 'Fill Bank Details',
+                            title: 'Fill Company Details',
                             height: 500,
                             width: 700,
                             close: function () {
@@ -101,7 +101,7 @@
                     if($(form).valid()){
                         $.ajax({
                             type : "POST",
-                            url : form.action,
+                            url: form.action,  //'@Url.Action("Update","Company")/' + id,   
                             data : $(form).serialize(),
                             success : function (data) {
                                 if(data.success)
@@ -126,7 +126,7 @@
                     {
                         $.ajax({
                             type: "POST",
-                            url: '@Url.Action("Delete","BankAccount")/' + id,
+                            url: '@Url.Action("Delete","Company")/' + id,
                             success: function (data) {
                                 if (data.success)
                                 {

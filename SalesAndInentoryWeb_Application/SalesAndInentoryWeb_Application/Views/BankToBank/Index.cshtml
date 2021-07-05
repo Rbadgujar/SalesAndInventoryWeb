@@ -1,50 +1,48 @@
-﻿
+﻿@model IEnumerable<SalesAndInentoryWeb_Application.BanktobankResult>
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/ideal.cshtml";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/ideal.cshtml";
 
 }
 
-    <nav class="navbar navbar-default " style="background-color:white">
-        <br />
-        <nav class="navbar navbar-default " style="background-color:white;height:60px; border:none">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse ">
-                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Bank To Bank</h3></label>
-                    <a class="btn btn-success pull-right row"  style="margin-top:12.5px;margin-right:6px;"  onclick="PopupForm('@Url.Action("AddOrEdit","BankToBank")')"><i class="fa fa-plus"></i> Bank To Bank Transfer</a>
-                
+<nav class="navbar navbar-default " style="background-color:white">
+	<br />
+	<nav class="navbar navbar-default " style="background-color:white;height:60px; border:none">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse ">
+				<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Bank To Bank</h3></label>
+				<a class="btn btn-success pull-right row" style="margin-top:12.5px;margin-right:6px;" onclick="PopupForm('@Url.Action("AddOrEdit","BankToBank")')"><i class="fa fa-plus"></i> Bank To Bank Transfer</a>
 
-                </div>
-            </div>
-        </nav>
-        <div class="container-fluid">
 
-            <div class="collapse navbar-collapse ">
-                <table id="bankTobank" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>From Bank</th>
-                            <th>To Bank</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Description</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            </div>
-        
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+
+		<div class="collapse navbar-collapse ">
+			<table id="bankTobank" class="table table-striped table-bordered" style="width:100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>From Bank</th>
+						<th>To Bank</th>
+						<th>Amount</th>
+						<th>Date</th>
+						<th>Description</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+
 </nav>
 
-            <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-            @section scripts{
-                <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-                <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-
-                <script>
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+@section scripts{
+	<script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+	<script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
+	<script>
                     var Popup, dataTable;
                     $(document).ready(function () {
                         dataTable = $("#bankTobank").DataTable({
@@ -53,14 +51,14 @@
                                 "type": "GET",
                                 "datatype": "json"
                             },
-                            "columns": [
+							"columns": [
+								{ "data": "ID"},
                                 { "data": "FromBank" },
                                 { "data": "ToBank" },
                                 { "data": "Amount" },
                                 { "data": "Date" },
                                 { "data": "Descripition" },
-                                {
-                                    "data": "ID", "render": function (data) {
+                                { "data": "ID", "render": function (data) {
                                         return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankToBank")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
                                     },
                                     "orderable": false,
@@ -140,6 +138,6 @@
                             });
                         }
                     }
-                </script>
-            }
+	</script>
+}
 
