@@ -8,35 +8,63 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class CashInHandController : Controller
     {
-        // GET: CashInHand
-        public ActionResult Index()
+		// GET: CashInHand
+		CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+		public ActionResult Index()
         {
             return View();
 
         }
         public ActionResult Data()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_SaleInvoice> party = db.tbl_SaleInvoice.ToList<tbl_SaleInvoice>();
-                return Json(new { data = party }, JsonRequestBehavior.AllowGet);
-            }
+            
+				var tb = db.tbl_CashInhandSelect("Select1", null, null, null, null, null, null, null,null).ToList();
+				return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
-        {
-            if (id == 0)
-                return View(new tbl_CashAdjustment());
-            else
-            {
-                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-                {
-                    return View(db.tbl_CashAdjustment.Where(x => x.ID == id).FirstOrDefault<tbl_CashAdjustment>());
-                }
-            }
-        }
-    }
+		public ActionResult Detail(int id)
+		{
+			var tb = db.tbl_CashInhandSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
+			return View(tb);
+		}
+
+		[HttpGet]
+		public ActionResult AddOrEdit(int id = 0)
+		{
+			if (id == 0)
+			{
+				return View(new tbl_CashInhand());
+			}
+			else
+			{
+				var tb = db.tbl_CashInhandSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
+				return View(tb);
+			}
+		}
+		[HttpPost]
+		public ActionResult AddOrEdit(int id, tbl_CashInhand emp)
+		{
+
+			if (emp.ID == 0)
+			{
+				db.tbl_CashInhandSelect("Insert", null, emp.Adjustment, emp.Amount, emp.Date, emp.Description, emp.AdditionalFeild,emp.AdditionalFeild1,null);
+				db.SubmitChanges();
+				return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
+			}
+			else
+			{
+				db.tbl_CashInhandSelect("Update", id, emp.Adjustment, emp.Amount, emp.Date, emp.Description, null, null,null);
+				db.SubmitChanges();
+				return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+			}
+		}
+
+		[HttpPost]
+		public ActionResult Delete(int id)
+		{
+			var tb = db.tbl_CashInhandSelect("Delete", id, null, null, null, null, null, null,null).ToList();
+			db.SubmitChanges();
+			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+		}
+	}
 }

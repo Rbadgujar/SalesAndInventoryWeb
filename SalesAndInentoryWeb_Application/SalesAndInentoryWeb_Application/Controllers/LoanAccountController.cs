@@ -33,7 +33,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
 			if (id == 0)
 			{
-				return View(new tbl_BanktoBankTransfer());
+				return View(new tbl_LoanBank());
 			}
 			else
 			{
