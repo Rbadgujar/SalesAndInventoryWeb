@@ -27,7 +27,7 @@ namespace SalesAndInentoryWeb_Application.Models
         public string ContactNo { get; set; }
         public string BillingAddress { get; set; }
         public string EmailID { get; set; }
-        public string GSTType { get; set; }
+        public string GSTNo { get; set; }
         public string State { get; set; }
         public Nullable<double> OpeningBal { get; set; }
         public Nullable<System.DateTime> AsOfDate { get; set; }

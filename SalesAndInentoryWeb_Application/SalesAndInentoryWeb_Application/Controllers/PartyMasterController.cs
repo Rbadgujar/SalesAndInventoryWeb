@@ -48,13 +48,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         
         [HttpPost]
-        public ActionResult AddOrEdit(tbl_PartyMasterSelectResult party)//int id = 0)
+        public ActionResult AddOrEdit(int id,tbl_PartyMasterSelectResult party)//int id = 0)
         {
             try
             {
-
                 //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, party.AsOfDate, party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup,null, party.PaidStatus, party.Type);
+                db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID,null, party.State, party.OpeningBal, null, party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup,null, party.PaidStatus,null);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }

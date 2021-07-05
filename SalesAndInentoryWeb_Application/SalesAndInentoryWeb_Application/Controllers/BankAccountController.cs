@@ -3,68 +3,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.SqlClient;
+using SalesAndInentoryWeb_Application;
 using SalesAndInentoryWeb_Application.Models;
-using System.Data.Entity;
-using System.Data;
-using System.Configuration;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
 	public class BankAccountController : Controller
 	{
 
-		Data_Access.Bank DA = new Data_Access.Bank();
+		CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+		//idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10();
+
 		public ActionResult Index()
 		{
 			return View();
 		}
+
 		[HttpGet]
-		public JsonResult Data()
+		public ActionResult Data()
 		{
-			DataSet ds=DA.show_data();
-			List<tbl_BankAccount> tb = new List<tbl_BankAccount>();
-			
-			foreach (DataRow dr in ds.Tables[0].Rows)
-			{
-				tb.Add(new tbl_BankAccount
-				{
-					ID = Convert.ToInt32(dr["ID"]),
-					AccountName = dr["AccountName"].ToString(),
-					BankName = dr["BankName"].ToString(),
-					AccountNo = dr["AccountNo"].ToString(),
-					OpeningBal = float.Parse(dr["OpeningBal"].ToString()),
-					Date = dr["Date"].ToString(),
-				});
-			}
+			var tb = db.BankAccountSelect("Select1", null, null, null, null, null, null, null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
+		public ActionResult Detail(int id)
+		{
+			var tb = db.BankAccountSelect("Details", id, null, null, null, null, null, null).Single(x =>x.ID == id);
+			return View(tb);
+		}
+
 		[HttpGet]
-		public ActionResult AddOrEdit()
-		{		
-			return View();
+		public ActionResult AddOrEdit(int id = 0)
+		{
+			if (id == 0)
+			{
+				return View(new tbl_BankAccount());
+			}
+			else
+			{
+				var tb = db.BankAccountSelect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+				return View(tb);
+			}	
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit(FormCollection emp)
+		public ActionResult AddOrEdit(int id,tbl_BankAccount conn)
 		{
-			tbl_BankAccount reg = new tbl_BankAccount();			
-			reg.BankName = emp["BankName"];
-			reg.AccountName = emp["AccountName"];
-			reg.AccountNo = emp["AccountNo"];
-			reg.OpeningBal = float.Parse(emp["OpeningBal"]);
-			reg.Date = emp["Date"];
-			DA.InsertData(reg);
-			TempData["msg"] = "Inserted";
-			return View();			
+			if (ModelState.IsValid)
+			{
+
+			    db.BankAccountSelect("Insert", null, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null);
+				db.SubmitChanges();
+				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+			}
+			else
+			{
+				db.BankAccountSelect("Update", id, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null); 
+				db.SubmitChanges();
+				return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
+			}
 		}
 
 		[HttpPost]
 		public ActionResult Delete(int id)
 		{
-			DA.DeleteData(id);
-			return View();
+			var tb = db.BankAccountSelect("Delete", id, null,null,null,null,null,null).ToList();
+			db.SubmitChanges();
+			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
 	}
 }
