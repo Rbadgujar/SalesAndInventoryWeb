@@ -25,7 +25,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
             }
         }
-
         [HttpGet]
         public ActionResult ShowData()
         {
@@ -42,17 +41,24 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(int id, tbl_PaymentInSelectResult pay)
         {
-            try
-            {
-                db.tbl_PaymentInSelect("Insert", null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, pay.Date, pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status,null,null);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View();
+            //try
+            //{
+            //    db.tbl_PaymentInSelect("Insert", null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, pay.Date, pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status,null,null);
+            //    return RedirectToAction("Index");
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
         }
-      
+      [HttpGet]
+
+        public ActionResult Paymentin()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Delete(int id, tbl_PaymentInSelectResult pay)
         {
@@ -67,14 +73,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View();
                 // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
-            
-            //using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            //{
-            //    tbl_PaymentIn emp = db.tbl_PaymentIn.Where(x => x.ID == id).FirstOrDefault<tbl_PaymentIn>();
-            //    db.tbl_PaymentIn.Remove(emp);
-            //    db.SaveChanges();
-            //    return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
-            //}
         }
     }
 }

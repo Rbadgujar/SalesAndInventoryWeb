@@ -20,9 +20,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult Data(int id, tbl_ItemMasterSelectResult item)
+        public ActionResult Data()
         {
-
             var getdata = db.tbl_ItemMasterSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
@@ -58,13 +57,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
-        [HttpPost]
+       [HttpPost]
         public ActionResult AddOrEdit(int id, tbl_ItemMasterSelectResult item)
         {
             try
             {
-              //                      ItemName,HSNCode ,BasicUnit,SecondaryUnit,ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,Date,ItemLocation,TrackingMRP,BatchNo,SerialNo,MFgdate,Expdate,Size ,Description                                                           ,MinimumStock ,Image1,Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
-                //db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.TaxForPurchase, item.PurchaseTaxAmount, item.OpeningQty, item.atPrice, item.Date, item.TrackingMRP,item.BatchNo, item.SerialNo,item.MFgdate,item.Expdate,item.Size,item.Description,item.MinimumStock,item.Image1,null,null,null,null,null,item.Barcode,null,item.Cess,item.saleTax,item.PurchaseTax,item.Profit);
+                // ItemName,HSNCode ,BasicUnit,SecondaryUnit ,                      ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,                                                                  PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,                           Date,ItemLocation,TrackingMRP,                      BatchNo,       SerialNo,    MFgdate,     Expdate,      Siz,     Description ,    MinimumStock,     Image1,     Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
+                db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount,item.PurchasePrice, item.TaxForPurchase,item.PurchasePrice, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice,item.ItemLocation, item.TrackingMRP,item.BatchNo, item.SerialNo,item.MFgdate,item.Expdate,item.Size,item.Description,item.MinimumStock,item.Image1,null,null,null,null,null,null, item.Barcode, null, item.saleTax,item.PurchaseTax,item.Profit);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }
@@ -74,61 +73,5 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-        //[HttpGet]
-        //public ActionResult AddOrEdit(int id = 0)
-        //{
-        //    if (id == 0)
-        //        return View(new tbl_ItemMaster());
-        //    else
-        //    {
-        //        using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-        //        {
-        //            return View(db.tbl_ItemMaster.Where(x => x.ItemID == id).FirstOrDefault<tbl_ItemMaster>());
-        //        }
-        //    }
-        //}
-
-        //[HttpPost]
-        //public ActionResult AddOrEdit(tbl_ItemMaster emp)
-        //{
-        //    using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-        //    {
-        //        if (emp.ItemID == 0)
-        //        {
-        //            db.tbl_ItemMaster.Add(emp);
-        //            db.SaveChanges();
-        //            return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-        //        }
-        //        else
-        //        {
-        //            db.Entry(emp).State = EntityState.Modified;
-        //            db.SaveChanges();
-        //            return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-        //        }
-        //    }
-
-
-        //}
-
-
-        // GET: ItemMaster/Details/5
-
-
-        //[HttpPost]
-        //public ActionResult AddOrEdit(tbl_ItemMasterSelectResult item)
-        //{
-        //    try
-        //    {
-
-        //        //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-        //        db.tbl_ItemMasterSelect("Insert",null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.TaxForPurchase, item.PurchasePrice, item.PurchaseTaxAmount, item.OpeningQty, item.atPrice, item.Date,item.ItemLocation,item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size,item.Description,item.MinimumStock, item.Image1,null,null,null,null,null,null, item.Barcode, null,item.Cess,item.saleTax,item.PurchaseTax, item.Profit);
-        //        db.SubmitChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
