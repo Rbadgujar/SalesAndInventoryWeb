@@ -44,7 +44,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpPost]
 		public ActionResult AddOrEdit(int id, tbl_LoanBank emp)
 		{
-			if (emp.ID == 0)
+			if (ModelState.IsValid)
 			{
 				db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
 				db.SubmitChanges();
