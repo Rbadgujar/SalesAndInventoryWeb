@@ -8625,7 +8625,7 @@ namespace SalesAndInentoryWeb_Application
 	
 	public partial class tbl_PaymentoutselectResult
 	{
-		
+		internal readonly int ID;
 		private int _Id;
 		
 		private string _CustomerName;
