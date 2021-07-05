@@ -1,72 +1,71 @@
-﻿@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/ideal.cshtml";
+﻿
+@model IEnumerable<SalesAndInentoryWeb_Application.tbl_PurchaseOrderSelectResult>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/ideal.cshtml";
 }
 
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	@Html.DevExpress().GetStyleSheets(
+		new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+		new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
+	)
+	@Html.DevExpress().GetScripts(
+		new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+		new Script { ExtensionSuite = ExtensionSuite.Editors }
+	)
 </head>
 
 <div class="container" style="height:100%; width:100%;">
-    <nav class="navbar navbar-default " style="background-color:white;border:none">
-        <br />
-        <nav class="navbar navbar-default " style="border:none; background-color:white;">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse ">
-                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Purchase Order </h3></label>
-                    <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","ParchaseOrder")"><i class="fa fa-plus"></i>Add Purchase Order</a>
-                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
-                    <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
-                    <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
-                    <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
-                </div>
-            </div>
-        </nav>
+	<nav class="navbar navbar-default " style="background-color:white;border:none">
+		<br />
+		<nav class="navbar navbar-default " style="border:none; background-color:white;">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse ">
+					<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Purchase Order </h3></label>
+					<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","ParchaseOrder")"><i class="fa fa-plus"></i>Add Purchase Order</a>
+					<a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+					<input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+					<label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
+					<input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
+				</div>
+			</div>
+		</nav>
 
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse ">
-                <table id="purchaseorder1" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>OrderNo</th>
-                            <th>Order Date</th>
-                            <th>Party Name</th>
-                            <th>Recived</th>
-                            <th>Status</th>
-                            <th>RemainingBal</th>
-                            <th>Total</th>
-                            <th>
-                                  Action
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </nav>
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse ">
+				<table id="purchaseorder1" class="table table-striped table-bordered" style="width:100%">
+					<thead>
+						<tr>
+							<th>OrderNo</th>
+							<th>Party Name</th>
+							<th>Order Date</th>
+							<th>Payment Type</th>
+							<th>Status</th>
+							<th>RemainingBal</th>
+							<th>Total</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</nav>
 
 </div>
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+	<script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+	<script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
-    <script>
+	<script>
                      var Popup, dataTable;
         $(document).ready(function () {
             dataTable = $("#purchaseorder1").DataTable({
@@ -77,14 +76,14 @@
                 },
                 "columns": [
                     { "data": "OrderNo" },
-                     { "data": "OrderDate" },
-                    { "data": "PartyName" },           
-                    { "data": "Recived" },
-                    { "data": "Status" },
+                    { "data": "PartyName" },
+					{ "data": "OrderDate" },
+					{ "data": "PaymentType" },
                     { "data": "RemainingBal" },
-                    { "data": "Total" },
+					{ "data": "Total" },
+					{ "data": "Status" },
                     {"data":"OrderNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -152,7 +151,7 @@
                         {
                             $.ajax({
                                 type: "POST",
-                                url: '@Url.Action("Delete", "DebitNote")/' + id,
+                                url: '@Url.Action("Dele", "ParchaseOrder")/' + id,
                                 success: function (data) {
                                     if (data.success)
                                     {
@@ -169,7 +168,7 @@
                             });
                         }
                     }
-    </script>
+	</script>
 }
 
 

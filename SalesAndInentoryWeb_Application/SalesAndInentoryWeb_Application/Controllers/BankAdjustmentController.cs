@@ -10,31 +10,46 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class BankAdjustmentController : Controller
     {
-        // GET: BankAdjustment
-        public ActionResult Index()
+		CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+		// GET: BankAdjustment
+		[HttpGet]
+		public ActionResult Index()
         {
             return View();
         }
-		//public ActionResult BankData()
-		//{
-		//	//idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10();
-		//	//var data = db.tbl_BankAdjustmentselect("Select",null,null,null,null,null,null,null);
-		//	//return View(data.ToList());
-		//	return View();
-		//}
+
+		public ActionResult adjustdata()
+		{
+			var tb = db.tbl_BankAdjustmentselect("Select1", null, null, null, null, null, null, null).ToList();
+			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult Detail(int id)
+		{
+			var tb = db.tbl_BankAdjustmentselect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+			return View(tb);
+		}
+
 		[HttpGet]
 		public ActionResult InsertCustomer()
 		{
 			return View();
 		}
+
 		[HttpPost]
-		public JsonResult AddOrEdit(tbl_BankAdjustment collection)
+		public JsonResult AddOrEdit(tbl_BankAdjustment conn)
 		{
-			
-			idealtec_inventoryEntities10 dc = new idealtec_inventoryEntities10();
-			tbl_BankAdjustment tb = dc.bankadjust("Insert", null, collection.BankAccount, collection.EntryType, collection.Amount, collection.Date, collection.Description, null).FirstOrDefault();
-			return Json(tb);
-			
+			db.tbl_BankAdjustmentselect("Insert", null, conn.BankAccount, conn.EntryType, conn.Amount, conn.Date, conn.Description, null);
+			db.SubmitChanges();
+			return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+		}
+
+		[HttpPost]
+		public ActionResult Delete(int id)
+		{
+			var tb = db.tbl_BankAdjustmentselect("Delete", id, null, null, null, null, null, null).ToList();
+			db.SubmitChanges();
+			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
 	}
 }
