@@ -42,31 +42,25 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult AddOrEdit(int id, tbl_PaymentInSelectResult pay)
         {
             return View();
-            //try
-            //{
-            //    db.tbl_PaymentInSelect("Insert", null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, pay.Date, pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status,null,null);
-            //    return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
-        }
-      [HttpGet]
 
+        }
+
+
+        [HttpGet]
         public ActionResult Paymentin()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, tbl_PaymentInSelectResult pay)
+        public ActionResult Delete(int id)
         {
             try
             {
                 var getdata = db.tbl_PaymentInSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 db.SubmitChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
             }
             catch
             {

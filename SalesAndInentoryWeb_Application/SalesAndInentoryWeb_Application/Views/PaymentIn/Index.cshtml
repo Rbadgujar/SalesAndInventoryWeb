@@ -88,7 +88,7 @@
                     { "data": "PartyName" },
                     { "data": "PaymentType" },
                     { "data": "ReceiptNo" },
-                    { "data": "Date" },
+                    { "data": "Date"},
                      { "data": "ReceivedAmount" },
                       { "data": "UnusedAmount" },
                     { "data": "Total" },
@@ -107,8 +107,10 @@
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
             });
+            
         });
 
+      
         function PopupForm(url) {
             var formDiv = $('<div/>');
             $.get(url)

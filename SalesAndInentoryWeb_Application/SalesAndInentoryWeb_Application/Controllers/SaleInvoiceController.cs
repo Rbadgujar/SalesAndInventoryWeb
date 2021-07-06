@@ -11,27 +11,51 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class SaleInvoiceController : Controller
     {
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
         // GET: SaleInvoice
-        public ActionResult Index()
-        {
+        //public ActionResult Index()
+        //{
            
-            return View();
-        }
-
-        public ActionResult saleinvoicedata()
-        {
-            var tb = db.tbl_ExpensesSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
-
-        }
+        //    return View();
+        //}
         public ActionResult SaleIndexpage()
         {
             return View();
         }
-                   public ActionResult SaleInvoice()
-        {
-           
-            return View();
+
+        [HttpGet]
+        public ActionResult saleinvoiceshow()
+      {
+            try
+            {
+                var getdata = db.tbl_SaleInvoiceSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
         }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var getdata = db.tbl_SaleInvoiceSelect("Delete", id,null,null,null,null,null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
+        }
+       
+  
     }
 }

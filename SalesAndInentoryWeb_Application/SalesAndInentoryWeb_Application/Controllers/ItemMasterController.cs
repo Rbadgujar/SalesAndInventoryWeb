@@ -37,13 +37,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, tbl_ItemMasterSelectResult item)
+        public ActionResult Delete(int id)
         {
             try
             {
                 var getdata = db.tbl_ItemMasterSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 db.SubmitChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
             }
             catch
             {
