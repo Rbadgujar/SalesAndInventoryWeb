@@ -31,6 +31,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
             var getdata = db.tbl_PartyMasterSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+       
+       public ActionResult groupdata()
+        {
+            var getdata = db.tbl_PartyGroupSelect("Select",null,null,null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+        }
+    
+
 
         public ActionResult PartyGroupData()
         {

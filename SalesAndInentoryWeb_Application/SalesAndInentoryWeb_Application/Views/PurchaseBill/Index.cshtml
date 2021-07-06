@@ -38,15 +38,14 @@
 
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
-                    <table id="bankaccount" class="table table-striped table-bordered" style="width:100%">
+                    <table id="PrchaseBill" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>BillDate</th>
                                 <th>BillNo</th>
                                 <th>Party Name</th>
                                 <th>PaymentType</th>
-                                <th>Total</th>
-                                <th>Paid</th>
+                                <th>Total</th>                               
                                 <th>RemainingBal</th>
                                 <th>Status</th>
                                 <th></th>
@@ -68,20 +67,22 @@
             <script>
              var Popup, dataTable;
                          $(document).ready(function () {
-                  dataTable =  $("#payment").DataTable({
+                             dataTable = $("#PrchaseBill").DataTable({
                   "ajax": {
-                    "url": "/DeliveryChallan/Data",
+                      "url": "/PurchaseBill/purchaeData",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "ChallanNo" },
+                    { "data": "BillDate" },
+                    { "data": "BillNo" },
                     { "data": "PartyName" },
-                    { "data": "BillingName" },
-                    { "data": "InvoiceDate" },
+                    { "data": "PaymentType" },
                     { "data": "Total" },
-                    { "data": "Received" },
-                    {"data":"ID" , "render" : function (data) {
+                    { "data": "RemainingBal" },
+                     { "data": "Status" },
+                    {
+                        "data": "BillNo", "render": function (data) {
                         return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
