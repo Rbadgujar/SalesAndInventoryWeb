@@ -47,7 +47,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 			if (emp.ID == 0)
 			{
-				db.tbl_CashInhandSelect("Insert", null, emp.Adjustment, emp.Amount, emp.Date, emp.Description, emp.AdditionalFeild,emp.AdditionalFeild1,null);
+				db.tbl_CashInhandSelect("Insert", null, emp.Adjustment, emp.Amount, emp.Date, emp.Description,null,null,null);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
 			}
