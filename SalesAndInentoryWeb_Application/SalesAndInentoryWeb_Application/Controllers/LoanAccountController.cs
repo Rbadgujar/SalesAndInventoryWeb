@@ -15,8 +15,32 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+        public ActionResult LoanStatement()
+        {
+            return View();
+        }
 
-		[HttpGet]
+        [HttpGet]
+        public ActionResult makykdata1(string sal)
+        {
+
+            var getdata = db.tbl_LoanBankSelect("Select11", null, sal, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult makykdata()
+        {
+
+            var getdata = db.tbl_LoanBankSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
 		public ActionResult BankData()
 		{
 			var tb = db.tbl_LoanBankSelect("Select1", null, null, null, null, null, null, null,null,null,null,null,null,null,null,null,null).ToList();
@@ -65,5 +89,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			  db.SubmitChanges();
 			  return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		  }
+
+
+
 	}
 }

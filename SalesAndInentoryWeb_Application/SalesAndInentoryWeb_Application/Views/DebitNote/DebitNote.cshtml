@@ -56,7 +56,6 @@
             </div>
         </div>
     </nav>
-
 </div>
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
@@ -77,9 +76,9 @@
                     { "data": "PartyName"},
                     { "data": "PONumber"},
                     { "data": "Recived" },
-                    {"date":"status"},
-                    {"date":"DueDate"},
-                    {"date":"Total"},
+                    {"data":"status"},
+                    {"data":"DueDate"},
+                    {"data":"Total"},
 
                 {"data":"ReturnNo" , "render" : function (data) {
                     return "<a class='btn btn-default btn-sm' href="@Url.Action("AddOrEdit", "DebitNote")/" + data + ""><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";

@@ -1,9 +1,10 @@
-﻿@model  SalesAndInentoryWeb_Application.Models.tbl_CashAdjustment
+﻿
+@model IEnumerable<SalesAndInentoryWeb_Application.tbl_PurchaseOrderSelectResult>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
-
 }
+
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -20,40 +21,19 @@
         new Script { ExtensionSuite = ExtensionSuite.Editors }
     )
 </head>
-<div class="container" style="height:100%; width:100%;">
-   
 
-    <nav class="navbar navbar-default " style="border:none; background-color:white">
+<div class="container" style="height:100%; width:100%;">
+    <nav class="navbar navbar-default " style="background-color:white;border:none">
         <br />
         <nav class="navbar navbar-default " style="border:none; background-color:white;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
-                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Loan Statment</h3></label>
-
-                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:1px;"><i class="glyphicon glyphicon-print"></i>Print</a>
-                    
-                    <select class="pull-right row" style="height:34px;width:150px; margin-top:6.5px;margin-right:22px; " onchange="getval(this);">
-                        <option>--Customer --</option>
-                        <option value="Ankit">Ankit</option>
-                        <option value="Jay">Jay</option>
-                    </select>
-
-                    <select class="pull-right row" style="height:34px;width:150px; margin-top:6.5px;margin-right:25px; ">
-                        <option>--All Firms--</option>
-                        <option>Ideal tech Info</option>
-                        <option>tata byby</option>
-                    </select>
-
-
-
-
-
-                    @*<Select class="pull-right row" name="compantname" style="height:34px; margin-top:6.5px;margin-right:22px; " />
-                   <option></option>
-                     </select>*@
-                    @*<label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
-                    @*
-                        @*<input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />*@
+                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>MakePayment Data</h3></label>
+                    <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("Makepayment","makePayment")"><i class="fa fa-plus"></i>Add MakePayment</a>
+                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+                    <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+                    <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
+                    <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
                 </div>
             </div>
         </nav>
@@ -64,44 +44,22 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>LoanAmount</th>
-                            <th>CurrentBal</th>
-                            <th>Interest</th>
+                            <th>PrincipleAmount</th>
+                            <th>InterestAmount</th>
+                            <th>Date</th>
+                            <th>AccountName </th>
+                            <th>TotalAmount</th>
+
                             <th>Action</th>
                         </tr>
                     </thead>
                 </table>
             </div>
         </div>
-
     </nav>
-        <nav class="navbar navbar-default "style="border:none; background-color:white">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse ">
-                    <div class="row">
-                        <div class="form-group col-md-2">
-                            <label for="lname">Total Amount:</label>
-                            <input type="text" id="lname" name="lname">
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="lname">Total Amount:</label>
-                            <input type="text" id="lname" name="lname">
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-2">
-                                <label for="lname">Total Amount:</label>
-                                <input type="text" id="lname" name="lname">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="lname">Total Amount:</label>
-                                <input type="text" id="lname" name="lname">
-                            </div>
-                         </div>
-                        </div>
-                </div>
-            </div>
-        </nav>
+
 </div>
+
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
     <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
@@ -109,22 +67,22 @@
 
     <script>
                      var Popup, dataTable;
-
-                     $(document).ready(function () {
+        $(document).ready(function () {
             dataTable = $("#purchaseorder1").DataTable({
                 "ajax": {
-
-                    "url": "/LoanAccount/makykdata",
+               
+                    "url": "/MakePayment/makykdata",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
                     { "data": "ID" },
-                    { "data": "LoanAmount" },
-					{ "data": "CurrentBal" },
-					{ "data": "Interest" },
-                   
-
+                    { "data": "PrincipleAmount" },
+					{ "data": "InterestAmount" },
+					{ "data": "Date" },
+                    { "data": "AccountName" },
+					{ "data": "TotalAmount" },
+				
                     { "data": "ID", "render": function (data) {
                         return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
@@ -141,39 +99,7 @@
             });
         });
 
-        function getval(sal)
-        {
 
-         
-                dataTable = $("#purchaseorder1").DataTable({
-                    "ajax": {                     
-                        "url": "/LoanAccount/makykdata1("+sal.value+")",
-                        "type": "GET",
-                        "datatype": "json"
-                    },
-                    "columns": [
-                        { "data": "ID" },
-                        { "data": "LoanAmount" },
-                        { "data": "CurrentBal" },
-                        { "data": "Interest" },
-                   
-
-                        { "data":"ID", "render": function (data) {
-                            return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                        },
-                            "orderable": false,
-                            "searchable":false,
-                            "width":"150px"
-                        }
-
-                    ],
-                    "language": {
-
-                        "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
-                    }
-                });
-       
-        }
 
 
                     function PopupForm(url) {
@@ -245,10 +171,6 @@
                     }
     </script>
 }
-
-
-
-
 
 
 
