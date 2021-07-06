@@ -9354,6 +9354,8 @@ namespace SalesAndInentoryWeb_Application
 		
 		public tbl_PurchaseBillselectResult()
 		{
+
+
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillNo", DbType="Int NOT NULL")]

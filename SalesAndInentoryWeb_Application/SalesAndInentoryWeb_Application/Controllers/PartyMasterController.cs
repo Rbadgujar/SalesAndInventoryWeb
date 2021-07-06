@@ -90,6 +90,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult makykdata()
+        {
+
+            var getdata = db.tbl_PartyGroupSelect("Select1", null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
     }
 
 }

@@ -3738,6 +3738,7 @@
     <Content Include="Views\SaleInvoice\SaleIndexpage.cshtml" />
     <Content Include="Views\DebitNote\AddOrEdit.cshtml" />
     <Content Include="Views\PaymentIn\Paymentin.cshtml" />
+    <Content Include="Views\MakePayment\maykpayment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
