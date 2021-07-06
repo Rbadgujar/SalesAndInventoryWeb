@@ -20,12 +20,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         public ActionResult saleinvoicedata()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_SaleInvoice> saleinvoice = db.tbl_SaleInvoice.ToList<tbl_SaleInvoice>();
-                return Json(new { data = saleinvoice }, JsonRequestBehavior.AllowGet);
-            }
+            var tb = db.tbl_ExpensesSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+
         }
         public ActionResult SaleIndexpage()
         {
