@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<SalesAndInentoryWeb_Application.tbl_SaleOrderSelectResult>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
@@ -22,8 +23,7 @@
 </head>
 
 <div class="container" style="height:100%; width:100%;">
-
-    <nav class="navbar navbar-default " style="background-color:white;border:none">
+   <nav class="navbar navbar-default " style="background-color:white;border:none">
         <br />
         <nav class="navbar navbar-default " style="border:none; background-color:white;">
             <div class="container-fluid">
@@ -51,7 +51,7 @@
                             <th>Received</th>
                             <th>RemainingBal</th>
                             <th>Total</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -60,19 +60,18 @@
     </nav>
 
 </div>
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
     <script>
         var Popup, dataTable;
         $(document).ready(function () {
             dataTable = $("#Saleorder").DataTable({
                 "ajax": {
-                    "url": "/SaleOrder/EstimateData",
+                    "url": "/SaleOrder/ShowSaleOrder",
                     "type": "GET",
                     "datatype": "json"
                 },
@@ -85,8 +84,9 @@
 					{ "data": "Received" },
                     { "data": "RemainingBal" },
                     { "data": "Total" },
+
                     { "data":"OrderNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAdjustment")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","SaleOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -110,7 +110,7 @@
                 Popup = formDiv.dialog({
                     autoOpen: true,
                     resizable: false,
-                    title: 'Fill Adjust Bank Details',
+                    title: 'Fill Sale Order Details',
                     height: 550,
                     width: 700,
                     close: function () {
@@ -147,11 +147,11 @@
         }
 
         function Delete(id) {
-            if(confirm('Are You Sure to Delete this Employee Record ?'))
+            if(confirm('Are You Sure to Delete this Sale Order Record ?'))
             {
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("Delete","BankAdjustment")/' + id,
+                    url: '@Url.Action("Delete","SaleOrder")/' + id,
                     success: function (data) {
                         if (data.success)
                         {

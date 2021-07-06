@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<SalesAndInentoryWeb_Application.tbl_CreditNote1SelectResult>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
@@ -35,7 +35,7 @@
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
                     <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
                 </div>
-            </div>    
+            </div>
         </nav>
 
         <div class="container-fluid">
@@ -51,7 +51,7 @@
                             <th>Received</th>
                             <th>RemainingBal</th>
                             <th>Total</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -60,12 +60,10 @@
     </nav>
 
 </div>
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
     <script>
         var Popup, dataTable;
@@ -86,7 +84,7 @@
                     { "data": "RemainingBal" },
                     { "data": "Total" },
                     { "data":"ReturnNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAdjustment")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "Creditnote")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -110,7 +108,7 @@
                 Popup = formDiv.dialog({
                     autoOpen: true,
                     resizable: false,
-                    title: 'Fill Adjust Bank Details',
+                    title: 'Fill Credit Note Details',
                     height: 550,
                     width: 700,
                     close: function () {
@@ -151,7 +149,7 @@
             {
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("Delete","BankAdjustment")/' + id,
+                    url: '@Url.Action("Delete", "Creditnote")/' + id,
                     success: function (data) {
                         if (data.success)
                         {

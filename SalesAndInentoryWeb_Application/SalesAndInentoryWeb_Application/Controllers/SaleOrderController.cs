@@ -10,22 +10,27 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class SaleOrderController : Controller
     {
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
         // GET: SaleOrder
         public ActionResult SaleOrder()
         {
             return View();
         }
 
-
-        public ActionResult EstimateData()
+        [HttpGet]
+        public ActionResult ShowSaleOrder()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            try
             {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_SaleOrder> saleorder = db.tbl_SaleOrder.ToList<tbl_SaleOrder>();
-                return Json(new { data = saleorder }, JsonRequestBehavior.AllowGet);
+                var getdata = db.tbl_SaleOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception)
+            {
+                return View();
             }
         }
+
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {
@@ -61,75 +66,21 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 
         }
-        // GET: SaleOrder/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: SaleOrder/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: SaleOrder/Create
+   
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: SaleOrder/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: SaleOrder/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: SaleOrder/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: SaleOrder/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var getdata = db.tbl_SaleOrderSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
             }
             catch
             {
                 return View();
+                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
         }
     }

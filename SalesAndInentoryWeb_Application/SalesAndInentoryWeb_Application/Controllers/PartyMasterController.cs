@@ -31,15 +31,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             var getdata = db.tbl_PartyMasterSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
-       
        public ActionResult groupdata()
         {
             var getdata = db.tbl_PartyGroupSelect("Select",null,null,null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
-    
-
 
         public ActionResult PartyGroupData()
         {
@@ -73,13 +71,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, tbl_PartyMasterSelectResult party)
+        public ActionResult Delete(int id)
         {
             try
             {
                 var getdata = db.tbl_PartyMasterSelect("Delete", id,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 db.SubmitChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
             }
             catch
             {

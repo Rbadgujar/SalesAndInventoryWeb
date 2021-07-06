@@ -9,22 +9,50 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class DeliveryChallanController : Controller
     {
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+
         // GET: DeliveryChallan
         public ActionResult Index()
         {
             return View();
         }
+
+        [HttpGet]
         public ActionResult Data()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            try
             {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_DeliveryChallan> party = db.tbl_DeliveryChallan.ToList<tbl_DeliveryChallan>();
-                return Json(new { data = party }, JsonRequestBehavior.AllowGet);
+                var getdata = db.tbl_DeliveryChallanSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception)
+            {
+                return View();
             }
         }
-      
-        [HttpGet]
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var getdata = db.tbl_DeliveryChallanSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult AddOrEdit()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)
