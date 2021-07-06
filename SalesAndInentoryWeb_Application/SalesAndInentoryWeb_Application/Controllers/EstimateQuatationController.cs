@@ -12,7 +12,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         // GET: EstimateQuatation
         public ActionResult Index()
         {
-            return View();
+			
+
+			return View();
         }
       
         public ActionResult EstimateData()
