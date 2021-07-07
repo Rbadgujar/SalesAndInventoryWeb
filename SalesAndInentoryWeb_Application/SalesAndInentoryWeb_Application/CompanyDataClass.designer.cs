@@ -2222,7 +2222,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _Amount;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		private string _Descripition;
 		
@@ -2295,7 +2295,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		public string Date
 		{
 			get
 			{
@@ -2730,7 +2730,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _Amount;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		private string _Description;
 		
@@ -2803,7 +2803,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Date
+		public string Date
 		{
 			get
 			{
@@ -6936,7 +6936,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _Total;
 		
-		private System.Nullable<System.DateTime> _BalAsOf;
+		private string _BalAsOf;
 		
 		public tbl_LoanBankSelectResult()
 		{
@@ -7167,7 +7167,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BalAsOf", DbType="Date")]
-		public System.Nullable<System.DateTime> BalAsOf
+		public string BalAsOf
 		{
 			get
 			{
