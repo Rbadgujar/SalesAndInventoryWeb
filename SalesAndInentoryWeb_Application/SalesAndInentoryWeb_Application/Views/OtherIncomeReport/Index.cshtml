@@ -64,7 +64,7 @@
 							<th>Received</th>
 							<th>Balance</th>
 							<th>Total</th>
-							<th>Status/th>
+							<th>Status</th>
 							<th>Action</th>
 					</thead>
 				</table>
@@ -83,7 +83,7 @@
                 $(document).ready(function () {
 					dataTable = $("#other").DataTable({
                         "ajax": {
-                            "url": "/OtherIncome/Data",
+                            "url": "/OtherIncome/otherData",
                             "type": "GET",
                             "datatype": "json"
                         },

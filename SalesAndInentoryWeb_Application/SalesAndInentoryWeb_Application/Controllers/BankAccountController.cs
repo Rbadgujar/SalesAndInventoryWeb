@@ -12,7 +12,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 	{
 
 		CompanyDataClassDataContext db = new CompanyDataClassDataContext();
-		//idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10();
+		idealtec_inventoryEntities10 db1 = new idealtec_inventoryEntities10();
 
 		public ActionResult Index()
 		{
@@ -22,7 +22,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
 		public ActionResult Data()
 		{
-			var tb = db.BankAccountSelect("Select1", null, null, null, null, null, null, null).ToList();
+			var tb = db.BankAccountSelect("Select1", null, null, null, null, null,null, null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
@@ -42,23 +42,29 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			else
 			{
 				var tb = db.BankAccountSelect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
-				return View(tb);
+				var vm = new tbl_BankAccount();
+				vm.AccountName = tb.AccountName;
+				vm.BankName = tb.BankName;
+				vm.AccountNo = tb.AccountNo;
+				vm.OpeningBal = tb.OpeningBal;
+				 string Date = tb.Date;
+				return View(vm);
 			}	
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit(int id,tbl_BankAccount conn)
+		public ActionResult AddOrEdit(int id, tbl_BankAccount conn)
 		{
-			if (ModelState.IsValid)
+			if (id == null)
 			{
 
-			    db.BankAccountSelect("Insert", null, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null);
+				db.BankAccountSelect("Insert", null, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
 			}
 			else
 			{
-				db.BankAccountSelect("Update", id, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null); 
+				db.BankAccountSelect("Update", id, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
 			}

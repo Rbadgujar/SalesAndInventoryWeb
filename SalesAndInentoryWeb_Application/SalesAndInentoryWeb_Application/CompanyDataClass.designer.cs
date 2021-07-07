@@ -2108,7 +2108,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _OpeningBal;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		public BankAccountSelectResult()
 		{
@@ -2195,7 +2195,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		public string Date
 		{
 			get
 			{
