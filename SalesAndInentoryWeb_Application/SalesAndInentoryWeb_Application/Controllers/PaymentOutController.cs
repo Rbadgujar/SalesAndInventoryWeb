@@ -26,7 +26,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		}
 		public ActionResult Detail(int id)
 		{
-			var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
+			var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
 			return View(tb);
 		}
 
@@ -39,7 +39,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			}
 			else
 			{
-				var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
+				var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
 				return View(tb);
 			}
 		}

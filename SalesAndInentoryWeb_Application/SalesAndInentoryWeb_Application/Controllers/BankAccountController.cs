@@ -47,7 +47,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				vm.BankName = tb.BankName;
 				vm.AccountNo = tb.AccountNo;
 				vm.OpeningBal = tb.OpeningBal;
-				 string Date = tb.Date;
+				 string Date = tb.Date.ToString();
 				return View(vm);
 			}	
 		}
