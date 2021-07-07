@@ -23,9 +23,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
       [HttpGet]
         public ActionResult EstimateData()
         {
-            var tb = db.tbl_QuotationSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 
+
+            try
+            {
+                var getdata = db.tbl_QuotationSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return View();
+            }
+           
         }
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
