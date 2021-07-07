@@ -5,24 +5,36 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
+  
     public class EstimateQuatationController : Controller
     {
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+
         // GET: EstimateQuatation
         public ActionResult Index()
         {
-            return View();
+			
+
+			return View();
         }
-      
+      [HttpGet]
         public ActionResult EstimateData()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+
+
+            try
             {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tblQuotation> estimate = db.tblQuotations.ToList<tblQuotation>();
-                return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
+                var getdata = db.tbl_QuotationSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
+            catch (Exception)
+            {
+                return View();
+            }
+           
         }
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)

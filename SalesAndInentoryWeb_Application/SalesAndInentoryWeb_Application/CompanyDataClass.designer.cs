@@ -932,104 +932,6 @@ namespace SalesAndInentoryWeb_Application
 			return ((ISingleResult<tbl_SaleInvoiceInnerspResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_SaleOrderInnersp")]
-		public ISingleResult<tbl_SaleOrderInnerspResult> tbl_SaleOrderInnersp(
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemID", DbType="Int")] System.Nullable<int> itemID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryType", DbType="NVarChar(MAX)")] string categoryType, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BasicUnit", DbType="NVarChar(MAX)")] string basicUnit, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemCode", DbType="NVarChar(MAX)")] string itemCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalePrice", DbType="Float")] System.Nullable<double> salePrice, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxForSale", DbType="NVarChar(MAX)")] string taxForSale, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleTaxAmount", DbType="Float")] System.Nullable<double> saleTaxAmount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> freeQty, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="NVarChar(MAX)")] string discount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DiscountAmount", DbType="Float")] System.Nullable<double> discountAmount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrderNo", DbType="Int")] System.Nullable<int> orderNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CGST", DbType="Float")] System.Nullable<double> cGST, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SGST", DbType="Float")] System.Nullable<double> sGST, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IGST", DbType="Float")] System.Nullable<double> iGST, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemTotal", DbType="Float")] System.Nullable<double> itemTotal)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, itemID, categoryType, itemName, basicUnit, itemCode, salePrice, taxForSale, saleTaxAmount, qty, freeQty, itemAmount, discount, discountAmount, compid, orderNo, cGST, sGST, iGST, itemTotal);
-			return ((ISingleResult<tbl_SaleOrderInnerspResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_TransactionPassswordSelect")]
-		public ISingleResult<tbl_TransactionPassswordSelectResult> tbl_TransactionPassswordSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(MAX)")] string newPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ConfirmPassword", DbType="NVarChar(MAX)")] string confirmPassword)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, newPassword, confirmPassword);
-			return ((ISingleResult<tbl_TransactionPassswordSelectResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_TransactionPrefixSelect")]
-		public ISingleResult<tbl_TransactionPrefixSelectResult> tbl_TransactionPrefixSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Frim", DbType="NVarChar(MAX)")] string frim, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> sale, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> creditNote, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseOrder", DbType="Float")] System.Nullable<double> purchaseOrder, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleOrder", DbType="Float")] System.Nullable<double> saleOrder, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estimate", DbType="Float")] System.Nullable<double> estimate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryChallan", DbType="Float")] System.Nullable<double> deliveryChallan, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentIn", DbType="Float")] System.Nullable<double> paymentIn)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, frim, sale, creditNote, purchaseOrder, saleOrder, estimate, deliveryChallan, paymentIn);
-			return ((ISingleResult<tbl_TransactionPrefixSelectResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_UnitConversionSelect")]
-		public ISingleResult<tbl_UnitConversionSelectResult> tbl_UnitConversionSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UnitConversionID", DbType="Int")] System.Nullable<int> unitConversionID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BasicUnit", DbType="NVarChar(MAX)")] string basicUnit, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SecondaryUnit", DbType="NVarChar(MAX)")] string secondaryUnit, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Rate", DbType="Float")] System.Nullable<double> rate, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, unitConversionID, basicUnit, secondaryUnit, rate, compid);
-			return ((ISingleResult<tbl_UnitConversionSelectResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_SaleOrderSelect")]
-		public ISingleResult<tbl_SaleOrderSelectResult> tbl_SaleOrderSelect(
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrderNo", DbType="Int")] System.Nullable<int> orderNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillingName", DbType="NVarChar(MAX)")] string billingName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContactNo", DbType="NVarChar(MAX)")] string contactNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrderDate", DbType="Date")] System.Nullable<System.DateTime> orderDate, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DueDate", DbType="Date")] System.Nullable<System.DateTime> dueDate, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StateofSupply", DbType="NVarChar(MAX)")] string stateofSupply, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentType", DbType="NVarChar(MAX)")] string paymentType, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportName", DbType="NVarChar(MAX)")] string transportName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryLocation", DbType="NVarChar(MAX)")] string deliveryLocation, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="VehicleNumber", DbType="NVarChar(MAX)")] string vehicleNumber, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Deliverydate", DbType="Date")] System.Nullable<System.DateTime> deliverydate, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportCharges", DbType="Float")] System.Nullable<double> transportCharges, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image", DbType="Image")] System.Data.Linq.Binary image, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tax1", DbType="NVarChar(MAX)")] string tax1, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CGST", DbType="Float")] System.Nullable<double> cGST, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SGST", DbType="Float")] System.Nullable<double> sGST, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxAmount1", DbType="Float")] System.Nullable<double> taxAmount1, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalDiscount", DbType="NVarChar(MAX)")] string totalDiscount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DiscountAmount1", DbType="Float")] System.Nullable<double> discountAmount1, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoundFigure", DbType="Float")] System.Nullable<double> roundFigure, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentTerms", DbType="NVarChar(MAX)")] string paymentTerms, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild1", DbType="NVarChar(MAX)")] string feild1, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild2", DbType="NVarChar(MAX)")] string feild2, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild3", DbType="NVarChar(MAX)")] string feild3, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild4", DbType="NVarChar(MAX)")] string feild4, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild5", DbType="NVarChar(MAX)")] string feild5, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(MAX)")] string status, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemCategory", DbType="NVarChar(MAX)")] string itemCategory, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Barcode", DbType="NVarChar(MAX)")] string barcode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IGST", DbType="Float")] System.Nullable<double> iGST, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxShow", DbType="Float")] System.Nullable<double> taxShow, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="Float")] System.Nullable<double> discount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CalTotal", DbType="Float")] System.Nullable<double> calTotal)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, orderNo, partyName, billingName, contactNo, orderDate, dueDate, stateofSupply, paymentType, transportName, deliveryLocation, vehicleNumber, deliverydate, description, transportCharges, image, tax1, cGST, sGST, taxAmount1, totalDiscount, discountAmount1, roundFigure, total, received, remainingBal, paymentTerms, feild1, feild2, feild3, feild4, feild5, status, tableName, iD, itemCategory, barcode, iGST, compid, taxShow, discount, calTotal);
-			return ((ISingleResult<tbl_SaleOrderSelectResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_SaleInvoiceSelect")]
 		public ISingleResult<tbl_SaleInvoiceSelectResult> tbl_SaleInvoiceSelect(
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
@@ -1083,6 +985,125 @@ namespace SalesAndInentoryWeb_Application
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, invoiceID, partyName, billingName, contactNo, poNumber, poDate, invoiceDate, stateofSupply, paymentType, transportName, deliveryLocation, vehicleNumber, deliverydate, description, transportCharges, image, tax1, cGST, sGST, taxAmount1, totalDiscount, discountAmount1, roundFigure, total, received, remainingBal, dueDate, paymentTerms, feild1, feild2, feild3, feild4, feild5, status, tableName, iD, itemCategory, barcode, iGST, compid, discount, taxAmountShow, caltotal, totalcgst, totalsgst, totaligst, eWayBillNo);
 			return ((ISingleResult<tbl_SaleInvoiceSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_SaleOrderSelect")]
+		public ISingleResult<tbl_SaleOrderSelectResult> tbl_SaleOrderSelect(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrderNo", DbType="Int")] System.Nullable<int> orderNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillingName", DbType="NVarChar(MAX)")] string billingName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContactNo", DbType="NVarChar(MAX)")] string contactNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrderDate", DbType="Date")] System.Nullable<System.DateTime> orderDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DueDate", DbType="Date")] System.Nullable<System.DateTime> dueDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StateofSupply", DbType="NVarChar(MAX)")] string stateofSupply, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentType", DbType="NVarChar(MAX)")] string paymentType, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportName", DbType="NVarChar(MAX)")] string transportName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryLocation", DbType="NVarChar(MAX)")] string deliveryLocation, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="VehicleNumber", DbType="NVarChar(MAX)")] string vehicleNumber, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Deliverydate", DbType="Date")] System.Nullable<System.DateTime> deliverydate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportCharges", DbType="Float")] System.Nullable<double> transportCharges, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image", DbType="Image")] System.Data.Linq.Binary image, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tax1", DbType="NVarChar(MAX)")] string tax1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CGST", DbType="Float")] System.Nullable<double> cGST, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SGST", DbType="Float")] System.Nullable<double> sGST, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxAmount1", DbType="Float")] System.Nullable<double> taxAmount1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalDiscount", DbType="NVarChar(MAX)")] string totalDiscount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DiscountAmount1", DbType="Float")] System.Nullable<double> discountAmount1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoundFigure", DbType="Float")] System.Nullable<double> roundFigure, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentTerms", DbType="NVarChar(MAX)")] string paymentTerms, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild1", DbType="NVarChar(MAX)")] string feild1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild2", DbType="NVarChar(MAX)")] string feild2, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild3", DbType="NVarChar(MAX)")] string feild3, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild4", DbType="NVarChar(MAX)")] string feild4, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild5", DbType="NVarChar(MAX)")] string feild5, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(MAX)")] string status, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemCategory", DbType="NVarChar(MAX)")] string itemCategory, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Barcode", DbType="NVarChar(MAX)")] string barcode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IGST", DbType="Float")] System.Nullable<double> iGST, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxShow", DbType="Float")] System.Nullable<double> taxShow, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="Float")] System.Nullable<double> discount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CalTotal", DbType="Float")] System.Nullable<double> calTotal)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, orderNo, partyName, billingName, contactNo, orderDate, dueDate, stateofSupply, paymentType, transportName, deliveryLocation, vehicleNumber, deliverydate, description, transportCharges, image, tax1, cGST, sGST, taxAmount1, totalDiscount, discountAmount1, roundFigure, total, received, remainingBal, paymentTerms, feild1, feild2, feild3, feild4, feild5, status, tableName, iD, itemCategory, barcode, iGST, compid, taxShow, discount, calTotal);
+			return ((ISingleResult<tbl_SaleOrderSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_TransactionPassswordSelect")]
+		public ISingleResult<tbl_TransactionPassswordSelectResult> tbl_TransactionPassswordSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(MAX)")] string newPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ConfirmPassword", DbType="NVarChar(MAX)")] string confirmPassword)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, newPassword, confirmPassword);
+			return ((ISingleResult<tbl_TransactionPassswordSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_TransactionPrefixSelect")]
+		public ISingleResult<tbl_TransactionPrefixSelectResult> tbl_TransactionPrefixSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Frim", DbType="NVarChar(MAX)")] string frim, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> sale, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> creditNote, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseOrder", DbType="Float")] System.Nullable<double> purchaseOrder, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleOrder", DbType="Float")] System.Nullable<double> saleOrder, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estimate", DbType="Float")] System.Nullable<double> estimate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryChallan", DbType="Float")] System.Nullable<double> deliveryChallan, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentIn", DbType="Float")] System.Nullable<double> paymentIn)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, frim, sale, creditNote, purchaseOrder, saleOrder, estimate, deliveryChallan, paymentIn);
+			return ((ISingleResult<tbl_TransactionPrefixSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_UnitConversionSelect")]
+		public ISingleResult<tbl_UnitConversionSelectResult> tbl_UnitConversionSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UnitConversionID", DbType="Int")] System.Nullable<int> unitConversionID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BasicUnit", DbType="NVarChar(MAX)")] string basicUnit, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SecondaryUnit", DbType="NVarChar(MAX)")] string secondaryUnit, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Rate", DbType="Float")] System.Nullable<double> rate, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, unitConversionID, basicUnit, secondaryUnit, rate, compid);
+			return ((ISingleResult<tbl_UnitConversionSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_SaleOrderSelect")]
+		public ISingleResult<tbl_SaleOrderSelectResult1> tbl_SaleOrderSelect1(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrderNo", DbType="Int")] System.Nullable<int> orderNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BillingName", DbType="NVarChar(MAX)")] string billingName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContactNo", DbType="NVarChar(MAX)")] string contactNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrderDate", DbType="Date")] System.Nullable<System.DateTime> orderDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DueDate", DbType="Date")] System.Nullable<System.DateTime> dueDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StateofSupply", DbType="NVarChar(MAX)")] string stateofSupply, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentType", DbType="NVarChar(MAX)")] string paymentType, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportName", DbType="NVarChar(MAX)")] string transportName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliveryLocation", DbType="NVarChar(MAX)")] string deliveryLocation, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="VehicleNumber", DbType="NVarChar(MAX)")] string vehicleNumber, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Deliverydate", DbType="Date")] System.Nullable<System.DateTime> deliverydate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportCharges", DbType="Float")] System.Nullable<double> transportCharges, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image", DbType="Image")] System.Data.Linq.Binary image, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tax1", DbType="NVarChar(MAX)")] string tax1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CGST", DbType="Float")] System.Nullable<double> cGST, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SGST", DbType="Float")] System.Nullable<double> sGST, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxAmount1", DbType="Float")] System.Nullable<double> taxAmount1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalDiscount", DbType="NVarChar(MAX)")] string totalDiscount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DiscountAmount1", DbType="Float")] System.Nullable<double> discountAmount1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoundFigure", DbType="Float")] System.Nullable<double> roundFigure, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaymentTerms", DbType="NVarChar(MAX)")] string paymentTerms, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild1", DbType="NVarChar(MAX)")] string feild1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild2", DbType="NVarChar(MAX)")] string feild2, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild3", DbType="NVarChar(MAX)")] string feild3, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild4", DbType="NVarChar(MAX)")] string feild4, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Feild5", DbType="NVarChar(MAX)")] string feild5, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(MAX)")] string status, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemCategory", DbType="NVarChar(MAX)")] string itemCategory, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Barcode", DbType="NVarChar(MAX)")] string barcode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IGST", DbType="Float")] System.Nullable<double> iGST, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxShow", DbType="Float")] System.Nullable<double> taxShow, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="Float")] System.Nullable<double> discount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CalTotal", DbType="Float")] System.Nullable<double> calTotal)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, orderNo, partyName, billingName, contactNo, orderDate, dueDate, stateofSupply, paymentType, transportName, deliveryLocation, vehicleNumber, deliverydate, description, transportCharges, image, tax1, cGST, sGST, taxAmount1, totalDiscount, discountAmount1, roundFigure, total, received, remainingBal, paymentTerms, feild1, feild2, feild3, feild4, feild5, status, tableName, iD, itemCategory, barcode, iGST, compid, taxShow, discount, calTotal);
+			return ((ISingleResult<tbl_SaleOrderSelectResult1>)(result.ReturnValue));
 		}
 	}
 	
@@ -12246,405 +12267,53 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
-	public partial class tbl_SaleOrderInnerspResult
+	public partial class tbl_SaleInvoiceSelectResult
 	{
 		
-		private int _ID;
+		private System.Nullable<decimal> _Column1;
 		
-		private System.Nullable<int> _ItemID;
-		
-		private string _ItemName;
-		
-		private string _BasicUnit;
-		
-		private string _ItemCode;
-		
-		private System.Nullable<double> _SalePrice;
-		
-		private string _TaxForSale;
-		
-		private System.Nullable<double> _SaleTaxAmount;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<int> _freeQty;
-		
-		private string _Discount;
-		
-		private System.Nullable<double> _DiscountAmount;
-		
-		private System.Nullable<int> _ItemAmount;
-		
-		private System.Nullable<int> _CategoryID;
-		
-		private string _CategoryType;
-		
-		private System.Nullable<bool> _DeleteData;
-		
-		private System.Nullable<int> _Company_ID;
-		
-		private System.Nullable<int> _OrderNo;
-		
-		private System.Nullable<double> _CGST;
-		
-		private System.Nullable<double> _SGST;
-		
-		private System.Nullable<double> _IGST;
-		
-		private System.Nullable<double> _ItemTotal;
-		
-		public tbl_SaleOrderInnerspResult()
+		public tbl_SaleInvoiceSelectResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-		public int ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_Column1", DbType="Decimal(38,0)")]
+		public System.Nullable<decimal> Column1
 		{
 			get
 			{
-				return this._ID;
+				return this._Column1;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((this._Column1 != value))
 				{
-					this._ID = value;
+					this._Column1 = value;
 				}
 			}
 		}
+	}
+	
+	public partial class tbl_SaleOrderSelectResult
+	{
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemID", DbType="Int")]
-		public System.Nullable<int> ItemID
+		private System.Nullable<decimal> _Column1;
+		
+		public tbl_SaleOrderSelectResult()
 		{
-			get
-			{
-				return this._ItemID;
-			}
-			set
-			{
-				if ((this._ItemID != value))
-				{
-					this._ItemID = value;
-				}
-			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
-		public string ItemName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_Column1", DbType="Decimal(38,0)")]
+		public System.Nullable<decimal> Column1
 		{
 			get
 			{
-				return this._ItemName;
+				return this._Column1;
 			}
 			set
 			{
-				if ((this._ItemName != value))
+				if ((this._Column1 != value))
 				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BasicUnit", DbType="NVarChar(MAX)")]
-		public string BasicUnit
-		{
-			get
-			{
-				return this._BasicUnit;
-			}
-			set
-			{
-				if ((this._BasicUnit != value))
-				{
-					this._BasicUnit = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemCode", DbType="NVarChar(MAX)")]
-		public string ItemCode
-		{
-			get
-			{
-				return this._ItemCode;
-			}
-			set
-			{
-				if ((this._ItemCode != value))
-				{
-					this._ItemCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalePrice", DbType="Float")]
-		public System.Nullable<double> SalePrice
-		{
-			get
-			{
-				return this._SalePrice;
-			}
-			set
-			{
-				if ((this._SalePrice != value))
-				{
-					this._SalePrice = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxForSale", DbType="NVarChar(MAX)")]
-		public string TaxForSale
-		{
-			get
-			{
-				return this._TaxForSale;
-			}
-			set
-			{
-				if ((this._TaxForSale != value))
-				{
-					this._TaxForSale = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SaleTaxAmount", DbType="Float")]
-		public System.Nullable<double> SaleTaxAmount
-		{
-			get
-			{
-				return this._SaleTaxAmount;
-			}
-			set
-			{
-				if ((this._SaleTaxAmount != value))
-				{
-					this._SaleTaxAmount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this._Qty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_freeQty", DbType="Int")]
-		public System.Nullable<int> freeQty
-		{
-			get
-			{
-				return this._freeQty;
-			}
-			set
-			{
-				if ((this._freeQty != value))
-				{
-					this._freeQty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="NVarChar(50)")]
-		public string Discount
-		{
-			get
-			{
-				return this._Discount;
-			}
-			set
-			{
-				if ((this._Discount != value))
-				{
-					this._Discount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiscountAmount", DbType="Float")]
-		public System.Nullable<double> DiscountAmount
-		{
-			get
-			{
-				return this._DiscountAmount;
-			}
-			set
-			{
-				if ((this._DiscountAmount != value))
-				{
-					this._DiscountAmount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
-		public System.Nullable<int> ItemAmount
-		{
-			get
-			{
-				return this._ItemAmount;
-			}
-			set
-			{
-				if ((this._ItemAmount != value))
-				{
-					this._ItemAmount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int")]
-		public System.Nullable<int> CategoryID
-		{
-			get
-			{
-				return this._CategoryID;
-			}
-			set
-			{
-				if ((this._CategoryID != value))
-				{
-					this._CategoryID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryType", DbType="NVarChar(MAX)")]
-		public string CategoryType
-		{
-			get
-			{
-				return this._CategoryType;
-			}
-			set
-			{
-				if ((this._CategoryType != value))
-				{
-					this._CategoryType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteData", DbType="Bit")]
-		public System.Nullable<bool> DeleteData
-		{
-			get
-			{
-				return this._DeleteData;
-			}
-			set
-			{
-				if ((this._DeleteData != value))
-				{
-					this._DeleteData = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Company_ID", DbType="Int")]
-		public System.Nullable<int> Company_ID
-		{
-			get
-			{
-				return this._Company_ID;
-			}
-			set
-			{
-				if ((this._Company_ID != value))
-				{
-					this._Company_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderNo", DbType="Int")]
-		public System.Nullable<int> OrderNo
-		{
-			get
-			{
-				return this._OrderNo;
-			}
-			set
-			{
-				if ((this._OrderNo != value))
-				{
-					this._OrderNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CGST", DbType="Float")]
-		public System.Nullable<double> CGST
-		{
-			get
-			{
-				return this._CGST;
-			}
-			set
-			{
-				if ((this._CGST != value))
-				{
-					this._CGST = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SGST", DbType="Float")]
-		public System.Nullable<double> SGST
-		{
-			get
-			{
-				return this._SGST;
-			}
-			set
-			{
-				if ((this._SGST != value))
-				{
-					this._SGST = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IGST", DbType="Float")]
-		public System.Nullable<double> IGST
-		{
-			get
-			{
-				return this._IGST;
-			}
-			set
-			{
-				if ((this._IGST != value))
-				{
-					this._IGST = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemTotal", DbType="Float")]
-		public System.Nullable<double> ItemTotal
-		{
-			get
-			{
-				return this._ItemTotal;
-			}
-			set
-			{
-				if ((this._ItemTotal != value))
-				{
-					this._ItemTotal = value;
+					this._Column1 = value;
 				}
 			}
 		}
@@ -13070,38 +12739,12 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
-	public partial class tbl_SaleOrderSelectResult
+	public partial class tbl_SaleOrderSelectResult1
 	{
 		
 		private System.Nullable<decimal> _Column1;
 		
-		public tbl_SaleOrderSelectResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_Column1", DbType="Decimal(38,0)")]
-		public System.Nullable<decimal> Column1
-		{
-			get
-			{
-				return this._Column1;
-			}
-			set
-			{
-				if ((this._Column1 != value))
-				{
-					this._Column1 = value;
-				}
-			}
-		}
-	}
-	
-	public partial class tbl_SaleInvoiceSelectResult
-	{
-		
-		private System.Nullable<decimal> _Column1;
-		
-		public tbl_SaleInvoiceSelectResult()
+		public tbl_SaleOrderSelectResult1()
 		{
 		}
 		

@@ -24,66 +24,57 @@
    
 
     <nav class="navbar navbar-default " style="border:none; background-color:white">
-        <nav class="navbar navbar-default " style="border:none; background-color:white">
+        <br />
+        <nav class="navbar navbar-default " style="border:none; background-color:white;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
-                    <div class="row">
-                        <div class="form-group col-xs-1">
-                            @Html.DevExpress().Label(settings =>
-                   {
-                       settings.Style["font-weight"] = "bold";
-                       settings.Style["margin-top"] = "25px";
+                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Loan Statment</h3></label>
 
-                       settings.Name = "Label81";
-                       settings.Text = "From";
-                   }).GetHtml()
-                        </div>
-                        <div class="form-group col-md-2">
-                            @Html.DevExpress().DateEdit(settings =>
-                   {
-                       settings.ControlStyle.CssClass = "form-control";
-                       settings.Style["margin-top"] = "15px";
-                       settings.Name = "DateEdit1";
-                       settings.Properties.NullText = "dd/MM/YYYY";
-                   }).GetHtml()
-                        </div>
-                        <div class="form-group  col-xs-1">
-                            @Html.DevExpress().Label(settings =>
-                   {
-                       settings.Style["font-weight"] = "bold";
-                       settings.Style["margin-top"] = "15px";
-                       settings.Name = "Label82";
-                       settings.Text = "To";
-                   }).GetHtml()
-                        </div>
-                        <div class="form-group col-md-2">
-                            @Html.DevExpress().DateEdit(settings =>
-                   {
-                       settings.ControlStyle.CssClass = "form-control";
-                       settings.Style["margin-Top"] = "15px";
-                       settings.Name = "DateEdit";
-                       settings.Properties.NullText = "dd/MM/YYYY";
-                   }).GetHtml()
-                        </div>
-                        <a class="btn btn-success pull-right row" style="margin-top:15px;margin-right:10px;" onclick=""><span class="glyphicon glyphicon-print"></span> Print </a>
-                    </div>
+                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:1px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+                    
+                    <select class="pull-right row" style="height:34px;width:150px; margin-top:6.5px;margin-right:22px; " onchange="getval(this);">
+                        <option>--Customer --</option>
+                        <option value="Ankit">Ankit</option>
+                        <option value="Jay">Jay</option>
+                    </select>
+
+                    <select class="pull-right row" style="height:34px;width:150px; margin-top:6.5px;margin-right:25px; ">
+                        <option>--All Firms--</option>
+                        <option>Ideal tech Info</option>
+                        <option>tata byby</option>
+                    </select>
+
+
+
+
+
+                    @*<Select class="pull-right row" name="compantname" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+                   <option></option>
+                     </select>*@
+                    @*<label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
+                    @*
+                        @*<input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />*@
                 </div>
             </div>
         </nav>
+
         <div class="container-fluid">
             <div class="collapse navbar-collapse ">
-                <table id="cash" class="table table-striped table-bordered" style="width:100%">
+                <table id="purchaseorder1" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Loan Amount</th>
-                            <th>Current Balence</th>
+                            <th>ID</th>
+                            <th>LoanAmount</th>
+                            <th>CurrentBal</th>
                             <th>Interest</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 </table>
             </div>
         </div>
+
+    </nav>
         <nav class="navbar navbar-default "style="border:none; background-color:white">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
@@ -110,32 +101,32 @@
                 </div>
             </div>
         </nav>
-    </nav>
-
 </div>
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
     <script>
-        @*var Popup, dataTable;
-        $(document).ready(function () {
-            dataTable =  $("#cash").DataTable({
+                     var Popup, dataTable;
+
+                     $(document).ready(function () {
+            dataTable = $("#purchaseorder1").DataTable({
                 "ajax": {
-                    "url": "/CashInHand/Data",
+
+                    "url": "/LoanAccount/makykdata",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "TableName" },
-                    { "data": "PartyName" },
-                    { "data": "InvoiceDate" },
-                    { "data": "Total" },
-                    {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    { "data": "ID" },
+                    { "data": "LoanAmount" },
+					{ "data": "CurrentBal" },
+					{ "data": "Interest" },
+                   
+
+                    { "data": "ID", "render": function (data) {
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -148,76 +139,116 @@
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
             });
-        });*@
+        });
 
-        function PopupForm(url) {
-            var formDiv = $('<div/>');
-            $.get(url)
-            .done(function (response) {
-                formDiv.html(response);
+        function getval(sal)
+        {
 
-                Popup = formDiv.dialog({
-                    autoOpen: true,
-                    resizable: false,
-                    title: 'Fill Cash In Hand Details',
-                    height: 500,
-                    width: 500,
-                    close: function () {
-                        Popup.dialog('destroy').remove();
+         
+                dataTable = $("#purchaseorder1").DataTable({
+                    "ajax": {                     
+                        "url": "/LoanAccount/makykdata1("+sal.value+")",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "ID" },
+                        { "data": "LoanAmount" },
+                        { "data": "CurrentBal" },
+                        { "data": "Interest" },
+                   
+
+                        { "data":"ID", "render": function (data) {
+                            return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        },
+                            "orderable": false,
+                            "searchable":false,
+                            "width":"150px"
+                        }
+
+                    ],
+                    "language": {
+
+                        "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                     }
-
                 });
-            });
+       
         }
 
-        function SubmitForm(form) {
-            $.validator.unobtrusive.parse(form);
-            if($(form).valid()){
-                $.ajax({
-                    type : "POST",
-                    url : form.action,
-                    data : $(form).serialize(),
-                    success : function (data) {
-                        if(data.success)
+
+                    function PopupForm(url) {
+                        var formDiv = $('<div/>');
+                        $.get(url)
+                        .done(function (response) {
+                            formDiv.html(response);
+
+                            Popup = formDiv.dialog({
+                                autoOpen: true,
+                                resizable: false,
+                                title: 'Fill Bank Details',
+                                height: 500,
+                                width: 700,
+                                close: function () {
+                                    Popup.dialog('destroy').remove();
+                                }
+
+                            });
+                        });
+                    }
+
+                    function SubmitForm(form) {
+                        $.validator.unobtrusive.parse(form);
+                        if($(form).valid()){
+                            $.ajax({
+                                type : "POST",
+                                url : form.action,
+                                data : $(form).serialize(),
+                                success : function (data) {
+                                    if(data.success)
+                                    {
+                                        Popup.dialog('close');
+                                        dataTable.ajax.reload();
+
+                                        $.notify(data.message,{
+                                            globalPosition :"top center",
+                                            className : "success"
+                                        })
+
+                                    }
+                                }
+                            });
+                        }
+                        return false;
+                    }
+
+                    function Delete(id) {
+                        if(confirm('Are You Sure to Delete this Employee Record ?'))
                         {
-                            Popup.dialog('close');
-                            dataTable.ajax.reload();
+                            $.ajax({
+                                type: "POST",
+                                url: '@Url.Action("Dele", "ParchaseOrder")/' + id,
+                                success: function (data) {
+                                    if (data.success)
+                                    {
+                                        dataTable.ajax.reload();
 
-                            $.notify(data.message,{
-                                globalPosition :"top center",
-                                className : "success"
-                            })
+                                        $.notify(data.message, {
+                                            globalPosition: "top center",
+                                            className: "success"
+                                        })
 
+                                    }
+                                }
+
+                            });
                         }
                     }
-                });
-            }
-            return false;
-        }
-
-        function Delete(id) {
-            if(confirm('Are You Sure to Delete this Employee Record ?'))
-            {
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("Delete","BankAccount")/' + id,
-                    success: function (data) {
-                        if (data.success)
-                        {
-                            dataTable.ajax.reload();
-
-                            $.notify(data.message, {
-                                globalPosition: "top center",
-                                className: "success"
-                            })
-
-                        }
-                    }
-
-                });
-            }
-        }
     </script>
 }
+
+
+
+
+
 
 
