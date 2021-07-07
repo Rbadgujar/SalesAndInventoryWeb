@@ -10,38 +10,51 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class CreditnoteController : Controller
     {
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
         // GET: Creditnote
         public ActionResult CreditNote()
         {
             return View();
         }
 
-        public ActionResult show()
-        {
-            return View();
-        }
-
+        //public ActionResult show()
+        //{
+        //    return View();
+        //}
+        [HttpGet]
         public ActionResult creditnotedata()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            try
             {
-                List <tbl_CreditNote1> creditnote = db.tbl_CreditNote1.ToList<tbl_CreditNote1>();
-                return Json(new { data = creditnote }, JsonRequestBehavior.AllowGet);
+                var getdata = db.tbl_CreditNote1Select("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return View();
             }
         }
 
-        [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            if (id == 0)
-                return View(new tbl_CreditNote1());
-            else
+            try
             {
-                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-                {
-                    return View(db.tbl_CreditNote1.Where(x => x.InvoiceNo == id).FirstOrDefault<tbl_CreditNote1>());
-                }
+                var getdata = db.tbl_CreditNote1Select("Delete", id,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
             }
+            catch
+            {
+                return View();
+                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult AddOrEdit()
+        {
+            return View(); 
         }
 
         [HttpPost]
@@ -62,82 +75,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-
         }
 
 
-
-        // GET: Creditnote/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Creditnote/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Creditnote/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Creditnote/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Creditnote/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Creditnote/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Creditnote/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
