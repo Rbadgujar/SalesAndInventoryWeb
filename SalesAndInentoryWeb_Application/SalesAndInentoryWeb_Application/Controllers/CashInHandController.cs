@@ -15,6 +15,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
 
         }
+		[HttpGet]
         public ActionResult Data()
         {
             
@@ -38,14 +39,20 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			else
 			{
 				var tb = db.tbl_CashInhandSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
+				
+				var vm = new tbl_CashInhand();
+				vm.Adjustment = tb.Adjustment;
+				vm.Amount = tb.Amount;
+				vm.Description = tb.Description;
+				vm.Date = Convert.ToDateTime(tb.Date);
 				return View(tb);
 			}
 		}
 		[HttpPost]
-		public ActionResult AddOrEdit(int id, tbl_CashInhand emp)
+		public ActionResult AddOrEdit(int id,tbl_CashInhandSelectResult emp)
 		{
 
-			if (emp.ID == 0)
+			if (id == 0)
 			{
 				db.tbl_CashInhandSelect("Insert", null, emp.Adjustment, emp.Amount, emp.Date, emp.Description,null,null,null);
 				db.SubmitChanges();

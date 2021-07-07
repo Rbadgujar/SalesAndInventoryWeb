@@ -12,7 +12,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 	{
 
 		CompanyDataClassDataContext db = new CompanyDataClassDataContext();
-		idealtec_inventoryEntities10 db1 = new idealtec_inventoryEntities10();
+
 
 		public ActionResult Index()
 		{
@@ -34,28 +34,29 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 		[HttpGet]
 		public ActionResult AddOrEdit(int id = 0)
-		{
+		{ 
 			if (id == 0)
 			{
 				return View(new tbl_BankAccount());
 			}
 			else
 			{
-				var tb = db.BankAccountSelect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+				
+				var tb = db.BankAccountSelect("Details", id,null,null,null,null,null,null).Single(x => x.ID == id);
 				var vm = new tbl_BankAccount();
 				vm.AccountName = tb.AccountName;
 				vm.BankName = tb.BankName;
 				vm.AccountNo = tb.AccountNo;
 				vm.OpeningBal = tb.OpeningBal;
-				 string Date = tb.Date.ToString();
+				vm.Date = Convert.ToDateTime(tb.Date);
 				return View(vm);
-			}	
+			}
 		}
 
 		[HttpPost]
 		public ActionResult AddOrEdit(int id, tbl_BankAccount conn)
 		{
-			if (id == null)
+			if (id == 0)
 			{
 
 				db.BankAccountSelect("Insert", null, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null);

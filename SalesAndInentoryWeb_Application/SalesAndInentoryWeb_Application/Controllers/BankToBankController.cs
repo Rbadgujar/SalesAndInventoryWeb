@@ -40,16 +40,23 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			}
 			else
 			{
-				return View(db.Banktobank("Details", id, null, null, null, null, null, null).Where(x => x.ID == id));
-				//return View(db.Banktobank.Where(x => x.ID == id).FirstOrDefault<tbl_BanktoBankTransfer>());
+
+				var tb = db.Banktobank("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+				var vm = new tbl_BanktoBankTransfer();
+				vm.FromBank = tb.FromBank;
+				vm.ToBank = tb.ToBank;
+				vm.Amount = tb.Amount;
+				vm.Date = Convert.ToDateTime(tb.Date);
+     			vm.Descripition =tb.Descripition;
+				return View(vm);
 			}
-        }
+		}
 
         [HttpPost]
         public ActionResult AddOrEdit(int id,tbl_BanktoBankTransfer emp)
         {
             
-                if (emp.ID == 0)
+                if (id == 0)
                 {
 				    db.Banktobank("Insert", null, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, null);
                     db.SubmitChanges();
