@@ -24,32 +24,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult creditnotedata()
         {
-            try
-            {
-                var getdata = db.tbl_CreditNote1Select("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+           var getdata = db.tbl_CreditNote1Select("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception)
-            {
-                return View();
-            }
         }
 
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            try
-            {
-                var getdata = db.tbl_CreditNote1Select("Delete", id,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_CreditNote1Select("Delete", id,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-                //return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            }
         }
 
         public ActionResult AddOrEdit()
@@ -75,9 +59,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
                 }
             }
-        }
-
-
-        
+        }  
     }
 }

@@ -5,23 +5,6 @@
     Layout = "~/Views/Shared/ideal.cshtml";
 }
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
-</head>
-
 <div class="container" style="height:100%; width:100%;">
    <nav class="navbar navbar-default " style="background-color:white;border:none">
         <br />
@@ -71,7 +54,7 @@
         $(document).ready(function () {
             dataTable = $("#Saleorder").DataTable({
                 "ajax": {
-                    "url": "/SaleOrder/ShowSaleOrder",
+                    "url": "/SaleOrder/showSaleOrder",
                     "type": "GET",
                     "datatype": "json"
                 },
