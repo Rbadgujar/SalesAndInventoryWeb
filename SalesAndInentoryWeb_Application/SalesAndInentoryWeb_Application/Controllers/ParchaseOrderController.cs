@@ -16,7 +16,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-		[HttpGet]
+       
+        [HttpGet]
         public ActionResult Purchaseorderdata()
         {
 			var tb = db.tbl_PurchaseOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,null).ToList();
