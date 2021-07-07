@@ -1574,53 +1574,6 @@
       <Column Name="" Member="Column1" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.tbl_SaleOrderInnersp" Method="tbl_SaleOrderInnersp">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ItemID" Parameter="itemID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="CategoryType" Parameter="categoryType" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="BasicUnit" Parameter="basicUnit" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ItemCode" Parameter="itemCode" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="SalePrice" Parameter="salePrice" Type="System.Double" DbType="Float" />
-    <Parameter Name="TaxForSale" Parameter="taxForSale" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="SaleTaxAmount" Parameter="saleTaxAmount" Type="System.Double" DbType="Float" />
-    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="freeQty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
-    <Parameter Name="Discount" Parameter="discount" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="DiscountAmount" Parameter="discountAmount" Type="System.Double" DbType="Float" />
-    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
-    <Parameter Name="OrderNo" Parameter="orderNo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="CGST" Parameter="cGST" Type="System.Double" DbType="Float" />
-    <Parameter Name="SGST" Parameter="sGST" Type="System.Double" DbType="Float" />
-    <Parameter Name="IGST" Parameter="iGST" Type="System.Double" DbType="Float" />
-    <Parameter Name="ItemTotal" Parameter="itemTotal" Type="System.Double" DbType="Float" />
-    <ElementType Name="tbl_SaleOrderInnerspResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BasicUnit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ItemCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="SalePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TaxForSale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="SaleTaxAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="freeQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Discount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DiscountAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CategoryType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OrderNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CGST" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SGST" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="IGST" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ItemTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.tbl_SaleOrderSelect" Method="tbl_SaleOrderSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="OrderNo" Parameter="orderNo" Type="System.Int32" DbType="Int" />
@@ -1720,6 +1673,53 @@
       <Column Name="Rate" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.tbl_SaleOrderSelect" Method="tbl_SaleOrderSelect1">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="OrderNo" Parameter="orderNo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="BillingName" Parameter="billingName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ContactNo" Parameter="contactNo" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="OrderDate" Parameter="orderDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DueDate" Parameter="dueDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="StateofSupply" Parameter="stateofSupply" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PaymentType" Parameter="paymentType" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="TransportName" Parameter="transportName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="DeliveryLocation" Parameter="deliveryLocation" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="VehicleNumber" Parameter="vehicleNumber" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Deliverydate" Parameter="deliverydate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="TransportCharges" Parameter="transportCharges" Type="System.Double" DbType="Float" />
+    <Parameter Name="Image" Parameter="image" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="Tax1" Parameter="tax1" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="CGST" Parameter="cGST" Type="System.Double" DbType="Float" />
+    <Parameter Name="SGST" Parameter="sGST" Type="System.Double" DbType="Float" />
+    <Parameter Name="TaxAmount1" Parameter="taxAmount1" Type="System.Double" DbType="Float" />
+    <Parameter Name="TotalDiscount" Parameter="totalDiscount" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="DiscountAmount1" Parameter="discountAmount1" Type="System.Double" DbType="Float" />
+    <Parameter Name="RoundFigure" Parameter="roundFigure" Type="System.Double" DbType="Float" />
+    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
+    <Parameter Name="Received" Parameter="received" Type="System.Double" DbType="Float" />
+    <Parameter Name="RemainingBal" Parameter="remainingBal" Type="System.Double" DbType="Float" />
+    <Parameter Name="PaymentTerms" Parameter="paymentTerms" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Feild1" Parameter="feild1" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Feild2" Parameter="feild2" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Feild3" Parameter="feild3" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Feild4" Parameter="feild4" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Feild5" Parameter="feild5" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemCategory" Parameter="itemCategory" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Barcode" Parameter="barcode" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="IGST" Parameter="iGST" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TaxShow" Parameter="taxShow" Type="System.Double" DbType="Float" />
+    <Parameter Name="Discount" Parameter="discount" Type="System.Double" DbType="Float" />
+    <Parameter Name="CalTotal" Parameter="calTotal" Type="System.Double" DbType="Float" />
+    <ElementType Name="tbl_SaleOrderSelectResult1">
+      <Column Name="" Member="Column1" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

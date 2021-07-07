@@ -24,7 +24,7 @@ namespace SalesAndInentoryWeb_Application.Models
         public string PartyName { get; set; }
         public string BillingName { get; set; }
         public string ContactNo { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
+        public string OrderDate { get; set; }
         public Nullable<System.DateTime> DueDate { get; set; }
         public string StateofSupply { get; set; }
         public string PaymentType { get; set; }

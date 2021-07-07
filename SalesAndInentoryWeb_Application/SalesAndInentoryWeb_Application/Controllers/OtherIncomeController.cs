@@ -9,6 +9,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class OtherIncomeController : Controller
     {
+
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+
         // GET: OtherIncome
         public ActionResult Index()
         {
@@ -36,7 +39,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 }
             }
         }
-
+        [HttpGet]
+        public ActionResult ExpenceData()
+        {
+            var tb = db.tbl_OtherIncomeSelect("Select1",null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+            
+        }
         [HttpPost]
         public ActionResult AddOrEdit(tbl_OtherIncome emp)
         {

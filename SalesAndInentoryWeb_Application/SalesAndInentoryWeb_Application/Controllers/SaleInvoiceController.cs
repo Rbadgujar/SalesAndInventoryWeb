@@ -25,11 +25,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         [HttpGet]
         public ActionResult saleinvoiceshow()
-        {
-                var getdata = db.tbl_SaleInvoiceSelect("Select12", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-         }
+     {
+            //        var getdata = db.sp_Cheking(null).Tolist();
+            //          return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            //          //return RedirectToAction("Index");
+            return View();
+        }
 
+    
         [HttpPost]
         public ActionResult Delete(int id)
         {
