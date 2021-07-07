@@ -21,19 +21,50 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
-		//[HttpGet]
-		//public ActionResult AddOrEdit(int id = 0)
-		//{
-		//    if (id == 0)
-		//        return View(new CompanyBankAccount());
-		//    else
-		//    {
-		//        using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-		//        {
-		//            return View(db.CompanyBankAccounts.Where(x => x.ID == id).FirstOrDefault<CompanyBankAccount>());
-		//        }
-		//    }
-		//}
+		public ActionResult Detail(int id)
+		{
+			var tb = db.sp_CompanyBankAccount("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+			return View(tb);
+		}
+
+		[HttpGet]
+		public ActionResult AddOrEdit(int id = 0)
+		{
+			if (id == 0)
+			{
+				return View(new CompanyBankAccount());
+			}
+			else
+			{
+
+				var tb = db.sp_CompanyBankAccount("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+				var vm = new CompanyBankAccount();
+				vm.AccountName = tb.AccountName;
+				vm.BankName = tb.BankName;
+				vm.AccountNo = tb.AccountNo;
+				vm.OpeningBal = tb.OpeningBal;
+				vm.Date = Convert.ToDateTime(tb.Date);
+				return View(vm);
+			}
+		}
+
+		[HttpPost]
+		public ActionResult AddOrEdit(int id, CompanyBankAccount conn)
+		{
+			if (id == 0)
+			{
+
+				db.sp_CompanyBankAccount("Insert", null, conn.BankName, conn.AccountName, conn.AccountNo, conn.OpeningBal, conn.Date, null);
+				db.SubmitChanges();
+				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+			}
+			else
+			{
+				db.sp_CompanyBankAccount("Update", id, conn.BankName, conn.AccountName, conn.AccountNo, conn.OpeningBal, conn.Date, null);
+				db.SubmitChanges();
+				return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
+			}
+		}
 
 		[HttpPost]
 		public ActionResult Delete(int id)

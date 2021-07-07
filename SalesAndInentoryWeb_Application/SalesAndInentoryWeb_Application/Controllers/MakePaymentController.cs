@@ -13,12 +13,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
         CompanyDataClassDataContext db = new CompanyDataClassDataContext();
 
         // GET: MakePayment
-        public ActionResult Index()
-        {
-            return View();
-        }
-       
-       [HttpGet]
+        
+		public ActionResult Makepayment()
+		{
+			return View();
+		}
+		[HttpGet]
         public ActionResult makykdata()
         {
             var getdata = db.tbl_MakePaymentSelect("Select1", null, null, null, null, null, null, null, null).ToList();
