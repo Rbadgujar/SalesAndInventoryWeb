@@ -16,7 +16,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
+        public ActionResult daaa()
+        {
+            return View();
+        }
         [HttpGet]
         public ActionResult showSaleOrder()
         {
