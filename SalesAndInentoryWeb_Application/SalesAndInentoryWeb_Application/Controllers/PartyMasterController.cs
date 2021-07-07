@@ -32,13 +32,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-       public ActionResult groupdata()
-        {
-            var getdata = db.tbl_PartyGroupSelect("Select",null,null,null).ToList();
-            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult PartyGroupData()
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
@@ -55,7 +48,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         
         [HttpPost]
-        public ActionResult AddOrEdit(int id,tbl_PartyMasterSelectResult party)//int id = 0)
+        public ActionResult AddOrEdit(tbl_PartyMasterSelectResult party)//int id = 0)
         {
             try
             {

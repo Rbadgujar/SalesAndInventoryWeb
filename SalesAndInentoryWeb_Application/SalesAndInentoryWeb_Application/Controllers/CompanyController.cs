@@ -51,41 +51,21 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult Company(int id,tbl_CompanyMasterSelectResult com)
+        public ActionResult Company( tbl_CompanyMasterSelectResult com)
         {
-            //if (id != null)
-            //{
-            //    try
-            //    {
 
-            //        //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-            //        db.tbl_CompanyMasterSelect("Update", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, null);
-            //        db.SubmitChanges();
-            //        return RedirectToAction("Index");
-            //    }
-            //    catch
-            //    {
-            //        return View();
-            //    }
-            //}
-            //else
-            //{
             try
             {
-
                 //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                db.tbl_CompanyMasterSelect("Insert", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, null);
-                    db.SubmitChanges();
-                    return RedirectToAction("Index");
-                }
-                catch
-                {
-                    return View();
-                }
-           // }
+                db.tbl_CompanyMasterSelect("Insert",null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code,com.CompanyID);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch(Exception)
+            {
+                return View();
+            }
         }
-
-        
-
+ 
     }
 }

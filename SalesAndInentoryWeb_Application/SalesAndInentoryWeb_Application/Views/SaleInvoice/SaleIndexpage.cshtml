@@ -52,11 +52,9 @@
         </nav>
 
     </div>
-
     <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
     @section scripts{
-       
-         <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+        <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
         <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
         <script>
@@ -69,17 +67,16 @@
                         "datatype": "json"
                     },
                     "columns": [
-                        { "data": "invoiceID" },
-                        { "data": "partyName" },
-                        { "data": "contactNo" },
-                        { "data": "invoiceDate" },
-                        { "data": "paymentType" },
-                        { "data": "received" },
-                        { "data": "remainingBal" },
-                        { "data": "total" },
+                        { "data": "InvoiceID" },
+                        { "data": "PartyName" },
+                        { "data": "ContactNo" },
+                        { "data": "InvoiceDate" },
+                        { "data": "PaymentType" },
+                        { "data": "Received" },
+                        { "data": "RemainingBal" },
+                        { "data": "Total" },
 
-                        {
-                            "data": "invoiceID", "render": function (data) {
+                        { "data": "InvoiceID" , "render" : function (data) {
                             return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                         },
                             "orderable": false,

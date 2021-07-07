@@ -16,7 +16,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		}
 
 		[HttpGet]
-		public ActionResult Data()
+		public ActionResult otherData()
 		{
 			var tb = db.tbl_OtherIncomeSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
