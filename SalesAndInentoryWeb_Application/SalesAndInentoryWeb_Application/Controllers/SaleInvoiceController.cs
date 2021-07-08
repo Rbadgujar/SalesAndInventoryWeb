@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -41,7 +42,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
            db.SubmitChanges();
            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
-       
-  
+
+
+
+        public ActionResult ChartPartial()
+        {
+            var model = new object[0];
+            return PartialView("~/Views/DashBord/_ChartPartial.cshtml", model);
+        }
     }
 }

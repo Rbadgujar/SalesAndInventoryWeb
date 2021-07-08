@@ -48,6 +48,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Charts.Designer.v20.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Charts.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.CodeParser.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\DevExpress.CodeParser.v20.1.dll</HintPath>
@@ -63,7 +64,10 @@
     <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Web.ASPxThemes.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Web.Mvc5.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Resources.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Web.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.Web, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -2782,6 +2786,8 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="css\css\montserrat-font.css" />
     <Content Include="css\css\style.css" />
+    <Content Include="css\img\icons8-paper-plane-100.png" />
+    <Content Include="css\img\idealtech icon.png" />
     <Content Include="css\img\img_girl.jpg" />
     <Content Include="css\mm.css" />
     <Content Include="Global.asax" />
@@ -3274,6 +3280,7 @@
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CompanyListController.cs" />
     <Compile Include="Controllers\CreditnoteController.cs" />
+    <Compile Include="Controllers\DashBordController.cs" />
     <Compile Include="Controllers\DayBookController.cs" />
     <Compile Include="Controllers\DebitNoteController.cs" />
     <Compile Include="Controllers\DeliveryChallanController.cs" />
@@ -3745,6 +3752,8 @@
     <Content Include="Views\MakePayment\maykpayment.cshtml" />
     <Content Include="Views\Startpage\Index.cshtml" />
     <Content Include="Views\Startpage\registration.cshtml" />
+    <Content Include="Views\DashBord\Dashbord.cshtml" />
+    <Content Include="Views\DashBord\_ChartPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
