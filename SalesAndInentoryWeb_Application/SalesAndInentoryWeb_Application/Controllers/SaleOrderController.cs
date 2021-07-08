@@ -20,6 +20,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult showSaleOrder()
         {
@@ -70,7 +71,5 @@ namespace SalesAndInentoryWeb_Application.Controllers
             db.SubmitChanges();
             return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
-
-
     }
 }

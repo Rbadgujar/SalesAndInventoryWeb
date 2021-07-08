@@ -14,14 +14,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
         // GET: PartyMaster
         public ActionResult Index()
         {
-            //using (idealtec_inventoryEntities10 entities = new idealtec_inventoryEntities10())
-            //{
-            //    List<tbl_PartyMaster> party = entities.PartyMasterCrud("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-
-            //    //Add a Dummy Row.
-            //    party.Insert(0, new tbl_PartyMaster());
-            //    return View(party.ToList());
-            //}
             return View();
         }
 
@@ -32,34 +24,65 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult PartyGroupData()
+        public ActionResult Detail(int id)
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_PartyGroup> party = db.tbl_PartyGroup.ToList<tbl_PartyGroup>();
-                return Json(new { data = party }, JsonRequestBehavior.AllowGet);
-            }
+            var tb = db.tbl_PartyMasterSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.PartiesID == id);
+            return View(tb);
         }
-
-        public ActionResult AddOrEdit()
+        
+        [HttpGet]
+        public ActionResult AddOrEdit(int id=0)
         {
-            return View();
+            if (id == 0)
+            {
+                return View(new tbl_PartyMaster());
+            }
+            else
+            {
+                var tb = db.tbl_PartyMasterSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.PartiesID == id);
+                var vm = new tbl_PartyMaster();
+                //PartiesID,PartyName,ContactNo,BillingAddress,EmailID,GSTType,State,OpeningBal,AsOfDate
+                //AddRemainder,PartyType,ShippingAddress,PartyGroup,PaidStatus,Type
+                vm.PartyName = tb.PartyName;
+                vm.ContactNo = tb.ContactNo;
+                vm.BillingAddress = tb.BillingAddress;
+                vm.EmailID = tb.EmailID;
+                vm.GSTNo = tb.GSTNo;
+                vm.State = tb.State;
+                vm.OpeningBal = tb.OpeningBal;
+                vm.AsOfDate = Convert.ToDateTime(tb.AsOfDate);
+                vm.AddRemainder = tb.AddRemainder;
+                vm.PartyType = tb.PartyType;
+                vm.ShippingAddress = tb.ShippingAddress;
+                vm.PartyGroup = tb.PartyGroup;
+                vm.PaidStatus = tb.PaidStatus;
+               // vm.Type = tb.Type;
+                return View(vm);
+            }
         }
         
         [HttpPost]
-        public ActionResult AddOrEdit(tbl_PartyMasterSelectResult party)//int id = 0)
+        public ActionResult AddOrEdit(int id,tbl_PartyMasterSelectResult party)//int id = 0)
         {
-            try
+            if (id == 0)
             {
-                //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID,null, party.State, party.OpeningBal, null, party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup,null, party.PaidStatus,null);
-                db.SubmitChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
+                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, null, party.State, party.OpeningBal, null, party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, null);
+                    db.SubmitChanges();
+                    return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, null, party.State, party.OpeningBal, null, party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, null);
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -84,6 +107,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
+        public ActionResult PartyGroupData()
+        {
+            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            {
+                db.Configuration.LazyLoadingEnabled = false;
+                List<tbl_PartyGroup> party = db.tbl_PartyGroup.ToList<tbl_PartyGroup>();
+                return Json(new { data = party }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpGet]
         public ActionResult makykdata()
         {
@@ -92,8 +125,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
         }
-
-
     }
 
 }
