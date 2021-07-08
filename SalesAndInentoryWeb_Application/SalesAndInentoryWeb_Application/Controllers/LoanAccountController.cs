@@ -50,21 +50,24 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			}
         }
 		[HttpPost]
-		public ActionResult AddOrEdit( tbl_LoanBank emp)
+		public ActionResult AddOrEdit(int b=0,string m="virh")
 		{
-			
-				db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
-				db.SubmitChanges();
-			    return RedirectToAction("Index");
+            var emp = new tbl_LoanBank();
+            if (b == 0)
+            {
+                db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
 
-			//}
-			//else
-			//{
-			//	db.tbl_LoanBankSelect("Update", id, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
-			//	db.SubmitChanges();
-			//	return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-			//}
-		}
+            }
+
+            else
+            {
+                db.tbl_LoanBankSelect("Update", b, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+        }
 
 			[HttpPost]
 		  public ActionResult Delete(int id)
