@@ -960,7 +960,6 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.Docking.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.Grid.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.Grid.v20.1.Core.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Charts.v20.1.Core.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.PropertyGrid.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.Ribbon.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Data.Desktop.v20.1.dll
@@ -968,7 +967,6 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Map.v20.1.Core.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.TreeMap.v20.1.Core.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraReports.v20.1.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraCharts.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraGauges.v20.1.Core.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Office.v20.1.Core.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpo.v20.1.dll
@@ -977,7 +975,6 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Pdf.v20.1.Drawing.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxHtmlEditor.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxDiagram.v20.1.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraCharts.v20.1.Web.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxGantt.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxTreeList.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxSpellChecker.v20.1.dll
@@ -992,7 +989,6 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Spreadsheet.v20.1.Core.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.Printing.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.Layout.v20.1.Core.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.Resources.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Images.v20.1.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.DocumentViewer.v20.1.Core.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.LayoutControl.v20.1.dll
@@ -1013,7 +1009,6 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Map.v20.1.Core.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.TreeMap.v20.1.Core.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraReports.v20.1.xml
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraCharts.v20.1.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraGauges.v20.1.Core.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Office.v20.1.Core.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpo.v20.1.xml
@@ -1022,7 +1017,6 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Pdf.v20.1.Drawing.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxHtmlEditor.v20.1.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxDiagram.v20.1.xml
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.XtraCharts.v20.1.Web.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxGantt.v20.1.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxTreeList.v20.1.xml
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Web.ASPxSpellChecker.v20.1.xml
@@ -1083,10 +1077,6 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.XtraReports.v20.1.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.XtraReports.v20.1.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.XtraReports.v20.1.resources.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\de\DevExpress.XtraCharts.v20.1.resources.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.XtraCharts.v20.1.resources.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.XtraCharts.v20.1.resources.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.XtraCharts.v20.1.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\de\DevExpress.XtraGauges.v20.1.Core.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.XtraGauges.v20.1.Core.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.XtraGauges.v20.1.Core.resources.dll
@@ -1155,10 +1145,6 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.Xpf.Printing.v20.1.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.Xpf.Printing.v20.1.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.Xpf.Printing.v20.1.resources.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\de\DevExpress.Web.Resources.v20.1.resources.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.Web.Resources.v20.1.resources.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.Web.Resources.v20.1.resources.dll
-C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.Web.Resources.v20.1.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\de\DevExpress.Xpf.DocumentViewer.v20.1.Core.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.Xpf.DocumentViewer.v20.1.Core.resources.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.Xpf.DocumentViewer.v20.1.Core.resources.dll
