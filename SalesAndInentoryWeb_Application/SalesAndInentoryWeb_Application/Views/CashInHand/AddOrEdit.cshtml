@@ -1,44 +1,60 @@
 ﻿
-@model SalesAndInentoryWeb_Application.Models.tbl_CashInhand
+@model SalesAndInentoryWeb_Application.Models.tbl_CashAdjustment
 @{
     Layout = null;
 }
 
 @using (Html.BeginForm("AddOrEdit", "CashInHand", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
 {
-    <div>
-        @Html.HiddenFor(model => model.ID)
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.Adjustment, new { @class = "control-label" })
-            <select name="cars" id="dp" class="form-control">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-            </select>
-            @Html.ValidationMessageFor(model => model.Adjustment)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Amount, new { @class = "control-label" })
-            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Date, new { @class = "control-label" })
-            <div class="input-group">
-                @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "control-label" })
-            </div>
+<div>
+	@Html.HiddenFor(model => model.ID)
+	<div class="form-group">
+		@Html.LabelFor(model => model.BankName, new { @class = "control-label" })
+		@Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.CashAdjustment, new { @class = "control-label" })
+		@{
+			List<SelectListItem> listItems = new List<SelectListItem>();
+			listItems.Add(new SelectListItem
+			{
+				Text = "Cash In",
+				Value = "Cash Out"
+			});
+			listItems.Add(new SelectListItem
+			{
+				Text = "Cash In",
+				Value = "Cash Out",
+				Selected = true
+			});
 
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label" })
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
+		}
+		<div class="form-control">
+			@Html.DropDownListFor(model => model.CashAdjustment, listItems, "", new { htmlAttributes = new { @class = "form-control" } })
 
-        <div class="form-group">
-            <input type="submit" value="Submit" class="btn btn-primary" />
-            <input type="reset" value="Reset" class="btn" />
-        </div>
-    </div>
+			@Html.ValidationMessageFor(model => model.CashAdjustment)
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.CashAmount, new { @class = "control-label" })
+		@Html.EditorFor(model => model.CashAmount, new { htmlAttributes = new { @class = "form-control" } })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.Date, new { @class = "control-label" })
+		<div class="input-group">
+			@Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "control-label" })
+		</div>
+
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.Description, new { @class = "control-label" })
+		@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+	</div>
+
+	<div class="form-group">
+		<input type="submit" value="Submit" class="btn btn-primary" />
+		<input type="reset" value="Reset" class="btn" />
+	</div>
+</div>
 }
 
