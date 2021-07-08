@@ -40,17 +40,7 @@ namespace SalesAndInentoryWeb_Application
 		{
 			OnCreated();
 		}
-
-		internal void tbl_CashInhandSelect(string v, object p1, string adjustment, double? amount, string date, string description, object p2, object p3, object p4)
-		{
-			throw new NotImplementedException();
-		}
-
-		internal void sp_CompanyBankAccount(string v, object p1, string bankName, string accountName, string accountNo, double? openingBal, DateTime? date, object p2)
-		{
-			throw new NotImplementedException();
-		}
-
+		
 		public CompanyDataClassDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
@@ -80,6 +70,14 @@ namespace SalesAndInentoryWeb_Application
 			get
 			{
 				return this.GetTable<tbl_CompanyMaster>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PasswordCheek> PasswordCheeks
+		{
+			get
+			{
+				return this.GetTable<PasswordCheek>();
 			}
 		}
 		
@@ -1611,6 +1609,105 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PasswordCheek")]
+	public partial class PasswordCheek
+	{
+		
+		private string _ID;
+		
+		private string _Password;
+		
+		private string _Company_ID;
+		
+		private string _Feild1;
+		
+		private string _Feald2;
+		
+		public PasswordCheek()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NChar(10)")]
+		public string ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(20)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this._Password = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Company_ID", DbType="VarChar(50)")]
+		public string Company_ID
+		{
+			get
+			{
+				return this._Company_ID;
+			}
+			set
+			{
+				if ((this._Company_ID != value))
+				{
+					this._Company_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Feild1", DbType="VarChar(50)")]
+		public string Feild1
+		{
+			get
+			{
+				return this._Feild1;
+			}
+			set
+			{
+				if ((this._Feild1 != value))
+				{
+					this._Feild1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Feald2", DbType="VarChar(50)")]
+		public string Feald2
+		{
+			get
+			{
+				return this._Feald2;
+			}
+			set
+			{
+				if ((this._Feald2 != value))
+				{
+					this._Feald2 = value;
+				}
+			}
+		}
+	}
+	
 	public partial class tbl_CompanyMasterSelectResult
 	{
 		
@@ -2134,7 +2231,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _OpeningBal;
 		
-		private string _Date;
+		private System.Nullable<System.DateTime> _Date;
 		
 		public BankAccountSelectResult()
 		{
@@ -2221,7 +2318,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public string Date
+		public System.Nullable<System.DateTime> Date
 		{
 			get
 			{
@@ -2248,7 +2345,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _Amount;
 		
-		private string _Date;
+		private System.Nullable<System.DateTime> _Date;
 		
 		private string _Descripition;
 		
@@ -2321,7 +2418,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public string Date
+		public System.Nullable<System.DateTime> Date
 		{
 			get
 			{
@@ -2366,7 +2463,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _OpeningBal;
 		
-		private string _Date;
+		private System.Nullable<System.DateTime> _Date;
 		
 		public getAccountResult()
 		{
@@ -2453,7 +2550,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public string Date
+		public System.Nullable<System.DateTime> Date
 		{
 			get
 			{
@@ -2642,7 +2739,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _OpeningBal;
 		
-		private string _Date;
+		private System.Nullable<System.DateTime> _Date;
 		
 		public sp_CompanyBankAccountResult()
 		{
@@ -2729,7 +2826,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public string Date
+		public System.Nullable<System.DateTime> Date
 		{
 			get
 			{
@@ -2756,7 +2853,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _Amount;
 		
-		private string _Date;
+		private System.Nullable<System.DateTime> _Date;
 		
 		private string _Description;
 		
@@ -2829,7 +2926,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
-		public string Date
+		public System.Nullable<System.DateTime> Date
 		{
 			get
 			{
@@ -2986,7 +3083,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _Amount;
 		
-		private string _Date;
+		private System.Nullable<System.DateTime> _Date;
 		
 		private string _Description;
 		
@@ -3043,7 +3140,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public string Date
+		public System.Nullable<System.DateTime> Date
 		{
 			get
 			{
@@ -8440,7 +8537,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _Total;
 		
-		private string _BalAsOf;
+		private System.Nullable<System.DateTime> _BalAsOf;
 		
 		public tbl_LoanBankSelectResult()
 		{
@@ -8671,7 +8768,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BalAsOf", DbType="Date")]
-		public string BalAsOf
+		public System.Nullable<System.DateTime> BalAsOf
 		{
 			get
 			{
