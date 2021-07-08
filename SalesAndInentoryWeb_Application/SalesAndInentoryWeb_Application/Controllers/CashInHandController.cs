@@ -19,13 +19,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult Data()
         {
             
-				var tb = db.tbl_CashInhandSelect("Select1", null, null, null, null, null, null, null,null).ToList();
+				var tb = db.tbl_CashAdjustmentselect("Select1",  null, null, null, null, null, null,null).ToList();
 				return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
 
 		public ActionResult Detail(int id)
 		{
-			var tb = db.tbl_CashInhandSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
+			var tb = db.tbl_CashAdjustmentselect("Details", id,  null, null, null, null, null, null).Single(x => x.ID == id);
 			return View(tb);
 		}
 
@@ -34,33 +34,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
 			if (id == 0)
 			{
-				return View(new tbl_CashInhand());
+				return View(new tbl_CashAdjustment());
 			}
 			else
 			{
-				var tb = db.tbl_CashInhandSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
+				var tb = db.tbl_CashAdjustmentselect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
 				
-				var vm = new tbl_CashInhand();
-				vm.Adjustment = tb.Adjustment;
-				vm.Amount = tb.Amount;
+				var vm = new tbl_CashAdjustment();
+				vm.CashAdjustment = tb.CashAdjustment;
+				vm.CashAmount = tb.CashAmount;
 				vm.Description = tb.Description;
+				vm.BankName = tb.BankName;
 				vm.Date = Convert.ToDateTime(tb.Date);
-				return View(tb);
+				return View(vm);
 			}
 		}
 		[HttpPost]
-		public ActionResult AddOrEdit(int id,tbl_CashInhandSelectResult emp)
+		public ActionResult AddOrEdit(int id, tbl_CashAdjustment emp)
 		{
 
 			if (id == 0)
 			{
-				db.tbl_CashInhandSelect("Insert", null, emp.Adjustment, emp.Amount,Convert.ToDateTime(emp.Date), emp.Description,null,null,null);
+				db.tbl_CashAdjustmentselect("Insert", null, emp.CashAdjustment, emp.CashAmount,Convert.ToDateTime(emp.Date), emp.Description,emp.BankName,null);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
 			}
 			else
 			{
-				db.tbl_CashInhandSelect("Update", id, emp.Adjustment, emp.Amount, Convert.ToDateTime(emp.Date), emp.Description, null, null,null);
+				db.tbl_CashAdjustmentselect("Update", id, emp.CashAdjustment, emp.CashAmount, Convert.ToDateTime(emp.Date), emp.Description, emp.BankName, null);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
 			}
@@ -69,7 +70,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpPost]
 		public ActionResult Delete(int id)
 		{
-			var tb = db.tbl_CashInhandSelect("Delete", id, null, null, null, null, null, null,null).ToList();
+			var tb = db.tbl_CashAdjustmentselect("Delete", id, null, null, null, null, null,null).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
