@@ -54,13 +54,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 			if (id == 0)
 			{
-				db.tbl_CashInhandSelect("Insert", null, emp.Adjustment, emp.Amount, emp.Date, emp.Description,null,null,null);
+				db.tbl_CashInhandSelect("Insert", null, emp.Adjustment, emp.Amount,Convert.ToDateTime(emp.Date), emp.Description,null,null,null);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
 			}
 			else
 			{
-				db.tbl_CashInhandSelect("Update", id, emp.Adjustment, emp.Amount, emp.Date, emp.Description, null, null,null);
+				db.tbl_CashInhandSelect("Update", id, emp.Adjustment, emp.Amount, Convert.ToDateTime(emp.Date), emp.Description, null, null,null);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
 			}
