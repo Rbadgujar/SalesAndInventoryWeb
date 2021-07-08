@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -53,7 +54,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
         }
-       
-  
+
+
+
+        public ActionResult ChartPartial()
+        {
+            var model = new object[0];
+            return PartialView("~/Views/DashBord/_ChartPartial.cshtml", model);
+        }
     }
 }
