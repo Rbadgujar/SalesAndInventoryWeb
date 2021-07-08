@@ -8,7 +8,6 @@ using System.Data.Entity;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-  
     public class EstimateQuatationController : Controller
     {
         CompanyDataClassDataContext db = new CompanyDataClassDataContext();
@@ -16,26 +15,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
         // GET: EstimateQuatation
         public ActionResult Index()
         {
-			
-
 			return View();
         }
-      [HttpGet]
+
+        [HttpGet]
         public ActionResult EstimateData()
         {
-
-
-            try
-            {
-                var getdata = db.tbl_QuotationSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception)
-            {
-                return View();
-            }
-           
+            var getdata = db.tbl_QuotationSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {
@@ -75,13 +64,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                tblQuotation emp = db.tblQuotations.Where(x => x.RefNo == id).FirstOrDefault<tblQuotation>();
-                db.tblQuotations.Remove(emp);
-                db.SaveChanges();
-                return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
-            }
+            var getdata = db.tbl_QuotationSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult ShowData()
         {
-             var getdata = db.tbl_PaymentInSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_PaymentInSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
@@ -39,10 +39,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddOrEdit(int id, tbl_PaymentInSelectResult pay)
+        public ActionResult AddOrEdit(tbl_PaymentInSelectResult pay)
         {
-            return View();
-
+            try
+            {
+                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                db.tbl_PaymentInSelect("Insert1", null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, pay.Date, pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status,null, null);
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
 
@@ -60,12 +69,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var getdata = db.tbl_PaymentInSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-                //return RedirectToAction("Index");
             }
             catch
             {
                 return View();
-                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
         }
     }
