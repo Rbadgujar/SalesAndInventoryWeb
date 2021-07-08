@@ -16,11 +16,12 @@
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.Editors }
     )
-</head>
+  </head>
 <body>
-   
+    
     @using (Html.BeginForm())
     {
+
        
         <div class="panel panel-primary" style="height:100%; width:100%;">
 
@@ -373,8 +374,9 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-
-                                            <input type="datetime-local" id="Asdate" style="height:36px;width:298px;"  />
+                                            @Html.TextBoxFor(m => m.AsOfDate, new { @type = "date", @class = "control-label" })
+                                           
+                                            @*<input type="datetime-local" id="Asdate" style="height:36px;width:298px;"  />*@
 
                                         </div>
                                     </center>
@@ -454,9 +456,11 @@
         </div>
     }
     <script>
-  $(function () {
-    $('#datetimepicker1').datetimepicker();
- });
+           //$('#AsOfDate').datepicker();
+
+        //$(function () {
+              //  $('#datetimepicker1').datetimepicker();
+           //});
     </script>
 </body>
 </html>

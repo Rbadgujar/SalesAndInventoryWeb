@@ -80,9 +80,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             else
             {
-                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, null, party.State, party.OpeningBal, null, party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, null);
+                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, party.AsOfDate, party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, null);
                 db.SubmitChanges();
-                return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index");
+                //return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
             }
         }
 
