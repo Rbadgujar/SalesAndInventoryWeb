@@ -18,5 +18,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+       
     }
 }

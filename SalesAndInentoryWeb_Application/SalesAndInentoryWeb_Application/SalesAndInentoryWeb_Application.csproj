@@ -2780,6 +2780,9 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="css\css\montserrat-font.css" />
+    <Content Include="css\css\style.css" />
+    <Content Include="css\img\img_girl.jpg" />
     <Content Include="css\mm.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\DBModel.Context.tt">
@@ -3752,7 +3755,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\App_Data\" />
-    <Folder Include="css\css\" />
     <Folder Include="css\fonts\" />
     <Folder Include="Views\index\" />
     <Folder Include="Views\Seeting\" />
