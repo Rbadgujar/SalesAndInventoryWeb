@@ -2623,7 +2623,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _OpeningBal;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		public sp_CompanyBanckAccountResult()
 		{
@@ -2710,7 +2710,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		public string Date
 		{
 			get
 			{
@@ -2969,7 +2969,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _CashAmount;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		private string _Description;
 		
@@ -3042,7 +3042,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		public string Date
 		{
 			get
 			{
@@ -8893,7 +8893,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _InterestAmount;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		private System.Nullable<double> _TotalAmount;
 		
@@ -8968,7 +8968,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		public string Date
 		{
 			get
 			{
