@@ -3313,6 +3313,7 @@
     <Compile Include="Controllers\SPPartyGroupController.cs" />
     <Compile Include="Controllers\SPReportByItemCategoryController.cs" />
     <Compile Include="Controllers\SPReportByItemController.cs" />
+    <Compile Include="Controllers\StartpageController.cs" />
     <Compile Include="Controllers\StockSummaryreportbyItemCategoryController.cs" />
     <Compile Include="Controllers\StockSummeryController.cs" />
     <Compile Include="Controllers\TaxRateReportController.cs" />
@@ -3739,6 +3740,8 @@
     <Content Include="Views\DebitNote\AddOrEdit.cshtml" />
     <Content Include="Views\PaymentIn\Paymentin.cshtml" />
     <Content Include="Views\MakePayment\maykpayment.cshtml" />
+    <Content Include="Views\Startpage\Index.cshtml" />
+    <Content Include="Views\Startpage\registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3749,6 +3752,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\App_Data\" />
+    <Folder Include="css\css\" />
+    <Folder Include="css\fonts\" />
     <Folder Include="Views\index\" />
     <Folder Include="Views\Seeting\" />
   </ItemGroup>

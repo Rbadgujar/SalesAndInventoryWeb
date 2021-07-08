@@ -1177,3 +1177,8 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.pdb
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.csprojAssemblyReference.cache
+C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.DataAccess.v20.1.xml
+C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\de\DevExpress.DataAccess.v20.1.resources.dll
+C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.DataAccess.v20.1.resources.dll
+C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.DataAccess.v20.1.resources.dll
+C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.DataAccess.v20.1.resources.dll
