@@ -50,21 +50,20 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			}
         }
 		[HttpPost]
-		public ActionResult AddOrEdit(int id, tbl_LoanBank emp)
+		public ActionResult AddOrEdit( tbl_LoanBank emp)
 		{
-			if (id == 0)
-			{
+			
 				db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
 				db.SubmitChanges();
-				//return Json(new {Redire, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-				return View("Index");
-			}
-			else
-			{
-				db.tbl_LoanBankSelect("Update", id, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
-				db.SubmitChanges();
-				return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-			}
+			    return RedirectToAction("Index");
+
+			//}
+			//else
+			//{
+			//	db.tbl_LoanBankSelect("Update", id, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
+			//	db.SubmitChanges();
+			//	return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+			//}
 		}
 
 			[HttpPost]
