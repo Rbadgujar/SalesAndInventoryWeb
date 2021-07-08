@@ -23,6 +23,15 @@
       <Column Name="Defulatcompany" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PasswordCheek" Member="PasswordCheeks">
+    <Type Name="PasswordCheek">
+      <Column Name="ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Feild1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Feald2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="CompanyID" Parameter="companyID" Type="System.Int32" DbType="Int" />
