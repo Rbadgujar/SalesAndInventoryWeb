@@ -41,19 +41,26 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				var tb = db.tbl_LoanBankSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
 				var vm = new tbl_LoanBank();
 				vm.AccountName = tb.AccountName;
+				vm.ProcessingFees = tb.ProcessingFees;
+				vm.Description = tb.Description;
+				vm.Total = tb.Total;
+				vm.FirmName = tb.FirmName;
+				vm.PaidBy = tb.PaidBy;
 				vm.AccountNo = tb.AccountNo;
 				vm.LendarBank = tb.LendarBank;
 				vm.CurrentBal = tb.CurrentBal;
 				vm.Interest = tb.Interest;
 				vm.Duration = tb.Duration;
+				vm.BalAsOf = tb.BalAsOf;
 				return View(vm);
 			}
         }
 		[HttpPost]
-		public ActionResult AddOrEdit(int b=0,string m="virh")
+			
+		public ActionResult AddOrEdit(tbl_LoanBank emp,int id=0)
 		{
-            var emp = new tbl_LoanBank();
-            if (b == 0)
+           
+            if (id == 0)
             {
                 db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
                 db.SubmitChanges();
@@ -63,10 +70,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             else
             {
-                db.tbl_LoanBankSelect("Update", b, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
+                db.tbl_LoanBankSelect("Update", id, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
                 db.SubmitChanges();
-                return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-            }
+				return RedirectToAction("Index");
+			}
         }
 
 			[HttpPost]

@@ -27,7 +27,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 
 		[HttpGet]
-		public ActionResult AddOrEdit(int id = 0)
+		public ActionResult MakePayment(int id = 0)
 		{
 			if (id == 0)
 			{
@@ -36,9 +36,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			else
 			{
 
-				var tb = db.tbl_MakePaymentSelect("Select1", null, null, null, null, null, null, null, null).Single(x => x.ID == id);
+				var tb = db.tbl_MakePaymentSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
 				var vm = new tbl_MakePayment();
 				vm.PrincipleAmount = tb.PrincipleAmount;
+				vm.PaidFrom = tb.PaidFrom;
 				vm.InterestAmount = tb.InterestAmount;
 				vm.AccountName = tb.AccountName;
 				vm.TotalAmount = tb.TotalAmount;
@@ -49,20 +50,23 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 
 		[HttpPost]
-		public ActionResult AddOrEdit(int id, tbl_MakePayment conn)
+		public ActionResult MakePayment( tbl_MakePayment conn, int id=0)
 		{
 			if (id == 0)
 			{
 
-				db.tbl_MakePaymentSelect("Insert", null, null, null, null, null, null, null, null);
+				db.tbl_MakePaymentSelect("Insert", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null);
 				db.SubmitChanges();
-				return RedirectToAction("Index");
+				ModelState.Clear();
+				return RedirectToAction("Makepayment");
 			}
 			else
 			{
-				db.tbl_MakePaymentSelect("Update", id, null, null, null, null, null, null, null);
+				db.tbl_MakePaymentSelect("Update", id, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null);
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+				ModelState.Clear();
+				return RedirectToAction("Makepayment");
+				//return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
 			}
 		}
 
