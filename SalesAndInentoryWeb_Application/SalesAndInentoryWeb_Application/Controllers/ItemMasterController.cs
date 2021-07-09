@@ -27,25 +27,54 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         }
 
-        public ActionResult AddOrEdit()
+        public ActionResult ItemTraking()
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult AddOrEdit(int id=0)
+        {
+
+            if (id == 0)
+            {
+                return View(new tbl_ItemMaster());
+            }
+            else
+            {
+                var tb = db.tbl_ItemMasterSelect("Detail1", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ItemID == id);
+                var vm = new tbl_ItemMaster();
+                vm.ItemName = tb.ItemName;
+                vm.HSNCode = tb.HSNCode;
+                vm.OpeningQty = tb.OpeningQty;
+                vm.PurchasePrice = tb.PurchasePrice;
+                vm.SalePrice = tb.SalePrice;
+                vm.atPrice = tb.atPrice;
+                return View(vm);
+            }
+         
+        }
 
         [HttpPost]
-        public ActionResult AddOrEdit(tbl_ItemMasterSelectResult item)
+        public ActionResult AddOrEdit(tbl_ItemMaster item,int id=0)
         {
-            try
-            {
-                // ItemName,HSNCode ,BasicUnit,SecondaryUnit ,                      ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,                                                                  PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,                           Date,ItemLocation,TrackingMRP,                      BatchNo,       SerialNo,    MFgdate,     Expdate,      Siz,     Description ,    MinimumStock,     Image1,     Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
-                db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchasePrice, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode, null, item.saleTax, item.PurchaseTax, item.Profit);
-                db.SubmitChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+           
+                if (id == 0)
+                {
+                    // ItemName,HSNCode ,BasicUnit,SecondaryUnit ,                      ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,                                                                  PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,                           Date,ItemLocation,TrackingMRP,                      BatchNo,       SerialNo,    MFgdate,     Expdate,      Siz,     Description ,    MinimumStock,     Image1,     Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
+                    db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode, null, null, null, item.Profit);
+                    db.SubmitChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+
+                    db.tbl_ItemMasterSelect("Update", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode, null, null, null, item.Profit);
+                    db.SubmitChanges();
+                    return RedirectToAction("Index");
+                    //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+                    
+                }
+            
         }
         public ActionResult itemdata()
         {

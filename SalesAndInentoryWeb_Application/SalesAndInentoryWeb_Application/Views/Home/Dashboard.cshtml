@@ -3,13 +3,14 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
+
 <html>
 <head>
-    </head>
+</head>
 <body>
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
        <div class="col-md-3">
- 
+
         <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
         <label></label>
             </div>
@@ -28,34 +29,35 @@
         </div>
         <div class="col-md-3">
 
-            <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
-                <label></label>
+          
             </div>
         </div>
-    </div>
     <br />
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
         <div class="col-md-6">
 
             <div class="form-control"  style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-            
+                @*@Html.Action("ChartPartial1", "SaleInvoice")*@
+
             </div>
         </div>
-       
+
         <div class="col-md-6">
 
             <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <label></label>
+
             </div>
         </div>
-        
+
     </div>
     <br />
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
         <div class="col-md-6">
 
             <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <label></label>
+
+
+                <div class="chartContainer" style="height: 300px; width%;"></div>
             </div>
         </div>
 
@@ -95,6 +97,6 @@
 <br />
 <br />
     </div>
-   
+
     </body>
 </html>

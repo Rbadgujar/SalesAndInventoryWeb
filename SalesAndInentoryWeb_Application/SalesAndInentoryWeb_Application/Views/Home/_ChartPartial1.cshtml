@@ -1,0 +1,9 @@
+@Html.DevExpress().Chart(settings => {
+    settings.Name = "Chart";
+    settings.Series.Add(s => {
+
+        s.SetDataMembers("Total", "Total");
+        settings.Style["width"] = "300";
+
+    });
+}).Bind(Model).GetHtml()

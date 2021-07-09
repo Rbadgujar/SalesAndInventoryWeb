@@ -84,7 +84,7 @@
                     { "data": "RemainingBal" },
                     { "data": "Total" },
                     { "data":"ReturnNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "Creditnote")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","Creditnote")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -98,26 +98,6 @@
                 }
             });
         });
-
-        function PopupForm(url) {
-            var formDiv = $('<div/>');
-            $.get(url)
-            .done(function (response) {
-                formDiv.html(response);
-
-                Popup = formDiv.dialog({
-                    autoOpen: true,
-                    resizable: false,
-                    title: 'Fill Credit Note Details',
-                    height: 550,
-                    width: 700,
-                    close: function () {
-                        Popup.dialog('destroy').remove();
-                    }
-
-                });
-            });
-        }
 
         function SubmitForm(form) {
             $.validator.unobtrusive.parse(form);
@@ -145,24 +125,21 @@
         }
 
         function Delete(id) {
-            if(confirm('Are You Sure to Delete this Employee Record ?'))
+            if(confirm('Are You Sure to Delete this Record ?'))
             {
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("Delete", "Creditnote")/' + id,
+                    url: '@Url.Action("DeleteCredit", "Creditnote")/' + id,
                     success: function (data) {
                         if (data.success)
                         {
                             dataTable.ajax.reload();
-
                             $.notify(data.message, {
                                 globalPosition: "top center",
                                 className: "success"
                             })
-
                         }
                     }
-
                 });
             }
         }
