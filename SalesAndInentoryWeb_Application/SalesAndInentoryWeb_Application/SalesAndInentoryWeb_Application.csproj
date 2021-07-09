@@ -3754,6 +3754,7 @@
     <Content Include="Views\Startpage\registration.cshtml" />
     <Content Include="Views\DashBord\Dashbord.cshtml" />
     <Content Include="Views\DashBord\_ChartPartial.cshtml" />
+    <Content Include="Views\Expence\Expencescategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

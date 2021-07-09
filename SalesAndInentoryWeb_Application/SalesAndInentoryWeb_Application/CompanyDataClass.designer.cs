@@ -3218,7 +3218,7 @@ namespace SalesAndInentoryWeb_Application
 	
 	public partial class tbl_CreditNote1SelectResult
 	{
-        private int _InvoiceID;
+        //private int _InvoiceID;
 
         private int _ReturnNo;
 
@@ -9499,7 +9499,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _OpeningBal;
 		
-		private System.Nullable<System.DateTime> _AsOfDate;
+		private string _AsOfDate;
 		
 		private string _AddRemainder;
 		
@@ -9646,7 +9646,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AsOfDate", DbType="Date")]
-		public System.Nullable<System.DateTime> AsOfDate
+		public string AsOfDate
 		{
 			get
 			{

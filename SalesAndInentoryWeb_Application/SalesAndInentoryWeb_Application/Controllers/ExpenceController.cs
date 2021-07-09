@@ -16,6 +16,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
+       [HttpGet]
+       public ActionResult Expencescategory()
+        {
+            return View();
+        }
 		[HttpGet]
         public ActionResult ExpenceData()
         {
