@@ -17,7 +17,7 @@
 
    <div class="container-fluid">
     <div class="collapse navbar-collapse ">
-        <table id="purchaseorder1" class="table table-striped table-bordered" style="width:100%">
+        <table id="partygroup" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>PartyGroupID</th>
@@ -34,22 +34,23 @@
     <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
     <script>
-                     var Popup, dataTable;
+        var Popup, dataTable;
         $(document).ready(function () {
-            dataTable = $("#purchaseorder1").DataTable({
+            dataTable = $("#partygroup").DataTable({
                 "ajax": {
 
-                    "url": "/PartyMaster/makykdata",
+                    "url": "/PartyMaster/partygroupshow",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
+
                     { "data": "PartyGroupID" },
                     { "data": "AddPartyGroup" },
 					
 
                     { "data": "PartyGroupID", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "PartMaster")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -113,11 +114,11 @@
                     }
 
                     function Delete(id) {
-                        if(confirm('Are You Sure to Delete this Employee Record ?'))
+                        if(confirm('Are You Sure to Delete this Record ?'))
                         {
                             $.ajax({
                                 type: "POST",
-                                url: '@Url.Action("Dele", "ParchaseOrder")/' + id,
+                                url: '@Url.Action("deletepartygroup", "PartyMaster")/' + id,
                                 success: function (data) {
                                     if (data.success)
                                     {

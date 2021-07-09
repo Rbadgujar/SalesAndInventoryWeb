@@ -15,10 +15,10 @@ namespace SalesAndInentoryWeb_Application.Models
     public partial class tbl_PaymentIn
     {
         public int ID { get; set; }
-        public string CustomerName { get; set; }
+        public string PartyName { get; set; }
         public string PaymentType { get; set; }
         public Nullable<int> ReceiptNo { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public String Date { get; set; }
         public string Description { get; set; }
         public Nullable<double> ReceivedAmount { get; set; }
         public Nullable<double> UnusedAmount { get; set; }
