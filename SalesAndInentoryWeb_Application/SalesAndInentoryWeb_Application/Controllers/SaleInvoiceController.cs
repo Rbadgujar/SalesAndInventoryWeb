@@ -50,5 +50,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             var model = new object[0];
             return PartialView("~/Views/DashBord/_ChartPartial.cshtml", model);
         }
+
+        SalesAndInentoryWeb_Application.CompanyDataClassDataContext db1 = new SalesAndInentoryWeb_Application.CompanyDataClassDataContext();
+
+        public ActionResult ChartPartial1()
+        {
+            var model = db1.tbl_SaleInvoices;
+            return PartialView("~/Views/Home/_ChartPartial1.cshtml", model);
+        }
     }
 }

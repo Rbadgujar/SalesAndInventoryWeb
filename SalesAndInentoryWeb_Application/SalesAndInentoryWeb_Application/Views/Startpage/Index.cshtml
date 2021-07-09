@@ -1,145 +1,67 @@
-﻿
-@{
-    Layout = null;
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
+﻿@{ 
+    ViewBag.Title = "SaleInvoice";
+    Layout = "~/Views/Shared/ideal.cshtml";
+ }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Form-v10 by Colorlib</title>
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- Font-->
-    <link href="~/css/css/montserrat-font.css" rel="stylesheet" />
-    <link href="~/css/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet" />
-    <link href="~/css/css/style.css" rel="stylesheet" />
-    @*<link rel="stylesheet" type="text/css" href="file:///I:/colorlib-regform-36/css/montserrat-font.css">
-    <link rel="stylesheet" type="text/css" href="file:///I:/colorlib-regform-36/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-     Main Style Css 
-    <link rel="stylesheet" href="file:///I:/colorlib-regform-36/css/style.css" />*@
+    <title>jQuery Spline Chart</title>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script type="text/javascript">
+window.onload = function() {
+	$("#chartContainer").CanvasJSChart({
+		title: {
+			text: "US Weekly Retail Diesel Prices 2014 (Jan - May)",
+			fontSize: 22
+		},
+		axisY: {
+			title: "Prices in USD/gal",
+			includeZero: false,
+			Prefix: "$"
+		},
+		axisX: {
+			interval: 2,
+			intervalType: "week",
+			valueFormatString: "DD-MMM",
+			labelAngle: -45
+		},
+		data: [
+		{
+			type: "spline",
+			toolTipContent: "{x}: {y} USD/gal",
+			dataPoints: [
+				{x: new Date(2014, 00, 06), y: 3.91 },
+				{x: new Date(2014, 00, 13), y: 3.886},
+				{x: new Date(2014, 00, 20), y: 3.873},
+				{x: new Date(2014, 00, 27), y: 3.904},
+				{x: new Date(2014, 01, 03), y: 3.951},
+				{x: new Date(2014, 01, 10), y: 3.977},
+				{x: new Date(2014, 01, 17), y: 3.989},
+				{x: new Date(2014, 01, 24), y: 4.017},
+				{x: new Date(2014, 02, 03), y: 4.016},
+				{x: new Date(2014, 02, 10), y: 4.021},
+				{x: new Date(2014, 02, 17), y: 4.003},
+				{x: new Date(2014, 02, 24), y: 3.988},
+				{x: new Date(2014, 02, 31), y: 3.975},
+				{x: new Date(2014, 03, 07), y: 3.959},
+				{x: new Date(2014, 03, 14), y: 3.952},
+				{x: new Date(2014, 03, 21), y: 3.971},
+				{x: new Date(2014, 03, 28), y: 3.975},
+				{x: new Date(2014, 04, 05), y: 3.964},
+				{x: new Date(2014, 04, 12), y: 3.948},
+				{x: new Date(2014, 04, 19), y: 3.934},
+				{x: new Date(2014, 04, 26), y: 3.925}
+			]
+		}
+		]
+	});
+}
+    </script>
 </head>
-<body class="form-v10">
-    <div class="page-content">
-        <div class="form-v10-content">
-            <form class="form-detail" action="#" method="post" id="myform">
-                <div class="form-left">
-                    <h2>General Infomation</h2>
-                    <div class="form-row">
-                        <select name="title">
-                            <option class="option" value="title">Title</option>
-                            <option class="option" value="businessman">Businessman</option>
-                            <option class="option" value="reporter">Reporter</option>
-                            <option class="option" value="secretary">Secretary</option>
-                        </select>
-                        <span class="select-btn">
-                            <i class="zmdi zmdi-chevron-down"></i>
-                        </span>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row form-row-1">
-                            <input type="text" name="first_name" id="first_name" class="input-text" placeholder="First Name" required>
-                        </div>
-                        <div class="form-row form-row-2">
-                            <input type="text" name="last_name" id="last_name" class="input-text" placeholder="Last Name" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <select name="position">
-                            <option value="position">Position</option>
-                            <option value="director">Director</option>
-                            <option value="manager">Manager</option>
-                            <option value="employee">Employee</option>
-                        </select>
-                        <span class="select-btn">
-                            <i class="zmdi zmdi-chevron-down"></i>
-                        </span>
-                    </div>
-                    <div class="form-row">
-                        <input type="text" name="company" class="company" id="company" placeholder="Company" required>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row form-row-3">
-                            <input type="text" name="business" class="business" id="business" placeholder="Business Arena" required>
-                        </div>
-                        <div class="form-row form-row-4">
-                            <select name="employees">
-                                <option value="employees">Employees</option>
-                                <option value="trainee">Trainee</option>
-                                <option value="colleague">Colleague</option>
-                                <option value="associate">Associate</option>
-                            </select>
-                            <span class="select-btn">
-                                <i class="zmdi zmdi-chevron-down"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-right">
-                    <h2>Contact Details</h2>
-                    <div class="form-row">
-                        <input type="text" name="street" class="street" id="street" placeholder="Street + Nr" required>
-                    </div>
-                    <div class="form-row">
-                        <input type="text" name="additional" class="additional" id="additional" placeholder="Additional Information" required>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row form-row-1">
-                            <input type="text" name="zip" class="zip" id="zip" placeholder="Zip Code" required>
-                        </div>
-                        <div class="form-row form-row-2">
-                            <select name="place">
-                                <option value="place">Place</option>
-                                <option value="Street">Street</option>
-                                <option value="District">District</option>
-                                <option value="City">City</option>
-                            </select>
-                            <span class="select-btn">
-                                <i class="zmdi zmdi-chevron-down"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <select name="country">
-                            <option value="country">Country</option>
-                            <option value="Vietnam">Vietnam</option>
-                            <option value="Malaysia">Malaysia</option>
-                            <option value="India">India</option>
-                        </select>
-                        <span class="select-btn">
-                            <i class="zmdi zmdi-chevron-down"></i>
-                        </span>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row form-row-1">
-                            <input type="text" name="code" class="code" id="code" placeholder="Code +" required>
-                        </div>
-                        <div class="form-row form-row-2">
-                            <input type="text" name="phone" class="phone" id="phone" placeholder="Phone Number" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <input type="text" name="your_email" id="your_email" class="input-text" required }" placeholder="Your Email">
-                    </div>
-                    <div class="form-checkbox">
-                        <label class="container">
-                            <p>I do accept the <a href="#" class="text">Terms and Conditions</a> of your site.</p>
-                            <input type="checkbox" name="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="form-row-last">
-                        <input type="submit" name="register" class="register" value="Register Badge">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<body>
+    <div id="chartContainer" style="width: 100%; height: 300px"></div>
+</body>
 </html>
+
