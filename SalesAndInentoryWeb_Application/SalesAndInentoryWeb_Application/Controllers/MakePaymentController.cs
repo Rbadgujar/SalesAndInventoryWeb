@@ -56,7 +56,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 				db.tbl_MakePaymentSelect("Insert", null, null, null, null, null, null, null, null);
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+				return RedirectToAction("Index");
 			}
 			else
 			{
