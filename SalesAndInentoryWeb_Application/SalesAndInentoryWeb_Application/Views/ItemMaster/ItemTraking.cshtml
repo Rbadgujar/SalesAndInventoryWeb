@@ -8,19 +8,73 @@
 {
     @Html.HiddenFor(model => model.UnitName)
     <div class="form-group">
-        @Html.LabelFor(model => model.UnitName, new { @class = "control-label" })
-        @Html.EditorFor(model => model.UnitName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Bank Name....." } })
-        @Html.ValidationMessageFor(model => model.UnitName)
+        Primary Unit:
+        <input type="text" list="Uniyts" class="form-control"/>
+        <datalist id="Uniyts">
+            <option value="option"></option>
+            <option value="bag"> Bags(Bag)</option>
+            <option value="Bottles">Bottles(Btl)</option>
+            <option value="Box"> Box(Box))</option>
+            <option value="Bundel">Bandal(Bdl)</option>
+            <option value="Cans"> Can(can)</option>
+            <option value="Cartons">Cartons(ctn)</option>
+            <option value="Dozens">Dozens(Dzn)</option>
+            <option value="Grammes">Grammes(gm)</option>
+            <option value="Kilogams">Kilogarms(kg)</option>
+            <option value="Litre">Litre(Ltr)</option>
+            <option value="Meters">Meter(mtr)</option>
+            <option value="Mililiter">Mililitre(ml)</option>
+            <option value="Numbers">Numbers(Nos)</option>
+            <option value="Packs"> Packs(pac)</option>
+            <option value="Pairs">Pairs(Pac)</option>
+            <option value="Pieces">Pieces(Pcs)</option>
+            <option value="Quintal">Quintal(Qtl)</option>
+            <option value="Rolls">Rolls(rol)</option>
+            <option value="Square Feet">SquareFeet(Sqf)</option>
+            <option value="Square Meters">Square Meter(Sqm)</option>
+            <option value="Tablets">Tablets(Tbs)</option>
+
+
+
+
+
+        </datalist>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.SubUnitName, new { @class = "control-label" })
-        @Html.EditorFor(model => model.SubUnitName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account Name....." } })
-        @Html.ValidationMessageFor(model => model.SubUnitName)
-    </div>
-   
+        <input type="text" list="Uniyts" class="form-control" />
+        <datalist id="Uniyts">
+            <option value="bag"> Bags(Bag)</option>
+            <option value="Bottles">Bottles(Btl)</option>
+            <option value="Box"> Box(Box))</option>
+            <option value="Bundel">Bandal(Bdl)</option>
+            <option value="Cans"> Can(can)</option>
+            <option value="Cartons">Cartons(ctn)</option>
+            <option value="Dozens">Dozens(Dzn)</option>
+            <option value="Grammes">Grammes(gm)</option>
+            <option value="Kilogams">Kilogarms(kg)</option>
+            <option value="Litre">Litre(Ltr)</option>
+            <option value="Meters">Meter(mtr)</option>
+            <option value="Mililiter">Mililitre(ml)</option>
+            <option value="Numbers">Numbers(Nos)</option>
+            <option value="Packs"> Packs(pac)</option>
+            <option value="Pairs">Pairs(Pac)</option>
+            <option value="Pieces">Pieces(Pcs)</option>
+            <option value="Quintal">Quintal(Qtl)</option>
+            <option value="Rolls">Rolls(rol)</option>
+            <option value="Square Feet">SquareFeet(Sqf)</option>
+            <option value="Square Meters">Square Meter(Sqm)</option>
+            <option value="Tablets">Tablets(Tbs)</option>
+            </datalist>
+
+
+            @*@Html.LabelFor(model => model.SubUnitName, new { @class = "control-label" })
+            @Html.EditorFor(model => model.SubUnitName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account Name....." } })
+            @Html.ValidationMessageFor(model => model.SubUnitName)*@
+</div>
 
     <div class="form-group footer">
         <input type="submit" value="Submit" class="btn btn-primary pull-right" />
         <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
     </div>
+
 }
