@@ -8428,7 +8428,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _Total;
 		
-		private System.Nullable<System.DateTime> _BalAsOf;
+		private string _BalAsOf;
 		
 		public tbl_LoanBankSelectResult()
 		{
@@ -8659,7 +8659,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BalAsOf", DbType="Date")]
-		public System.Nullable<System.DateTime> BalAsOf
+		public string BalAsOf
 		{
 			get
 			{
@@ -9374,7 +9374,7 @@ namespace SalesAndInentoryWeb_Application
 	public partial class tbl_PartyMasterSelectResult
 	{
 		
-		private int _PartiesID;
+		private System.Nullable<int> _PartiesID;
 		
 		private string _PartyName;
 		
@@ -9409,7 +9409,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartiesID", DbType="Int NOT NULL")]
-		public int PartiesID
+		public System.Nullable<int> PartiesID
 		{
 			get
 			{
@@ -9660,7 +9660,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<int> _ReceiptNo;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		private string _Description;
 		
@@ -9743,7 +9743,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		public string Date
 		{
 			get
 			{

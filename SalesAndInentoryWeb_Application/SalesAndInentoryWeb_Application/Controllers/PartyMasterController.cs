@@ -31,7 +31,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         
         [HttpGet]
-        public ActionResult AddOrEdit(int id=0)
+        public ActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)
             {
@@ -62,7 +62,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         
         [HttpPost]
-        public ActionResult AddOrEdit(int id,tbl_PartyMasterSelectResult party)//int id = 0)
+        public ActionResult AddOrEdit(tbl_PartyMasterSelectResult party, int id=0)//int id = 0)
         {
             if (id == 0)
             {
@@ -71,7 +71,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
                     db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, null);
                     db.SubmitChanges();
-                    return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+                    return RedirectToAction("Index");
+                    //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
                 }
                 catch
                 {
@@ -118,13 +119,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult makykdata()
+        public ActionResult DetailPartyGroup(int id)
         {
+            var tb = db.tbl_PartyGroupSelect("Details", id, null, null).Single(x => x.PartyGroupID == id);
+            return View(tb);
+        }
 
-            var getdata = db.tbl_PartyGroupSelect("Select1", null, null, null).ToList();
+        [HttpGet]
+        public ActionResult partygroupshow()
+        {
+            var getdata = db.tbl_PartyGroupSelect("Select1", null, null,null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+        }
 
+        [HttpPost]
+        public ActionResult deletepartygroup(int id)
+        {
+            try
+            {
+                var getdata = db.tbl_PartyGroupSelect("Delete", id, null, null).ToList();
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+                //return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 

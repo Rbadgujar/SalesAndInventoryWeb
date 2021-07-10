@@ -16,22 +16,22 @@
     <div class="form-group">
         @Html.LabelFor(model => model.EntryType, new { @class = "control-label" })
        @{
-           List<SelectListItem> listItems = new List<SelectListItem>();
-           listItems.Add(new SelectListItem
-           {
-               Text = "Credit",
-               Value = "Credit"
-           });
-           listItems.Add(new SelectListItem
-           {
-               Text = "Debit",
-               Value = "Debit",
-               Selected = true
-           });
-          
+		   List<SelectListItem> listItems = new List<SelectListItem>();
+		   listItems.Add(new SelectListItem
+		   {
+			   Text = "Credit",
+			   Value = "Credit"
+		   });
+		   listItems.Add(new SelectListItem
+		   {
+			   Text = "Debit",
+			   Value = "Debit",
+			   Selected = true
+		   });
+
     }
         <div class="form-control">
-    @Html.DropDownListFor(model => model.EntryType, listItems, "-- Select Entry Type --",new { htmlAttributes = new { @class = "form-control" } })
+    @Html.DropDownListFor(model => model.EntryType, listItems, new { htmlAttributes = new { @class = "form-control" } })
 
         @Html.ValidationMessageFor(model => model.EntryType)
             </div>
