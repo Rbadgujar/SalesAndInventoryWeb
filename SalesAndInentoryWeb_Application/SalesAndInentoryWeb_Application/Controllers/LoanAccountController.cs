@@ -51,7 +51,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				vm.CurrentBal = tb.CurrentBal;
 				vm.Interest = tb.Interest;
 				vm.Duration = tb.Duration;
-				vm.BalAsOf = tb.BalAsOf;
+				//vm.BalAsOf = tb.BalAsOf;
 				return View(vm);
 			}
         }

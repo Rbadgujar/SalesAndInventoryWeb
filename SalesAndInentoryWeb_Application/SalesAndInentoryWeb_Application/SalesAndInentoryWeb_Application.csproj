@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -3772,6 +3773,7 @@
     <Content Include="Views\Home\_ChartPartial1.cshtml" />
     <Content Include="Views\ItemMaster\ItemTraking.cshtml" />
     <Content Include="Views\DebitNote\_ComboBoxPartial.cshtml" />
+    <Content Include="Views\PurchaseBill\AddPurchase.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
