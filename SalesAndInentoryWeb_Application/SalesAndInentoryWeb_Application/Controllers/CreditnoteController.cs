@@ -33,7 +33,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             try
             {
-                var getdata = db.tbl_CreditNote1Select("Delete", null, null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var getdata = db.tbl_CreditNote1Select("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
                 //return RedirectToAction("Index");
