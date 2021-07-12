@@ -23,6 +23,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_PurchaseOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
+
 		//[HttpGet]
 		//public ActionResult AddOrEdit(int id = 0)
 		//{
