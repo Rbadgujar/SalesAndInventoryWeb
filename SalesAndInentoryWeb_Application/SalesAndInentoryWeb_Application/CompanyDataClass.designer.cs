@@ -10159,7 +10159,9 @@ namespace SalesAndInentoryWeb_Application
 				}
 			}
 		}
-		
+
+		public int ID { get; internal set; }
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="NVarChar(MAX)")]
 		public string CustomerName
 		{

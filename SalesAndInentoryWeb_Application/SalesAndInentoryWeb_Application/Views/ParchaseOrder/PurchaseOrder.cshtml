@@ -29,7 +29,7 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse ">
 					<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Purchase Order </h3></label>
-					<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","ParchaseOrder")"><i class="fa fa-plus"></i>Add Purchase Order</a>
+					<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrder","ParchaseOrder")"><i class="fa fa-plus"></i>Add Purchase Order</a>
 					<a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
 					<input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
 					<label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
@@ -86,7 +86,7 @@
 					{ "data": "Total" },
 					{ "data": "Status" },
                     {"data":"OrderNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrder", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,

@@ -3683,7 +3683,6 @@
     <Content Include="Views\DebitNote\DebitNote.cshtml" />
     <Content Include="Views\Shared\ideal.cshtml" />
     <Content Include="Views\Creditnote\show.cshtml" />
-    <Content Include="Views\PurchaseBill\AddOrEdit.cshtml" />
     <Content Include="Views\PurchaseBill\Index.cshtml" />
     <Content Include="Views\OtherIncome\Index.cshtml" />
     <Content Include="Views\OtherIncome\AddOrEdit.cshtml" />
@@ -3691,7 +3690,7 @@
     <Content Include="Views\Expence\AddOrEdit.cshtml" />
     <Content Include="Views\LoanAccount\AddOrEdit.cshtml" />
     <Content Include="Views\MakePayment\Makepayment.cshtml" />
-    <Content Include="Views\ParchaseOrder\AddOrEdit.cshtml" />
+    <Content Include="Views\ParchaseOrder\AddOrder.cshtml" />
     <Content Include="Views\ParchaseOrder\PurchaseOrder.cshtml" />
     <Content Include="Views\SaleOrder\AddOrEdit.cshtml" />
     <Content Include="Views\SaleOrder\SaleOrder.cshtml" />

@@ -22,44 +22,50 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
-		
-		public ActionResult AddOrEdit()
+		public ActionResult Detail(int id)
 		{
-			//if (billno == 0)
-			//{
-			//return View(new tbl_PurchaseBill());
-			//}
-			//else
-			//{
-			//	var tb = db.tbl_PurchaseBillselect("Details", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == billno);
-			//	var vm = new tbl_PurchaseBill();
-			//	//vm.AccountName = tb.AccountName;
-			//	//vm.BankName = tb.BankName;
-			//	//vm.AccountNo = tb.AccountNo;
-			//	//vm.OpeningBal = tb.OpeningBal;
-			//	//vm.Date = Convert.ToDateTime(tb.Date);
-			//	return View(vm);
-			//}
-			return View();
+			var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
+			return View(tb);
+		}
+
+		[HttpGet]
+		public ActionResult AddPurchase(int id=0)
+		{
+			if (id == 0)
+			{
+				return View(new tbl_PurchaseBill());
+			}
+			else
+			{
+				var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
+				var vm = new tbl_PurchaseBill();
+				//vm.AccountName = tb.AccountName;
+				//vm.BankName = tb.BankName;
+				//vm.AccountNo = tb.AccountNo;
+				//vm.OpeningBal = tb.OpeningBal;
+				//vm.Date = Convert.ToDateTime(tb.Date);
+				return View(vm);
+			}
+		
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit(tbl_PurchaseBill emp)
+		public ActionResult AddPurchase(tbl_PurchaseBill emp,int id= 0)
 		{
-			//if (billno == 0)
-			//{
+			if (id == 0)
+			{
 
-			//var tb = db.tbl_PurchaseBillselect("Insert", null, emp.PONo, emp.PartyName, emp.BillingName, emp.ContactNo, emp.BillDate, emp.PoDate, emp.DueDate, emp.StateofSupply, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.CGST, emp.SGST, emp.TaxAmount1, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Paid, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, null, null, emp.Status, null, null, emp.Barcode, emp.ItemCategory, emp.IGST, null, null, null, null, null);
-			//db.SubmitChanges();
-			//return RedirectToAction("Index");
-			//}
-			//else
-			//{
-			//	var tb = db.tbl_PurchaseBillselect("Update", BillNo, emp.PONo, emp.PartyName, emp.BillingName, emp.ContactNo, emp.BillDate, emp.PoDate, emp.DueDate, emp.StateofSupply, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.CGST, emp.SGST, emp.TaxAmount1, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Paid, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, null, null, emp.Status, null, null, emp.Barcode, emp.ItemCategory, emp.IGST, null, null, null, null, null);
-			//	db.SubmitChanges();
-			//	return RedirectToAction("Index");
-			//}
-			return View();
+				var tb = db.tbl_PurchaseBillselect("Insert", null, emp.PONo, emp.PartyName, emp.BillingName, emp.ContactNo, emp.BillDate, emp.PoDate, emp.DueDate, emp.StateofSupply, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.CGST, emp.SGST, emp.TaxAmount1, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Paid, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, null, null, emp.Status, null, null, emp.Barcode, emp.ItemCategory, emp.IGST, null, null, null, null, null);
+				db.SubmitChanges();
+				return RedirectToAction("Index");
+			}
+			else
+			{
+				var tb = db.tbl_PurchaseBillselect("Update", id, emp.PONo, emp.PartyName, emp.BillingName, emp.ContactNo, emp.BillDate, emp.PoDate, emp.DueDate, emp.StateofSupply, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.CGST, emp.SGST, emp.TaxAmount1, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Paid, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, null, null, emp.Status, null, null, emp.Barcode, emp.ItemCategory, emp.IGST, null, null, null, null, null);
+				db.SubmitChanges();
+				return RedirectToAction("Index");
+			}
+			
 		}
 
 		[HttpPost]

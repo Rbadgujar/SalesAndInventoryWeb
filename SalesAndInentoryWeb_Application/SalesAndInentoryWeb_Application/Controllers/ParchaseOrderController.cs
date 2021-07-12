@@ -24,8 +24,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
-	
-		public ActionResult AddOrEdit()
+	[HttpGet]
+		public ActionResult AddOrder()
 		{
 			//    if (id == 0)
 			//        return View(new tbl_PurchaseOrder());
@@ -40,7 +40,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit(tbl_PurchaseOrder emp)
+		public ActionResult AddOrder(tbl_PurchaseOrder emp)
 		{
 			//    using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
 			//    {
