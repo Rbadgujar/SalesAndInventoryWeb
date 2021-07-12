@@ -24,6 +24,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_Paymentoutselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
+
 		public ActionResult Detail(int id)
 		{
 			var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
@@ -40,25 +41,36 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			else
 			{
 				var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
-				return View(tb);
+				var vm = new tbl_Paymentout();
+				vm.CustomerName = tb.CustomerName;
+				vm.PaymentType = tb.PaymentType;
+				vm.ReceiptNo = tb.ReceiptNo;
+				vm.Description = tb.Description;
+				vm.Paid = tb.Paid;
+				vm.Discount = tb.Discount;
+				vm.Total = tb.Total;
+				vm.Status = tb.Status;
+				vm.Date = Convert.ToDateTime(tb.Date);
+				return View(vm);
+				
 			}
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit(int id, tbl_Paymentout conn)
+		public ActionResult AddOrEdit(tbl_Paymentout conn, int id=0)
 		{
-			if (ModelState.IsValid)
+			if (id == 0)
 			{
 
 				db.tbl_Paymentoutselect("Insert", null, conn.CustomerName, conn.PaymentType, conn.ReceiptNo, conn.Date, conn.Description, conn.Paid, conn.Discount, conn.Total, conn.image, null, conn.Status, null);
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+				return RedirectToAction("Index");
 			}
 			else
 			{
 				db.tbl_Paymentoutselect("Update", id, conn.CustomerName, conn.PaymentType, conn.ReceiptNo, conn.Date, conn.Description, conn.Paid, conn.Discount, conn.Total, conn.image, null, conn.Status, null);
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
+				return RedirectToAction("Index");
 			}
 		}
 
@@ -67,7 +79,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
 				var getdata = db.tbl_Paymentoutselect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 				db.SubmitChanges();
-			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);			
+			   return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);			
 		}
 	}
 }

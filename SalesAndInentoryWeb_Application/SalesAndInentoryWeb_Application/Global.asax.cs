@@ -19,6 +19,7 @@ namespace SalesAndInentoryWeb_Application
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
         }
     }
 }

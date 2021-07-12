@@ -397,7 +397,7 @@ $(document).ready(function(){
                                 </div>
                                 <div class="form-group col-md-4">
 
-                                    <input type="button" class="btn btn-yahoo" value="Item Tracking Details" name="itemtracking" id="it" style="height:32px;width:45%" />
+                                    <input type="button" class="btn btn-yahoo" value="Item Tracking Details" onclick="PopupForm('@Url.Action("ItemTraking","ItemMaster")')"name="itemtracking" style="height:32px;width:45%" />
                                     <input type="button" value="Select Unit" onclick="PopupForm('@Url.Action("ItemTraking","ItemMaster")')" class="btn btn-yahoo" style="height:31px; width:45%" />
 
                                 </div>
@@ -592,7 +592,6 @@ $(document).ready(function(){
                 }
             });
         });
-
         function PopupForm(url) {
             var formDiv = $('<div/>');
             $.get(url)
@@ -612,6 +611,25 @@ $(document).ready(function(){
             });
         }
 
+
+        function PopupForm1(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Select Unit',
+                    height: 500,
+                    width: 500,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+                });
+            });
+        }
         function SubmitForm(form) {
             $.validator.unobtrusive.parse(form);
             if($(form).valid()){
