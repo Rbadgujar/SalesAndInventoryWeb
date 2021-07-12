@@ -17,6 +17,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
+        //'The DELETE statement conflicted with the REFERENCE constraint "FK__tbl_Deliv__Chall__68D28DBC". The conflict occurred in database "idealtec_inventory", table "dbo.tbl_DeliveryChallanInner", column 'ChallanNo'. The statement has been terminated.'
+
         [HttpGet]
         public ActionResult ShowChallanData()
         {

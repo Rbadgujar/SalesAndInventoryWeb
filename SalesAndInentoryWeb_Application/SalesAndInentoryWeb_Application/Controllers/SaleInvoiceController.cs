@@ -25,14 +25,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult saleinvoiceshow()
+        public ActionResult ShowInvoiceData()
         {
-            return View();
-        }
-
-        public ActionResult daaa()
-        {
-            return View();
+            var getdata = db.tbl_SaleInvoiceSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -42,8 +38,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
            db.SubmitChanges();
            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
-
-
 
         public ActionResult ChartPartial()
         {
