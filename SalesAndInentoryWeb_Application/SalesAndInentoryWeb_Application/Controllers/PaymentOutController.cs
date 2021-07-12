@@ -45,20 +45,20 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult AddOrEdit(int id, tbl_Paymentout conn)
+		public ActionResult AddOrEdit(tbl_Paymentout conn, int id=0)
 		{
-			if (ModelState.IsValid)
+			if (id == 0)
 			{
 
 				db.tbl_Paymentoutselect("Insert", null, conn.CustomerName, conn.PaymentType, conn.ReceiptNo, conn.Date, conn.Description, conn.Paid, conn.Discount, conn.Total, conn.image, null, conn.Status, null);
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+				return RedirectToAction("Index");
 			}
 			else
 			{
 				db.tbl_Paymentoutselect("Update", id, conn.CustomerName, conn.PaymentType, conn.ReceiptNo, conn.Date, conn.Description, conn.Paid, conn.Discount, conn.Total, conn.image, null, conn.Status, null);
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
+				return RedirectToAction("Index");
 			}
 		}
 
@@ -67,7 +67,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
 				var getdata = db.tbl_Paymentoutselect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 				db.SubmitChanges();
-			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);			
+			   return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);			
 		}
 	}
 }
