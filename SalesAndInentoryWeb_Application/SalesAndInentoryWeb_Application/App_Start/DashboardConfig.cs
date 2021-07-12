@@ -4,6 +4,7 @@ using DevExpress.DashboardWeb.Mvc;
 
 namespace SalesAndInentoryWeb_Application
 {
+
     public class DashboardConfig
     {
         public static void RegisterService(RouteCollection routes)
