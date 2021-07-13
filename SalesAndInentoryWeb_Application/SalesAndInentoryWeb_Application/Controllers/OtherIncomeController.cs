@@ -68,6 +68,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         }
 
+
+
+      public  ActionResult otcategory()
+        {
+            return View();
+        } 
+
         [HttpPost]
         public ActionResult Delete(int id)
         {

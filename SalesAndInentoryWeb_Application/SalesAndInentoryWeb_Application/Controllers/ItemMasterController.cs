@@ -26,6 +26,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
         }
+//[HttpGet]
+        public ActionResult unit()
+        {
+            return View();
+        }
 
         public ActionResult ItemTraking()
         {
