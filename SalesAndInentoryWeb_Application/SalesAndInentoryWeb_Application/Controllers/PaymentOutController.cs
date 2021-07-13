@@ -24,6 +24,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_Paymentoutselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
+
 		public ActionResult Detail(int id)
 		{
 			var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
@@ -40,7 +41,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			else
 			{
 				var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
-				return View(tb);
+				var vm = new tbl_Paymentout();
+				vm.CustomerName = tb.CustomerName;
+				vm.PaymentType = tb.PaymentType;
+				vm.ReceiptNo = tb.ReceiptNo;
+				vm.Description = tb.Description;
+				vm.Paid = tb.Paid;
+				vm.Discount = tb.Discount;
+				vm.Total = tb.Total;
+				vm.Status = tb.Status;
+				vm.Date = Convert.ToDateTime(tb.Date);
+				return View(vm);
+				
 			}
 		}
 
