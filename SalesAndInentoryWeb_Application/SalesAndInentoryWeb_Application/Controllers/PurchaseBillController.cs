@@ -39,11 +39,35 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			{
 				var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
 				var vm = new tbl_PurchaseBill();
-				//vm.AccountName = tb.AccountName;
-				//vm.BankName = tb.BankName;
-				//vm.AccountNo = tb.AccountNo;
-				//vm.OpeningBal = tb.OpeningBal;
-				//vm.Date = Convert.ToDateTime(tb.Date);
+				vm.PONo = tb.PONo;
+				vm.PartyName = tb.PartyName;
+				vm.BillingName = tb.BillingName;
+				vm.ContactNo = tb.ContactNo;
+				vm.BillDate = Convert.ToDateTime(tb.BillDate);
+				vm.PoDate = Convert.ToDateTime(tb.PoDate);
+				vm.DueDate = Convert.ToDateTime(tb.DueDate);
+				vm.StateofSupply = tb.StateofSupply;
+				vm.PaymentType = tb.PaymentType;
+				vm.VehicleNumber = tb.VehicleNumber;
+				vm.DeliveryLocation = tb.DeliveryLocation;
+				vm.TransportName = tb.TransportName;
+				vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
+				vm.Description = tb.Description;
+				vm.TransportCharges = tb.TransportCharges;
+				vm.Tax1 = tb.Tax1;
+				vm.TaxAmount1 = tb.TaxAmount1;
+				vm.CGST = tb.CGST;
+				vm.SGST = tb.SGST;
+				vm.Paid = tb.Paid;
+				vm.DiscountAmount1 = tb.DiscountAmount1;
+				vm.TotalDiscount = tb.TotalDiscount;
+				vm.RoundFigure = tb.RoundFigure;
+				vm.Total = tb.Total;
+				vm.PaymentTerms = tb.PaymentTerms;
+				vm.RemainingBal = tb.RemainingBal;
+				vm.Status = tb.Status;
+				vm.Barcode = tb.Barcode;
+				vm.IGST = tb.IGST;
 				return View(vm);
 			}
 		
