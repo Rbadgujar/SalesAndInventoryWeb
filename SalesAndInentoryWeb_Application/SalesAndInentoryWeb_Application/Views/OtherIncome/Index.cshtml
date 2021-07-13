@@ -36,7 +36,12 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse ">
+                <a class="btn btn-primary pull-right row" style="margin-top:-12.5px;margin-right:1px; " onclick="PopupFormr('@Url.Action("otcategory","OtherIncome")')" /><i class="fa fa-plus"></i>Add category</a>
+            </div>
+        </div>
+        <br />
         <div class="container-fluid">
             <div class="collapse navbar-collapse ">
                 <table id="purchaseorder1" class="table table-striped table-bordered" style="width:100%">
@@ -103,7 +108,7 @@
 
 
 
-                    function PopupForm(url) {
+                    function PopupFormr(url) {
                         var formDiv = $('<div/>');
                         $.get(url)
                         .done(function (response) {
@@ -112,9 +117,9 @@
                             Popup = formDiv.dialog({
                                 autoOpen: true,
                                 resizable: false,
-                                title: 'Fill Bank Details',
-                                height: 500,
-                                width: 700,
+                                title: 'Enter Category ',
+                                height:250,
+                                width:320,
                                 close: function () {
                                     Popup.dialog('destroy').remove();
                                 }

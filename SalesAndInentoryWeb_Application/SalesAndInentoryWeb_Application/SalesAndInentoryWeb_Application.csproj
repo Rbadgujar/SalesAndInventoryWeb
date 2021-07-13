@@ -3773,6 +3773,8 @@
     <Content Include="Views\ItemMaster\ItemTraking.cshtml" />
     <Content Include="Views\DebitNote\_ComboBoxPartial.cshtml" />
     <Content Include="Views\PurchaseBill\AddPurchase.cshtml" />
+    <Content Include="Views\ItemMaster\unit.cshtml" />
+    <Content Include="Views\OtherIncome\otcategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

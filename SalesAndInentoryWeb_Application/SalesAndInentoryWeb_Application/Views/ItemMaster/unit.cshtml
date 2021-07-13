@@ -1,0 +1,74 @@
+﻿@model SalesAndInentoryWeb_Application.Models.tbl_ItemMaster
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("unit", "ItemMaster", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @*@Html.HiddenFor(model => model.TrackingMRP)*@
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TrackingMRP, new { @class = "control-label" })
+                @Html.EditorFor(model => model.TrackingMRP, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter MRP Amount...." } })
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Size, new { @class = "control-label" })
+                @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Size ..." } })
+
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.BatchNo, new { @class = "control-label" })
+                @Html.EditorFor(model => model.BatchNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Batch No ..." } })
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.SerialNo, new { @class = "control-label" })
+                @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Amount....." } })
+            </div>
+        </div>
+    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Expdate, new { @class = "control-label" })
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.Expdate, new { @type = "date", @class = "control-label" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MFgdate, new { @class = "control-label" })
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.MFgdate, new { @type = "date", @class = "form-group" })
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <input type="submit" value="Submit" class="btn btn-primary" />
+                                <input type="reset" value="Reset" class="btn" />
+                            </div>
+                        </div>
+                        </div>
+                  }

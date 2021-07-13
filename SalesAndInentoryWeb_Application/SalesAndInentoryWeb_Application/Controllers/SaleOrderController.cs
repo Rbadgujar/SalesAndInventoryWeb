@@ -46,7 +46,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             catch (Exception e)
             {
-                return View("Error", new HandleErrorInfo(e, "SaleOrder", "AdOrEdit"));
+                return View("Error", new HandleErrorInfo(e, "SaleOrder", "AddOrEdit"));
             }
         }
    
