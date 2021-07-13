@@ -72,7 +72,7 @@
     </script>
 </head>
 <body>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("SaleInvoice", "SaleInvoice", FormMethod.Post))
     {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
             <div class="panel-heading"><a class="btn" href=@Url.Action("SaleIndexpage","SaleInvoice") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Sale Invoice</p></div>

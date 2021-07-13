@@ -69,15 +69,13 @@
     </script>
 </head>
 <body>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("AddOrEdit", "SaleOrder", FormMethod.Post))
     {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
             <div class="panel-heading"><a class="btn" href=@Url.Action("SaleOrder", "SaleOrder") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Sale Order</p></div>
             <div class="panel border-box">
-
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse ">
-                       
                         <div class="row">
                             <div class="form-group col-md-3">
                                 @*<div class="pull-right">
@@ -88,7 +86,6 @@
                                         settings.Text = "Party Name   :";
                                     }).GetHtml()
                                     </div>*@
-
                                 Party Name:
                                 <select name="cars" id="dp" class="form-control" style="width:220px;height:32px">
                                     <option></option>
@@ -107,26 +104,14 @@
                                 <div class="pull-right">
                                     Bill No:
                                     <input type="text" id="BillNO" name="" class="form-control" value="Bill No " style="width:150px;height:30px">
-
                                     Bill Date:
                                     <input placeholder="PO Date" class="textbox-n form-control" style="width:150px;height:30px;" type="text" onfocus="(this.type='date')" id="date">
                                     Barcode:
                                     @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
                                     @Html.ValidationMessageFor(model => model.Barcode)
-
                                 </div>
-
-
-
-
-
-
-
                             </div>
-
-
                             <div class="form-group col-md-2">
-
                                 <div class="pull-right">
                                     Eway BillNo:
                                     <input type="text" id="Ewaybil" value="Eway-Bill no" name="" class="form-control" style="width:150px;height:30px">
@@ -174,24 +159,16 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
                 <br />
-
                 <nav class="navbar navbar-default " style="border:none; background-color:white">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse ">
                             <div class="form-group scrolldown" style="height:200px">
-
                                 <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
-
                                     <thead>
-
                                         <tr>
-
                                             <th>
                                                 <label>Item Name</label>
                                                 <select name="cars" id="dp" class="form-control" style="width:90PX">
@@ -203,18 +180,15 @@
                                             </th>
                                             <th>
                                                 <label>MRP</label>
-
                                                 <input type="text" id="sp" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
                                                 <label>Tax%</label>
-
                                                 <input type="text" id="ts" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
                                                 <label>Descount</label>
                                                 <input type="text" id="ds" name="" class="form-control" style="width:70PX">
-
                                             <th>
                                                 <label>Qty</label>
                                                 <input type="text" id="qty" name="" class="form-control" style="width:70PX">
@@ -222,7 +196,6 @@
                                             <th>
                                                 <label>Dis Amount</label>
                                                 <input type="text" id="da" name="" class="form-control" style="width:70PX">
-
                                             </th>
                                             <th>
                                                 <label>Tax Amount</label>
@@ -244,19 +217,14 @@
                         </div>
                     </div>
                 </nav>
-
-
-
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse ">
                         <div class="row">
-
                             <div class="col-md-2">
                                 Payment Type:
                                 <select name="cars" id="dp" class="form-control" style="width:150px;">
                                     <option value="Cash">Cash</option>
                                     <option value="OnlinPayment">Online Payment</option>
-
                                 </select>
                                Transport Name:
                                 @Html.DevExpress().TextBoxFor(m => m.TransportName, settings =>
@@ -277,24 +245,17 @@
                                }
                            })
                                 @Html.ValidationMessageFor(model => model.DeliveryLocation)
-
-
-
-
-
                             </div>
                             <div class="col-md-2 form-group">
                                 Cheque No:
                                 @Html.EditorFor(model => model.VehicleNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Cheek no", @style = "width:150px;" } })
                                 @Html.ValidationMessageFor(model => model.VehicleNumber)
-
                                Delivery Date:
                                 @Html.TextBoxFor(model => model.Deliverydate, new { @type = "date", @class = "form-control", @style = "width:150px;" })
                                Payment Status:
                                 <select name="cars" id="dp" class="form-control" style="width:150px;">
                                     <option value="volvo">Paid</option>
                                     <option value="saab">Unpiad</option>
-
                                 </select>
                             </div>
                             <div class="col-md-8 form-group">
@@ -305,58 +266,33 @@
                                     Recived :
                                     @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
                                     @Html.ValidationMessageFor(model => model.RemainingBal)
-                                   Rmining Balance:
-
-
+                                   Remaining Balance:
                                     @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
                                     @Html.ValidationMessageFor(model => model.Received)
-
-
                                 </div>
-
                             </div>
-
                         </div>
-
-
                     </div>
                     <div class="row">
                         <div class="col-md-1 form-group" style="margin-top:8px; ">
-
                         </div>
                         <div class="col-md-3">
-
                         </div>
                         <div class="col-md-1 form-group" style="margin-top:8px; ">
-
                         </div>
                         <div class="col-md-3 form-group">
                             <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" />
                             <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
-
                         </div>
-
-
                         <div class="col-md-1 form-group" style="margin-top:8px; ">
-
                         </div>
                         <div class="col-md-3 form-group">
-
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
-            <div>
-
-            </div>
         </div>
-
-
-
-    }
+   }
 
 
 
