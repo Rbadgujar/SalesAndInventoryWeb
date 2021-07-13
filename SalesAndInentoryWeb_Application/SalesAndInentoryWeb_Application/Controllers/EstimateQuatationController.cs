@@ -8,7 +8,6 @@ using System.Data.Entity;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-  
     public class EstimateQuatationController : Controller
     {
         CompanyDataClassDataContext db = new CompanyDataClassDataContext();
@@ -16,72 +15,45 @@ namespace SalesAndInentoryWeb_Application.Controllers
         // GET: EstimateQuatation
         public ActionResult Index()
         {
-			
-
 			return View();
         }
-      [HttpGet]
+
+        [HttpGet]
         public ActionResult EstimateData()
         {
-
-
-            try
-            {
-                var getdata = db.tbl_QuotationSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception)
-            {
-                return View();
-            }
-           
+            var getdata = db.tbl_QuotationSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
+        public ActionResult AddOrEdit()
         {
-            if (id == 0)
-                return View(new tblQuotation());
-            else
-            {
-                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-                {
-                    return View(db.tblQuotations.Where(x => x.RefNo == id).FirstOrDefault<tblQuotation>());
-                }
-            }
+            return View();
         }
 
         [HttpPost]
-        public ActionResult AddOrEdit(tblQuotation emp)
+        public ActionResult AddOrEdit(tbl_QuotationSelectResult esti)
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            try
             {
-                if (emp.RefNo == 0)
-                {
-                    db.tblQuotations.Add(emp);
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    db.Entry(emp).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-                }
+                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                db.tbl_QuotationSelect("Insert", null, esti.PartyName, esti.BillingAddress, Convert.ToDateTime(esti.Date), esti.StateofSupply, esti.ContactNo, esti.Description, esti.Image, esti.Tax1, esti.TaxAmount1,esti.CGST,esti.SGST, esti.TotalDiscount, esti.DiscountAmount1, esti.RoundFigure, esti.Total, null, null, null, null, null, esti.Status, null, null, esti.Barcode, esti.Company_ID, esti.ItemCategory, esti.CalTotal, esti.TaxShow, esti.Discount);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
             }
-
-
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "EstimateQuatation", "AdOrEdit"));
+            }
         }
 
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                tblQuotation emp = db.tblQuotations.Where(x => x.RefNo == id).FirstOrDefault<tblQuotation>();
-                db.tblQuotations.Remove(emp);
-                db.SaveChanges();
-                return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
-            }
+            var getdata = db.tbl_QuotationSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

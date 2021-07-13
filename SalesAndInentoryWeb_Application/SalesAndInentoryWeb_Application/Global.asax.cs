@@ -14,10 +14,12 @@ namespace SalesAndInentoryWeb_Application
     {
         void Application_Start(object sender, EventArgs e)
         {
+            DashboardConfig.RegisterService(RouteTable.Routes);
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
         }
     }
 }

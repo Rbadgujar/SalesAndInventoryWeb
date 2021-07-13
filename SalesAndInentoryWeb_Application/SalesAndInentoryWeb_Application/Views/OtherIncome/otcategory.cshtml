@@ -1,0 +1,33 @@
+﻿@model SalesAndInentoryWeb_Application.Models.tbl_ExpenseCategory
+@{
+    Layout = null;
+}
+
+@*@using (Html.BeginForm("AddOrEdit", "BankAccount", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))*@
+@using (Html.BeginForm())
+{
+
+    <div class="form-group">
+        Category Name:
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.CategoryName, new { @class = "control-label" })*@
+            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Batch No ..." } })
+        </div>
+    </div>
+    <div class="form-group">
+        Expences Category;
+        <select class="form-control">
+            <option> Indirect Category</option>
+            <option>Direct Category</option>
+
+        </select>
+        @*@Html.LabelFor(model => model.SubUnitName, new { @class = "control-label" })
+            @Html.EditorFor(model => model.SubUnitName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account Name....." } })
+            @Html.ValidationMessageFor(model => model.SubUnitName)*@
+    </div>
+
+    <div class="form-group footer">
+        <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+        <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
+    </div>
+}

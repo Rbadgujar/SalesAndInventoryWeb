@@ -28,28 +28,76 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult ShowData()
         {
-             var getdata = db.tbl_PaymentInSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_PaymentInSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
-  
-        public ActionResult AddOrEdit()
+        public ActionResult Detail(int id)
         {
-            return View();
+            var tb = db.tbl_PaymentInSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
+            return View(tb);
+        }
+
+        [HttpGet]
+        public ActionResult Paymentin(int id = 0 )
+        {
+            if (id == 0)
+            {
+                return View(new tbl_PaymentIn());
+            }
+            else
+            {
+                var tb = db.tbl_PaymentInSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
+                var vm = new tbl_PaymentIn();
+                //ID,CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount
+                //UnusedAmount,Total,Status,image
+                vm.PartyName = tb.PartyName;
+                vm.PaymentType = tb.PaymentType;
+                vm.ReceiptNo = tb.ReceiptNo;
+                vm.Date = tb.Date;
+                vm.Description = tb.Description;
+                vm.ReceivedAmount = tb.ReceivedAmount;
+                vm.UnusedAmount = tb.UnusedAmount;
+                vm.Total = tb.Total;
+                vm.Status = tb.Status;
+                //vm.image = tb.image;
+                return View(vm);
+            }
         }
 
         [HttpPost]
-        public ActionResult AddOrEdit(int id, tbl_PaymentInSelectResult pay)
+        public ActionResult Paymentin( tbl_PaymentInSelectResult pay, int id = 0)
         {
-            return View();
-
-        }
-
-
-        [HttpGet]
-        public ActionResult Paymentin()
-        {
-            return View();
+            if (id == 0)
+            {
+                try
+                {
+                    //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                    db.tbl_PaymentInSelect("Insert1",null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null, null);
+                    db.SubmitChanges();
+                    return RedirectToAction("Index");
+                    //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                try
+                {
+                    //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                    db.tbl_PaymentInSelect("Update1", id, pay.PartyName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null, null);
+                    db.SubmitChanges();
+                    return RedirectToAction("Index");
+                    //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+                }
+                catch
+                {
+                    return View();
+                }
+            }
         }
 
         [HttpPost]
@@ -60,12 +108,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var getdata = db.tbl_PaymentInSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-                //return RedirectToAction("Index");
             }
             catch
             {
                 return View();
-                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
         }
     }

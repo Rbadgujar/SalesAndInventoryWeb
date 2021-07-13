@@ -1,0 +1,9 @@
+@Html.DevExpress().ComboBoxFor(m => m.ItemName, settings => {
+    	settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
+    settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+		settings.CallbackRouteValues = new { Controller = "DebitNote", Action = "ComboBoxPartial" };
+	settings.Properties.CallbackPageSize = 50;
+			settings.Properties.Items.Add("Item 0");
+	settings.Properties.Items.Add("Item 1");
+	settings.Properties.Items.Add("Item 2");
+	}).GetHtml()

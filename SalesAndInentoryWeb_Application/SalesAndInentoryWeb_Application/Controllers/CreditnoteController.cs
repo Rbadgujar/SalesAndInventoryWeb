@@ -24,60 +24,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult creditnotedata()
         {
-            try
-            {
-                var getdata = db.tbl_CreditNote1Select("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception)
-            {
-                return View();
-            }
+           var getdata = db.tbl_CreditNote1Select("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+           return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteCredit(int id)
         {
-            try
-            {
-                var getdata = db.tbl_CreditNote1Select("Delete", id,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-                db.SubmitChanges();
-                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-                //return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            }
+            var getdata = db.tbl_CreditNote1Select("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
         public ActionResult AddOrEdit()
         {
             return View(); 
         }
 
         [HttpPost]
-        public ActionResult AddOrEdit(tbl_CreditNote1 emp)
+        public ActionResult AddOrEdit(tbl_CreditNote1SelectResult credit)
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                if (emp.InvoiceNo == 0)
-                {
-                    db.tbl_CreditNote1.Add(emp);
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    db.Entry(emp).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-                }
-            }
-        }
-
-
-        
+            //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+            //db.tbl_CreditNote1Select("Insert", credit.InvoiceNo, null,  credit.PartyName, credit.BillingName, credit.PONumber, credit.PODate, Convert.ToDateTime(credit.InvoiceDate), credit.DueDate, credit.StateofSupply, credit.ContactNo, credit.PaymentType, credit.TransportName, credit.DeliveryLocation, credit.VehicleNumber, credit.Deliverydate, credit.Description, credit.TransportCharges, credit.Image, credit.Tax1, credit.TaxAmount1, credit.CGST, credit.SGST, credit.TotalDiscount, credit.DiscountAmount1, credit.RoundFigure, credit.Total, credit.Received, credit.RemainingBal, credit.PaymentTerms, null, null, null, null, null, null, credit.Status, credit.ItemCategory, credit.Barcode, credit.IGST, credit.Company_ID,  credit.CalTotal, credit.TaxShow, credit.Discount);
+            db.tbl_CreditNote1Select("Insert", credit.InvoiceNo, null, credit.PartyName, credit.BillingName, credit.PONumber, null, null, credit.DueDate, credit.StateofSupply, credit.ContactNo, credit.PaymentType, credit.TransportName, credit.DeliveryLocation, credit.VehicleNumber, credit.Deliverydate, credit.Description, credit.TransportCharges, credit.Image, credit.Tax1, credit.TaxAmount1, credit.CGST, credit.SGST, credit.TotalDiscount, credit.DiscountAmount1, credit.RoundFigure, credit.Total, credit.Received, credit.RemainingBal, credit.PaymentTerms, null, null, null, null, null, null, credit.Status, credit.ItemCategory, credit.Barcode, credit.IGST, credit.Company_ID, credit.CalTotal, credit.TaxShow, credit.Discount);
+            db.SubmitChanges();
+            return RedirectToAction("Index");
+                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+           
+        }  
     }
 }

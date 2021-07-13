@@ -15,37 +15,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-        public ActionResult LoanStatement()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult makykdata1(string sal)
-        {
-
-            var getdata = db.tbl_LoanBankSelect("Select11", null, sal, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-
-        }
-
-
-
-        [HttpGet]
-        public ActionResult makykdata()
-        {
-
-            var getdata = db.tbl_LoanBankSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,null).ToList();
-            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-
-        }
-
+        
         [HttpGet]
 		public ActionResult BankData()
 		{
 			var tb = db.tbl_LoanBankSelect("Select1", null, null, null, null, null, null, null,null,null,null,null,null,null,null,null,null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
+
 		public ActionResult Detail(int id)
 		{
 			var tb = db.tbl_LoanBankSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
@@ -62,25 +39,42 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			else
 			{
 				var tb = db.tbl_LoanBankSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
-				return View(tb);
+				var vm = new tbl_LoanBank();
+				vm.AccountName = tb.AccountName;
+				vm.ProcessingFees = tb.ProcessingFees;
+				vm.Description = tb.Description;
+				vm.Total = tb.Total;
+				vm.FirmName = tb.FirmName;
+				vm.PaidBy = tb.PaidBy;
+				vm.AccountNo = tb.AccountNo;
+				vm.LendarBank = tb.LendarBank;
+				vm.CurrentBal = tb.CurrentBal;
+				vm.Interest = tb.Interest;
+				vm.Duration = tb.Duration;
+				//vm.BalAsOf = tb.BalAsOf;
+				return View(vm);
 			}
         }
 		[HttpPost]
-		public ActionResult AddOrEdit(int id, tbl_LoanBank emp)
+			
+		public ActionResult AddOrEdit(tbl_LoanBank emp,int id=0)
 		{
-			if (ModelState.IsValid)
-			{
-				db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
-				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
+           
+            if (id == 0)
+            {
+                db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+
+            }
+
+            else
+            {
+                db.tbl_LoanBankSelect("Update", id, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
+                db.SubmitChanges();
+				return RedirectToAction("Index");
 			}
-			else
-			{
-				db.tbl_LoanBankSelect("Update", id, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
-				db.SubmitChanges();
-				return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-			}
-		}
+        }
 
 			[HttpPost]
 		  public ActionResult Delete(int id)

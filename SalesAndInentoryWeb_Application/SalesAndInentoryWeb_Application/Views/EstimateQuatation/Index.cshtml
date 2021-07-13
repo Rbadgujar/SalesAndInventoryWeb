@@ -1,5 +1,6 @@
 ﻿
-@model IEnumerable<SalesAndInentoryWeb_Application.tbl_PurchaseOrderSelectResult>
+@model IEnumerable<SalesAndInentoryWeb_Application.tbl_QuotationSelectResult>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
@@ -28,7 +29,7 @@
         <nav class="navbar navbar-default " style="border:none; background-color:white;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
-                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Estimat Data </h3></label>
+                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Estimate Quotation </h3></label>
                     <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","EstimateQuatation")"><i class="fa fa-plus"></i>Add Estimate</a>
                     <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
                     <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
@@ -40,14 +41,15 @@
 
         <div class="container-fluid">
             <div class="collapse navbar-collapse ">
-                <table id="purchaseorder1" class="table table-striped table-bordered" style="width:100%">
+                <table id="estimate" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>ID1</th>
-                            <th>ExpenseCategory</th>
+                            <th>Ref No</th>
+                            <th>PartyName</th>
+                            <th>ContactNo</th>
                             <th>Date</th>
-                            <th>Balance</th>
-                            <th>Total</th>                          
+                            <th>Status</th>
+                            <th>Total</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -66,21 +68,23 @@
     <script>
                      var Popup, dataTable;
         $(document).ready(function () {
-            dataTable = $("#purchaseorder1").DataTable({
+            dataTable = $("#estimate").DataTable({
                 "ajax": {
                     "url": "/EstimateQuatation/EstimateData",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "ID1" },
-                    { "data": "ExpenseCategory" },
-					{ "data": "Date" },
-					{ "data": "Balance" },
+                    { "data": "RefNo" },
+                    { "data": "PartyName" },
+                    { "data": "ContactNo" },
+                    { "data": "Date" },
+                    { "data": "Status" },
                     { "data": "Total" },
 					
-                    { "data": "ID1", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ParchaseOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    {
+                        "data": "RefNo", "render": function (data) {
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -144,11 +148,11 @@
                     }
 
                     function Delete(id) {
-                        if(confirm('Are You Sure to Delete this Employee Record ?'))
+                        if(confirm('Are You Sure to Delete this Record ?'))
                         {
                             $.ajax({
                                 type: "POST",
-                                url: '@Url.Action("Dele", "ParchaseOrder")/' + id,
+                                url: '@Url.Action("Delete", "EstimateQuatation")/' + id,
                                 success: function (data) {
                                     if (data.success)
                                     {

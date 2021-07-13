@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,32 +25,56 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult saleinvoiceshow()
-     {
-            //        var getdata = db.sp_Cheking(null).Tolist();
-            //          return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            //          //return RedirectToAction("Index");
+        public ActionResult ShowInvoiceData()
+        {
+            var getdata = db.tbl_SaleInvoiceSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult SaleInvoice()
+        {
             return View();
         }
 
-    
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult SaleInvoice(tbl_SaleInvoiceSelectResult invoice)
         {
             try
             {
-                var getdata = db.tbl_SaleInvoiceSelect("Delete", id,null,null,null,null,null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                db.tbl_SaleInvoiceSelect("Insert", null, invoice.PartyName, invoice.BillingName, invoice.ContactNo, invoice.PoNumber, invoice.PoDate, Convert.ToDateTime(invoice.InvoiceDate),  invoice.StateofSupply, invoice.PaymentType, invoice.TransportName, invoice.DeliveryLocation, invoice.VehicleNumber, invoice.Deliverydate, invoice.Description, invoice.TransportCharges, invoice.Image, invoice.Tax1, invoice.CGST, invoice.SGST, invoice.TaxAmount1, invoice.TotalDiscount, invoice.DiscountAmount1, invoice.RoundFigure, invoice.Total, invoice.Received, invoice.RemainingBal, invoice.DueDate, invoice.PaymentTerms, null, null, null, null, null, invoice.Status, null, null, invoice.ItemCategory, invoice.Barcode, invoice.IGST, invoice.Company_ID, invoice.Discount,invoice.TaxAmountShow, invoice.Caltotal, invoice.totalcgst, invoice.totalsgst, invoice.totaligst, invoice.EWayBillNo);
                 db.SubmitChanges();
-                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-                //return RedirectToAction("Index");
+                return RedirectToAction("Index");
+                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
             }
             catch
             {
                 return View();
-                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
         }
-       
-  
+
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+           var getdata = db.tbl_SaleInvoiceSelect("Delete", id,null,null,null,null,null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+           db.SubmitChanges();
+           return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ChartPartial()
+        {
+            var model = new object[0];
+            return PartialView("~/Views/DashBord/_ChartPartial.cshtml", model);
+        }
+
+        SalesAndInentoryWeb_Application.CompanyDataClassDataContext db1 = new SalesAndInentoryWeb_Application.CompanyDataClassDataContext();
+
+        public ActionResult ChartPartial1()
+        {
+            var model = db1.tbl_SaleInvoices;
+            return PartialView("~/Views/Home/_ChartPartial1.cshtml", model);
+        }
     }
 }

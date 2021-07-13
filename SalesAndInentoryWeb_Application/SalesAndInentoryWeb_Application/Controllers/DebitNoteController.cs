@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,19 +24,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
-        //[HttpGet]
-        //public ActionResult AddOrEdit(int id = 0)
-        //{
-        //    if (id == 0)
-        //        return View(new tbl_DebitNote());
-        //    else
-        //    {
-        //        using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-        //        {
-        //            return View(db.tbl_DebitNote.Where(x => x.InvoiceNo == id).FirstOrDefault<tbl_DebitNote>());
-        //        }
-        //    }
-        //}
+        [HttpGet]
+        public ActionResult AddOrEdit()
+        {
+			//if (id == 0)
+			//    return View(new tbl_DebitNote());
+			return View();
+           
+        }
 
         //[HttpPost]
         //public ActionResult AddOrEdit(tbl_DebitNote emp)
@@ -65,5 +61,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
+
+        public ActionResult ComboBoxPartial()
+        {
+            return PartialView("_ComboBoxPartial");
+        }
     }
 }

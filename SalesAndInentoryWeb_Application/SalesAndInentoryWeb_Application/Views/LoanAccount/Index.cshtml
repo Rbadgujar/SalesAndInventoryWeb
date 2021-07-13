@@ -17,7 +17,7 @@
 				</div>
 			</div>
 		</nav>
-       
+      
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse ">
 				<table id="loanAccount" class="table table-striped table-bordered" style="width:100%">
@@ -27,7 +27,6 @@
 							<th>Account Name</th>
 							<th>Account No</th>
 							<th>Lender Bank</th>
-							<th>Firm Name</th>
 							<th>Current Balance</th>
 							<th>Interest</th>
 							<th>Duration</th>
@@ -59,13 +58,13 @@
                     { "data": "AccountName" },
                     { "data": "AccountNo" },
                     { "data": "LendarBank" },
-                    { "data": "FirmName" },
 					{ "data": "CurrentBal" },
 					{ "data": "Interest" },
 					{ "data": "Duration" },
                     { "data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "LoanAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
+                       
+						 return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "LoanAccount")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+					},
                         "orderable": false,
                         "searchable":false,
                         "width":"150px"

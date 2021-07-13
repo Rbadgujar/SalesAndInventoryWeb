@@ -16,72 +16,46 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
-        [HttpGet]
-        public ActionResult ShowSaleOrder()
+        public ActionResult daaa()
         {
-            try
-            {
-                var getdata = db.tbl_SaleOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-                return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            }
-            catch(Exception)
-            {
-                return View();
-            }
+            return View();
         }
 
         [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
+        public ActionResult showSaleOrder()
         {
-            if (id == 0)
-                return View(new tbl_SaleOrder());
-            else
-            {
-                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-                {
-                    return View(db.tbl_SaleOrder.Where(x => x.OrderNo == id).FirstOrDefault<tbl_SaleOrder>());
-                }
-            }
+            var getdata = db.tbl_SaleOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddOrEdit()
+        {
+            return View();
         }
 
         [HttpPost]
-        public ActionResult AddOrEdit(tbl_SaleOrder emp)
+        public ActionResult AddOrEdit(tbl_SaleOrderSelectResult order)
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            try
             {
-                if (emp.OrderNo == 0)
-                {
-                    db.tbl_SaleOrder.Add(emp);
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    db.Entry(emp).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-                }
+                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                db.tbl_SaleOrderSelect("Insert", null, order.PartyName,order.BillingName, order.ContactNo, Convert.ToDateTime(order.OrderDate), order.DueDate, order.StateofSupply, order.PaymentType, order.TransportName, order.DeliveryLocation, order.VehicleNumber, order.Deliverydate, order.Description, order.TransportCharges, order.Image, order.Tax1, order.CGST, order.SGST, order.TaxAmount1, Convert.ToString(order.TotalDiscount), order.DiscountAmount1, order.RoundFigure, order.Total, order.Received, order.RemainingBal, order.PaymentTerms, null, null, null, null, null,  order.Status, null, null, order.ItemCategory, order.Barcode, order.IGST, order.Company_ID,  order.TaxShow, null,order.CalTotal);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
             }
-
-
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "SaleOrder", "AddOrEdit"));
+            }
         }
    
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            try
-            {
-                var getdata = db.tbl_SaleOrderSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-                db.SubmitChanges();
-                return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-                //return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-                // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
-            }
+            var getdata = db.tbl_SaleOrderSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

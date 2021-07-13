@@ -70,14 +70,11 @@
     </script>
 </head>
 <body>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("AddOrEdit", "Creditnote", FormMethod.Post))
     {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
             <div class="panel-heading"><a class="btn" href=@Url.Action("CreditNote", "CreditNote") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Credit Note</p></div>
             <div class="panel border-box">
-
-
-
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse ">
                         
@@ -117,22 +114,13 @@
                                     @Html.ValidationMessageFor(model => model.Barcode)
 
                                 </div>
-
-
-
-
-
-
-
                             </div>
-
-
                             <div class="form-group col-md-2">
 
                                 <div class="pull-right">
                                     E-wayBill No:
                                     <input type="text" id="Ewaybil" value="Eway-Bill no" name="" class="form-control" style="width:150px;height:30px">
-                            State Of Supplay:
+                            State Of Supply:
                                     <select name="state" id="state" class="form-control" style="width:150px;height:30px">
                                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -187,13 +175,9 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse ">
                             <div class="form-group scrolldown">
-
                                 <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
-
                                     <thead>
-
                                         <tr>
-
                                             <th>
                                                 <label>Item Name</label>
                                                 <select name="cars" id="dp" class="form-control" style="width:90PX">
@@ -205,18 +189,15 @@
                                             </th>
                                             <th>
                                                 <label>MRP</label>
-
                                                 <input type="text" id="sp" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
                                                 <label>Tax%</label>
-
                                                 <input type="text" id="ts" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
                                                 <label>Descount</label>
                                                 <input type="text" id="ds" name="" class="form-control" style="width:70PX">
-
                                             <th>
                                                 <label>Qty</label>
                                                 <input type="text" id="qty" name="" class="form-control" style="width:70PX">
@@ -224,7 +205,6 @@
                                             <th>
                                                 <label>Dis Amount</label>
                                                 <input type="text" id="da" name="" class="form-control" style="width:70PX">
-
                                             </th>
                                             <th>
                                                 <label>Tax Amount</label>
@@ -237,22 +217,15 @@
                                             <th>
                                                 <a class="btn btn-primary pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
                                             </th>
-
                                         </tr>
                                     </thead>
-
                                 </table>
                             </div>
                         </div>
                     </div>
                 </nav>
-
-
-
-                <div class="container-fluid">
                     <div class="collapse navbar-collapse ">
                         <div class="row">
-
                             <div class="col-md-2">
                                Payment Type:
                                 <select name="cars" id="dp" class="form-control" style="width:150px;">
@@ -279,12 +252,7 @@
                            }
                        })
                                 @Html.ValidationMessageFor(model => model.DeliveryLocation)
-
-
-
-
-
-                            </div>
+                        </div>
                             <div class="col-md-2 form-group">
                                cheque  No:
                                 @Html.EditorFor(model => model.VehicleNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Cheek no", @style = "width:150px;" } })
@@ -330,11 +298,9 @@
                             <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
 
                         </div>
+                            <div class="col-md-1 form-group" style="margin-top:8px; ">
 
-
-                        <div class="col-md-1 form-group" style="margin-top:8px; ">
-
-                        </div>
+                            </div>
                         <div class="col-md-3 form-group">
 
                         </div>
@@ -344,42 +310,17 @@
 
                 </div>
             </div>
-            <div>
-
-            </div>
-        </div>
-
-
-
+            
     }
-
-
-
-
-
-
-
-
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
 </body>
 </html>

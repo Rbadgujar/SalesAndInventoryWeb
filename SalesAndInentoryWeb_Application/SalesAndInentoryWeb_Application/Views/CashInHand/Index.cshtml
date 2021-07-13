@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SalesAndInentoryWeb_Application.tbl_CashInhandSelectResult>
+﻿@model IEnumerable<SalesAndInentoryWeb_Application.tbl_CashAdjustmentselectResult>
 @{
 	ViewBag.Title = "Index";
 	Layout = "~/Views/Shared/ideal.cshtml";
@@ -42,10 +42,10 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Adjustment</th>
+							<th>Bank Name</th>
+							<th>Cash Adjustment</th>
 							<th>Amount</th>
 							<th>Date</th>
-							<th>Description</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -55,6 +55,12 @@
 	</nav>
 
 </div>
+
+<br />
+<br />
+<br />
+<br />
+
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
 	<script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
@@ -71,10 +77,10 @@
                 },
 				"columns": [
                     { "data": "ID" },
-					{ "data": "Adjustment" },
-					{ "data": "Amount" },
+					{ "data": "BankName" },
+					{ "data": "CashAdjustment" },
+					{ "data": "CashAmount" },
 					{ "data": "Date" },
-					{ "data": "Description" },
                     {"data":"ID" , "render" : function (data) {
                         return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "CashInHand")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
@@ -111,22 +117,22 @@
             });
         }
 
-        function SubmitForm(form) {
-            $.validator.unobtrusive.parse(form);
-            if($(form).valid()){
-                $.ajax({
-                    type : "POST",
-                    url : form.action,
-                    data : $(form).serialize(),
-                    success : function (data) {
-                        if(data.success)
-                        {
-                            Popup.dialog('close');
-                            dataTable.ajax.reload();
+		function SubmitForm(form) {
+			$.validator.unobtrusive.parse(form);
+			if ($(form).valid()) {
+				$.ajax({
+					type: "POST",
+					url: form.action,
+					data: $(form).serialize(),
+					success: function (data) {
+						if (data.success) {
+							Popup.dialog('close');
+							dataTable.ajax.reload();
 
-                            $.notify(data.message,{
-                                globalPosition :"top center",
-                                className : "success"
+							$.notify(data.message, {
+								globalPosition: "top center",
+								className: "success"
+						
                             })
 
                         }

@@ -109,20 +109,9 @@
                                     Barcode:
                                     @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
                                     @Html.ValidationMessageFor(model => model.Barcode)*@
-
-                                </div>
-
-
-
-
-
-
-
-                            </div>
-
-
-                            <div class="form-group col-md-2">
-
+                              </div>
+                        </div>
+                        <div class="form-group col-md-2">
                                 <div class="pull-right">
                                    Expences NO:
                                     <input type="text" id="Ewaybil" value="Expences no" name="" class="form-control" style="width:150px;height:30px">
@@ -170,24 +159,16 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
                 <br />
-
                 <nav class="navbar navbar-default " style="border:none; background-color:white">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse ">
                             <div class="form-group scrolldown" style="height:200px">
-
                                 <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
-
                                     <thead>
-
                                         <tr>
-
                                             <th>
                                                 <label>Item Name</label>
                                                 <select name="cars" id="dp" class="form-control" style="width:90PX">
@@ -199,18 +180,15 @@
                                             </th>
                                             <th>
                                                 <label>MRP</label>
-
                                                 <input type="text" id="sp" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
                                                 <label>Tax%</label>
-
                                                 <input type="text" id="ts" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
                                                 <label>Descount</label>
                                                 <input type="text" id="ds" name="" class="form-control" style="width:70PX">
-
                                             <th>
                                                 <label>Qty</label>
                                                 <input type="text" id="qty" name="" class="form-control" style="width:70PX">
@@ -218,7 +196,6 @@
                                             <th>
                                                 <label>Dis Amount</label>
                                                 <input type="text" id="da" name="" class="form-control" style="width:70PX">
-
                                             </th>
                                             <th>
                                                 <label>Tax Amount</label>
@@ -231,22 +208,16 @@
                                             <th>
                                                 <a class="btn btn-primary pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
                                             </th>
-
                                         </tr>
                                     </thead>
-
                                 </table>
                             </div>
                         </div>
                     </div>
                 </nav>
-
-
-
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse ">
                         <div class="row">
-
                             <div class="col-md-2">
                                 <div style="display:none">                                Payment Type:
                                 @*<select name="cars" id="dp" class="form-control" style="width:150px;">
@@ -273,11 +244,7 @@
                                }
                            })
                                 @Html.ValidationMessageFor(model => model.DeliveryLocation)*@
-
-</div>
-
-
-
+                                </div>
                             </div>
                             <div class="col-md-2 form-group">
                                 <div style="display:none">
@@ -303,85 +270,43 @@
                                     Recived:
                                     @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
                                     @Html.ValidationMessageFor(model => model.Balance)
-                                    Remining Bal:
+                                    Remaining Bal:
 
                                     @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
                                     @Html.ValidationMessageFor(model => model.Paid)
-
-
                                 </div>
-
                             </div>
-
                         </div>
-
-
                     </div>
                     <div class="row">
                         <div class="col-md-1 form-group" style="margin-top:8px; ">
-
                         </div>
                         <div class="col-md-3">
-
                         </div>
                         <div class="col-md-1 form-group" style="margin-top:8px; ">
-
                         </div>
                         <div class="col-md-3 form-group">
                             <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" />
                             <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
-
                         </div>
-
-
                         <div class="col-md-1 form-group" style="margin-top:8px; ">
-
                         </div>
                         <div class="col-md-3 form-group">
-
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
-            <div>
-
-            </div>
         </div>
-
-
-
-    }
-
-
-
-
-
-
-
-
-
+     }
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-
     <br />
-     
     <br />
-
     <br />
-
 </body>
 </html>

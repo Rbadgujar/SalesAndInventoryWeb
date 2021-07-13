@@ -2,10 +2,7 @@
 @{
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-
 <!DOCTYPE html>
-<br>
-<br>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -23,13 +20,11 @@
 <body>
     @using (Html.BeginForm())
     {
-        
         <div class="panel panel-primary container" style="height:100%; width:100%;">
-            <br>
-            <div class="panel-heading text-center"><h4>Payment Out</h4></div>
+            <div class="panel-heading "><a class="btn" href=@Url.Action("Index", "PaymentOut") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Payment Out</p></div>
             <div class="panel border-box">
-                <br>
-                <nav class="navbar navbar-default ">
+
+                <nav class="navbar navbar-default " style="background-color:white;border:none">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse ">
                             <br>
@@ -41,8 +36,6 @@
 
                                    settings.Name = "Label1";
                                    settings.Text = "Customer Name   :";
-
-
                                }).GetHtml()
                                     @Html.DevExpress().TextBoxFor(m => m.CustomerName, settings =>
                                {
@@ -74,12 +67,12 @@
                                    settings.Text = "Image :";
                                }).GetHtml()
                                 </div>
-                                </div>
-                                <div class="row">
+                            </div>
+                            <div class="row">
                                 <div class="form-group col-xs-4">
                                     @Html.DevExpress().Label(settings =>
                                {
-                                   settings.Style["font-weight"] = "bold";  
+                                   settings.Style["font-weight"] = "bold";
 
                                    settings.Name = "Label2";
                                    settings.Text = "PaymentType   :";
@@ -97,7 +90,7 @@
                                    });
                                }).GetHtml()
                                 </div>
-                                
+
                                 <div class="form-group col-xs-4">
                                     @Html.DevExpress().Label(settings =>
                                {
@@ -115,7 +108,7 @@
 
                                }).GetHtml()
                                 </div>
-                                
+
                             </div>
 
                             <div class="row">
@@ -196,8 +189,8 @@
                     <input type="submit" value="Submit" class="btn btn-primary pull-right" style="margin-right:12px; margin-top:2px; " />
                     <a class="text-right btn btn-success" href=@Url.Action("Index","PaymentOut")>Back To List</a>
                 </div>
-                </div>
             </div>
+        </div>
 
     }
     </body>

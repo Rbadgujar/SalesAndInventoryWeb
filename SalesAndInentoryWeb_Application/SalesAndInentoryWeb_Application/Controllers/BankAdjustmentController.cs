@@ -12,12 +12,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
     {
 		CompanyDataClassDataContext db = new CompanyDataClassDataContext();
 		// GET: BankAdjustment
-		[HttpGet]
+		
 		public ActionResult Index()
         {
             return View();
         }
-
+		[HttpGet]
 		public ActionResult adjustdata()
 		{
 			var tb = db.tbl_BankAdjustmentselect("Select1", null, null, null, null, null, null, null).ToList();
@@ -31,17 +31,43 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		}
 
 		[HttpGet]
-		public ActionResult InsertCustomer()
+		public ActionResult AddOrEdit(int id = 0)
 		{
-			return View();
+			if (id == 0)
+			{
+				return View(new tbl_BankAdjustment());
+			}
+			else
+			{
+
+				var tb = db.tbl_BankAdjustmentselect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+				var vm = new tbl_BankAdjustment();
+				vm.BankAccount = tb.BankAccount;
+				vm.EntryType = tb.EntryType;
+				vm.Amount = tb.Amount;
+				vm.Date = Convert.ToDateTime(tb.Date);
+				vm.Description = tb.Description;
+				return View(vm);
+			}
 		}
 
 		[HttpPost]
-		public JsonResult AddOrEdit(tbl_BankAdjustment conn)
+		public ActionResult AddOrEdit(int id ,tbl_BankAdjustment conn)
 		{
-			db.tbl_BankAdjustmentselect("Insert", null, conn.BankAccount, conn.EntryType, conn.Amount, conn.Date, conn.Description, null);
-			db.SubmitChanges();
-			return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+			if (id == 0)
+			{
+
+				db.tbl_BankAdjustmentselect("Insert", null, conn.BankAccount, conn.EntryType, conn.Amount, conn.Date, conn.Description, null);
+				db.SubmitChanges();
+				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+			}
+			else
+			{
+				db.tbl_BankAdjustmentselect("Update", id, conn.BankAccount, conn.EntryType, conn.Amount, conn.Date, conn.Description, null);
+				db.SubmitChanges();
+				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+			}
+			
 		}
 
 		[HttpPost]

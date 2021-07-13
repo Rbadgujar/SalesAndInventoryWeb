@@ -1,6 +1,4 @@
 ﻿@model SalesAndInentoryWeb_Application.Models.tbl_ItemMaster
-
-
 @{
     ViewBag.Title = "itemmaster";
     Layout = "~/Views/Shared/ideal.cshtml";
@@ -48,8 +46,7 @@ $(document).ready(function(){
                                {
                                    settings.Style["font-weight"] = "bold";
                                    settings.Name = "Label1";
-                                   settings.Text = "Item Name   :";
-                                  
+                                   settings.Text = "Item Name   :";                                
                                }).GetHtml()
                                         </div>
                                     </div>
@@ -243,11 +240,8 @@ $(document).ready(function(){
                                         @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
-
                                    settings.Name = "ratelable";
                                    settings.Text = "Select Tax Rate :";
-
-
                                }).GetHtml()
                                     </div>
                                 </div>
@@ -305,10 +299,6 @@ $(document).ready(function(){
                                    settings.ControlStyle.CssClass = "form-control";
                                    settings.Style["border"] = "1px solid black";
                                }).GetHtml()
-
-
-
-
                                 </div>
 
 </div>
@@ -338,13 +328,11 @@ $(document).ready(function(){
                                 </div>
                                 <div class="form-group col-md-2">
                                     <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
+                              @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
-
                                    settings.Name = "labatprice";
                                    settings.Text = "At Price:";
-
                                }).GetHtml()
                                         </div>
                                     </div>
@@ -409,8 +397,8 @@ $(document).ready(function(){
                                 </div>
                                 <div class="form-group col-md-4">
 
-                                    <input type="button" class="btn btn-yahoo" value="Item Tracking Details" name="itemtracking" id="it" style="height:32px;width:45%" />
-                                    <input type="button" value="Select Unit"class="btn btn-yahoo" style="height:31px; width:45%" />
+                                    <input type="button" class="btn btn-yahoo" value="Item Tracking Details" onclick="PopupForm('@Url.Action("unit","ItemMaster")')"  style="height:32px;width:45%" />
+                                    <input type="button" value="Select Unit" onclick="PopupFormf('@Url.Action("ItemTraking","ItemMaster")')" class="btn btn-yahoo" style="height:31px; width:45%" />
 
                                 </div>
                                 <div class="form-group col-md-2">
@@ -569,6 +557,129 @@ $(document).ready(function(){
         </div>
 
     }
+    @section scripts{
+        <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+        <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
+        <script>
+        var Popup, dataTable;
+        $(document).ready(function () {
+			dataTable = $("#bankaccount").DataTable({
+                "ajax": {
+					"url": "/BankAccount/Data",
+                    "type": "GET",
+                   "datatype": "json"
+
+                },
+				"columns": [
+					{ "data": "ID" },
+					{ "data": "AccountName" },
+					{ "data": "BankName" },
+                    { "data": "AccountNo" },
+					{ "data": "OpeningBal" },
+					{ "data": "Date" },
+                    {"data":"ID" , "render" : function (data) {
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+
+                ],
+                "language": {
+
+                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                }
+            });
+        });
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Select ItemTraking',
+                    height: 350,
+                    width:520,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+                });
+            });
+        }
+        function PopupFormf(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Select Unit',
+                    height: 250,
+                    width: 300,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+                });
+            });
+        }
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if($(form).valid()){
+                $.ajax({
+                    type : "POST",
+                    url : form.action,
+                    data : $(form).serialize(),
+                    success : function (data) {
+                        if(data.success)
+                        {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message,{
+                                globalPosition :"top center",
+                                className : "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+
+        function Delete(id) {
+            if(confirm('Are You Sure to Delete this Employee Record ?'))
+            {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Delete","BankAccount")/' + id,
+                    success: function (data) {
+                        if (data.success)
+                        {
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+
+                });
+            }
+        }
+        </script>
+    }
+
+
+
 </body>
 </html>
 

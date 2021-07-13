@@ -160,7 +160,7 @@
                                 <div class="form-group col-md-4">
                                     @Html.DevExpress().TextBoxFor(m => m.Description, settings =>
                                {
-                                   settings.Properties.NullText = "Enter Receipt No...";
+                                   settings.Properties.NullText = "Enter Desption";
                                    settings.ControlStyle.CssClass = "form-control";
                                    settings.Style["Border"] = "1px Solid Black";
                                }).GetHtml()
@@ -197,6 +197,7 @@
 
 
                             <div class="row">
+
                                 <div class="form-group col-md-2 " style="text-align:right;">
                                     <div style="margin-top:10px;">
                                         @Html.DevExpress().Label(settings =>
@@ -216,9 +217,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    @Html.DevExpress().TextBoxFor(m => m.tbl_CompanyMaster.CompanyName, settings =>
+                                    @Html.DevExpress().TextBoxFor(m => m.FirmName, settings =>
                                {
-                                   settings.Properties.NullText = "Enter Description...";
+                                   settings.Properties.NullText = "Enter company...";
                                    settings.ControlStyle.CssClass = "form-control";
                                    settings.Style["Border"] = "1px Solid Black";
                                }).GetHtml()
@@ -237,10 +238,10 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-4">
-                                    <input type="date" class="form-control" style="border: 1px solid black" />
+								<div class="form-group col-md-4">
+									@Html.TextBoxFor(model => model.BalAsOf, new { @type = "date", @class = "form - group" })
 
-                                </div>
+								</div>
 
 
                             </div>
@@ -409,35 +410,10 @@
                                 <div class="form-group col-md-4">
                                     <input type="reset" value="Clear" class="btn btn-primary pull-left" style="margin-right:12px; margin-top:2px; width:35%;color:white " />
                                     <input type="submit" value="Save" class="btn btn-primary pull-left" style="margin-right:12px;margin-top:2px;width:35% ;color:white" />
-
                                 </div>
 
 
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                           
-                            
-
-                            
-                        
-                            
+                            </div>  
                             </div>
                     </div>
                 </nav>
