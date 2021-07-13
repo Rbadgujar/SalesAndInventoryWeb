@@ -33,22 +33,26 @@ namespace SalesAndInentoryWeb_Application.Controllers
             db.SubmitChanges();
             return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpGet]
         public ActionResult AddOrEdit()
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult AddOrEdit(int id = 0)
+        public ActionResult AddOrEdit(tbl_DeliveryChallanSelectResult challan)
         {
-            if (id == 0)
-                return View(new tbl_DeliveryChallan());
-            else
+            try
             {
-                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-                {
-                    return View(db.tbl_DeliveryChallan.Where(x => x.ChallanNo == id).FirstOrDefault<tbl_DeliveryChallan>());
-                }
+                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                db.tbl_DeliveryChallanSelect("Insert", null, challan.PartyName, challan.BillingName, challan.BillingAddress, challan.PartyAddress,Convert.ToDateTime(challan.InvoiceDate), challan.DueDate, challan.StateofSupply, challan.ContactNo, challan.PaymentType, challan.TransportName, challan.DeliveryLocation, challan.VehicleNumber, challan.Deliverydate, challan.Description, challan.TransportCharges, challan.Image, challan.Tax1, challan.TaxAmount1, challan.CGST, challan.SGST, Convert.ToString(challan.TotalDiscount), challan.DiscountAmount1, challan.RoundFigure, challan.Total, challan.Received, challan.RemainingBal, challan.PaymentTerms,null,null,null,null,null,null, challan.Status, null, challan.ItemCategory, challan.Barcode, challan.IGST, challan.Company_ID, challan.CalTotal, challan.TaxShow, null);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "DeliveryChallan", "AdOrEdit"));
             }
         }
     }
