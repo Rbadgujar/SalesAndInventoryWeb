@@ -28,35 +28,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
-        [HttpGet]
-        public ActionResult AddOrEdit()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddOrEdit(tbl_ExpensesSelectResult exp)
-        {
-            try
-            {
-                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-                db.tbl_ExpensesSelect("Insert", null, exp.BillingName, exp.ContactNo, Convert.ToDateTime(exp.OrderDate), exp.DueDate);
-                db.SubmitChanges();
-                return RedirectToAction("Index");
-                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                return View("Error", new HandleErrorInfo(e, "SaleOrder", "AdOrEdit"));
-            }
-        }
-
-        [HttpPost]
-		public ActionResult Delete(int id)
-		{
-			var tb = db.tbl_ExpensesSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-			db.SubmitChanges();
-			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-		}
+         
     }
 }
