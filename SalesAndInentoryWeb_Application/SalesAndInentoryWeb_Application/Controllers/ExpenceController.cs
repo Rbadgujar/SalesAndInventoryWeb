@@ -29,40 +29,27 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		}
 
         [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
+        public ActionResult AddOrEdit()
         {
-            if (id == 0)
-                return View(new tbl_Expenses());
-            else
-            {
-                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-                {
-                    return View(db.tbl_Expenses.Where(x => x.ID1 == id).FirstOrDefault<tbl_Expenses>());
-                }
-            }
+            return View();
         }
 
-        //[HttpPost]
-        //public ActionResult AddOrEdit(tbl_Expenses emp)
-        //{
-        //    using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-        //    {
-        //        if (emp.ID1 == 0)
-        //        {
-        //            db.tbl_Expenses.Add(emp);
-        //            db.SaveChanges();
-        //            return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-        //        }
-        //        else
-        //        {
-        //            db.Entry(emp).State = EntityState.Modified;
-        //            db.SaveChanges();
-        //            return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-        //        }
-        //    }
-
-
-        // }
+        [HttpPost]
+        public ActionResult AddOrEdit(tbl_ExpensesSelectResult exp)
+        {
+            try
+            {
+                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                db.tbl_ExpensesSelect("Insert", null, exp.BillingName, exp.ContactNo, Convert.ToDateTime(exp.OrderDate), exp.DueDate);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "SaleOrder", "AdOrEdit"));
+            }
+        }
 
         [HttpPost]
 		public ActionResult Delete(int id)
