@@ -21,48 +21,43 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_PurchaseBillselect("Select1", null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
+		//[HttpGet]
+		//public ActionResult AddOrEdit(int id = 0)
+		//{
+		//	if (id == 0)
+		//		return View(new tbl_PurchaseBill());
+		//	else
+		//	{
+		//		using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+		//		{
+		//			return View(db.tbl_PurchaseBill.Where(x => x.BillNo == id).FirstOrDefault<tbl_PurchaseBill>());
+		//		}
+		//	}
+		//}
 
-		
-		public ActionResult AddOrEdit()
-		{
-			//if (billno == 0)
-			//{
-			//return View(new tbl_PurchaseBill());
-			//}
-			//else
-			//{
-			//	var tb = db.tbl_PurchaseBillselect("Details", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == billno);
-			//	var vm = new tbl_PurchaseBill();
-			//	//vm.AccountName = tb.AccountName;
-			//	//vm.BankName = tb.BankName;
-			//	//vm.AccountNo = tb.AccountNo;
-			//	//vm.OpeningBal = tb.OpeningBal;
-			//	//vm.Date = Convert.ToDateTime(tb.Date);
-			//	return View(vm);
-			//}
-			return View();
-		}
+		//[HttpPost]
+		//public ActionResult AddOrEdit(tbl_PurchaseBill emp)
+		//{
+		//	using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+		//	{
+		//		if (emp.BillNo == 0)
+		//		{
+		//			db.tbl_PurchaseBill.Add(emp);
+		//			db.SaveChanges();
+		//			return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
+		//		}
+		//		else
+		//		{
+		//			db.Entry(emp).State = EntityState.Modified;
+		//			db.SaveChanges();
+		//			return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+		//		}
+		//	}
 
-		[HttpPost]
-		public ActionResult AddOrEdit(tbl_PurchaseBill emp)
-		{
-			//if (billno == 0)
-			//{
 
-			//var tb = db.tbl_PurchaseBillselect("Insert", null, emp.PONo, emp.PartyName, emp.BillingName, emp.ContactNo, emp.BillDate, emp.PoDate, emp.DueDate, emp.StateofSupply, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.CGST, emp.SGST, emp.TaxAmount1, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Paid, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, null, null, emp.Status, null, null, emp.Barcode, emp.ItemCategory, emp.IGST, null, null, null, null, null);
-			//db.SubmitChanges();
-			//return RedirectToAction("Index");
-			//}
-			//else
-			//{
-			//	var tb = db.tbl_PurchaseBillselect("Update", BillNo, emp.PONo, emp.PartyName, emp.BillingName, emp.ContactNo, emp.BillDate, emp.PoDate, emp.DueDate, emp.StateofSupply, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.CGST, emp.SGST, emp.TaxAmount1, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Paid, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, null, null, emp.Status, null, null, emp.Barcode, emp.ItemCategory, emp.IGST, null, null, null, null, null);
-			//	db.SubmitChanges();
-			//	return RedirectToAction("Index");
-			//}
-			return View();
-		}
+		//}
 
-		[HttpPost]
+        [HttpPost]
         public ActionResult Delete(int id)
         {
 			var tb = db.tbl_PurchaseBillselect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
