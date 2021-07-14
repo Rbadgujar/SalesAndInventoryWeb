@@ -54,7 +54,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 vm.PartyName = tb.PartyName;
                 vm.PaymentType = tb.PaymentType;
                 vm.ReceiptNo = tb.ReceiptNo;
-                vm.Date = tb.Date;
+                vm.Date = tb.Date.ToString();
                 vm.Description = tb.Description;
                 vm.ReceivedAmount = tb.ReceivedAmount;
                 vm.UnusedAmount = tb.UnusedAmount;

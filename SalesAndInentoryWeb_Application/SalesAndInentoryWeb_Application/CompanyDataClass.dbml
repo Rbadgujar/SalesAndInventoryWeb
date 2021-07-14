@@ -91,6 +91,89 @@
       <Column Name="E_Way_Bill" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_SaleOrder" Member="tbl_SaleOrders">
+    <Type Name="tbl_SaleOrder">
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BillingName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ContactNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="StateofSupply" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PaymentType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TransportName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DeliveryLocation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VehicleNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Deliverydate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TransportCharges" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Tax1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CGST" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SGST" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TaxAmount1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalDiscount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiscountAmount1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RoundFigure" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RemainingBal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PaymentTerms" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Feild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Feild2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Feild3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Feild4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Feild5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartiesID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemCategory" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="companyID" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IGST" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CalTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TaxShow" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="tbl_SaleOrder_tbl_SaleOrderInner" Member="tbl_SaleOrderInners" ThisKey="OrderNo" OtherKey="OrderNo" Type="tbl_SaleOrderInner" />
+      <Association Name="tbl_SaleOrder_tbl_SaleOrderInner1" Member="tbl_SaleOrderInners1" ThisKey="OrderNo" OtherKey="OrderNo" Type="tbl_SaleOrderInner" />
+      <Association Name="tbl_SaleOrderInner_tbl_SaleOrder" Member="tbl_SaleOrderInner" ThisKey="ID" OtherKey="ID" Type="tbl_SaleOrderInner" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_SaleOrderInner" Member="tbl_SaleOrderInners">
+    <Type Name="tbl_SaleOrderInner">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BasicUnit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TaxForSale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SaleTaxAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="freeQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Discount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiscountAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CGST" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SGST" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IGST" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ItemTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="tbl_SaleOrderInner_tbl_SaleOrder" Member="tbl_SaleOrders" ThisKey="ID" OtherKey="ID" Type="tbl_SaleOrder" />
+      <Association Name="tbl_SaleOrderInner_tbl_SaleOrderInner" Member="tbl_SaleOrderInner2" ThisKey="ID" OtherKey="ID" Type="tbl_SaleOrderInner" Cardinality="One" />
+      <Association Name="tbl_SaleOrder_tbl_SaleOrderInner" Member="tbl_SaleOrder" ThisKey="OrderNo" OtherKey="OrderNo" Type="tbl_SaleOrder" IsForeignKey="true" />
+      <Association Name="tbl_SaleOrder_tbl_SaleOrderInner1" Member="tbl_SaleOrder1" ThisKey="OrderNo" OtherKey="OrderNo" Type="tbl_SaleOrder" IsForeignKey="true" />
+      <Association Name="tbl_SaleOrderInner_tbl_SaleOrderInner" Member="tbl_SaleOrderInner1" ThisKey="ID" OtherKey="ID" Type="tbl_SaleOrderInner" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="CompanyID" Parameter="companyID" Type="System.Int32" DbType="Int" />

@@ -81,13 +81,13 @@
 						<div class="row">
 							<div class="form-group col-md-3">
 								@*<div class="pull-right">
-									@Html.DevExpress().Label(settings =>
-									{
-										settings.Style["font-weight"] = "bold";
-										settings.Name = "Label1";
-										settings.Text = "Party Name   :";
-									}).GetHtml()
-									</div>*@
+		@Html.DevExpress().Label(settings =>
+		{
+			settings.Style["font-weight"] = "bold";
+			settings.Name = "Label1";
+			settings.Text = "Party Name   :";
+		}).GetHtml()
+		</div>*@
 
 								Party Name:
 								<select name="cars" id="dp" class="form-control" style="width:220px;height:32px">
@@ -98,7 +98,9 @@
 									<option value="audi">Bhagyashri</option>
 								</select>
 								Address:
-								<textarea name='awesome' class="form-control" style="width:220px;height:50px">Address:</textarea>
+								@*//<textarea name='awesome' class="form-control" style="width:220px;height:50px">Address:</textarea>*@
+
+								@Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control", placeholder = "Address", @style = "width:220px;height:50px" } })
 								Contact No:
 								@Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } })
 								@Html.ValidationMessageFor(model => model.ContactNo)
@@ -106,10 +108,10 @@
 							<div class="form-group col-md-7">
 								<div class="pull-right">
 									Po No
-									@Html.EditorFor(model => model.PONo, new { htmlAttributes = new { @class = "form-control", placeholder = "Po Number", @style = "width:150px;height:30px" } })
-									@Html.ValidationMessageFor(model => model.CategoryID)
-									Po Date:
-									<input placeholder="PO Date" class="textbox-n form-control" style="width:150px;height:30px;" type="text" onfocus="(this.type='date')" id="date">
+									@Html.EditorFor(model => model.PONo, new { htmlAttributes = new { @class = "form-control", placeholder = "Po Number", @style = "width:145px;height:30px" } })
+									@Html.ValidationMessageFor(model => model.PONo)
+									PO Date:
+									@Html.TextBoxFor(model => model.PoDate, new { @type = "date", @class = "form-control", @style = "width:150px;" })
 									Barcode:
 									@Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
 									@Html.ValidationMessageFor(model => model.Barcode)
@@ -120,7 +122,8 @@
 
 								<div class="pull-right">
 									E-Way BillNo:
-									<input type="text" id="Ewaybil" value="Eway-Bill no" name="" class="form-control" style="width:150px;height:30px">
+									@Html.EditorFor(model => model.Feild4, new { htmlAttributes = new { @class = "form-control", placeholder = "Eway Bill Number", @style = "width:145px;height:30px" } })
+									@Html.ValidationMessageFor(model => model.Feild4)
 									State :
 									<select name="state" id="state" class="form-control" style="width:150px;height:30px">
 										<option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -161,7 +164,7 @@
 										<option value="West Bengal">West Bengal</option>
 									</select>
 									Invoice Date:
-									<input placeholder="Invoice Date" class="textbox-n form-control" type="text" onfocus="(this.type='date')" style="width:150px;height:30px" id="date">
+									@Html.TextBoxFor(model => model.BillDate, new { @type = "date", @class = "form-control", @style = "width:150px;" })
 								</div>
 							</div>
 						</div>
@@ -256,7 +259,7 @@
 									  settings.Style["height"] = "30px";
 								  }).GetHtml()
 								Vical No:
-								@Html.EditorFor(model => model.DeliveryLocation, new
+								@Html.EditorFor(model => model.VehicleNumber, new
 								  {
 									  htmlAttributes = new
 									  {
@@ -265,7 +268,7 @@
 										  @style = "width:150px;height:30px;"
 									  }
 								  })
-								@Html.ValidationMessageFor(model => model.DeliveryLocation)
+								@Html.ValidationMessageFor(model => model.VehicleNumber)
 
 
 
@@ -274,8 +277,8 @@
 							</div>
 							<div class="col-md-2 form-group">
 								Cheque No:
-								@Html.EditorFor(model => model.VehicleNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Cheek no", @style = "width:150px;" } })
-								@Html.ValidationMessageFor(model => model.VehicleNumber)
+								@Html.EditorFor(model => model.Feild1, new { htmlAttributes = new { @class = "form-control", placeholder = "Cheek no", @style = "width:150px;" } })
+								@Html.ValidationMessageFor(model => model.Feild1)
 
 								Delivery Date:
 								@Html.TextBoxFor(model => model.Deliverydate, new { @type = "date", @class = "form-control", @style = "width:150px;" })
@@ -289,15 +292,15 @@
 							<div class="col-md-8 form-group">
 								<div class="pull-right">
 									Total :
-									@Html.EditorFor(model => model.CalTotal, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
-									@Html.ValidationMessageFor(model => model.CalTotal)
+									@Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
+									@Html.ValidationMessageFor(model => model.Total)
 									Recived:
-									@Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
-									@Html.ValidationMessageFor(model => model.RemainingBal)
+									@Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
+									@Html.ValidationMessageFor(model => model.Paid)
 									Remining Bal:
 
-									@Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
-									@Html.ValidationMessageFor(model => model.Paid)
+									@Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
+									@Html.ValidationMessageFor(model => model.RemainingBal)
 
 
 								</div>
