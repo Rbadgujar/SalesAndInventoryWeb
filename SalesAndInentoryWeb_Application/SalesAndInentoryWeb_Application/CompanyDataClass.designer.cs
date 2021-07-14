@@ -8332,7 +8332,7 @@ namespace SalesAndInentoryWeb_Application
 
         private string _ExpenseCategory;
 
-        private string _Date;
+        private System.Nullable<System.DateTime> _Date;
 
         private string _Description;
 
@@ -8389,8 +8389,8 @@ namespace SalesAndInentoryWeb_Application
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Date", DbType = "NVarChar(MAX)")]
-        public string Date
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Date", DbType = "Date")]
+        public System.Nullable<System.DateTime> Date
         {
             get
             {

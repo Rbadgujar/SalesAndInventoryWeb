@@ -25,6 +25,13 @@
             height: 40px;
             margin: 0px;
             resize: vertical;
+
+        }
+        yourCustomClass{
+         height: 40px;
+            margin: 0px;
+            resize: vertical;
+          
         }
     </style>
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
@@ -86,26 +93,28 @@
                                         settings.Text = "Party Name   :";
                                     }).GetHtml()
                                     </div>*@
-                                Party Name:
-                                <select name="cars" id="dp" class="form-control" style="width:220px;height:32px">
-                                    <option></option>
-                                    <option value="volvo">Rahul</option>
-                                    <option value="saab">Vithoba</option>
-                                    <option value="mercedes">Pallavi</option>
-                                    <option value="audi">Bhagyashri</option>
-                                </select>
+                                <b>Party Name:</b>
+                                @Html.DropDownListFor(model => model.PartyName, new List<SelectListItem>
+                                   {
+                                       new SelectListItem {Text = "Vithoba", Value = "Vithoba", Selected = true },
+                                       new SelectListItem {Text = "pallavi", Value = "pallavi" },
+                                       new SelectListItem {Text = "Rahul", Value = "Rahul" },
+                                       new SelectListItem {Text = "Bhagyashri", Value = "Bhagyashri" },
+                                   }, new { @class = "form-control",@style= "width:220px" })  
                                Address:
-                                <textarea name='awesome' class="form-control" style="width:220px;height:50px">Address:</textarea>
+                                <br>
+                                @Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control" , @style = "width:220px" } })
+                                <br>
                                 Contact No:
                                 @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } })
                                 @Html.ValidationMessageFor(model => model.ContactNo)
                             </div>
                             <div class="form-group col-md-7">
                                 <div class="pull-right">
-                                    Bill No:
-                                    <input type="text" id="BillNO" name="" class="form-control" value="Bill No " style="width:150px;height:30px">
-                                    Bill Date:
-                                    <input placeholder="PO Date" class="textbox-n form-control" style="width:150px;height:30px;" type="text" onfocus="(this.type='date')" id="date">
+                                    Order No:
+                                    @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control datepicker", @style = "width:150px;" })
+                                    Order Date:
+                                    @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker", @style = "width:150px;" })
                                     Barcode:
                                     @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
                                     @Html.ValidationMessageFor(model => model.Barcode)
@@ -114,9 +123,9 @@
                             <div class="form-group col-md-2">
                                 <div class="pull-right">
                                     Eway BillNo:
-                                    <input type="text" id="Ewaybil" value="Eway-Bill no" name="" class="form-control" style="width:150px;height:30px">
+                                    <input type="text" id="Ewaybil" value="Eway-Bill no" name="" class="form-control" style="width:150px;height:30px" >
                                     State Of Supllay:
-                                    <select name="state" id="state" class="form-control" style="width:150px;height:30px">
+                                    <select name="StateOfSupply" id="StateOfSupply" value="StateOfSupply" class="form-control" style="width:150px;height:30px">
                                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -154,8 +163,8 @@
                                         <option value="Uttarakhand">Uttarakhand</option>
                                         <option value="West Bengal">West Bengal</option>
                                     </select>
-                                   Bill Date:
-                                    <input placeholder="Bill Date" class="textbox-n form-control" type="text" onfocus="(this.type='date')" style="width:150px;height:30px" id="date">
+                                   Due Date:
+                                    @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker",@style = "width:150px;" })
                                 </div>
                             </div>
                         </div>
@@ -171,39 +180,51 @@
                                         <tr>
                                             <th>
                                                 <label>Item Name</label>
-                                                <select name="cars" id="dp" class="form-control" style="width:90PX">
-                                                    <option value="volvo">Volvo</option>
-                                                    <option value="saab">Saab</option>
-                                                    <option value="mercedes">Mercedes</option>
-                                                    <option value="audi">Audi</option>
-                                                </select>
+                                                @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemName, new List<SelectListItem>
+                                   {
+                                       new SelectListItem {Text = "Vithoba", Value = "volvo", Selected = true },
+                                       new SelectListItem {Text = "pallavi", Value = "bottle" },
+                                       new SelectListItem {Text = "Rahul", Value = "pen" },
+                                       new SelectListItem {Text = "Bhagyashri", Value = "don" },
+                                   }, new { @class = "form-control", @style = "width:130px" })
+                                                
                                             </th>
                                             <th>
                                                 <label>MRP</label>
-                                                <input type="text" id="sp" name="" class="form-control" style="width:70PX">
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px" , @class = "form-control" })
                                             </th>
                                             <th>
                                                 <label>Tax%</label>
-                                                <input type="text" id="ts" name="" class="form-control" style="width:70PX">
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px" , @class = "form-control" })
                                             </th>
                                             <th>
                                                 <label>Descount</label>
-                                                <input type="text" id="ds" name="" class="form-control" style="width:70PX">
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px" , @class = "form-control" })
+
+
                                             <th>
                                                 <label>Qty</label>
-                                                <input type="text" id="qty" name="" class="form-control" style="width:70PX">
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px" , @class = "form-control" })
+
+
                                             </th>
                                             <th>
                                                 <label>Dis Amount</label>
-                                                <input type="text" id="da" name="" class="form-control" style="width:70PX">
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px" ,@class = "form-control" })
+
+
                                             </th>
                                             <th>
                                                 <label>Tax Amount</label>
-                                                <input type="text" id="sa" name="" class="form-control" style="width:70PX">
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px",@class = "form-control" })
+
+
                                             </th>
                                             <th>
-                                                <label>Tax Amount</label>
-                                                <input type="text" id="ca" name="" class="form-control" style="width:70PX">
+                                                <label>Total</label>
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemTotal, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;",@class="form-control" })
+
+
                                             </th>
                                             <th>
                                                 <a class="btn btn-primary pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
@@ -253,10 +274,12 @@
                                Delivery Date:
                                 @Html.TextBoxFor(model => model.Deliverydate, new { @type = "date", @class = "form-control", @style = "width:150px;" })
                                Payment Status:
-                                <select name="cars" id="dp" class="form-control" style="width:150px;">
-                                    <option value="volvo">Paid</option>
-                                    <option value="saab">Unpiad</option>
-                                </select>
+                                @Html.DropDownListFor(model => model.PaymentType, new List<SelectListItem>
+                                   {
+                                       new SelectListItem {Text = "Paid", Value = "Paid", Selected = true },
+                                       new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
+                                      
+                                   }, new { @class = "form-control", @style = "width:150px" })
                             </div>
                             <div class="col-md-8 form-group">
                                 <div class="pull-right">
