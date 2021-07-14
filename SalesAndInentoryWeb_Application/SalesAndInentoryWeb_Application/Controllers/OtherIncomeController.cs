@@ -56,7 +56,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		}
 
 		[HttpPost]
-        public ActionResult AddOrEdit(tbl_OtherIncome emp,int id=0)
+        public ActionResult AddOrEdit(tbl_OtherIncome emp,int id = 0)
         {
 			if (id == 0)
 			{
