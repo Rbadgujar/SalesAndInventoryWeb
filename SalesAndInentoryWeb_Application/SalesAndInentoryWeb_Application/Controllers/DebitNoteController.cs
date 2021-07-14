@@ -24,37 +24,65 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
-        [HttpGet]
-        public ActionResult AddOrEdit()
+		public ActionResult Detail(int id)
+		{
+			var tb = db.tbl_DebitNoteSelect("Details", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ReturnNo == id);
+			return View(tb);
+		}
+
+		[HttpGet]
+        public ActionResult AddOrEdit(int id=0)
         {
-			//if (id == 0)
-			//    return View(new tbl_DebitNote());
-			return View();
-           
+			if (id == 0)
+			{
+				   return View(new tbl_DebitNote());
+			}
+			else
+			{
+				var tb = db.tbl_DebitNoteSelect("Details", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ReturnNo == id);
+				var vm = new tbl_DebitNote();
+				vm.PartyName = tb.PartyName;
+				vm.BillingName = tb.BillingName;
+				vm.ContactNo = tb.ContactNo;
+				vm.PONumber = tb.PONumber;
+				vm.PODate = Convert.ToDateTime(tb.PODate);
+				vm.Barcode = tb.Barcode;
+				vm.Feild4 = tb.Feild4;
+				vm.StateofSupply = tb.StateofSupply;
+				vm.InvoiceDate = Convert.ToDateTime(tb.InvoiceDate);
+				vm.PaymentType = tb.PaymentType;
+				vm.TransportName = tb.TransportName;
+				vm.VehicleNumber = tb.VehicleNumber;
+				vm.Feild1 = tb.Feild1;
+				vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
+				vm.Status = tb.Status;
+				vm.Total = tb.Total;
+				vm.Received = tb.Received;
+				vm.RemainingBal = tb.RemainingBal;
+				return View(vm);
+			}
         }
 
-        //[HttpPost]
-        //public ActionResult AddOrEdit(tbl_DebitNote emp)
-        //{
-        //    using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-        //    {
-        //        if (emp.InvoiceNo == 0)
-        //        {
-        //            db.tbl_DebitNote.Add(emp);
-        //            db.SaveChanges();
-        //            return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-        //        }
-        //        else
-        //        {
-        //            db.Entry(emp).State = EntityState.Modified;
-        //            db.SaveChanges();
-        //            return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-        //        }
-        //    }
+		[HttpPost]
+		public ActionResult AddOrEdit(tbl_DebitNote emp,int id=0)
+		{
+			if (id == 0)
+			{
 
-        //}
+				var tb = db.tbl_DebitNoteSelect("Insert", emp .InvoiceNo, null, emp.PartyName, emp.BillingName, emp.PONumber, emp.PODate, emp.InvoiceDate, emp.DueDate, emp.StateofSupply,emp.ContactNo, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1,emp.TaxAmount1, emp.CGST, emp.SGST, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Received, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, emp.Feild4, null, emp.Status, null, null, emp.Barcode, emp.IGST,null, null, null, null, null);
+				db.SubmitChanges();
 
-        [HttpPost]
+				return RedirectToAction("DebitNote");
+			}
+			else
+			{
+				var tb = db.tbl_DebitNoteSelect("Update", emp.InvoiceNo, id, emp.PartyName, emp.BillingName, emp.PONumber, emp.PODate, emp.InvoiceDate, emp.DueDate, emp.StateofSupply, emp.ContactNo, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.TaxAmount1, emp.CGST, emp.SGST, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Received, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, emp.Feild4, null, emp.Status, null, null, emp.Barcode, emp.IGST, null, null, null, null, null);
+				db.SubmitChanges();
+				return RedirectToAction("DebitNote");
+			}
+		}
+
+		[HttpPost]
         public ActionResult Delete(int id)
         {
 			var tb = db.tbl_DebitNoteSelect("Delete", null, id,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();

@@ -10,7 +10,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class SaleOrderController : Controller
     {
-        idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10();
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
         // GET: SaleOrder
         public ActionResult SaleOrder()
         {
@@ -34,40 +34,31 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddOrEdit(tbl_SaleOrder order)
-        {           
-            
-            return Json(new { data = "" }, JsonRequestBehavior.AllowGet);
+        public ActionResult AddOrEdit(tbl_SaleOrderSelectResult order)
+        {
+            try
+            {
+                 object id1;
 
-            //try
-            //{
-
-
-            //    //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-            //    var id1 = db.tbl_SaleOrderSelect("Insert", null, order.PartyName, order.BillingName, order.ContactNo, Convert.ToDateTime(order.OrderDate), order.DueDate, order.StateofSupply, order.PaymentType, order.TransportName, order.DeliveryLocation, order.VehicleNumber, order.Deliverydate, order.Description, order.TransportCharges, order.Image, order.Tax1, order.CGST, order.SGST, order.TaxAmount1, Convert.ToString(order.TotalDiscount), order.DiscountAmount1, order.RoundFigure, order.Total, order.Received, order.RemainingBal, order.PaymentTerms, null, null, null, null, null, order.Status, null, null, order.ItemCategory, order.Barcode, order.IGST, order.Company_ID, order.TaxShow, null, order.CalTotal);
-            //    db.SubmitChanges();
-            //    db.tbl("Insert", Convert.ToInt32(id1), order.PartyName, order.BillingName, order.ContactNo, Convert.ToDateTime(order.OrderDate), order.DueDate, order.StateofSupply, order.PaymentType, order.TransportName, order.DeliveryLocation, order.VehicleNumber, order.Deliverydate, order.Description, order.TransportCharges, order.Image, order.Tax1, order.CGST, order.SGST, order.TaxAmount1, Convert.ToString(order.TotalDiscount), order.DiscountAmount1, order.RoundFigure, order.Total, order.Received, order.RemainingBal, order.PaymentTerms, null, null, null, null, null, order.Status, null, null, order.ItemCategory, order.Barcode, order.IGST, order.Company_ID, order.TaxShow, null, order.CalTotal);
-            //    db.SubmitChanges();
-            //    return RedirectToAction("SaleOrder");
-            //    //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-            //}
-            //catch (Exception e)
-            //{
-            //    return View("Error", new HandleErrorInfo(e, "SaleOrder", "AddOrEdit"));
-            //}
+                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+                id1 =   db.tbl_SaleOrderSelect("Insert", null, order.PartyName,order.BillingName, order.ContactNo, Convert.ToDateTime(order.OrderDate), order.DueDate, order.StateofSupply, order.PaymentType, order.TransportName, order.DeliveryLocation, order.VehicleNumber, order.Deliverydate, order.Description, order.TransportCharges, order.Image, order.Tax1, order.CGST, order.SGST, order.TaxAmount1, Convert.ToString(order.TotalDiscount), order.DiscountAmount1, order.RoundFigure, order.Total, order.Received, order.RemainingBal, order.PaymentTerms, null, null, null, null, null,  order.Status, null, null, order.ItemCategory, order.Barcode, order.IGST, order.Company_ID,  order.TaxShow, null,order.CalTotal);
+                db.SubmitChanges();
+               // db.tbl("Insert",id1, order.PartyName, order.BillingName, order.ContactNo, Convert.ToDateTime(order.OrderDate), order.DueDate, order.StateofSupply, order.PaymentType, order.TransportName, order.DeliveryLocation, order.VehicleNumber, order.Deliverydate, order.Description, order.TransportCharges, order.Image, order.Tax1, order.CGST, order.SGST, order.TaxAmount1, Convert.ToString(order.TotalDiscount), order.DiscountAmount1, order.RoundFigure, order.Total, order.Received, order.RemainingBal, order.PaymentTerms, null, null, null, null, null, order.Status, null, null, order.ItemCategory, order.Barcode, order.IGST, order.Company_ID, order.TaxShow, null, order.CalTotal);
+                db.SubmitChanges();
+                return RedirectToAction("SaleOrder");
+                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "SaleOrder", "AddOrEdit"));
+            }
         }
         [HttpPost]
         public ActionResult Delete(int id)
         {
             var getdata = db.tbl_SaleOrderSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-           // db.SubmitChanges();
+            db.SubmitChanges();
             return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public ActionResult get(tbl_SaleOrder order)
-        {
-            return Json( data :"");
-        }
-       
     }
 }
