@@ -18,7 +18,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult com()
         {
             return View();
-                 
+
+
+
+        }
+        [HttpGet]
+        public static List<CountryList> GetCountriesName()
+        {
+            List<CountryList> lst = new List<CountryList>();
+            lst.Add(new CountryList() { CountryId = 1, CountryName = "India" });
+            lst.Add(new CountryList() { CountryId = 2, CountryName = "Nepal" });
+            lst.Add(new CountryList() { CountryId = 3, CountryName = "America" });
+            return lst;
+
         }
         [HttpGet]
         public ActionResult showdata()

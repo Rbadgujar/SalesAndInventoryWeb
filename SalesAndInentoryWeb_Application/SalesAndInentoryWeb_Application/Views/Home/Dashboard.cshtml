@@ -6,20 +6,61 @@
 
 <html>
 <head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <style>
+       .highcharts-figure, .highcharts-data-table table {
+    min-width: 310px; 
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+	font-family: Verdana, sans-serif;
+	border-collapse: collapse;
+	border: 1px solid #EBEBEB;
+	margin: 10px auto;
+	text-align: center;
+	width: 100%;
+	max-width: 500px;
+}
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+.highcharts-data-table th {
+	font-weight: 600;
+    padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+    </style>
 </head>
 <body>
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
-       <div class="col-md-3">
+        <div class="col-md-3">
 
-        <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
-       <div style="text-align:center"><label style="margin-top:7px;font-size:20px; ">Sale</label></div>
-            <div class="pull-left">
-                <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Total:</label>
-                <br />
-                <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Pending:</label>
+            <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
+                <div style="text-align:center"><label style="margin-top:7px;font-size:20px; ">Sale</label></div>
+                <div class="pull-left">
+                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Total:</label>
+                    <br />
+                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Pending:</label>
+                </div>
             </div>
-            </div>
-           </div>
+        </div>
         <div class="col-md-3">
 
             <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; height:110px;background-color:white">
@@ -45,7 +86,7 @@
             </div>
         </div>
         <div class="col-md-3">
-             
+
             <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
                 <div style="text-align:center"><label style="margin-top:7px;font-size:20px">Payment Out</label></div>
                 <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Recives:</label>
@@ -53,75 +94,148 @@
                 <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Remaning:</label>
 
             </div>
+
+        </div>
+    </div>
+
+    <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
+        <div class="col-md-6">
+
+            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
+                <img src="~/css/img/chart.png" style="height:170px;width:540px" />
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
+                <img src="~/css/img/Line_graph.png" style="height:170px;width:540px" />
+
+            </div>
+        </div>
+
+    </div>
+    <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
+        <div class="col-md-6">
+
+            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
+                <img src="~/css/img/wfysS.png" style="height:170px;width:540px" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
+
+            </div>
+        </div>
+    </div>
+    <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
+        <div class="col-md-6">
+
+            <figure class="highcharts-figure">
+                <div id="container"></div>
+                <p class="highcharts-description">
+                    This chart shows how symbols and shapes can be used in charts.
+                    Highcharts includes several common symbol shapes, such as squares,
+                    circles and triangles, but it is also possible to add your own
+                    custom symbols. In this chart, custom weather symbols are used on
+                    data points to highlight that certain temperatures are warm while
+                    others are cold.
+                </p>
+            </figure>
+
           
             </div>
+            <br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br />
         </div>
-    <br />
-    <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
-        <div class="col-md-6">
+    <script>
+        $(document).ready(function () {
+        
+            $.getJSON("/PurchaseBill/record", function (data)
+            {
+                var Total = [];
+                var BillDate = [];
+                for (var i = 0; i < data.length; i++)
+                {
+                    Total.push(data[i].Total);
+                    BillDate.push(data[i].BillDate);
+                }
 
-            <div class="form-control"  style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <img src="~/css/img/chart.png"  style="height:170px;width:540px" />
-
-               
-               </div>
-        </div>
-        <div class="col-md-6">
-
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <img src="~/css/img/download.png" style="height:170px;width:540px"  />
-
-            </div>
-        </div>
-
-    </div>
-    <br />
-    <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
-        <div class="col-md-6">
-
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-
-
-                <div class="chartContainer" style="height: 300px; width%;"></div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <label></label>
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br />
-        <br />
-        <br />
-        <br />
-        <br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br />
-    </div>
-
-    </body>
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'spline'
+                    },
+                    title: {
+                        text: 'Monthly Average Sale'
+                    },
+                    subtitle: {
+                        text: 'Source: WorldClimate.com'
+                    },
+                    xAxis: {
+                        categories: BillDate
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Temperature'
+                        },
+                        labels: {
+                            formatter: function () {
+                                return this.value + '°';
+                            }
+                        }
+                    },
+                    tooltip: {
+                        crosshairs: true,
+                        shared: true
+                    },
+                    plotOptions: {
+                        spline: {
+                            marker: {
+                                radius: 4,
+                                lineColor: '#666666',
+                                lineWidth: 1
+                            }
+                        }
+                    },                   
+                    series: [{
+                        name: 'Tokyo',
+                        marker: {
+                            symbol: 'square'
+                        }, 
+                        data: [Total]                  
+                    }]
+                });
+        });
+       
+        });
+    </script>
+</body>
 </html>

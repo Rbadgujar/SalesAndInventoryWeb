@@ -15,6 +15,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+
 		[HttpGet]
         public ActionResult Data()
         {
@@ -27,6 +28,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
 			return View(tb);
 		}
+        public ActionResult record()
+        {
+            var tb = db.tbl_PurchaseBillselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
 
 		[HttpGet]
 		public ActionResult AddPurchase(int id=0)
@@ -48,16 +57,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			}
 		
 		}
-
+        object id1;
 		[HttpPost]
 		public ActionResult AddPurchase(tbl_PurchaseBill emp,int id= 0)
 		{
 			if (id == 0)
 			{
-
-				var tb = db.tbl_PurchaseBillselect("Insert", null, emp.PONo, emp.PartyName, emp.BillingName, emp.ContactNo, emp.BillDate, emp.PoDate, emp.DueDate, emp.StateofSupply, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.CGST, emp.SGST, emp.TaxAmount1, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Paid, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, null, null, emp.Status, null, null, emp.Barcode, emp.ItemCategory, emp.IGST, null, null, null, null, null);
-				db.SubmitChanges();
-				return RedirectToAction("Index");
+				id1 = db.tbl_PurchaseBillselect("Insert", null, emp.PONo, emp.PartyName, emp.BillingName, emp.ContactNo, emp.BillDate, emp.PoDate, emp.DueDate, emp.StateofSupply, emp.PaymentType, emp.TransportName, emp.DeliveryLocation, emp.VehicleNumber, emp.Deliverydate, emp.Description, emp.TransportCharges, null, emp.Tax1, emp.CGST, emp.SGST, emp.TaxAmount1, Convert.ToString(emp.TotalDiscount), emp.DiscountAmount1, emp.RoundFigure, emp.Total, emp.Paid, emp.RemainingBal, emp.PaymentTerms, emp.Feild1, null, null, null, null, emp.Status, null, null, emp.Barcode, emp.ItemCategory, emp.IGST, null, null, null, null, null);
+				db.SubmitChanges();           
+                return RedirectToAction("Index");
 			}
 			else
 			{
