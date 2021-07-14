@@ -27,8 +27,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult ShowInvoiceData()
         {
-            var getdata = db.tbl_SaleInvoiceSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            var getinvoice = db.tbl_SaleInvoiceSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getinvoice }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

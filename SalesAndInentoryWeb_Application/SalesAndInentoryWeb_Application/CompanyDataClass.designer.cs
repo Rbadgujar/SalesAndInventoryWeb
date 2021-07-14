@@ -10640,7 +10640,7 @@ namespace SalesAndInentoryWeb_Application
     public partial class tbl_OtherIncomeSelectResult
     {
 
-        private int _Id;
+        private System.Nullable<int> _Id;
 
         private string _IncomeCategory;
 
@@ -10683,7 +10683,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Id", DbType = "Int NOT NULL")]
-        public int Id
+        public System.Nullable<int> Id
         {
             get
             {
