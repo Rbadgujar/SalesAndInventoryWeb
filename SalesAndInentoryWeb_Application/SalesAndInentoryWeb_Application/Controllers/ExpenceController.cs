@@ -16,11 +16,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
-       [HttpGet]
-       public ActionResult Expencescategory()
+        [HttpGet]
+        public ActionResult Expencescategory()
         {
             return View();
         }
+
 		[HttpGet]
         public ActionResult ExpenceData()
         { 
@@ -41,23 +42,23 @@ namespace SalesAndInentoryWeb_Application.Controllers
             try
             {
                 //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-                db.tbl_ExpensesSelect("Insert", null, exp.BillingName, exp.ContactNo, Convert.ToDateTime(exp.OrderDate), exp.DueDate);
+                db.tbl_ExpensesSelect("Insert", null, exp.ExpenseCategory, exp.Date, exp.Description, exp.Image, exp.Total, exp.Paid, exp.Balance, exp.AdditinalFeild1, exp.AdditionalFeild2, exp.Status, exp.TableName, exp.compid);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
                 //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
-                return View("Error", new HandleErrorInfo(e, "SaleOrder", "AdOrEdit"));
+                return View("Error", new HandleErrorInfo(e, "Expence", "AddOrEdit"));
             }
         }
 
         [HttpPost]
-		public ActionResult Delete(int id)
-		{
-			var tb = db.tbl_ExpensesSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-			db.SubmitChanges();
-			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-		}
+        public ActionResult Delete(int id)
+        {
+            var tb = db.tbl_ExpensesSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

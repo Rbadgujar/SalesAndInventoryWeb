@@ -49,6 +49,7 @@
                             <th>Balance</th>
                             <th>Paid</th>
                             <th>Total</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -56,7 +57,6 @@
             </div>
         </div>
     </nav>
-
 </div>
 
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
@@ -65,7 +65,7 @@
     <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
     <script>
-                     var Popup, dataTable;
+        var Popup, dataTable;
         $(document).ready(function () {
             dataTable = $("#expenses").DataTable({
                 "ajax": {
@@ -96,11 +96,7 @@
                 }
             });
         });
-
-
-
-
-                    function PopupForm(url) {
+                  function PopupForm(url) {
                         var formDiv = $('<div/>');
                         $.get(url)
                         .done(function (response) {
@@ -119,8 +115,6 @@
                             });
                         });
                     }
-
-
 
                     function PopupForm1(url) {
                         var formDiv = $('<div/>');
@@ -165,13 +159,12 @@
                         }
                         return false;
                     }
-
                     function Delete(id) {
                         if(confirm('Are You Sure to Delete this Employee Record ?'))
                         {
                             $.ajax({
                                 type: "POST",
-                                url: '@Url.Action("Dele", "ParchaseOrder")/' + id,
+                                url: '@Url.Action("Delete", "Expence")/' + id,
                                 success: function (data) {
                                     if (data.success)
                                     {
@@ -181,10 +174,8 @@
                                             globalPosition: "top center",
                                             className: "success"
                                         })
-
                                     }
                                 }
-
                             });
                         }
                     }

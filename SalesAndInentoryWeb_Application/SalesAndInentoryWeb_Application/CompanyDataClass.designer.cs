@@ -8328,25 +8328,240 @@ namespace SalesAndInentoryWeb_Application
 
     public partial class tbl_ExpensesSelectResult
     {
+        private int _ID1;
 
-        private System.Nullable<decimal> _Column1;
+        private string _ExpenseCategory;
 
+        private System.Nullable<System.DateTime> _Date;
+
+        private string _Description;
+
+        private System.Data.Linq.Binary _Image;
+
+        private System.Nullable<double> _Total;
+
+        private System.Nullable<double> _Paid;
+
+        private System.Nullable<double> _Balance;
+
+        private string _AdditinalFeild1;
+
+        private string _AdditionalFeild2;
+
+        private string _Status;
+
+        private string _TableName;
+
+        private System.Nullable<int> _compid;
         public tbl_ExpensesSelectResult()
         {
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Name = "", Storage = "_Column1", DbType = "Decimal(38,0)")]
-        public System.Nullable<decimal> Column1
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ID1", DbType = "Int NOT NULL")]
+        public int ID1
         {
             get
             {
-                return this._Column1;
+                return this._ID1;
             }
             set
             {
-                if ((this._Column1 != value))
+                if ((this._ID1 != value))
                 {
-                    this._Column1 = value;
+                    this._ID1 = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_ExpenseCategory", DbType = "NVarChar(MAX)")]
+        public string ExpenseCategory
+        {
+            get
+            {
+                return this._ExpenseCategory;
+            }
+            set
+            {
+                if ((this._ExpenseCategory != value))
+                {
+                    this._ExpenseCategory = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Date", DbType = "Date")]
+        public System.Nullable<System.DateTime> Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                if ((this._Date != value))
+                {
+                    this._Date = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Description", DbType = "Date")]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                if ((this._Description != value))
+                {
+                    this._Description = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Image", DbType = "Image")]
+        public System.Data.Linq.Binary Image
+        {
+            get
+            {
+                return this._Image;
+            }
+            set
+            {
+                if ((this._Image != value))
+                {
+                    this._Image = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Total", DbType = "Float")]
+        public System.Nullable<double> Total
+        {
+            get
+            {
+                return this._Total;
+            }
+            set
+            {
+                if ((this._Total != value))
+                {
+                    this._Total = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Paid", DbType = "Float")]
+        public System.Nullable<double> Paid
+        {
+            get
+            {
+                return this._Paid;
+            }
+            set
+            {
+                if ((this._Paid != value))
+                {
+                    this._Paid = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Balance", DbType = "Float")]
+        public System.Nullable<double> Balance
+        {
+            get
+            {
+                return this._Balance;
+            }
+            set
+            {
+                if ((this._Balance != value))
+                {
+                    this._Balance = value;
+                }
+            }
+        }
+ 
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_AdditinalFeild1", DbType = "NVarChar(MAX)")]
+        public string AdditinalFeild1
+        {
+            get
+            {
+                return this._AdditinalFeild1;
+            }
+            set
+            {
+                if ((this._AdditinalFeild1 != value))
+                {
+                    this._AdditinalFeild1 = value;
+                }
+            }
+        }
+
+       [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_AdditionalFeild2", DbType = "NVarChar(MAX)")]
+        public string AdditionalFeild2
+        {
+            get
+            {
+                return this._AdditionalFeild2;
+            }
+            set
+            {
+                if ((this._AdditionalFeild2 != value))
+                {
+                    this._AdditionalFeild2 = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Status", DbType = "NVarChar(MAX)")]
+        public string Status
+        {
+            get
+            {
+                return this._Status;
+            }
+            set
+            {
+                if ((this._Status != value))
+                {
+                    this._Status = value;
+                }
+            }
+        }
+
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TableName", DbType = "NVarChar(MAX)")]
+        public string TableName
+        {
+            get
+            {
+                return this._TableName;
+            }
+            set
+            {
+                if ((this._TableName != value))
+                {
+                    this._TableName = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_compid", DbType = "Int")]
+        public System.Nullable<int> compid
+        {
+            get
+            {
+                return this._compid;
+            }
+            set
+            {
+                if ((this._compid != value))
+                {
+                    this._compid = value;
                 }
             }
         }
