@@ -45,12 +45,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(tbl_CreditNote1SelectResult credit)
         {
-            //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-            //db.tbl_CreditNote1Select("Insert", credit.InvoiceNo, null,  credit.PartyName, credit.BillingName, credit.PONumber, credit.PODate, Convert.ToDateTime(credit.InvoiceDate), credit.DueDate, credit.StateofSupply, credit.ContactNo, credit.PaymentType, credit.TransportName, credit.DeliveryLocation, credit.VehicleNumber, credit.Deliverydate, credit.Description, credit.TransportCharges, credit.Image, credit.Tax1, credit.TaxAmount1, credit.CGST, credit.SGST, credit.TotalDiscount, credit.DiscountAmount1, credit.RoundFigure, credit.Total, credit.Received, credit.RemainingBal, credit.PaymentTerms, null, null, null, null, null, null, credit.Status, credit.ItemCategory, credit.Barcode, credit.IGST, credit.Company_ID,  credit.CalTotal, credit.TaxShow, credit.Discount);
-            //db.tbl_CreditNote1Select("Insert", credit.InvoiceNo, null, credit.PartyName, credit.BillingName, credit.PONumber, null, null, credit.DueDate, credit.StateofSupply, credit.ContactNo, credit.PaymentType, credit.TransportName, credit.DeliveryLocation, credit.VehicleNumber, credit.Deliverydate, credit.Description, credit.TransportCharges, credit.Image, credit.Tax1, credit.TaxAmount1, credit.CGST, credit.SGST, credit.TotalDiscount, credit.DiscountAmount1, credit.RoundFigure, credit.Total, credit.Received, credit.RemainingBal, credit.PaymentTerms, null, null, null, null, null, null, credit.Status, credit.ItemCategory, credit.Barcode, credit.IGST, credit.Company_ID, credit.CalTotal, credit.TaxShow, credit.Discount);
-            //db.SubmitChanges();
-            //return RedirectToAction("Index");
-                //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+			//CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
+			//db.tbl_CreditNote1Select("Insert", credit.InvoiceNo, null,  credit.PartyName, credit.BillingName, credit.PONumber, credit.PODate, Convert.ToDateTime(credit.InvoiceDate), credit.DueDate, credit.StateofSupply, credit.ContactNo, credit.PaymentType, credit.TransportName, credit.DeliveryLocation, credit.VehicleNumber, credit.Deliverydate, credit.Description, credit.TransportCharges, credit.Image, credit.Tax1, credit.TaxAmount1, credit.CGST, credit.SGST, credit.TotalDiscount, credit.DiscountAmount1, credit.RoundFigure, credit.Total, credit.Received, credit.RemainingBal, credit.PaymentTerms, null, null, null, null, null, null, credit.Status, credit.ItemCategory, credit.Barcode, credit.IGST, credit.Company_ID,  credit.CalTotal, credit.TaxShow, credit.Discount);
+			//db.tbl_CreditNote1Select("Insert", credit.InvoiceNo, null, credit.PartyName, credit.BillingName, credit.PONumber, null, null, credit.DueDate, credit.StateofSupply, credit.ContactNo, credit.PaymentType, credit.TransportName, credit.DeliveryLocation, credit.VehicleNumber, credit.Deliverydate, credit.Description, credit.TransportCharges, credit.Image, credit.Tax1, credit.TaxAmount1, credit.CGST, credit.SGST, credit.TotalDiscount, credit.DiscountAmount1, credit.RoundFigure, credit.Total, credit.Received, credit.RemainingBal, credit.PaymentTerms, null, null, null, null, null, null, credit.Status, credit.ItemCategory, credit.Barcode, credit.IGST, credit.Company_ID, credit.CalTotal, credit.TaxShow, credit.Discount);
+			//db.SubmitChanges();
+			//return RedirectToAction("Index");
+			//return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+			return View();
            
         }  
     }

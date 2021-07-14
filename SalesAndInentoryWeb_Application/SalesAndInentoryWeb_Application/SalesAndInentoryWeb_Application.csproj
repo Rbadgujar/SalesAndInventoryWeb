@@ -3322,6 +3322,7 @@
     <Compile Include="Controllers\OIncomeCategoryReportController.cs" />
     <Compile Include="Controllers\OIncomeItemReportController.cs" />
     <Compile Include="Controllers\OnlineStoreController.cs" />
+    <Compile Include="Controllers\OtherIncomeCategoryController.cs" />
     <Compile Include="Controllers\OtherIncomeController.cs" />
     <Compile Include="Controllers\OtherIncomeReportController.cs" />
     <Compile Include="Controllers\ParchaseOrderController.cs" />
@@ -3790,6 +3791,7 @@
     <Folder Include="bin\App_Data\" />
     <Folder Include="css\fonts\" />
     <Folder Include="Views\index\" />
+    <Folder Include="Views\OtherIncomeCategory\" />
     <Folder Include="Views\Seeting\" />
   </ItemGroup>
   <ItemGroup>
