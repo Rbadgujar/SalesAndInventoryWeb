@@ -16092,7 +16092,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_PoNumber", DbType = "NVarChar(MAX)")]
-        public string PoNumber
+        public string PONumber
         {
             get
             {
