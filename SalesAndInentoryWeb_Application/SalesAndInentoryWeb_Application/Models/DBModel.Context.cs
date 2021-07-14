@@ -3691,7 +3691,8 @@ namespace SalesAndInentoryWeb_Application.Models
             var calTotalParameter = calTotal.HasValue ?
                 new ObjectParameter("CalTotal", calTotal) :
                 new ObjectParameter("CalTotal", typeof(double));
-    
+
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("tbl_SaleOrderSelect", actionParameter, orderNoParameter, partyNameParameter, billingNameParameter, contactNoParameter, orderDateParameter, dueDateParameter, stateofSupplyParameter, paymentTypeParameter, transportNameParameter, deliveryLocationParameter, vehicleNumberParameter, deliverydateParameter, descriptionParameter, transportChargesParameter, imageParameter, tax1Parameter, cGSTParameter, sGSTParameter, taxAmount1Parameter, totalDiscountParameter, discountAmount1Parameter, roundFigureParameter, totalParameter, receivedParameter, remainingBalParameter, paymentTermsParameter, feild1Parameter, feild2Parameter, feild3Parameter, feild4Parameter, feild5Parameter, statusParameter, tableNameParameter, iDParameter, itemCategoryParameter, barcodeParameter, iGSTParameter, compidParameter, taxShowParameter, discountParameter, calTotalParameter);
         }
     
