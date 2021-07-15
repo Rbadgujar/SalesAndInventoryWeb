@@ -3543,7 +3543,8 @@ namespace SalesAndInentoryWeb_Application
 
         private int _ID;
 
-        private string _AccountName;
+		
+		private string _AccountName;
 
         private string _BankName;
 
@@ -10640,7 +10641,7 @@ namespace SalesAndInentoryWeb_Application
     public partial class tbl_OtherIncomeSelectResult
     {
 
-        private System.Nullable<int> _Id;
+        private int _Id;
 
         private string _IncomeCategory;
 
@@ -10683,7 +10684,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Id", DbType = "Int NOT NULL")]
-        public System.Nullable<int> Id
+        public int Id
         {
             get
             {

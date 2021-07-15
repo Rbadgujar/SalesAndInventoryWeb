@@ -60,7 +60,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
 			if (id == 0)
 			{
-				var tb = db.tbl_OtherIncomeSelect("Insert", null, emp.IncomeCategory, emp.Date, null, null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
+				var tb = db.tbl_OtherIncomeSelect("Insert",  null,emp.IncomeCategory, emp.Date, null, null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
 				db.SubmitChanges();
 				return RedirectToAction("Index");
 			}
