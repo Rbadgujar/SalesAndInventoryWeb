@@ -15940,7 +15940,7 @@ namespace SalesAndInentoryWeb_Application
 
         private System.Nullable<System.DateTime> _PoDate;
 
-        private string _InvoiceDate;
+        private System.Nullable<System.DateTime> _InvoiceDate;
 
         private string _StateofSupply;
 
@@ -16125,7 +16125,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_InvoiceDate", DbType = "Date")]
-        public string InvoiceDate
+        public System.Nullable<System.DateTime> InvoiceDate
         {
             get
             {
