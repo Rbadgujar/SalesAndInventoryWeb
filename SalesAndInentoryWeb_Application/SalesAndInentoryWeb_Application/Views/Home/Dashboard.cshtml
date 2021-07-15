@@ -7,13 +7,15 @@
 <html>
 <head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <style>
-       .highcharts-figure, .highcharts-data-table table {
-    min-width: 310px; 
+ 
+
+    .highcharts-figure, .highcharts-data-table table {
+    min-width: 320px; 
     max-width: 800px;
     margin: 1em auto;
 }
@@ -24,7 +26,7 @@
 	border: 1px solid #EBEBEB;
 	margin: 10px auto;
 	text-align: center;
-	width: 100%;
+	width: 100%; 
 	max-width: 500px;
 }
 .highcharts-data-table caption {
@@ -46,6 +48,10 @@
     background: #f1f7ff;
 }
 
+
+input[type="number"] {
+	min-width: 50px;
+}
     </style>
 </head>
 <body>
@@ -98,54 +104,30 @@
         </div>
     </div>
 
-    <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
-        <div class="col-md-6">
-
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <img src="~/css/img/chart.png" style="height:170px;width:540px" />
-            </div>
-        </div>
-        <div class="col-md-6">
-
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <img src="~/css/img/Line_graph.png" style="height:170px;width:540px" />
-
-            </div>
-        </div>
-
-    </div>
-    <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
-        <div class="col-md-6">
-
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <img src="~/css/img/wfysS.png" style="height:170px;width:540px" />
-            </div>
-        </div>
-
-        <div class="col-md-6">
-
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-
-            </div>
-        </div>
-    </div>
+   
+   
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
         <div class="col-md-6">
 
             <figure class="highcharts-figure">
                 <div id="container"></div>
                 <p class="highcharts-description">
-                    This chart shows how symbols and shapes can be used in charts.
-                    Highcharts includes several common symbol shapes, such as squares,
-                    circles and triangles, but it is also possible to add your own
-                    custom symbols. In this chart, custom weather symbols are used on
-                    data points to highlight that certain temperatures are warm while
-                    others are cold.
+                   
                 </p>
             </figure>
 
           
             </div>
+        <div class="col-md-6">
+
+            <figure class="highcharts-figure">
+                <div id="container1"></div>
+                <p class="highcharts-description">
+                
+                </p>
+            </figure>
+
+        </div>
             <br />
             <br />
             <br />
@@ -177,65 +159,138 @@
             <br />
         </div>
     <script>
+
         $(document).ready(function () {
-        
-            $.getJSON("/PurchaseBill/record", function (data)
-            {
-                var Total = [];
-                var BillDate = [];
-                for (var i = 0; i < data.length; i++)
-                {
-                    Total.push(data[i].Total);
-                    BillDate.push(data[i].BillDate);
+            $.ajax({
+                type: "POST",
+                url: '/PurchaseBill/order',
+                data: JSON.stringify({}),
+                ContentType: 'application/json:charset=utf-8',
+                dataType: "json",
+                success: function (json) {
+                    
+                    
+                    //for(var i=0;i<=20;i++) {
+
+                    var total = parseInt(json.data[0].Total);
+                    var party = parseInt(json.data[0].RemainingBal);
+                    var paid = parseInt(json.data[0].Paid);
+
+                        Highcharts.chart('container', {
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: null,
+                                plotShadow: false,
+                                type: 'pie'
+                            },
+                            title: {
+                                text: 'Payment Information !'
+                            },
+                            tooltip: {
+                                pointFormat:total
+                            },
+                            accessibility: {
+                                point: {
+                                    valueSuffix: '%'
+                                }
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: true,
+                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: 'Brands',
+                                colorByPoint: true,
+                                data: [{
+                                    name: 'Paid',
+                                    y: total,
+                                    sliced: true,
+                                    selected: true
+                                },{
+                                    name: 'Remaing Bal',
+                                    y: party
+                                },
+
+                                {
+                                    name: 'Other',
+                                    y: paid
+                                }]
+                            }]
+                        });
+
+
+                    //}
+                    
                 }
 
-                Highcharts.chart('container', {
-                    chart: {
-                        type: 'spline'
-                    },
-                    title: {
-                        text: 'Monthly Average Sale'
-                    },
-                    subtitle: {
-                        text: 'Source: WorldClimate.com'
-                    },
-                    xAxis: {
-                        categories: BillDate
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Temperature'
-                        },
-                        labels: {
-                            formatter: function () {
-                                return this.value + '°';
-                            }
+  
+            });
+
+   
+           
+                $.ajax({
+                    type: "POST",
+                    url: '/PurchaseBill/vits',
+                    data: JSON.stringify({}),
+                    ContentType: 'application/json:charset=utf-8',
+                    dataType: "json",
+                    success: function (json) {
+                        debugger
+                        var To = [];
+                        for (var i = 0; i <= 30; i++) {
+                           
+                           To.push(json.data[i].Total);
+                           
                         }
-                    },
-                    tooltip: {
-                        crosshairs: true,
-                        shared: true
-                    },
-                    plotOptions: {
-                        spline: {
-                            marker: {
-                                radius: 4,
-                                lineColor: '#666666',
-                                lineWidth: 1
-                            }
-                        }
-                    },                   
-                    series: [{
-                        name: 'Tokyo',
-                        marker: {
-                            symbol: 'square'
-                        }, 
-                        data: [Total]                  
-                    }]
+
+                        Highcharts.chart('container1', {
+
+                            title: {
+                                text: 'Daily Sale Data'
+                            },
+
+                            xAxis: {
+                                tickInterval: 1,
+                                type: 'logarithmic',
+                                accessibility: {
+                                    rangeDescription: 'Range: 1 to 10'
+                                }
+                            },
+
+                            yAxis: {
+                                type: 'logarithmic',
+                                minorTickInterval: 0.1,
+                                accessibility: {
+                                    rangeDescription: 'Range: 0.1 to 1000'
+                                }
+                            },
+
+                            tooltip: {
+                                headerFormat: '<b>{series.name}</b><br />',
+                                pointFormat: 'x = {point.x}, y = {point.y}'
+                            },
+
+                            series: [{
+                                data: To,
+                                pointStart: 4
+                            }]
+                        });
+
+                    }
+
+
                 });
+           
+
+
         });
-       
-        });
+        
     </script>
 </body>
 </html>
