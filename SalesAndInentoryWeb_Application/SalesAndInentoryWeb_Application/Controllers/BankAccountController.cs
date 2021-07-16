@@ -15,7 +15,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 
 		public ActionResult Index()
-		{hii
+		{
 			return View();
 		}
 
