@@ -12,6 +12,7 @@ namespace SalesAndInentoryWeb_Application
 {
     public class Global : HttpApplication
     {
+        //bhafgigig
         void Application_Start(object sender, EventArgs e)
         {
             DashboardConfig.RegisterService(RouteTable.Routes);
