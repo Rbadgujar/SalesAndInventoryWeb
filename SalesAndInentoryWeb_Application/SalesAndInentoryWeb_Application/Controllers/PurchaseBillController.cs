@@ -81,6 +81,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
             var tb = db.tbl_PurchaseBillselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
+       [HttpPost]
+        public ActionResult datewise(string m)
+        {
+
+            var tb = db.tbl_PurchaseBillselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+        }
+
+
 
 
         public ActionResult order()

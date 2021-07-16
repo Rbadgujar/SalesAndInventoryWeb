@@ -30,9 +30,9 @@
 					<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Purchase Bill </h3></label>
 					<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddPurchase","PurchaseBill")"><i class="fa fa-plus"></i>Add purchase</a>
 					<a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
-					<input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+					<input type="date" class="pull-right row" onchange="getObject(this);" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
 					<label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
-					<input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
+					<input type="date" class="pull-right row" onchange="getObject(this);" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
 				</div>
 			</div>
 		</nav>
@@ -56,6 +56,11 @@
 			</div>
 		</div>
 	</nav>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 </div>
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
@@ -64,7 +69,7 @@
 	<script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
 	<script>
-             var Popup, dataTable;
+        var Popup, dataTable, dataTable1;
                          $(document).ready(function () {
                              dataTable = $("#PrchaseBill").DataTable({
                   "ajax": {
@@ -96,6 +101,43 @@
                 }
             });
         });
+
+        function getObject(object) {
+
+            $("#PrchaseBill tr").remove();
+
+            dataTable1 = $("#PrchaseBill").DataTable({
+
+                "ajax": {                  
+                    "url": "/PurchaseBill/Data",
+                    "type": "GET",                   
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "BillNo" },
+					{ "data": "PartyName" },
+					{ "data": "BillDate" },
+					{ "data": "PaymentType" },
+					{ "data": "RemainingBal" },
+                    { "data": "Total" },               
+                     { "data": "Status" },
+                    {"data": "BillNo", "render": function (data) {
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddPurchase", "PurchaseBill")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+						
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+
+                ],
+                "language": {
+
+                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                }
+            });
+        
+        }
 
                 function PopupForm(url) {
                     var formDiv = $('<div/>');

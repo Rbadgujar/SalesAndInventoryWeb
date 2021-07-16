@@ -1,19 +1,16 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-
 <html>
 <head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="~/css/css/dahhjfgh.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <style>
  
-
     .highcharts-figure, .highcharts-data-table table {
     min-width: 320px; 
     max-width: 800px;
@@ -134,9 +131,7 @@ input[type="number"] {
             <figure class="highcharts-figure">
                 <div id="container2"></div>
                 <p class="highcharts-description">
-                    Basic line chart showing trends in a dataset. This chart includes the
-                    <code>series-label</code> module, which adds a label to each line for
-                    enhanced readability.
+                   
                 </p>
             </figure>
 </div>
@@ -144,10 +139,7 @@ input[type="number"] {
     <figure class="highcharts-figure">
         <div id="container3"></div>
         <p class="highcharts-description">
-            A basic column chart compares rainfall values between four cities.
-            Tokyo has the overall highest amount of rainfall, followed by New York.
-            The chart is making use of the axis crosshair feature, to highlight
-            months as they are hovered over.
+           
         </p>
     </figure>
 
@@ -340,13 +332,11 @@ input[type="number"] {
                                     rangeDescription: 'Range: 2010 to 2017'
                                 }
                             },
-
                             legend: {
                                 layout: 'vertical',
                                 align: 'right',
                                 verticalAlign: 'middle'
                             },
-
                             plotOptions: {
                                 series: {
                                     label: {
