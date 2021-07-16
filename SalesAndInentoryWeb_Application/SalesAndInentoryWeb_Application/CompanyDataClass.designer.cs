@@ -993,13 +993,13 @@ namespace SalesAndInentoryWeb_Application
                     [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "ItemCategory", DbType = "NVarChar(MAX)")] string itemCategory,
                     [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Barcode", DbType = "NVarChar(MAX)")] string barcode,
                     [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "IGST", DbType = "Float")] System.Nullable<double> iGST,
-                    [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "Int")] System.Nullable<int> compid,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "compid", DbType = "Int")] System.Nullable<int> compid,
                     [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Discount", DbType = "Float")] System.Nullable<double> discount,
                     [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "TaxAmountShow", DbType = "Float")] System.Nullable<double> taxAmountShow,
                     [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "Caltotal", DbType = "Float")] System.Nullable<double> caltotal,
-                    [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "Float")] System.Nullable<double> totalcgst,
-                    [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "Float")] System.Nullable<double> totalsgst,
-                    [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "Float")] System.Nullable<double> totaligst,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "totalcgst", DbType = "Float")] System.Nullable<double> totalcgst,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "totalsgst", DbType = "Float")] System.Nullable<double> totalsgst,
+                    [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "totaligst", DbType = "Float")] System.Nullable<double> totaligst,
                     [global::System.Data.Linq.Mapping.ParameterAttribute(Name = "EWayBillNo", DbType = "VarChar(50)")] string eWayBillNo)
         {
             IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, invoiceID, partyName, billingName, contactNo, poNumber, poDate, invoiceDate, stateofSupply, paymentType, transportName, deliveryLocation, vehicleNumber, deliverydate, description, transportCharges, image, tax1, cGST, sGST, taxAmount1, totalDiscount, discountAmount1, roundFigure, total, received, remainingBal, dueDate, paymentTerms, feild1, feild2, feild3, feild4, feild5, status, tableName, iD, itemCategory, barcode, iGST, compid, discount, taxAmountShow, caltotal, totalcgst, totalsgst, totaligst, eWayBillNo);
@@ -8406,7 +8406,7 @@ namespace SalesAndInentoryWeb_Application
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Description", DbType = "Date")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Description", DbType = "NVarChar(MAX)")]
         public string Description
         {
             get
@@ -16006,8 +16006,6 @@ namespace SalesAndInentoryWeb_Application
 
         private System.Nullable<double> _IGST;
 
-        //private System.Nullable<bool> _DeleteData;
-
         private System.Nullable<int> _Company_ID;
 
         private System.Nullable<double> _Discount;
@@ -16023,7 +16021,6 @@ namespace SalesAndInentoryWeb_Application
         private System.Nullable<double> _totaligst;
 
         private string _EWayBillNo;
-
         public tbl_SaleInvoiceSelectResult()
         {
         }
@@ -16093,7 +16090,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_PoNumber", DbType = "NVarChar(MAX)")]
-        public string PONumber
+        public string PoNumber
         {
             get
             {
@@ -16365,7 +16362,7 @@ namespace SalesAndInentoryWeb_Application
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TotalDiscount", DbType = "Int")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_TotalDiscount", DbType = "NVarChar(MAX)")]
         public string TotalDiscount
         {
             get
@@ -16653,22 +16650,6 @@ namespace SalesAndInentoryWeb_Application
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Company_ID", DbType = "Int")]
-        public System.Nullable<int> Company_ID
-        {
-            get
-            {
-                return this._Company_ID;
-            }
-            set
-            {
-                if ((this._Company_ID != value))
-                {
-                    this._Company_ID = value;
-                }
-            }
-        }
-
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Discount", DbType = "Float")]
         public System.Nullable<double> Discount
         {
@@ -16717,7 +16698,7 @@ namespace SalesAndInentoryWeb_Application
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_totalcgst", DbType = "NVarChar(MAX)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_totalcgst", DbType = "Float")]
         public System.Nullable<double> totalcgst
         {
             get
@@ -16733,7 +16714,7 @@ namespace SalesAndInentoryWeb_Application
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_totalsgst", DbType = "NVarChar(MAX)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_totalsgst", DbType = "Float")]
         public System.Nullable<double> totalsgst
         {
             get
@@ -16749,7 +16730,7 @@ namespace SalesAndInentoryWeb_Application
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_totaligst", DbType = "NVarChar(MAX)")]
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_totaligst", DbType = "Float")]
         public System.Nullable<double> totaligst
         {
             get

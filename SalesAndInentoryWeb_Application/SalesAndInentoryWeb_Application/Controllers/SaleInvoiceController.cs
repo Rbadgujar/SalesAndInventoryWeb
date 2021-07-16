@@ -38,12 +38,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaleInvoice(tbl_SaleInvoiceSelectResult invoice, tbl_SaleInvoiceInnerspResult inner)
+        public ActionResult SaleInvoice(tbl_SaleInvoiceSelectResult invoice)
         {
             try
             {
-                //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-                db.tbl_SaleInvoiceSelect("Insert", null, invoice.PartyName, invoice.BillingName, invoice.ContactNo, invoice.PONumber, invoice.PoDate, Convert.ToDateTime(invoice.InvoiceDate),  invoice.StateofSupply, invoice.PaymentType, invoice.TransportName, invoice.DeliveryLocation, invoice.VehicleNumber, invoice.Deliverydate, invoice.Description, invoice.TransportCharges, invoice.Image, invoice.Tax1, invoice.CGST, invoice.SGST, invoice.TaxAmount1, invoice.TotalDiscount, invoice.DiscountAmount1, invoice.RoundFigure, invoice.Total, invoice.Received, invoice.RemainingBal, invoice.DueDate, invoice.PaymentTerms, null, null, null, null, null, invoice.Status, null, null, invoice.ItemCategory, invoice.Barcode, invoice.IGST, invoice.Company_ID, invoice.Discount,invoice.TaxAmountShow, invoice.Caltotal, invoice.totalcgst, invoice.totalsgst, invoice.totaligst, invoice.EWayBillNo);
+               db.tbl_SaleInvoiceSelect("Insert", null, invoice.PartyName, invoice.BillingName, invoice.ContactNo, invoice.PoNumber, invoice.PoDate, invoice.InvoiceDate, invoice.StateofSupply, invoice.PaymentType, invoice.TransportName, invoice.DeliveryLocation, invoice.VehicleNumber, invoice.Deliverydate, invoice.Description, invoice.TransportCharges, invoice.Image, invoice.Tax1, invoice.CGST, invoice.SGST, invoice.TaxAmount1, invoice.TotalDiscount, invoice.DiscountAmount1, invoice.RoundFigure, invoice.Total, invoice.Received, invoice.RemainingBal, invoice.DueDate, invoice.PaymentTerms, null, null, null, null, null, invoice.Status, null, null, invoice.ItemCategory, invoice.Barcode, invoice.IGST, null, invoice.Discount, invoice.TaxAmountShow, invoice.Caltotal, invoice.totalcgst, invoice.totalsgst, invoice.totaligst, invoice.EWayBillNo);
                // db.tbl_SaleInvoiceInnersp("Insert", null, inner.ItemID, inner.ItemName, inner.ItemCode, inner.SalePrice, inner.TaxForSale, inner.SaleTaxAmount, inner.Qty, inner.freeQty, inner.ItemAmount, inner.Discount, inner.DiscountAmount, null, inner.stock, inner.Count1, inner.CGST, inner.SGST, inner.IGST);
                 db.SubmitChanges();
                 return RedirectToAction("SaleIndexpage");
@@ -55,7 +54,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
-
         [HttpPost]
         public ActionResult Delete(int id)
         {
@@ -64,18 +62,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ChartPartial()
-        {
-            var model = new object[0];
-            return PartialView("~/Views/DashBord/_ChartPartial.cshtml", model);
-        }
+        //public ActionResult ChartPartial()
+        //{
+        //    var model = new object[0];
+        //    return PartialView("~/Views/DashBord/_ChartPartial.cshtml", model);
+        //}
 
-        SalesAndInentoryWeb_Application.CompanyDataClassDataContext db1 = new SalesAndInentoryWeb_Application.CompanyDataClassDataContext();
+        //SalesAndInentoryWeb_Application.CompanyDataClassDataContext db1 = new SalesAndInentoryWeb_Application.CompanyDataClassDataContext();
 
-        public ActionResult ChartPartial1()
-        {
-            var model = db1.tbl_SaleInvoices;
-            return PartialView("~/Views/Home/_ChartPartial1.cshtml", model);
-        }
+        //public ActionResult ChartPartial1()
+        //{
+        //    var model = db1.tbl_SaleInvoices;
+        //    return PartialView("~/Views/Home/_ChartPartial1.cshtml", model);
+        //}
     }
 }
