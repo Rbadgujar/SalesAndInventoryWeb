@@ -11,11 +11,17 @@ namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class tbl_BankAccount
+using System.Linq;
+using System.Web;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+	using System.Web.Security;
+	public partial class tbl_BankAccount
     {
         public int ID { get; set; }
-        public string AccountName { get; set; }
+
+		[Required(ErrorMessage = "Please enter your Family {0}")]
+		public string AccountName { get; set; }
         public string BankName { get; set; }
         public string AccountNo { get; set; }
         public Nullable<double> OpeningBal { get; set; }

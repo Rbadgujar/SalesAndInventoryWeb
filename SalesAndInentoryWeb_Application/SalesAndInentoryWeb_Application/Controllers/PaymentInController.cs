@@ -25,6 +25,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
             }
         }
+
         [HttpGet]
         public ActionResult ShowData()
         {

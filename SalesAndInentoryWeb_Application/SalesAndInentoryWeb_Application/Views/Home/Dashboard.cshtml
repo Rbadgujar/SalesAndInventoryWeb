@@ -6,20 +6,67 @@
 
 <html>
 <head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <style>
+ 
+
+    .highcharts-figure, .highcharts-data-table table {
+    min-width: 320px; 
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+	font-family: Verdana, sans-serif;
+	border-collapse: collapse;
+	border: 1px solid #EBEBEB;
+	margin: 10px auto;
+	text-align: center;
+	width: 100%; 
+	max-width: 500px;
+}
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+.highcharts-data-table th {
+	font-weight: 600;
+    padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+
+input[type="number"] {
+	min-width: 50px;
+}
+    </style>
 </head>
 <body>
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
-       <div class="col-md-3">
+        <div class="col-md-3">
 
-        <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
-       <div style="text-align:center"><label style="margin-top:7px;font-size:20px; ">Sale</label></div>
-            <div class="pull-left">
-                <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Total:</label>
-                <br />
-                <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Pending:</label>
+            <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
+                <div style="text-align:center"><label style="margin-top:7px;font-size:20px; ">Sale</label></div>
+                <div class="pull-left">
+                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Total:</label>
+                    <br />
+                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Pending:</label>
+                </div>
             </div>
-            </div>
-           </div>
+        </div>
         <div class="col-md-3">
 
             <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; height:110px;background-color:white">
@@ -45,7 +92,7 @@
             </div>
         </div>
         <div class="col-md-3">
-             
+
             <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
                 <div style="text-align:center"><label style="margin-top:7px;font-size:20px">Payment Out</label></div>
                 <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Recives:</label>
@@ -53,75 +100,387 @@
                 <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Remaning:</label>
 
             </div>
-          
-            </div>
+
         </div>
-    <br />
+    </div>
+
+
+
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
         <div class="col-md-6">
 
-            <div class="form-control"  style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <img src="~/css/img/chart.png"  style="height:170px;width:540px" />
+            <figure class="highcharts-figure">
+                <div id="container"></div>
+                <p class="highcharts-description">
 
-               
-               </div>
+                </p>
+            </figure>
+
+
         </div>
         <div class="col-md-6">
 
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <img src="~/css/img/download.png" style="height:170px;width:540px"  />
+            <figure class="highcharts-figure">
+                <div id="container1"></div>
+                <p class="highcharts-description">
 
-            </div>
+                </p>
+            </figure>
+
         </div>
-
     </div>
-    <br />
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
         <div class="col-md-6">
+            <figure class="highcharts-figure">
+                <div id="container2"></div>
+                <p class="highcharts-description">
+                    Basic line chart showing trends in a dataset. This chart includes the
+                    <code>series-label</code> module, which adds a label to each line for
+                    enhanced readability.
+                </p>
+            </figure>
+</div>
+<div class="col-md-6">
+    <figure class="highcharts-figure">
+        <div id="container3"></div>
+        <p class="highcharts-description">
+            A basic column chart compares rainfall values between four cities.
+            Tokyo has the overall highest amount of rainfall, followed by New York.
+            The chart is making use of the axis crosshair feature, to highlight
+            months as they are hovered over.
+        </p>
+    </figure>
 
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-
-
-                <div class="chartContainer" style="height: 300px; width%;"></div>
-            </div>
+     </div>
+            <br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br /><br />
+            <br />
+            <br />
+            <br />
         </div>
+        <script>
 
-        <div class="col-md-6">
+            $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    url: '/PurchaseBill/order',
+                    data: JSON.stringify({}),
+                    ContentType: 'application/json:charset=utf-8',
+                    dataType: "json",
+                    success: function (json) {
 
-            <div class="form-control" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;background-color:white;height:200px">
-                <label></label>
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br />
-        <br />
-        <br />
-        <br />
-        <br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br />
-    </div>
 
-    </body>
+                        //for(var i=0;i<=20;i++) {
+
+                        var total = parseInt(json.data[0].Total);
+                        var party = parseInt(json.data[0].RemainingBal);
+                        var paid = parseInt(json.data[0].Paid);
+
+                        Highcharts.chart('container', {
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: null,
+                                plotShadow: false,
+                                type: 'pie'
+                            },
+                            title: {
+                                text: 'Payment Information !'
+                            },
+                            tooltip: {
+                                pointFormat: total
+                            },
+                            accessibility: {
+                                point: {
+                                    valueSuffix: '%'
+                                }
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: true,
+                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: 'Brands',
+                                colorByPoint: true,
+                                data: [{
+                                    name: 'Paid',
+                                    y: total,
+                                    sliced: true,
+                                    selected: true
+                                }, {
+                                    name: 'Remaing Bal',
+                                    y: party
+                                },
+
+                                {
+                                    name: 'Other',
+                                    y: party
+                                }]
+                            }]
+                        });
+
+
+                        //}
+
+                    }
+
+
+                });
+
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/PurchaseBill/vits',
+                    data: JSON.stringify({}),
+                    ContentType: 'application/json:charset=utf-8',
+                    dataType: "json",
+                    success: function (json) {
+                        debugger
+                        var To = [];
+                        for (var i = 0; i <= 30; i++) {
+
+                            To.push(json.data[i].Total);
+
+                        }
+
+                        Highcharts.chart('container1', {
+
+                            title: {
+                                text: 'Daily Sale Data'
+                            },
+
+                            xAxis: {
+                                tickInterval: 1,
+                                type: 'logarithmic',
+                                accessibility: {
+                                    rangeDescription: 'Range: 1 to 10000'
+                                }
+                            },
+
+                            yAxis: {
+                                type: 'logarithmic',
+                                minorTickInterval: 0.1,
+                                accessibility: {
+                                    rangeDescription: 'Range: 0.1 to 1000'
+                                }
+                            },
+
+                            tooltip: {
+                                headerFormat: '<b>{series.name}</b><br />',
+                                pointFormat: 'x = {point.x}, y = {point.y}'
+                            },
+
+                            series: [{
+                                data: To,
+                                pointStart: 4
+                            }]
+                        });
+
+                    }
+
+
+                });
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/PurchaseBill/vits',
+                    data: JSON.stringify({}),
+                    ContentType: 'application/json:charset=utf-8',
+                    dataType: "json",
+                    success: function (json) {
+                        Highcharts.chart('container2', {
+
+                            title: {
+                                text: 'Sale ,'
+                            },
+
+                            subtitle: {
+                                text: 'Source: thesolarfoundation.com'
+                            },
+
+                            yAxis: {
+                                title: {
+                                    text: 'Number of Employees'
+                                }
+                            },
+
+                            xAxis: {
+                                accessibility: {
+                                    rangeDescription: 'Range: 2010 to 2017'
+                                }
+                            },
+
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'middle'
+                            },
+
+                            plotOptions: {
+                                series: {
+                                    label: {
+                                        connectorAllowed: false
+                                    },
+                                    pointStart: 2010
+                                }
+                            },
+
+                            series: [{
+                                name: 'Installation',
+                                data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+                            }, {
+                                name: 'Manufacturing',
+                                data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+                            }, {
+                                name: 'Sales & Distribution',
+                                data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+                            }, {
+                                name: 'Project Development',
+                                data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+                            }, {
+                                name: 'Other',
+                                data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+                            }],
+
+                            responsive: {
+                                rules: [{
+                                    condition: {
+                                        maxWidth: 500
+                                    },
+                                    chartOptions: {
+                                        legend: {
+                                            layout: 'horizontal',
+                                            align: 'center',
+                                            verticalAlign: 'bottom'
+                                        }
+                                    }
+                                }]
+                            }
+
+                        });
+
+                }
+            });
+
+
+
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/PurchaseBill/vits',
+                    data: JSON.stringify({}),
+                    ContentType: 'application/json:charset=utf-8',
+                    dataType: "json",
+                    success: function (json) {
+
+                        Highcharts.chart('container3', {
+                            chart: {
+                                type: 'column'
+                            },
+                            title: {
+                                text: 'Monthly Average Rainfall'
+                            },
+                            subtitle: {
+                                text: 'Source: WorldClimate.com'
+                            },
+                            xAxis: {
+                                categories: [
+                                    'Jan',
+                                    'Feb',
+                                    'Mar',
+                                    'Apr',
+                                    'May',
+                                    'Jun',
+                                    'Jul',
+                                    'Aug',
+                                    'Sep',
+                                    'Oct',
+                                    'Nov',
+                                    'Dec'
+                                ],
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Rainfall (mm)'
+                                }
+                            },
+                            tooltip: {
+                                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                                footerFormat: '</table>',
+                                shared: true,
+                                useHTML: true
+                            },
+                            plotOptions: {
+                                column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'Tokyo',
+                                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+                            }, {
+                                name: 'New York',
+                                data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+                            }, {
+                                name: 'London',
+                                data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+                            }, {
+                                name: 'Berlin',
+                                data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+                            }]
+                        });
+
+
+                    }
+
+                });
+
+
+
+            });
+
+        </script>
+</body>
+
 </html>

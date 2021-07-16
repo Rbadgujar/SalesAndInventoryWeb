@@ -2806,6 +2806,8 @@
     <Content Include="css\img\icons8-paper-plane-100.png" />
     <Content Include="css\img\idealtech icon.png" />
     <Content Include="css\img\img_girl.jpg" />
+    <Content Include="css\img\Line_graph.png" />
+    <Content Include="css\img\wfysS.png" />
     <Content Include="css\mm.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\DBModel.Context.tt">
@@ -3300,6 +3302,7 @@
     <Compile Include="Controllers\CreditnoteController.cs" />
     <Compile Include="Controllers\DashBordController.cs" />
     <Compile Include="Controllers\DayBookController.cs" />
+    <Compile Include="Controllers\db.cs" />
     <Compile Include="Controllers\DebitNoteController.cs" />
     <Compile Include="Controllers\DeliveryChallanController.cs" />
     <Compile Include="Controllers\demotController.cs" />
@@ -3322,6 +3325,7 @@
     <Compile Include="Controllers\OIncomeCategoryReportController.cs" />
     <Compile Include="Controllers\OIncomeItemReportController.cs" />
     <Compile Include="Controllers\OnlineStoreController.cs" />
+    <Compile Include="Controllers\OtherIncomeCategoryController.cs" />
     <Compile Include="Controllers\OtherIncomeController.cs" />
     <Compile Include="Controllers\OtherIncomeReportController.cs" />
     <Compile Include="Controllers\ParchaseOrderController.cs" />
@@ -3370,6 +3374,7 @@
     <Compile Include="Models\CompanyBankAccount.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CountryList.cs" />
     <Compile Include="Models\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3792,6 +3797,7 @@
     <Folder Include="bin\App_Data\" />
     <Folder Include="css\fonts\" />
     <Folder Include="Views\index\" />
+    <Folder Include="Views\OtherIncomeCategory\" />
     <Folder Include="Views\Seeting\" />
   </ItemGroup>
   <ItemGroup>

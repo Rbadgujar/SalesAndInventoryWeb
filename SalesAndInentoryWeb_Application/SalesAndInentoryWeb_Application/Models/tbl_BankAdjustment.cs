@@ -11,11 +11,14 @@ namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class tbl_BankAdjustment
+	using System.Linq;
+	using System.Web;
+	using System.ComponentModel;
+	using System.ComponentModel.DataAnnotations;
+	public partial class tbl_BankAdjustment
     {
         public int ID { get; set; }
-        public string BankAccount { get; set; }
+		public string BankAccount { get; set; }
         public string EntryType { get; set; }
         public Nullable<double> Amount { get; set; }
         public Nullable<System.DateTime> Date { get; set; }

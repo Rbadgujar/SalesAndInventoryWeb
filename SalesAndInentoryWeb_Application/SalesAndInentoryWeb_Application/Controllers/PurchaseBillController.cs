@@ -75,6 +75,21 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		
 		}
 
+        public ActionResult vits()
+        {
+
+            var tb = db.tbl_PurchaseBillselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult order()
+        {
+
+            var tb = db.tbl_PurchaseBillselect("sum", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+        }
+           
 		[HttpPost]
 		public ActionResult AddPurchase(tbl_PurchaseBill emp,int id= 0)
 		{

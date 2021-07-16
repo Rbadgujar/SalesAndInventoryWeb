@@ -22,13 +22,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
-		[HttpGet]
+	
         public ActionResult ExpenceData()
         { 
 			var tb = db.tbl_ExpensesSelect("Select1", null, null, null, null, null, null,null, null, null, null, null, null, null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
-
-		}
+    	}
 
         [HttpGet]
         public ActionResult AddOrEdit()

@@ -6,17 +6,13 @@ using System.Web.Mvc;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
-    public class BarcodeController : Controller
+    public class OtherIncomeCategoryController : Controller
     {
-        // GET: Barcode
-        public ActionResult index()
+        // GET: OtherIncomeCategory
+        public ActionResult Index()
         {
             return View();
         }
-       
-        public ActionResult BarcodePrint()
-        {
-            return View();
-        }
+
     }
 }

@@ -17,74 +17,67 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-        public ActionResult LoadData()
+
+		[HttpGet]
+		public ActionResult Data()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_OtherIncome> estimate = db.tbl_OtherIncome.ToList<tbl_OtherIncome>();
-                return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
-            }
-        }
-        [HttpGet]
+			var tb = db.tbl_OtherIncomeSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult Detail(int id)
+		{
+			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
+			return View(tb);
+		}
+
+		[HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {
-            if (id == 0)
-                return View(new tbl_OtherIncome());
-            else
-            {
-                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-                {
-                    return View(db.tbl_OtherIncome.Where(x => x.Id == id).FirstOrDefault<tbl_OtherIncome>());
-                }
-            }
+			if (id == 0)
+			{
+				return View(new tbl_OtherIncome());
+			}
+			else
+			{
+				var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
+				var vm = new tbl_OtherIncome();
+				vm.IncomeCategory = tb.IncomeCategory;
+				vm.Date = Convert.ToDateTime(tb.Date);
+				vm.total = tb.total;
+				vm.Received = tb.Received;
+				vm.Balance = tb.Balance;
+				return View(vm);
+			}
         }
-        [HttpGet]
-        public ActionResult ExpenceData()
+		public ActionResult otcategory()
+		{
+			return View();
+		}
+
+		[HttpPost]
+        public ActionResult AddOrEdit(tbl_OtherIncome emp,int id = 0)
         {
-            var tb = db.tbl_OtherIncomeSelect("Select1",null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
-            
-        }
-        [HttpPost]
-        public ActionResult AddOrEdit(tbl_OtherIncome emp)
-        {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                if (emp.Id == 0)
-                {
-                    db.tbl_OtherIncome.Add(emp);
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    db.Entry(emp).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-                }
-            }
-
-
-        }
-
-
-
-      public  ActionResult otcategory()
-        {
-            return View();
-        } 
-
+			if (id == 0)
+			{
+				var tb = db.tbl_OtherIncomeSelect("Insert",  null,emp.IncomeCategory, emp.Date, null, null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
+				db.SubmitChanges();
+				return RedirectToAction("Index");
+			}
+			else
+			{
+				var tb = db.tbl_OtherIncomeSelect("Update", id, emp.IncomeCategory, emp.Date, null,null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
+				db.SubmitChanges();
+				return RedirectToAction("Index");
+			}
+	    }
+				       
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                tbl_OtherIncome emp = db.tbl_OtherIncome.Where(x => x.Id == id).FirstOrDefault<tbl_OtherIncome>();
-                db.tbl_OtherIncome.Remove(emp);
-                db.SaveChanges();
-                return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
-            }
-        }
-    }
+			var tb = db.tbl_OtherIncomeSelect("Delete", id,null,null,null,null,null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+			db.SubmitChanges();
+			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+		}
+	}
 }
