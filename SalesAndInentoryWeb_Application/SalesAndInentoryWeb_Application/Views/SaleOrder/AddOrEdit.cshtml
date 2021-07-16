@@ -6,14 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
+ 
 
     <style>
         .scrolldown {
@@ -37,12 +30,15 @@
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
             $("#btnaddtolist").click(function () {
-                AddToItem();
-                finaltotal();
+
+                AddToItem();             
             });
-            $("#btnsubmit").click(function () {
-                finaltotal();
+
+            $("#btnsubmit").click(function (e) {
+                debugger
+                  additems();
             });
         });
         function RemoveItem(ItemName)
@@ -52,8 +48,9 @@
         function AddToItem()
         {
             var tableitemlist = $("#tblSaleInvoice");
-            var id = $("#id").val();
-            var ItemName=$("#dp").val();
+            var ItemId = $("#id").val();
+
+            var ItemName=$("#ItemName option:selected").text();
             var mrp = $("#sp").val();
             var tax = $("#ts").val();
             var qty = $("#qty").val();
@@ -62,7 +59,7 @@
             var taxmat = $("#sa").val();
             var total = $("#ca").val();
 
-            var itemlist = "<tr><div class='scrollit' ><td>" + id + "</td><td><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
+            var itemlist = "<tr><div class='scrollit' ><td>" + ItemId + "</td><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
             + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
@@ -78,45 +75,44 @@
             $("#sa").val('');
             $("#ca").val('');
         }
-
-        function finaltotal()
-        {
-            var order = {};
-            var tbl_SaleOrderInner1 = new Array();
-
-            order.PartyName = $("#PartyName").val;
-            order.OrderNo = $("#OrderNo").val;
-            order.BillingName = $("#BillingName").val;
-
-
-            $("#tblSaleInvoice").find("tr:gt(0)").each(function () {
-                var tbl_SaleOrderInner = {};
-                tbl_SaleOrderInner.ItemID = parseFloat($(this).find("td:eq(0)").text());
-                tbl_SaleOrderInner.ItemName = $("#ItemName").val();
-                tbl_SaleOrderInner.SalePrice = $("#SalePrice").val();
-                tbl_SaleOrderInner.push(tbl_SaleOrderInner);
-
+        function additems(){
+            var objpartydetails = {};
+            var listofitemdetails = [];
+            var studentmarks = {};
+            var tablemarks=$("#tblSaleInvoice").find("tr:gt(0)");
+            $.each(tablemarks,
+                function () {               
+                studentmarks.ItemID = $(this).find("td:eq(0)").text();
+                studentmarks.ItemName = $(this).find("td:eq(1)").text();
+                studentmarks.SalePrice = $(this).find("td:eq(2)").text();
+                listofitemdetails.push(studentmarks);
             });
-            order.tbl_SaleOrderInner = tbl_SaleOrderInner;
-            $ajax({
+
+            objpartydetails.PartyName = $("#PartyName").val();
+            objpartydetails.BillingName = $("#BillingName").val();
+            objpartydetails.listofitemdetail = listofitemdetails;
+
+
+            $.ajax({
                 async: true,
-                type: 'POST',
+                type: "POST",
                 datatype: 'JSON',
                 contentType: 'application/json;charset=utf-8',
-                data: JSON.stringify(order),
+                data: JSON.stringify(objpartydetails),
                 url: '/SaleOrder/AddOrEdit',
-                success: function (data)
-                {
+                success: function (data) {
 
                 },
                 error: function ()
                 {
-                    alert('somthing went wrong');
+                    alert("error");
                 }
 
-                
-            });
+                });
+
         }
+       
+       
     </script>
 </head>
 <body>
@@ -144,10 +140,10 @@
                                        new SelectListItem {Text = "pallavi", Value = "pallavi" },
                                        new SelectListItem {Text = "Rahul", Value = "Rahul" },
                                        new SelectListItem {Text = "Bhagyashri", Value = "Bhagyashri" },
-                                   }, new { @class = "form-control",@style= "width:220px" })  
+                                   }, new { @class = "form-control",@style= "width:220px" ,@id="PartyName"})  
                                Address:
                                 <br>
-                                @Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control" , @style = "width:220px" } })
+                                @Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control" , @style = "width:220px" ,@id="BillingName"} })
                                 <br>
                                 Contact No:
                                 @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } })
@@ -222,8 +218,11 @@
                                 <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
                                     <thead>
                                         <tr>
-                                            @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemID, htmlAttributes: new { id = "id", @class = "form-control" })
+                                            <th>
+                                                Item ID
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemID, htmlAttributes: new { @id = "id", @style = "width:130px;height:35px", @class = "form-control", @name = "SalePrice" })
 
+                                                </th>
 
                                             <th>
                                                 <label>Item Name</label>
@@ -233,7 +232,7 @@
                                        new SelectListItem {Text = "bottle", Value = "bottle" },
                                        new SelectListItem {Text = "pen", Value = "pen" },
                                        new SelectListItem {Text = "don", Value = "don" },
-                                   }, new { @class = "form-control", @style = "width:130px" ,@name= "ItemName" })
+                                   }, new { @class = "form-control", @style = "width:130px" ,@name= "ItemName",@id="ItemName" })
                                                 
                                             </th>
                                             <th>
@@ -295,13 +294,15 @@
                                     <option value="OnlinPayment">Online Payment</option>
                                 </select>
                                Transport Name:
-                                @Html.DevExpress().TextBoxFor(m => m.TransportName, settings =>
-                                  {
-                                      settings.Properties.NullText = "TransportName";
-                                      settings.ControlStyle.CssClass = "form-control";
-                                      settings.Style["width"] = "150px";
-                                      settings.Style["height"] = "30px";
-                                  }).GetHtml()
+                                @Html.EditorFor(model => model.TransportName, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   @class = "form-control",
+                                   placeholder = "vical No",
+                                   @style = "width:150px;height:30px;"
+                               }
+                           })
                                Vical No:
                                 @Html.EditorFor(model => model.DeliveryLocation, new
                            {
