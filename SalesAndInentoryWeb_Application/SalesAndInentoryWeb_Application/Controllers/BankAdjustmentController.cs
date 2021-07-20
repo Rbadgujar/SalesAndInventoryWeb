@@ -35,8 +35,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
 			if (id == 0)
 			{
-				return View(new tbl_BankAdjustment());
-			}
+                tbl_BankAdjustment objbank = new tbl_BankAdjustment();
+                objbank.ListOfAccounts = (from obj in db.tbl_BankAccounts
+                                          where obj.DeleteData.Equals(1)
+                                          select new SelectListItem
+                                          {
+                                              Text = obj.BankName,
+                                              Value = obj.ID.ToString()
+
+                                          });
+                return View(objbank);
+            }
 			else
 			{
 

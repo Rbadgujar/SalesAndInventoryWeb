@@ -11,9 +11,12 @@ namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
     public partial class tbl_CashAdjustment
     {
+        [Display(Name = "BankName")]
+
         public int ID { get; set; }
         public string CashAdjustment { get; set; }
         public Nullable<double> CashAmount { get; set; }
@@ -22,5 +25,7 @@ namespace SalesAndInentoryWeb_Application.Models
         public Nullable<bool> DeleteData { get; set; }
         public Nullable<int> Company_ID { get; set; }
         public string BankName { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+
     }
 }

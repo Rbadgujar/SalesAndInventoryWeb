@@ -13,13 +13,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
-        public ActionResult backuptpdrive(){
+        [HttpGet]
+        public ActionResult backuptpdrive()
+        {
              return View();
         }
+        [HttpPost]
+        public ActionResult backuptpdrive(string xyz)
+        {
+            return View();
 
+        }
 
-       public ActionResult backupdatabase()
+        public ActionResult backupdatabase()
         {
             return View();                 
         }

@@ -102,34 +102,40 @@
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
     <script>
-        @*var Popup, dataTable;
+        var Popup, dataTable;
         $(document).ready(function () {
             dataTable =  $("#cash").DataTable({
-                "ajax": {
-                    "url": "/CashInHand/Data",
-                    "type": "GET",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "TableName" },
-                    { "data": "PartyName" },
-                    { "data": "InvoiceDate" },
-                    { "data": "Total" },
-                    {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                 "ajax": {
+                        "url": "/DayBook/Daybook",
+                        "type": "GET",
+                        "datatype": "json"
                     },
-                        "orderable": false,
-                        "searchable":false,
-                        "width":"150px"
+                    "columns": [
+                        { "data": "InvoiceID" },
+                        { "data": "PartyName" },
+                        { "data": "ContactNo" },
+                        { "data": "InvoiceDate" },
+                        { "data": "PaymentType" },
+                        { "data": "Received" },
+                        { "data": "RemainingBal" },
+                        { "data": "Total" },
+
+                        {
+                            "data": "InvoiceID" , "render" : function (data) {
+                            return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        },
+                            "orderable": false,
+                            "searchable":false,
+                            "width":"150px"
+                        }
+
+                    ],
+                    "language": {
+
+                        "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                     }
-
-                ],
-                "language": {
-
-                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
-                }
             });
-        });*@
+        });
 
         function PopupForm(url) {
             var formDiv = $('<div/>');

@@ -11,6 +11,8 @@ namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
     using System.Collections.Generic;
+    using SalesAndInentoryWeb_Application.ViewModel;
+    using System.Web.Mvc;
     
     public partial class tbl_SaleOrder
     {
@@ -19,8 +21,10 @@ namespace SalesAndInentoryWeb_Application.Models
         {
             this.tbl_SaleOrderInner = new HashSet<tbl_SaleOrderInner>();
             this.tbl_SaleOrderInner1 = new HashSet<tbl_SaleOrderInner>();
-        }
-    
+
+    }
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+
         public int OrderNo { get; set; }
         public string PartyName { get; set; }
         public string BillingName { get; set; }
@@ -73,5 +77,8 @@ namespace SalesAndInentoryWeb_Application.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_SaleOrderInner> tbl_SaleOrderInner1 { get; set; }
         public virtual tbl_SaleOrderInner tbl_SaleOrderInner2 { get; set; }
+
+        public List<SelectListItem> Items { get; set; }
+
     }
 }

@@ -37,17 +37,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(tbl_ExpensesSelectResult exp)
         {
-            try
-            {
-                //db.tbl_ExpensesSelect("Insert", null, exp.ExpenseCategory, exp.Date, exp.Description, exp.Image, exp.Total, exp.Paid, exp.Balance, exp.AdditinalFeild1, exp.AdditionalFeild2, exp.Status, exp.TableName, exp.compid);
-                //db.SubmitChanges();
-                return RedirectToAction("Index");
-               // return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                return View("Error", new HandleErrorInfo(e, "Expence", "AddOrEdit"));
-            }
+            //try
+            //{
+            //    db.tbl_ExpensesSelect("Insert", null, exp.ExpenseCategory, exp.Date, exp.Description, exp.Image, exp.Total, exp.Paid, exp.Balance, exp.AdditinalFeild1, exp.AdditionalFeild2, exp.Status, exp.TableName, exp.compid);
+            //    db.SubmitChanges();
+            //    return RedirectToAction("Index");
+             return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+            //}
+            //catch (Exception e)
+            //{
+            //    return View("Error", new HandleErrorInfo(e, "Expence", "AddOrEdit"));
+            //}
         }
 
         [HttpPost]
