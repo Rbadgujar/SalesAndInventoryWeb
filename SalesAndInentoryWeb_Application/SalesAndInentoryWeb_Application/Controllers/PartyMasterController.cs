@@ -17,6 +17,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
 
+        public ActionResult Addparty()
+        {
+            return View();
+
+        }
         [HttpGet]
         public ActionResult ShowData()
         {

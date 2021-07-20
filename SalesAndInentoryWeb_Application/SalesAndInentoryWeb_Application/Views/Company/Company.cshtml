@@ -1,8 +1,8 @@
 ﻿@model SalesAndInentoryWeb_Application.Models.tbl_CompanyMaster
 @{
-    ViewBag.Title = "Company";
-    Layout = "~/Views/Shared/ideal.cshtml";
-    // Layout = null;
+    ////ViewBag.Title = "Company";
+    ////Layout = "~/Views/Shared/ideal.cshtml";
+    Layout = null;
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -26,7 +26,7 @@
         <div class="panel panel-primary" style="height:100%; width:100%;">
        
         
-            <div class="panel-heading "><a class="btn btn-success" href=@Url.Action("Index","Company") >Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Company Master</p></div>
+            @*<div class="panel-heading "><a class="btn btn-success" href=@Url.Action("Index","Company") >Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Company Master</p></div>*@
           <br />
                 <div class="panel-body text-center">
                 <center>
@@ -382,55 +382,7 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center">
-                                            <select name="bankname" class="form-control"  style="border: 1px solid black">
-                                                <option selected="selected" value="0">--Select --</option>
-                                                <option value="1">ALLAHABAD BANK </option>
-                                                <option value="2">ANDHRA BANK</option>
-                                                <option value="3">AXIS BANK</option>
-                                                <option value="29">STATE BANK OF INDIA</option>
-                                                <option value="4">BANK OF BARODA</option>
-                                                <option value="29">UCO BANK</option>
-                                                <option value="29">UNION BANK OF INDIA</option>
-                                                <option value="5">BANK OF INDIA</option>
-                                                <option value="20">BANDHAN BANK LIMITED</option>
-                                                <option value="7">CANARA BANK</option>
-                                                <option value="32">GRAMIN VIKASH BANK</option>
-                                                <option value="8">CORPORATION BANK</option>
-                                                <option value="9">INDIAN BANK</option>
-                                                <option value="10">INDIAN OVERSEAS BANK</option>
-                                                <option value="11">ORIENTAL BANK OF COMMERCE</option>
-                                                <option value="12">PUNJAB AND SIND BANK</option>
-                                                <option value="13">PUNJAB NATIONAL BANK</option>
-                                                <option value="14">RESERVE BANK OF INDIA</option>
-                                                <option value="15">SOUTH INDIAN BANK</option>
-                                                <option value="16">UNITED BANK OF INDIA</option>
-                                                <option value="17">CENTRAL BANK OF INDIA</option>
-                                                <option value="18">VIJAYA BANK</option>
-                                                <option value="19">DENA BANK</option>
-                                                <option value="21">BHARATIYA MAHILA BANK LIMITED</option>
-                                                <option value="22">FEDERAL BANK LTD </option>
-                                                <option value="23">HDFC BANK LTD</option>
-                                                <option value="24">ICICI BANK LTD</option>
-                                                <option value="25">IDBI BANK LTD</option>
-                                                <option value="66">PAYTM BANK</option>
-                                                <option value="29">FINO PAYMENT BANK</option>
-                                                <option value="26">INDUSIND BANK LTD</option>
-                                                <option value="27">KARNATAKA BANK LTD</option>
-                                                <option value="28">KOTAK MAHINDRA BANK</option>
-                                                <option value="30">YES BANK LTD</option>
-                                                <option value="31">SYNDICATE BANK</option>
-                                                <option value="5">BANK OF INDIA</option>
-                                                <option value="6">BANK OF MAHARASHTRA</option>
-                                            </select>
-                                        </div>
-                                    </center>
-                                </td>
-                                <td style="padding:0 15px 0 15px">
-                                    <div class="form-group text-right ">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
+                                            ,mm
                                    settings.Name = "Label12";
                                    settings.Text = "Account No   :";
 

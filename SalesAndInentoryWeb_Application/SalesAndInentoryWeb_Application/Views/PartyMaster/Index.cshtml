@@ -14,10 +14,9 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-8.5px;"><h3>All Parties</h3></label>
-                    <a class="btn btn-success pull-right row" style="margin-top:12.5px; margin-right:-11px;" href=@Url.Action("AddOrEdit","PartyMaster")><i class="fa fa-plus"></i>Add New Party</a>
-                    <a class="btn btn-info pull-right row" style="margin-top:12.5px;margin-right:20px; " onclick="PopupForm('@Url.Action("PartyGroup","PartyMaster")')"><i class="fa fa-plus"></i>Add Party Group</a>
+                    <a class="btn btn-success pull-right row" style="margin-top:12.5px; margin-right:-11px;"onclick="PopupForm('@Url.Action("Addparty","PartyMaster")')"><i class="fa fa-plus"></i>Add New Party</a>
+                    <a class="btn btn-info pull-right row" style="margin-top:12.5px;margin-right:20px;" onclick="PopupForm('@Url.Action("PartyGroup","PartyMaster")')"><i class="fa fa-plus"></i>Add Party Group</a>
                     @*<a class="btn btn-info row pull-right" style="margin-top:6.5px; margin-right:30px; " href="@Url.Action("Index","BankToBank")"><i class="fa fa-plus"></i>Bank To Bank </a>*@
-
                 </div>
             </div>
         </nav>
@@ -41,7 +40,10 @@
             </div>
         </div>
     </nav>
-
+    <br />
+    <br />
+    <br />
+    <br />
 </div>
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
@@ -91,7 +93,7 @@
                     autoOpen: true,
                     resizable: false,
                     title: 'Fill Parties Details',
-                    height: 480,
+                    height: 400,
                     width: 600,
                     close: function () {
                         Popup.dialog('destroy').remove();

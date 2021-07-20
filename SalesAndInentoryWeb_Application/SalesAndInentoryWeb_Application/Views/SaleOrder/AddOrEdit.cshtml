@@ -215,7 +215,7 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse ">
                             <div class="form-group scrolldown" style="height:200px">
-                                <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
+                                <table class="table table-striped table-bordered"  id="tblSaleInvoice">
                                     <thead>
                                         <tr>
                                             <th>
@@ -226,18 +226,18 @@
 
                                             <th>
                                                 <label>Item Name</label>
-                                                @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemName, new List<SelectListItem>
+                                   @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemName, new List<SelectListItem>
                                    {
                                        new SelectListItem {Text = "volvo", Value = "volvo", Selected = true },
                                        new SelectListItem {Text = "bottle", Value = "bottle" },
                                        new SelectListItem {Text = "pen", Value = "pen" },
                                        new SelectListItem {Text = "don", Value = "don" },
-                                   }, new { @class = "form-control", @style = "width:130px" ,@name= "ItemName",@id="ItemName" })
+                                   }, new { @class = "form-control", @style = "width:100px" ,@name= "ItemName",@id="ItemName" })
                                                 
                                             </th>
                                             <th>
                                                 <label>MRP</label>
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px" , @class = "form-control", @name = "SalePrice" })
+                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { id = "sp", @style = "width:80px;height:35px" , @class = "form-control", @name = "SalePrice" })
                                             </th>
                                             <th>
                                                 <label>Tax%</label>
@@ -364,14 +364,6 @@
             </div>
         </div>
    }
-
-
-
-
-
-
-
-
 
     <br />
 

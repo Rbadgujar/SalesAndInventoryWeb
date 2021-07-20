@@ -3457,8 +3457,7 @@ namespace SalesAndInentoryWeb_Application
                     this._DeleteData = value;
                 }
             }
-        }
-
+        }      
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Company_ID", DbType = "Int")]
         public System.Nullable<int> Company_ID
         {
