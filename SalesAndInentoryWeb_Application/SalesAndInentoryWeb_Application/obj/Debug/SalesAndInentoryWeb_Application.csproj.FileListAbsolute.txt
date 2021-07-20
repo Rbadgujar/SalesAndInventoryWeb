@@ -1232,3 +1232,10 @@ C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Ap
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DocumentFormat.OpenXml.xml
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ExcelNumberFormat.xml
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.csprojResolveAssemblyReference.cache
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ClosedXML.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DocumentFormat.OpenXml.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ExcelNumberFormat.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ClosedXML.pdb
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ClosedXML.xml
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DocumentFormat.OpenXml.xml
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ExcelNumberFormat.xml
