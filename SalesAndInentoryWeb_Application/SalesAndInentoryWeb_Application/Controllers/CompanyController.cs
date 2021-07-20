@@ -16,10 +16,29 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult com()
+        public ActionResult com(int id=0)
         {
-            return View();
 
+            if (id == 0)
+            {
+                return View();
+            }
+            else
+            {
+                var tb = db.tbl_CompanyMasterSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.CompanyID == id);
+                var vm = new tbl_CompanyMaster();
+                vm.CompanyName = tb.CompanyName;
+                vm.ReferaleCode = tb.ReferaleCode;
+                vm.Address = tb.Address;
+                vm.PhoneNo = tb.ContactNo;
+                vm.GSTNumber = tb.GSTNumber;
+                vm.BusinessType = tb.BusinessType;
+                vm.State = tb.State;
+             
+                return View(vm);
+            }
+
+          
         }
         [HttpPost]
 

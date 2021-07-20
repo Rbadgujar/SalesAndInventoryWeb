@@ -3787,7 +3787,6 @@
     <Content Include="Views\ItemMaster\unit.cshtml" />
     <Content Include="Views\OtherIncome\otcategory.cshtml" />
     <Content Include="Views\ItemMaster\Additem.cshtml" />
-    <Content Include="Views\ItemMaster\Addparty.cshtml" />
     <Content Include="Views\PartyMaster\Addparty.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -1,28 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="idealtec_inventory" Class="CompanyDataClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=103.83.81.80;Initial Catalog=idealtec_inventory;User ID=idealtec_inventory" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="idealtec_inventoryConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tbl_CompanyMaster" Member="tbl_CompanyMasters">
-    <Type Name="tbl_CompanyMaster">
-      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="EmailID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ReferaleCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BusinessType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GSTNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OwnerName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="AddLogo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="AdditinalFeild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AdditinalFeild2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AdditinalFeild3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Defulatcompany" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.PasswordCheek" Member="PasswordCheeks">
     <Type Name="PasswordCheek">
       <Column Name="ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
