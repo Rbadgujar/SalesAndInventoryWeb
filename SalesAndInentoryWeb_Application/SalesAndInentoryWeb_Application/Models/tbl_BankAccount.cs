@@ -20,7 +20,7 @@ using System.ComponentModel.DataAnnotations;
     {
         public int ID { get; set; }
 
-		[Required(ErrorMessage = "Please enter your Family {0}")]
+	
 		public string AccountName { get; set; }
         public string BankName { get; set; }
         public string AccountNo { get; set; }

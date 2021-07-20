@@ -3764,8 +3764,8 @@
     <Content Include="Views\UnitHomepage\AddUnit.cshtml" />
     <Content Include="Views\ItemServices\Index.cshtml" />
     <Content Include="Views\ItemServices\AddServices.cshtml" />
-    <Content Include="Views\ItemAdjustHomepage\Index.cshtml" />
-    <Content Include="Views\ItemAdjustHomepage\AdjustItem.cshtml" />
+    <Content Include="Views\demot\ItemAdjustHomepage\Index.cshtml" />
+    <Content Include="Views\demot\ItemAdjustHomepage\AdjustItem.cshtml" />
     <Content Include="Views\LoanAccount\Index.cshtml" />
     <Content Include="Views\LoanAccount\LoanStatement.cshtml" />
     <Content Include="Views\PartyStatement\Index.cshtml" />
@@ -3790,6 +3790,9 @@
     <Content Include="Views\PurchaseBill\AddPurchase.cshtml" />
     <Content Include="Views\ItemMaster\unit.cshtml" />
     <Content Include="Views\OtherIncome\otcategory.cshtml" />
+    <Content Include="Views\ItemMaster\Additem.cshtml" />
+    <Content Include="Views\ItemMaster\Addparty.cshtml" />
+    <Content Include="Views\PartyMaster\Addparty.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

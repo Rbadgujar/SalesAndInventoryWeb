@@ -21,8 +21,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
-	
+        
         public ActionResult ExpenceData()
         { 
 			var tb = db.tbl_ExpensesSelect("Select1", null, null, null, null, null, null,null, null, null, null, null, null, null).ToList();
@@ -38,18 +37,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(tbl_ExpensesSelectResult exp)
         {
-            //try
-            //{
-            //    //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-            //    db.tbl_ExpensesSelect("Insert", null, exp.ExpenseCategory, exp.Date, exp.Description, exp.Image, exp.Total, exp.Paid, exp.Balance, exp.AdditinalFeild1, exp.AdditionalFeild2, exp.Status, exp.TableName, exp.compid);
-            //    db.SubmitChanges();
-            //    return RedirectToAction("Index");
-         return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-            //}
-            //catch (Exception e)
-            //{
-            //    return View("Error", new HandleErrorInfo(e, "Expence", "AddOrEdit"));
-            //}
+            try
+            {
+                db.tbl_ExpensesSelect("Insert", null, exp.ExpenseCategory, exp.Date, exp.Description, exp.Image, exp.Total, exp.Paid, exp.Balance, exp.AdditinalFeild1, exp.AdditionalFeild2, exp.Status, exp.TableName, exp.compid);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+               // return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "Expence", "AddOrEdit"));
+            }
         }
 
         [HttpPost]
