@@ -16,17 +16,19 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 	using System.Web.Security;
+    using System.Web.Mvc;
 	public partial class tbl_BankAccount
     {
-        public int ID { get; set; }
-
-	
+        [Display(Name = "BankName")]
+        public int ID { get; set; }	
 		public string AccountName { get; set; }
         public string BankName { get; set; }
         public string AccountNo { get; set; }
         public Nullable<double> OpeningBal { get; set; }
+        public static IEnumerable<SelectListItem> ListOfAccount { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<bool> DeleteData { get; set; }
         public Nullable<int> Company_ID { get; set; }
+       
     }
 }

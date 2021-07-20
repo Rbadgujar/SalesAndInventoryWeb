@@ -626,7 +626,6 @@ C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Ap
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.Xpf.LayoutControl.v20.1.resources.dll
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.Xpf.LayoutControl.v20.1.resources.dll
 C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.Xpf.LayoutControl.v20.1.resources.dll
-C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.csprojResolveAssemblyReference.cache
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Charts.Designer.v20.1.dll
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.Charts.v20.1.dll
 C:\Users\abc\Source\Repos\SalesAndInventoryWeb6\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DevExpress.Xpf.Core.v20.1.dll
@@ -1225,3 +1224,11 @@ C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_A
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.dll
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.pdb
 C:\Users\Idealtechinfo-9\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.csprojAssemblyReference.cache
+C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ClosedXML.dll
+C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DocumentFormat.OpenXml.dll
+C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ExcelNumberFormat.dll
+C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ClosedXML.pdb
+C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ClosedXML.xml
+C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\DocumentFormat.OpenXml.xml
+C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ExcelNumberFormat.xml
+C:\Users\Rahul Badgujar\Source\Repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.csprojResolveAssemblyReference.cache

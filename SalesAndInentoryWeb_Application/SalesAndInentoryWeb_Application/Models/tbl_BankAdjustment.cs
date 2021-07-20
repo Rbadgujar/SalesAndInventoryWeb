@@ -15,8 +15,11 @@ namespace SalesAndInentoryWeb_Application.Models
 	using System.Web;
 	using System.ComponentModel;
 	using System.ComponentModel.DataAnnotations;
-	public partial class tbl_BankAdjustment
+    using System.Web.Mvc;
+    using System.ComponentModel.DataAnnotations;
+    public partial class tbl_BankAdjustment
     {
+        [Display(Name = "BankName")]
         public int ID { get; set; }
 		public string BankAccount { get; set; }
         public string EntryType { get; set; }
@@ -25,5 +28,7 @@ namespace SalesAndInentoryWeb_Application.Models
         public string Description { get; set; }
         public Nullable<bool> DeleteData { get; set; }
         public Nullable<int> Company_ID { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+
     }
 }

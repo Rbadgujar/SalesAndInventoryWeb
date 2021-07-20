@@ -11,10 +11,13 @@ namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+    using System.ComponentModel.DataAnnotations;
     public partial class tbl_BanktoBankTransfer
     {
-        public int ID { get; set; }
+
+        [Display(Name = "BankName")]
+        public int ID { get; set; }     
         public string FromBank { get; set; }
         public string ToBank { get; set; }
         public Nullable<double> Amount { get; set; }
@@ -22,5 +25,6 @@ namespace SalesAndInentoryWeb_Application.Models
         public string Descripition { get; set; }
         public Nullable<bool> DeleteData { get; set; }
         public Nullable<int> Company_ID { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
-
+using SalesAndInentoryWeb_Application.ViewModel;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class BankToBankController : Controller
@@ -15,6 +15,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		// GET: BankToBank
 		public ActionResult Index()
         {
+            
             return View();
         }
 
@@ -36,7 +37,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
 			if (id == 0)
 			{
-				return View(new tbl_BanktoBankTransfer());
+                tbl_BanktoBankTransfer objbank = new tbl_BanktoBankTransfer();
+                objbank.ListOfAccounts = (from obj in db.tbl_BankAccounts
+                                          where obj.DeleteData.Equals(1)
+                                          select new SelectListItem
+                                          {
+                                              Text = obj.BankName,
+                                              Value = obj.ID.ToString(),
+
+                                          });
+                return View(objbank);
 			}
 			else
 			{

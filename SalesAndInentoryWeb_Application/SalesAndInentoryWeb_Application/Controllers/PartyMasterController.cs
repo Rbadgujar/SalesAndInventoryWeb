@@ -52,7 +52,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 vm.ContactNo = tb.ContactNo;
                 vm.BillingAddress = tb.BillingAddress;
                 vm.EmailID = tb.EmailID;
-                vm.GSTNo = tb.GSTNo;
+               // vm.GSTNo = tb.GSTNo;
                 vm.State = tb.State;
                 vm.OpeningBal = tb.OpeningBal;
                 vm.AsOfDate = Convert.ToDateTime(tb.AsOfDate);

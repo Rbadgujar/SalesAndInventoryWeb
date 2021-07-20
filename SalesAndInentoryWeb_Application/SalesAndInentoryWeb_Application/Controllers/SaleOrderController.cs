@@ -16,6 +16,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         // GET: SaleOrder
         public ActionResult SaleOrder()
         {
+
             return View();
         }
         [HttpPost]
@@ -32,8 +33,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public ActionResult AddOrEdit()
+        public ActionResult AddOrEdit(int id=0)
         {
+            //if (id == 0)
+            //{
+            //    tbl_SaleOrder objbank = new tbl_SaleOrder();
+            //    objbank.ListOfAccounts = (from obj in db.tbl_ItemMasters
+            //                              select new SelectListItem
+            //                              {
+            //                                  Text = obj.ItemName,
+            //                                  Value = obj.ItemID.ToString()
+            //                              });
+            //    return View(objbank);
+            //}
             return View();
         }
 

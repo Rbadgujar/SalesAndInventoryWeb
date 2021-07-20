@@ -11,7 +11,7 @@ namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class tbl_SaleOrderInner
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +21,7 @@ namespace SalesAndInentoryWeb_Application.Models
         }
     
         public int ID { get; set; }
+        [Display(Name = "ItemName")]
         public Nullable<int> ItemID { get; set; }
         public string ItemName { get; set; }
         public string BasicUnit { get; set; }

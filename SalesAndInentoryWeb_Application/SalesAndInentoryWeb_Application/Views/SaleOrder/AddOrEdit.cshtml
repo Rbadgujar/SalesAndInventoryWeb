@@ -267,13 +267,8 @@
                                 <div class="form-group col-xs-2">
 
                                     <label>Item Name</label>
-                                    @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemName, new List<SelectListItem>
-                                   {
-                                       new SelectListItem {Text = "volvo", Value = "volvo", Selected = true },
-                                       new SelectListItem {Text = "bottle", Value = "bottle" },
-                                       new SelectListItem {Text = "pen", Value = "pen" },
-                                       new SelectListItem {Text = "don", Value = "don" },
-                                   }, new { @class = "form-control", @style = "width:130px", @name = "ItemName", @id = "ItemName" })
+                                    @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemID,Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" } })
+                                  
 
 
                                 </div>
