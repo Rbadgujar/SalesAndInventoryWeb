@@ -37,7 +37,7 @@
             });
 
             $("#btnsubmit").click(function (e) {
-                debugger
+              
                   additems();
             });
         });
@@ -47,10 +47,8 @@
         }
         function AddToItem()
         {
-            var tableitemlist = $("#tblSaleInvoice");
-            var ItemId = $("#id").val();
-
-            var ItemName=$("#ItemName option:selected").text();
+            var tableitemlist = $("#tblSaleInvoice");          
+            var ItemName=$("#ItemName").val();
             var mrp = $("#sp").val();
             var tax = $("#ts").val();
             var qty = $("#qty").val();
@@ -59,8 +57,25 @@
             var taxmat = $("#sa").val();
             var total = $("#ca").val();
 
-            var itemlist = "<tr><div class='scrollit' ><td>" + ItemId + "</td><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
-            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
+            var itemlist = "<tr><div class='scrollit' ><td>"
+                + ItemName +
+                "</td><td>"
+                + mrp +
+                "</td><td>"
+                + tax +
+                "</td><td>"
+                + dis +
+                "</td><td>"
+            + qty +
+            "</td><td>"
+            + disamt +
+            "</td><td>"
+            + taxmat +
+            "</td><td>"
+            + total +
+            "</td><td>"+           
+            "<input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/>"+
+                "</td></div></tr>"
             tableitemlist.append(itemlist);
             reset();
         }
@@ -74,22 +89,51 @@
             $("#da").val('');
             $("#sa").val('');
             $("#ca").val('');
+            $("#id").val('');
+
         }
-        function additems(){
+        function additems()
+        {
+            debugger
             var objpartydetails = {};
             var listofitemdetails = [];
-            var studentmarks = {};
-            var tablemarks=$("#tblSaleInvoice").find("tr:gt(0)");
-            $.each(tablemarks,
+            var ItemDetails = {};
+            //var tablemarks = $("#tblSaleInvoice").find("tr:gt(0)");
+
+            $.each($("#tblSaleInvoice tbody tr"),
                 function () {               
-                studentmarks.ItemID = $(this).find("td:eq(0)").text();
-                studentmarks.ItemName = $(this).find("td:eq(1)").text();
-                studentmarks.SalePrice = $(this).find("td:eq(2)").text();
-                listofitemdetails.push(studentmarks);
+                    listofitemdetails.push({
+                    ItemName : $(this).find("td:eq(0)").text(),
+                    SalePrice :$(this).find("td:eq(1)").text(),
+                    TaxForSale : $(this).find("td:eq(2)").text(),
+                    Discount : $(this).find("td:eq(3)").text(),
+                    Qty : $(this).find("td:eq(4)").text(),
+                    DiscountAmount : $(this).find("td:eq(5)").text(),
+                    SaleTaxAmount :$(this).find("td:eq(6)").text(),
+                    ItemTotal : $(this).find("td:eq(7)").text()
+                    });                                  
             });
 
             objpartydetails.PartyName = $("#PartyName").val();
             objpartydetails.BillingName = $("#BillingName").val();
+            objpartydetails.ContactNo = $("#ContactNo").val();
+            objpartydetails.OrderDate = $("#OrderDate").val();
+            objpartydetails.DueDate = $("#DueDate").val();
+            objpartydetails.Barcode = $("#Barcode").val();
+            objpartydetails.StateOfSupply = $("#StateOfSupply").val();
+            objpartydetails.Received = $("#Received").val();
+            objpartydetails.RemainingBal = $("#RemainingBal").val();
+            objpartydetails.TransportName = $("#TransportName").val();
+
+            objpartydetails.DeliveryLocation = $("#DeliveryLocation").val();
+            objpartydetails.DeliverDate = $("#DeliveryDate").val();
+            objpartydetails.PaymentType = $("#PaymentType").val();
+            objpartydetails.TransportName = $("#TransportName").val();
+            objpartydetails.Status = $("#Status").val();
+            objpartydetails.VehicleNumber = $("#VehicleNumber").val();
+            objpartydetails.CalTotal = $("#CalTotal").val();
+
+
             objpartydetails.listofitemdetail = listofitemdetails;
 
 
@@ -101,7 +145,10 @@
                 data: JSON.stringify(objpartydetails),
                 url: '/SaleOrder/AddOrEdit',
                 success: function (data) {
-
+                    if (data.status == true)
+                    {
+                        alter(data.message);
+                    }
                 },
                 error: function ()
                 {
@@ -211,6 +258,76 @@
                     </div>
                 </div>
                 <br />
+                <nav class="navbar navbar-default ">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse ">
+                            <div class="row">
+                               
+
+                                <div class="form-group col-xs-2">
+
+                                    <label>Item Name</label>
+                                    @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemName, new List<SelectListItem>
+                                   {
+                                       new SelectListItem {Text = "volvo", Value = "volvo", Selected = true },
+                                       new SelectListItem {Text = "bottle", Value = "bottle" },
+                                       new SelectListItem {Text = "pen", Value = "pen" },
+                                       new SelectListItem {Text = "don", Value = "don" },
+                                   }, new { @class = "form-control", @style = "width:130px", @name = "ItemName", @id = "ItemName" })
+
+
+                                </div>
+                                <div class="form-group col-xs-1">
+
+                                    <label>MRP</label>
+                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px", @class = "form-control", @name = "SalePrice" })
+
+                                </div>
+                                <div class="form-group col-xs-1">
+                                    <label>Tax%</label>
+                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px", @class = "form-control" })
+                                 
+                                </div>
+                                <div class="form-group col-xs-1">
+
+                                    <label>Descount</label>
+                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px", @class = "form-control" })
+
+                                </div>
+                                <div class="form-group col-xs-1">
+                                    <label>Qty</label>
+                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px", @class = "form-control" })                                 
+
+                                </div>
+                                <div class="form-group col-xs-1">
+
+                                    <label>Dis Amount</label>
+                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px", @class = "form-control" })
+
+
+
+
+                                </div>
+                                <div class="form-group col-xs-2">
+                                    <label>Tax Amount</label>
+                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px", @class = "form-control" })
+
+
+
+                                
+                                </div>
+                                <div class="form-group col-xs-2">
+                                    <label>Total</label>
+                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemTotal, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;", @class = "form-control" })
+                                    </div>
+
+                                    <div class="col-xs-1">
+                                        <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </nav>
                 <nav class="navbar navbar-default " style="border:none; background-color:white">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse ">
@@ -220,61 +337,39 @@
                                         <tr>
                                             <th>
                                                 Item ID
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemID, htmlAttributes: new { @id = "id", @style = "width:130px;height:35px", @class = "form-control", @name = "SalePrice" })
-
-                                                </th>
-
-                                            <th>
-                                                <label>Item Name</label>
-                                                @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemName, new List<SelectListItem>
-                                   {
-                                       new SelectListItem {Text = "volvo", Value = "volvo", Selected = true },
-                                       new SelectListItem {Text = "bottle", Value = "bottle" },
-                                       new SelectListItem {Text = "pen", Value = "pen" },
-                                       new SelectListItem {Text = "don", Value = "don" },
-                                   }, new { @class = "form-control", @style = "width:130px" ,@name= "ItemName",@id="ItemName" })
-                                                
                                             </th>
                                             <th>
-                                                <label>MRP</label>
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px" , @class = "form-control", @name = "SalePrice" })
+                                              Item Name                                             
                                             </th>
                                             <th>
-                                                <label>Tax%</label>
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px" , @class = "form-control" })
+                                               MRP
                                             </th>
                                             <th>
-                                                <label>Descount</label>
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px" , @class = "form-control" })
-
-
+                                                Tax%                                            
+                                            </th>
                                             <th>
-                                                <label>Qty</label>
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px" , @class = "form-control" })
+                                                Descount
+                                            <th>
+                                                Qty
 
 
                                             </th>
                                             <th>
-                                                <label>Dis Amount</label>
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px" ,@class = "form-control" })
+                                                Dis Amount
 
 
                                             </th>
                                             <th>
-                                                <label>Tax Amount</label>
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px",@class = "form-control" })
+                                                Tax Amount
 
 
                                             </th>
                                             <th>
-                                                <label>Total</label>
-                                                @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemTotal, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;",@class="form-control" })
+                                                Total
 
 
                                             </th>
-                                            <th>
-                                                <a class="btn btn-primary pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
-                                            </th>
+                                         
 
                                         </tr>
                                     </thead>
@@ -289,7 +384,7 @@
                         <div class="row">
                             <div class="col-md-2">
                                 Payment Type:
-                                <select name="cars" id="dp" class="form-control" style="width:150px;">
+                                <select name="cars" id="PaymentType" class="form-control" style="width:150px;">
                                     <option value="Cash">Cash</option>
                                     <option value="OnlinPayment">Online Payment</option>
                                 </select>
@@ -299,17 +394,17 @@
                                htmlAttributes = new
                                {
                                    @class = "form-control",
-                                   placeholder = "vical No",
+                                   placeholder = "Transport Name",
                                    @style = "width:150px;height:30px;"
                                }
                            })
-                               Vical No:
+                               Delivery Location:
                                 @Html.EditorFor(model => model.DeliveryLocation, new
                            {
                                htmlAttributes = new
                                {
                                    @class = "form-control",
-                                   placeholder = "vical No",
+                                   placeholder = "Delivery Location",
                                    @style = "width:150px;height:30px;"
                                }
                            })
@@ -322,7 +417,7 @@
                                Delivery Date:
                                 @Html.TextBoxFor(model => model.Deliverydate, new { @type = "date", @class = "form-control", @style = "width:150px;" })
                                Payment Status:
-                                @Html.DropDownListFor(model => model.PaymentType, new List<SelectListItem>
+                                @Html.DropDownListFor(model => model.Status, new List<SelectListItem>
                                    {
                                        new SelectListItem {Text = "Paid", Value = "Paid", Selected = true },
                                        new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
@@ -364,22 +459,6 @@
             </div>
         </div>
    }
-
-
-
-
-
-
-
-
-
-    <br />
-
-    <br />
-
-    <br />
-
-    <br />
 
     <br />
 

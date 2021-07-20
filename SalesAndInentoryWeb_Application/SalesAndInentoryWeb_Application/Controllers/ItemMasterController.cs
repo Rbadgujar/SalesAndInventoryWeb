@@ -81,14 +81,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 }
             
         }
-        public ActionResult itemdata()
-        {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                List<tbl_ItemMaster> estimate = db.tbl_ItemMaster.ToList<tbl_ItemMaster>();
-                return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
-            }
-        }
+        //public ActionResult itemdata()
+        //{
+        //    using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+        //    {
+        //        List<tbl_ItemMaster> estimate = db.tbl_ItemMaster.ToList<tbl_ItemMaster>();
+        //        return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
 
         [HttpPost]
         public ActionResult Delete(int id)
