@@ -163,7 +163,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 // return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
             }
         }
-
+        
       
 
     }

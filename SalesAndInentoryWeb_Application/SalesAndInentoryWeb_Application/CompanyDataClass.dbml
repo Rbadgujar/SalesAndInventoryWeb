@@ -123,7 +123,6 @@
       <Column Name="EwayNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="tbl_PurchaseBill_tbl_PurchaseBillInner" Member="tbl_PurchaseBillInners" ThisKey="BillNo" OtherKey="BillNo" Type="tbl_PurchaseBillInner" />
       <Association Name="tbl_PurchaseBillInner_tbl_PurchaseBill" Member="tbl_PurchaseBillInner" ThisKey="ID" OtherKey="ID" Type="tbl_PurchaseBillInner" IsForeignKey="true" />
-      <Association Name="tbl_PartyMaster_tbl_PurchaseBill" Member="tbl_PartyMaster" ThisKey="PartiesID" OtherKey="PartiesID" Type="tbl_PartyMaster" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_PurchaseBillInner" Member="tbl_PurchaseBillInners">
@@ -186,29 +185,6 @@
       <Association Name="tbl_SaleInvoiceInner_tbl_SaleInvoiceInner" Member="tbl_SaleInvoiceInner2" ThisKey="ID" OtherKey="ID" Type="tbl_SaleInvoiceInner" Cardinality="One" />
       <Association Name="tbl_SaleInvoice_tbl_SaleInvoiceInner" Member="tbl_SaleInvoice" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="tbl_SaleInvoice" IsForeignKey="true" />
       <Association Name="tbl_SaleInvoiceInner_tbl_SaleInvoiceInner" Member="tbl_SaleInvoiceInner1" ThisKey="ID" OtherKey="ID" Type="tbl_SaleInvoiceInner" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_PartyMaster" Member="tbl_PartyMasters">
-    <Type Name="tbl_PartyMaster">
-      <Column Name="PartiesID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ContactNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BillingAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="EmailID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GSTType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OpeningBal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AsOfDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="AddRemainder" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ShippingAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyGroup" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PaidStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Customertype" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
-      <Column Name="type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="tbl_PartyMaster_tbl_PurchaseBill" Member="tbl_PurchaseBills" ThisKey="PartiesID" OtherKey="PartiesID" Type="tbl_PurchaseBill" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_BankAccount" Member="tbl_BankAccounts">
