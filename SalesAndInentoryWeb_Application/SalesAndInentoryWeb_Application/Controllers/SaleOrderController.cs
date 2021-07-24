@@ -47,6 +47,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
             //                              });
             //    return View(objbank);
             //}
+
+
             tbl_SaleOrder bt = new tbl_SaleOrder();
             bt.ListOfAccounts = ListOfAccount();
             return View(bt);
