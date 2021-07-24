@@ -21,7 +21,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-        
+
+        [HttpPost]
+        public ActionResult Expencescategory(tbl_ExpenseCategory emp)
+        {
+            var tb = db.tbl_ExpenseCategorySelect("Insert1", null, emp.CategoryName, null);
+            db.SubmitChanges();
+            return RedirectToAction("Index");
+        }
+       
         public ActionResult ExpenceData()
         { 
 			var tb = db.tbl_ExpensesSelect("Select1", null, null, null, null, null, null,null, null, null, null, null, null, null).ToList();

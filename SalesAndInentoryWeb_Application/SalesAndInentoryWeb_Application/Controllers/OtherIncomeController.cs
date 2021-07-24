@@ -50,12 +50,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				return View(vm);
 			}
         }
-		public ActionResult otcategory()
+        [HttpGet]
+        public ActionResult otcategory()
 		{
 			return View();
 		}
-
-		[HttpPost]
+        [HttpPost]
+        public ActionResult otcategory(tbl_otherIncomeCaategory emp)
+        {      
+              var tb = db.tbl_otherIncomeCategorySelect("Insert1", null,emp.OtherIncome,null);
+             db.SubmitChanges();
+            return RedirectToAction("Index");     
+        }
+        [HttpPost]
         public ActionResult AddOrEdit(tbl_OtherIncome emp,int id = 0)
         {
 			if (id == 0)

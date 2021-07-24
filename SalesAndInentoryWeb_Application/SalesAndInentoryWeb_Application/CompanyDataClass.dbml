@@ -1127,19 +1127,6 @@
       <Column Name="BalAsOf" Type="System.DateTime" DbType="Date" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.tbl_LoginPassswordSelect" Method="tbl_LoginPassswordSelect">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ConfirmPassword" Parameter="confirmPassword" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="tbl_LoginPassswordSelectResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NewPassword" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ConfirmPassword" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.tbl_MakePaymentSelect" Method="tbl_MakePaymentSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
@@ -1933,5 +1920,13 @@
       <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.tbl_LoginPassswordSelect" Method="tbl_LoginPassswordSelect">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ConfirmPassword" Parameter="confirmPassword" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Company_ID" Parameter="company_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(100)" />
   </Function>
 </Database>

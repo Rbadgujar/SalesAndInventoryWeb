@@ -647,13 +647,6 @@ namespace SalesAndInentoryWeb_Application
 			return ((ISingleResult<tbl_LoanBankSelectResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_LoginPassswordSelect")]
-		public ISingleResult<tbl_LoginPassswordSelectResult> tbl_LoginPassswordSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(MAX)")] string newPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ConfirmPassword", DbType="NVarChar(MAX)")] string confirmPassword)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, newPassword, confirmPassword);
-			return ((ISingleResult<tbl_LoginPassswordSelectResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_MakePaymentSelect")]
 		public ISingleResult<tbl_MakePaymentSelectResult> tbl_MakePaymentSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PrincipleAmount", DbType="Float")] System.Nullable<double> principleAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InterestAmount", DbType="Float")] System.Nullable<double> interestAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="Date")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Float")] System.Nullable<double> totalAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PaidFrom", DbType="NVarChar(MAX)")] string paidFrom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountName", DbType="NVarChar(MAX)")] string accountName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
 		{
@@ -1129,6 +1122,12 @@ namespace SalesAndInentoryWeb_Application
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, unitConversionID, basicUnit, secondaryUnit, rate, compid);
 			return ((ISingleResult<tbl_UnitConversionSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_LoginPassswordSelect")]
+		public void tbl_LoginPassswordSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(MAX)")] string newPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ConfirmPassword", DbType="NVarChar(MAX)")] string confirmPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Company_ID", DbType="Int")] System.Nullable<int> company_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserId", DbType="VarChar(100)")] string userId)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, newPassword, confirmPassword, company_ID, userId);
 		}
 	}
 	
@@ -13163,104 +13162,6 @@ namespace SalesAndInentoryWeb_Application
 				if ((this._BalAsOf != value))
 				{
 					this._BalAsOf = value;
-				}
-			}
-		}
-	}
-	
-	public partial class tbl_LoginPassswordSelectResult
-	{
-		
-		private int _ID;
-		
-		private string _NewPassword;
-		
-		private string _ConfirmPassword;
-		
-		private System.Nullable<bool> _DeleteData;
-		
-		private System.Nullable<int> _Company_ID;
-		
-		public tbl_LoginPassswordSelectResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewPassword", DbType="NVarChar(MAX)")]
-		public string NewPassword
-		{
-			get
-			{
-				return this._NewPassword;
-			}
-			set
-			{
-				if ((this._NewPassword != value))
-				{
-					this._NewPassword = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConfirmPassword", DbType="NVarChar(MAX)")]
-		public string ConfirmPassword
-		{
-			get
-			{
-				return this._ConfirmPassword;
-			}
-			set
-			{
-				if ((this._ConfirmPassword != value))
-				{
-					this._ConfirmPassword = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteData", DbType="Bit")]
-		public System.Nullable<bool> DeleteData
-		{
-			get
-			{
-				return this._DeleteData;
-			}
-			set
-			{
-				if ((this._DeleteData != value))
-				{
-					this._DeleteData = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Company_ID", DbType="Int")]
-		public System.Nullable<int> Company_ID
-		{
-			get
-			{
-				return this._Company_ID;
-			}
-			set
-			{
-				if ((this._Company_ID != value))
-				{
-					this._Company_ID = value;
 				}
 			}
 		}
