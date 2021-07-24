@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
 using SalesAndInentoryWeb_Application.ViewModel;
+using System.Data.SqlClient;
+using System.Configuration;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class BankToBankController : Controller
@@ -61,16 +63,68 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				return View(vm);
 			}
 		}
+        public JsonResult GetFruitName(int id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static string GetFruitNameById(int id)
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT OpeningBal FROM tbl_BankAccount WHERE ID = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    string name = Convert.ToString(cmd.ExecuteScalar());
+                    con.Close();
 
+                    return name;
+                }
+            }
+        }
         [HttpPost]
-        public ActionResult AddOrEdit(int id,tbl_BanktoBankTransfer emp)
+        public ActionResult AddOrEdit(int id,tbl_BanktoBankTransfer emp,string string1,int total)
         {
             
                 if (id == 0)
                 {
-				    db.Banktobank("Insert", null, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, null);
+                try
+                {
+                    db.Banktobank("Insert", null, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, null);
                     db.SubmitChanges();
                     return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    
+                      string sql;
+                      string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+                      using (SqlConnection con = new SqlConnection(constr))
+                      {
+                             sql = string.Format("Update tbl_BankAccount set OpeningBal=@Total FROM  WHERE BankName = @string");
+                             using (SqlCommand cmd = new SqlCommand(sql))
+                             {
+                                  cmd.Connection = con;
+                                  cmd.Parameters.AddWithValue("@string", string1);
+                                  cmd.Parameters.AddWithValue("@Total", total);
+                                  con.Open();
+                                  cmd.ExecuteScalar();
+                                  con.Close();
+
+                             }
+            
+
+                       }
+                }  
                 }
                 else
                 {
@@ -86,7 +140,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				var tb = db.Banktobank("Delete", id, null, null, null, null, null, null).ToList();
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-		}
-	
+		}      
     }
 }

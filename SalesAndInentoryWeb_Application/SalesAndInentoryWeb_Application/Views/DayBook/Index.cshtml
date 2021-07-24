@@ -41,13 +41,7 @@
                    }).GetHtml()
                     </div>
                     <div class="form-group col-md-2">
-                        @Html.DevExpress().DateEdit(settings =>
-                   {
-                       settings.ControlStyle.CssClass = "form-control";
-                       settings.Style["margin-top"] = "15px";
-                       settings.Name = "DateEdit";
-                       settings.Properties.NullText = "dd/MM/YYYY";
-                   }).GetHtml()
+                        @Html.TextBox("datePicker", null, new { @type = "date" })
                     </div>
                     <a class="btn btn-success pull-right row" style="margin-top:15px;margin-right:10px;" onclick=""><span class="glyphicon glyphicon-print"></span> Print </a>
                 </div>

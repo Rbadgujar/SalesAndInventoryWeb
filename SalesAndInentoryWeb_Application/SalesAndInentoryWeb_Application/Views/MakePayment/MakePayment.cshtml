@@ -4,16 +4,8 @@
 }
     <meta name="viewport" content="width=device-width" />
     <title>AddOrEdit</title>
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("MakePayment", "MakePayment", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
     {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
             <div class="panel-heading "><a class="btn" href=@Url.Action("Index", "LoanAccount") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Make Payment</p></div>
@@ -37,11 +29,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <select name="state" id="Accountname" class="form-control" style="border: 1px solid black" ;>
-                                        <option value=""></option>
-                                        <option value="">Vithoba Mali</option>
-                                        <option value="">Rahul Badgujar</option>
-                                        </select>
+                                   @Html.DropDownListFor(model => model.AccountName , Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Bank")
+                                    @Html.TextBoxFor(model => model.AccountName, new { @class = "form - group" })
                                         </div>
                                 <div class="form-group col-md-2">
                                     <div style="margin-top:10px;text-align:right">
@@ -64,26 +53,21 @@
 
                             </div>
                                 <div class="row">
-									<div class="form-group col-md-2 " style="text-align:right;">
-										<div style="margin-top:10px;">
-											@Html.DevExpress().Label(settings =>
-								   {
-									   settings.Style["font-weight"] = "bold";
-									   settings.Name = "Label69";
-									   settings.Text = "Principal Amount   :";
-								   }).GetHtml()
-										</div>
-									</div>
-									<div class="form-group col-md-4">
-										@Html.DevExpress().TextBoxFor(m => m.PrincipleAmount, settings =>
-								   {
-									   settings.Properties.NullText = "Enter Principal Amount...";
-									   settings.ControlStyle.CssClass = "form-control";
-									   settings.Style["Border"] = "1px solid black";
-								   }).GetHtml()
+									
+                                    <div class="form-group col-md-2">
+                                        <div style="margin-top:10px;text-align:right">
+                                            @Html.DevExpress().Label(settings =>
+                                       {
+                                           settings.Style["font-weight"] = "bold";
+                                           settings.Name = "Label699";
+                                           settings.Text = "Loan Amount   :";
+                                       }).GetHtml()
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input style="text-align:left" type="text" name="LoanAmount" id="LoanAmount" class="form-control">
 
-									</div>
-
+                                    </div>
                                     <div class="form-group col-md-2">
                                         <div style="margin-top:10px;text-align:right">
                                         @Html.DevExpress().Label(settings =>
@@ -98,17 +82,26 @@
                                     </div>
 
                                     <div class="form-group col-md-4">
-                                        @Html.DevExpress().TextBoxFor(m => m.TotalAmount, settings =>
-                                   {
-                                       settings.Properties.NullText = "Enter Total Amount...";
-                                       settings.ControlStyle.CssClass = "form-control";
-                                       settings.Style["Border"] = "1px solid black";
-                                   }).GetHtml()
+                                        <input style="text-align:left" type="text" name="TotalAmount" id="TotalAmount" class="form-control">
+
                                     </div>
                             </div>
                             <div class="row">
-                               
+                                <div class="form-group col-md-2 " style="text-align:right;">
+                                    <div style="margin-top:10px;">
+                                        @Html.DevExpress().Label(settings =>
+                                       {
+                                           settings.Style["font-weight"] = "bold";
+                                           settings.Name = "Label69";
+                                           settings.Text = "Principal Amount   :";
+                                       }).GetHtml()
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input style="text-align:left" type="text" name="PrincipleAmount" id="PrincipleAmount" class="form-control">
 
+                                </div>
+                                
                                 <div class="form-group col-md-2">
                                     <div style="margin-top:10px;text-align:right">
                                         @Html.DevExpress().Label(settings =>
@@ -125,9 +118,9 @@
 
                                 <div class="form-group col-md-4">
                                     <select name="state" id="Accountname" class="form-control" style="border: 1px solid black" ;>
-                                        <option value=""></option>
-                                        <option value="">Vithoba Mali</option>
-                                        <option value="">Rahul Badgujar</option>
+                                        <option value="">Select Mode</option>
+                                        <option value="">Cash</option>
+                                        <option value="">Online Payment</option>
                                     </select>
 
                                 </div>
@@ -136,7 +129,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
+                                <div class="form-group col-md-2" style="text-align:right;">
                                     <div style="margin-top:10px;">
                                         @Html.DevExpress().Label(settings =>
                                {
@@ -147,13 +140,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    @Html.DevExpress().TextBoxFor(m => m.InterestAmount, settings =>
-                               {
-                                   settings.Properties.NullText = "0";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["Border"] = "1px solid black";
-                               }).GetHtml()
-
+                                    <input style="text-align:left" type="text" name="InterestAmount" id="InterestAmount" class="form-control" onchange="cal();">
                                 </div>
 
                                 <div class="form-group col-md-2">
@@ -262,7 +249,7 @@
                             });
                         });
                     }
-
+                   
                     function SubmitForm(form) {
                         $.validator.unobtrusive.parse(form);
                         if($(form).valid()){
@@ -286,6 +273,35 @@
                             });
                         }
                         return false;
+                    }
+                    $("#AccountName").change(function () {
+                        var fruitId = $(this).find("option:selected").val();
+                      
+                        if (fruitId != "") {
+                            $.ajax({
+                                type: "POST",
+                                url: "/Makepayment/GetFruitName",
+                                data: "id=" + fruitId,
+                                success: function (response) {
+                                    if (response != "") {
+                                        $("#LoanAmount").val(response);
+                                    } else {
+                                        $("#LoanAmount").val('');
+                                    }
+                                }
+                            });
+                        } else {
+                            $("#LoanAmount").val('');
+                        }
+                    });
+
+                    function cal() {
+                        var intrest = $("#InterestAmount").val();
+                        var loan = $("#LoanAmount").val();
+                        var princ = $("#PrincipleAmount").val();
+                        var total = loan - princ;
+                        var FT = total + intrest;
+                        $("#TotalAmount").val(FT);
                     }
 
                     function Delete(id) {

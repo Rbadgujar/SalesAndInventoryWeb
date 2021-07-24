@@ -11,6 +11,8 @@ namespace SalesAndInentoryWeb_Application.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
     
     public partial class tbl_MakePayment
     {
@@ -23,7 +25,8 @@ namespace SalesAndInentoryWeb_Application.Models
         public string AccountName { get; set; }
         public Nullable<bool> DeleteData { get; set; }
         public Nullable<int> Company_ID { get; set; }
-
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public virtual tbl_LoanBank tbl_LoanBank { get; set; }
+     
     }
 }

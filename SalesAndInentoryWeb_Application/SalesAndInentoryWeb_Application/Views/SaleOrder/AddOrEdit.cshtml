@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_SaleOrder
+﻿@model SalesAndInentoryWeb_Application.tbl_SaleOrder
 @{
     ViewBag.Title = "Sale Order";
     Layout = "~/Views/Shared/ideal.cshtml";
@@ -30,6 +30,26 @@
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            debugger
+            $("#ItemName").change(function () {
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax({
+                        type: "POST",
+                        url: "/SaleOrder/GetFruitName",
+                        data: "id=" + fruitId,
+                        success: function (response) {
+                            if (response != "") {
+                                $("#SalePrice").val(response);
+                            } else {
+                                $("#txtopeningbal").val('');
+                            }
+                        }
+                    });
+                } else {
+                    $("#txtopeningbal").val('');
+                }
+            });
 
             $("#btnaddtolist").click(function () {
 
@@ -40,7 +60,9 @@
               
                   additems();
             });
+           
         });
+        
         function RemoveItem(ItemName)
         {
             $(ItemName).closest('tr').remove();
@@ -163,8 +185,8 @@
     </script>
 </head>
 <body>
-    @using (Html.BeginForm("AddOrEdit", "SaleOrder", FormMethod.Post))
-    {
+        @using (Html.BeginForm("AddOrEdit", "SaleOrder", FormMethod.Post))
+        {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
             <div class="panel-heading"><a class="btn" href=@Url.Action("SaleOrder", "SaleOrder") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Sale Order</p></div>
             <div class="panel border-box">
@@ -267,7 +289,8 @@
                                 <div class="form-group col-xs-2">
 
                                     <label>Item Name</label>
-                                    @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemID,Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" } })
+                                   @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemID,Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" ,@id="ItemName",@name="ItemName"} })
+                                   
                                   
 
 
@@ -275,8 +298,8 @@
                                 <div class="form-group col-xs-1">
 
                                     <label>MRP</label>
-                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px", @class = "form-control", @name = "SalePrice" })
-
+                                   @Html.TextBoxFor(model => model.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { @style = "width:130px;height:35px", @class = "form-control" })
+                                    @*<input style="text-align:left" type="text" name="SalePrice" id="SalePrice" class="form-control">*@
                                 </div>
                                 <div class="form-group col-xs-1">
                                     <label>Tax%</label>

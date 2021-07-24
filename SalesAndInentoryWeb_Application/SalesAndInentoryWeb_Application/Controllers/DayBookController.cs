@@ -11,7 +11,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
     {
         // GET: DayBook
         CompanyDataClassDataContext db = new CompanyDataClassDataContext();
-        public ActionResult Index(string sortOrder, int? page, DateTime? datePicker)
+        public ActionResult Index()
+        {
+          
+            return View();
+        }
+        public ActionResult Daybook(string sortOrder, int? page, DateTime? datePicker)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
@@ -19,21 +24,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
             DateTime userSelectedDate = DateTime.Parse(Request["datePicker"]);
 
             var startDate = userSelectedDate.Date;
-           
+
 
             var applications = from s in db.tbl_SaleInvoices
                                where s.InvoiceDate >= startDate
                                select s;
 
-            switch (sortOrder)
-            {
-                default:
-                    applications = applications.OrderByDescending(x => x.InvoiceDate);
-                    break;
-            }
 
-           
-            return View();
+
+
+            return Json(new { data = applications }, JsonRequestBehavior.AllowGet);
         }
     }
 }

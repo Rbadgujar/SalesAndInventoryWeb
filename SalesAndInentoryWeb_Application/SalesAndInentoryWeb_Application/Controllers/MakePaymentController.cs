@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
@@ -31,8 +33,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
 			if (id == 0)
 			{
-				return View(new tbl_MakePayment());
-			}
+                tbl_MakePayment objbank = new tbl_MakePayment();
+                objbank.ListOfAccounts = (from obj in db.tbl_LoanBanks
+                                          where obj.DeleteData.Equals(1)
+                                          select new SelectListItem
+                                          {
+                                              Text = obj.AccountName,
+
+                                          });
+                return View(objbank);
+            }
 			else
 			{
 
@@ -47,27 +57,39 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				return View(vm);
 			}
 		}
+        public JsonResult GetFruitName(string id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static string GetFruitNameById(string id)
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT LoanAmount FROM tbl_LoanBank WHERE AccountName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    string name = Convert.ToString(cmd.ExecuteScalar());
+                    con.Close();
 
+                    return name;
+                }
+            }
+        }
 
-		[HttpPost]
+        [HttpPost]
 		public ActionResult MakePayment( tbl_MakePayment conn, int id=0)
 		{
-			if (id == 0)
-			{
-
+			
 				db.tbl_MakePaymentSelect("Insert", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null);
 				db.SubmitChanges();
 				ModelState.Clear();
-				return RedirectToAction("Makepayment");
-			}
-			else
-			{
-				db.tbl_MakePaymentSelect("Update", id, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null);
-				db.SubmitChanges();
-				ModelState.Clear();
-				return RedirectToAction("Makepayment");
-				//return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
-			}
+				return RedirectToAction("Makepayment");			
 		}
 
 		[HttpPost]

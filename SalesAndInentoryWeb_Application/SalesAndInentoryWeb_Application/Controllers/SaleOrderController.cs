@@ -8,6 +8,7 @@ using System.Data.Entity;
 using SalesAndInentoryWeb_Application.ViewModel;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class SaleOrderController : Controller
@@ -46,12 +47,67 @@ namespace SalesAndInentoryWeb_Application.Controllers
             //                              });
             //    return View(objbank);
             //}
-            return View();
+            tbl_SaleOrder bt = new tbl_SaleOrder();
+            bt.ListOfAccounts = ListOfAccount();
+            return View(bt);
         }
+        private static List<SelectListItem> ListOfAccount()
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["ItemName"].ToString(),
+                                Value = sdr["ItemID"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
 
+            return items;
+        }
+        public JsonResult GetFruitName(int id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static string GetFruitNameById(int id)
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT SalePrice FROM tbl_ItemMaster WHERE ItemID = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    string name =Convert.ToString( cmd.ExecuteScalar());
+                    con.Close();
+
+                    return name;
+                }
+            }
+        }
         [HttpPost]
         public ActionResult AddOrEdit(PartyDetails objpartydetails)
         {
+
             tbl_SaleOrder sale = new tbl_SaleOrder()
             {               
                 PartyName = objpartydetails.PartyName,

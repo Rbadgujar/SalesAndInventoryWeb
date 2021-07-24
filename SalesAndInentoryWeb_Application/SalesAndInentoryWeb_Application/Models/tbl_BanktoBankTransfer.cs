@@ -26,5 +26,7 @@ namespace SalesAndInentoryWeb_Application.Models
         public Nullable<bool> DeleteData { get; set; }
         public Nullable<int> Company_ID { get; set; }
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public string OpeningBal { get; set; }
+        public string BankName { get; set; }
     }
 }
