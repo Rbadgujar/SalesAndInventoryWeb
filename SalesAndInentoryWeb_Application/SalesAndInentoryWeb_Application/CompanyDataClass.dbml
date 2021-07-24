@@ -282,6 +282,47 @@
       <Association Name="tbl_SaleOrderInner_tbl_SaleOrder" Member="tbl_SaleOrderInner" ThisKey="ID" OtherKey="ID" Type="tbl_SaleOrderInner" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_LoanBank" Member="tbl_LoanBanks">
+    <Type Name="tbl_LoanBank">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AccountNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LendarBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FirmName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CurrentBal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BalAsOf" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LoanReceive" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Interest" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Duration" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProcessingFees" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PaidBy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoanAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_otherIncomeCaategory" Member="tbl_otherIncomeCaategories">
+    <Type Name="tbl_otherIncomeCaategory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OtherIncome" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_OtherIncomeInner" Member="tbl_OtherIncomeInners">
+    <Type Name="tbl_OtherIncomeInner">
+      <Column Name="ID1" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="CompanyID" Parameter="companyID" Type="System.Int32" DbType="Int" />
@@ -1921,12 +1962,13 @@
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.tbl_LoginPassswordSelect" Method="tbl_LoginPassswordSelect">
+  <Function Name="dbo.tbl_LoginPassswordSelect" Method="tbl_LoginPassswordSelect" IsComposable="true">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
     <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="ConfirmPassword" Parameter="confirmPassword" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="Company_ID" Parameter="company_ID" Type="System.Int32" DbType="Int" />
     <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="object" />
   </Function>
 </Database>
