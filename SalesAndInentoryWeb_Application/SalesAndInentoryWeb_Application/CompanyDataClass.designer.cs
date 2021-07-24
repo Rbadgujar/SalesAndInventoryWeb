@@ -6390,6 +6390,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_SaleOrder")]
 	public partial class tbl_SaleOrder : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+        public virtual tbl_SaleOrderInner tbl_SaleOrderInner2 { get; set; }
+
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
