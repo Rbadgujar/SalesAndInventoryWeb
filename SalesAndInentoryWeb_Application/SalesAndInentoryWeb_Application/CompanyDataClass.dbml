@@ -1,29 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="idealtec_inventory" Class="CompanyDataClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=103.83.81.80;Initial Catalog=idealtec_inventory;User ID=idealtec_inventory" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="idealtec_inventoryConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tbl_CompanyMaster" Member="tbl_CompanyMasters">
-    <Type Name="tbl_CompanyMaster">
-      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="EmailID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ReferaleCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BusinessType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GSTNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OwnerName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="AddLogo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="AdditinalFeild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AdditinalFeild2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AdditinalFeild3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Defulatcompany" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="tbl_CompanyMaster_tbl_LoanBank" Member="tbl_LoanBanks" ThisKey="CompanyID" OtherKey="CompanyID" Type="tbl_LoanBank" />
-    </Type>
-  </Table>
   <Table Name="dbo.PasswordCheek" Member="PasswordCheeks">
     <Type Name="PasswordCheek">
       <Column Name="ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
@@ -147,7 +123,6 @@
       <Column Name="EwayNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="tbl_PurchaseBill_tbl_PurchaseBillInner" Member="tbl_PurchaseBillInners" ThisKey="BillNo" OtherKey="BillNo" Type="tbl_PurchaseBillInner" />
       <Association Name="tbl_PurchaseBillInner_tbl_PurchaseBill" Member="tbl_PurchaseBillInner" ThisKey="ID" OtherKey="ID" Type="tbl_PurchaseBillInner" IsForeignKey="true" />
-      <Association Name="tbl_PartyMaster_tbl_PurchaseBill" Member="tbl_PartyMaster" ThisKey="PartiesID" OtherKey="PartiesID" Type="tbl_PartyMaster" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_PurchaseBillInner" Member="tbl_PurchaseBillInners">
@@ -210,29 +185,6 @@
       <Association Name="tbl_SaleInvoiceInner_tbl_SaleInvoiceInner" Member="tbl_SaleInvoiceInner2" ThisKey="ID" OtherKey="ID" Type="tbl_SaleInvoiceInner" Cardinality="One" />
       <Association Name="tbl_SaleInvoice_tbl_SaleInvoiceInner" Member="tbl_SaleInvoice" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="tbl_SaleInvoice" IsForeignKey="true" />
       <Association Name="tbl_SaleInvoiceInner_tbl_SaleInvoiceInner" Member="tbl_SaleInvoiceInner1" ThisKey="ID" OtherKey="ID" Type="tbl_SaleInvoiceInner" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_PartyMaster" Member="tbl_PartyMasters">
-    <Type Name="tbl_PartyMaster">
-      <Column Name="PartiesID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ContactNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BillingAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="EmailID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GSTType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OpeningBal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AsOfDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="AddRemainder" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ShippingAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyGroup" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PaidStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Customertype" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
-      <Column Name="type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="tbl_PartyMaster_tbl_PurchaseBill" Member="tbl_PurchaseBills" ThisKey="PartiesID" OtherKey="PartiesID" Type="tbl_PurchaseBill" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_BankAccount" Member="tbl_BankAccounts">
@@ -328,29 +280,6 @@
       <Association Name="tbl_SaleOrder_tbl_SaleOrderInner" Member="tbl_SaleOrderInners" ThisKey="OrderNo" OtherKey="OrderNo" Type="tbl_SaleOrderInner" />
       <Association Name="tbl_SaleOrder_tbl_SaleOrderInner1" Member="tbl_SaleOrderInners1" ThisKey="OrderNo" OtherKey="OrderNo" Type="tbl_SaleOrderInner" />
       <Association Name="tbl_SaleOrderInner_tbl_SaleOrder" Member="tbl_SaleOrderInner" ThisKey="ID" OtherKey="ID" Type="tbl_SaleOrderInner" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_LoanBank" Member="tbl_LoanBanks">
-    <Type Name="tbl_LoanBank">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AccountNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="LendarBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FirmName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CurrentBal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="BalAsOf" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="LoanReceive" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Interest" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Duration" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ProcessingFees" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PaidBy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LoanAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="tbl_CompanyMaster_tbl_LoanBank" Member="tbl_CompanyMaster" ThisKey="CompanyID" OtherKey="CompanyID" Type="tbl_CompanyMaster" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">
@@ -1198,19 +1127,6 @@
       <Column Name="BalAsOf" Type="System.DateTime" DbType="Date" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.tbl_LoginPassswordSelect" Method="tbl_LoginPassswordSelect">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ConfirmPassword" Parameter="confirmPassword" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="tbl_LoginPassswordSelectResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NewPassword" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ConfirmPassword" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.tbl_MakePaymentSelect" Method="tbl_MakePaymentSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
@@ -2004,5 +1920,13 @@
       <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.tbl_LoginPassswordSelect" Method="tbl_LoginPassswordSelect">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ConfirmPassword" Parameter="confirmPassword" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Company_ID" Parameter="company_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(100)" />
   </Function>
 </Database>

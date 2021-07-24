@@ -16,7 +16,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult Dashboard()
         {
-            return View();
+              return View();
         }
 
     }

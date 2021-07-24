@@ -36,7 +36,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
 			if (id == 0)
 			{
-				return View(new tbl_Paymentout());
+                var bb = db.tbl_Paymentoutselect("RecipitNo", null, null, null, null, null, null, null, null, null, null, null, null, null).Single();
+                var vm = new tbl_Paymentout();
+                vm.ReceiptNo = Convert.ToInt32(bb.ReceiptNo) + 1;
+                return View(vm);
 			}
 			else
 			{

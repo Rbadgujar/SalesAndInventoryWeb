@@ -10,58 +10,81 @@
     <br />
     @*<h4>Company Iformation:</h4>
     <hr style="margin-top:10px;width:300px;margin-left:1px" />*@
+
+
+
     <div class="row">
         <div class="col-md-4">
             Company Name:
             @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", id = "Company name" } })
             @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
-            <br />
-            Email Id:
-            @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
-            <br />
-
-            City:
-            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
-
-        </div>
+           </div>
         <div class="col-md-4">
             Mobile No:
             @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
-            <br />
+
+
+          </div>
+        <div class="col-md-4">
             Address:
             @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            <br />
-
-            State:
-            @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
-
-
-
-
 
 
         </div>
-        <div class="col-md-4">
-            Refrance  No:
-            @Html.EditorFor(model => model.ReferaleCode, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ReferaleCode, "", new { @class = "text-danger" })
-            <br />
-            Business Type:
-            @Html.EditorFor(model => model.BusinessType, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BusinessType, "", new { @class = "text-danger" })
-            <br />
-            Gst No:
-            @Html.EditorFor(model => model.GSTNumber, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.GSTNumber, "", new { @class = "text-danger" })
-
-
-
         </div>
+        <br />
+
+        <div class="row">
+
+            <div class="col-md-4">
+                   Email Id:
+                @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+
+
+             </div>
+            <div class="col-md-4">
+                City:
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+
+
+                   </div>
+            <div class="col-md-4">
+
+                State:
+                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+
+
+
+
+
+
+            </div>
+            </div><br />
+
+<div class="row">
+    <div class="col-md-4">
+        Refrance  No:
+        @Html.EditorFor(model => model.ReferaleCode, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ReferaleCode, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-md-4">
+        Business Type:
+        @Html.EditorFor(model => model.BusinessType, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.BusinessType, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-md-4">
+        Gst No:
+        @Html.EditorFor(model => model.GSTNumber, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.GSTNumber, "", new { @class = "text-danger" })
+
+
+
+    </div>
 
     </div>
     <h4>Account Details :</h4>
@@ -72,8 +95,7 @@
             @Html.EditorFor(model => model.AdditinalFeild2, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ReferaleCode, "", new { @class = "text-danger" })
            <br />
-             Company Logo:
-            <input type="file" name="file" />
+            
 </div>
         <div class="col-md-4">
             IFSC Code:
@@ -81,20 +103,36 @@
             @Html.ValidationMessageFor(model => model.AdditinalFeild3, "", new { @class = "text-danger" })
 
             <br />
-           Singnature:
-            <input type="file" name="file" />
+         
         </div>
         <div class="col-md-4">
            Bank Name:
             @Html.EditorFor(model => model.AdditinalFeild1, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.AdditinalFeild1, "", new { @class = "text-danger" })
             <br />
-            <input type="submit" value="Save" class="btn btn-primary" style="width:80px;font-size:14px;" />
-
-            <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
-
+        
         </div>
         </div>
+       
+        <div class="row">
+            <div class="col-md-4">
+                Company Logo:
+                @Html.TextBoxFor(model => model.AddLogo, new { type = "file" })
+                @Html.ValidationMessageFor(m => m.AddLogo)
+               </div>
+            <div class="col-md-4">
+                Singnature:
+                <input type="file" name="FileUpload" />
+            </div>
+            <div class="col-md-4">
+
+                <br />
+                <input type="submit" value="Save" class="btn btn-primary" style="width:80px;font-size:14px;" />
+
+                <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
+
+            </div>
+            </div>
 
             }
 

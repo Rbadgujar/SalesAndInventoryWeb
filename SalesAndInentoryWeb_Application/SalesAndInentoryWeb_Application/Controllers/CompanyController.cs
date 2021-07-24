@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application;
 using SalesAndInentoryWeb_Application.Models;
+using DocumentFormat.OpenXml.Drawing;
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class CompanyController : Controller
@@ -16,22 +18,54 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult com()
+        public ActionResult com(int id=0)
         {
-            return View();
 
+            if (id == 0)
+            {
+                return View();
+            }
+            else
+            {
+                var tb = db.tbl_CompanyMasterSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.CompanyID == id);
+                var vm = new tbl_CompanyMaster();
+                vm.CompanyName = tb.CompanyName;
+                vm.ReferaleCode = tb.ReferaleCode;
+                vm.Address = tb.Address;
+                vm.EmailID = tb.EmailID;
+                vm.City = tb.City;
+                //vm.AddLogo = tb.AddLogo.ToString;
+                vm.PhoneNo = tb.ContactNo;
+                vm.GSTNumber = tb.GSTNumber;
+                vm.BusinessType = tb.BusinessType;
+                vm.State = tb.State;
+             
+                return View(vm);
+            }
+
+          
         }
         [HttpPost]
 
-        public ActionResult com(tbl_CompanyMasterSelectResult com)
+        public ActionResult com(tbl_CompanyMasterSelectResult com, int id=0)
         {
 
             try
             {
-                //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                db.tbl_CompanyMasterSelect("Insert", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
-                db.SubmitChanges();
-                return RedirectToAction("Index");
+                if (id == 0)
+                {
+                    //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
+                    db.tbl_CompanyMasterSelect("Insert", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
+                    db.SubmitChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    db.tbl_CompanyMasterSelect("Update", id, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
+                    db.SubmitChanges();
+                        return RedirectToAction("Index");
+                        //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);                   
+                }
             }
             catch (Exception)
             {
