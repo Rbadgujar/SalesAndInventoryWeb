@@ -8497,6 +8497,7 @@ namespace SalesAndInentoryWeb_Application
 		private System.Nullable<System.DateTime> _Date;
 
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public IEnumerable<SelectListItem> ListOfcategory{ get; set; }
         public virtual tbl_OtherIncomeInner tbl_OtherIncomeInner { get; set; }
 
         private string _paymentType;
