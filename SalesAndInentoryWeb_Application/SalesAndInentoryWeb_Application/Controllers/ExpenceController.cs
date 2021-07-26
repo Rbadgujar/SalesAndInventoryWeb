@@ -130,6 +130,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 }
             }
         }
+
         [HttpPost]
         public ActionResult AddOrEdit(OtherParties objExpensesDetails)
         {
