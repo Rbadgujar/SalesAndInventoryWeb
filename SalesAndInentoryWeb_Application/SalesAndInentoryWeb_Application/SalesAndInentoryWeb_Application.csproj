@@ -3678,6 +3678,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ItemDetails.cs" />
     <Compile Include="ViewModel\ItemPurchase.cs" />
+    <Compile Include="ViewModel\OtherItem.cs" />
+    <Compile Include="ViewModel\OtherParties.cs" />
     <Compile Include="ViewModel\PartyDetails.cs" />
     <Compile Include="ViewModel\PartyDetailsForPurchase.cs" />
     <Compile Include="ViewModel\SaleInvoiceItemDetails.cs" />

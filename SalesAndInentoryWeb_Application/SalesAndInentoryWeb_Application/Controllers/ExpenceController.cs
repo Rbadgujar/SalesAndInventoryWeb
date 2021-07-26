@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
+using SalesAndInentoryWeb_Application.ViewModel;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ExpenceController : Controller
@@ -39,23 +43,121 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult AddOrEdit()
         {
-            return View();
+            tbl_Expense bt = new tbl_Expense();
+            bt.ListOfAccounts = ListOfItems();
+            bt.ListOfCategory = ListOfCategorys();
+            return View(bt);               
         }
-
-        [HttpPost]
-        public ActionResult AddOrEdit(tbl_ExpensesSelectResult exp)
+        private static List<SelectListItem> ListOfItems()
         {
-            //try
-            //{
-            //    db.tbl_ExpensesSelect("Insert", null, exp.ExpenseCategory, exp.Date, exp.Description, exp.Image, exp.Total, exp.Paid, exp.Balance, exp.AdditinalFeild1, exp.AdditionalFeild2, exp.Status, exp.TableName, exp.compid);
-            //    db.SubmitChanges();
-            //    return RedirectToAction("Index");
-             return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-            //}
-            //catch (Exception e)
-            //{
-            //    return View("Error", new HandleErrorInfo(e, "Expence", "AddOrEdit"));
-            //}
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["ItemName"].ToString(),
+                                Value = sdr["ItemID"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items;
+        }
+        private static List<SelectListItem> ListOfCategorys()
+        {
+            string sql;
+            List<SelectListItem> items1 = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ExpenseCategory");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items1.Add(new SelectListItem
+                            {
+                                Text = sdr["CategoryName"].ToString(),
+                                Value = sdr["CategoryID"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items1;
+        }
+        public JsonResult GetFruitName(int id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static string GetFruitNameById(int id)
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT SalePrice FROM tbl_ItemMaster WHERE ItemID = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    string name = Convert.ToString(cmd.ExecuteScalar());
+                    con.Close();
+
+                    return name;
+                }
+            }
+        }
+        [HttpPost]
+        public ActionResult AddOrEdit(OtherParties objExpensesDetails)
+        {
+            tbl_Expense sale = new tbl_Expense()
+            {
+                ExpenseCategory = objExpensesDetails.ExpenseCategory,
+                Paid=objExpensesDetails.Paid,
+                Balance=objExpensesDetails.Balance,
+                Date=objExpensesDetails.Date             
+            };
+            db.tbl_Expenses.InsertOnSubmit(sale);
+            db.SubmitChanges();
+
+            foreach (var item in objExpensesDetails.ListOfOtherIncomeDetails)
+            {
+                tbl_ExpensesInner inner = new tbl_ExpensesInner()
+                {
+                    ItemName = item.ItemName,
+                    SalePrice = item.SalePrice,
+                    ID1 = sale.ID1,
+                    ItemAmount = item.ItemAmount,
+                    Qty = item.Qty
+                };
+                db.tbl_ExpensesInners.InsertOnSubmit(inner);
+                db.SubmitChanges();
+            }
+            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
+            return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
         }
 
         [HttpPost]
