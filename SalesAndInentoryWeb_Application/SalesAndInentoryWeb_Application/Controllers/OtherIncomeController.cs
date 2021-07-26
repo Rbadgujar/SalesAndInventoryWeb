@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Configuration;
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class OtherIncomeController : Controller
@@ -30,13 +33,70 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
 			return View(tb);
 		}
+        private static List<SelectListItem> ListOfAccount()
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["ItemName"].ToString(),
+                                Value = sdr["ItemID"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
 
-		[HttpGet]
+            return items;
+        }
+        public JsonResult GetFruitName(int id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static string GetFruitNameById(int id)
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT SalePrice FROM tbl_ItemMaster WHERE ItemID = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    string name = Convert.ToString(cmd.ExecuteScalar());
+                    con.Close();
+
+                    return name;
+                }
+            }
+        }
+
+        [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
         {
 			if (id == 0)
 			{
-				return View(new tbl_OtherIncome());
+
+                tbl_OtherIncome bt = new tbl_OtherIncome();
+                bt.ListOfAccounts = ListOfAccount();
+                return View(bt);
+              //  return View(new tbl_OtherIncome());
 			}
 			else
 			{

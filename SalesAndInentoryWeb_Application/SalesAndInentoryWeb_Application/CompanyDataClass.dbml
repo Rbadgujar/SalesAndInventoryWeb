@@ -310,6 +310,8 @@
       <Column Name="OtherIncome" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_otherIncomeCaategory_tbl_OtherIncome" Member="tbl_OtherIncomes" ThisKey="ID" OtherKey="CategoryID" Type="tbl_OtherIncome" />
+      <Association Name="tbl_otherIncomeCaategory_tbl_OtherIncome1" Member="tbl_OtherIncomes1" ThisKey="ID" OtherKey="CategoryID" Type="tbl_OtherIncome" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_OtherIncomeInner" Member="tbl_OtherIncomeInners">
@@ -321,6 +323,34 @@
       <Column Name="ItemAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_OtherIncome" Member="tbl_OtherIncomes">
+    <Type Name="tbl_OtherIncome">
+      <Column Name="Id1" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IncomeCategory" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="paymentType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RoundOFF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AdditionalFeild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Additional2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Additional3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Additional4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_OtherIncome_tbl_OtherIncome" Member="tbl_OtherIncome2" ThisKey="Id1" OtherKey="Id1" Type="tbl_OtherIncome" Cardinality="One" />
+      <Association Name="tbl_OtherIncome_tbl_OtherIncome" Member="tbl_OtherIncome1" ThisKey="Id1" OtherKey="Id1" Type="tbl_OtherIncome" IsForeignKey="true" />
+      <Association Name="tbl_otherIncomeCaategory_tbl_OtherIncome" Member="tbl_otherIncomeCaategory" ThisKey="CategoryID" OtherKey="ID" Type="tbl_otherIncomeCaategory" IsForeignKey="true" />
+      <Association Name="tbl_otherIncomeCaategory_tbl_OtherIncome1" Member="tbl_otherIncomeCaategory1" ThisKey="CategoryID" OtherKey="ID" Type="tbl_otherIncomeCaategory" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">

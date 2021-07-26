@@ -22,7 +22,7 @@ namespace SalesAndInentoryWeb_Application.Models
             this.tbl_SaleOrderInner = new HashSet<tbl_SaleOrderInner>();
             this.tbl_SaleOrderInner1 = new HashSet<tbl_SaleOrderInner>();
 
-    }
+         }
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
 
         public int OrderNo { get; set; }
