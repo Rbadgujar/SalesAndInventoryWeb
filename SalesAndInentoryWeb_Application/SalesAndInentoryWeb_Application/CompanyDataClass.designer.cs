@@ -21,7 +21,6 @@ namespace SalesAndInentoryWeb_Application
     using System.ComponentModel;
     using System;
     using System.Web.Mvc;
-    using Models;
 
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="idealtec_inventory")]
 	public partial class CompanyDataClassDataContext : System.Data.Linq.DataContext
@@ -61,9 +60,12 @@ namespace SalesAndInentoryWeb_Application
     partial void Inserttbl_OtherIncomeInner(tbl_OtherIncomeInner instance);
     partial void Updatetbl_OtherIncomeInner(tbl_OtherIncomeInner instance);
     partial void Deletetbl_OtherIncomeInner(tbl_OtherIncomeInner instance);
-    partial void Inserttbl_OtherIncome(tbl_OtherIncome instance);
-    partial void Updatetbl_OtherIncome(tbl_OtherIncome instance);
-    partial void Deletetbl_OtherIncome(tbl_OtherIncome instance);
+    partial void Inserttbl_Expense(tbl_Expense instance);
+    partial void Updatetbl_Expense(tbl_Expense instance);
+    partial void Deletetbl_Expense(tbl_Expense instance);
+    partial void Inserttbl_ExpensesInner(tbl_ExpensesInner instance);
+    partial void Updatetbl_ExpensesInner(tbl_ExpensesInner instance);
+    partial void Deletetbl_ExpensesInner(tbl_ExpensesInner instance);
     #endregion
 		
 		public CompanyDataClassDataContext() : 
@@ -184,11 +186,19 @@ namespace SalesAndInentoryWeb_Application
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_OtherIncome> tbl_OtherIncomes
+		public System.Data.Linq.Table<tbl_Expense> tbl_Expenses
 		{
 			get
 			{
-				return this.GetTable<tbl_OtherIncome>();
+				return this.GetTable<tbl_Expense>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_ExpensesInner> tbl_ExpensesInners
+		{
+			get
+			{
+				return this.GetTable<tbl_ExpensesInner>();
 			}
 		}
 		
@@ -6406,16 +6416,16 @@ namespace SalesAndInentoryWeb_Application
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _OrderNo;
-		
-		private string _PartyName;
+        public virtual tbl_SaleOrderInner tbl_SaleOrderInner2 { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+
+        private string _PartyName;
 		
 		private string _BillingName;
 		
 		private string _ContactNo;
-
-      public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-
-        private System.Nullable<System.DateTime> _OrderDate;
+		
+		private System.Nullable<System.DateTime> _OrderDate;
 		
 		private System.Nullable<System.DateTime> _DueDate;
 		
@@ -6502,11 +6512,9 @@ namespace SalesAndInentoryWeb_Application
 		private EntitySet<tbl_SaleOrderInner> _tbl_SaleOrderInners1;
 		
 		private EntityRef<tbl_SaleOrderInner> _tbl_SaleOrderInner;
-        public virtual tbl_SaleOrderInner tbl_SaleOrderInner2 { get; set; }
-
-
-        #region Extensibility Method Definitions
-        partial void OnLoaded();
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnOrderNoChanging(int value);
@@ -8102,10 +8110,6 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<int> _Company_ID;
 		
-		private EntitySet<tbl_OtherIncome> _tbl_OtherIncomes;
-		
-		private EntitySet<tbl_OtherIncome> _tbl_OtherIncomes1;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -8122,8 +8126,6 @@ namespace SalesAndInentoryWeb_Application
 		
 		public tbl_otherIncomeCaategory()
 		{
-			this._tbl_OtherIncomes = new EntitySet<tbl_OtherIncome>(new Action<tbl_OtherIncome>(this.attach_tbl_OtherIncomes), new Action<tbl_OtherIncome>(this.detach_tbl_OtherIncomes));
-			this._tbl_OtherIncomes1 = new EntitySet<tbl_OtherIncome>(new Action<tbl_OtherIncome>(this.attach_tbl_OtherIncomes1), new Action<tbl_OtherIncome>(this.detach_tbl_OtherIncomes1));
 			OnCreated();
 		}
 		
@@ -8207,32 +8209,6 @@ namespace SalesAndInentoryWeb_Application
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_otherIncomeCaategory_tbl_OtherIncome", Storage="_tbl_OtherIncomes", ThisKey="ID", OtherKey="CategoryID")]
-		public EntitySet<tbl_OtherIncome> tbl_OtherIncomes
-		{
-			get
-			{
-				return this._tbl_OtherIncomes;
-			}
-			set
-			{
-				this._tbl_OtherIncomes.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_otherIncomeCaategory_tbl_OtherIncome1", Storage="_tbl_OtherIncomes1", ThisKey="ID", OtherKey="CategoryID")]
-		public EntitySet<tbl_OtherIncome> tbl_OtherIncomes1
-		{
-			get
-			{
-				return this._tbl_OtherIncomes1;
-			}
-			set
-			{
-				this._tbl_OtherIncomes1.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -8251,30 +8227,6 @@ namespace SalesAndInentoryWeb_Application
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_tbl_OtherIncomes(tbl_OtherIncome entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbl_otherIncomeCaategory = this;
-		}
-		
-		private void detach_tbl_OtherIncomes(tbl_OtherIncome entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbl_otherIncomeCaategory = null;
-		}
-		
-		private void attach_tbl_OtherIncomes1(tbl_OtherIncome entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbl_otherIncomeCaategory1 = this;
-		}
-		
-		private void detach_tbl_OtherIncomes1(tbl_OtherIncome entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbl_otherIncomeCaategory1 = null;
 		}
 	}
 	
@@ -8484,103 +8436,77 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_OtherIncome")]
-	public partial class tbl_OtherIncome : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Expenses")]
+	public partial class tbl_Expense : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _Id1;
+		private int _ID1;
 		
-		private string _IncomeCategory;
+		private string _ExpenseCategory;
 		
 		private System.Nullable<System.DateTime> _Date;
-
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfcategory{ get; set; }
-        public virtual tbl_OtherIncomeInner tbl_OtherIncomeInner { get; set; }
-
-        private string _paymentType;
 		
 		private string _Description;
 		
 		private System.Data.Linq.Binary _Image;
 		
-		private System.Nullable<double> _RoundOFF;
+		private System.Nullable<double> _Total;
 		
-		private System.Nullable<double> _total;
+		private string _AdditinalFeild1;
 		
-		private string _AdditionalFeild1;
+		private string _AdditionalFeild2;
 		
-		private string _Additional2;
-		
-		private string _Additional3;
-		
-		private string _Additional4;
-		
-		private System.Nullable<int> _CategoryID;
-		
-		private System.Nullable<double> _Received;
+		private System.Nullable<double> _Paid;
 		
 		private System.Nullable<double> _Balance;
+		
+		private System.Nullable<int> _CategoryID;
 		
 		private string _Status;
 		
 		private string _TableName;
-		
-		private System.Nullable<bool> _DeleteData;
+        public virtual tbl_ExpensesInner tbl_ExpensesInner { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public IEnumerable<SelectListItem> ListOfCategory { get; set; }
+
+        private System.Nullable<bool> _DeleteData;
 		
 		private System.Nullable<int> _Company_ID;
 		
-		private System.Nullable<int> _Id;
+		private EntityRef<tbl_Expense> _tbl_Expense2;
 		
-		private EntityRef<tbl_OtherIncome> _tbl_OtherIncome2;
+		private EntitySet<tbl_ExpensesInner> _tbl_ExpensesInners;
 		
-		private EntityRef<tbl_OtherIncome> _tbl_OtherIncome1;
-
-        private EntityRef<tbl_OtherIncome> _tbl_OtherIncomeInner1;
-
-        private EntityRef<tbl_otherIncomeCaategory> _tbl_otherIncomeCaategory;
+		private EntityRef<tbl_Expense> _tbl_Expense1;
 		
-		private EntityRef<tbl_otherIncomeCaategory> _tbl_otherIncomeCaategory1;
-
-      
-
-
-        #region Extensibility Method Definitions
-        partial void OnLoaded();
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnId1Changing(int value);
-    partial void OnId1Changed();
-    partial void OnIncomeCategoryChanging(string value);
-    partial void OnIncomeCategoryChanged();
+    partial void OnID1Changing(int value);
+    partial void OnID1Changed();
+    partial void OnExpenseCategoryChanging(string value);
+    partial void OnExpenseCategoryChanged();
     partial void OnDateChanging(System.Nullable<System.DateTime> value);
     partial void OnDateChanged();
-    partial void OnpaymentTypeChanging(string value);
-    partial void OnpaymentTypeChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
     partial void OnImageChanging(System.Data.Linq.Binary value);
     partial void OnImageChanged();
-    partial void OnRoundOFFChanging(System.Nullable<double> value);
-    partial void OnRoundOFFChanged();
-    partial void OntotalChanging(System.Nullable<double> value);
-    partial void OntotalChanged();
-    partial void OnAdditionalFeild1Changing(string value);
-    partial void OnAdditionalFeild1Changed();
-    partial void OnAdditional2Changing(string value);
-    partial void OnAdditional2Changed();
-    partial void OnAdditional3Changing(string value);
-    partial void OnAdditional3Changed();
-    partial void OnAdditional4Changing(string value);
-    partial void OnAdditional4Changed();
-    partial void OnCategoryIDChanging(System.Nullable<int> value);
-    partial void OnCategoryIDChanged();
-    partial void OnReceivedChanging(System.Nullable<double> value);
-    partial void OnReceivedChanged();
+    partial void OnTotalChanging(System.Nullable<double> value);
+    partial void OnTotalChanged();
+    partial void OnAdditinalFeild1Changing(string value);
+    partial void OnAdditinalFeild1Changed();
+    partial void OnAdditionalFeild2Changing(string value);
+    partial void OnAdditionalFeild2Changed();
+    partial void OnPaidChanging(System.Nullable<double> value);
+    partial void OnPaidChanged();
     partial void OnBalanceChanging(System.Nullable<double> value);
     partial void OnBalanceChanged();
+    partial void OnCategoryIDChanging(System.Nullable<int> value);
+    partial void OnCategoryIDChanged();
     partial void OnStatusChanging(string value);
     partial void OnStatusChanged();
     partial void OnTableNameChanging(string value);
@@ -8589,59 +8515,56 @@ namespace SalesAndInentoryWeb_Application
     partial void OnDeleteDataChanged();
     partial void OnCompany_IDChanging(System.Nullable<int> value);
     partial void OnCompany_IDChanged();
-    partial void OnIdChanging(System.Nullable<int> value);
-    partial void OnIdChanged();
     #endregion
 		
-		public tbl_OtherIncome()
+		public tbl_Expense()
 		{
-			this._tbl_OtherIncome2 = default(EntityRef<tbl_OtherIncome>);
-			this._tbl_OtherIncome1 = default(EntityRef<tbl_OtherIncome>);
-			this._tbl_otherIncomeCaategory = default(EntityRef<tbl_otherIncomeCaategory>);
-			this._tbl_otherIncomeCaategory1 = default(EntityRef<tbl_otherIncomeCaategory>);
+			this._tbl_Expense2 = default(EntityRef<tbl_Expense>);
+			this._tbl_ExpensesInners = new EntitySet<tbl_ExpensesInner>(new Action<tbl_ExpensesInner>(this.attach_tbl_ExpensesInners), new Action<tbl_ExpensesInner>(this.detach_tbl_ExpensesInners));
+			this._tbl_Expense1 = default(EntityRef<tbl_Expense>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id1", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int Id1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID1", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID1
 		{
 			get
 			{
-				return this._Id1;
+				return this._ID1;
 			}
 			set
 			{
-				if ((this._Id1 != value))
+				if ((this._ID1 != value))
 				{
-					if (this._tbl_OtherIncome1.HasLoadedOrAssignedValue)
+					if (this._tbl_Expense1.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnId1Changing(value);
+					this.OnID1Changing(value);
 					this.SendPropertyChanging();
-					this._Id1 = value;
-					this.SendPropertyChanged("Id1");
-					this.OnId1Changed();
+					this._ID1 = value;
+					this.SendPropertyChanged("ID1");
+					this.OnID1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IncomeCategory", DbType="NVarChar(MAX)")]
-		public string IncomeCategory
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpenseCategory", DbType="NVarChar(MAX)")]
+		public string ExpenseCategory
 		{
 			get
 			{
-				return this._IncomeCategory;
+				return this._ExpenseCategory;
 			}
 			set
 			{
-				if ((this._IncomeCategory != value))
+				if ((this._ExpenseCategory != value))
 				{
-					this.OnIncomeCategoryChanging(value);
+					this.OnExpenseCategoryChanging(value);
 					this.SendPropertyChanging();
-					this._IncomeCategory = value;
-					this.SendPropertyChanged("IncomeCategory");
-					this.OnIncomeCategoryChanged();
+					this._ExpenseCategory = value;
+					this.SendPropertyChanged("ExpenseCategory");
+					this.OnExpenseCategoryChanged();
 				}
 			}
 		}
@@ -8662,26 +8585,6 @@ namespace SalesAndInentoryWeb_Application
 					this._Date = value;
 					this.SendPropertyChanged("Date");
 					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_paymentType", DbType="NVarChar(MAX)")]
-		public string paymentType
-		{
-			get
-			{
-				return this._paymentType;
-			}
-			set
-			{
-				if ((this._paymentType != value))
-				{
-					this.OnpaymentTypeChanging(value);
-					this.SendPropertyChanging();
-					this._paymentType = value;
-					this.SendPropertyChanged("paymentType");
-					this.OnpaymentTypeChanged();
 				}
 			}
 		}
@@ -8726,166 +8629,82 @@ namespace SalesAndInentoryWeb_Application
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundOFF", DbType="Float")]
-		public System.Nullable<double> RoundOFF
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float")]
+		public System.Nullable<double> Total
 		{
 			get
 			{
-				return this._RoundOFF;
+				return this._Total;
 			}
 			set
 			{
-				if ((this._RoundOFF != value))
+				if ((this._Total != value))
 				{
-					this.OnRoundOFFChanging(value);
+					this.OnTotalChanging(value);
 					this.SendPropertyChanging();
-					this._RoundOFF = value;
-					this.SendPropertyChanged("RoundOFF");
-					this.OnRoundOFFChanged();
+					this._Total = value;
+					this.SendPropertyChanged("Total");
+					this.OnTotalChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Float")]
-		public System.Nullable<double> total
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditinalFeild1", DbType="NVarChar(MAX)")]
+		public string AdditinalFeild1
 		{
 			get
 			{
-				return this._total;
+				return this._AdditinalFeild1;
 			}
 			set
 			{
-				if ((this._total != value))
+				if ((this._AdditinalFeild1 != value))
 				{
-					this.OntotalChanging(value);
+					this.OnAdditinalFeild1Changing(value);
 					this.SendPropertyChanging();
-					this._total = value;
-					this.SendPropertyChanged("total");
-					this.OntotalChanged();
+					this._AdditinalFeild1 = value;
+					this.SendPropertyChanged("AdditinalFeild1");
+					this.OnAdditinalFeild1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditionalFeild1", DbType="NVarChar(MAX)")]
-		public string AdditionalFeild1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditionalFeild2", DbType="NVarChar(MAX)")]
+		public string AdditionalFeild2
 		{
 			get
 			{
-				return this._AdditionalFeild1;
+				return this._AdditionalFeild2;
 			}
 			set
 			{
-				if ((this._AdditionalFeild1 != value))
+				if ((this._AdditionalFeild2 != value))
 				{
-					this.OnAdditionalFeild1Changing(value);
+					this.OnAdditionalFeild2Changing(value);
 					this.SendPropertyChanging();
-					this._AdditionalFeild1 = value;
-					this.SendPropertyChanged("AdditionalFeild1");
-					this.OnAdditionalFeild1Changed();
+					this._AdditionalFeild2 = value;
+					this.SendPropertyChanged("AdditionalFeild2");
+					this.OnAdditionalFeild2Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Additional2", DbType="NVarChar(MAX)")]
-		public string Additional2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Float")]
+		public System.Nullable<double> Paid
 		{
 			get
 			{
-				return this._Additional2;
+				return this._Paid;
 			}
 			set
 			{
-				if ((this._Additional2 != value))
+				if ((this._Paid != value))
 				{
-					this.OnAdditional2Changing(value);
+					this.OnPaidChanging(value);
 					this.SendPropertyChanging();
-					this._Additional2 = value;
-					this.SendPropertyChanged("Additional2");
-					this.OnAdditional2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Additional3", DbType="NVarChar(MAX)")]
-		public string Additional3
-		{
-			get
-			{
-				return this._Additional3;
-			}
-			set
-			{
-				if ((this._Additional3 != value))
-				{
-					this.OnAdditional3Changing(value);
-					this.SendPropertyChanging();
-					this._Additional3 = value;
-					this.SendPropertyChanged("Additional3");
-					this.OnAdditional3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Additional4", DbType="NVarChar(MAX)")]
-		public string Additional4
-		{
-			get
-			{
-				return this._Additional4;
-			}
-			set
-			{
-				if ((this._Additional4 != value))
-				{
-					this.OnAdditional4Changing(value);
-					this.SendPropertyChanging();
-					this._Additional4 = value;
-					this.SendPropertyChanged("Additional4");
-					this.OnAdditional4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int")]
-		public System.Nullable<int> CategoryID
-		{
-			get
-			{
-				return this._CategoryID;
-			}
-			set
-			{
-				if ((this._CategoryID != value))
-				{
-					if ((this._tbl_otherIncomeCaategory.HasLoadedOrAssignedValue || this._tbl_otherIncomeCaategory1.HasLoadedOrAssignedValue))
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCategoryIDChanging(value);
-					this.SendPropertyChanging();
-					this._CategoryID = value;
-					this.SendPropertyChanged("CategoryID");
-					this.OnCategoryIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Received", DbType="Float")]
-		public System.Nullable<double> Received
-		{
-			get
-			{
-				return this._Received;
-			}
-			set
-			{
-				if ((this._Received != value))
-				{
-					this.OnReceivedChanging(value);
-					this.SendPropertyChanging();
-					this._Received = value;
-					this.SendPropertyChanged("Received");
-					this.OnReceivedChanged();
+					this._Paid = value;
+					this.SendPropertyChanged("Paid");
+					this.OnPaidChanged();
 				}
 			}
 		}
@@ -8906,6 +8725,26 @@ namespace SalesAndInentoryWeb_Application
 					this._Balance = value;
 					this.SendPropertyChanged("Balance");
 					this.OnBalanceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int")]
+		public System.Nullable<int> CategoryID
+		{
+			get
+			{
+				return this._CategoryID;
+			}
+			set
+			{
+				if ((this._CategoryID != value))
+				{
+					this.OnCategoryIDChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryID = value;
+					this.SendPropertyChanged("CategoryID");
+					this.OnCategoryIDChanged();
 				}
 			}
 		}
@@ -8990,153 +8829,385 @@ namespace SalesAndInentoryWeb_Application
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int")]
-		public System.Nullable<int> Id
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Expense_tbl_Expense", Storage="_tbl_Expense2", ThisKey="ID1", OtherKey="ID1", IsUnique=true, IsForeignKey=false)]
+		public tbl_Expense tbl_Expense2
 		{
 			get
 			{
-				return this._Id;
+				return this._tbl_Expense2.Entity;
 			}
 			set
 			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_OtherIncome_tbl_OtherIncome", Storage="_tbl_OtherIncome2", ThisKey="Id1", OtherKey="Id1", IsUnique=true, IsForeignKey=false)]
-		public tbl_OtherIncome tbl_OtherIncome2
-		{
-			get
-			{
-				return this._tbl_OtherIncome2.Entity;
-			}
-			set
-			{
-				tbl_OtherIncome previousValue = this._tbl_OtherIncome2.Entity;
+				tbl_Expense previousValue = this._tbl_Expense2.Entity;
 				if (((previousValue != value) 
-							|| (this._tbl_OtherIncome2.HasLoadedOrAssignedValue == false)))
+							|| (this._tbl_Expense2.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._tbl_OtherIncome2.Entity = null;
-						previousValue.tbl_OtherIncome1 = null;
+						this._tbl_Expense2.Entity = null;
+						previousValue.tbl_Expense1 = null;
 					}
-					this._tbl_OtherIncome2.Entity = value;
+					this._tbl_Expense2.Entity = value;
 					if ((value != null))
 					{
-						value.tbl_OtherIncome1 = this;
+						value.tbl_Expense1 = this;
 					}
-					this.SendPropertyChanged("tbl_OtherIncome2");
+					this.SendPropertyChanged("tbl_Expense2");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_OtherIncome_tbl_OtherIncome", Storage="_tbl_OtherIncome1", ThisKey="Id1", OtherKey="Id1", IsForeignKey=true)]
-		public tbl_OtherIncome tbl_OtherIncome1
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Expense_tbl_ExpensesInner", Storage="_tbl_ExpensesInners", ThisKey="ID1", OtherKey="ID1")]
+		public EntitySet<tbl_ExpensesInner> tbl_ExpensesInners
 		{
 			get
 			{
-				return this._tbl_OtherIncome1.Entity;
+				return this._tbl_ExpensesInners;
 			}
 			set
 			{
-				tbl_OtherIncome previousValue = this._tbl_OtherIncome1.Entity;
+				this._tbl_ExpensesInners.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Expense_tbl_Expense", Storage="_tbl_Expense1", ThisKey="ID1", OtherKey="ID1", IsForeignKey=true)]
+		public tbl_Expense tbl_Expense1
+		{
+			get
+			{
+				return this._tbl_Expense1.Entity;
+			}
+			set
+			{
+				tbl_Expense previousValue = this._tbl_Expense1.Entity;
 				if (((previousValue != value) 
-							|| (this._tbl_OtherIncome1.HasLoadedOrAssignedValue == false)))
+							|| (this._tbl_Expense1.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._tbl_OtherIncome1.Entity = null;
-						previousValue.tbl_OtherIncome2 = null;
+						this._tbl_Expense1.Entity = null;
+						previousValue.tbl_Expense2 = null;
 					}
-					this._tbl_OtherIncome1.Entity = value;
+					this._tbl_Expense1.Entity = value;
 					if ((value != null))
 					{
-						value.tbl_OtherIncome2 = this;
-						this._Id1 = value.Id1;
+						value.tbl_Expense2 = this;
+						this._ID1 = value.ID1;
 					}
 					else
 					{
-						this._Id1 = default(int);
+						this._ID1 = default(int);
 					}
-					this.SendPropertyChanged("tbl_OtherIncome1");
+					this.SendPropertyChanged("tbl_Expense1");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_otherIncomeCaategory_tbl_OtherIncome", Storage="_tbl_otherIncomeCaategory", ThisKey="CategoryID", OtherKey="ID", IsForeignKey=true)]
-		public tbl_otherIncomeCaategory tbl_otherIncomeCaategory
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tbl_ExpensesInners(tbl_ExpensesInner entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_Expense = this;
+		}
+		
+		private void detach_tbl_ExpensesInners(tbl_ExpensesInner entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_Expense = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ExpensesInner")]
+	public partial class tbl_ExpensesInner : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id_inner;
+		
+		private string _ItemName;
+		
+		private System.Nullable<double> _SalePrice;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _freeQty;
+		
+		private System.Nullable<double> _ItemAmount;
+		
+		private System.Nullable<bool> _DeleteData;
+		
+		private System.Nullable<int> _Company_ID;
+		
+		private System.Nullable<int> _ID1;
+		
+		private EntityRef<tbl_Expense> _tbl_Expense;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnId_innerChanging(int value);
+    partial void OnId_innerChanged();
+    partial void OnItemNameChanging(string value);
+    partial void OnItemNameChanged();
+    partial void OnSalePriceChanging(System.Nullable<double> value);
+    partial void OnSalePriceChanged();
+    partial void OnQtyChanging(System.Nullable<int> value);
+    partial void OnQtyChanged();
+    partial void OnfreeQtyChanging(System.Nullable<int> value);
+    partial void OnfreeQtyChanged();
+    partial void OnItemAmountChanging(System.Nullable<double> value);
+    partial void OnItemAmountChanged();
+    partial void OnDeleteDataChanging(System.Nullable<bool> value);
+    partial void OnDeleteDataChanged();
+    partial void OnCompany_IDChanging(System.Nullable<int> value);
+    partial void OnCompany_IDChanged();
+    partial void OnID1Changing(System.Nullable<int> value);
+    partial void OnID1Changed();
+    #endregion
+		
+		public tbl_ExpensesInner()
+		{
+			this._tbl_Expense = default(EntityRef<tbl_Expense>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_inner", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id_inner
 		{
 			get
 			{
-				return this._tbl_otherIncomeCaategory.Entity;
+				return this._Id_inner;
 			}
 			set
 			{
-				tbl_otherIncomeCaategory previousValue = this._tbl_otherIncomeCaategory.Entity;
-				if (((previousValue != value) 
-							|| (this._tbl_otherIncomeCaategory.HasLoadedOrAssignedValue == false)))
+				if ((this._Id_inner != value))
 				{
+					this.OnId_innerChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbl_otherIncomeCaategory.Entity = null;
-						previousValue.tbl_OtherIncomes.Remove(this);
-					}
-					this._tbl_otherIncomeCaategory.Entity = value;
-					if ((value != null))
-					{
-						value.tbl_OtherIncomes.Add(this);
-						this._CategoryID = value.ID;
-					}
-					else
-					{
-						this._CategoryID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tbl_otherIncomeCaategory");
+					this._Id_inner = value;
+					this.SendPropertyChanged("Id_inner");
+					this.OnId_innerChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_otherIncomeCaategory_tbl_OtherIncome1", Storage="_tbl_otherIncomeCaategory1", ThisKey="CategoryID", OtherKey="ID", IsForeignKey=true)]
-		public tbl_otherIncomeCaategory tbl_otherIncomeCaategory1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
 		{
 			get
 			{
-				return this._tbl_otherIncomeCaategory1.Entity;
+				return this._ItemName;
 			}
 			set
 			{
-				tbl_otherIncomeCaategory previousValue = this._tbl_otherIncomeCaategory1.Entity;
+				if ((this._ItemName != value))
+				{
+					this.OnItemNameChanging(value);
+					this.SendPropertyChanging();
+					this._ItemName = value;
+					this.SendPropertyChanged("ItemName");
+					this.OnItemNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalePrice", DbType="Float")]
+		public System.Nullable<double> SalePrice
+		{
+			get
+			{
+				return this._SalePrice;
+			}
+			set
+			{
+				if ((this._SalePrice != value))
+				{
+					this.OnSalePriceChanging(value);
+					this.SendPropertyChanging();
+					this._SalePrice = value;
+					this.SendPropertyChanged("SalePrice");
+					this.OnSalePriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this.OnQtyChanging(value);
+					this.SendPropertyChanging();
+					this._Qty = value;
+					this.SendPropertyChanged("Qty");
+					this.OnQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_freeQty", DbType="Int")]
+		public System.Nullable<int> freeQty
+		{
+			get
+			{
+				return this._freeQty;
+			}
+			set
+			{
+				if ((this._freeQty != value))
+				{
+					this.OnfreeQtyChanging(value);
+					this.SendPropertyChanging();
+					this._freeQty = value;
+					this.SendPropertyChanged("freeQty");
+					this.OnfreeQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Float")]
+		public System.Nullable<double> ItemAmount
+		{
+			get
+			{
+				return this._ItemAmount;
+			}
+			set
+			{
+				if ((this._ItemAmount != value))
+				{
+					this.OnItemAmountChanging(value);
+					this.SendPropertyChanging();
+					this._ItemAmount = value;
+					this.SendPropertyChanged("ItemAmount");
+					this.OnItemAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteData", DbType="Bit")]
+		public System.Nullable<bool> DeleteData
+		{
+			get
+			{
+				return this._DeleteData;
+			}
+			set
+			{
+				if ((this._DeleteData != value))
+				{
+					this.OnDeleteDataChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteData = value;
+					this.SendPropertyChanged("DeleteData");
+					this.OnDeleteDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Company_ID", DbType="Int")]
+		public System.Nullable<int> Company_ID
+		{
+			get
+			{
+				return this._Company_ID;
+			}
+			set
+			{
+				if ((this._Company_ID != value))
+				{
+					this.OnCompany_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Company_ID = value;
+					this.SendPropertyChanged("Company_ID");
+					this.OnCompany_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID1", DbType="Int")]
+		public System.Nullable<int> ID1
+		{
+			get
+			{
+				return this._ID1;
+			}
+			set
+			{
+				if ((this._ID1 != value))
+				{
+					if (this._tbl_Expense.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID1Changing(value);
+					this.SendPropertyChanging();
+					this._ID1 = value;
+					this.SendPropertyChanged("ID1");
+					this.OnID1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Expense_tbl_ExpensesInner", Storage="_tbl_Expense", ThisKey="ID1", OtherKey="ID1", IsForeignKey=true)]
+		public tbl_Expense tbl_Expense
+		{
+			get
+			{
+				return this._tbl_Expense.Entity;
+			}
+			set
+			{
+				tbl_Expense previousValue = this._tbl_Expense.Entity;
 				if (((previousValue != value) 
-							|| (this._tbl_otherIncomeCaategory1.HasLoadedOrAssignedValue == false)))
+							|| (this._tbl_Expense.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._tbl_otherIncomeCaategory1.Entity = null;
-						previousValue.tbl_OtherIncomes1.Remove(this);
+						this._tbl_Expense.Entity = null;
+						previousValue.tbl_ExpensesInners.Remove(this);
 					}
-					this._tbl_otherIncomeCaategory1.Entity = value;
+					this._tbl_Expense.Entity = value;
 					if ((value != null))
 					{
-						value.tbl_OtherIncomes1.Add(this);
-						this._CategoryID = value.ID;
+						value.tbl_ExpensesInners.Add(this);
+						this._ID1 = value.ID1;
 					}
 					else
 					{
-						this._CategoryID = default(Nullable<int>);
+						this._ID1 = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("tbl_otherIncomeCaategory1");
+					this.SendPropertyChanged("tbl_Expense");
 				}
 			}
 		}
