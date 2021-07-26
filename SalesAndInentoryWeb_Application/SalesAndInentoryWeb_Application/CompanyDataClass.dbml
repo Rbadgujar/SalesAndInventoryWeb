@@ -323,6 +323,42 @@
       <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_Expenses" Member="tbl_Expenses">
+    <Type Name="tbl_Expense">
+      <Column Name="ID1" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExpenseCategory" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AdditinalFeild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AdditionalFeild2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Paid" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_Expense_tbl_Expense" Member="tbl_Expense2" ThisKey="ID1" OtherKey="ID1" Type="tbl_Expense" Cardinality="One" />
+      <Association Name="tbl_Expense_tbl_ExpensesInner" Member="tbl_ExpensesInners" ThisKey="ID1" OtherKey="ID1" Type="tbl_ExpensesInner" />
+      <Association Name="tbl_Expense_tbl_Expense" Member="tbl_Expense1" ThisKey="ID1" OtherKey="ID1" Type="tbl_Expense" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_ExpensesInner" Member="tbl_ExpensesInners">
+    <Type Name="tbl_ExpensesInner">
+      <Column Name="Id_inner" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="freeQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_Expense_tbl_ExpensesInner" Member="tbl_Expense" ThisKey="ID1" OtherKey="ID1" Type="tbl_Expense" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="CompanyID" Parameter="companyID" Type="System.Int32" DbType="Int" />

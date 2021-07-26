@@ -11,15 +11,15 @@
 
 namespace SalesAndInentoryWeb_Application
 {
-	using System.Data.Linq;
-	using System.Data.Linq.Mapping;
-	using System.Data;
-	using System.Collections.Generic;
-	using System.Reflection;
-	using System.Linq;
-	using System.Linq.Expressions;
-	using System.ComponentModel;
-	using System;
+    using System.Data.Linq;
+    using System.Data.Linq.Mapping;
+    using System.Data;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.ComponentModel;
+    using System;
     using System.Web.Mvc;
 
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="idealtec_inventory")]
@@ -60,6 +60,12 @@ namespace SalesAndInentoryWeb_Application
     partial void Inserttbl_OtherIncomeInner(tbl_OtherIncomeInner instance);
     partial void Updatetbl_OtherIncomeInner(tbl_OtherIncomeInner instance);
     partial void Deletetbl_OtherIncomeInner(tbl_OtherIncomeInner instance);
+    partial void Inserttbl_Expense(tbl_Expense instance);
+    partial void Updatetbl_Expense(tbl_Expense instance);
+    partial void Deletetbl_Expense(tbl_Expense instance);
+    partial void Inserttbl_ExpensesInner(tbl_ExpensesInner instance);
+    partial void Updatetbl_ExpensesInner(tbl_ExpensesInner instance);
+    partial void Deletetbl_ExpensesInner(tbl_ExpensesInner instance);
     #endregion
 		
 		public CompanyDataClassDataContext() : 
@@ -177,6 +183,22 @@ namespace SalesAndInentoryWeb_Application
 			get
 			{
 				return this.GetTable<tbl_OtherIncomeInner>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_Expense> tbl_Expenses
+		{
+			get
+			{
+				return this.GetTable<tbl_Expense>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_ExpensesInner> tbl_ExpensesInners
+		{
+			get
+			{
+				return this.GetTable<tbl_ExpensesInner>();
 			}
 		}
 		
@@ -6391,7 +6413,6 @@ namespace SalesAndInentoryWeb_Application
 	public partial class tbl_SaleOrder : INotifyPropertyChanging, INotifyPropertyChanged
 	{
         public virtual tbl_SaleOrderInner tbl_SaleOrderInner2 { get; set; }
-
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
@@ -8389,6 +8410,801 @@ namespace SalesAndInentoryWeb_Application
 					this._DeleteData = value;
 					this.SendPropertyChanged("DeleteData");
 					this.OnDeleteDataChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.tbl_Expenses")]
+    public partial class tbl_Expense : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+      
+        public virtual tbl_ExpensesInner tbl_ExpensesInner { get; set; }
+        private int _ID1;
+		private string _ExpenseCategory;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private string _Description;
+		
+		private System.Data.Linq.Binary _Image;
+		
+		private System.Nullable<double> _Total;
+		
+		private string _AdditinalFeild1;
+		
+		private string _AdditionalFeild2;
+        public IEnumerable<SelectListItem> ListOfCategory { get; set; }
+        private System.Nullable<double> _Paid;
+		
+		private System.Nullable<double> _Balance;
+		
+		private System.Nullable<int> _CategoryID;
+		
+		private string _Status;
+		
+		private string _TableName;
+		
+		private System.Nullable<bool> _DeleteData;
+		
+		private System.Nullable<int> _Company_ID;
+		
+		private EntityRef<tbl_Expense> _tbl_Expense2;
+		
+		private EntitySet<tbl_ExpensesInner> _tbl_ExpensesInners;
+		
+		private EntityRef<tbl_Expense> _tbl_Expense1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID1Changing(int value);
+    partial void OnID1Changed();
+    partial void OnExpenseCategoryChanging(string value);
+    partial void OnExpenseCategoryChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnImageChanging(System.Data.Linq.Binary value);
+    partial void OnImageChanged();
+    partial void OnTotalChanging(System.Nullable<double> value);
+    partial void OnTotalChanged();
+    partial void OnAdditinalFeild1Changing(string value);
+    partial void OnAdditinalFeild1Changed();
+    partial void OnAdditionalFeild2Changing(string value);
+    partial void OnAdditionalFeild2Changed();
+    partial void OnPaidChanging(System.Nullable<double> value);
+    partial void OnPaidChanged();
+    partial void OnBalanceChanging(System.Nullable<double> value);
+    partial void OnBalanceChanged();
+    partial void OnCategoryIDChanging(System.Nullable<int> value);
+    partial void OnCategoryIDChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void OnTableNameChanging(string value);
+    partial void OnTableNameChanged();
+    partial void OnDeleteDataChanging(System.Nullable<bool> value);
+    partial void OnDeleteDataChanged();
+    partial void OnCompany_IDChanging(System.Nullable<int> value);
+    partial void OnCompany_IDChanged();
+    #endregion
+		
+		public tbl_Expense()
+		{
+			this._tbl_Expense2 = default(EntityRef<tbl_Expense>);
+			this._tbl_ExpensesInners = new EntitySet<tbl_ExpensesInner>(new Action<tbl_ExpensesInner>(this.attach_tbl_ExpensesInners), new Action<tbl_ExpensesInner>(this.detach_tbl_ExpensesInners));
+			this._tbl_Expense1 = default(EntityRef<tbl_Expense>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID1", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID1
+		{
+			get
+			{
+				return this._ID1;
+			}
+			set
+			{
+				if ((this._ID1 != value))
+				{
+					if (this._tbl_Expense1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID1Changing(value);
+					this.SendPropertyChanging();
+					this._ID1 = value;
+					this.SendPropertyChanged("ID1");
+					this.OnID1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpenseCategory", DbType="NVarChar(MAX)")]
+		public string ExpenseCategory
+		{
+			get
+			{
+				return this._ExpenseCategory;
+			}
+			set
+			{
+				if ((this._ExpenseCategory != value))
+				{
+					this.OnExpenseCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._ExpenseCategory = value;
+					this.SendPropertyChanged("ExpenseCategory");
+					this.OnExpenseCategoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float")]
+		public System.Nullable<double> Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this.OnTotalChanging(value);
+					this.SendPropertyChanging();
+					this._Total = value;
+					this.SendPropertyChanged("Total");
+					this.OnTotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditinalFeild1", DbType="NVarChar(MAX)")]
+		public string AdditinalFeild1
+		{
+			get
+			{
+				return this._AdditinalFeild1;
+			}
+			set
+			{
+				if ((this._AdditinalFeild1 != value))
+				{
+					this.OnAdditinalFeild1Changing(value);
+					this.SendPropertyChanging();
+					this._AdditinalFeild1 = value;
+					this.SendPropertyChanged("AdditinalFeild1");
+					this.OnAdditinalFeild1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditionalFeild2", DbType="NVarChar(MAX)")]
+		public string AdditionalFeild2
+		{
+			get
+			{
+				return this._AdditionalFeild2;
+			}
+			set
+			{
+				if ((this._AdditionalFeild2 != value))
+				{
+					this.OnAdditionalFeild2Changing(value);
+					this.SendPropertyChanging();
+					this._AdditionalFeild2 = value;
+					this.SendPropertyChanged("AdditionalFeild2");
+					this.OnAdditionalFeild2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Float")]
+		public System.Nullable<double> Paid
+		{
+			get
+			{
+				return this._Paid;
+			}
+			set
+			{
+				if ((this._Paid != value))
+				{
+					this.OnPaidChanging(value);
+					this.SendPropertyChanging();
+					this._Paid = value;
+					this.SendPropertyChanged("Paid");
+					this.OnPaidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Balance", DbType="Float")]
+		public System.Nullable<double> Balance
+		{
+			get
+			{
+				return this._Balance;
+			}
+			set
+			{
+				if ((this._Balance != value))
+				{
+					this.OnBalanceChanging(value);
+					this.SendPropertyChanging();
+					this._Balance = value;
+					this.SendPropertyChanged("Balance");
+					this.OnBalanceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int")]
+		public System.Nullable<int> CategoryID
+		{
+			get
+			{
+				return this._CategoryID;
+			}
+			set
+			{
+				if ((this._CategoryID != value))
+				{
+					this.OnCategoryIDChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryID = value;
+					this.SendPropertyChanged("CategoryID");
+					this.OnCategoryIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(MAX)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this.OnTableNameChanging(value);
+					this.SendPropertyChanging();
+					this._TableName = value;
+					this.SendPropertyChanged("TableName");
+					this.OnTableNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteData", DbType="Bit")]
+		public System.Nullable<bool> DeleteData
+		{
+			get
+			{
+				return this._DeleteData;
+			}
+			set
+			{
+				if ((this._DeleteData != value))
+				{
+					this.OnDeleteDataChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteData = value;
+					this.SendPropertyChanged("DeleteData");
+					this.OnDeleteDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Company_ID", DbType="Int")]
+		public System.Nullable<int> Company_ID
+		{
+			get
+			{
+				return this._Company_ID;
+			}
+			set
+			{
+				if ((this._Company_ID != value))
+				{
+					this.OnCompany_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Company_ID = value;
+					this.SendPropertyChanged("Company_ID");
+					this.OnCompany_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Expense_tbl_Expense", Storage="_tbl_Expense2", ThisKey="ID1", OtherKey="ID1", IsUnique=true, IsForeignKey=false)]
+		public tbl_Expense tbl_Expense2
+		{
+			get
+			{
+				return this._tbl_Expense2.Entity;
+			}
+			set
+			{
+				tbl_Expense previousValue = this._tbl_Expense2.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Expense2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Expense2.Entity = null;
+						previousValue.tbl_Expense1 = null;
+					}
+					this._tbl_Expense2.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_Expense1 = this;
+					}
+					this.SendPropertyChanged("tbl_Expense2");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Expense_tbl_ExpensesInner", Storage="_tbl_ExpensesInners", ThisKey="ID1", OtherKey="ID1")]
+		public EntitySet<tbl_ExpensesInner> tbl_ExpensesInners
+		{
+			get
+			{
+				return this._tbl_ExpensesInners;
+			}
+			set
+			{
+				this._tbl_ExpensesInners.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Expense_tbl_Expense", Storage="_tbl_Expense1", ThisKey="ID1", OtherKey="ID1", IsForeignKey=true)]
+		public tbl_Expense tbl_Expense1
+		{
+			get
+			{
+				return this._tbl_Expense1.Entity;
+			}
+			set
+			{
+				tbl_Expense previousValue = this._tbl_Expense1.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Expense1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Expense1.Entity = null;
+						previousValue.tbl_Expense2 = null;
+					}
+					this._tbl_Expense1.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_Expense2 = this;
+						this._ID1 = value.ID1;
+					}
+					else
+					{
+						this._ID1 = default(int);
+					}
+					this.SendPropertyChanged("tbl_Expense1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tbl_ExpensesInners(tbl_ExpensesInner entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_Expense = this;
+		}
+		
+		private void detach_tbl_ExpensesInners(tbl_ExpensesInner entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_Expense = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ExpensesInner")]
+	public partial class tbl_ExpensesInner : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id_inner;
+		
+		private string _ItemName;
+		
+		private System.Nullable<double> _SalePrice;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _freeQty;
+		
+		private System.Nullable<double> _ItemAmount;
+		
+		private System.Nullable<bool> _DeleteData;
+		
+		private System.Nullable<int> _Company_ID;
+		
+		private System.Nullable<int> _ID1;
+		
+		private EntityRef<tbl_Expense> _tbl_Expense;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnId_innerChanging(int value);
+    partial void OnId_innerChanged();
+    partial void OnItemNameChanging(string value);
+    partial void OnItemNameChanged();
+    partial void OnSalePriceChanging(System.Nullable<double> value);
+    partial void OnSalePriceChanged();
+    partial void OnQtyChanging(System.Nullable<int> value);
+    partial void OnQtyChanged();
+    partial void OnfreeQtyChanging(System.Nullable<int> value);
+    partial void OnfreeQtyChanged();
+    partial void OnItemAmountChanging(System.Nullable<double> value);
+    partial void OnItemAmountChanged();
+    partial void OnDeleteDataChanging(System.Nullable<bool> value);
+    partial void OnDeleteDataChanged();
+    partial void OnCompany_IDChanging(System.Nullable<int> value);
+    partial void OnCompany_IDChanged();
+    partial void OnID1Changing(System.Nullable<int> value);
+    partial void OnID1Changed();
+    #endregion
+		
+		public tbl_ExpensesInner()
+		{
+			this._tbl_Expense = default(EntityRef<tbl_Expense>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_inner", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id_inner
+		{
+			get
+			{
+				return this._Id_inner;
+			}
+			set
+			{
+				if ((this._Id_inner != value))
+				{
+					this.OnId_innerChanging(value);
+					this.SendPropertyChanging();
+					this._Id_inner = value;
+					this.SendPropertyChanged("Id_inner");
+					this.OnId_innerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this.OnItemNameChanging(value);
+					this.SendPropertyChanging();
+					this._ItemName = value;
+					this.SendPropertyChanged("ItemName");
+					this.OnItemNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalePrice", DbType="Float")]
+		public System.Nullable<double> SalePrice
+		{
+			get
+			{
+				return this._SalePrice;
+			}
+			set
+			{
+				if ((this._SalePrice != value))
+				{
+					this.OnSalePriceChanging(value);
+					this.SendPropertyChanging();
+					this._SalePrice = value;
+					this.SendPropertyChanged("SalePrice");
+					this.OnSalePriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this.OnQtyChanging(value);
+					this.SendPropertyChanging();
+					this._Qty = value;
+					this.SendPropertyChanged("Qty");
+					this.OnQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_freeQty", DbType="Int")]
+		public System.Nullable<int> freeQty
+		{
+			get
+			{
+				return this._freeQty;
+			}
+			set
+			{
+				if ((this._freeQty != value))
+				{
+					this.OnfreeQtyChanging(value);
+					this.SendPropertyChanging();
+					this._freeQty = value;
+					this.SendPropertyChanged("freeQty");
+					this.OnfreeQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Float")]
+		public System.Nullable<double> ItemAmount
+		{
+			get
+			{
+				return this._ItemAmount;
+			}
+			set
+			{
+				if ((this._ItemAmount != value))
+				{
+					this.OnItemAmountChanging(value);
+					this.SendPropertyChanging();
+					this._ItemAmount = value;
+					this.SendPropertyChanged("ItemAmount");
+					this.OnItemAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteData", DbType="Bit")]
+		public System.Nullable<bool> DeleteData
+		{
+			get
+			{
+				return this._DeleteData;
+			}
+			set
+			{
+				if ((this._DeleteData != value))
+				{
+					this.OnDeleteDataChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteData = value;
+					this.SendPropertyChanged("DeleteData");
+					this.OnDeleteDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Company_ID", DbType="Int")]
+		public System.Nullable<int> Company_ID
+		{
+			get
+			{
+				return this._Company_ID;
+			}
+			set
+			{
+				if ((this._Company_ID != value))
+				{
+					this.OnCompany_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Company_ID = value;
+					this.SendPropertyChanged("Company_ID");
+					this.OnCompany_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID1", DbType="Int")]
+		public System.Nullable<int> ID1
+		{
+			get
+			{
+				return this._ID1;
+			}
+			set
+			{
+				if ((this._ID1 != value))
+				{
+					if (this._tbl_Expense.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID1Changing(value);
+					this.SendPropertyChanging();
+					this._ID1 = value;
+					this.SendPropertyChanged("ID1");
+					this.OnID1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Expense_tbl_ExpensesInner", Storage="_tbl_Expense", ThisKey="ID1", OtherKey="ID1", IsForeignKey=true)]
+		public tbl_Expense tbl_Expense
+		{
+			get
+			{
+				return this._tbl_Expense.Entity;
+			}
+			set
+			{
+				tbl_Expense previousValue = this._tbl_Expense.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Expense.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Expense.Entity = null;
+						previousValue.tbl_ExpensesInners.Remove(this);
+					}
+					this._tbl_Expense.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_ExpensesInners.Add(this);
+						this._ID1 = value.ID1;
+					}
+					else
+					{
+						this._ID1 = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tbl_Expense");
 				}
 			}
 		}
