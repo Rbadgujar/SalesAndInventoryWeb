@@ -154,7 +154,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty
                 };
-                db.tbl_ExpensesInners.InsertOnSubmit(inner);
+                db.tbl_OtherIncomeInner3.InsertOnSubmit(inner);
                 db.SubmitChanges();
             }
             //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
