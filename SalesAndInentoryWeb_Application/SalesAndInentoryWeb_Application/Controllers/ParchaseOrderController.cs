@@ -18,11 +18,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
        
         [HttpGet]
-        public ActionResult Purchaseorderdata()
+        public ActionResult Purchaseorderdata(string date, string date2, string par)
         {
-			var tb = db.tbl_PurchaseOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,null).ToList();
-			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
-		}
+            if (par == "0")
+            {
+                var tb = db.tbl_PurchaseOrderSelect("datetotdate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+            }
+            var tb1 = db.tbl_PurchaseOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+        }
 
 		public ActionResult Detail(int id)
 		{

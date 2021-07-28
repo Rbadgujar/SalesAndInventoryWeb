@@ -19,11 +19,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		}
 
 		[HttpGet]
-		public ActionResult paymentoutdata()
+		public ActionResult paymentoutdata(string date, string date2, string par)
 		{
-			var tb = db.tbl_Paymentoutselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
-		}
+
+            if (par == "0")
+            {
+                var tb = db.tbl_Paymentoutselect("datetodate", null,date2,null, null,Convert.ToDateTime(date), null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+            }
+            var tb1 = db.tbl_Paymentoutselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+        }
 
 		public ActionResult Detail(int id)
 		{

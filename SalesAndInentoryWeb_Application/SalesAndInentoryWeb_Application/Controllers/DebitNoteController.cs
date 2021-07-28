@@ -18,11 +18,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Debitdata()
+        public ActionResult Debitdata(string date, string date2, string par)
         {
-			var tb = db.tbl_DebitNoteSelect("Select1", null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
-		}
+            if (par == "0")
+            {
+                var tb = db.tbl_DebitNoteSelect("datetodate", null, null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+            }
+            var tb1 = db.tbl_DebitNoteSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+        }
 
 		public ActionResult Detail(int id)
 		{
