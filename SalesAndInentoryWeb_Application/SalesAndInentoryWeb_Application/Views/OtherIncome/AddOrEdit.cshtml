@@ -74,6 +74,28 @@
                 $(curentreo).closest('tr').remove();
 
             });
+
+
+            $("#ItemName").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Expence/GetFruitName",
+                        data: "id=" + fruitId,
+                        success: function (response) {
+                            if (response != "") {
+                                $("#sp").val(response);
+                            } else {
+                                $("#sp").val('');
+                            }
+                        }
+                    });
+                } else {
+                    $("#sp").val('');
+                }
+            });
         });
       
       
@@ -144,14 +166,16 @@
                                     </div>*@
                                 <br />
                         Category :
+                                @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory as IEnumerable<SelectListItem>, "Select Category", new { htmlAttributes = new { } })
 
-                                <select name="cars" id="dp" class="form-control" style="width:220px;height:32px">
+
+                                @*<select name="cars" id="dp" class="form-control" style="width:220px;height:32px">
                                     <option>---Party Name--</option>
                                     <option value="volvo">Rahul</option>
                                     <option value="saab">Vithoba</option>
                                     <option value="mercedes">Pallavi</option>
                                     <option value="audi">Bhagyashri</option>
-                                </select>
+                                </select>*@
                             </div>
                             <div class="form-group col-md-7">
                                 <div class="pull-right">
