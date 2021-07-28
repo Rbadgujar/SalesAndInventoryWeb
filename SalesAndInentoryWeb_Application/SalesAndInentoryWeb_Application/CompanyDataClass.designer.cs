@@ -8306,7 +8306,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private string _ItemName;
 		
-		private System.Nullable<System.DateTime> _SalePrice;
+		private System.Nullable<int> _SalePrice;
 		
 		private System.Nullable<int> _Qty;
 		
@@ -8381,8 +8381,8 @@ namespace SalesAndInentoryWeb_Application
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalePrice", DbType="Date")]
-		public System.Nullable<System.DateTime> SalePrice
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalePrice", DbType="int")]
+		public System.Nullable<int> SalePrice
 		{
 			get
 			{
@@ -8400,8 +8400,13 @@ namespace SalesAndInentoryWeb_Application
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+
+        private void OnSalePriceChanging(int? value)
+        {
+            throw new NotImplementedException();
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
 		public System.Nullable<int> Qty
 		{
 			get
@@ -9310,8 +9315,9 @@ namespace SalesAndInentoryWeb_Application
 		private string _IncomeCategory;
 		
 		private System.Nullable<System.DateTime> _Date;
-		
-		private string _paymentType;
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+
+        private string _paymentType;
 		
 		private string _Description;
 		
@@ -9336,7 +9342,7 @@ namespace SalesAndInentoryWeb_Application
 		private System.Nullable<double> _Balance;
 		
 		private string _Status;
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public IEnumerable<SelectListItem> ListOfCategory { get; set; }
         public virtual tbl_OtherIncomeInner tbl_OtherIncomeInner { get; set; }
         private string _TableName;
 		
