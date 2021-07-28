@@ -160,15 +160,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in ooooo.ListOfOtherIncomeDetails)
             {
-                tbl_OtherIncomeInner3 inner = new tbl_OtherIncomeInner3()
+                tbl_OtherIncomeInner inner = new tbl_OtherIncomeInner()
                 {
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
-                    Id = ooooo.ID1,
+                    ID1 = ooooo.ID1,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty
                 };
-                db.tbl_OtherIncomeInner3s.InsertOnSubmit(inner);
+                db.tbl_OtherIncomeInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
             }
             //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
