@@ -13,8 +13,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	@Html.DevExpress().GetStyleSheets(
+
 		new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
 		new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
+
 	)
 	@Html.DevExpress().GetScripts(
 		new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
@@ -107,10 +109,15 @@
                                  table1.destroy();
 
                                  debugger
+                                 var dataobject = {};
+                                 dataobject.date = $("#todate").val();
+                                 dataobject.date2 = $("#fromdate").val();
+                                 dataobject.par = 1;
+
                                  dataTable1 = $("#PrchaseBill").DataTable({
                                      "ajax": {
                                          "url": "/PurchaseBill/Data",
-                                         data: { 'date': '1'},
+                                         data: JSON.stringify(dataobject),
                                          "type": "GET",
                                          "datatype": "json"
                                      },

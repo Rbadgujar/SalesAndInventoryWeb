@@ -20,22 +20,27 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult Index( string date ,string date2)
         {
               return View();
-
         }
 		[HttpGet]
-        public ActionResult Data(string par)
+        public ActionResult Data(string date,string date2,string par)
         {
-            if (par == "1")
-            {
-                var tb = db.tbl_PurchaseBillselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-                return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
-            }
+            //if (par == "1")
+            //{
+            //    //var tb = db.tbl_PurchaseBillselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            //    //return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+            //}
 
             var tb1 = db.tbl_PurchaseBillselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
         }
 
-        
+        [HttpGet]
+        public ActionResult show(string date)
+        {
+            var tb1 = db.tbl_PurchaseBillselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+
+        }
         public ActionResult Detail(int id)
 		{
 			var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
