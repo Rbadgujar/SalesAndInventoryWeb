@@ -116,10 +116,43 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
         }
-        private static string GetFruitNameById(string id)
+        private static List<tbl_PartyMaster> GetFruitNameById(string id)
         {
             string sql;
-            List<SelectListItem> items = new List<SelectListItem>();
+            List<tbl_PartyMaster> items2 = new List<tbl_PartyMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items2.Add(new tbl_PartyMaster()
+                            {
+                                BillingAddress = sdr["BillingAddress"].ToString(),
+                                ContactNo = sdr["ContactNo"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items2;
+        }
+        public JsonResult GetFruitName1(string id)
+        {
+            return Json(GetFruitNameById1(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_ItemMaster> GetFruitNameById1(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -129,12 +162,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     cmd.Connection = con;
                     cmd.Parameters.AddWithValue("@Id", id);
                     con.Open();
-                    string name =Convert.ToString( cmd.ExecuteScalar());
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
                     con.Close();
-
-                    return name;
                 }
             }
+            return items3;
         }
         [HttpPost]
         public ActionResult AddOrEdit(PartyDetails objpartydetails)
@@ -170,7 +213,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     OrderNo=sale.OrderNo,
                     ItemID=item.ItemID,
                     TaxForSale=item.TaxForSale,
-                  //  Discount=item.Discount,
+                    Discount=item.Discount,
                     DiscountAmount=item.DiscountAmount,
                     SaleTaxAmount=item.SaleTaxAmount,
                     ItemTotal=item.ItemTotal,

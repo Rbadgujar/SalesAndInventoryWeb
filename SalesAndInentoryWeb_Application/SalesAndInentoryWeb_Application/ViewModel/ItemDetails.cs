@@ -12,7 +12,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public string ItemName { get; set; }
         public double SalePrice { get; set; }
         public string TaxForSale {get; set; }
-        public double Discount { get; set; }
+        public string Discount { get; set; }
         public int Qty { get; set; }
         public double DiscountAmount { get; set; }
         public double SaleTaxAmount { get; set; }

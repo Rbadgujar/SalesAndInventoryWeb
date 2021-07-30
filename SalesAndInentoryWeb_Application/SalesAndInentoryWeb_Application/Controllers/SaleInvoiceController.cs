@@ -84,6 +84,73 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items1;
         }
+        public JsonResult GetFruitName(string id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_PartyMaster> GetFruitNameById(string id)
+        {
+            string sql;
+            List<tbl_PartyMaster> items2 = new List<tbl_PartyMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items2.Add(new tbl_PartyMaster()
+                            {
+                                BillingAddress = sdr["BillingAddress"].ToString(),
+                                ContactNo = sdr["ContactNo"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items2;
+        }
+        public JsonResult GetFruitName1(string id)
+        {
+            return Json(GetFruitNameById1(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_ItemMaster> GetFruitNameById1(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
         [HttpGet]
         public ActionResult ShowInvoiceData()
         {

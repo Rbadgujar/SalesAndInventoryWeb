@@ -28,6 +28,46 @@
             $("#btnsubmit").click(function (e) {
                 additems();
             });
+            $("#ID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/SaleOrder/GetFruitName1",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#SalePrice").val(data[x].SalePrice);
+                               $("#TaxForSale").val(data[x].TaxForSale);
+                               $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                           }
+                       }
+                   });
+                }
+            });
+            $("#PartiesID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/SaleOrder/GetFruitName",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#BillingName").val(data[x].BillingAddress);
+                               $("#ContactNo").val(data[x].ContactNo);
+                           }
+
+                       }
+                   });
+                }
+            });
         });
         function RemoveItem(ItemName)
         {

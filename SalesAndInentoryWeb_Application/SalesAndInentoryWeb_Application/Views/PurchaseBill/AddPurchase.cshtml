@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_PurchaseBill
+﻿@model SalesAndInentoryWeb_Application.tbl_PurchaseBill
 @{
 	ViewBag.Title = "purchseBill";
 	Layout = "~/Views/Shared/ideal.cshtml";
@@ -26,6 +26,46 @@
             $("#btnsubmit").click(function (e) {
                 additems();
             });
+            $("#ID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/PurchaseBill/GetFruitName1",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#SalePrice").val(data[x].SalePrice);
+                               $("#TaxForSale").val(data[x].TaxForSale);
+                               $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                           }
+                       }
+                   });
+                }
+            });
+            $("#PartiesID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/PurchaseBill/GetFruitName",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#BillingName").val(data[x].BillingAddress);
+                               $("#ContactNo").val(data[x].ContactNo);
+                           }
+
+                       }
+                   });
+                }
+            });
         });
         function RemoveItem(ItemName)
         {
@@ -34,14 +74,14 @@
         function AddToItem()
         {
             var tableitemlist = $("#tblPurchaseBill");
-            var ItemName=$("#ItemName").val();
-            var mrp = $("#sp").val();
-            var tax = $("#ts").val();
-            var dis = $("#ds").val();
-            var qty = $("#qty").val();
-            var disamt = $("#da").val();
-            var taxmat = $("#sa").val();
-            var total = $("#ca").val();
+            var ItemName=$("#ID option:selected").val();
+            var mrp = $("#SalePrice").val();
+            var tax = $("#TaxForSale").val();
+            var dis = $("#Discount").val();
+            var qty = $("#Qty").val();
+            var disamt = $("#DiscountAmount").val();
+            var taxmat = $("#SaleTaxAmount").val();
+            var total = $("#Total").val();
 
             var itemlist = "<tr><div class='scrollit'><td>"
                 + ItemName +
@@ -67,14 +107,14 @@
         }
         function reset()
         {
-            $("#ItemName").val('');
-            $("#sp").val('');
-            $("#ts").val('');
-            $("#ds").val('');
-            $("#qty").val('');
-            $("#da").val('');
-            $("#sa").val('');
-            $("#ca").val('');
+            $("#ItemName").val('0');
+            $("#SalePrice").val('0');
+            $("#TaxForSale").val('0');
+            $("#Discount").val('0');
+            $("#Qty").val('0');
+            $("#DiscountAmount").val('0');
+            $("#SaleTaxAmount").val('0');
+            $("#Total").val('0');
         }
         function additems()
         {
@@ -87,33 +127,32 @@
                     listpurchases.push({
                         ItemName: $(this).find("td:eq(0)").text(),
                         SalePrice: $(this).find("td:eq(1)").text(),
-                        //TaxForSale: $(this).find("td:eq(2)").text(),
-                        //Discount: $(this).find("td:eq(3)").text(),
-                        //Qty: $(this).find("td:eq(4)").text(),
-                        //DiscountAmount: $(this).find("td:eq(5)").text(),
-                        //SaleTaxAmount: $(this).find("td:eq(6)").text(),
-                        //ItemAmount: $(this).find("td:eq(7)").text()
+                        TaxForSale: $(this).find("td:eq(2)").text(),
+                        Discount: $(this).find("td:eq(3)").text(),
+                        Qty: $(this).find("td:eq(4)").text(),
+                        DiscountAmount: $(this).find("td:eq(5)").text(),
+                        SaleTaxAmount: $(this).find("td:eq(6)").text(),
+                        ItemAmount: $(this).find("td:eq(7)").text()
                     });
                 });
 
             objpurchase.PartyName = $("#PartyName").val();
             objpurchase.BillingName = $("#BillingName").val();
-            //obj.ContactNo = $("#ContactNo").val();
-            //obj.BillDate = $("#BillDate").val();
-            //obj.DueDate = $("#DueDate").val();
-            //obj.Barcode = $("#Barcode").val();
-            //obj.StateOfSupply = $("#StateOfSupply").val();
-            //obj.Paid = $("#Received").val();
-            //obj.RemainingBal = $("#RemainingBal").val();
-            //obj.TransportName = $("#TransportName").val();
-
-            //obj.DeliveryLocation = $("#DeliveryLocation").val();
-            //obj.DeliverDate = $("#DeliveryDate").val();
-            //obj.PaymentType = $("#PaymentType").val();
-            //obj.TransportName = $("#TransportName").val();
-            //obj.Status = $("#Status").val();
-            //obj.VehicleNumber = $("#VehicleNumber").val();
-            //obj.CalTotal = $("#CalTotal").val();
+            obj.ContactNo = $("#ContactNo").val();
+            obj.BillDate = $("#BillDate").val();
+            obj.DueDate = $("#DueDate").val();
+            obj.Barcode = $("#Barcode").val();
+            obj.StateOfSupply = $("#StateOfSupply").val();
+            obj.Paid = $("#Received").val();
+            obj.RemainingBal = $("#RemainingBal").val();
+            obj.TransportName = $("#TransportName").val();
+            obj.DeliveryLocation = $("#DeliveryLocation").val();
+            obj.DeliverDate = $("#DeliveryDate").val();
+            obj.PaymentType = $("#PaymentType").val();
+            obj.TransportName = $("#TransportName").val();
+            obj.Status = $("#Status").val();
+            obj.VehicleNumber = $("#VehicleNumber").val();
+            obj.CalTotal = $("#CalTotal").val();
             objpurchase.listpurchasedetail = listpurchases;
 
 
@@ -150,15 +189,9 @@
 						<div class="row">
 							<div class="form-group col-md-3">							
 								Party Name:
-                                @Html.DropDownListFor(model => model.PartyName, new List<SelectListItem>
-                                   {
-                                       new SelectListItem {Text = "Vithoba", Value = "Vithoba", Selected = true },
-                                       new SelectListItem {Text = "Rahul", Value = "Rahul" },
-                                       new SelectListItem {Text = "Pallai", Value = "Pallai" },
-                                       new SelectListItem {Text = "Bhagyashri", Value = "Bhagyashri" },
-                                   }, new { @class = "form-control", @style = "width:130px", @name = "PartyName", @id = "PartyName" })
-
-
+                                <br>
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control",@style="width:130" } })
+                                <br>
 								Address:	
                                 <br>							
 								@Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control", placeholder = "Address"} })
@@ -239,43 +272,48 @@
                             <div class="row">
                                 <div class="form-group col-md-2">
                                     <label>Item Name</label>
-                                    @Html.DropDownListFor(model => model.tbl_PurchaseBillInner1.ItemName, new List<SelectListItem>
-                                   {
-                                       new SelectListItem {Text = "volvo", Value = "volvo", Selected = true },
-                                       new SelectListItem {Text = "bottle", Value = "bottle" },
-                                       new SelectListItem {Text = "pen", Value = "pen" },
-                                       new SelectListItem {Text = "don", Value = "don" },
-                                   }, new { @class = "form-control", @style = "width:130px", @name = "ItemName", @id = "ItemName" })
-
-
+                                    @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control",@style="width:130px" } })
                                 </div>
                                 <div class="form-group col-md-1">
                                     <label>MRP</label>
-                                    @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px", @class = "form-control", @name = "SalePrice" })
+                                    <input style="text-align:left" type="text" name="SalePrice" id="SalePrice" class="form-control">
+                                 
+                                     @*  @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px", @class = "form-control", @name = "SalePrice" })*@
                                 </div>
                                 <div class="form-group col-md-1">
                                     <label>Tax%</label>
-                                    @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px", @class = "form-control" })
+                                    <input style="text-align:left" type="text" name="TaxForSale" id="TaxForSale" class="form-control">
+
+                                   @* @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px", @class = "form-control" })*@
                                 </div>
                                 <div class="form-group col-md-1">
                                     <label>Descount</label>
-                                    @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px", @class = "form-control" })
+                                    <input style="text-align:left" type="text" name="Discount" id="Discount" class="form-control">
+
+                                  @*  @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px", @class = "form-control" })*@
                                 </div>
                                 <div class="form-group col-md-1">
                                     <label>Qty</label>
-                                    @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px", @class = "form-control" })
+                                    <input style="text-align:left" type="text" name="Qty" id="Qty" class="form-control">
+                                   
+                                    @* @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px", @class = "form-control" })*@
                                 </div>
                                 <div class="form-group col-md-1">
                                     <label>Dis Amount</label>
-                                    @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px", @class = "form-control" })
+                                    <input style="text-align:left" type="text" name="DiscountAmount" id="DiscountAmount" class="form-control">
+
+                                 @*   @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px", @class = "form-control" })*@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label>Tax Amount</label>
-                                    @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px", @class = "form-control" })
+                                    <input style="text-align:left" type="text" name="SaleTaxAmount" id="SaleTaxAmount" class="form-control">
+                                   @* @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px", @class = "form-control" })*@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label>Total</label>
-                                    @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.ItemAmount, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;", @class = "form-control" })
+                                    <input style="text-align:left" type="text" name="ItemAmount" id="ItemAmount" class="form-control">
+
+                                  @*  @Html.TextBoxFor(item => item.tbl_PurchaseBillInner1.ItemAmount, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;", @class = "form-control" })*@
                                 </div>
                                 <div class="col-md-1">
                                     <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>

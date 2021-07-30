@@ -11,7 +11,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public string PartyName { get; set; }
         public string BillingName { get; set; }
         public string ContactNo { get; set; }
-        public DateTime BillDate { get; set; }
+        public string BillDate { get; set; }
         public DateTime DueDate { get; set; }
         public string StateOfSupply { get; set; }
         public string PaymentType { get; set; }

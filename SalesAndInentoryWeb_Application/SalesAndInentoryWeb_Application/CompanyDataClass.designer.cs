@@ -2787,8 +2787,10 @@ namespace SalesAndInentoryWeb_Application
 		private System.Data.Linq.Binary _Image;
 		
 		private string _Tax1;
-		
-		private System.Nullable<double> _CGST;
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public IEnumerable<SelectListItem> ListOfParties { get; set; }
+
+        private System.Nullable<double> _CGST;
 		
 		private System.Nullable<double> _SGST;
 		

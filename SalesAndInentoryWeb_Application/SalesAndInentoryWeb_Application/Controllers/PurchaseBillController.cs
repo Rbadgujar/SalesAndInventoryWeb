@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
 using SalesAndInentoryWeb_Application.ViewModel;
+using System.Data.SqlClient;
+using System.Configuration;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class PurchaseBillController : Controller
@@ -51,7 +53,68 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult AddPurchase()
         {
-            return View();
+            tbl_PurchaseBill bt = new tbl_PurchaseBill();
+            bt.ListOfAccounts = ListOfItems();
+            bt.ListOfParties = ListOfParties();
+            return View(bt);
+        }
+        private static List<SelectListItem> ListOfItems()
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1'");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["ItemName"].ToString(),
+                                Value = sdr["ItemName"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items;
+        }
+        private static List<SelectListItem> ListOfParties()
+        {
+            string sql;
+            List<SelectListItem> items1 = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_PartyMaster where DeleteData='1'");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items1.Add(new SelectListItem
+                            {
+                                Text = sdr["PartyName"].ToString(),
+                                Value = sdr["PartyName"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items1;
         }
         [HttpPost]
         public ActionResult AddPurchase(PartyDetailsForPurchase objpurchase)
@@ -60,18 +123,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
             {
                 PartyName = objpurchase.PartyName,
                 BillingName = objpurchase.BillingName,
-                //ContactNo = obj.ContactNo,
-                //RemainingBal = obj.RemainingBal,
-                //CalTotal = obj.CalTotal,
-                //TransportName = obj.TransportName,
-                //DeliveryLocation = obj.DeliveryLocation,
-                //Deliverydate = obj.DeliveryDate,
-                //StateofSupply = obj.StateOfSupply,
-                //BillDate = obj.BillDate,
-                //DueDate = obj.DueDate,
-                //Barcode = obj.Barcode,
-                //Status = obj.Status,
-                //VehicleNumber = obj.VehicleNumber
+                ContactNo = objpurchase.ContactNo,
+                RemainingBal = objpurchase.RemainingBal,
+                CalTotal = objpurchase.CalTotal,
+                TransportName = objpurchase.TransportName,
+                DeliveryLocation = objpurchase.DeliveryLocation,
+                Deliverydate = objpurchase.DeliveryDate,
+                StateofSupply = objpurchase.StateOfSupply,
+                BillDate = objpurchase.BillDate,
+                DueDate = objpurchase.DueDate,
+                Barcode = objpurchase.Barcode,
+                Status = objpurchase.Status,
+                VehicleNumber = objpurchase.VehicleNumber
 
             };
             db.tbl_PurchaseBills.InsertOnSubmit(sale);
@@ -99,13 +162,79 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
         }
 
+        public JsonResult GetFruitName(string id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_PartyMaster> GetFruitNameById(string id)
+        {
+            string sql;
+            List<tbl_PartyMaster> items2 = new List<tbl_PartyMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items2.Add(new tbl_PartyMaster()
+                            {
+                                BillingAddress = sdr["BillingAddress"].ToString(),
+                                ContactNo = sdr["ContactNo"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items2;
+        }
+        public JsonResult GetFruitName1(string id)
+        {
+            return Json(GetFruitNameById1(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_ItemMaster> GetFruitNameById1(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
 
 
 
 
-   
 
-      
+
         //[HttpGet]
         //public ActionResult AddPurchase(int id=0)
         //{
