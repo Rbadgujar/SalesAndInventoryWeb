@@ -1,5 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_SaleInvoice
-
+﻿@model SalesAndInentoryWeb_Application.tbl_SaleInvoice
     
 @{
     ViewBag.Title = "SaleInvoice";
@@ -37,14 +36,14 @@
         function AddToItem()
         {
             var tableitemlist = $("#tblSaleInvoice");
-            var ItemName=$("#ItemName").val();
-            var mrp = $("#sp").val();
-            var tax = $("#ts").val();
-            var dis = $("#ds").val();
-            var qty = $("#qty").val();
-            var disamt = $("#da").val();
-            var taxmat = $("#sa").val();
-            var total = $("#ca").val();
+            var ItemName=$("#ID option:selected").val();
+            var mrp = $("#SalePrice").val();
+            var tax = $("#TaxForSale").val();
+            var dis = $("#Discount").val();
+            var qty = $("#Qty").val();
+            var disamt = $("#DiscountAmount").val();
+            var taxmat = $("#SaleTaxAmount").val();
+            var total = $("#ItemTotal").val();
 
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
             + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></div></tr>"
@@ -53,14 +52,14 @@
         }
         function reset()
         {
-            $("#ItemName").val('');
-            $("#sp").val('');
-            $("#ts").val('');
-            $("#ds").val('');
-            $("#qty").val('');
-            $("#da").val('');
-            $("#sa").val('');
-            $("#ca").val('');
+            $("#ID option:selected").val('');
+            $("#SalePrice").val('');
+            $("#TaxForSale").val('');
+            $("#Discount").val('');
+            $("#Qty").val('');
+            $("#DiscountAmount").val('');
+            $("#SaleTaxAmount").val('');
+            $("#ItemTotal").val('');
         }
         function additems()
         {
@@ -73,13 +72,34 @@
                 function () {
                     saleinvoiceitemdetails.push({
                         ItemName: $(this).find("td:eq(0)").text(),
-                        SalePrice: $(this).find("td:eq(1)").text(),                       
+                        SalePrice: $(this).find("td:eq(1)").text(),
+                        TaxForSale: $(this).find("td:eq(2)").text(),
+                        Discount: $(this).find("td:eq(3)").text(),
+                        Qty: $(this).find("td:eq(4)").text(),
+                        DiscountAmount: $(this).find("td:eq(5)").text(),
+                        SaleTaxAmount: $(this).find("td:eq(6)").text(),
+                        ItemTotal: $(this).find("td:eq(7)").text()
                     });
                 });
 
-            objsalepartydetails.PartyName = $("#PartyName").val();
+            objsalepartydetails.PartyName = $("#PartiesID option:selected").val();
             objsalepartydetails.BillingName = $("#BillingName").val();
-          
+            objsalepartydetails.ContactNo = $("#ContactNo").val();
+            objsalepartydetails.PONumber = $("#PONumber").val();
+            objsalepartydetails.PODate = $("#PODate").val();
+            objsalepartydetails.Barcode = $("#Barcode").val();
+            objsalepartydetails.StateOfSupply = $("#StateOfSupply").val();
+            objsalepartydetails.Received = $("#Received").val();
+            objsalepartydetails.RemainingBal = $("#RemainingBal").val();
+            objsalepartydetails.TransportName = $("#TransportName").val();
+            objsalepartydetails.DeliveryLocation = $("#DeliveryLocation").val();
+            objsalepartydetails.DeliverDate = $("#DeliveryDate").val();
+            objsalepartydetails.PaymentType = $("#PaymentType").val();
+            objsalepartydetails.TransportName = $("#TransportName").val();
+            objsalepartydetails.Status = $("#Status").val();
+            objsalepartydetails.VehicleNumber = $("#VehicleNumber").val();
+            objsalepartydetails.CalTotal = $("#CalTotal").val();
+
             objsalepartydetails.SaleInvoiceItemDetails = saleinvoiceitemdetails;
 
 
@@ -126,13 +146,9 @@
                                            </div>*@
                                        
                                        Party Name:
-                                           <select name="cars"  class="form-control"  style = "width:220px;height:32px" >
-                                            <option>---Party Name--</option>
-                                               <option value="volvo">Rahul</option>
-                                               <option value="saab">Vithoba</option>
-                                               <option value="mercedes">Pallavi</option>
-                                               <option value="audi">Bhagyashri</option>
-                                           </select>
+                                       <br>
+                                       @Html.DropDownListFor(model => model.ParitesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" } })                                  
+                                       <br>
                                       Party Address:
                                         <textarea name='awesome' class="form-control" style = "width:220px;height:50px">Address:</textarea>
                                   Contact No:
@@ -159,7 +175,7 @@
                                        @Html.EditorFor(model => model.EwayBillNo, new { htmlAttributes = new { @class = "form-control", placeholder = "EwayBill Number", @style = "width:150px;height:30px" } })
                                        @Html.ValidationMessageFor(model => model.EwayBillNo)
                                        State Of Supply:
-                                       <select name="state" id="state" class="form-control" style = "width:150px;height:30px">
+                                       <select name="state" id="StateOfSupply" class="form-control" style = "width:150px;height:30px">
                                            <option value="Andhra Pradesh">Andhra Pradesh</option>
                                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -205,53 +221,59 @@
                            </div>
                        </div>
 
-                   <nav class="navbar navbar-default ">
+                   <nav class="navbar navbar-default " style="border:none; background-color:white">
                        <div class="container-fluid">
                            <div class="collapse navbar-collapse ">
                                <div class="row">
                                    <div class="form-group col-xs-2">
                                        <label>Item Name</label>
-                                       @Html.DropDownListFor(model => model.tbl_SaleInvoiceInner.ItemName, new List<SelectListItem>
-                                   {
-                                       new SelectListItem {Text = "volvo", Value = "volvo", Selected = true },
-                                       new SelectListItem {Text = "bottle", Value = "bottle" },
-                                       new SelectListItem {Text = "pen", Value = "pen" },
-                                       new SelectListItem {Text = "don", Value = "don" },
-                                   }, new { @class = "form-control", @style = "width:130px", @name = "ItemName", @id = "ItemName" })
+                                       @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" } })
 
                                    </div>
                                    <div class="form-group col-xs-1">
 
                                        <label>MRP</label>
-                                       @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px", @class = "form-control", @name = "SalePrice" })
+                                      @* @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.SalePrice, htmlAttributes: new { id = "sp", @style = "width:130px;height:35px", @class = "form-control", @name = "SalePrice" })*@
+                                       <input style="text-align:left" type="text" name="SalePrice" id="SalePrice" class="form-control">
 
                                    </div>
                                    <div class="form-group col-xs-1">
                                        <label>Tax%</label>
-                                       @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px", @class = "form-control" })
+                                       <input style="text-align:left" type="text" name="TaxForSale" id="TaxForSale" class="form-control">
+                                   
+                                         @*  @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px", @class = "form-control" })*@
                                    </div>
                                    <div class="form-group col-xs-1">
 
                                        <label>Descount</label>
-                                       @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px", @class = "form-control" })
+                                       @*@Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px", @class = "form-control" })*@
+                                       <input style="text-align:left" type="text" name="Discount" id="Discount" class="form-control">
 
                                    </div>
                                    <div class="form-group col-xs-1">
                                        <label>Qty</label>
-                                       @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px", @class = "form-control" })
+                                       <input style="text-align:left" type="text" name="Qty" id="Qty" class="form-control">
+                                    
+                                          @*@Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px", @class = "form-control" })*@
                                    </div>
                                    <div class="form-group col-xs-1">
 
                                        <label>Dis Amount</label>
-                                       @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px", @class = "form-control" })
+                                       <input style="text-align:left" type="text" name="DiscountAmount" id="DiscountAmount" class="form-control">
+
+                                       @*@Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px", @class = "form-control" })*@
                                    </div>
                                    <div class="form-group col-xs-2">
                                        <label>Tax Amount</label>
-                                       @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px", @class = "form-control" })
+                                       <input style="text-align:left" type="text" name="SaleTaxAmount" id="SaleTaxAmount" class="form-control">
+
+                                     @*  @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px", @class = "form-control" })*@
                                    </div>
                                    <div class="form-group col-xs-2">
                                        <label>Total</label>
-                                       @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.ItemAmount, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;", @class = "form-control" })
+                                       <input style="text-align:left" type="text" name="ItemTotal" id="ItemTotal" class="form-control">
+
+                                     @*  @Html.TextBoxFor(item => item.tbl_SaleInvoiceInner.ItemAmount, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;", @class = "form-control" })*@
                                    </div>
                                    <div class="col-xs-1">
                                        <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
@@ -307,14 +329,17 @@
                                            <option value="Chuque">Cheque</option>
                                        </select>
                                       Transport Name:
-                                       @Html.DevExpress().TextBoxFor(m => m.TransportName, settings =>
-                                     {
-                                      settings.Properties.NullText = "TransportName";
-                                      settings.ControlStyle.CssClass = "form-control";
-                                      settings.Style["width"] = "150px";
-                                      settings.Style["height"] = "30px";
-                                    }).GetHtml()
-                                     Vical Name:
+                                       @Html.EditorFor(model => model.TransportName, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           placeholder = "Transport Name",
+                                           @style = "width:150px;height:30px;"
+                                       }
+                                   })
+                                       @Html.ValidationMessageFor(model => model.DeliveryLocation)
+                                     Vehical Name:
                                        @Html.EditorFor(model => model.DeliveryLocation, new { htmlAttributes = new { @class = "form-control", placeholder = "vical No" ,
                                        @style ="width:150px;height:30px;"} })
                                        @Html.ValidationMessageFor(model => model.DeliveryLocation)

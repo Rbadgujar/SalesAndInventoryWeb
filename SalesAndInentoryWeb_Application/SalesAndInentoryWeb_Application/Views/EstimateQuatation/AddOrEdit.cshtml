@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tblQuotation
+﻿@model SalesAndInentoryWeb_Application.tblQuotation
 @{
     ViewBag.Title = "Sale Order";
     Layout = "~/Views/Shared/ideal.cshtml";
@@ -6,15 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
-
+   
     <style>
         .scrolldown {
             overflow-y: scroll;
@@ -33,6 +25,61 @@
             $("#btnaddtolist").click(function () {
                 AddToItem();
             });
+            $("#btnsubmit").click(function (e) {
+                additems();
+            });
+            $("#tblSaleInvoice").on('click', '#remove', function ()
+            {
+                var curentreo = $(this).closest("tr");
+
+                var pretotal = curentreo.find("td:eq(7)").text();
+                var pretotal1 = $("#Total").val();
+                var find = pretotal1 - pretotal
+                $("#Total").val(find);
+                $(curentreo).closest('tr').remove();
+
+            });
+            $("#PartiesID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "")
+                {
+                    $.ajax
+                   ({
+                        type: "POST",
+                        url: "/EstimateQuatation/GetFruitName",
+                        data: "id=" + fruitId,
+                        success: function (data) {
+                            var content = "";
+                            for (var x in data) {
+                                $("#BillingAddress").val(data[x].BillingAddress);
+                                $("#ContactNo").val(data[x].ContactNo);
+                            }
+                           
+                        }
+                    });
+                } 
+            });
+            $("#ID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/EstimateQuatation/GetFruitName1",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#sp").val(data[x].SalePrice);
+                               $("#ts").val(data[x].TaxForSale);
+                               $("#sa").val(data[x].SaleTaxAmount);
+                           }
+                       }
+                   });
+                }
+            });
         });
         function RemoveItem(ItemName)
         {
@@ -41,7 +88,7 @@
         function AddToItem()
         {
             var tableitemlist = $("#tblSaleInvoice");
-            var ItemName=$("#dp").val();
+            var ItemName=$("#ID option:selected").val();
             var mrp = $("#sp").val();
             var tax = $("#ts").val();
             var dis = $("#ds").val();
@@ -51,20 +98,77 @@
             var total = $("#ca").val();
 
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
-            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
+            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' id='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
+            var finding = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(7)').text();
+                finding = finding + mm
+
+                $("#Total").val(finding);
+            })
         }
         function reset()
         {
-            $("#dp").val('');
-            $("#sp").val('');
-            $("#ts").val('');
-            $("#ds").val('');
-            $("#qty").val('');
-            $("#da").val('');
-            $("#sa").val('');
-            $("#ca").val('');
+            $("#dp").val('0');
+            $("#sp").val('0');
+            $("#ts").val('0');
+            $("#ds").val('0');
+            $("#qty").val('0');
+            $("#da").val('0');
+            $("#sa").val('0');
+            $("#ca").val('0');
+        }
+        function additems() {
+            debugger
+            var objEstimateDetails = {};
+            var listofestimatedetails = [];
+
+            $.each($("#tblSaleInvoice tbody tr"),
+                function () {
+                    listofestimatedetails.push({
+                        ItemName: $(this).find("td:eq(0)").text(),
+                        SalePrice: $(this).find("td:eq(1)").text(),
+                        TaxForSale: $(this).find("td:eq(2)").text(),
+                        Discount: $(this).find("td:eq(3)").text(),
+                        Qty: $(this).find("td:eq(4)").text(),
+                        DiscountAmount: $(this).find("td:eq(5)").text(),
+                        SaleTaxAmount: $(this).find("td:eq(6)").text(),
+                        ItemAmount: $(this).find("td:eq(7)").text()
+                    });
+                });
+
+            objEstimateDetails.PartyName = $("#PartiesID option:selected").val();
+            objEstimateDetails.Date = $("#Date").val();
+            objEstimateDetails.StateOfSuplly = $("#StateOfSupply option:selected").val();
+            objEstimateDetails.Total = $("#Total").val();
+            objEstimateDetails.Status = $("#Status").val();
+            objEstimateDetails.DeleteData = $("#DeleteData").val();
+            objEstimateDetails.BillingAddress = $("#BillingAddress").val();
+            objEstimateDetails.ContactNo = $("#ContactNo").val();
+
+            objEstimateDetails.ListOfEstimateDetails = listofestimatedetails;
+
+            debugger
+            $.ajax({
+
+                async: true,
+                type: "POST",
+                datatype: 'JSON',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(objEstimateDetails),
+                url: '/EstimateQuatation/AddOrEdit',
+                success: function (data) {
+                    if (data.status == true) {
+                        alter(data.message);
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
         }
     </script>
 </head>
@@ -90,15 +194,12 @@
                                     </div>*@
 
                                 Party Name:
-                                <select name="cars" id="dp" class="form-control" style="width:220px;height:32px">
-                                    <option>---Party Name--</option>
-                                    <option value="volvo">Rahul</option>
-                                    <option value="saab">Vithoba</option>
-                                    <option value="mercedes">Pallavi</option>
-                                    <option value="audi">Bhagyashri</option>
-                                </select>
+                                <br>
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Party", new { htmlAttributes = new { @class = "ItemName", @id = "ItemName" } })
+
+                                <br>
                                 Address:
-                                <textarea name='awesome' class="form-control" style="width:220px;height:50px">Address:</textarea>
+                                <textarea class="form-control" style="width:220px;height:50px" id="BillingAddress"></textarea>
                                 Contact No:
                                 @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } })
                                 @Html.ValidationMessageFor(model => model.ContactNo)
@@ -109,18 +210,12 @@
                                     <input type="text" id="BillNO" name="" class="form-control" value="Bill No " style="width:150px;height:30px">
 
                                     Bill Date:
-                                    <input placeholder="PO Date" class="textbox-n form-control" style="width:150px;height:30px;" type="text" onfocus="(this.type='date')" id="date">
+                                    <input placeholder="Date" class="textbox-n form-control" style="width:150px;height:30px;" type="text" onfocus="(this.type='date')" id="Date">
                                     Barcode:
                                     @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
                                     @Html.ValidationMessageFor(model => model.Barcode)
                                     </div>
                                 </div>
-
-
-
-
-
-
 
                             </div>
 
@@ -131,7 +226,7 @@
                                     E-Way Bill No:
                                     <input type="text" id="Ewaybil" value="Eway-Bill no" name="" class="form-control" style="width:150px;height:30px">
                                     State :
-                                    <select name="state" id="state" class="form-control" style="width:150px;height:30px">
+                                    <select name="state" id="StateOfSupply" class="form-control" style="width:150px;height:30px">
                                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -169,8 +264,8 @@
                                         <option value="Uttarakhand">Uttarakhand</option>
                                         <option value="West Bengal">West Bengal</option>
                                     </select>
-                                    Purchase Date:
-                                    <input placeholder="Bill Date" class="textbox-n form-control" type="text" onfocus="(this.type='date')" style="width:150px;height:30px" id="date">
+                                     Date:
+                                    <input placeholder="Date" class="textbox-n form-control" type="text" onfocus="(this.type='date')" style="width:150px;height:30px" id="Date">
                                 </div>
                             </div>
                         </div>
@@ -194,12 +289,9 @@
 
                                             <th>
                                                 <label>Item Name</label>
-                                                <select name="cars" id="dp" class="form-control" style="width:90PX">
-                                                    <option value="volvo">Volvo</option>
-                                                    <option value="saab">Saab</option>
-                                                    <option value="mercedes">Mercedes</option>
-                                                    <option value="audi">Audi</option>
-                                                </select>
+                                                <br>
+                                                @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "ItemName", @id = "ItemName" } })
+
                                             </th>
                                             <th>
                                                 <label>MRP</label>
@@ -212,7 +304,7 @@
                                                 <input type="text" id="ts" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
-                                                <label>Descount</label>
+                                                <label>Discount</label>
                                                 <input type="text" id="ds" name="" class="form-control" style="width:70PX">
 
                                             <th>
@@ -220,18 +312,18 @@
                                                 <input type="text" id="qty" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
-                                                <label>Dis Amount</label>
+                                                <label>Dis Amt</label>
                                                 <input type="text" id="da" name="" class="form-control" style="width:70PX">
 
                                             </th>
                                             <th>
-                                                <label>Tax Amount</label>
+                                                <label>Tax Amt</label>
                                                 <input type="text" id="sa" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
-                                                <label>Tax Amount</label>
+                                                <label>Total</label>
                                                 <input type="text" id="ca" name="" class="form-control" style="width:70PX">
-                                            </th>
+                                            </th>                                       
                                             <th>
                                                 <a class="btn btn-primary pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
                                             </th>
@@ -260,23 +352,26 @@
                                     <option value="Cheque">Cheque</option>
                                 </select>
                                 Transport Name:
-                                @Html.DevExpress().TextBoxFor(m => m.Feild1, settings =>
-                                  {
-                                      settings.Properties.NullText = "TransportName";
-                                      settings.ControlStyle.CssClass = "form-control";
-                                      settings.Style["width"] = "150px";
-                                      settings.Style["height"] = "30px";
-                                  }).GetHtml()
-                                Vical No:
+                                    @Html.EditorFor(model => model.Feild1, new
+                                      {
+                                          htmlAttributes = new
+                                          {
+                                              @class = "form-control",
+                                              placeholder = "Transport Name",
+                                              @style = "width:150px;height:30px;"
+                                          }
+                                      })
+                                    @Html.ValidationMessageFor(model => model.Feild2)
+                                    Vehicle No:
                                 @Html.EditorFor(model => model.Feild2, new
-                           {
-                               htmlAttributes = new
-                               {
-                                   @class = "form-control",
-                                   placeholder = "vical No",
-                                   @style = "width:150px;height:30px;"
-                               }
-                           })
+                                {
+                                       htmlAttributes = new
+                                        {
+                                           @class = "form-control",
+                                           placeholder = "Vehicle No",
+                                           @style = "width:150px;height:30px;"
+                                       }
+                                 })
                                 @Html.ValidationMessageFor(model => model.Feild2)
 
 
@@ -305,14 +400,17 @@
 
                                 <div class="pull-right">
                                     Total:
-                                    @Html.EditorFor(model => model.CalTotal, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
+                                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
                                     @Html.ValidationMessageFor(model => model.CalTotal)
-                                    Recived:
-                                    @Html.EditorFor(model => model.Feild5, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
-                                    @Html.ValidationMessageFor(model => model.Feild5)
-                                    Remining Bal:
-                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
-                                    @Html.ValidationMessageFor(model => model.Status)
+                                    Status:
+                                   @Html.DropDownListFor(model => model.Status, new List<SelectListItem>
+                                       {
+                                           new SelectListItem {Text = "Select Status", Value = "Select Status", Selected = true },
+
+                                           new SelectListItem {Text = "Paid", Value = "Paid", Selected = true },
+                                           new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
+
+                                       }, new { @class = "form-control", @style = "width:150px" })
                                 </div>
 
                             </div>
@@ -329,7 +427,7 @@
                         <div class="col-md-1 form-group" style="margin-top:8px; ">
                         </div>
                         <div class="col-md-3 form-group">
-                            <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" />
+                            <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
                             <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
 
                         </div>

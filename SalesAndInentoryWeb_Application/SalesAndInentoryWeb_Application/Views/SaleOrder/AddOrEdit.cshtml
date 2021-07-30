@@ -26,12 +26,18 @@
             resize: vertical;
           
         }
+        #Party{
+            height:200px;
+            width:30px;
+        }
+
+
     </style>
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             debugger
-            $("#ItemName").change(function () {
+            $("#ID").change(function () {
                 var fruitId = $(this).find("option:selected").val();
                 if (fruitId != "") {
                     $.ajax({
@@ -39,11 +45,12 @@
                         url: "/SaleOrder/GetFruitName",
                         data: "id=" + fruitId,
                         success: function (response) {
-                            if (response != "") {
-                                $("#SalePrice").val(response);
-                            } else {
-                                $("#txtopeningbal").val('');
-                            }
+                          
+                            $('#SalePrice').val(response.SalePrice);
+                            $('#TaxForSale').val(response.TaxForSale);
+                            $('#SaleTaxAmount').val(response.SaleTaxAmount);
+
+                          
                         }
                     });
                 } else {
@@ -70,14 +77,14 @@
         function AddToItem()
         {
             var tableitemlist = $("#tblSaleInvoice");          
-            var ItemName=$("#ItemName").val();
-            var mrp = $("#sp").val();
-            var tax = $("#ts").val();
-            var qty = $("#qty").val();
-            var dis = $("#ds").val();
-            var disamt = $("#da").val();
-            var taxmat = $("#sa").val();
-            var total = $("#ca").val();
+            var ItemName=$("#ID option:selected").val();
+            var mrp = $("#SalePrice").val();
+            var tax = $("#TaxForSale").val();
+            var qty = $("#Qty").val();
+            var dis = $("#Discount").val();
+            var disamt = $("#DiscountAmount").val();
+            var taxmat = $("#SaleTaxAmount").val();
+            var total = $("#ItemTotal").val();
 
             var itemlist = "<tr><div class='scrollit' ><td>"
                 + ItemName +
@@ -103,17 +110,21 @@
         }
         function reset()
         {
-            $("#dp").val('');
-            $("#sp").val('');
-            $("#ts").val('');
-            $("#ds").val('');
-            $("#qty").val('');
-            $("#da").val('');
-            $("#sa").val('');
-            $("#ca").val('');
-            $("#id").val('');
-
+            $("#ID option:selected").val('');
+            $("#SalePrice").val('');
+            $("#TaxForSale").val('');
+            $("#Discount").val('');
+            $("#Qty").val('');
+            $("#DiscountAmount").val('');
+            $("#SaleTaxAmount").val('');
+            $("#ItemTotal").val('');
         }
+        function minus() {
+            var pretotal1 = $("#Total").val();
+            var pretotal2 = $("#RemainingBal").val();
+            var find = pretotal1 - pretotal2
+            $("#Received").val(find);
+        };
         function additems()
         {
             debugger
@@ -136,7 +147,7 @@
                     });                                  
             });
 
-            objpartydetails.PartyName = $("#PartyName").val();
+            objpartydetails.PartyName = $("#PartiesID option:selected").val();
             objpartydetails.BillingName = $("#BillingName").val();
             objpartydetails.ContactNo = $("#ContactNo").val();
             objpartydetails.OrderDate = $("#OrderDate").val();
@@ -203,13 +214,10 @@
                                     }).GetHtml()
                                     </div>*@
                                 <b>Party Name:</b>
-                                @Html.DropDownListFor(model => model.PartyName, new List<SelectListItem>
-                                   {
-                                       new SelectListItem {Text = "Vithoba", Value = "Vithoba", Selected = true },
-                                       new SelectListItem {Text = "pallavi", Value = "pallavi" },
-                                       new SelectListItem {Text = "Rahul", Value = "Rahul" },
-                                       new SelectListItem {Text = "Bhagyashri", Value = "Bhagyashri" },
-                                   }, new { @class = "form-control",@style= "width:220px" ,@id="PartyName"})  
+                           <br>
+                                     @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" ,@id="PartyName",@style="height:30px;"} })
+                                <br>
+
                                Address:
                                 <br>
                                 @Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control" , @style = "width:220px" ,@id="BillingName"} })
@@ -280,7 +288,7 @@
                     </div>
                 </div>
                 <br />
-                <nav class="navbar navbar-default ">
+                <nav class="navbar navbar-default " style="border:none; background-color:white">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse ">
                             <div class="row">
@@ -289,42 +297,47 @@
                                 <div class="form-group col-xs-2">
 
                                     <label>Item Name</label>
-                                   @Html.DropDownListFor(model => model.tbl_SaleOrderInner2.ItemID,Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" ,@id="ItemName",@name="ItemName"} })                                                                   
+                                   @Html.DropDownListFor(model => model.ID,Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" ,@id="ItemName",@name="ItemName"} })                                                                   
                                 </div>
                                 <div class="form-group col-xs-1">
 
                                     <label>MRP</label>
-                                   @Html.TextBoxFor(model => model.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { @style = "width:130px;height:35px", @class = "form-control" })
-                                    @*<input style="text-align:left" type="text" name="SalePrice" id="SalePrice" class="form-control">*@
+                                 @*  @Html.TextBoxFor(model => model.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { @style = "width:130px;height:35px", @class = "form-control" })*@
+                                    <input style="text-align:left" type="text" name="SalePrice" id="SalePrice" class="form-control">
                                 </div>
                                 <div class="form-group col-xs-1">
                                     <label>Tax%</label>
-                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px", @class = "form-control" })
+                                   @* @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px", @class = "form-control" })*@
+                                    <input style="text-align:left" type="text" name="TaxForSale" id="TaxForSale" class="form-control">
                                  
                                 </div>
                                 <div class="form-group col-xs-1">
 
                                     <label>Descount</label>
-                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px", @class = "form-control" })
+                                  @*  @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px", @class = "form-control" })*@
+                                    <input style="text-align:left" type="text" name="Discount" id="Discount" class="form-control">
 
                                 </div>
                                 <div class="form-group col-xs-1">
                                     <label>Qty</label>
-                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px", @class = "form-control" })                                 
+                                  @*  @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px", @class = "form-control" })*@                                 
+                                    <input style="text-align:left" type="text" name="Qty" id="Qty" class="form-control">
 
                                 </div>
                                 <div class="form-group col-xs-1">
 
-                                    <label>Dis Amount</label>
-                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px", @class = "form-control" })
+                                    <label>Dis Amt</label>
+                                   @* @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px", @class = "form-control" })*@
 
+                                    <input style="text-align:left" type="text" name="DiscountAmount" id="DiscountAmount" class="form-control">
 
 
 
                                 </div>
                                 <div class="form-group col-xs-2">
-                                    <label>Tax Amount</label>
-                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px", @class = "form-control" })
+                                    <label>Tax Amt</label>
+                                  @*  @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px", @class = "form-control" })*@
+                                    <input style="text-align:left" type="text" name="SaleTaxAmount" id="SaleTaxAmount" class="form-control">
 
 
 
@@ -332,7 +345,9 @@
                                 </div>
                                 <div class="form-group col-xs-2">
                                     <label>Total</label>
-                                    @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemTotal, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;", @class = "form-control" })
+                                    <input style="text-align:left" type="text" name="ItemTotal" id="ItemTotal" class="form-control">
+                                 
+                                    @*   @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemTotal, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;", @class = "form-control" })*@
                                     </div>
 
                                     <div class="col-xs-1">
@@ -362,32 +377,21 @@
                                                 Tax%                                            
                                             </th>
                                             <th>
-                                                Descount
+                                                Discount
                                             <th>
                                                 Qty
-
-
                                             </th>
                                             <th>
                                                 Dis Amount
-
-
                                             </th>
                                             <th>
                                                 Tax Amount
-
-
                                             </th>
                                             <th>
                                                 Total
-
-
-                                            </th>
-                                         
-
+                                            </th>                                      
                                         </tr>
                                     </thead>
-
                                 </table>
                             </div>
                         </div>
@@ -444,10 +448,10 @@
                                     @Html.EditorFor(model => model.CalTotal, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
                                     @Html.ValidationMessageFor(model => model.CalTotal)
                                     Recived :
-                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
+                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" ,@onchange="minus()"} })
                                     @Html.ValidationMessageFor(model => model.RemainingBal)
                                    Remaining Balance:
-                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
+                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance"  } })
                                     @Html.ValidationMessageFor(model => model.Received)
                                 </div>
                             </div>

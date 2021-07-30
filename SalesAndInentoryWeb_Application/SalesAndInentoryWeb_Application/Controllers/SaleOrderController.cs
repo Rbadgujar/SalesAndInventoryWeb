@@ -51,6 +51,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             tbl_SaleOrder bt = new tbl_SaleOrder();
             bt.ListOfAccounts = ListOfAccount();
+            bt.ListOfParties = ListOfParties();
             return View(bt);
         }
         private static List<SelectListItem> ListOfAccount()
@@ -60,7 +61,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -72,7 +73,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                             items.Add(new SelectListItem
                             {
                                 Text = sdr["ItemName"].ToString(),
-                                Value = sdr["ItemID"].ToString()
+                                Value = sdr["ItemName"].ToString()
                             });
                         }
                     }
@@ -82,18 +83,47 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items;
         }
-        public JsonResult GetFruitName(int id)
+        private static List<SelectListItem> ListOfParties()
+        {
+            string sql;
+            List<SelectListItem> items1 = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_PartyMaster where DeleteData='1'");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items1.Add(new SelectListItem
+                            {
+                                Text = sdr["PartyName"].ToString(),
+                                Value = sdr["PartyName"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items1;
+        }
+        public JsonResult GetFruitName(string id)
         {
             return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
         }
-        private static string GetFruitNameById(int id)
+        private static string GetFruitNameById(string id)
         {
             string sql;
             List<SelectListItem> items = new List<SelectListItem>();
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT SalePrice FROM tbl_ItemMaster WHERE ItemID = @Id");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemName = @Id");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -140,7 +170,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     OrderNo=sale.OrderNo,
                     ItemID=item.ItemID,
                     TaxForSale=item.TaxForSale,
-                    Discount=item.Discount,
+                  //  Discount=item.Discount,
                     DiscountAmount=item.DiscountAmount,
                     SaleTaxAmount=item.SaleTaxAmount,
                     ItemTotal=item.ItemTotal,

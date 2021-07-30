@@ -31,9 +31,9 @@ namespace SalesAndInentoryWeb_Application.Models
         public string SecondaryUnit { get; set; }
         public string ItemCode { get; set; }
         public string ItemCategory { get; set; }
-        public Nullable<double> SalePrice { get; set; }
+        public double SalePrice { get; set; }
         public string TaxForSale { get; set; }
-        public Nullable<double> SaleTaxAmount { get; set; }
+        public double SaleTaxAmount { get; set; }
         public Nullable<double> PurchasePrice { get; set; }
         public string TaxForPurchase { get; set; }
         public Nullable<double> PurchaseTaxAmount { get; set; }
