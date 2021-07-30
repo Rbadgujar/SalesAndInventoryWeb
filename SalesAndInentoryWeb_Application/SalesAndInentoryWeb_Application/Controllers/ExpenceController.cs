@@ -9,8 +9,8 @@ using SalesAndInentoryWeb_Application.ViewModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-using Stimulsoft.Report;
-using Stimulsoft.Report.Components;
+//using Stimulsoft.Report;
+//using Stimulsoft.Report.Components;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ExpenceController : Controller
@@ -164,20 +164,20 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 db.tbl_ExpensesInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
 
-                DataSet ds = new DataSet();
-                string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo, a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.ID1, b.Date, b.ExpenseCategory, b.Paid,b.Balance,b.DeleteData,b.Status,b.Total,b.Company_ID,c.ID1,c.ItemName,c.SalePrice,c.Qty,c.ItemAmount,c.DeleteData,c.Company_ID FROM tbl_CompanyMaster  as a, tbl_Expenses as b,tbl_ExpensesInner as c where b.ID1='{0}' and c.ID1='{1}' and b.DeleteData='1' and c.DeleteData='1' ",sale.ID1 , inner.ID1);
-                SqlDataAdapter SDA = new SqlDataAdapter(Query, constr);
-                SDA.Fill(ds);
-                string reportPath = Server.MapPath("~/Content/Report/ExpenceReport.mrt");
-                StiReport report = new StiReport();
-                report.Load(reportPath);
+                //DataSet ds = new DataSet();
+                //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo, a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.ID1, b.Date, b.ExpenseCategory, b.Paid,b.Balance,b.DeleteData,b.Status,b.Total,b.Company_ID,c.ID1,c.ItemName,c.SalePrice,c.Qty,c.ItemAmount,c.DeleteData,c.Company_ID FROM tbl_CompanyMaster  as a, tbl_Expenses as b,tbl_ExpensesInner as c where b.ID1='{0}' and c.ID1='{1}' and b.DeleteData='1' and c.DeleteData='1' ",sale.ID1 , inner.ID1);
+                //SqlDataAdapter SDA = new SqlDataAdapter(Query, constr);
+                //SDA.Fill(ds);
+                //string reportPath = Server.MapPath("~/Content/Report/ExpenceReport.mrt");
+                //StiReport report = new StiReport();
+                //report.Load(reportPath);
 
-                report.Compile();
-                StiPage page = report.Pages[0];
-                report.RegData("Expences", "Expences", ds.Tables[0]);
+                //report.Compile();
+                //StiPage page = report.Pages[0];
+                //report.RegData("Expences", "Expences", ds.Tables[0]);
 
-                report.Dictionary.Synchronize();
-                report.Render();
+                //report.Dictionary.Synchronize();
+                //report.Render();
 
             }
           
