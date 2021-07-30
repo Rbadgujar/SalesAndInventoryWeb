@@ -151,7 +151,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 DeliveryLocation = objpartydetails.DeliveryLocation,
                 Deliverydate = objpartydetails.DeliveryDate,
                 StateofSupply = objpartydetails.StateOfSupply,
-                OrderDate = objpartydetails.OrderDate,
+                OrderDate =Convert.ToDateTime(objpartydetails.OrderDate),
                 DueDate = objpartydetails.DueDate,
                 Barcode = objpartydetails.Barcode,
                 Status = objpartydetails.Status,

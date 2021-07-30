@@ -2762,7 +2762,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private string _PONo;
 		
-		private System.Nullable<System.DateTime> _BillDate;
+		private string  _BillDate;
 		
 		private System.Nullable<System.DateTime> _PoDate;
 		
@@ -3066,7 +3066,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillDate", DbType="Date")]
-		public System.Nullable<System.DateTime> BillDate
+		public String BillDate
 		{
 			get
 			{
@@ -3076,7 +3076,7 @@ namespace SalesAndInentoryWeb_Application
 			{
 				if ((this._BillDate != value))
 				{
-					this.OnBillDateChanging(value);
+					//this.OnBillDateChanging(value);
 					this.SendPropertyChanging();
 					this._BillDate = value;
 					this.SendPropertyChanged("BillDate");
@@ -13850,7 +13850,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private string _PONumber;
 		
-		private System.Nullable<System.DateTime> _PODate;
+		private string _PODate;
 		
 		private System.Nullable<System.DateTime> _InvoiceDate;
 		
@@ -14021,7 +14021,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PODate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> PODate
+		public string PODate
 		{
 			get
 			{
@@ -19130,7 +19130,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private string _PONo;
 		
-		private System.Nullable<System.DateTime> _BillDate;
+		private string _BillDate;
 		
 		private System.Nullable<System.DateTime> _PoDate;
 		
@@ -19303,7 +19303,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillDate", DbType="Date")]
-		public System.Nullable<System.DateTime> BillDate
+		public string BillDate
 		{
 			get
 			{
@@ -20422,7 +20422,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private string _ContactNo;
 		
-		private System.Nullable<System.DateTime> _OrderDate;
+		private string _OrderDate;
 		
 		private System.Nullable<System.DateTime> _DueDate;
 		
@@ -20573,7 +20573,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="Date")]
-		public System.Nullable<System.DateTime> OrderDate
+		public string OrderDate
 		{
 			get
 			{
