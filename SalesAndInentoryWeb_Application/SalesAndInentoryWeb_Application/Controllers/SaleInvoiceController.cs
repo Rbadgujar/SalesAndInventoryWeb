@@ -188,21 +188,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 db.tbl_SaleInvoiceInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
             }
-            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
+      
             return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
-            //try
-            //{
-            //    //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-            //   // db.tbl_SaleInvoiceSelect("Insert", null, invoice.PartyName, invoice.BillingName, invoice.ContactNo, invoice.PONumber, invoice.PoDate, Convert.ToDateTime(invoice.InvoiceDate),  invoice.StateofSupply, invoice.PaymentType, invoice.TransportName, invoice.DeliveryLocation, invoice.VehicleNumber, invoice.Deliverydate, invoice.Description, invoice.TransportCharges, invoice.Image, invoice.Tax1, invoice.CGST, invoice.SGST, invoice.TaxAmount1, invoice.TotalDiscount, invoice.DiscountAmount1, invoice.RoundFigure, invoice.Total, invoice.Received, invoice.RemainingBal, invoice.DueDate, invoice.PaymentTerms, null, null, null, null, null, invoice.Status, null, null, invoice.ItemCategory, invoice.Barcode, invoice.IGST, invoice.Company_ID, invoice.Discount,invoice.TaxAmountShow, invoice.Caltotal, invoice.totalcgst, invoice.totalsgst, invoice.totaligst, invoice.EWayBillNo);
-            //   // db.tbl_SaleInvoiceInnersp("Insert", null, inner.ItemID, inner.ItemName, inner.ItemCode, inner.SalePrice, inner.TaxForSale, inner.SaleTaxAmount, inner.Qty, inner.freeQty, inner.ItemAmount, inner.Discount, inner.DiscountAmount, null, inner.stock, inner.Count1, inner.CGST, inner.SGST, inner.IGST);
-            //    db.SubmitChanges();
-            //    return RedirectToAction("SaleIndexpage");
-            //    //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
+         
         }
 
 

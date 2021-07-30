@@ -1465,7 +1465,6 @@ C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Ap
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\es\DevExpress.Xpf.LayoutControl.v20.1.resources.dll
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ja\DevExpress.Xpf.LayoutControl.v20.1.resources.dll
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\ru\DevExpress.Xpf.LayoutControl.v20.1.resources.dll
-C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.csprojResolveAssemblyReference.cache
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.dll.licenses
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.dll
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.pdb
