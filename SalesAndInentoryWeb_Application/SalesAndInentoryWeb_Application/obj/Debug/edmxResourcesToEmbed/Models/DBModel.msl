@@ -437,6 +437,8 @@
     <EntitySetMapping Name="tbl_ItemMaster">
       <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_ItemMaster">
         <MappingFragment StoreEntitySet="tbl_ItemMaster">
+          <ScalarProperty Name="PurchaseTax" ColumnName="PurchaseTax" />
+          <ScalarProperty Name="saleTax" ColumnName="saleTax" />
           <ScalarProperty Name="ItemID" ColumnName="ItemID" />
           <ScalarProperty Name="ItemName" ColumnName="ItemName" />
           <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
@@ -521,11 +523,12 @@
     <EntitySetMapping Name="tbl_LoginPasssword">
       <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_LoginPasssword">
         <MappingFragment StoreEntitySet="tbl_LoginPasssword">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="c" ColumnName="c" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NewPassword" ColumnName="NewPassword" />
           <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
           <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
-          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -547,6 +550,7 @@
     <EntitySetMapping Name="tbl_OtherIncome">
       <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_OtherIncome">
         <MappingFragment StoreEntitySet="tbl_OtherIncome">
+          <ScalarProperty Name="Id1" ColumnName="Id1" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IncomeCategory" ColumnName="IncomeCategory" />
           <ScalarProperty Name="Date" ColumnName="Date" />
@@ -721,6 +725,7 @@
     <EntitySetMapping Name="tbl_PurchaseBill">
       <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseBill">
         <MappingFragment StoreEntitySet="tbl_PurchaseBill">
+          <ScalarProperty Name="EwayNo" ColumnName="EwayNo" />
           <ScalarProperty Name="BillNo" ColumnName="BillNo" />
           <ScalarProperty Name="PartyName" ColumnName="PartyName" />
           <ScalarProperty Name="BillingName" ColumnName="BillingName" />
@@ -2048,5 +2053,14 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="bankadjust" FunctionName="idealtec_inventoryModel.Store.tbl_BankAdjustmentselect" />
+    <EntitySetMapping Name="tbl_Login">
+      <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_Login">
+        <MappingFragment StoreEntitySet="tbl_Login">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

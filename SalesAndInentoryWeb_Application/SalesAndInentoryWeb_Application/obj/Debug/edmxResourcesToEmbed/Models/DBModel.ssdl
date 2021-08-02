@@ -13,29 +13,6 @@
     <Property Name="Company_ID" Type="int" />
     <Property Name="DeleteData" Type="bit" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'idealtec_inventory.dbo.Item_Seeting' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Item_Seeting">
-          <Property Name="MRP" Type="varchar" MaxLength="50" />
-          <Property Name="Batch_No" Type="varchar" MaxLength="50" />
-          <Property Name="Serial_No" Type="varchar" MaxLength="50" />
-          <Property Name="Mef_Date" Type="varchar" MaxLength="50" />
-          <Property Name="Exp_date" Type="varchar" MaxLength="50" />
-          <Property Name="Size" Type="varchar" MaxLength="50" />
-          <Property Name="Company_ID" Type="int" />
-          <Property Name="Expdaate" Type="int" />
-          <Property Name="MFDAte" Type="int" />
-          <Property Name="Description" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'idealtec_inventory.dbo.PasswordCheek' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PasswordCheek">
-          <Property Name="ID" Type="nchar" MaxLength="10" />
-          <Property Name="Password" Type="varchar" MaxLength="20" />
-          <Property Name="Company_ID" Type="varchar" MaxLength="50" />
-          <Property Name="Feild1" Type="varchar" MaxLength="50" />
-          <Property Name="Feald2" Type="varchar" MaxLength="50" />
-        </EntityType>-->
   <EntityType Name="ReferralCode1">
     <Key>
       <PropertyRef Name="ID" />
@@ -45,66 +22,6 @@ warning 6013: The table/view 'idealtec_inventory.dbo.PasswordCheek' does not hav
     <Property Name="DeleteData" Type="bit" />
     <Property Name="Company_ID" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Setting_Table">
-          <Property Name="ID" Type="nchar" MaxLength="10" />
-          <Property Name="Enable_Launch" Type="nchar" MaxLength="10" />
-          <Property Name="Gst_In" Type="nchar" MaxLength="10" />
-          <Property Name="Estiment" Type="nchar" MaxLength="10" />
-          <Property Name="ChangeCurrency" Type="nchar" MaxLength="10" />
-          <Property Name="Amount" Type="nchar" MaxLength="10" />
-          <Property Name="Sale_purches" Type="nchar" MaxLength="10" />
-          <Property Name="OtheIncome" Type="nchar" MaxLength="10" />
-          <Property Name="Delliverychallen" Type="nchar" MaxLength="10" />
-          <Property Name="GoodsReturn" Type="nchar" MaxLength="10" />
-          <Property Name="Print_Amount" Type="nchar" MaxLength="10" />
-          <Property Name="Autobackup" Type="nchar" MaxLength="10" />
-          <Property Name="AutoForms" Type="nchar" MaxLength="10" />
-          <Property Name="Company_ID" Type="varchar" MaxLength="50" />
-          <Property Name="InvoiceNo" Type="nchar" MaxLength="10" />
-          <Property Name="CashSalebyDefualt" Type="nchar" MaxLength="10" />
-          <Property Name="billingNumberBy" Type="nchar" MaxLength="10" />
-          <Property Name="CustomerPONo" Type="nchar" MaxLength="10" />
-          <Property Name="Inclusive/Exclusive" Type="nchar" MaxLength="10" />
-          <Property Name="Display Purchase " Type="nchar" MaxLength="10" />
-          <Property Name="Show_last_5" Type="nchar" MaxLength="10" />
-          <Property Name="DisplayFreeQuantity" Type="nchar" MaxLength="10" />
-          <Property Name="Countdata" Type="nchar" MaxLength="10" />
-          <Property Name="Transaction_Wise" Type="nchar" MaxLength="10" />
-          <Property Name="Transaction_Discount" Type="nchar" MaxLength="10" />
-          <Property Name="Round_Off" Type="nchar" MaxLength="10" />
-          <Property Name="Do_Not_Invoce" Type="nchar" MaxLength="10" />
-          <Property Name="Enable_Transaction" Type="nchar" MaxLength="10" />
-          <Property Name="Discount_During_payment" Type="nchar" MaxLength="10" />
-          <Property Name="link_Payement" Type="nchar" MaxLength="10" />
-          <Property Name="Due_date" Type="nchar" MaxLength="10" />
-          <Property Name="SendSms" Type="nchar" MaxLength="10" />
-          <Property Name="SendSmsCopy" Type="nchar" MaxLength="10" />
-          <Property Name="MRPDate" Type="int" />
-          <Property Name="BatchNo" Type="int" />
-          <Property Name="SerialNo" Type="int" />
-          <Property Name="MnfDate" Type="int" />
-          <Property Name="ExpDate" Type="int" />
-          <Property Name="Size" Type="int" />
-          <Property Name="Size1" Type="int" />
-          <Property Name="Size2" Type="int" />
-          <Property Name="ItemWiseDiscount" Type="int" />
-          <Property Name="ItemwisTax" Type="int" />
-          <Property Name="Discription" Type="int" />
-          <Property Name="Partywise" Type="int" />
-          <Property Name="barcode" Type="int" />
-          <Property Name="Stockmantance" Type="int" />
-          <Property Name="ItemCategory" Type="int" />
-          <Property Name="Partygroup" Type="int" />
-          <Property Name="REMINDER" Type="int" />
-          <Property Name="dayreminder" Type="int" />
-          <Property Name="notifyday" Type="int" />
-          <Property Name="remindermessage" Type="varchar" MaxLength="500" />
-          <Property Name="itemwisetax" Type="int" />
-          <Property Name="cashremoinder" Type="int" />
-          <Property Name="reverschecharges" Type="int" />
-        </EntityType>-->
   <EntityType Name="tbl_BankAccount">
     <Key>
       <PropertyRef Name="ID" />
@@ -534,6 +451,8 @@ warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not hav
     <Property Name="Company_ID" Type="int" />
     <Property Name="Cess" Type="float" />
     <Property Name="Profit" Type="float" />
+    <Property Name="saleTax" Type="varchar" MaxLength="100" />
+    <Property Name="PurchaseTax" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tbl_ItemServicemaster">
     <Key>
@@ -586,7 +505,8 @@ warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not hav
     <Property Name="NewPassword" Type="nvarchar(max)" />
     <Property Name="ConfirmPassword" Type="nvarchar(max)" />
     <Property Name="DeleteData" Type="bit" />
-    <Property Name="Company_ID" Type="int" />
+    <Property Name="c" Type="int" />
+    <Property Name="UserId" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tbl_MakePayment">
     <Key>
@@ -604,9 +524,9 @@ warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not hav
   </EntityType>
   <EntityType Name="tbl_OtherIncome">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="Id1" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id1" Type="int" Nullable="false" />
     <Property Name="IncomeCategory" Type="nvarchar(max)" />
     <Property Name="Date" Type="date" />
     <Property Name="paymentType" Type="nvarchar(max)" />
@@ -625,6 +545,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not hav
     <Property Name="TableName" Type="nvarchar(max)" />
     <Property Name="DeleteData" Type="bit" />
     <Property Name="Company_ID" Type="int" />
+    <Property Name="Id" Type="int" />
   </EntityType>
   <EntityType Name="tbl_otherIncomeCaategory">
     <Key>
@@ -818,6 +739,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not hav
     <Property Name="TaxShow" Type="float" />
     <Property Name="CalTotal" Type="float" />
     <Property Name="reverschecharges" Type="float" />
+    <Property Name="EwayNo" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tbl_PurchaseBillInner">
     <Key>
@@ -1217,40 +1139,14 @@ warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not hav
     <Property Name="TaxShow" Type="float" />
     <Property Name="Discount" Type="float" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TransactionTableSetting">
-          <Property Name="InvoiceOrBill" Type="bit" />
-          <Property Name="CashSaleByDefault" Type="bit" />
-          <Property Name="BillingNameByParties" Type="bit" />
-          <Property Name="CustomerPoDetails" Type="bit" />
-          <Property Name="InclusiveOrExclusive" Type="bit" />
-          <Property Name="DisplayPurchasePriseOnItem" Type="bit" />
-          <Property Name="ShowLastSaleItem" Type="bit" />
-          <Property Name="DisplayFreeQty" Type="bit" />
-          <Property Name="Count" Type="bit" />
-          <Property Name="TransactionWiseTax" Type="bit" />
-          <Property Name="TransactionWiseDiscount" Type="bit" />
-          <Property Name="RoundOff" Type="bit" />
-          <Property Name="DoNotShowInvoicePreview" Type="bit" />
-          <Property Name="PasscodeToTransaction" Type="bit" />
-          <Property Name="DiscountDuringPayment" Type="bit" />
-          <Property Name="DueDatesAndPaymentTerms" Type="bit" />
-          <Property Name="Company_ID" Type="int" />
-          <Property Name="SendSMSToParty" Type="bit" />
-          <Property Name="SendSMSToSelf" Type="bit" />
-          <Property Name="DeliveryDate" Type="int" />
-          <Property Name="TransportName" Type="int" />
-          <Property Name="DeliveryLocation" Type="bit" />
-          <Property Name="VehicleNo" Type="bit" />
-          <Property Name="ShippingAddress" Type="bit" />
-          <Property Name="PrintShippingAddress" Type="bit" />
-          <Property Name="HSN" Type="bit" />
-          <Property Name="PlaceofSupply" Type="bit" />
-          <Property Name="EwayBill" Type="bit" />
-          <Property Name="EnableGst" Type="bit" />
-          <Property Name="Cess" Type="bit" />
-        </EntityType>-->
+  <EntityType Name="tbl_Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar(max)" />
+  </EntityType>
   <Association Name="FK__tbl_Deliv__Chall__68D28DBC">
     <End Role="tbl_DeliveryChallan" Type="Self.tbl_DeliveryChallan" Multiplicity="0..1" />
     <End Role="tbl_DeliveryChallanInner" Type="Self.tbl_DeliveryChallanInner" Multiplicity="*" />
@@ -1268,7 +1164,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <End Role="tbl_OtherIncomeInner1" Type="Self.tbl_OtherIncomeInner1" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbl_OtherIncome">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="Id1" />
       </Principal>
       <Dependent Role="tbl_OtherIncomeInner1">
         <PropertyRef Name="ID2" />
@@ -1412,10 +1308,10 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <End Role="tbl_OtherIncome1" Type="Self.tbl_OtherIncome" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="tbl_OtherIncome">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="Id1" />
       </Principal>
       <Dependent Role="tbl_OtherIncome1">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="Id1" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1443,24 +1339,12 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory2">
-    <End Role="tbl_otherIncomeCaategory" Type="Self.tbl_otherIncomeCaategory" Multiplicity="0..1" />
-    <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_otherIncomeCaategory">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="tbl_OtherIncome">
-        <PropertyRef Name="CategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tbl_OtherIncomeInner3_tbl_OtherIncome">
     <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="0..1" />
     <End Role="tbl_OtherIncomeInner3" Type="Self.tbl_OtherIncomeInner3" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbl_OtherIncome">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="Id1" />
       </Principal>
       <Dependent Role="tbl_OtherIncomeInner3">
         <PropertyRef Name="Id" />
@@ -1943,9 +1827,9 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <Parameter Name="compid" Type="int" Mode="In" />
   </Function>
   <Function Name="Sp_loginpassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
     <Parameter Name="ComId" Type="varchar" Mode="In" />
     <Parameter Name="password" Type="varchar" Mode="In" />
-    <Parameter Name="Action" Type="varchar" Mode="In" />
   </Function>
   <Function Name="tbl_BankAdjustmentselect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2328,6 +2212,9 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <Parameter Name="CategoryID" Type="int" Mode="In" />
     <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="compid" Type="int" Mode="In" />
+    <Parameter Name="saleTax" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseTax" Type="varchar" Mode="In" />
+    <Parameter Name="Profit" Type="float" Mode="In" />
   </Function>
   <Function Name="tbl_ItemServicemasterSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2369,6 +2256,8 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <Parameter Name="ID" Type="int" Mode="In" />
     <Parameter Name="NewPassword" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="ConfirmPassword" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Company_ID" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
   </Function>
   <Function Name="tbl_MakePaymentSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2446,6 +2335,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <Parameter Name="Action" Type="varchar" Mode="In" />
     <Parameter Name="ID" Type="int" Mode="In" />
     <Parameter Name="CustomerName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="ReceiptNo" Type="int" Mode="In" />
     <Parameter Name="Date" Type="date" Mode="In" />
@@ -2561,6 +2451,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <Parameter Name="TaxShow" Type="float" Mode="In" />
     <Parameter Name="reverschecharges" Type="float" Mode="In" />
     <Parameter Name="CalTotal" Type="float" Mode="In" />
+    <Parameter Name="EwayNo" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="tbl_PurchaseOrderInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2757,7 +2648,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <Parameter Name="totalcgst" Type="float" Mode="In" />
     <Parameter Name="totalsgst" Type="float" Mode="In" />
     <Parameter Name="totaligst" Type="float" Mode="In" />
-    <Parameter Name="E_Way_Bill" Type="varchar" Mode="In" />
+    <Parameter Name="EWayBillNo" Type="varchar" Mode="In" />
   </Function>
   <Function Name="tbl_SaleOrderInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2911,6 +2802,7 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
     <EntitySet Name="tbl_UnitMaster" EntityType="Self.tbl_UnitMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tble_NewCompany" EntityType="Self.tble_NewCompany" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblQuotation" EntityType="Self.tblQuotation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Login" EntityType="Self.tbl_Login" Schema="idealtec_inventory" store:Type="Tables" />
     <AssociationSet Name="FK__tbl_Deliv__Chall__68D28DBC" Association="Self.FK__tbl_Deliv__Chall__68D28DBC">
       <End Role="tbl_DeliveryChallan" EntitySet="tbl_DeliveryChallan" />
       <End Role="tbl_DeliveryChallanInner" EntitySet="tbl_DeliveryChallanInner" />
@@ -2972,10 +2864,6 @@ warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' do
       <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
     </AssociationSet>
     <AssociationSet Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory1" Association="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory1">
-      <End Role="tbl_otherIncomeCaategory" EntitySet="tbl_otherIncomeCaategory" />
-      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory2" Association="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory2">
       <End Role="tbl_otherIncomeCaategory" EntitySet="tbl_otherIncomeCaategory" />
       <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
     </AssociationSet>
