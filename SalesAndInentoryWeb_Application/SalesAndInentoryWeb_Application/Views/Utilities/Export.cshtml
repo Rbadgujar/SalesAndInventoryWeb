@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Importitem";
+    Layout = "~/Views/Shared/ideal.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        .button {
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        #imort {
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 10px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+
+        label {
+            color: blue;
+            cursor: pointer;
+        }
+
+            label:hover {
+                text-decoration: underline;
+            }
+
+        #file_input_id {
+            display: none;
+        }
+    </style>
+  
+</head>
+<body>
+    @using (Html.BeginForm("Importitem1", "Utilities", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="panel panel-primary container" style="width:100%">
+            <div class="panel-heading text-center"><h4 style="margin-top:-4px;">Export Data </h4></div>
+            <div class="panel border-box">
+                <nav class="navbar navbar-default " style="background-color:white;border:none">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse ">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <br />
+                                    <div style="height:450px;border:2px solid;text-align:center">
+                                        <br /><br />
+                                        <h3>Export Items </h3><br />
+                                        <h4>
+                                            Download .xls/xslx(Excel Sheet)<br />
+                                            Templet File to enter Data
+                                        </h4><br />
+
+                                        @*<img src="~/bower_components/bootstrap/dist/fonts/excel.png" style="width:100px;height:50px" />*@
+
+                                        <img src="~/bower_components/bootstrap/dist/fonts/excel (1).png" />
+                                        <br />
+                                        <br />
+
+                                        <input type="button" onclick="location.href='@Url.Action("ExportListUsingEPPlus", "Utilities")'" class="button" value="Download Items">
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <br />
+                                    <div style="height:450px;border:2px solid;text-align:center">
+                                        <br /><br />
+                                        <h3>Export Parties </h3><br />
+                                        <h4>
+                                            Download .xls/xslx(Excel Sheet)<br />
+                                            Templet File to enter Data
+                                        </h4><br />
+                                        @*<img src="~/bower_components/bootstrap/dist/fonts/excel.png" style="width:100px;height:50px" />*@
+                                        <img src="~/bower_components/bootstrap/dist/fonts/excel (1).png" />
+                                        <br />
+                                        <br />
+                                        <input type="button" onclick="location.href='@Url.Action("exportpartyes", "Utilities")'" class="button" value="Download Parties">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    }
+
+</body>
+</html>
+
