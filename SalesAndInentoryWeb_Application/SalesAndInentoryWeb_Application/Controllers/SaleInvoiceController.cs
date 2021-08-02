@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
 using SalesAndInentoryWeb_Application.ViewModel;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
@@ -23,7 +26,131 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+        private static List<SelectListItem> ListOfItems()
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1'");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["ItemName"].ToString(),
+                                Value = sdr["ItemName"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
 
+            return items;
+        }
+        private static List<SelectListItem> ListOfParties()
+        {
+            string sql;
+            List<SelectListItem> items1 = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_PartyMaster where DeleteData='1'");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items1.Add(new SelectListItem
+                            {
+                                Text = sdr["PartyName"].ToString(),
+                                Value = sdr["PartyName"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items1;
+        }
+        public JsonResult GetFruitName(string id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_PartyMaster> GetFruitNameById(string id)
+        {
+            string sql;
+            List<tbl_PartyMaster> items2 = new List<tbl_PartyMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items2.Add(new tbl_PartyMaster()
+                            {
+                                BillingAddress = sdr["BillingAddress"].ToString(),
+                                ContactNo = sdr["ContactNo"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items2;
+        }
+        public JsonResult GetFruitName1(string id)
+        {
+            return Json(GetFruitNameById1(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_ItemMaster> GetFruitNameById1(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
         [HttpGet]
         public ActionResult ShowInvoiceData()
         {
@@ -34,7 +161,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult SaleInvoice()
         {
-            return View();
+            tbl_SaleInvoice bt = new tbl_SaleInvoice();
+            bt.ListOfAccounts = ListOfItems();
+            bt.ListOfParties = ListOfParties();
+            return View(bt);
         }
 
         [HttpPost]
@@ -58,21 +188,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 db.tbl_SaleInvoiceInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
             }
-            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
+      
             return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
-            //try
-            //{
-            //    //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-            //   // db.tbl_SaleInvoiceSelect("Insert", null, invoice.PartyName, invoice.BillingName, invoice.ContactNo, invoice.PONumber, invoice.PoDate, Convert.ToDateTime(invoice.InvoiceDate),  invoice.StateofSupply, invoice.PaymentType, invoice.TransportName, invoice.DeliveryLocation, invoice.VehicleNumber, invoice.Deliverydate, invoice.Description, invoice.TransportCharges, invoice.Image, invoice.Tax1, invoice.CGST, invoice.SGST, invoice.TaxAmount1, invoice.TotalDiscount, invoice.DiscountAmount1, invoice.RoundFigure, invoice.Total, invoice.Received, invoice.RemainingBal, invoice.DueDate, invoice.PaymentTerms, null, null, null, null, null, invoice.Status, null, null, invoice.ItemCategory, invoice.Barcode, invoice.IGST, invoice.Company_ID, invoice.Discount,invoice.TaxAmountShow, invoice.Caltotal, invoice.totalcgst, invoice.totalsgst, invoice.totaligst, invoice.EWayBillNo);
-            //   // db.tbl_SaleInvoiceInnersp("Insert", null, inner.ItemID, inner.ItemName, inner.ItemCode, inner.SalePrice, inner.TaxForSale, inner.SaleTaxAmount, inner.Qty, inner.freeQty, inner.ItemAmount, inner.Discount, inner.DiscountAmount, null, inner.stock, inner.Count1, inner.CGST, inner.SGST, inner.IGST);
-            //    db.SubmitChanges();
-            //    return RedirectToAction("SaleIndexpage");
-            //    //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
+         
         }
 
 

@@ -62,7 +62,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 vm.HSNCode = tb.HSNCode;
                 vm.OpeningQty = tb.OpeningQty;
                 vm.PurchasePrice = tb.PurchasePrice;
-                vm.SalePrice = tb.SalePrice;
+              //  vm.SalePrice = tb.SalePrice;
                 vm.atPrice = tb.atPrice;
                 return View(vm);
             }
@@ -108,7 +108,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 vm.HSNCode = tb.HSNCode;
                 vm.OpeningQty = tb.OpeningQty;
                 vm.PurchasePrice = tb.PurchasePrice;
-                vm.SalePrice = tb.SalePrice;
+                //m.SalePrice = tb.SalePrice;
                 vm.atPrice = tb.atPrice;
                 return View(vm);
             }

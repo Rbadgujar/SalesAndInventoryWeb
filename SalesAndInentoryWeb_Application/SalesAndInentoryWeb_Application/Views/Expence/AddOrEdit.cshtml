@@ -21,8 +21,7 @@
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function ()
-        {
-          
+        {        
             $("#ID1").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
@@ -54,27 +53,35 @@
                 var curentreo = $(this).closest("tr");
 
                 var pretotal = curentreo.find("td:eq(3)").text();
-                var pretotal1 = $("#ca").val();
+                var pretotal1 = $("#Total").val();
                 var find = pretotal1 - pretotal
 
 
-                $("#ca").val(find);
+                $("#Total").val(find);
                 $(curentreo).closest('tr').remove();
 
             });
+          
         });
+        function minus() 
+        {
+            var pretotal1 = $("#Total").val();
+            var pretotal2 = $("#Balance").val();
+            var find = pretotal1 - pretotal2
+            $("#Paid").val(find);
+        };
         function cal() {
             var mrp = $("#sp").val();
             var qty = $("#qty").val();
             var total = mrp * qty;
-            $("#Total").val(total);
+            $("#ca").val(total);
         }
 
         function cal1() {
             var mrp = $("#sp").val();
             $("#qty").val(1);
             var total = mrp * 1;
-            $("#Total").val(total);
+            $("#ca").val(total);
         }
         function RemoveItem(ItemName)
         {
@@ -89,7 +96,7 @@
             var total = $("#ca").val();
 
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemName + "</td><td>" + mrp + "</td><td>"
-            + qty + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
+            + qty + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)' id='remove'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
             var finding = 0;
@@ -98,7 +105,7 @@
                 var mm = +$(this).find('td:eq(3)').text();
                 finding = finding + mm
 
-                $("#ca").val(finding);
+                $("#Total").val(finding);
             })
         }
         function reset()
@@ -125,16 +132,18 @@
                     });
                 });
 
-            objExpensesDetails.ExpenseCategory = $("#ExpenseCategory").val();
+            objExpensesDetails.ExpenseCategory = $("#CategoryID option:selected").val();
             objExpensesDetails.Date = $("#Date").val();
             objExpensesDetails.Paid = $("#Paid").val();
             objExpensesDetails.Balance = $("#Balance").val();
-
+            objExpensesDetails.Total = $("#Total").val();
+            objExpensesDetails.DeleteData = $("#DeleteData").val();
 
             objExpensesDetails.ListOfOtherIncomeDetails = listofotherincomedetails;
 
-
+            debugger
             $.ajax({
+               
                 async: true,
                 type: "POST",
                 datatype: 'JSON',
@@ -149,9 +158,7 @@
                 error: function () {
                     alert("error");
                 }
-
-            });
-
+            });         
         }
     </script>
 </head>
@@ -173,14 +180,7 @@
                               </div>
                             <div class="form-group col-md-7">
                                 <div class="pull-right">
-                                    @*Po No
-                                    @Html.EditorFor(model => model.PONo, new { htmlAttributes = new { @class = "form-control", placeholder = "Po Number", @style = "width:150px;height:30px" } })
-                                    @Html.ValidationMessageFor(model => model.CategoryID)
-                                    Po Date:
-                                    <input placeholder="PO Date" class="textbox-n form-control" style="width:150px;height:30px;" type="text" onfocus="(this.type='date')" id="date">
-                                    Barcode:
-                                    @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
-                                    @Html.ValidationMessageFor(model => model.Barcode)*@
+                                    <input type="text" id="DeleteData" value="1" name="" class="form-control" style="width:150px;height:30px;display:none">                               
                               </div>
                         </div>
                         <div class="form-group col-md-2">
@@ -249,11 +249,11 @@
                                             </th>
                                             <th>
                                                 <label>MRP</label>
-                                                <input type="text" id="sp" name="" class="form-control" style="width:70PX" onchange="cal()">
+                                                <input type="text" id="sp" name="" class="form-control" style="width:70PX" onchange="cal1()">
                                             </th>
                                          <th>
                                                 <label>Qty</label>
-                                                <input type="text" id="qty" name="" class="form-control" style="width:70PX" onchange="cal1()">
+                                                <input type="text" id="qty" name="" class="form-control" style="width:70PX" onchange="cal()" >
                                             </th>
                                            
                                             <th>
@@ -323,7 +323,7 @@
                                     @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
                                     @Html.ValidationMessageFor(model => model.Total)
                                     Recived:
-                                    @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
+                                    @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" ,@onchange= "minus()" } })
                                     @Html.ValidationMessageFor(model => model.Balance)
                                     Remaining Bal:
 

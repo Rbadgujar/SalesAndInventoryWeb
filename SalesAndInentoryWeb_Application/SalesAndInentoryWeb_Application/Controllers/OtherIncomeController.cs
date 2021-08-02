@@ -41,7 +41,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -53,7 +53,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                             items.Add(new SelectListItem
                             {
                                 Text = sdr["ItemName"].ToString(),
-                                Value = sdr["ItemID"].ToString()
+                                Value = sdr["ItemName"].ToString()
                             });
                         }
                     }
@@ -63,23 +63,24 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items;
         }
-        public JsonResult GetFruitName(int id)
+        public JsonResult GetFruitName(string id)
         {
             return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
         }
-        private static string GetFruitNameById(int id)
+        private static string GetFruitNameById(string id)
         {
             string sql;
             List<SelectListItem> items = new List<SelectListItem>();
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT SalePrice FROM tbl_ItemMaster WHERE ItemID = @Id");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemName = @Id");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
                     cmd.Parameters.AddWithValue("@Id", id);
                     con.Open();
+
                     string name = Convert.ToString(cmd.ExecuteScalar());
                     con.Close();
 
@@ -122,7 +123,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_otherIncomeCaategory");
+                sql = string.Format("SELECT * FROM tbl_otherIncomeCaategory where DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -134,7 +135,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                             items1.Add(new SelectListItem
                             {
                                 Text = sdr["OtherIncome"].ToString(),
-                                Value = sdr["ID"].ToString()
+                                Value = sdr["OtherIncome"].ToString()
                             });
                         }
                     }
@@ -145,26 +146,26 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return items1;
         }
         [HttpPost]
-        public ActionResult AddOrEdit(otherincome ooooo)
+        public ActionResult AddOrEdit(otherincome objOtherIncomeDetails)
         {
             tbl_OtherIncome sale1other = new tbl_OtherIncome()
             {
-                IncomeCategory = ooooo.IncomeCategory,
-                total =ooooo.total,
-                Balance = ooooo.Balance,
-                Date = ooooo.Date
-
+                IncomeCategory = objOtherIncomeDetails.IncomeCategory,
+                total = objOtherIncomeDetails.total,
+                Balance = objOtherIncomeDetails.Balance,
+                Date = objOtherIncomeDetails.Date,
+                Received = objOtherIncomeDetails.Received
             };
             db.tbl_OtherIncomes.InsertOnSubmit(sale1other);
             db.SubmitChanges();
 
-            foreach (var item in ooooo.ListOfOtherIncomeDetails)
+            foreach (var item in objOtherIncomeDetails.ListOfOtherIncomeDetails)
             {
                 tbl_OtherIncomeInner inner = new tbl_OtherIncomeInner()
                 {
                     ItemName = item.ItemName,
-                    SalePrice = item.SalePrice,
-                    ID1 = ooooo.ID1,
+                  //  SalePrice = item.SalePrice,
+                    ID1 = objOtherIncomeDetails.Id1,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty
                 };
