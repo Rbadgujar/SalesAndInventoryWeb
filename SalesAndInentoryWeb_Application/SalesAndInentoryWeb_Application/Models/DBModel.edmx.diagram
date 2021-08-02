@@ -107,6 +107,10 @@
         <AssociationConnector Association="idealtec_inventoryModel.FK__tbl_SaleO__Order__589C25F3" ManuallyRouted="false" />
         <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleOrder_tbl_SaleOrderInner" ManuallyRouted="false" />
         <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_SaleOrderInner_tbl_SaleOrderInner" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="idealtec_inventoryModel.tbl_Login" Width="1.5" PointX="7.375" PointY="16.75" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK__tbl_OtherIn__ID2__0A3381871" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_OtherIncome1" />
+        <AssociationConnector Association="idealtec_inventoryModel.FK_tbl_OtherIncomeInner3_tbl_OtherIncome1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
