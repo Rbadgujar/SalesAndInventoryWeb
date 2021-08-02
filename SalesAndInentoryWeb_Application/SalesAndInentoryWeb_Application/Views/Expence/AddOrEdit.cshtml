@@ -49,8 +49,33 @@
             $("#btnsubmit").click(function (e) {
                 additems();
             });
+            $("#tblExpenses").on('click', '#remove', function () {
+
+                var curentreo = $(this).closest("tr");
+
+                var pretotal = curentreo.find("td:eq(3)").text();
+                var pretotal1 = $("#ca").val();
+                var find = pretotal1 - pretotal
+
+
+                $("#ca").val(find);
+                $(curentreo).closest('tr').remove();
+
+            });
         });
-        
+        function cal() {
+            var mrp = $("#sp").val();
+            var qty = $("#qty").val();
+            var total = mrp * qty;
+            $("#Total").val(total);
+        }
+
+        function cal1() {
+            var mrp = $("#sp").val();
+            $("#qty").val(1);
+            var total = mrp * 1;
+            $("#Total").val(total);
+        }
         function RemoveItem(ItemName)
         {
             $(ItemName).closest('tr').remove();
@@ -67,6 +92,14 @@
             + qty + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
+            var finding = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(3)').text();
+                finding = finding + mm
+
+                $("#ca").val(finding);
+            })
         }
         function reset()
         {
@@ -216,11 +249,11 @@
                                             </th>
                                             <th>
                                                 <label>MRP</label>
-                                                <input type="text" id="sp" name="" class="form-control" style="width:70PX">
+                                                <input type="text" id="sp" name="" class="form-control" style="width:70PX" onchange="cal()">
                                             </th>
                                          <th>
                                                 <label>Qty</label>
-                                                <input type="text" id="qty" name="" class="form-control" style="width:70PX">
+                                                <input type="text" id="qty" name="" class="form-control" style="width:70PX" onchange="cal1()">
                                             </th>
                                            
                                             <th>

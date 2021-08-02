@@ -67,7 +67,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                             items.Add(new SelectListItem
                             {
                                 Text = sdr["ItemName"].ToString(),
-                                Value = sdr["ItemID"].ToString()
+                                Value = sdr["ItemName"].ToString()
                             });
                         }
                     }
@@ -96,7 +96,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                             items1.Add(new SelectListItem
                             {
                                 Text = sdr["CategoryName"].ToString(),
-                                Value = sdr["CategoryID"].ToString()
+                                Value = sdr["CategoryName"].ToString()
                             });
                         }
                     }

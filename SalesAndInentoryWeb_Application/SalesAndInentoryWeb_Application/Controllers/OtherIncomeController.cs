@@ -7,6 +7,7 @@ using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Configuration;
+using SalesAndInentoryWeb_Application.ViewModel;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
@@ -95,6 +96,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
                 tbl_OtherIncome bt = new tbl_OtherIncome();
                 bt.ListOfAccounts = ListOfAccount();
+                bt.ListOfCategory = ListOfCategorys();
                 return View(bt);
               //  return View(new tbl_OtherIncome());
 			}
@@ -110,6 +112,70 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				return View(vm);
 			}
         }
+
+        
+
+        private static List<SelectListItem> ListOfCategorys()
+        {
+            string sql;
+            List<SelectListItem> items1 = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_otherIncomeCaategory");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items1.Add(new SelectListItem
+                            {
+                                Text = sdr["OtherIncome"].ToString(),
+                                Value = sdr["ID"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items1;
+        }
+        [HttpPost]
+        public ActionResult AddOrEdit(otherincome ooooo)
+        {
+            tbl_OtherIncome sale1other = new tbl_OtherIncome()
+            {
+                IncomeCategory = ooooo.IncomeCategory,
+                total =ooooo.total,
+                Balance = ooooo.Balance,
+                Date = ooooo.Date
+
+            };
+            db.tbl_OtherIncomes.InsertOnSubmit(sale1other);
+            db.SubmitChanges();
+
+            foreach (var item in ooooo.ListOfOtherIncomeDetails)
+            {
+                tbl_OtherIncomeInner inner = new tbl_OtherIncomeInner()
+                {
+                    ItemName = item.ItemName,
+                    SalePrice = item.SalePrice,
+                    ID1 = ooooo.ID1,
+                    ItemAmount = item.ItemAmount,
+                    Qty = item.Qty
+                };
+                db.tbl_OtherIncomeInners.InsertOnSubmit(inner);
+                db.SubmitChanges();
+            }
+            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
+            return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
+        }
+
+
         [HttpGet]
         public ActionResult otcategory()
 		{
