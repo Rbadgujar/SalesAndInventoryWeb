@@ -497,8 +497,6 @@
     <NavigationProperty Name="tbl_PurchaseOrderInner" Relationship="Self.PK_tbl_PurchaseOrderInner_Item" FromRole="tbl_ItemMaster" ToRole="tbl_PurchaseOrderInner" />
     <NavigationProperty Name="tbl_QuotationInner" Relationship="Self.PK_tbl_QuotationInner_Item" FromRole="tbl_ItemMaster" ToRole="tbl_QuotationInner" />
     <NavigationProperty Name="tbl_SaleInvoiceInner" Relationship="Self.PK_tbl_SaleInvoiceInner_Item" FromRole="tbl_ItemMaster" ToRole="tbl_SaleInvoiceInner" />
-    <Property Name="saleTax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PurchaseTax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tbl_ItemServicemaster">
     <Key>
@@ -554,8 +552,6 @@
     <Property Name="ConfirmPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DeleteData" Type="Boolean" />
     <Property Name="Company_ID" Type="Int32" />
-    <Property Name="c" Type="Int32" />
-    <Property Name="UserId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tbl_MakePayment">
     <Key>
@@ -574,9 +570,8 @@
   <EntityType Name="tbl_OtherIncome">
     <Key>
       <PropertyRef Name="Id" />
-      <PropertyRef Name="Id1" />
     </Key>
-    <Property Name="Id" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="IncomeCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Date" Type="DateTime" Precision="0" />
     <Property Name="paymentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -602,11 +597,6 @@
     <NavigationProperty Name="tbl_otherIncomeCaategory1" Relationship="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory1" FromRole="tbl_OtherIncome" ToRole="tbl_otherIncomeCaategory" />
     <NavigationProperty Name="tbl_otherIncomeCaategory2" Relationship="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory2" FromRole="tbl_OtherIncome" ToRole="tbl_otherIncomeCaategory" />
     <NavigationProperty Name="tbl_OtherIncomeInner3" Relationship="Self.FK_tbl_OtherIncomeInner3_tbl_OtherIncome" FromRole="tbl_OtherIncome" ToRole="tbl_OtherIncomeInner3" />
-    <Property Name="Id1" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tbl_OtherIncomeInner11" Relationship="idealtec_inventoryModel.FK__tbl_OtherIn__ID2__0A3381871" FromRole="tbl_OtherIncome" ToRole="tbl_OtherIncomeInner1" />
-    <NavigationProperty Name="tbl_OtherIncome11" Relationship="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_OtherIncome1" FromRole="tbl_OtherIncome" ToRole="tbl_OtherIncome1" />
-    <NavigationProperty Name="tbl_OtherIncome21" Relationship="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_OtherIncome1" FromRole="tbl_OtherIncome1" ToRole="tbl_OtherIncome" />
-    <NavigationProperty Name="tbl_OtherIncomeInner31" Relationship="idealtec_inventoryModel.FK_tbl_OtherIncomeInner3_tbl_OtherIncome1" FromRole="tbl_OtherIncome" ToRole="tbl_OtherIncomeInner3" />
   </EntityType>
   <EntityType Name="tbl_otherIncomeCaategory">
     <Key>
@@ -645,7 +635,6 @@
     <Property Name="DeleteData" Type="Boolean" />
     <Property Name="ID2" Type="Int32" />
     <NavigationProperty Name="tbl_OtherIncome" Relationship="Self.FK__tbl_OtherIn__ID2__0A338187" FromRole="tbl_OtherIncomeInner1" ToRole="tbl_OtherIncome" />
-    <NavigationProperty Name="tbl_OtherIncome1" Relationship="idealtec_inventoryModel.FK__tbl_OtherIn__ID2__0A3381871" FromRole="tbl_OtherIncomeInner1" ToRole="tbl_OtherIncome" />
   </EntityType>
   <EntityType Name="tbl_OtherIncomeInner3">
     <Key>
@@ -660,7 +649,6 @@
     <Property Name="Company_ID" Type="Int32" />
     <Property Name="DeleteData" Type="Boolean" />
     <NavigationProperty Name="tbl_OtherIncome" Relationship="Self.FK_tbl_OtherIncomeInner3_tbl_OtherIncome" FromRole="tbl_OtherIncomeInner3" ToRole="tbl_OtherIncome" />
-    <NavigationProperty Name="tbl_OtherIncome1" Relationship="idealtec_inventoryModel.FK_tbl_OtherIncomeInner3_tbl_OtherIncome1" FromRole="tbl_OtherIncomeInner3" ToRole="tbl_OtherIncome" />
   </EntityType>
   <EntityType Name="tbl_PartyGroup">
     <Key>
@@ -816,7 +804,6 @@
     <NavigationProperty Name="tbl_PartyMaster" Relationship="Self.FK_tbl_PurchaseBill_tbl_PartyMaster" FromRole="tbl_PurchaseBill" ToRole="tbl_PartyMaster" />
     <NavigationProperty Name="tbl_PurchaseBillInner" Relationship="Self.FK__tbl_Purch__BillN__1B9317B3" FromRole="tbl_PurchaseBill" ToRole="tbl_PurchaseBillInner" />
     <NavigationProperty Name="tbl_PurchaseBillInner1" Relationship="Self.FK_tbl_PurchaseBill_tbl_PurchaseBillInner" FromRole="tbl_PurchaseBill" ToRole="tbl_PurchaseBillInner" />
-    <Property Name="EwayNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tbl_PurchaseBillInner">
     <Key>
@@ -2207,9 +2194,9 @@
       <Parameter Name="compid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Sp_loginpassword">
-      <Parameter Name="Action" Mode="In" Type="String" />
       <Parameter Name="ComId" Mode="In" Type="String" />
       <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="tbl_BankAdjustmentselect" ReturnType="Collection(idealtec_inventoryModel.tbl_BankAdjustmentselect_Result)">
       <Parameter Name="Action" Mode="In" Type="String" />
@@ -2592,9 +2579,6 @@
       <Parameter Name="CategoryID" Mode="In" Type="Int32" />
       <Parameter Name="Barcode" Mode="In" Type="String" />
       <Parameter Name="compid" Mode="In" Type="Int32" />
-      <Parameter Name="saleTax" Mode="In" Type="String" />
-      <Parameter Name="PurchaseTax" Mode="In" Type="String" />
-      <Parameter Name="Profit" Mode="In" Type="Double" />
     </FunctionImport>
     <FunctionImport Name="tbl_ItemServicemasterSelect" ReturnType="Collection(idealtec_inventoryModel.tbl_ItemServicemasterSelect_Result)">
       <Parameter Name="Action" Mode="In" Type="String" />
@@ -2636,8 +2620,6 @@
       <Parameter Name="ID" Mode="In" Type="Int32" />
       <Parameter Name="NewPassword" Mode="In" Type="String" />
       <Parameter Name="ConfirmPassword" Mode="In" Type="String" />
-      <Parameter Name="Company_ID" Mode="In" Type="Int32" />
-      <Parameter Name="UserId" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="tbl_MakePaymentSelect" ReturnType="Collection(idealtec_inventoryModel.tbl_MakePaymentSelect_Result)">
       <Parameter Name="Action" Mode="In" Type="String" />
@@ -2715,7 +2697,6 @@
       <Parameter Name="Action" Mode="In" Type="String" />
       <Parameter Name="ID" Mode="In" Type="Int32" />
       <Parameter Name="CustomerName" Mode="In" Type="String" />
-      <Parameter Name="PartyName" Mode="In" Type="String" />
       <Parameter Name="PaymentType" Mode="In" Type="String" />
       <Parameter Name="ReceiptNo" Mode="In" Type="Int32" />
       <Parameter Name="Date" Mode="In" Type="DateTime" />
@@ -2831,7 +2812,6 @@
       <Parameter Name="TaxShow" Mode="In" Type="Double" />
       <Parameter Name="reverschecharges" Mode="In" Type="Double" />
       <Parameter Name="CalTotal" Mode="In" Type="Double" />
-      <Parameter Name="EwayNo" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="tbl_PurchaseOrderInnersp" ReturnType="Collection(idealtec_inventoryModel.tbl_PurchaseOrderInnersp_Result)">
       <Parameter Name="Action" Mode="In" Type="String" />
@@ -3028,7 +3008,7 @@
       <Parameter Name="totalcgst" Mode="In" Type="Double" />
       <Parameter Name="totalsgst" Mode="In" Type="Double" />
       <Parameter Name="totaligst" Mode="In" Type="Double" />
-      <Parameter Name="EWayBillNo" Mode="In" Type="String" />
+      <Parameter Name="E_Way_Bill" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="tbl_SaleOrderInnersp" ReturnType="Collection(idealtec_inventoryModel.tbl_SaleOrderInnersp_Result)">
       <Parameter Name="Action" Mode="In" Type="String" />
@@ -3142,19 +3122,6 @@
       <Parameter Name="Description" Mode="In" Type="String" />
       <Parameter Name="compid" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="tbl_Login" EntityType="idealtec_inventoryModel.tbl_Login" />
-    <AssociationSet Name="FK__tbl_OtherIn__ID2__0A3381871" Association="idealtec_inventoryModel.FK__tbl_OtherIn__ID2__0A3381871">
-      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
-      <End Role="tbl_OtherIncomeInner1" EntitySet="tbl_OtherIncomeInner1" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbl_OtherIncome_tbl_OtherIncome1" Association="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_OtherIncome1">
-      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
-      <End Role="tbl_OtherIncome1" EntitySet="tbl_OtherIncome" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbl_OtherIncomeInner3_tbl_OtherIncome1" Association="idealtec_inventoryModel.FK_tbl_OtherIncomeInner3_tbl_OtherIncome1">
-      <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
-      <End Role="tbl_OtherIncomeInner3" EntitySet="tbl_OtherIncomeInner3" />
-    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="addcompany_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -3843,48 +3810,4 @@
     <Property Type="String" Name="UnitName" Nullable="true" />
     <Property Type="String" Name="SubUnitName" Nullable="true" />
   </ComplexType>
-  <EntityType Name="tbl_Login">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="User_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <Association Name="FK__tbl_OtherIn__ID2__0A3381871">
-    <End Type="idealtec_inventoryModel.tbl_OtherIncome" Role="tbl_OtherIncome" Multiplicity="0..1" />
-    <End Type="idealtec_inventoryModel.tbl_OtherIncomeInner1" Role="tbl_OtherIncomeInner1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_OtherIncome">
-        <PropertyRef Name="Id1" />
-      </Principal>
-      <Dependent Role="tbl_OtherIncomeInner1">
-        <PropertyRef Name="ID2" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbl_OtherIncome_tbl_OtherIncome1">
-    <End Type="idealtec_inventoryModel.tbl_OtherIncome" Role="tbl_OtherIncome" Multiplicity="1" />
-    <End Type="idealtec_inventoryModel.tbl_OtherIncome" Role="tbl_OtherIncome1" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_OtherIncome">
-        <PropertyRef Name="Id1" />
-      </Principal>
-      <Dependent Role="tbl_OtherIncome1">
-        <PropertyRef Name="Id1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbl_OtherIncomeInner3_tbl_OtherIncome1">
-    <End Type="idealtec_inventoryModel.tbl_OtherIncome" Role="tbl_OtherIncome" Multiplicity="0..1" />
-    <End Type="idealtec_inventoryModel.tbl_OtherIncomeInner3" Role="tbl_OtherIncomeInner3" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_OtherIncome">
-        <PropertyRef Name="Id1" />
-      </Principal>
-      <Dependent Role="tbl_OtherIncomeInner3">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

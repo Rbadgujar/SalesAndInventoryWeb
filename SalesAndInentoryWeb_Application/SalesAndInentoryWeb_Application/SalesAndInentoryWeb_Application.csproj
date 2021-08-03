@@ -3475,7 +3475,6 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CountryList.cs" />
-    <Compile Include="Models\DbAcessContext.cs" />
     <Compile Include="Models\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3492,8 +3491,6 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemList.cs" />
-    <Compile Include="Models\PartiesViewModel.cs" />
-    <Compile Include="Models\PartyMaster.cs" />
     <Compile Include="Models\ReferralCode1.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
