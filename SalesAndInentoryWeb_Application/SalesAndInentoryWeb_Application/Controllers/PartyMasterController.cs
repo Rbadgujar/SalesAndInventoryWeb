@@ -33,7 +33,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 vm.ContactNo = tb.ContactNo;
                 vm.BillingAddress = tb.BillingAddress;
                 vm.EmailID = tb.EmailID;
-              vm.GSTNo = tb.GSTNo;
+              //vm.GSTNo = tb.GSTNo;
           
                 vm.State = tb.State;
                 vm.OpeningBal = tb.OpeningBal;
@@ -219,12 +219,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult PartyGroupData()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_PartyGroup> party = db.tbl_PartyGroup.ToList<tbl_PartyGroup>();
-                return Json(new { data = party }, JsonRequestBehavior.AllowGet);
-            }
+            //using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            //{
+            //    db.Configuration.LazyLoadingEnabled = false;
+            //    List<tbl_PartyGroup> party = db.tbl_PartyGroup.ToList<tbl_PartyGroup>();
+            //    return Json(new { data = party }, JsonRequestBehavior.AllowGet);
+            //}
+            return View();
         }
 
         public ActionResult DetailPartyGroup(int id)

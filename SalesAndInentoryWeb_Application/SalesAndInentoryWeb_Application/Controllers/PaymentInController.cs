@@ -18,13 +18,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult LoadData()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                db.Configuration.LazyLoadingEnabled = false;
-                List<tbl_PaymentIn> estimate = db.tbl_PaymentIn.ToList<tbl_PaymentIn>();
-                return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
-            }
+            //using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            //{
+            //    db.Configuration.LazyLoadingEnabled = false;
+            //    List<tbl_PaymentIn> estimate = db.tbl_PaymentIn.ToList<tbl_PaymentIn>();
+            //    return Json(new { data = estimate }, JsonRequestBehavior.AllowGet);
+            //}
+            return View();
         }
+
 
         [HttpGet]
         public ActionResult ShowData()
@@ -48,10 +50,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var vm = new tbl_PaymentIn();
                 //ID,CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount
                 //UnusedAmount,Total,Status,image
-                vm.PartyName = tb.PartyName;
+                //vm.PartyName = tb.PartyName;
                 vm.PaymentType = tb.PaymentType;
                 vm.ReceiptNo = tb.ReceiptNo;
-                vm.Date = tb.Date.ToString();
+                vm.Date = tb.Date
+                    ;
                 vm.Description = tb.Description;
                 vm.ReceivedAmount = tb.ReceivedAmount;
                 vm.UnusedAmount = tb.UnusedAmount;
@@ -116,10 +119,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var vm = new tbl_PaymentIn();
                 //ID,CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount
                 //UnusedAmount,Total,Status,image
-                vm.PartyName = tb.PartyName;
+                //vm.PartyName = tb.PartyName;
                 vm.PaymentType = tb.PaymentType;
                 vm.ReceiptNo = tb.ReceiptNo;
-                vm.Date = tb.Date.ToString();
+                vm.Date = tb.Date;
                 vm.Description = tb.Description;
                 vm.ReceivedAmount = tb.ReceivedAmount;
                 vm.UnusedAmount = tb.UnusedAmount;
