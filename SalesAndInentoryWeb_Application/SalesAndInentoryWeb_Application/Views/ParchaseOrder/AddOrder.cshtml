@@ -48,9 +48,9 @@
                        success: function (data) {
                            var content = "";
                            for (var x in data) {
-                               $("#SalePrice").val(data[x].SalePrice);
-                               $("#TaxForSale").val(data[x].TaxForSale);
-                               $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               $("#sp").val(data[x].SalePrice);
+                               $("#ts").val(data[x].TaxForSale);
+                               $("#sa").val(data[x].SaleTaxAmount);
                            }
                        }
                    });
@@ -81,10 +81,16 @@
         {
             $(ItemName).closest('tr').remove();
         }
+        function minus() {
+            var pretotal1 = $("#Total").val();
+            var pretotal2 = $("#Balance").val();
+            var find = pretotal1 - pretotal2
+            $("#Paid").val(find);
+        };
         function AddToItem()
         {
             var tableitemlist = $("#tblSaleInvoice");
-            var ItemName=$("#dp").val();
+            var ItemName=$("#ID option:selected").val();
             var mrp = $("#sp").val();
             var tax = $("#ts").val();
             var dis = $("#ds").val();
@@ -97,10 +103,18 @@
             + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
+            var finding = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(6)').text();
+                finding = finding + mm
+
+                $("#Total").val(finding);
+            })
         }
         function reset()
         {
-            $("#dp").val('');
+            $("#ID option:selected").val('');
             $("#sp").val('');
             $("#ts").val('');
             $("#ds").val('');
@@ -135,7 +149,7 @@
             objpurchaseorder.DueDate = $("#DueDate").val();
             objpurchaseorder.Barcode = $("#Barcode").val();
             objpurchaseorder.StateOfSupply = $("#StateOfSupply option:selected").val();
-            objpurchaseorder.Received = $("#Received").val();
+            objpurchaseorder.Paid = $("#Paid").val();
             objpurchaseorder.RemainingBal = $("#RemainingBal").val();
             objpurchaseorder.TransportName = $("#TransportName").val();
 
@@ -145,7 +159,7 @@
             objpurchaseorder.TransportName = $("#TransportName").val();
             objpurchaseorder.Status = $("#Status option:selected").val();
             objpurchaseorder.VehicleNumber = $("#VehicleNumber").val();
-            objpurchaseorder.CalTotal = $("#CalTotal").val();
+            objpurchaseorder.Total = $("#Total").val();
             objpurchaseorder.ListOfPurchaseOrder = listofpurchaseorder;
 
 
@@ -154,7 +168,7 @@
                 type: "POST",
                 datatype: 'JSON',
                 contentType: 'application/json;charset=utf-8',
-                data: JSON.stringify(objpurchase),
+                data: JSON.stringify(objpurchaseorder   ),
                 url: '/ParchaseOrder/AddOrder',
                 success: function (data) {
                     if (data.status == true) {
@@ -182,9 +196,9 @@
                         <div class="row">
 							<div class="form-group col-md-3">						
 								Party Name:
-                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Item",new { @class = "form-control", @style = "width:130" } )
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Item",new { @class = "form-control", @style = "width:220px" } )
 								Address:
-								@Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control", placeholder = "Address", @style = "width:220px;height:50px" } })
+								@Html.TextAreaFor(model => model.BillingName,new { @class = "form-control", placeholder = "Address", @style = "width:220px;height:50px" } )
 								Contact No:
 								@Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } })
 								@Html.ValidationMessageFor(model => model.ContactNo)
@@ -280,39 +294,39 @@
 
                                             <th>
                                                 <label>Item Name</label>
-                                                @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts, "Select Item",  new { @class = "form-control", @style = "width:130px" } )
+                                                @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts, "Select Item",  new { @class = "form-control", @style = "width:150px" } )
 
                                             </th>
                                             <th>
                                                 <label>MRP</label>
 
-                                                <input type="text" id="sp" name="" class="form-control" style="width:70PX">
+                                                <input type="text" id="sp" name="" class="form-control" style="width:80PX">
                                             </th>
                                             <th>
                                                 <label>Tax%</label>
 
-                                                <input type="text" id="ts" name="" class="form-control" style="width:70PX">
+                                                <input type="text" id="ts" name="" class="form-control" style="width:80PX">
                                             </th>
                                             <th>
-                                                <label>Descount</label>
-                                                <input type="text" id="ds" name="" class="form-control" style="width:70PX">
+                                                <label>Discount</label>
+                                                <input type="text" id="ds" name="" class="form-control" style="width:80PX">
 
                                             <th>
                                                 <label>Qty</label>
-                                                <input type="text" id="qty" name="" class="form-control" style="width:70PX">
+                                                <input type="text" id="qty" name="" class="form-control" style="width:80PX">
                                             </th>
                                             <th>
                                                 <label>Dis Amount</label>
-                                                <input type="text" id="da" name="" class="form-control" style="width:70PX">
+                                                <input type="text" id="da" name="" class="form-control" style="width:80PX">
 
                                             </th>
                                             <th>
                                                 <label>Tax Amount</label>
-                                                <input type="text" id="sa" name="" class="form-control" style="width:70PX">
+                                                <input type="text" id="sa" name="" class="form-control" style="width:80PX">
                                             </th>
                                             <th>
                                                 <label>Total</label>
-                                                <input type="text" id="ca" name="" class="form-control" style="width:70PX">
+                                                <input type="text" id="ca" name="" class="form-control" style="width:80PX">
                                             </th>
                                             <th>
                                                 <a class="btn btn-primary pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
@@ -355,7 +369,7 @@
                                htmlAttributes = new
                                {
                                    @class = "form-control",
-                                   placeholder = "vical No",
+                                   placeholder = "Vehicle Number",
                                    @style = "width:150px;height:30px;"
                                }
                            })
@@ -376,8 +390,8 @@
                                Payment Status;
                                 <select name="cars" id="Status" class="form-control" style="width:150px;">
                                     <option value="Select PaymentType">Select Payment Status</option>
-                                    <option value="volvo">Paid</option>
-                                    <option value="saab">Unpiad</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Unpiad">Unpiad</option>
 
                                 </select>
                             </div>
@@ -388,10 +402,10 @@
                                     @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
                                     @Html.ValidationMessageFor(model => model.Total)
                                     Recived:
-                                    @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
+                                    @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control", placeholder = "Receive Ammount" ,@onchange="minus()"} })
                                     @Html.ValidationMessageFor(model => model.Paid)
                                    Remining Bal:
-                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
+                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Remaining Balance" } })
                                     @Html.ValidationMessageFor(model => model.RemainingBal)
                                 </div>
 

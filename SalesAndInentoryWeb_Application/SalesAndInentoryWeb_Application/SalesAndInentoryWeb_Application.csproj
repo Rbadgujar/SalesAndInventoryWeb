@@ -3767,6 +3767,7 @@
     <Compile Include="ViewModel\OtherParties.cs" />
     <Compile Include="ViewModel\PartyDetailPurchaseOrder.cs" />
     <Compile Include="ViewModel\PartyDetails.cs" />
+    <Compile Include="ViewModel\PartyDetailsDebitNote.cs" />
     <Compile Include="ViewModel\PartyDetailsForPurchase.cs" />
     <Compile Include="ViewModel\SaleInvoiceItemDetails.cs" />
     <Compile Include="ViewModel\SaleInvoicePartyDetails.cs" />
