@@ -30665,8 +30665,10 @@ namespace SalesAndInentoryWeb_Application
 		private string _FromBank;
 		
 		private string _ToBank;
-		
-		private System.Nullable<double> _Amount;
+
+        private string _OpeningBal;
+
+        private System.Nullable<double> _Amount;
 		
 		private System.Nullable<System.DateTime> _Date;
 		
