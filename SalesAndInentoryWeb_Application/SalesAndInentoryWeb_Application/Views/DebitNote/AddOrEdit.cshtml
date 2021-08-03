@@ -27,6 +27,7 @@
             });
             $("#btnsubmit").click(function (e) {
                 additems();
+                alert("Sucessfully Added....")
             });
             $("#ID").change(function () {
                 debugger
@@ -103,12 +104,12 @@
         }
         function additems() {
             debugger
-            var objpurchaseorder = {};
-            var listofpurchaseorder = [];
+            var objdebitnote = {};
+            var listofdebitnote = [];
 
             $.each($("#tblSaleInvoice tbody tr"),
                 function () {
-                    listofpurchaseorder.push({
+                    listofdebitnote.push({
                         ItemName: $(this).find("td:eq(0)").text(),
                         SalePrice: $(this).find("td:eq(1)").text(),
                         TaxForSale: $(this).find("td:eq(2)").text(),
@@ -120,27 +121,27 @@
                     });
                 });
 
-            objpurchaseorder.PartyName = $("#PartiesID option:selected").val();
-            objpurchaseorder.BillingName = $("#BillingName").val();
-            objpurchaseorder.ContactNo = $("#ContactNo").val();
-            objpurchaseorder.OrderDate = $("#PONumber").val();
-            objpurchaseorder.DueDate = $("#PODate").val();
-            objpurchaseorder.OrderDate = $("#InvoiceDate").val();
-            objpurchaseorder.DueDate = $("#DueDate").val();
-            objpurchaseorder.Barcode = $("#Barcode").val();
-            objpurchaseorder.StateOfSupply = $("#StateOfSupply option:selected").val();
-            objpurchaseorder.Paid = $("#Received").val();
-            objpurchaseorder.RemainingBal = $("#RemainingBal").val();
-            objpurchaseorder.TransportName = $("#TransportName").val();
+            objdebitnote.PartyName = $("#PartiesID option:selected").val();
+            objdebitnote.BillingName = $("#BillingName").val();
+            objdebitnote.ContactNo = $("#ContactNo").val();
+            objdebitnote.PONumber = $("#PONumber").val();
+            objdebitnote.PODate = $("#PODate").val();
+            objdebitnote.InvoiceDate = $("#InvoiceDate").val();
+            objdebitnote.DueDate = $("#DueDate").val();
+            objdebitnote.Barcode = $("#Barcode").val();
+            objdebitnote.StateOfSupply = $("#StateOfSupply option:selected").val();
+            objdebitnote.Received = $("#Received").val();
+            objdebitnote.RemainingBal = $("#RemainingBal").val();
+            objdebitnote.TransportName = $("#TransportName").val();
 
-            objpurchaseorder.DeliveryLocation = $("#DeliveryLocation").val();
-            objpurchaseorder.DeliverDate = $("#DeliveryDate").val();
-            objpurchaseorder.PaymentType = $("#PaymentType").val();
-            objpurchaseorder.TransportName = $("#TransportName").val();
-            objpurchaseorder.Status = $("#Status option:selected").val();
-            objpurchaseorder.VehicleNumber = $("#VehicleNumber").val();
-            objpurchaseorder.Total = $("#Total").val();
-            objpurchaseorder.ListOfPurchaseOrder = listofpurchaseorder;
+            objdebitnote.DeliveryLocation = $("#DeliveryLocation").val();
+            objdebitnote.DeliverDate = $("#DeliveryDate").val();
+            objdebitnote.PaymentType = $("#PaymentType").val();
+            objdebitnote.TransportName = $("#TransportName").val();
+            objdebitnote.Status = $("#Status option:selected").val();
+            objdebitnote.VehicleNumber = $("#VehicleNumber").val();
+            objdebitnote.Total = $("#Total").val();
+            objdebitnote.ListOfDebitNote = listofdebitnote;
 
 
             $.ajax({
@@ -148,7 +149,7 @@
                 type: "POST",
                 datatype: 'JSON',
                 contentType: 'application/json;charset=utf-8',
-                data: JSON.stringify(objpurchaseorder),
+                data: JSON.stringify(objdebitnote),
                 url: '/DebitNote/AddOrEdit',
                 success: function (data) {
                     if (data.status == true) {
@@ -274,33 +275,33 @@
                                         <th>
                                             <label>MRP</label>
 
-                                            <input type="text" id="sp" name="" class="form-control" style="width:70PX">
+                                            <input type="text" id="sp" name="" class="form-control" style="width:80PX">
                                         </th>
                                         <th>
                                             <label>Tax%</label>
 
-                                            <input type="text" id="ts" name="" class="form-control" style="width:70PX">
+                                            <input type="text" id="ts" name="" class="form-control" style="width:80PX">
                                         </th>
                                         <th>
-                                            <label>Descount</label>
-                                            <input type="text" id="ds" name="" class="form-control" style="width:70PX">
+                                            <label>Discount</label>
+                                            <input type="text" id="ds" name="" class="form-control" style="width:80PX">
 
                                         <th>
                                             <label>Qty</label>
-                                            <input type="text" id="qty" name="" class="form-control" style="width:70PX">
+                                            <input type="text" id="qty" name="" class="form-control" style="width:80PX">
                                         </th>
                                         <th>
                                             <label>Dis Amount</label>
-                                            <input type="text" id="da" name="" class="form-control" style="width:70PX">
+                                            <input type="text" id="da" name="" class="form-control" style="width:80PX">
 
                                         </th>
                                         <th>
                                             <label>Tax Amount</label>
-                                            <input type="text" id="sa" name="" class="form-control" style="width:70PX">
+                                            <input type="text" id="sa" name="" class="form-control" style="width:80PX">
                                         </th>
                                         <th>
-                                            <label>Tax Amount</label>
-                                            <input type="text" id="ca" name="" class="form-control" style="width:70PX">
+                                            <label>Total</label>
+                                            <input type="text" id="ca" name="" class="form-control" style="width:80PX">
                                         </th>
                                         <th>
                                             <a class="btn btn-primary pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
