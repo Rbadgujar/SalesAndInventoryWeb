@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="idealtec_inventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="idealtec_inventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CompanyBankAccount">
           <Key>
             <PropertyRef Name="ID" />
@@ -18,6 +18,29 @@
           <Property Name="Company_ID" Type="int" />
           <Property Name="DeleteData" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'idealtec_inventory.dbo.Item_Seeting' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Item_Seeting">
+          <Property Name="MRP" Type="varchar" MaxLength="50" />
+          <Property Name="Batch_No" Type="varchar" MaxLength="50" />
+          <Property Name="Serial_No" Type="varchar" MaxLength="50" />
+          <Property Name="Mef_Date" Type="varchar" MaxLength="50" />
+          <Property Name="Exp_date" Type="varchar" MaxLength="50" />
+          <Property Name="Size" Type="varchar" MaxLength="50" />
+          <Property Name="Company_ID" Type="int" />
+          <Property Name="Expdaate" Type="int" />
+          <Property Name="MFDAte" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'idealtec_inventory.dbo.PasswordCheek' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PasswordCheek">
+          <Property Name="ID" Type="nchar" MaxLength="10" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Company_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Feild1" Type="varchar" MaxLength="50" />
+          <Property Name="Feald2" Type="varchar" MaxLength="50" />
+        </EntityType>-->
         <EntityType Name="ReferralCode1">
           <Key>
             <PropertyRef Name="ID" />
@@ -27,6 +50,66 @@
           <Property Name="DeleteData" Type="bit" />
           <Property Name="Company_ID" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'idealtec_inventory.dbo.Setting_Table' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Setting_Table">
+          <Property Name="ID" Type="nchar" MaxLength="10" />
+          <Property Name="Enable_Launch" Type="nchar" MaxLength="10" />
+          <Property Name="Gst_In" Type="nchar" MaxLength="10" />
+          <Property Name="Estiment" Type="nchar" MaxLength="10" />
+          <Property Name="ChangeCurrency" Type="nchar" MaxLength="10" />
+          <Property Name="Amount" Type="nchar" MaxLength="10" />
+          <Property Name="Sale_purches" Type="nchar" MaxLength="10" />
+          <Property Name="OtheIncome" Type="nchar" MaxLength="10" />
+          <Property Name="Delliverychallen" Type="nchar" MaxLength="10" />
+          <Property Name="GoodsReturn" Type="nchar" MaxLength="10" />
+          <Property Name="Print_Amount" Type="nchar" MaxLength="10" />
+          <Property Name="Autobackup" Type="nchar" MaxLength="10" />
+          <Property Name="AutoForms" Type="nchar" MaxLength="10" />
+          <Property Name="Company_ID" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceNo" Type="nchar" MaxLength="10" />
+          <Property Name="CashSalebyDefualt" Type="nchar" MaxLength="10" />
+          <Property Name="billingNumberBy" Type="nchar" MaxLength="10" />
+          <Property Name="CustomerPONo" Type="nchar" MaxLength="10" />
+          <Property Name="Inclusive/Exclusive" Type="nchar" MaxLength="10" />
+          <Property Name="Display Purchase " Type="nchar" MaxLength="10" />
+          <Property Name="Show_last_5" Type="nchar" MaxLength="10" />
+          <Property Name="DisplayFreeQuantity" Type="nchar" MaxLength="10" />
+          <Property Name="Countdata" Type="nchar" MaxLength="10" />
+          <Property Name="Transaction_Wise" Type="nchar" MaxLength="10" />
+          <Property Name="Transaction_Discount" Type="nchar" MaxLength="10" />
+          <Property Name="Round_Off" Type="nchar" MaxLength="10" />
+          <Property Name="Do_Not_Invoce" Type="nchar" MaxLength="10" />
+          <Property Name="Enable_Transaction" Type="nchar" MaxLength="10" />
+          <Property Name="Discount_During_payment" Type="nchar" MaxLength="10" />
+          <Property Name="link_Payement" Type="nchar" MaxLength="10" />
+          <Property Name="Due_date" Type="nchar" MaxLength="10" />
+          <Property Name="SendSms" Type="nchar" MaxLength="10" />
+          <Property Name="SendSmsCopy" Type="nchar" MaxLength="10" />
+          <Property Name="MRPDate" Type="int" />
+          <Property Name="BatchNo" Type="int" />
+          <Property Name="SerialNo" Type="int" />
+          <Property Name="MnfDate" Type="int" />
+          <Property Name="ExpDate" Type="int" />
+          <Property Name="Size" Type="int" />
+          <Property Name="Size1" Type="int" />
+          <Property Name="Size2" Type="int" />
+          <Property Name="ItemWiseDiscount" Type="int" />
+          <Property Name="ItemwisTax" Type="int" />
+          <Property Name="Discription" Type="int" />
+          <Property Name="Partywise" Type="int" />
+          <Property Name="barcode" Type="int" />
+          <Property Name="Stockmantance" Type="int" />
+          <Property Name="ItemCategory" Type="int" />
+          <Property Name="Partygroup" Type="int" />
+          <Property Name="REMINDER" Type="int" />
+          <Property Name="dayreminder" Type="int" />
+          <Property Name="notifyday" Type="int" />
+          <Property Name="remindermessage" Type="varchar" MaxLength="500" />
+          <Property Name="itemwisetax" Type="int" />
+          <Property Name="cashremoinder" Type="int" />
+          <Property Name="reverschecharges" Type="int" />
+        </EntityType>-->
         <EntityType Name="tbl_BankAccount">
           <Key>
             <PropertyRef Name="ID" />
@@ -456,8 +539,6 @@
           <Property Name="Company_ID" Type="int" />
           <Property Name="Cess" Type="float" />
           <Property Name="Profit" Type="float" />
-          <Property Name="saleTax" Type="varchar" MaxLength="100" />
-          <Property Name="PurchaseTax" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbl_ItemServicemaster">
           <Key>
@@ -510,8 +591,7 @@
           <Property Name="NewPassword" Type="nvarchar(max)" />
           <Property Name="ConfirmPassword" Type="nvarchar(max)" />
           <Property Name="DeleteData" Type="bit" />
-          <Property Name="c" Type="int" />
-          <Property Name="UserId" Type="varchar" MaxLength="100" />
+          <Property Name="Company_ID" Type="int" />
         </EntityType>
         <EntityType Name="tbl_MakePayment">
           <Key>
@@ -529,9 +609,9 @@
         </EntityType>
         <EntityType Name="tbl_OtherIncome">
           <Key>
-            <PropertyRef Name="Id1" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id1" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="IncomeCategory" Type="nvarchar(max)" />
           <Property Name="Date" Type="date" />
           <Property Name="paymentType" Type="nvarchar(max)" />
@@ -550,7 +630,6 @@
           <Property Name="TableName" Type="nvarchar(max)" />
           <Property Name="DeleteData" Type="bit" />
           <Property Name="Company_ID" Type="int" />
-          <Property Name="Id" Type="int" />
         </EntityType>
         <EntityType Name="tbl_otherIncomeCaategory">
           <Key>
@@ -744,7 +823,6 @@
           <Property Name="TaxShow" Type="float" />
           <Property Name="CalTotal" Type="float" />
           <Property Name="reverschecharges" Type="float" />
-          <Property Name="EwayNo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PurchaseBillInner">
           <Key>
@@ -1144,14 +1222,40 @@
           <Property Name="TaxShow" Type="float" />
           <Property Name="Discount" Type="float" />
         </EntityType>
-        <EntityType Name="tbl_Login">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="User_id" Type="nvarchar" MaxLength="50" />
-          <Property Name="Password" Type="nvarchar(max)" />
-        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'idealtec_inventory.dbo.TransactionTableSetting' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TransactionTableSetting">
+          <Property Name="InvoiceOrBill" Type="bit" />
+          <Property Name="CashSaleByDefault" Type="bit" />
+          <Property Name="BillingNameByParties" Type="bit" />
+          <Property Name="CustomerPoDetails" Type="bit" />
+          <Property Name="InclusiveOrExclusive" Type="bit" />
+          <Property Name="DisplayPurchasePriseOnItem" Type="bit" />
+          <Property Name="ShowLastSaleItem" Type="bit" />
+          <Property Name="DisplayFreeQty" Type="bit" />
+          <Property Name="Count" Type="bit" />
+          <Property Name="TransactionWiseTax" Type="bit" />
+          <Property Name="TransactionWiseDiscount" Type="bit" />
+          <Property Name="RoundOff" Type="bit" />
+          <Property Name="DoNotShowInvoicePreview" Type="bit" />
+          <Property Name="PasscodeToTransaction" Type="bit" />
+          <Property Name="DiscountDuringPayment" Type="bit" />
+          <Property Name="DueDatesAndPaymentTerms" Type="bit" />
+          <Property Name="Company_ID" Type="int" />
+          <Property Name="SendSMSToParty" Type="bit" />
+          <Property Name="SendSMSToSelf" Type="bit" />
+          <Property Name="DeliveryDate" Type="int" />
+          <Property Name="TransportName" Type="int" />
+          <Property Name="DeliveryLocation" Type="bit" />
+          <Property Name="VehicleNo" Type="bit" />
+          <Property Name="ShippingAddress" Type="bit" />
+          <Property Name="PrintShippingAddress" Type="bit" />
+          <Property Name="HSN" Type="bit" />
+          <Property Name="PlaceofSupply" Type="bit" />
+          <Property Name="EwayBill" Type="bit" />
+          <Property Name="EnableGst" Type="bit" />
+          <Property Name="Cess" Type="bit" />
+        </EntityType>-->
         <Association Name="FK__tbl_Deliv__Chall__68D28DBC">
           <End Role="tbl_DeliveryChallan" Type="Self.tbl_DeliveryChallan" Multiplicity="0..1" />
           <End Role="tbl_DeliveryChallanInner" Type="Self.tbl_DeliveryChallanInner" Multiplicity="*" />
@@ -1169,7 +1273,7 @@
           <End Role="tbl_OtherIncomeInner1" Type="Self.tbl_OtherIncomeInner1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_OtherIncome">
-              <PropertyRef Name="Id1" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tbl_OtherIncomeInner1">
               <PropertyRef Name="ID2" />
@@ -1313,10 +1417,10 @@
           <End Role="tbl_OtherIncome1" Type="Self.tbl_OtherIncome" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="tbl_OtherIncome">
-              <PropertyRef Name="Id1" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tbl_OtherIncome1">
-              <PropertyRef Name="Id1" />
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1344,12 +1448,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory2">
+          <End Role="tbl_otherIncomeCaategory" Type="Self.tbl_otherIncomeCaategory" Multiplicity="0..1" />
+          <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_otherIncomeCaategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OtherIncome">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_OtherIncomeInner3_tbl_OtherIncome">
           <End Role="tbl_OtherIncome" Type="Self.tbl_OtherIncome" Multiplicity="0..1" />
           <End Role="tbl_OtherIncomeInner3" Type="Self.tbl_OtherIncomeInner3" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_OtherIncome">
-              <PropertyRef Name="Id1" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tbl_OtherIncomeInner3">
               <PropertyRef Name="Id" />
@@ -1832,9 +1948,9 @@
           <Parameter Name="compid" Type="int" Mode="In" />
         </Function>
         <Function Name="Sp_loginpassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Action" Type="varchar" Mode="In" />
           <Parameter Name="ComId" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
         </Function>
         <Function Name="tbl_BankAdjustmentselect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2217,9 +2333,6 @@
           <Parameter Name="CategoryID" Type="int" Mode="In" />
           <Parameter Name="Barcode" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="compid" Type="int" Mode="In" />
-          <Parameter Name="saleTax" Type="varchar" Mode="In" />
-          <Parameter Name="PurchaseTax" Type="varchar" Mode="In" />
-          <Parameter Name="Profit" Type="float" Mode="In" />
         </Function>
         <Function Name="tbl_ItemServicemasterSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2261,8 +2374,6 @@
           <Parameter Name="ID" Type="int" Mode="In" />
           <Parameter Name="NewPassword" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="ConfirmPassword" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="Company_ID" Type="int" Mode="In" />
-          <Parameter Name="UserId" Type="varchar" Mode="In" />
         </Function>
         <Function Name="tbl_MakePaymentSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2340,7 +2451,6 @@
           <Parameter Name="Action" Type="varchar" Mode="In" />
           <Parameter Name="ID" Type="int" Mode="In" />
           <Parameter Name="CustomerName" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="PartyName" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="PaymentType" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="ReceiptNo" Type="int" Mode="In" />
           <Parameter Name="Date" Type="date" Mode="In" />
@@ -2456,7 +2566,6 @@
           <Parameter Name="TaxShow" Type="float" Mode="In" />
           <Parameter Name="reverschecharges" Type="float" Mode="In" />
           <Parameter Name="CalTotal" Type="float" Mode="In" />
-          <Parameter Name="EwayNo" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="tbl_PurchaseOrderInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2653,7 +2762,7 @@
           <Parameter Name="totalcgst" Type="float" Mode="In" />
           <Parameter Name="totalsgst" Type="float" Mode="In" />
           <Parameter Name="totaligst" Type="float" Mode="In" />
-          <Parameter Name="EWayBillNo" Type="varchar" Mode="In" />
+          <Parameter Name="E_Way_Bill" Type="varchar" Mode="In" />
         </Function>
         <Function Name="tbl_SaleOrderInnersp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Action" Type="varchar" Mode="In" />
@@ -2807,7 +2916,6 @@
           <EntitySet Name="tbl_UnitMaster" EntityType="Self.tbl_UnitMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tble_NewCompany" EntityType="Self.tble_NewCompany" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblQuotation" EntityType="Self.tblQuotation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_Login" EntityType="Self.tbl_Login" Schema="idealtec_inventory" store:Type="Tables" />
           <AssociationSet Name="FK__tbl_Deliv__Chall__68D28DBC" Association="Self.FK__tbl_Deliv__Chall__68D28DBC">
             <End Role="tbl_DeliveryChallan" EntitySet="tbl_DeliveryChallan" />
             <End Role="tbl_DeliveryChallanInner" EntitySet="tbl_DeliveryChallanInner" />
@@ -2869,6 +2977,10 @@
             <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory1" Association="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory1">
+            <End Role="tbl_otherIncomeCaategory" EntitySet="tbl_otherIncomeCaategory" />
+            <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OtherIncome_tbl_otherIncomeCaategory2" Association="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory2">
             <End Role="tbl_otherIncomeCaategory" EntitySet="tbl_otherIncomeCaategory" />
             <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
           </AssociationSet>
@@ -3017,7 +3129,8 @@
             <End Role="tbl_CreditNote1" EntitySet="tbl_CreditNote1" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="idealtec_inventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -3518,8 +3631,6 @@
           <NavigationProperty Name="tbl_PurchaseOrderInner" Relationship="Self.PK_tbl_PurchaseOrderInner_Item" FromRole="tbl_ItemMaster" ToRole="tbl_PurchaseOrderInner" />
           <NavigationProperty Name="tbl_QuotationInner" Relationship="Self.PK_tbl_QuotationInner_Item" FromRole="tbl_ItemMaster" ToRole="tbl_QuotationInner" />
           <NavigationProperty Name="tbl_SaleInvoiceInner" Relationship="Self.PK_tbl_SaleInvoiceInner_Item" FromRole="tbl_ItemMaster" ToRole="tbl_SaleInvoiceInner" />
-          <Property Name="saleTax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PurchaseTax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_ItemServicemaster">
           <Key>
@@ -3575,8 +3686,6 @@
           <Property Name="ConfirmPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DeleteData" Type="Boolean" />
           <Property Name="Company_ID" Type="Int32" />
-          <Property Name="c" Type="Int32" />
-          <Property Name="UserId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_MakePayment">
           <Key>
@@ -3595,9 +3704,8 @@
         <EntityType Name="tbl_OtherIncome">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Id1" />
           </Key>
-          <Property Name="Id" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="IncomeCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="paymentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -3623,11 +3731,6 @@
           <NavigationProperty Name="tbl_otherIncomeCaategory1" Relationship="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory1" FromRole="tbl_OtherIncome" ToRole="tbl_otherIncomeCaategory" />
           <NavigationProperty Name="tbl_otherIncomeCaategory2" Relationship="Self.FK_tbl_OtherIncome_tbl_otherIncomeCaategory2" FromRole="tbl_OtherIncome" ToRole="tbl_otherIncomeCaategory" />
           <NavigationProperty Name="tbl_OtherIncomeInner3" Relationship="Self.FK_tbl_OtherIncomeInner3_tbl_OtherIncome" FromRole="tbl_OtherIncome" ToRole="tbl_OtherIncomeInner3" />
-          <Property Name="Id1" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbl_OtherIncomeInner11" Relationship="idealtec_inventoryModel.FK__tbl_OtherIn__ID2__0A3381871" FromRole="tbl_OtherIncome" ToRole="tbl_OtherIncomeInner1" />
-          <NavigationProperty Name="tbl_OtherIncome11" Relationship="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_OtherIncome1" FromRole="tbl_OtherIncome" ToRole="tbl_OtherIncome1" />
-          <NavigationProperty Name="tbl_OtherIncome21" Relationship="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_OtherIncome1" FromRole="tbl_OtherIncome1" ToRole="tbl_OtherIncome" />
-          <NavigationProperty Name="tbl_OtherIncomeInner31" Relationship="idealtec_inventoryModel.FK_tbl_OtherIncomeInner3_tbl_OtherIncome1" FromRole="tbl_OtherIncome" ToRole="tbl_OtherIncomeInner3" />
         </EntityType>
         <EntityType Name="tbl_otherIncomeCaategory">
           <Key>
@@ -3666,7 +3769,6 @@
           <Property Name="DeleteData" Type="Boolean" />
           <Property Name="ID2" Type="Int32" />
           <NavigationProperty Name="tbl_OtherIncome" Relationship="Self.FK__tbl_OtherIn__ID2__0A338187" FromRole="tbl_OtherIncomeInner1" ToRole="tbl_OtherIncome" />
-          <NavigationProperty Name="tbl_OtherIncome1" Relationship="idealtec_inventoryModel.FK__tbl_OtherIn__ID2__0A3381871" FromRole="tbl_OtherIncomeInner1" ToRole="tbl_OtherIncome" />
         </EntityType>
         <EntityType Name="tbl_OtherIncomeInner3">
           <Key>
@@ -3681,7 +3783,6 @@
           <Property Name="Company_ID" Type="Int32" />
           <Property Name="DeleteData" Type="Boolean" />
           <NavigationProperty Name="tbl_OtherIncome" Relationship="Self.FK_tbl_OtherIncomeInner3_tbl_OtherIncome" FromRole="tbl_OtherIncomeInner3" ToRole="tbl_OtherIncome" />
-          <NavigationProperty Name="tbl_OtherIncome1" Relationship="idealtec_inventoryModel.FK_tbl_OtherIncomeInner3_tbl_OtherIncome1" FromRole="tbl_OtherIncomeInner3" ToRole="tbl_OtherIncome" />
         </EntityType>
         <EntityType Name="tbl_PartyGroup">
           <Key>
@@ -3837,7 +3938,6 @@
           <NavigationProperty Name="tbl_PartyMaster" Relationship="Self.FK_tbl_PurchaseBill_tbl_PartyMaster" FromRole="tbl_PurchaseBill" ToRole="tbl_PartyMaster" />
           <NavigationProperty Name="tbl_PurchaseBillInner" Relationship="Self.FK__tbl_Purch__BillN__1B9317B3" FromRole="tbl_PurchaseBill" ToRole="tbl_PurchaseBillInner" />
           <NavigationProperty Name="tbl_PurchaseBillInner1" Relationship="Self.FK_tbl_PurchaseBill_tbl_PurchaseBillInner" FromRole="tbl_PurchaseBill" ToRole="tbl_PurchaseBillInner" />
-          <Property Name="EwayNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PurchaseBillInner">
           <Key>
@@ -5228,9 +5328,9 @@
             <Parameter Name="compid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_loginpassword">
-            <Parameter Name="Action" Mode="In" Type="String" />
             <Parameter Name="ComId" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="Action" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="tbl_BankAdjustmentselect" ReturnType="Collection(idealtec_inventoryModel.tbl_BankAdjustmentselect_Result)">
             <Parameter Name="Action" Mode="In" Type="String" />
@@ -5613,9 +5713,6 @@
             <Parameter Name="CategoryID" Mode="In" Type="Int32" />
             <Parameter Name="Barcode" Mode="In" Type="String" />
             <Parameter Name="compid" Mode="In" Type="Int32" />
-            <Parameter Name="saleTax" Mode="In" Type="String" />
-            <Parameter Name="PurchaseTax" Mode="In" Type="String" />
-            <Parameter Name="Profit" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="tbl_ItemServicemasterSelect" ReturnType="Collection(idealtec_inventoryModel.tbl_ItemServicemasterSelect_Result)">
             <Parameter Name="Action" Mode="In" Type="String" />
@@ -5657,8 +5754,6 @@
             <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="NewPassword" Mode="In" Type="String" />
             <Parameter Name="ConfirmPassword" Mode="In" Type="String" />
-            <Parameter Name="Company_ID" Mode="In" Type="Int32" />
-            <Parameter Name="UserId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="tbl_MakePaymentSelect" ReturnType="Collection(idealtec_inventoryModel.tbl_MakePaymentSelect_Result)">
             <Parameter Name="Action" Mode="In" Type="String" />
@@ -5736,7 +5831,6 @@
             <Parameter Name="Action" Mode="In" Type="String" />
             <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="CustomerName" Mode="In" Type="String" />
-            <Parameter Name="PartyName" Mode="In" Type="String" />
             <Parameter Name="PaymentType" Mode="In" Type="String" />
             <Parameter Name="ReceiptNo" Mode="In" Type="Int32" />
             <Parameter Name="Date" Mode="In" Type="DateTime" />
@@ -5852,7 +5946,6 @@
             <Parameter Name="TaxShow" Mode="In" Type="Double" />
             <Parameter Name="reverschecharges" Mode="In" Type="Double" />
             <Parameter Name="CalTotal" Mode="In" Type="Double" />
-            <Parameter Name="EwayNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="tbl_PurchaseOrderInnersp" ReturnType="Collection(idealtec_inventoryModel.tbl_PurchaseOrderInnersp_Result)">
             <Parameter Name="Action" Mode="In" Type="String" />
@@ -6049,7 +6142,7 @@
             <Parameter Name="totalcgst" Mode="In" Type="Double" />
             <Parameter Name="totalsgst" Mode="In" Type="Double" />
             <Parameter Name="totaligst" Mode="In" Type="Double" />
-            <Parameter Name="EWayBillNo" Mode="In" Type="String" />
+            <Parameter Name="E_Way_Bill" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="tbl_SaleOrderInnersp" ReturnType="Collection(idealtec_inventoryModel.tbl_SaleOrderInnersp_Result)">
             <Parameter Name="Action" Mode="In" Type="String" />
@@ -6163,19 +6256,6 @@
             <Parameter Name="Description" Mode="In" Type="String" />
             <Parameter Name="compid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="tbl_Login" EntityType="idealtec_inventoryModel.tbl_Login" />
-          <AssociationSet Name="FK__tbl_OtherIn__ID2__0A3381871" Association="idealtec_inventoryModel.FK__tbl_OtherIn__ID2__0A3381871">
-            <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
-            <End Role="tbl_OtherIncomeInner1" EntitySet="tbl_OtherIncomeInner1" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_OtherIncome_tbl_OtherIncome1" Association="idealtec_inventoryModel.FK_tbl_OtherIncome_tbl_OtherIncome1">
-            <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
-            <End Role="tbl_OtherIncome1" EntitySet="tbl_OtherIncome" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_OtherIncomeInner3_tbl_OtherIncome1" Association="idealtec_inventoryModel.FK_tbl_OtherIncomeInner3_tbl_OtherIncome1">
-            <End Role="tbl_OtherIncome" EntitySet="tbl_OtherIncome" />
-            <End Role="tbl_OtherIncomeInner3" EntitySet="tbl_OtherIncomeInner3" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="addcompany_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -6864,50 +6944,6 @@
           <Property Type="String" Name="UnitName" Nullable="true" />
           <Property Type="String" Name="SubUnitName" Nullable="true" />
         </ComplexType>
-        <EntityType Name="tbl_Login">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK__tbl_OtherIn__ID2__0A3381871">
-          <End Type="idealtec_inventoryModel.tbl_OtherIncome" Role="tbl_OtherIncome" Multiplicity="0..1" />
-          <End Type="idealtec_inventoryModel.tbl_OtherIncomeInner1" Role="tbl_OtherIncomeInner1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_OtherIncome">
-              <PropertyRef Name="Id1" />
-            </Principal>
-            <Dependent Role="tbl_OtherIncomeInner1">
-              <PropertyRef Name="ID2" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_OtherIncome_tbl_OtherIncome1">
-          <End Type="idealtec_inventoryModel.tbl_OtherIncome" Role="tbl_OtherIncome" Multiplicity="1" />
-          <End Type="idealtec_inventoryModel.tbl_OtherIncome" Role="tbl_OtherIncome1" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_OtherIncome">
-              <PropertyRef Name="Id1" />
-            </Principal>
-            <Dependent Role="tbl_OtherIncome1">
-              <PropertyRef Name="Id1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_OtherIncomeInner3_tbl_OtherIncome1">
-          <End Type="idealtec_inventoryModel.tbl_OtherIncome" Role="tbl_OtherIncome" Multiplicity="0..1" />
-          <End Type="idealtec_inventoryModel.tbl_OtherIncomeInner3" Role="tbl_OtherIncomeInner3" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_OtherIncome">
-              <PropertyRef Name="Id1" />
-            </Principal>
-            <Dependent Role="tbl_OtherIncomeInner3">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7350,8 +7386,6 @@
           <EntitySetMapping Name="tbl_ItemMaster">
             <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_ItemMaster">
               <MappingFragment StoreEntitySet="tbl_ItemMaster">
-                <ScalarProperty Name="PurchaseTax" ColumnName="PurchaseTax" />
-                <ScalarProperty Name="saleTax" ColumnName="saleTax" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
                 <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
@@ -7436,12 +7470,11 @@
           <EntitySetMapping Name="tbl_LoginPasssword">
             <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_LoginPasssword">
               <MappingFragment StoreEntitySet="tbl_LoginPasssword">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="c" ColumnName="c" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NewPassword" ColumnName="NewPassword" />
                 <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
                 <ScalarProperty Name="DeleteData" ColumnName="DeleteData" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7463,7 +7496,6 @@
           <EntitySetMapping Name="tbl_OtherIncome">
             <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_OtherIncome">
               <MappingFragment StoreEntitySet="tbl_OtherIncome">
-                <ScalarProperty Name="Id1" ColumnName="Id1" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IncomeCategory" ColumnName="IncomeCategory" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -7638,7 +7670,6 @@
           <EntitySetMapping Name="tbl_PurchaseBill">
             <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_PurchaseBill">
               <MappingFragment StoreEntitySet="tbl_PurchaseBill">
-                <ScalarProperty Name="EwayNo" ColumnName="EwayNo" />
                 <ScalarProperty Name="BillNo" ColumnName="BillNo" />
                 <ScalarProperty Name="PartyName" ColumnName="PartyName" />
                 <ScalarProperty Name="BillingName" ColumnName="BillingName" />
@@ -8966,15 +8997,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="bankadjust" FunctionName="idealtec_inventoryModel.Store.tbl_BankAdjustmentselect" />
-          <EntitySetMapping Name="tbl_Login">
-            <EntityTypeMapping TypeName="idealtec_inventoryModel.tbl_Login">
-              <MappingFragment StoreEntitySet="tbl_Login">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="User_id" ColumnName="User_id" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

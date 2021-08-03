@@ -56,6 +56,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult signup(Login model)
         {
 
+
+
             return View();
         }
     }
