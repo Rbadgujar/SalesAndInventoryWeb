@@ -5,13 +5,13 @@ using System.Web;
 
 namespace SalesAndInentoryWeb_Application.ViewModel
 {
-    public class PartyDetailsForPurchase
+    public class PartyDetailPurchaseOrder
     {
-        public int BillNo { get; set; }
+        public int OrderNo { get; set; }
         public string PartyName { get; set; }
         public string BillingName { get; set; }
         public string ContactNo { get; set; }
-        public DateTime BillDate { get; set; }
+        public DateTime OrderDate { get; set; }
         public DateTime DueDate { get; set; }
         public string StateOfSupply { get; set; }
         public string PaymentType { get; set; }
@@ -20,11 +20,10 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public string VehicleNumber { get; set; }
         public DateTime DeliveryDate { get; set; }
         public string Barcode { get; set; }
-        public double Paid { get; set; }
+        public double Received { get; set; }
         public double RemainingBal { get; set; }
         public double CalTotal { get; set; }
         public string Status { get; set; }
-
-        public List<ItemPurchase> listpurchasedetail { get; set; }
+        public List<ItemDetails> ListOfPurchaseOrder { get; set; }
     }
 }

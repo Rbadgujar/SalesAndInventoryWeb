@@ -16,11 +16,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult GetData()
         {
-            using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-            {
-                List<tbl_BanktoBankTransfer> empList = db.tbl_BanktoBankTransfer.ToList<tbl_BanktoBankTransfer>();
-                return Json(new { data = empList }, JsonRequestBehavior.AllowGet);
-            }
+            //using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+            //{
+            //    List<tbl_BanktoBankTransfer> empList = db.tbl_BanktoBankTransfer.ToList<tbl_BanktoBankTransfer>();
+            //    return Json(new { data = empList }, JsonRequestBehavior.AllowGet);
+            //}
+            return View();
         }
         [HttpGet]
         public ActionResult AddOrEdit(int id = 0)
@@ -29,11 +30,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(new tbl_BanktoBankTransfer());
             else
             {
-                using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
-                {
-                    return View(db.tbl_BanktoBankTransfer.Where(x => x.ID == id).FirstOrDefault<tbl_BanktoBankTransfer>());
-                }
+                //using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
+                //{
+                //    return View(db.tbl_BanktoBankTransfer.Where(x => x.ID == id).FirstOrDefault<tbl_BanktoBankTransfer>());
+                //}
             }
+            return View();
         }
 
         [HttpPost]
@@ -43,9 +45,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
             {
                 if (emp.ID == 0)
                 {
-                    db.tbl_BanktoBankTransfer.Add(emp);
-                    db.SaveChanges();
-                    return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
+                    //db.tbl_BanktoBankTransfer.Add(emp);
+                    //db.SaveChanges();
+                    //return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
@@ -54,7 +56,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
                 }
             }
-
+            return View();
 
         }
 
@@ -63,9 +65,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
-                tbl_BanktoBankTransfer emp = db.tbl_BanktoBankTransfer.Where(x => x.ID == id).FirstOrDefault<tbl_BanktoBankTransfer>();
-                db.tbl_BanktoBankTransfer.Remove(emp);
-                db.SaveChanges();
+                //tbl_BanktoBankTransfer emp = db.tbl_BanktoBankTransfer.Where(x => x.ID == id).FirstOrDefault<tbl_BanktoBankTransfer>();
+                //db.tbl_BanktoBankTransfer.Remove(emp);
+                //db.SaveChanges();
                 return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
             }
         }

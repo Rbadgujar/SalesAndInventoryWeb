@@ -17,8 +17,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             using (idealtec_inventoryEntities10 db = new idealtec_inventoryEntities10())
             {
-                List<tbl_DebitNote> bank = db.tbl_DebitNote.ToList<tbl_DebitNote>();
-                return Json(new { data = bank }, JsonRequestBehavior.AllowGet);
+                //List<tbl_DebitNote> bank = db.tbl_DebitNote.ToList<tbl_DebitNote>();
+                //return Json(new { data = bank }, JsonRequestBehavior.AllowGet);
+                return View();
             }
         }
     }

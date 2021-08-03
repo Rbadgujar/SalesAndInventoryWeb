@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_PurchaseOrder
+﻿@model SalesAndInentoryWeb_Application.tbl_PurchaseOrder
 @{
     ViewBag.Title = "Sale Order";
     Layout = "~/Views/Shared/ideal.cshtml";
@@ -33,6 +33,49 @@
             $("#btnaddtolist").click(function () {
                 AddToItem();
             });
+            $("#btnsubmit").click(function (e) {
+                additems();
+            });
+            $("#ID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/ParchaseOrder/GetFruitName1",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#SalePrice").val(data[x].SalePrice);
+                               $("#TaxForSale").val(data[x].TaxForSale);
+                               $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                           }
+                       }
+                   });
+                }
+            });
+            $("#PartiesID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/ParchaseOrder/GetFruitName",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#BillingName").val(data[x].BillingAddress);
+                               $("#ContactNo").val(data[x].ContactNo);
+                           }
+
+                       }
+                   });
+                }
+            });
         });
         function RemoveItem(ItemName)
         {
@@ -66,6 +109,64 @@
             $("#sa").val('');
             $("#ca").val('');
         }
+        function additems() {
+            debugger
+            var objpurchaseorder = {};
+            var listofpurchaseorder = [];
+
+            $.each($("#tblSaleInvoice tbody tr"),
+                function () {
+                    listofpurchaseorder.push({
+                        ItemName: $(this).find("td:eq(0)").text(),
+                        SalePrice: $(this).find("td:eq(1)").text(),
+                        TaxForSale: $(this).find("td:eq(2)").text(),
+                        Discount: $(this).find("td:eq(3)").text(),
+                        Qty: $(this).find("td:eq(4)").text(),
+                        DiscountAmount: $(this).find("td:eq(5)").text(),
+                        SaleTaxAmount: $(this).find("td:eq(6)").text(),
+                        ItemAmount: $(this).find("td:eq(7)").text()
+                    });
+                });
+
+            objpurchaseorder.PartyName = $("#PartiesID option:selected").val();
+            objpurchaseorder.BillingName = $("#BillingName").val();
+            objpurchaseorder.ContactNo = $("#ContactNo").val();
+            objpurchaseorder.OrderDate = $("#OrderDate").val();
+            objpurchaseorder.DueDate = $("#DueDate").val();
+            objpurchaseorder.Barcode = $("#Barcode").val();
+            objpurchaseorder.StateOfSupply = $("#StateOfSupply option:selected").val();
+            objpurchaseorder.Received = $("#Received").val();
+            objpurchaseorder.RemainingBal = $("#RemainingBal").val();
+            objpurchaseorder.TransportName = $("#TransportName").val();
+
+            objpurchaseorder.DeliveryLocation = $("#DeliveryLocation").val();
+            objpurchaseorder.DeliverDate = $("#DeliveryDate").val();
+            objpurchaseorder.PaymentType = $("#PaymentType").val();
+            objpurchaseorder.TransportName = $("#TransportName").val();
+            objpurchaseorder.Status = $("#Status option:selected").val();
+            objpurchaseorder.VehicleNumber = $("#VehicleNumber").val();
+            objpurchaseorder.CalTotal = $("#CalTotal").val();
+            objpurchaseorder.ListOfPurchaseOrder = listofpurchaseorder;
+
+
+            $.ajax({
+                async: true,
+                type: "POST",
+                datatype: 'JSON',
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(objpurchase),
+                url: '/ParchaseOrder/AddOrder',
+                success: function (data) {
+                    if (data.status == true) {
+                        alter(data.message);
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+
+            });
+        }
     </script>
 </head>
 <body>
@@ -79,27 +180,10 @@
                     <div class="collapse navbar-collapse ">
                        
                         <div class="row">
-							<div class="form-group col-md-3">
-								@*<div class="pull-right">
-		@Html.DevExpress().Label(settings =>
-		{
-			settings.Style["font-weight"] = "bold";
-			settings.Name = "Label1";
-			settings.Text = "Party Name   :";
-		}).GetHtml()
-		</div>*@
-
+							<div class="form-group col-md-3">						
 								Party Name:
-								<select name="cars" id="dp" class="form-control" style="width:220px;height:32px">
-									<option>---Party Name--</option>
-									<option value="volvo">Rahul</option>
-									<option value="saab">Vithoba</option>
-									<option value="mercedes">Pallavi</option>
-									<option value="audi">Bhagyashri</option>
-								</select>
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Item",new { @class = "form-control", @style = "width:130" } )
 								Address:
-								@*//<textarea name='awesome' class="form-control" style="width:220px;height:50px">Address:</textarea>*@
-
 								@Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control", placeholder = "Address", @style = "width:220px;height:50px" } })
 								Contact No:
 								@Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } })
@@ -133,7 +217,7 @@
 									@Html.EditorFor(model => model.Feild4, new { htmlAttributes = new { @class = "form-control", placeholder = "Eway Bill Number", @style = "width:150px;height:30px" } })
 									@Html.ValidationMessageFor(model => model.Feild4)
 									State :
-									<select name="state" id="state" class="form-control" style="width:150px;height:30px">
+									<select name="state" id="StateOfSupply" class="form-control" style="width:150px;height:30px">
 										<option value="Andhra Pradesh">Andhra Pradesh</option>
 										<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
 										<option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -196,12 +280,8 @@
 
                                             <th>
                                                 <label>Item Name</label>
-                                                <select name="cars" id="dp" class="form-control" style="width:90PX">
-                                                    <option value="volvo">Volvo</option>
-                                                    <option value="saab">Saab</option>
-                                                    <option value="mercedes">Mercedes</option>
-                                                    <option value="audi">Audi</option>
-                                                </select>
+                                                @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts, "Select Item",  new { @class = "form-control", @style = "width:130px" } )
+
                                             </th>
                                             <th>
                                                 <label>MRP</label>
@@ -231,7 +311,7 @@
                                                 <input type="text" id="sa" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
-                                                <label>Tax Amount</label>
+                                                <label>Total</label>
                                                 <input type="text" id="ca" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
@@ -255,7 +335,8 @@
 
                             <div class="col-md-2">
                                 Payment Type:
-                                <select name="cars" id="dp" class="form-control" style="width:150px;">
+                                <select name="cars" id="PaymentType" class="form-control" style="width:150px;">
+                                    <option value="Select PaymentType">Select PaymentType</option>
                                     <option value="Cash">Cash</option>
                                     <option value="OnlinePayment">Online Payment</option>
                                     <option value="Cheque">Cheque</option>
@@ -293,7 +374,8 @@
                               Delivery Date:
                                 @Html.TextBoxFor(model => model.Deliverydate, new { @type = "date", @class = "form-control", @style = "width:150px;" })
                                Payment Status;
-                                <select name="cars" id="dp" class="form-control" style="width:150px;">
+                                <select name="cars" id="Status" class="form-control" style="width:150px;">
+                                    <option value="Select PaymentType">Select Payment Status</option>
                                     <option value="volvo">Paid</option>
                                     <option value="saab">Unpiad</option>
 
@@ -327,7 +409,7 @@
                         <div class="col-md-1 form-group" style="margin-top:8px; ">
                         </div>
                         <div class="col-md-3 form-group">
-                            <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" />
+                            <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit"/>
                             <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
 
                         </div>
