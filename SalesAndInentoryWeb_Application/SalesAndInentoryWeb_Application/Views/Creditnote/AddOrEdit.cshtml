@@ -99,7 +99,21 @@
             + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
+            var finding = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(6)').text();
+                finding = finding + mm
+
+                $("#CalTotal").val(finding);
+            })
         }
+        function minus() {
+            var pretotal1 = $("#Total").val();
+            var pretotal2 = $("#RemainingBal").val();
+            var find = pretotal1 - pretotal2
+            $("#Recieved").val(find);
+        };
         function reset()
         {
             $("#ID option:selected").val('');
@@ -196,7 +210,7 @@
                                 Party Name:
                                 @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Item", new { @class = "form-control", @style = "width:220px" })
                                 Address:
-                                <textarea name='awesome' id="BillingName" class="form-control" style="width:220px;height:50px"></textarea>
+                                <textarea name='awesome' id="BillingName" class="form-control" placeholder="Address" style="width:220px;height:50px"></textarea>
                           Mobile No:
                                 @Html.EditorFor(model => model.ContactNo,new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } )
                                 @Html.ValidationMessageFor(model => model.ContactNo)
@@ -208,7 +222,7 @@
                                     Po Date:
                                     <input placeholder="PO Date" class="textbox-n form-control" style="width:150px;height:30px;" type="text" onfocus="(this.type='date')" id="PODate">
                                   Barcode:
-                                    @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
+                                    @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "Barcod No", @style = "width:150px;height:30px" } })
                                     @Html.ValidationMessageFor(model => model.Barcode)
 
                                 </div>
@@ -289,7 +303,7 @@
                                                 <input type="text" id="ts" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
-                                                <label>Descount</label>
+                                                <label>Discount</label>
                                                 <input type="text" id="ds" name="" class="form-control" style="width:70PX">
                                             <th>
                                                 <label>Qty</label>
@@ -304,7 +318,7 @@
                                                 <input type="text" id="sa" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
-                                                <label>Tax Amount</label>
+                                                <label>Total</label>
                                                 <input type="text" id="ca" name="" class="form-control" style="width:70PX">
                                             </th>
                                             <th>
@@ -328,20 +342,24 @@
                                     <option value="Cheque">Cheque</option>
                                 </select>
                              Transport Name:
-                                                                @Html.DevExpress().TextBoxFor(m => m.TransportName, settings =>
-                       {
-                           settings.Properties.NullText = "TransportName";
-                           settings.ControlStyle.CssClass = "form-control";
-                           settings.Style["width"] = "150px";
-                           settings.Style["height"] = "30px";
-                       }).GetHtml()
+                                @Html.EditorFor(model => model.TransportName, new
+                                        {
+                                            htmlAttributes = new
+                                            {
+                                                @class = "form-control",
+                                                placeholder = "Transport Name",
+                                                @style = "width:150px;height:30px;"
+                                            }
+                                        })
+                            @Html.ValidationMessageFor(model => model.VehicleNumber)
+
                                 Delivery Location:
                                 @Html.EditorFor(model => model.DeliveryLocation, new
                        {
                            htmlAttributes = new
                            {
                                @class = "form-control",
-                               placeholder = "vical No",
+                               placeholder = "Delivery Location",
                                @style = "width:150px;height:30px;"
                            }
                        })
@@ -367,11 +385,11 @@
                                     Total Amount:
                                     @Html.EditorFor(model => model.CalTotal, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
                                     @Html.ValidationMessageFor(model => model.CalTotal)
-                                    Recived Amount:
-                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
+                                    Received Amount:
+                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Receive Ammount" } })
                                     @Html.ValidationMessageFor(model => model.RemainingBal)
-                                    RemingBal Amount:
-                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
+                                    RemaingBal Amount:
+                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Remaining Balance" } })
                                     @Html.ValidationMessageFor(model => model.Received)
                                 </div>
 

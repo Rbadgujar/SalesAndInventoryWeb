@@ -90,7 +90,21 @@
             + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
+            var finding = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(6)').text();
+                finding = finding + mm
+
+                $("#Total").val(finding);
+            })
         }
+        function minus() {
+            var pretotal1 = $("#Total").val();
+            var pretotal2 = $("#Received").val();
+            var find = pretotal1 - pretotal2
+            $("#RemainingBal").val(find);
+        };
         function reset()
         {
             $("#ID option:selected").val('');
@@ -331,20 +345,23 @@
                                 <option value="Cheque">Cheque</option>
                             </select>
                             Transport Name:
-                            @Html.DevExpress().TextBoxFor(m => m.TransportName, settings =>
-                            {
-                            settings.Properties.NullText = "TransportName";
-                            settings.ControlStyle.CssClass = "form-control";
-                            settings.Style["width"] = "150px";
-                            settings.Style["height"] = "30px";
-                            }).GetHtml()
-                            Vical No:
+                            @Html.EditorFor(model => model.TransportName, new
+                              {
+                                  htmlAttributes = new
+                                  {
+                                      @class = "form-control",
+                                      placeholder = "Transport Name",
+                                      @style = "width:150px;height:30px;"
+                                  }
+                              })
+                            @Html.ValidationMessageFor(model => model.VehicleNumber)
+                            Vehicle Number:
                             @Html.EditorFor(model => model.VehicleNumber, new
                             {
                             htmlAttributes = new
                             {
                             @class = "form-control",
-                            placeholder = "vical No",
+                            placeholder = "Vehicle Number",
                             @style = "width:150px;height:30px;"
                             }
                             })
@@ -357,7 +374,7 @@
                         </div>
                         <div class="col-md-2 form-group">
                             Cheque NO:
-                            @Html.EditorFor(model => model.Feild1, new { htmlAttributes = new { @class = "form-control", placeholder = "Cheek no", @style = "width:150px;" } })
+                            @Html.EditorFor(model => model.Feild1, new { htmlAttributes = new { @class = "form-control", placeholder = "Check no", @style = "width:150px;" } })
                             @Html.ValidationMessageFor(model => model.Feild1)
 
                            Deilvery Date:
@@ -376,10 +393,10 @@
                                 @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
                                 @Html.ValidationMessageFor(model => model.Total)
                                 Recived:
-                                @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" ,@onchange="minus()"} })
+                                @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Receive Ammount" ,@onchange="minus()"} })
                                 @Html.ValidationMessageFor(model => model.Received)
                                 Remining Bal:
-                                @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
+                                @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Remaining Balance" } })
                                 @Html.ValidationMessageFor(model => model.RemainingBal)
                             </div>
 
