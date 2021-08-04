@@ -142,7 +142,7 @@ desired effect
                         </li>
                         <!-- /.messages-menu -->
                         <!-- Notifications Menu -->
-                        <li class="dropdown notifications-menu">
+                        @*<li class="dropdown notifications-menu">
                             <!-- Menu toggle button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
@@ -164,9 +164,9 @@ desired effect
                                 </li>
                                 <li class="footer"><a href="#">View all</a></li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- Tasks Menu -->
-                        <li class="dropdown tasks-menu">
+                        @*<li class="dropdown tasks-menu">
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-flag-o"></i>
@@ -202,9 +202,9 @@ desired effect
                                     <a href="#">View all tasks</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- User Account Menu -->
-                        <li class="dropdown user user-menu">
+                        @*<li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
@@ -248,7 +248,7 @@ desired effect
                                     </div>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- Control Sidebar Toggle Button -->
                         <li>
                             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
@@ -276,7 +276,7 @@ desired effect
                     </div>
 
                     <!-- search form (Optional) -->
-                    <form action="#" method="get" class="sidebar-form">
+                    @*<form action="#" method="get" class="sidebar-form">
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search...">
                             <span class="input-group-btn">
@@ -285,7 +285,7 @@ desired effect
                                 </button>
                             </span>
                         </div>
-                    </form>
+                    </form>*@
                     <!-- /.search form -->
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu" data-widget="tree">
@@ -532,16 +532,14 @@ desired effect
                 <!-- Settings tab content -->
                 <div class="tab-pane" id="control-sidebar-settings-tab">
                     <form method="post">
-                        <h3 class="control-sidebar-heading">General Settings</h3>
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Report panel usage
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-                            <p>
-                                Some information about this general settings option
-                            </p>
-                        </div>
+                        <h3 class="control-sidebar-heading">Settings</h3>
+                        <ul class="control-sidebar-menu">
+                            <li class="active"><a href="~/Seeting1/GenrailSeeting">General Setting</a></li>
+                            <li class="active"><a href="~/Seeting1/ItemSeeting">Item Setting</a></li>
+                            <li class="active"><a href="~/Seeting1/PartySetting">Party Setting</a></li>
+                            <li class="active"><a href="~/Seeting1/taxGSSTSetting">Tax GST Setting</a></li>
+                            <li class="active"><a href="~/Seeting1/TransactionSeting">Transaction Setting</a></li>
+                        </ul>
                         <!-- /.form-group -->
                     </form>
                 </div>
