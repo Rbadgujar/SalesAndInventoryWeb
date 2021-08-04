@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
-
+using System.Data.SqlClient;
+using System.Configuration;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class BankAdjustmentController : Controller
@@ -35,16 +36,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
 			if (id == 0)
 			{
-                tbl_BankAdjustment objbank = new tbl_BankAdjustment();
-                objbank.ListOfAccounts = (from obj in db.tbl_BankAccounts
-                                          where obj.DeleteData.Equals(1)
-                                          select new SelectListItem
-                                          {
-                                              Text = obj.BankName,
-                                              Value = obj.ID.ToString()
-
-                                          });
-                return View(objbank);
+                tbl_BankAdjustment bt = new tbl_BankAdjustment();
+                bt.ListOfAccounts = ListOfItems();
+                return View(bt);
             }
 			else
 			{
@@ -59,8 +53,36 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				return View(vm);
 			}
 		}
+        private static List<SelectListItem> ListOfItems()
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_BankAccount where DeleteData='1'");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["BankName"].ToString(),
+                                Value = sdr["BankName"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
 
-		[HttpPost]
+            return items;
+        }
+        [HttpPost]
 		public ActionResult AddOrEdit(int id ,tbl_BankAdjustment conn)
 		{
 			if (id == 0)

@@ -6155,7 +6155,7 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_BankAccount")]
 	public partial class tbl_BankAccount : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-		
+	
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;

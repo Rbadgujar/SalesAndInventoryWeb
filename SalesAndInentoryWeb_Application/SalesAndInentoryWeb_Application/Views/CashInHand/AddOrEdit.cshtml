@@ -1,60 +1,103 @@
 ﻿
-@model SalesAndInentoryWeb_Application.Models.tbl_CashAdjustment
+@model SalesAndInentoryWeb_Application.tbl_CashAdjustment
 @{
     Layout = null;
 }
-
+<style>
+    #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
 @using (Html.BeginForm("AddOrEdit", "CashInHand", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
 {
-<div>
-	@Html.HiddenFor(model => model.ID)
-	<div class="form-group">
-		@Html.LabelFor(model => model.BankName, new { @class = "control-label" })
-		@Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.CashAdjustment, new { @class = "control-label" })
-		@{
-			List<SelectListItem> listItems = new List<SelectListItem>();
-			listItems.Add(new SelectListItem
-			{
-				Text = "Cash In",
-				Value = "Cash Out"
-			});
-			listItems.Add(new SelectListItem
-			{
-				Text = "Cash In",
-				Value = "Cash Out",
-				Selected = true
-			});
+    <div id="div">
+        @Html.HiddenFor(model => model.ID)
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.BankName, new { @class = "control-label" })
+                    <br>
+                    @Html.DropDownListFor(model => model.BankName, Model.ListOfAccounts, "Select Bank", new { @class = "form-control" })
+                    <br>
+                </div>
+                <div class="col-md-6">
+                    <label>OpeningBal</label>
+                    <input style="text-align:left" type="text" name="Amount" id="OpeningBal" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.LabelFor(model => model.CashAdjustment, new { @class = "control-label" })
+            @{List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Cash In",
+                    Value = "Cash Out"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Cash Out",
+                    Value = "Cash Out",
+                    Selected = true
+                });
 
-		}
-		<div class="form-control">
-			@Html.DropDownListFor(model => model.CashAdjustment, listItems, "", new { htmlAttributes = new { @class = "form-control" } })
+            }
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.CashAdjustment, listItems, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CashAdjustment)
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.CashAmount, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.CashAmount, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
 
-			@Html.ValidationMessageFor(model => model.CashAdjustment)
-		</div>
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.CashAmount, new { @class = "control-label" })
-		@Html.EditorFor(model => model.CashAmount, new { htmlAttributes = new { @class = "form-control" } })
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.Date, new { @class = "control-label" })
-		<div class="input-group">
-			@Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "control-label" })
-		</div>
+                </div>
+                </div>
+            </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
 
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.Description, new { @class = "control-label" })
-		@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-	</div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+                    <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
+                    <br>
+                </div>
+            </div>
+            }
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#BankName").change(function () {
+                        var fruitId = $(this).find("option:selected").val();
+                        if (fruitId != "") {
+                            $.ajax({
+                                type: "POST",
+                                url: "/BankToBank/GetFruitName",
+                                data: "id=" + fruitId,
+                                success: function (response) {
+                                    if (response != "") {
+                                        $("#OpeningBal").val(response);
+                                    } else {
+                                        $("#OpeningBal").val('');
+                                    }
+                                }
+                            });
+                        } else {
+                            $("#txtopeningbal").val('');
+                        }
+                    });
+                    $("input[type=text]").change(function () {
+                        cal();
+                    });
 
-	<div class="form-group">
-		<input type="submit" value="Submit" class="btn btn-primary" />
-		<input type="reset" value="Reset" class="btn" />
-	</div>
-</div>
-}
-
+                });
+            </script>
