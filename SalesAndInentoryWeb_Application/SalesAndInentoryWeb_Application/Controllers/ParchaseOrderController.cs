@@ -80,7 +80,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             //	vm.Feild1 = tb.Feild1;
             //	return View(vm);
             //}
-            tbl_PurchaseBill bt = new tbl_PurchaseBill();
+            tbl_PurchaseOrder bt = new tbl_PurchaseOrder();
             bt.ListOfAccounts = ListOfItems();
             bt.ListOfParties = ListOfParties();
             return View(bt);
