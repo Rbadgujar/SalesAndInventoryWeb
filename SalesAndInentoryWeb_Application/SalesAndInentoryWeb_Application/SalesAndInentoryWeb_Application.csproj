@@ -3910,6 +3910,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\App_Data\" />
     <Folder Include="css\fonts\" />
+    <Folder Include="images\Logo\" />
+    <Folder Include="images\signatures\" />
     <Folder Include="Views\index\" />
     <Folder Include="Views\OtherIncomeCategory\" />
     <Folder Include="Views\Seeting\" />
