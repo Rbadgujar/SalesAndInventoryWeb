@@ -18,6 +18,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
     {
         // GET: Company
         CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+        private string AddLogo;
+
         public ActionResult Index()
         {
             return View();
@@ -52,14 +54,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         [HttpPost]
 
-        public ActionResult com( tbl_CompanyMasterSelectResult com, int id=0)
+        public ActionResult com(HttpPostedFileBase postedFile, tbl_CompanyMasterSelectResult com, int id=0)
         {
-
-
             try
             {
                 if (id == 0)
                 {
+                    if (postedFile != null)
+                    {
+                        string path = Server.MapPath("~/images/");
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+
+                        postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
+   }
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
                     db.tbl_CompanyMasterSelect("Insert", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
                     
@@ -74,7 +84,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);                   
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return View();
             }
@@ -119,34 +129,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
+        public string filepath;
         [HttpPost]
         public ActionResult Company(HttpPostedFileBase file, tbl_CompanyMasterSelectResult com)
         {
 
             try
-            {
+            { 
+
+           
                 //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                db.tbl_CompanyMasterSelect("Insert",null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code,com.CompanyID);
-                if (file!=null  && file.ContentLength>0)
-                {
-                    string filename = Path.GetFileName(file.FileName);
-                    string fileext = Path.GetExtension(filename);
-                    if(fileext == ".jpg" || fileext ==".png")
-                    {
-                        string filepath = Path.Combine(Server.MapPath("~/images/Logo"),filename);
-                        string mainconn = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-                        SqlConnection sqlcon = new SqlConnection(mainconn);
-                        SqlCommand sqlcmd = new SqlCommand("Insert",sqlcon);
-                        sqlcmd.CommandType = CommandType.StoredProcedure;
-                        sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@AddLogo", filename);
-                        sqlcmd.Parameters.AddWithValue("@signature", filename);
-                        sqlcmd.ExecuteNonQuery();
-                        file.SaveAs(filepath);
-                        sqlcon.Close();
-                    }
-                }
+               
+                db.tbl_CompanyMasterSelect("Insert",null,filepath,com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code,com.CompanyID);             
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }
