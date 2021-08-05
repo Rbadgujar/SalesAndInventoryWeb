@@ -1,42 +1,54 @@
-﻿@model SalesAndInentoryWeb_Application.Models.CompanyBankAccount
+﻿@model SalesAndInentoryWeb_Application.CompanyBankAccount
 @{
     Layout = null;
 }
-
+<style>
+    #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
 @using (Html.BeginForm("AddOrEdit", "CompanyBankAccount", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
 {
-    <div>
+    <div id="div">
         @Html.HiddenFor(model => model.ID)
-        <div class="form-group">
-            @Html.LabelFor(model => model.BankName, new { @class = "control-label" })
-            @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BankName)
-        </div>
-        <div class="form-group">
-           @Html.LabelFor(model => model.AccountName, new { @class = "control-label" })
-        @Html.EditorFor(model => model.AccountName, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.AccountName)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.AccountNo, new { @class = "control-label" })
-            @Html.EditorFor(model => model.AccountNo, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.OpeningBal, new { @class = "control-label" })
-            @Html.EditorFor(model => model.OpeningBal, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div class="form-group">
-           
-            @Html.LabelFor(model => model.Date, new { @class = "control-label" })
-            <div class="input-group">
-                @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "control-label" })
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.BankName, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Bank Name" } })
+                    @Html.ValidationMessageFor(model => model.BankName)
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AccountName, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.AccountName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Account Name" } })
+                    @Html.ValidationMessageFor(model => model.AccountName)
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AccountNo, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.AccountNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Account No" } })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.OpeningBal, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.OpeningBal, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Opening Bal" } })
+                </div>
+                </div>
+            </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+                     @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
+                </div>
 
-        <div class="form-group">
-            <input type="submit" value="Submit" class="btn btn-primary" />
-            <input type="reset" value="Reset" class="btn" />
-        </div>
-    </div>
-}
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+                    <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
+                </div>
+        <br>
+            </div>
+            }
 

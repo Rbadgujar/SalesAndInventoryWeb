@@ -86,7 +86,7 @@
 					{ "data": "CashAmount" },
 					{ "data": "Date" },
                     {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "CashInHand")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm1('@Url.Action("AddOrEditUpdate", "CashInHand")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -120,7 +120,25 @@
                 });
             });
         }
+        function PopupForm1(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
 
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Fill Cash In Hand Details',
+                    height: 420,
+                    width: 500,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+
+                });
+            });
+        }
 		function SubmitForm(form) {
 			$.validator.unobtrusive.parse(form);
 			if ($(form).valid()) {

@@ -23,37 +23,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
         public ActionResult GetData()
         {
-			var tb = db.Banktobank("Select1", null, null, null, null, null, null, null).ToList();
+			var tb = db.Banktobank("Select1", null, null, null, null, null, null, null,null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
 		public ActionResult Detail(int id)
 		{
-			var tb = db.Banktobank("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+			var tb = db.Banktobank("Details", id, null, null, null, null, null, null,null).Single(x => x.ID == id);
 			return View(tb);
 		}
 
 		[HttpGet]
         public ActionResult AddOrEdit(int id = 0)
-        {
-			if (id == 0)
-			{
+        {			
                 tbl_BanktoBankTransfer bt = new tbl_BanktoBankTransfer();
                 bt.ListOfAccounts = ListOfItems();             
-                return View(bt);
-            }
-			else
-			{
-
-				var tb = db.Banktobank("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
-				var vm = new tbl_BanktoBankTransfer();
-				vm.FromBank = tb.FromBank;
-				vm.ToBank = tb.ToBank;
-				vm.Amount = tb.Amount;
-				vm.Date = Convert.ToDateTime(tb.Date);
-     			vm.Descripition =tb.Descripition;
-				return View(vm);
-			}
+                return View(bt);	
 		}
         private static List<SelectListItem> ListOfItems()
         {
@@ -111,61 +96,65 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(int id,tbl_BanktoBankTransfer emp)
         {
-            
-                if (id == 0)
-                {
-                try
-                {
-                    db.Banktobank("Insert", emp.ID, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, null);
-                    db.SubmitChanges();
-                    return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    
-                      //string sql;
-                      //string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-                      //using (SqlConnection con = new SqlConnection(constr))
-                      //{
-                      //       sql = string.Format("Update tbl_BankAccount set OpeningBal=@Total FROM  WHERE BankName = @string");
-                      //       using (SqlCommand cmd = new SqlCommand(sql))
-                      //       {
-                      //            cmd.Connection = con;
-                      //            cmd.Parameters.AddWithValue("@string", string1);
-                      //            cmd.Parameters.AddWithValue("@Total", total);
-                      //            con.Open();
-                      //            cmd.ExecuteScalar();
-                      //            con.Close();
+            try
+            {
+                db.Banktobank("Insert1", emp.ID, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition,emp.Total, null);
+                db.SubmitChanges();
+                return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
+                
+            }
+            catch (Exception)
+            {
 
-                      //       }
-            
+                throw;
+            }
+            finally
+            {
 
-                      // }
-                }  
-                }
-                else
+                string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
                 {
-				db.Banktobank("Update", id, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, null);
-				db.SubmitChanges();
-				   return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+                    string sql;
+                    sql = string.Format("Update tbl_BankAccount set OpeningBal=@openingbal WHERE BankName = @Id");
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@Id", emp.FromBank);
+                        cmd.Parameters.AddWithValue("@openingbal",emp.Total);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
                 }
             }
 
-		[HttpPost]
+        }
+      
+        [HttpPost]
 		public ActionResult Delete(int id)
 		{
-				var tb = db.Banktobank("Delete", id, null, null, null, null, null, null).ToList();
+				var tb = db.Banktobank("Delete", id, null, null, null, null, null, null,null).ToList();
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
         [HttpGet]
-        public ActionResult AddOrEditMain()
-        {           
-            return View();
-        }    
+        public ActionResult AddOrEditMain(int id)
+        {
+            var tb = db.Banktobank("Details", id, null, null, null, null, null, null,null).Single(x => x.ID == id);
+            var vm = new tbl_BanktoBankTransfer();
+            vm.FromBank = tb.FromBank;
+            vm.ToBank = tb.ToBank;
+            vm.Amount = tb.Amount;
+            vm.Date = Convert.ToDateTime(tb.Date);
+            vm.Descripition = tb.Descripition;
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult AddOrEditMain(int id,tbl_BanktoBankTransfer emp)
+        {
+            db.Banktobank("Update", id, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition,emp.Total, null);
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

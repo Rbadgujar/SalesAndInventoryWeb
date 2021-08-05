@@ -10,7 +10,7 @@
         padding: 20px;
     }
 </style>
-@using (Html.BeginForm("AddOrEdit", "CashInHand", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+@using (Html.BeginForm("AddOrEditUpdate", "CashInHand", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
 {
     <div id="div">
         @Html.HiddenFor(model => model.ID)
@@ -19,7 +19,7 @@
                 <div class="col-md-6">
                     @Html.LabelFor(model => model.BankName, new { @class = "control-label" })
                     <br>
-                    @Html.DropDownListFor(model => model.BankName, Model.ListOfAccounts, "Select Bank", new { @class = "form-control" })
+                    @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
                     <br>
                 </div>
                 <div class="col-md-6">
@@ -32,47 +32,47 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-6">
-                            @Html.LabelFor(model => model.CashAdjustment, new { @class = "control-label" })
-                            <select name="cars" id="CashAdjustment" class="form-control">
-                                <option value="Select Cash Adjustment">Select Cash Adjustment</option>
-                                <option value="Cash Out">Cash Out</option>
-                                <option value="Cash In">Cash In</option>
-                            </select>
-                            @Html.ValidationMessageFor(model => model.CashAdjustment)
-                        </div>
+                        @Html.LabelFor(model => model.CashAdjustment, new { @class = "control-label" })
+                        <select name="cars" id="CashAdjustment" class="form-control">
+                            <option value="Select Cash Adjustment">Select Cash Adjustment</option>
+                            <option value="Cash Out">Cash Out</option>
+                            <option value="Cash In">Cash In</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.CashAdjustment)
+                    </div>
                     <div class="col-md-6">
                         @Html.LabelFor(model => model.CashAmount, new { @class = "control-label" })
                         @Html.EditorFor(model => model.CashAmount, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
-                    </div>
                 </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Total</label>
-                                <input style="text-align:left" type="text" name="Total" id="Total" class="form-control">
-                            </div>
-                            <div class="col-md-6">
-                                @Html.LabelFor(model => model.Date, new { @class = "control-label" })
-                                @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Description, new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit" value="Submit" class="btn btn-primary pull-right" />
-                        <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
-                        <br>
-                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label>Total</label>
+                    <input style="text-align:left" type="text" name="Total" id="Total" class="form-control">
                 </div>
-                }
-                <script type="text/javascript">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+            <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
+            <br>
+        </div>
+    </div>
+}
+<script type="text/javascript">
                     $(document).ready(function () {
                         $("#BankName").change(function () {
                             var fruitId = $(this).find("option:selected").val();
@@ -118,4 +118,5 @@
                             cal1();
                         }
                     }
-                </script>
+</script>
+

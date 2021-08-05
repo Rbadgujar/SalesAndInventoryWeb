@@ -33,25 +33,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 		[HttpGet]
 		public ActionResult AddOrEdit(int id = 0)
-		{
-			if (id == 0)
-			{
+		{			
                 tbl_CashAdjustment bt = new tbl_CashAdjustment();
                 bt.ListOfAccounts = ListOfItems();
-                return View(bt);
-            }
-			else
-			{
-				var tb = db.tbl_CashAdjustmentselect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
-				
-				var vm = new tbl_CashAdjustment();
-				vm.CashAdjustment = tb.CashAdjustment;
-				vm.CashAmount = tb.CashAmount;
-				vm.Description = tb.Description;
-				vm.BankName = tb.BankName;
-				vm.Date = Convert.ToDateTime(tb.Date);
-				return View(vm);
-			}
+                return View(bt);         
 		}
         private static List<SelectListItem> ListOfItems()
         {
@@ -110,18 +95,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		public ActionResult AddOrEdit(int id, tbl_CashAdjustment emp)
 		{
 
-			if (id == 0)
-			{
 				db.tbl_CashAdjustmentselect("Insert", null, emp.CashAdjustment, emp.CashAmount,Convert.ToDateTime(emp.Date), emp.Description,emp.BankName,null);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-			}
-			else
-			{
-				db.tbl_CashAdjustmentselect("Update", id, emp.CashAdjustment, emp.CashAmount, Convert.ToDateTime(emp.Date), emp.Description, emp.BankName, null);
-				db.SubmitChanges();
-				return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-			}
+			
+
 		}
 
 		[HttpPost]
@@ -131,5 +109,24 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
-	}
+        [HttpGet]
+        public ActionResult AddOrEditUpdate(int id)
+        {
+            var tb = db.tbl_CashAdjustmentselect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+            var vm = new tbl_CashAdjustment();
+            vm.CashAdjustment = tb.CashAdjustment;
+            vm.CashAmount = tb.CashAmount;
+            vm.Description = tb.Description;
+            vm.BankName = tb.BankName;
+            vm.Date = Convert.ToDateTime(tb.Date);
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult AddOrEditUpdate(int id,tbl_CashAdjustment emp)
+        {
+            db.tbl_CashAdjustmentselect("Update", id, emp.CashAdjustment, emp.CashAmount, Convert.ToDateTime(emp.Date), emp.Description, emp.BankName, null);
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+        }
+    }
 }

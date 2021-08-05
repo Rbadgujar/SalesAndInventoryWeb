@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_Paymentout
+﻿@model SalesAndInentoryWeb_Application.tbl_Paymentout
 
 @{
     Layout = null;
@@ -15,9 +15,15 @@
         border-bottom: solid #eeeeee 1px;
         padding: 3px 10px;
     }
+     #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
 </style>
 @using (Html.BeginForm())
 {
+    <div id="div">
     @Html.AntiForgeryToken()
     <br />
     @*<h4>Company Iformation:</h4>
@@ -95,6 +101,6 @@
 
             </div>
         </div>
-
+        </div>
 }
 

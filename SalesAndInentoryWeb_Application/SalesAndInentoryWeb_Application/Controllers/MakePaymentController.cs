@@ -31,30 +31,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
 		public ActionResult MakePayment(int id = 0)
 		{
-			if (id == 0)
-			{
-                tbl_MakePayment objbank = new tbl_MakePayment();
-                objbank.ListOfAccounts = (from obj in db.tbl_LoanBanks
-                                          where obj.DeleteData.Equals(1)
-                                          select new SelectListItem
-                                          {
-                                              Text = obj.AccountName,
-
-                                          });
-                return View(objbank);
-            }
-			else
-			{
-
-				var tb = db.tbl_MakePaymentSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
-				var vm = new tbl_MakePayment();
-				vm.PrincipleAmount = tb.PrincipleAmount;
-				vm.PaidFrom = tb.PaidFrom;
-				vm.InterestAmount = tb.InterestAmount;
-				vm.TotalAmount = tb.TotalAmount;
-				vm.Date = Convert.ToDateTime(tb.Date);
-				return View(vm);
-			}
+            return View();
 		}
         public JsonResult GetFruitName(string id)
         {
@@ -82,7 +59,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpPost]
-		public ActionResult MakePayment( tbl_MakePayment conn, int id=0)
+		public ActionResult MakePaymentPopUp( tbl_MakePayment conn, int id=0)
 		{
 			
 				db.tbl_MakePaymentSelect("Insert", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null);
@@ -98,6 +75,63 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
+        [HttpGet]
+        public ActionResult MakePaymentPopUp(int id=0)
+        {
+            
+                tbl_MakePayment bt = new tbl_MakePayment();
+                bt.ListOfAccounts = ListOfItems();
+                return View(bt);
+          
+        }
+        private static List<SelectListItem> ListOfItems()
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_BankAccount where DeleteData='1'");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["BankName"].ToString(),
+                                Value = sdr["BankName"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
 
-	}
+            return items;
+        }
+        [HttpGet]
+        public ActionResult MakePaymentUpdate(int id=0)
+        {
+            var tb = db.tbl_MakePaymentSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
+            var vm = new tbl_MakePayment();
+            vm.AccountName = tb.AccountName;
+            vm.PrincipleAmount = tb.PrincipleAmount;
+            vm.PaidFrom = tb.PaidFrom;
+            vm.InterestAmount = tb.InterestAmount;
+            vm.TotalAmount = tb.TotalAmount;
+            vm.Date = Convert.ToDateTime(tb.Date);
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult MakePaymentUpdate(int id,tbl_MakePayment conn)
+        {
+            db.tbl_MakePaymentSelect("Update", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null);
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+        }
+    }
 }

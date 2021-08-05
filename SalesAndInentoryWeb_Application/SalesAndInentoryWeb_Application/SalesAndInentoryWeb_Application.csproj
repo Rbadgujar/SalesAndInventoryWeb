@@ -3902,6 +3902,11 @@
     <Content Include="Views\PartyMaster\Partygroupindex.cshtml" />
     <Content Include="Views\Utilities\Export.cshtml" />
     <Content Include="Views\BankToBank\AddOrEditMain.cshtml" />
+    <Content Include="Views\BankAdjustment\AddOrEditUpdate.cshtml" />
+    <Content Include="Views\CashInHand\AddOrEditUpdate.cshtml" />
+    <Content Include="Views\LoanAccount\AddOrEditPopUp.cshtml" />
+    <Content Include="Views\MakePayment\MakePaymentPopUp.cshtml" />
+    <Content Include="Views\MakePayment\MakePaymentUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
