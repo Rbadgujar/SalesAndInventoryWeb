@@ -21,6 +21,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
       a{
           font-weight:bold;
       }
+      aside{
+        width:300px;
+        height:755px;
+        overflow-y:scroll;
+        }
+
+        aside ul{
+        padding:0px;
+        }	
+
+        aside ul li{
+        width:100%;
+        height:40px;   
+        }
+      
   </style>
 
     <link href="~/bower_components/Ionicons/css/ionicons.min.css" rel="stylesheet" />
@@ -127,7 +142,7 @@ desired effect
                         </li>
                         <!-- /.messages-menu -->
                         <!-- Notifications Menu -->
-                        <li class="dropdown notifications-menu">
+                        @*<li class="dropdown notifications-menu">
                             <!-- Menu toggle button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
@@ -149,9 +164,9 @@ desired effect
                                 </li>
                                 <li class="footer"><a href="#">View all</a></li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- Tasks Menu -->
-                        <li class="dropdown tasks-menu">
+                        @*<li class="dropdown tasks-menu">
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-flag-o"></i>
@@ -187,9 +202,9 @@ desired effect
                                     <a href="#">View all tasks</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- User Account Menu -->
-                        <li class="dropdown user user-menu">
+                        @*<li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
@@ -233,7 +248,7 @@ desired effect
                                     </div>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- Control Sidebar Toggle Button -->
                         <li>
                             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
@@ -261,7 +276,7 @@ desired effect
                     </div>
 
                     <!-- search form (Optional) -->
-                    <form action="#" method="get" class="sidebar-form">
+                    @*<form action="#" method="get" class="sidebar-form">
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search...">
                             <span class="input-group-btn">
@@ -270,7 +285,7 @@ desired effect
                                 </button>
                             </span>
                         </div>
-                    </form>
+                    </form>*@
                     <!-- /.search form -->
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu" data-widget="tree">
@@ -422,7 +437,7 @@ desired effect
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Create the tabs -->
-            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs" >
                 <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
                 <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
             </ul>
@@ -430,15 +445,69 @@ desired effect
             <div class="tab-content">
                 <!-- Home tab content -->
                 <div class="tab-pane active" id="control-sidebar-home-tab">
-                    <h3 class="control-sidebar-heading">Reports</h3>
+                    <h3 class="control-sidebar-heading">Transaction</h3>
+                    <ul class="control-sidebar-menu">                      
+                        <li class="active"><a href="~/SaleInvoice/SaleIndexpage">Sale Report</a></li>
+                        <li class="active"><a href="~/PurchaseBill/Index">Purchase Report</a></li>
+                        <li class="active"><a href="~/DayBook/Index">Day Book Report</a></li>      
+                        <li class="active"><a href="~/AllTransaction/Index">All Transaction</a></li>
+                        <li class="active"><a href="~/ProfitAndLoss/Index">Profit And Loss</a></li>
+                        <li class="active"><a href="~/CashFlowReport/Index">Cash Flow Report</a></li>
+                        <li class="active"><a href="~/BalenceSheet/Index">Balence Sheet</a></li>                       
+                    </ul>
+                    <h3 class="control-sidebar-heading">Party Reports</h3>
                     <ul class="control-sidebar-menu">
-                                         <li class="active"><a href="~/Seeting1/GenrailSeeting">General Seetings</a></li>
-                        <li class="active"><a href="~/Seeting1/PartySetting">Sale Report</a></li>
+                        <li class="active"><a href="~/PartStatement/Index">Party Statement</a></li>
+                        <li class="active"><a href="~/AllParties/Index">All Parties</a></li>
+                        <li class="active"><a href="~/PartyReportByItem/Index">Party Report By Item</a></li>
+                        <li class="active"><a href="~/SPPartyGroup/Index">Sale Purchase By Party Group</a></li>
+                    </ul>
+                    <h3 class="control-sidebar-heading">Item / Stock Report</h3>
+                    <ul class="control-sidebar-menu">
+                        <li class="active"><a href="~/ItemReportByParty/Index">Item Report By Party</a></li>
+                        <li class="active"><a href="~/ItemWisePorL/Index">Item Wise Profit Loss</a></li>
+                        <li class="active"><a href="~/LowStockSummary/Index">Low Stock Summary</a></li>
+                        <li class="active"><a href="~/ItemTrackingReport/Index">Item Tracking Report</a></li>
+                      
+                    </ul>
+                    <h3 class="control-sidebar-heading">Business Status</h3>
+                    <ul class="control-sidebar-menu">
+                        <li class="active"><a href="~/BankStatement/Index">Bank Statement</a></li>
+                        <li class="active"><a href="~/DiscountReport/Index">Discount Report</a></li>
+                        <li class="active"><a href="~/TaxReport/Index">Tax Report</a></li>
+                        <li class="active"><a href="~/TaxRateReport/Index">Tax Rate Report</a></li>
 
-                        
+                    </ul>
+                    <h3 class="control-sidebar-heading">Expence Report</h3>
+                    <ul class="control-sidebar-menu">
+                        <li class="active"><a href="~/Expence/Index">ExpenceReport</a></li>
+                        <li class="active"><a href="~/ExpenseCategoryReport/Index">Expense Category Report</a></li>
+                        <li class="active"><a href="~/ExpenseItem/Index">Expense Item Report</a></li>
+                    </ul>
+                    <h3 class="control-sidebar-heading">Sale / Purchase Order Report</h3>
+                    <ul class="control-sidebar-menu">
+                        <li class="active"><a href="~/SPOrderReport/Index">Sale Order Report</a></li>
+                        <li class="active"><a href="~/SPOrderItemRep/Index">Sale Purchase Order Item Report</a></li>
+                    </ul>
+                    <h3 class="control-sidebar-heading">Other Income Report Report</h3>
+                    <ul class="control-sidebar-menu">
+                        <li class="active"><a href="~/OtherIncome/Index">Sale Order Report</a></li>
+                        <li class="active"><a href="~/OIncomeItemReport/Index">Other Income Item Report</a></li>
+                    </ul>
+                    <h3 class="control-sidebar-heading">Loan Account Report</h3>
+                    <ul class="control-sidebar-menu">
+                        <li class="active"><a href="~/LoanAccount/Index">Loan Account Report</a></li>
+                    </ul>
+                    <h3 class="control-sidebar-heading">GST Report</h3>
+                    <ul class="control-sidebar-menu">
+                        <li class="active"><a href="~/SaleInvoice/SaleInvoice">GSTR 1</a></li>
+                        <li class="active"><a href="~/PurchaseBill/Index">GSTR 2</a></li>
+                        <li class="active"><a href="~/TaxReport/Index">GSTR 3B</a></li>
+                        <li class="active"><a href="~/TaxRateReport/Index">GSTR 9</a></li>
+
                     </ul>
                     <!-- /.control-sidebar-menu -->
-                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    @*<h3 class="control-sidebar-heading">Tasks Progress</h3>
                     <ul class="control-sidebar-menu">
                         <li>
                             <a href="javascript:;">
@@ -453,7 +522,7 @@ desired effect
                                 </div>
                             </a>
                         </li>
-                    </ul>
+                    </ul>*@
                     <!-- /.control-sidebar-menu -->
                 </div>
                 <!-- /.tab-pane -->
@@ -463,16 +532,14 @@ desired effect
                 <!-- Settings tab content -->
                 <div class="tab-pane" id="control-sidebar-settings-tab">
                     <form method="post">
-                        <h3 class="control-sidebar-heading">General Settings</h3>
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Report panel usage
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-                            <p>
-                                Some information about this general settings option
-                            </p>
-                        </div>
+                        <h3 class="control-sidebar-heading">Settings</h3>
+                        <ul class="control-sidebar-menu">
+                            <li class="active"><a href="~/Seeting1/GenrailSeeting">General Setting</a></li>
+                            <li class="active"><a href="~/Seeting1/ItemSeeting">Item Setting</a></li>
+                            <li class="active"><a href="~/Seeting1/PartySetting">Party Setting</a></li>
+                            <li class="active"><a href="~/Seeting1/taxGSSTSetting">Tax GST Setting</a></li>
+                            <li class="active"><a href="~/Seeting1/TransactionSeting">Transaction Setting</a></li>
+                        </ul>
                         <!-- /.form-group -->
                     </form>
                 </div>

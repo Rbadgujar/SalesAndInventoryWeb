@@ -3767,7 +3767,9 @@
     <Compile Include="ViewModel\OtherParties.cs" />
     <Compile Include="ViewModel\PartyDetailPurchaseOrder.cs" />
     <Compile Include="ViewModel\PartyDetails.cs" />
+    <Compile Include="ViewModel\PartyDetailsCreditNote.cs" />
     <Compile Include="ViewModel\PartyDetailsDebitNote.cs" />
+    <Compile Include="ViewModel\PartyDetailsDeliveryChallan.cs" />
     <Compile Include="ViewModel\PartyDetailsForPurchase.cs" />
     <Compile Include="ViewModel\SaleInvoiceItemDetails.cs" />
     <Compile Include="ViewModel\SaleInvoicePartyDetails.cs" />
@@ -3899,6 +3901,7 @@
     <Content Include="Views\PartyMaster\Addparty.cshtml" />
     <Content Include="Views\PartyMaster\Partygroupindex.cshtml" />
     <Content Include="Views\Utilities\Export.cshtml" />
+    <Content Include="Views\BankToBank\AddOrEditMain.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
