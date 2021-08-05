@@ -84,7 +84,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			  return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		  }
 
-
+        [HttpGet]
+        public ActionResult LoanStatement()
+        {
+            return View();
+        }
 
 	}
 }

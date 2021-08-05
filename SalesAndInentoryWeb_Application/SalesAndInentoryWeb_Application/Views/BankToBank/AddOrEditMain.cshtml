@@ -1,0 +1,106 @@
+﻿@model SalesAndInentoryWeb_Application.tbl_BanktoBankTransfer
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddOrEditMain", "BankToBank", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    <div>
+        @*@Html.HiddenFor(model => model.ID)*@
+            <div class="form-group">             
+                    @Html.LabelFor(model => model.FromBank, new { @class = "control-label" })
+                    <br>
+                    @Html.EditorFor(model => model.FromBank, new { @class = "form-control", @id = "ddlbanks", @style = "Height:20px" } )
+                    <br>                
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ToBank, new { @class = "control-label" })
+            @Html.EditorFor(model => model.ToBank, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ToBank)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Amount, new { @class = "control-label" })
+            <input style="text-align:left" type="text" name="Amount" id="Amount" class="form-control">
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "control-label" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripition, new { @class = "control-label" })
+            @Html.EditorFor(model => model.Descripition, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="form-group">
+            <label>Total</label>
+            <input style="text-align:left" type="text" name="Amount" id="Total" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" id="btnsubmit" name="btnsubmit" />
+            <input type="reset" value="Reset" class="btn" />
+        </div>
+    </div>
+}
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ID").change(function () {
+            var fruitId = $(this).find("option:selected").val();
+            if (fruitId != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "/BankToBank/GetFruitName",
+                    data: "id=" + fruitId,
+                    success: function (response) {
+                        if (response != "") {
+                            $("#txtopeningbal").val(response);
+                        } else {
+                            $("#txtopeningbal").val('');
+                        }
+                    }
+                });
+            } else {
+                $("#txtopeningbal").val('');
+            }
+        });
+        $("input[type=text]").change(function () {
+            cal();
+        });
+        $("btnsubmit").change(function () {
+            debugger
+            gta();
+        });
+    });
+    function cal()
+    {
+        var bal = $("#txtopeningbal").val();
+        var amount = $("#Amount").val();
+        var total = bal - amount;
+        $("#Total").val(total.toFixed(2));
+    }
+    function gta()
+    {
+            var string1 = $("#ID option:selected").val();
+            var total = $("#Total").val();
+            $.ajax({
+                type: "POST",
+                url: "/BankToBank/AddOrEdit",
+                data: { 'FromBank': string1, 'Total': total },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert(response.string1);
+                },
+                failure: function (response) {
+
+                },
+                error: function (response) {
+
+                }
+            });
+
+    }
+</script>*@
+
+

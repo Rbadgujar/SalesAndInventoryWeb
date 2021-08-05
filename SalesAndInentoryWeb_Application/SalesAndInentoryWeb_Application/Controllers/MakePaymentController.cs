@@ -51,7 +51,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				vm.PrincipleAmount = tb.PrincipleAmount;
 				vm.PaidFrom = tb.PaidFrom;
 				vm.InterestAmount = tb.InterestAmount;
-				vm.AccountName = tb.AccountName;
 				vm.TotalAmount = tb.TotalAmount;
 				vm.Date = Convert.ToDateTime(tb.Date);
 				return View(vm);

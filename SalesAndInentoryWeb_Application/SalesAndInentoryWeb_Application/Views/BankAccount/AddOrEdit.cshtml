@@ -1,46 +1,60 @@
-﻿
-@model SalesAndInentoryWeb_Application.Models.tbl_BankAccount
+﻿@model SalesAndInentoryWeb_Application.tbl_BankAccount
 @{
-	Layout = null;
+    Layout = null;
 }
-<script src="~/scripts/jquery-1.12.4.min.js"></script>
+<style>
+    #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
 @using (Html.BeginForm("AddOrEdit", "BankAccount", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
 {
+    <div id="div">
+    @Html.HiddenFor(model => model.ID)
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.BankName, new { @class = "control-label" })
+                @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Bank Name.....", required = "Requried" } })
+                @Html.ValidationMessageFor(model => model.BankName)
+            </div>
 
-	@Html.HiddenFor(model => model.ID)
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.AccountName, new { @class = "control-label" })
+                @Html.EditorFor(model => model.AccountName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account Name.....", required = "Requried" } })
+                @Html.ValidationMessageFor(model => model.AccountName)
+            </div>
+        </div>
+    </div>
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.BankName, new { @class = "control-label" })
-		@Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Bank Name.....", required = "Requried" } })
-		@Html.ValidationMessageFor(model => model.BankName)
-	</div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.AccountNo, new { @class = "control-label" })
+                @Html.EditorFor(model => model.AccountNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account No ....", @required = "required", @MaxLength = "10" } })
+                @Html.ValidationMessageFor(model => model.AccountNo)
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.AccountName, new { @class = "control-label" })
-		@Html.EditorFor(model => model.AccountName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account Name.....", required = "Requried" } })
-		@Html.ValidationMessageFor(model => model.AccountName)
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(model => model.AccountNo, new { @class = "control-label" })
-		@Html.EditorFor(model => model.AccountNo, new { htmlAttributes = new { @class = "form-control",placeholder = "Enter Account No ...." ,@required= "required", @MaxLength ="10"} })
-		@Html.ValidationMessageFor(model => model.AccountNo) 
-		
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.OpeningBal, new { @class = "control-label" })
-		@Html.EditorFor(model => model.OpeningBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Opening Bal.....", required = "Opening Balance Requried" } })
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(model => model.Date, new { @class = "control-label" })
-		<div class="input-group">
-			@Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "control-label", required = "Requried" })
-
-		</div>
-	</div>
-
-	<div class="form-group footer">
-		<input type="submit" value="Submit" class="btn btn-primary pull-right" />
-		<input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
-	</div>
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.OpeningBal, new { @class = "control-label" })
+                @Html.EditorFor(model => model.OpeningBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Opening Bal.....", required = "Opening Balance Requried" } })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control", required = "Requried" })
+            </div>
+        </div>                
+    </div>
+        <div class="form-group footer">
+            <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+            <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
+        </div>
+        <br>
+ </div>
 }

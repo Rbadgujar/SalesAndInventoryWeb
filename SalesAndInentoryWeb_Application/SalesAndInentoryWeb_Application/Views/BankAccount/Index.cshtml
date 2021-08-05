@@ -171,17 +171,15 @@
             $.get(url)
             .done(function (response) {
                 formDiv.html(response);
-
                 Popup = formDiv.dialog({
                     autoOpen: true,
                     resizable: false,
                     title: 'Fill Bank Details',
-                    height: 500,
-                    width:700,
+                    height: 320,
+                    width:550,
                     close: function () {
                         Popup.dialog('destroy').remove();
                     }
-
                 });
             });
         }

@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_MakePayment 
+﻿@model SalesAndInentoryWeb_Application.tbl_MakePayment 
 @{
     Layout = "~/Views/Shared/ideal.cshtml";
 }
@@ -29,8 +29,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                   @Html.DropDownListFor(model => model.AccountName , Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Bank")
-                                    @Html.TextBoxFor(model => model.AccountName, new { @class = "form - group" })
+                                   @Html.DropDownListFor(model => model.AccountName , Model.ListOfAccounts, "Select Bank", new {  @class = "form-control" })
+                                  
                                         </div>
                                 <div class="form-group col-md-2">
                                     <div style="margin-top:10px;text-align:right">
@@ -46,7 +46,7 @@
                                 </div>
 
 								<div class="form-group col-md-4">
-									@Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form - group" })
+									@Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
 
 								</div>
 
@@ -296,12 +296,11 @@
                     });
 
                     function cal() {
-                        var intrest = $("#InterestAmount").val();
-                        var loan = $("#LoanAmount").val();
-                        var princ = $("#PrincipleAmount").val();
-                        var total = loan - princ;
-                        var FT = total + intrest;
-                        $("#TotalAmount").val(FT);
+                      
+                        var tot = parseFloat($('#LoanAmount').val()) - parseFloat($('#PrincipleAmount').val());
+                        var tot1 = tot + parseFloat($('#InterestAmount').val());
+
+                        $("#TotalAmount").val(tot1);
                     }
 
                     function Delete(id) {
