@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_PartyMaster
+﻿@model SalesAndInentoryWeb_Application.tbl_PartyMaster
 
 @{
     ViewBag.Title = "Party";
@@ -157,7 +157,7 @@
                                        settings.Style["font-weight"] = "bold";
 
                                        settings.Name = "Label5";
-                                       settings.Text = "GST No  :";
+                                       settings.Text = "GST Type  :";
                                        settings.Style["font-size"] = "14px";
 
                                    }).GetHtml()
@@ -166,10 +166,10 @@
                                 <td style="padding:0 15px 0 15px">
                                     <center>
                                         <div class="form-group text-center ">
-                                            @Html.DevExpress().TextBoxFor(m => m.GSTNo, settings =>
+                                            @Html.DevExpress().TextBoxFor(m => m.GSTType, settings =>
                                        {
                                            settings.ControlStyle.CssClass = "form-control";
-                                           settings.Properties.NullText = "Enter GST No....";
+                                           settings.Properties.NullText = "Enter GST Type....";
                                            settings.Style["border"] = "1px solid black";
 
                                        }).GetHtml()

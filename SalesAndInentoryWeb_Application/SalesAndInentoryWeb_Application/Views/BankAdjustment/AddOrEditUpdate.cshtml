@@ -11,7 +11,7 @@
         padding: 20px;
     }
 </style>
-@using (Html.BeginForm("AddOrEdit", "BankAdjustment", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+@using (Html.BeginForm("AddOrEditUpdate", "BankAdjustment", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
 {
     <div id="div">
         @Html.HiddenFor(model => model.ID)
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <div class="col-md-6">
                     @Html.LabelFor(model => model.BankAccount, new { @class = "control-label" })
-                    @Html.DropDownListFor(model => model.BankAccount, Model.ListOfAccounts, "Select Bank", new { @class = "form-control", placeholder = "Select Bank Account....." })
+                    @Html.EditorFor(model => model.BankAccount, new { htmlAttributes = new { @class = "form-control"} })
                     @Html.ValidationMessageFor(model => model.BankAccount)
                 </div>
                 <div class="col-md-6">
@@ -62,21 +62,21 @@
                     @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
                 </div>
 
-               
+
             </div>
         </div>
-            <div class="form-group">              
-                    @Html.LabelFor(model => model.Description, new { @class = "control-label" })
-                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Enter Desciption....." })
-                </div>
-       
-                <div class="form-group">
-                    <input type="submit" value="Submit" class="btn btn-primary pull-right" />
-                    <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
-                </div>
-                <br>
-            </div>
-            }
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Enter Desciption....." })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+            <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
+        </div>
+        <br>
+    </div>
+}
 <script type="text/javascript">
     $(document).ready(function () {
         $("#BankAccount").change(function () {
@@ -128,4 +128,5 @@
         }
     }
 </script>
+
 

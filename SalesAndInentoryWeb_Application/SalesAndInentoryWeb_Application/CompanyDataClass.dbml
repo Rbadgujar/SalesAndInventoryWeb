@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="idealtec_inventory" Class="CompanyDataClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=103.83.81.80;Initial Catalog=idealtec_inventory;User ID=idealtec_inventory" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="idealtec_inventoryConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=103.83.81.80;Initial Catalog=idealtec_inventory;User ID=idealtec_inventory;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="idealtec_inventoryConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.PasswordCheek" Member="PasswordCheeks">
     <Type Name="PasswordCheek">
       <Column Name="ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
@@ -589,18 +589,6 @@
       <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_BanktoBankTransfer" Member="tbl_BanktoBankTransfers">
-    <Type Name="tbl_BanktoBankTransfer">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FromBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ToBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Descripition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
@@ -1300,6 +1288,19 @@
       <Column Name="Cess" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_BanktoBankTransfer" Member="tbl_BanktoBankTransfers">
+    <Type Name="tbl_BanktoBankTransfer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FromBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ToBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Descripition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="CompanyID" Parameter="companyID" Type="System.Int32" DbType="Int" />
@@ -1387,24 +1388,6 @@
       <Column Name="AccountNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="OpeningBal" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.Banktobank" Method="Banktobank">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="FromBank" Parameter="fromBank" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ToBank" Parameter="toBank" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Amount" Parameter="amount" Type="System.Double" DbType="Float" />
-    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="Descripition" Parameter="descripition" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="BanktobankResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FromBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ToBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Descripition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.getAccount" Method="getAccount">
@@ -2947,5 +2930,24 @@
     <Parameter Name="Company_ID" Parameter="company_ID" Type="System.Int32" DbType="Int" />
     <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(100)" />
     <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Banktobank" Method="Banktobank">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromBank" Parameter="fromBank" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ToBank" Parameter="toBank" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Double" DbType="Float" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Descripition" Parameter="descripition" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Total" Parameter="total" Type="System.Int32" DbType="Int" />
+    <ElementType Name="BanktobankResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FromBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ToBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Descripition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

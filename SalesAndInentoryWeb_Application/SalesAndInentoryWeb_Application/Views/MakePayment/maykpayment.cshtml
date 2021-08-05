@@ -12,14 +12,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
 </head>
 
 <div class="container" style="height:100%; width:100%;">
@@ -29,7 +21,7 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>MakePayment Data</h3></label>
-                    <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("Makepayment","makePayment")"><i class="fa fa-plus"></i>Add MakePayment</a>
+                    <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px"  onclick="PopupForm('@Url.Action("MakePaymentPopUp","MakePayment")')"><i class="fa fa-plus"></i>Add MakePayment</a>
                     <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
                     <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
@@ -49,7 +41,6 @@
                             <th>Date</th>
                             <th>AccountName </th>
                             <th>TotalAmount</th>
-
                             <th>Action</th>
                         </tr>
                     </thead>

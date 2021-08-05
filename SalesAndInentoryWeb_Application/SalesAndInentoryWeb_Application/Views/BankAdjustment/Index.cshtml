@@ -69,7 +69,7 @@
                     { "data": "Date" },
 					{ "data": "Description" },
                     { "data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "BankAdjustment")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm1('@Url.Action("AddOrEditUpdate", "BankAdjustment")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -94,7 +94,7 @@
                     autoOpen: true,
                     resizable: false,
                     title: 'Fill Adjust Bank Details',
-                    height: 330,
+                    height: 400,
                     width:550,
                     close: function () {
                         Popup.dialog('destroy').remove();
@@ -103,7 +103,25 @@
                 });
             });
         }
+        function PopupForm1(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
 
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Fill Adjust Bank Details',
+                    height: 400,
+                    width: 550,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+
+                });
+            });
+        }
         function SubmitForm(form) {
             $.validator.unobtrusive.parse(form);
             if($(form).valid()){

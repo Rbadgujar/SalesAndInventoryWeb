@@ -2,192 +2,39 @@
 @{
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-    <meta name="viewport" content="width=device-width" />
-    <title>AddOrEdit</title>
-
-    @using (Html.BeginForm("MakePayment", "MakePayment", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
-    {
-        <div class="panel panel-primary container" style="height:100%; width:100%;">
-            <div class="panel-heading "><a class="btn" href=@Url.Action("Index", "LoanAccount") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Make Payment</p></div>
-
-      <div class="panel border-box">
-                <br>
-                <nav class="navbar navbar-default " style="background-color:white;border:none;"> 
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse " >
-                            <br>
-                            <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "Label1";
-                                   settings.Text = "Account Name   :";
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                   @Html.DropDownListFor(model => model.AccountName , Model.ListOfAccounts, "Select Bank", new {  @class = "form-control" })
-                                  
-                                        </div>
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "Label3";
-                                   settings.Text = "Date :";
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-
-								<div class="form-group col-md-4">
-									@Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
-
-								</div>
-
-
-                            </div>
-                                <div class="row">
-									
-                                    <div class="form-group col-md-2">
-                                        <div style="margin-top:10px;text-align:right">
-                                            @Html.DevExpress().Label(settings =>
-                                       {
-                                           settings.Style["font-weight"] = "bold";
-                                           settings.Name = "Label699";
-                                           settings.Text = "Loan Amount   :";
-                                       }).GetHtml()
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input style="text-align:left" type="text" name="LoanAmount" id="LoanAmount" class="form-control">
-
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
-                                   {
-                                       settings.Style["font-weight"] = "bold";
-
-                                       settings.Name = "Label90";
-                                       settings.Text = "Total Amount :";
-
-                                   }).GetHtml()
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-4">
-                                        <input style="text-align:left" type="text" name="TotalAmount" id="TotalAmount" class="form-control">
-
-                                    </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-                                        @Html.DevExpress().Label(settings =>
-                                       {
-                                           settings.Style["font-weight"] = "bold";
-                                           settings.Name = "Label69";
-                                           settings.Text = "Principal Amount   :";
-                                       }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input style="text-align:left" type="text" name="PrincipleAmount" id="PrincipleAmount" class="form-control">
-
-                                </div>
-                                
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "Label4";
-                                   settings.Text = "Paid From   :";
-
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                    <select name="state" id="Accountname" class="form-control" style="border: 1px solid black" ;>
-                                        <option value="">Select Mode</option>
-                                        <option value="">Cash</option>
-                                        <option value="">Online Payment</option>
-                                    </select>
-
-                                </div>
-
-
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-2" style="text-align:right;">
-                                    <div style="margin-top:10px;">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "Label7";
-                                   settings.Text = "Interst Amount   :";
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input style="text-align:left" type="text" name="InterestAmount" id="InterestAmount" class="form-control" onchange="cal();">
-                                </div>
-
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                       
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                    <input type="reset" value="Clear" class="btn btn-primary pull-left" style="margin-right:12px; margin-top:2px; width:35%;color:black " />
-                                    <input type="submit" value="Save" class="btn btn-primary pull-left" style="margin-right:12px;margin-top:2px;width:35% ;color:black" />
-                             </div>
-                            </div>
-							</div>
-                    </div>
-
-                    <br />
-                    <div style="text-align:center"><h3> MakePayment Data</h3></div>
-                    <br />
-                   
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse ">
-                            <table id="makepayment" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>PrincipleAmount</th>
-                                        <th>InterestAmount</th>
-                                        <th>Date</th>
-                                        <th>AccountName </th>
-                                        <th>TotalAmount</th>
-										<th>Action</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </nav>
-                <div>
-           </div>
-      </div>
-
+   <nav class="navbar navbar-default " style="background-color:white;">
+    <br />
+    <nav class="navbar navbar-default " style="background-color:white;height:60px; border:none">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse ">
+                <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>MakePayment Data</h3></label>
+                <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" onclick="PopupForm('@Url.Action("MakePaymentPopUp","MakePayment")')"><i class="fa fa-plus"></i>Add MakePayment</a>
+                <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+                <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+                <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
+                <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
+            </div>
         </div>
-      <br />
-      <br />
-      <br />
-      <br />
+    </nav>
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse ">
+            <table id="makepayment" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>PrincipleAmount</th>
+                        <th>InterestAmount</th>
+                        <th>Date</th>
+                        <th>AccountName </th>
+                        <th>TotalAmount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</nav>
+
 }
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
@@ -212,7 +59,7 @@
                     { "data": "AccountName" },
 					{ "data": "TotalAmount" },
 					{ "data": "ID", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm'  href=@Url.Action("MakePayment", "MakePayment")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("MakePaymentUpdate","MakePayment")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -240,8 +87,8 @@
                                 autoOpen: true,
                                 resizable: false,
                                 title: 'Fill Bank Details',
-                                height: 500,
-                                width: 700,
+                                height: 430,
+                                width: 500,
                                 close: function () {
                                     Popup.dialog('destroy').remove();
                                 }
@@ -249,7 +96,25 @@
                             });
                         });
                     }
-                   
+                    function PopupForm1(url) {
+                        var formDiv = $('<div/>');
+                        $.get(url)
+                        .done(function (response) {
+                            formDiv.html(response);
+
+                            Popup = formDiv.dialog({
+                                autoOpen: true,
+                                resizable: false,
+                                title: 'Fill Bank Details',
+                                height: 430,
+                                width: 500,
+                                close: function () {
+                                    Popup.dialog('destroy').remove();
+                                }
+
+                            });
+                        });
+                    }
                     function SubmitForm(form) {
                         $.validator.unobtrusive.parse(form);
                         if($(form).valid()){
@@ -276,7 +141,7 @@
                     }
                     $("#AccountName").change(function () {
                         var fruitId = $(this).find("option:selected").val();
-                      
+
                         if (fruitId != "") {
                             $.ajax({
                                 type: "POST",
@@ -296,7 +161,7 @@
                     });
 
                     function cal() {
-                      
+
                         var tot = parseFloat($('#LoanAmount').val()) - parseFloat($('#PrincipleAmount').val());
                         var tot1 = tot + parseFloat($('#InterestAmount').val());
 
@@ -326,7 +191,7 @@
                         }
                     }
     </script>
-}
+    }
 
 
 
