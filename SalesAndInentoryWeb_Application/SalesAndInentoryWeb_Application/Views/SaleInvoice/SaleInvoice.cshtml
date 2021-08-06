@@ -68,6 +68,88 @@
                    });
                 }
             });
+
+            $("#SalePrice").change(function () {
+                debugger
+                var mrp = $("#SalePrice").val();
+                var tax = $("#TaxForSale").val();
+                var dis = $("#Discount").val();
+                var qty = $("#Qty").val();
+                var itempricecall = mrp * 1;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#DiscountAmount").val(dis_count);
+                $("#SaleTaxAmount").val(tax_cal);
+                $("#ItemAmount").val(finalcal);
+                $("#Qty").val(1);
+
+            });
+
+            $("#TaxForSale").change(function () {
+                debugger
+                var mrp = $("#SalePrice").val();
+                var tax = $("#TaxForSale").val();
+                var dis = $("#Discount").val();
+                var qty = $("#Qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#DiscountAmount").val(dis_count);
+                $("#SaleTaxAmount").val(tax_cal);
+                $("#ItemAmount").val(finalcal);
+                $("#Qty").val(1);
+
+            });
+
+            $("#Discount").change(function () {
+                debugger
+                var mrp = $("#SalePrice").val();
+                var tax = $("#TaxForSale").val();
+                var dis = $("#Discount").val();
+                var qty = $("#Qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#DiscountAmount").val(dis_count);
+                $("#SaleTaxAmount").val(tax_cal);
+                $("#ItemAmount").val(finalcal);
+                $("#Qty").val(1);
+
+            });
+
+
+            $("#Recived").change(function () {
+
+                var recived = $("#Recived").val();
+                var pretotal = $("#finaltotal").val();
+                var tototo = pretotal - recived;
+                $("#RemainingBal").val(tototo);
+            });
+
+            $("#Qty").change(function () {
+                debugger
+                var mrp = $("#SalePrice").val();
+                var tax = $("#TaxForSale").val();
+                var dis = $("#Discount").val();
+                var qty = $("#Qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#DiscountAmount").val(dis_count);
+                $("#SaleTaxAmount").val(tax_cal);
+                $("#ItemAmount").val(finalcal);
+                $("#Qty").val(1);
+
+            });
+
         });
         function RemoveItem(ItemName)
         {
@@ -89,6 +171,15 @@
             + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></div></tr>"
             tableitemlist.append(itemlist);
             reset();
+
+            var finding = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(7)').text();
+                finding = finding + mm
+                $("#Total").val(finding);
+            });
+
         }
         function reset()
         {
@@ -141,8 +232,6 @@
             objsalepartydetails.CalTotal = $("#CalTotal").val();
 
             objsalepartydetails.SaleInvoiceItemDetails = saleinvoiceitemdetails;
-
-
             $.ajax({
                 async: true,
                 type: "POST",
@@ -404,13 +493,13 @@
                                    <div class="col-md-8 form-group">
                                        <div class="pull-right">
                                            Total :
-                                           @Html.EditorFor(model => model.CalTotal, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
+                                           @Html.EditorFor(model => model.CalTotal, new { htmlAttributes = new { @class = "form-control",id="Total", placeholder = "Total Amount" } })
                                            @Html.ValidationMessageFor(model => model.CalTotal)
                                        Received Amt:
-                                       @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" } })
+                                       @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control",id= "Received", placeholder = "Recive Ammount" } })
                                        @Html.ValidationMessageFor(model => model.RemainingBal)
                                       Remaning Bal:
-                                       @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
+                                       @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control",id= "RemainingBal", placeholder = "Remining Balance" } })
                                        @Html.ValidationMessageFor(model => model.Received)
                                         </div>
                                      </div>

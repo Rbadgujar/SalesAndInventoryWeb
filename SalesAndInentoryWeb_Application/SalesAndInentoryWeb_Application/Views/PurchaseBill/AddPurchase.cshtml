@@ -20,6 +20,7 @@
 	<script src="~/scripts/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript">
         $(document).ready(function () {
+
             $("#btnaddtolist").click(function () {
                 AddToItem();
             });
@@ -46,10 +47,6 @@
                    });
                 }
             });
-
-
-            
-            
 
              $("#SalePrice").change(function () {
                  debugger
@@ -207,6 +204,20 @@
                   $("#finaltotal").val(finding);
               })
             
+
+
+              var taxfinding = 0;
+              $("tr").each(function (indexTr) {
+                  debugger
+                  if (isNaN(taxfinding)) {
+                      taxfinding = 0;
+                  }
+                  var mm = +$(this).find('td:eq(6)').text();
+                  taxfinding = taxfinding + mm;
+                  $("#TaxAmount1").val(taxfinding);
+
+              })
+
         }
         function reset()
         {
@@ -232,32 +243,31 @@
                         SalePrice: $(this).find("td:eq(1)").text(),
                         TaxForSale: $(this).find("td:eq(2)").text(),
                         Discount: $(this).find("td:eq(3)").text(),
-                        Qty: $(this).find("td:eq(4)").text(),
+                        Qty: $(this).find("td:eq(4)").text(),                 
                         DiscountAmount: $(this).find("td:eq(5)").text(),
-                        SaleTaxAmount: $(this).find("td:eq(6)").text(),
+                        SaleTaxAmount: $(this).find("td:eq(6)").text(),         
                         ItemAmount: $(this).find("td:eq(7)").text()
                     });
                 });
-
             objpurchase.PartyName = $("#PartyName").val();
             objpurchase.BillingName = $("#BillingName").val();
-            obj.ContactNo = $("#ContactNo").val();
-            obj.BillDate = $("#BillDate").val();
-            obj.DueDate = $("#DueDate").val();
-            obj.Barcode = $("#Barcode").val();
-            obj.StateOfSupply = $("#StateOfSupply").val();
-            obj.Paid = $("#Received").val();
-            obj.RemainingBal = $("#RemainingBal").val();
-            obj.TransportName = $("#TransportName").val();
-            obj.DeliveryLocation = $("#DeliveryLocation").val();
-            obj.DeliverDate = $("#DeliveryDate").val();
-            obj.PaymentType = $("#PaymentType").val();
-            obj.TransportName = $("#TransportName").val();
-            obj.Status = $("#Status").val();
-            obj.VehicleNumber = $("#VehicleNumber").val();
-            obj.CalTotal = $("#CalTotal").val();
+            objpurchase.ContactNo = $("#ContactNo").val();
+            objpurchase.BillDate = $("#BillDate").val();
+            objpurchase.DueDate = $("#DueDate").val();
+            objpurchase.Barcode = $("#Barcode").val();
+            objpurchase.StateOfSupply = $("#StateOfSupply").val();
+            objpurchase.Paid = $("#Received").val();
+            objpurchase.RemainingBal = $("#RemainingBal").val();
+            objpurchase.TransportName = $("#TransportName").val();
+            objpurchase.DeliveryLocation = $("#DeliveryLocation").val();
+            objpurchase.DeliverDate = $("#DeliveryDate").val();
+            objpurchase.PaymentType = $("#PaymentType").val();
+            objpurchase.TransportName = $("#TransportName").val();
+            objpurchase.Status = $("#Status").val();
+            objpurchase.TaxAmount1 = $("#TaxAmount1").val();
+            objpurchase.VehicleNumber = $("#VehicleNumber").val();
+            objpurchase.CalTotal = $("#CalTotal").val();
             objpurchase.listpurchasedetail = listpurchases;
-
 
             $.ajax({
                 async: true,
@@ -293,9 +303,10 @@
 							<div class="form-group col-md-3">							
 								<b>Party Name:</b>
                                 <br>
-                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Item",new { @class = "form-control" } )
-                        
-								<b>Address:	</b>
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Item",new { @class = "form-control",id= "PartyName" } )
+
+
+                                <b>Address:	</b>
 
                                 <br>							
 								@Html.TextAreaFor(model => model.BillingName, new { @class = "form-control", placeholder = "Address" ,Style="120px"} )
@@ -316,6 +327,10 @@
                                         @Html.EditorFor(model => model.PONo, new { htmlAttributes = new { @class = "form-control", placeholder = "Po Number" } })
                                         @Html.ValidationMessageFor(model => model.PONo)
                                      
+                                    Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", id= "TaxAmount1", Style="display:none", placeholder = "Po Number" } })
+                                    @Html.ValidationMessageFor(model => model.TaxAmount1)
+
+
                                    <b>PO Date:</b>
                                     @Html.TextBoxFor(model => model.PoDate, new { @type = "date", @class = "form-control" })
 

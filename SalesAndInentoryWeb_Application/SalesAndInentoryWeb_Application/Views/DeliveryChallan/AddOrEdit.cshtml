@@ -7,7 +7,6 @@
 <head>
     <title></title>
 
-
     <style>
         .scrolldown {
             overflow-y: scroll;
@@ -78,6 +77,88 @@
                    });
                 }
             });
+
+
+            $("#sp").change(function () {
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * 1;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#Qty").val(1);
+
+            });
+            $("#ts").change(function () {
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
+
+            $("#ds").change(function () {
+
+
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
+            $("#Received").change(function () {
+
+                var recived = $("#Received").val();
+                var pretotal = $("#Total").val();
+                var tototo = pretotal - recived;
+                $("#RemainingBal").val(tototo);
+
+            });
+            $("#qty").change(function () {
+
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
+
         });
         function RemoveItem(ItemName)
         {
@@ -99,6 +180,15 @@
             + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
+            var finding = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(7)').text();
+                finding = finding + mm
+
+                $("#CalTotal").val(finding);
+            })
+
         }
         function minus() {
             var pretotal1 = $("#CalTotal").val();

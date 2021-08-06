@@ -21,7 +21,8 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public string DeliveryLocation { get; set; }
         public string VehicleNumber { get; set; }
         public DateTime DeliveryDate { get; set; }
-        public string Barcode { get; set; }
+        public string Barcode { get; set; }              
+        public int TaxAmount1 { get; set; }
         public double Received { get; set; }
         public double RemainingBal { get; set; }
         public double CalTotal { get; set; }

@@ -76,8 +76,6 @@
                 }
             });
 
-
-
             $("#sp").change(function () {
                 debugger
                 var mrp = $("#sp").val();
@@ -192,10 +190,20 @@
             var finding = 0;
             $("tr").each(function (indexTr) {
 
-                var mm = +$(this).find('td:eq(6)').text();
-                finding = finding + mm
+                var mm = +$(this).find('td:eq(7)').text();
+                finding = finding + mm;
 
                 $("#Total").val(finding);
+            })
+            
+            var fixfinding = 0;
+
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(6)').text();
+                fixfinding = fixfinding + mm;
+                $("#TaxAmount1").val(fixfinding);
+
             })
         }
         function reset()
@@ -233,7 +241,8 @@
             objpurchaseorder.ContactNo = $("#ContactNo").val();
             objpurchaseorder.OrderDate = $("#OrderDate").val();
             objpurchaseorder.DueDate = $("#DueDate").val();
-            objpurchaseorder.Barcode = $("#Barcode").val();
+            objpurchaseorder.Barcode = $("#Barcode").val(); 
+            objpurchaseorder.TaxAmount1 = $("#TaxAmount1").val();
             objpurchaseorder.StateOfSupply = $("#StateOfSupply option:selected").val();
             objpurchaseorder.Paid = $("#Paid").val();
             objpurchaseorder.RemainingBal = $("#RemainingBal").val();
@@ -298,6 +307,10 @@
 									Barcode:
 									@Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
 									@Html.ValidationMessageFor(model => model.Barcode)
+                                
+                                    @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control",id= "TaxAmount1", placeholder = "BarcodNo", @style = "width:150px;height:30px; Display:None;" } })
+                                    @Html.ValidationMessageFor(model => model.TaxAmount1)
+
 
 								</div>
 

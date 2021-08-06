@@ -175,6 +175,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
             tbl_DebitNote sale = new tbl_DebitNote()
             {
+
                 PartyName = objdebitnote.PartyName,
                 BillingName = objdebitnote.BillingName,
                 ContactNo = objdebitnote.ContactNo,
@@ -198,6 +199,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objdebitnote.ListOfDebitNote)
             {
+                var gst1 = item.SaleTaxAmount;
+                var finalgsr = gst1 / 2;
                 tbl_DebitNoteInner inner = new tbl_DebitNoteInner()
                 {
                     ItemName = item.ItemName,
@@ -206,6 +209,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     TaxForSale = item.TaxForSale,
                     Discount = item.Discount,
                     DiscountAmount = item.DiscountAmount,
+                    SGST = finalgsr,
+                    CGST=finalgsr,               
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty

@@ -214,6 +214,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
 		public ActionResult AddOrder(PartyDetailPurchaseOrder objpurchaseorder)
 		{
+            var gstcount = objpurchaseorder.TaxAmount1;
+            var gst = gstcount / 2;
+
             tbl_PurchaseOrder sale = new tbl_PurchaseOrder()
             {
                 PartyName = objpurchaseorder.PartyName,
@@ -225,6 +228,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 DeliveryLocation = objpurchaseorder.DeliveryLocation,
                 Deliverydate = objpurchaseorder.DeliveryDate,
                 StateofSupply = objpurchaseorder.StateOfSupply,
+                SGST = gst,
+                CGST = gst,
                 OrderDate = Convert.ToDateTime(objpurchaseorder.OrderDate),
                 DueDate = objpurchaseorder.DueDate,
                 Barcode = objpurchaseorder.Barcode,
@@ -237,13 +242,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objpurchaseorder.ListOfPurchaseOrder)
             {
+                var gst1 = item.SaleTaxAmount;
+                var finalgsr = gst1 / 2;
                 tbl_PurchaseOrderInner inner = new tbl_PurchaseOrderInner()
                 {
+
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     OrderNo = sale.OrderNo,
                     TaxForSale = item.TaxForSale,
                     Discount = item.Discount,
+                    CGST = finalgsr,
+                    SGST = finalgsr,
                     DiscountAmount = item.DiscountAmount,
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,

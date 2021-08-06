@@ -119,6 +119,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddPurchase(PartyDetailsForPurchase objpurchase)
         {
+            var gstcount = objpurchase.TaxAmount1;
+            var gst = gstcount / 2;
+
             tbl_PurchaseBill sale = new tbl_PurchaseBill()
             {
                 PartyName = objpurchase.PartyName,
@@ -126,31 +129,38 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 ContactNo = objpurchase.ContactNo,
                 RemainingBal = objpurchase.RemainingBal,
                 CalTotal = objpurchase.CalTotal,
+                TaxAmount1 = objpurchase.TaxAmount1,
                 TransportName = objpurchase.TransportName,
                 DeliveryLocation = objpurchase.DeliveryLocation,
                 Deliverydate = objpurchase.DeliveryDate,
                 StateofSupply = objpurchase.StateOfSupply,
                 BillDate = objpurchase.BillDate,
                 DueDate = objpurchase.DueDate,
+                SGST = gst,
+                CGST = gst,
                 Barcode = objpurchase.Barcode,
                 Status = objpurchase.Status,
                 VehicleNumber = objpurchase.VehicleNumber
-
+               
             };
             db.tbl_PurchaseBills.InsertOnSubmit(sale);
             db.SubmitChanges();
 
             foreach (var item in objpurchase.listpurchasedetail)
             {
+                var gst1 = item.SaleTaxAmount;
+                var finalgsr = gst1 / 2;
                 tbl_PurchaseBillInner inner = new tbl_PurchaseBillInner()
                 {
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
-                    BillNo = sale.BillNo,                   
+                    BillNo = sale.BillNo,
                     TaxForSale = item.TaxForSale,
                     Discount = item.Discount,
                     DiscountAmount = item.DiscountAmount,
                     SaleTaxAmount = item.SaleTaxAmount,
+                    CGST = finalgsr,
+                    SGST=finalgsr,              
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty
                 };
@@ -159,7 +169,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 db.SubmitChanges();
             }
             //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
-            return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
+            //    return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
+            //
+            return View();
         }
 
         public JsonResult GetFruitName(string id)

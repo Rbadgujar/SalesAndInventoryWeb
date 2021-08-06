@@ -45,6 +45,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             bt.ListOfAccounts = ListOfItems();
             bt.ListOfParties = ListOfParties();
             return View(bt);
+
         }
         private static List<SelectListItem> ListOfItems()
         {
@@ -174,6 +175,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(PartyDetailsCreditNote objcreditnote)
         {
+
+
+            var gstcount = objcreditnote.TaxAmount1;
+            var gst = gstcount / 2;
+
             tbl_CreditNote1 sale = new tbl_CreditNote1()
             {
                 PartyName = objcreditnote.PartyName,
@@ -186,6 +192,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Deliverydate = objcreditnote.DeliveryDate,
                 StateofSupply = objcreditnote.StateOfSupply,
                 InvoiceDate = Convert.ToDateTime(objcreditnote.InvoiceDate),
+                CGST=gst,
+                SGST=gst,
                 DueDate = objcreditnote.DueDate,
                 Barcode = objcreditnote.Barcode,
                 Status = objcreditnote.Status,
@@ -199,6 +207,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objcreditnote.ListOfCreditNote)
             {
+                var gst1 = item.SaleTaxAmount;
+                var finalgsr = gst1 / 2;
                 tbl_CreditNoteInner inner = new tbl_CreditNoteInner()
                 {
                     ItemName = item.ItemName,
@@ -207,6 +217,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     TaxForSale = item.TaxForSale,
                     Discount = item.Discount,
                     DiscountAmount = item.DiscountAmount,
+                    SGST=finalgsr,
+                    CGST=finalgsr,                   
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty
