@@ -78,11 +78,93 @@
                    });
                 }
             });
+
+
+            $("#sp").change(function () {
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * 1;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#Qty").val(1);
+
+            });
+            $("#ts").change(function () {
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
+
+            $("#ds").change(function () {
+
+
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
+            $("#Received").change(function () {
+
+                var recived = $("#Received").val();
+                var pretotal = $("#Total").val();
+                var tototo = pretotal - recived;
+                $("#RemainingBal").val(tototo);
+
+            });
+            $("#qty").change(function () {
+
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
         });
         function RemoveItem(ItemName)
         {
             $(ItemName).closest('tr').remove();
         }
+
         function AddToItem()
         {
             var tableitemlist = $("#tblSaleInvoice");
@@ -102,10 +184,22 @@
             var finding = 0;
             $("tr").each(function (indexTr) {
 
-                var mm = +$(this).find('td:eq(6)').text();
+                var mm = +$(this).find('td:eq(7)').text();
                 finding = finding + mm
 
                 $("#CalTotal").val(finding);
+            })
+
+            var taxfinding = 0;
+            $("tr").each(function (indexTr) {
+                debugger
+                if (isNaN(taxfinding)) {
+                    taxfinding = 0;
+                }
+                var mm = +$(this).find('td:eq(6)').text();
+                taxfinding = taxfinding + mm;
+                $("#TaxAmount1").val(taxfinding);
+
             })
         }
         function minus() {
@@ -156,7 +250,7 @@
             objcreditnote.Received = $("#Received").val();
             objcreditnote.RemainingBal = $("#RemainingBal").val();
             objcreditnote.TransportName = $("#TransportName").val();
-
+            objpurchase.TaxAmount1 = $("#TaxAmount1").val();
             objcreditnote.DeliveryLocation = $("#DeliveryLocation").val();
             objcreditnote.DeliverDate = $("#DeliveryDate").val();
             objcreditnote.PaymentType = $("#PaymentType").val();
@@ -224,6 +318,11 @@
                                   Barcode:
                                     @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "Barcod No", @style = "width:150px;height:30px" } })
                                     @Html.ValidationMessageFor(model => model.Barcode)
+                                    Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", id= "TaxAmount1", Style="display:none", placeholder = "Po Number" } })
+                                    @Html.ValidationMessageFor(model => model.TaxAmount1)
+
+
+
 
                                 </div>
                             </div>

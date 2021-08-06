@@ -14,7 +14,6 @@
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.Editors }
     )
-
     <style>
         .scrolldown {
             overflow-y: scroll;
@@ -76,6 +75,89 @@
                    });
                 }
             });
+
+            $("#sp").change(function () {
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * 1;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#Qty").val(1);
+
+            });
+            $("#ts").change(function () {
+
+
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
+
+            $("#ds").change(function () {
+
+
+                debugger
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
+            $("#recived").change(function () {
+
+                var recived = $("#recived").val();
+                var pretotal = $("#Total").val();
+                var tototo = pretotal - recived;
+                $("#RemainingBal").val(tototo);
+
+            });
+            $("#qty").change(function () {
+
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+                var itempricecall = mrp * qty;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count
+
+                $("#da").val(dis_count);
+                $("#sa").val(tax_cal);
+                $("#ca").val(finalcal);
+                $("#qty").val(1);
+
+            });
+
         });
         function RemoveItem(ItemName)
         {
@@ -87,6 +169,8 @@
             var find = pretotal1 - pretotal2
             $("#Paid").val(find);
         };
+
+      
         function AddToItem()
         {
             var tableitemlist = $("#tblSaleInvoice");
@@ -106,10 +190,20 @@
             var finding = 0;
             $("tr").each(function (indexTr) {
 
-                var mm = +$(this).find('td:eq(6)').text();
-                finding = finding + mm
+                var mm = +$(this).find('td:eq(7)').text();
+                finding = finding + mm;
 
                 $("#Total").val(finding);
+            })
+            
+            var fixfinding = 0;
+
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(6)').text();
+                fixfinding = fixfinding + mm;
+                $("#TaxAmount1").val(fixfinding);
+
             })
         }
         function reset()
@@ -147,7 +241,8 @@
             objpurchaseorder.ContactNo = $("#ContactNo").val();
             objpurchaseorder.OrderDate = $("#OrderDate").val();
             objpurchaseorder.DueDate = $("#DueDate").val();
-            objpurchaseorder.Barcode = $("#Barcode").val();
+            objpurchaseorder.Barcode = $("#Barcode").val(); 
+            objpurchaseorder.TaxAmount1 = $("#TaxAmount1").val();
             objpurchaseorder.StateOfSupply = $("#StateOfSupply option:selected").val();
             objpurchaseorder.Paid = $("#Paid").val();
             objpurchaseorder.RemainingBal = $("#RemainingBal").val();
@@ -212,6 +307,10 @@
 									Barcode:
 									@Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
 									@Html.ValidationMessageFor(model => model.Barcode)
+                                
+                                    @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control",id= "TaxAmount1", placeholder = "BarcodNo", @style = "width:150px;height:30px; Display:None;" } })
+                                    @Html.ValidationMessageFor(model => model.TaxAmount1)
+
 
 								</div>
 
@@ -304,10 +403,9 @@
                                             </th>
                                             <th>
                                                 <label>Tax%</label>
-
                                                 <input type="text" id="ts" name="" class="form-control" style="width:80PX">
                                             </th>
-                                            <th>
+                               <th>
                                                 <label>Discount</label>
                                                 <input type="text" id="ds" name="" class="form-control" style="width:80PX">
 
@@ -399,13 +497,13 @@
 
                                 <div class="pull-right">
                                     Total:
-                                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
+                                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount",id="Total" } })
                                     @Html.ValidationMessageFor(model => model.Total)
                                     Recived:
-                                    @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control", placeholder = "Receive Ammount" ,@onchange="minus()"} })
+                                    @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control", id= "recived", placeholder = "Receive Ammount"} })
                                     @Html.ValidationMessageFor(model => model.Paid)
                                    Remining Bal:
-                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Remaining Balance" } })
+                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", id= "RemainingBal", placeholder = "Remaining Balance" } })
                                     @Html.ValidationMessageFor(model => model.RemainingBal)
                                 </div>
 
