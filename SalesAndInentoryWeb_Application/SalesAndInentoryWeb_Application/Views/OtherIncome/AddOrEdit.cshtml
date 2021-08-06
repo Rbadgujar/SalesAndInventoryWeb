@@ -213,7 +213,7 @@
                                     </div>*@
                                 <br />
                         Category :
-                                @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory as IEnumerable<SelectListItem>, "Select Category", new { htmlAttributes = new { } })
+                                @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory, "Select Category", new { @class="form-control"} )
 
 
                                 @*<select name="cars" id="dp" class="form-control" style="width:220px;height:32px">
@@ -314,7 +314,7 @@
 
                                             <th>
                                                 <label>Item Name</label>
-                                                @Html.DropDownListFor(model=>model.Id1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @Style = "width:20px;height:20px;", @class = "vits", @id = "ItemName", @name = "ItemName" } })
+                                                @Html.DropDownListFor(model=>model.Id1, Model.ListOfAccounts , "Select Item",new {  @class = "form-control"} )
 
                                                </th>
                                             <th>

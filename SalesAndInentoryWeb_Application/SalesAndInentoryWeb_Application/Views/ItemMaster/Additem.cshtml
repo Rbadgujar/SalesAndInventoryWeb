@@ -1,9 +1,15 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_ItemMaster
+﻿@model SalesAndInentoryWeb_Application.tbl_ItemMaster
 
 @{
     Layout = null;
 }
 <style>
+    #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
     .tab {
         overflow: hidden;
         background-color: white;
@@ -49,10 +55,10 @@ function openCity(evt, cityName) {
   </script>*@
   @using (Html.BeginForm())
     {
-
+      <div id="div">
 
         @Html.AntiForgeryToken()
-        <br />
+      
         @*<h4>Company Iformation:</h4>s
             <hr style="margin-top:10px;width:300px;margin-left:1px" />*@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -145,7 +151,7 @@ function openCity(evt, cityName) {
         </div>
         <div class="row">
             <div class="col-md-6">
-            <div class="tab" style="margin-top:1px">
+            <div class="tab" style="margin-top:1px" id="div">
                 <h4><a class="tablinks" onclick="openCity(event, 'London')">Item Traking :</a></h4>
             </div>
             <hr style="margin-top:10px;width:300px; margin-left:1px" /></div>
@@ -217,12 +223,12 @@ function openCity(evt, cityName) {
                     </div>
                     <div class="col-md-3">
                         <br />
-                        <input type="submit" value="Save" class="btn btn-primary" style="width:80px;font-size:14px;" />
+                        <input type="submit" value="Save" class="btn btn-primary pull-right" style="width:80px;font-size:14px;" />
                         <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
                     </div>
                 </div>
                 </div>
-
+          </div>
                 }
 
 

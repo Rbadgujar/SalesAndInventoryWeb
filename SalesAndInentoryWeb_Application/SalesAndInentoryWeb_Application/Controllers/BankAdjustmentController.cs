@@ -30,28 +30,35 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_BankAdjustmentselect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
 			return View(tb);
 		}
-
-		[HttpGet]
+        public JsonResult GetFruitName(string id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static string GetFruitNameById(string id)
+        {
+            string sql;
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT OpeningBal FROM tbl_BankAccount WHERE BankName = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    string name = Convert.ToString(cmd.ExecuteScalar());
+                    con.Close();
+                    return name;
+                }
+            }
+        }
+        [HttpGet]
 		public ActionResult AddOrEdit(int id = 0)
-		{
-			if (id == 0)
-			{
+		{			
                 tbl_BankAdjustment bt = new tbl_BankAdjustment();
                 bt.ListOfAccounts = ListOfItems();
-                return View(bt);
-            }
-			else
-			{
-
-				var tb = db.tbl_BankAdjustmentselect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
-				var vm = new tbl_BankAdjustment();
-				vm.BankAccount = tb.BankAccount;
-				vm.EntryType = tb.EntryType;
-				vm.Amount = tb.Amount;
-				vm.Date = Convert.ToDateTime(tb.Date);
-				vm.Description = tb.Description;
-				return View(vm);
-			}
+                return View(bt);          
 		}
         private static List<SelectListItem> ListOfItems()
         {
@@ -84,21 +91,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         [HttpPost]
 		public ActionResult AddOrEdit(int id ,tbl_BankAdjustment conn)
-		{
-			if (id == 0)
-			{
-
+		{			
 				db.tbl_BankAdjustmentselect("Insert", null, conn.BankAccount, conn.EntryType, conn.Amount, conn.Date, conn.Description, null);
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-			}
-			else
-			{
-				db.tbl_BankAdjustmentselect("Update", id, conn.BankAccount, conn.EntryType, conn.Amount, conn.Date, conn.Description, null);
-				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-			}
-			
+				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);		
 		}
 
 		[HttpPost]
@@ -108,5 +104,24 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
-	}
+        [HttpGet]
+        public ActionResult AddOrEditUpdate(int id)
+        {
+            var tb = db.tbl_BankAdjustmentselect("Details", id, null, null, null, null, null, null).Single(x => x.ID == id);
+            var vm = new tbl_BankAdjustment();
+            vm.BankAccount = tb.BankAccount;
+            vm.EntryType = tb.EntryType;
+            vm.Amount = tb.Amount;
+            vm.Date = Convert.ToDateTime(tb.Date);
+            vm.Description = tb.Description;
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult AddOrEditUpdate(int id,tbl_BankAdjustment conn)
+        {
+            db.tbl_BankAdjustmentselect("Update", id, conn.BankAccount, conn.EntryType, conn.Amount, conn.Date, conn.Description, null);
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+        }
+    }
 }

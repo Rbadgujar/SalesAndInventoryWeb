@@ -1,0 +1,103 @@
+﻿@model SalesAndInentoryWeb_Application.tbl_MakePayment
+@{
+    Layout = null;
+}
+<style>
+    #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+@using (Html.BeginForm("MakePaymentUpdate", "MakePayment", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    <div id="div">
+        @Html.HiddenFor(model => model.ID)
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.AccountName, new { @class = "control-label" })
+                @Html.EditorFor(model => model.AccountName, new { htmlAttributes = new { @class = "form-control", required = "Requried" } })
+                @Html.ValidationMessageFor(model => model.AccountName)
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Date, new { @class = "control-label" })
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @type = "date", required = "Requried" } })
+                @Html.ValidationMessageFor(model => model.Date)
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>OpeningBal</label>
+                <input style="text-align:left" type="text" name="Amount" id="OpeningBal" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.PrincipleAmount, new { @class = "control-label" })
+                @Html.EditorFor(model => model.PrincipleAmount, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Principal Amount.....", required = "Requried" } })
+                @Html.ValidationMessageFor(model => model.PrincipleAmount)
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.InterestAmount, new { @class = "control-label" })
+                @Html.EditorFor(model => model.InterestAmount, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Intrest Amount", @onchange = "cal();" } })
+                @Html.ValidationMessageFor(model => model.InterestAmount)
+
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.TotalAmount, new { @class = "control-label" })
+                @Html.EditorFor(model => model.TotalAmount, new { htmlAttributes = new { @class = "form-control", required = "Requried" } })
+                @Html.ValidationMessageFor(model => model.TotalAmount)
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.PaidFrom, new { @class = "control-label" })
+                <select name="cars" id="PaidFrom" class="form-control">
+                    <option value="Select Paid From">Select Paid From</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Cheque">Cheque</option>
+
+                </select>
+                @Html.ValidationMessageFor(model => model.PaidFrom)
+            </div>
+        </div>
+        <div class="form-group footer">
+            <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+            <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
+        </div>
+        <br>
+    </div>
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#AccountName").change(function () {
+            var fruitId = $(this).find("option:selected").val();
+            if (fruitId != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "/MakePayment/GetFruitName",
+                    data: "id=" + fruitId,
+                    success: function (response) {
+                        if (response != "") {
+                            $("#OpeningBal").val(response);
+                        } else {
+                            $("#OpeningBal").val('');
+                        }
+                    }
+                });
+            } else {
+                $("#OpeningBal").val('');
+            }
+        });
+
+    });
+
+    function cal() {
+
+        var tot = parseFloat($('#OpeningBal').val()) - parseFloat($('#PrincipleAmount').val());
+        var tot1 = tot + parseFloat($('#InterestAmount').val());
+
+        $("#TotalAmount").val(tot1);
+    }
+</script>

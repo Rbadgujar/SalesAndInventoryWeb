@@ -11,9 +11,9 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse ">
 					<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Loan Account Details</h3></label>
-					<a class="btn btn-success pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","LoanAccount")"><i class="fa fa-plus"></i>Loan Account</a>
+					<a class="btn btn-success pull-right row" style="margin-top:6.5px; margin-right:1px" onclick="PopupForm('@Url.Action("AddOrEditPopUp","LoanAccount")')"><i class="fa fa-plus"></i>Loan Account</a>
 					<a class="btn btn-primary pull-right row" style="margin-top:6.5px;margin-right:21px;" href="@Url.Action("LoanStatement","LoanAccount")"><i class="fa fa-plus"></i>Loan Statement</a>
-					<a class="btn btn-primary pull-right row" style="margin-top:6.5px;margin-right:22px; " href="@Url.Action("Makepayment","MakePayment")"><i class="fa fa-plus"></i>Make Payment</a>
+					<a class="btn btn-primary pull-right row" style="margin-top:6.5px;margin-right:22px; " href="@Url.Action("Makepayment","Makepayment")"><i class="fa fa-plus"></i>Make Payment</a>
 				</div>
 			</div>
 		</nav>
@@ -62,8 +62,8 @@
 					{ "data": "Interest" },
 					{ "data": "Duration" },
                     { "data":"ID" , "render" : function (data) {
-                       
-						 return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "LoanAccount")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEditPopUp","LoanAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
 					},
                         "orderable": false,
                         "searchable":false,
@@ -88,8 +88,8 @@
                     autoOpen: true,
                     resizable: false,
                     title: 'Fill Loan Account Details',
-                    height: 550,
-                    width: 700,
+                    height: 510,
+                    width: 750,
                     close: function () {
                         Popup.dialog('destroy').remove();
                     }

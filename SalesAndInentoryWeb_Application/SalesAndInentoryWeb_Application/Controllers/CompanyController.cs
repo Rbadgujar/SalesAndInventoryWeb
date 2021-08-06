@@ -7,6 +7,10 @@ using SalesAndInentoryWeb_Application;
 using SalesAndInentoryWeb_Application.Models;
 using DocumentFormat.OpenXml.Drawing;
 using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using Path = System.IO.Path;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
@@ -14,6 +18,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
     {
         // GET: Company
         CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+        private string AddLogo;
+
         public ActionResult Index()
         {
             return View();
@@ -48,13 +54,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         [HttpPost]
 
-        public ActionResult com(tbl_CompanyMasterSelectResult com, int id=0)
+        public ActionResult com(HttpPostedFileBase postedFile, tbl_CompanyMasterSelectResult com, int id=0)
         {
-
             try
             {
                 if (id == 0)
                 {
+                    if (postedFile != null)
+                    {
+                        string path = Server.MapPath("~/images/");
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+
+                        postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
+   }
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
                     db.tbl_CompanyMasterSelect("Insert", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
                     
@@ -69,7 +84,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);                   
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return View();
             }
@@ -114,15 +129,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
+        public string filepath;
         [HttpPost]
-        public ActionResult Company( tbl_CompanyMasterSelectResult com)
+        public ActionResult Company(HttpPostedFileBase file, tbl_CompanyMasterSelectResult com)
         {
 
             try
-            {
+            { 
+
+           
                 //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                db.tbl_CompanyMasterSelect("Insert",null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code,com.CompanyID);
+               
+                db.tbl_CompanyMasterSelect("Insert",null,filepath,com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code,com.CompanyID);             
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }

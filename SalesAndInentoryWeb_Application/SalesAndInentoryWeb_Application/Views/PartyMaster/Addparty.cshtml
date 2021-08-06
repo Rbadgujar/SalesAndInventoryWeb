@@ -1,9 +1,27 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_PartyMaster
-
+﻿@model SalesAndInentoryWeb_Application.tbl_PartyMaster
 @{
     Layout = null;
 }
 <style>
+
+    #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+     #London {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    } #Paris {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    } #Tokyo {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
     .tab {
         overflow: hidden;
     
@@ -35,6 +53,7 @@
 
 @using (Html.BeginForm())
 {
+    <div id="div">
     @Html.AntiForgeryToken()
 
     @*<h4>Company Iformation:</h4>s
@@ -81,16 +100,12 @@
                         <br />
                         Eamil ID:
                         @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @id = "txtemail", @placeholder = "abc@gmail.com", onchange = "displayVals();" } })
-                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
-
-
-
-                   
+                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })            
                     </div>
                     <div class="col-md-4">
                         Party Type:
-                        @Html.EditorFor(model => model.GSTNo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.PartyType, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.GSTType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.GSTType, "", new { @class = "text-danger" })
                         <br />
                            Add Reminder:
                         @Html.EditorFor(model => model.AddRemainder, new { htmlAttributes = new { @class = "form-control" } })
@@ -110,9 +125,9 @@
             <div id="Paris" class="tabcontent">
                 <div class="row">
                     <div class="col-md-4">
-                        Gst No:s
-                        @Html.EditorFor(model => model.GSTNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Gst No" } })
-                        @Html.ValidationMessageFor(model => model.GSTNo, "", new { @class = "text-danger" })
+                       Party Type :
+                        @Html.EditorFor(model => model.PartyType, new { htmlAttributes = new { @class = "form-control", @placeholder = "Gst No" } })
+                        @Html.ValidationMessageFor(model => model.PartyType, "", new { @class = "text-danger" })
 
 
                               </div>
@@ -196,14 +211,9 @@
             <input type="submit" value="Save" class="btn btn-primary" style="width:80px;font-size:14px;" />
             <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
         </div>
-    </div>
-
-           
-            
-
+    </div>  
+    </div>                  
 }
-
-
 
 <script>
 function openCity(evt, cityName) {

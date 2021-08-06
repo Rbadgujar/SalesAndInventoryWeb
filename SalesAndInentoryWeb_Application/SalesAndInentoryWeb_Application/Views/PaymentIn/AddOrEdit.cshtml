@@ -1,5 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_PaymentIn
-
+﻿@model SalesAndInentoryWeb_Application.tbl_PaymentIn
 @{
     Layout = null;
 }
@@ -15,23 +14,24 @@
     border-bottom: solid #eeeeee 1px;
     padding: 3px 10px;
 }
+    #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
 </style>
 @using (Html.BeginForm())
 {
+    <div id="div">
     @Html.AntiForgeryToken()
     <br />
     @*<h4>Company Iformation:</h4>
         <hr style="margin-top:10px;width:300px;margin-left:1px" />*@
-
-
-
-
-
     <div class="row">
         <div class="col-md-2"  style="text-align:right"> Party Name:</div>
         <div class="col-md-4">
-        @Html.EditorFor(model => model.PartyName, new { htmlAttributes = new { @class = "form-control", id = "Company name" } })
-        @Html.ValidationMessageFor(model => model.PartyName, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control", id = "Company name" } })
+        @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
 </div>
         <div class="col-md-2"  style="text-align:right">  Receipt No:</div>
         <div class="col-md-4">@Html.EditorFor(model => model.ReceiptNo, new { htmlAttributes = new { @class = "form-control", id = "tt" } })
@@ -102,6 +102,6 @@
 
                 </div>
             </div>
-
+        </div>
 }
 

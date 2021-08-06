@@ -32,32 +32,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
 		public ActionResult AddOrEdit(int id = 0)
         {
-			if (id == 0)
-			{
+			
 				return View(new tbl_LoanBank());
-			}
-			else
-			{
-				var tb = db.tbl_LoanBankSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
-				var vm = new tbl_LoanBank();
-				vm.AccountName = tb.AccountName;
-				vm.ProcessingFees = tb.ProcessingFees;
-				vm.Description = tb.Description;
-				vm.Total = tb.Total;
-				vm.FirmName = tb.FirmName;
-				vm.PaidBy = tb.PaidBy;
-				vm.AccountNo = tb.AccountNo;
-				vm.LendarBank = tb.LendarBank;
-				vm.CurrentBal = tb.CurrentBal;
-				vm.Interest = tb.Interest;
-				vm.Duration = tb.Duration;
-				//vm.BalAsOf = tb.BalAsOf;
-				return View(vm);
-			}
+			
         }
 		[HttpPost]
 			
-		public ActionResult AddOrEdit(tbl_LoanBank emp,int id=0)
+		public ActionResult AddOrEditPopUp(tbl_LoanBank emp,int id=0)
 		{
            
             if (id == 0)
@@ -89,6 +70,33 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
-	}
+        [HttpGet]
+        public ActionResult AddOrEditPopUp(int id=0)
+        {
+            if (id == 0)
+            {
+                return View(new tbl_LoanBank());
+            }
+            else
+            {
+                var tb = db.tbl_LoanBankSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
+                var vm = new tbl_LoanBank();
+                vm.AccountName = tb.AccountName;
+                vm.ProcessingFees = tb.ProcessingFees;
+                vm.Description = tb.Description;
+                vm.Total = tb.Total;
+                vm.FirmName = tb.FirmName;
+                vm.LoanAmount = tb.LoanAmount;
+                vm.PaidBy = tb.PaidBy;
+                vm.AccountNo = tb.AccountNo;
+                vm.LendarBank = tb.LendarBank;
+                vm.CurrentBal = tb.CurrentBal;
+                vm.Interest = tb.Interest;
+                vm.Duration = tb.Duration;
+                vm.BalAsOf = tb.BalAsOf;
+                return View(vm);
+            }
+           
+        }
+    }
 }

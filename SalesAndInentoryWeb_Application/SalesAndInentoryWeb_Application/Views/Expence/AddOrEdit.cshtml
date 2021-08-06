@@ -176,7 +176,7 @@
                             <div class="form-group col-md-3">                             
                                 Expences Category :   
                                 <br>                           
-                               @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory as IEnumerable<SelectListItem>, "Select Category", new { htmlAttributes = new {  } })
+                               @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory, "Select Category", new { @class="form-control" })
                               </div>
                             <div class="form-group col-md-7">
                                 <div class="pull-right">
@@ -244,7 +244,7 @@
                                             <th>
                                                 <label>Item Name</label>
                                                 <br>
-                                                @Html.DropDownListFor(model => model.ID1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "ItemName", @id = "ItemName" } })
+                                                @Html.DropDownListFor(model => model.ID1, Model.ListOfAccounts , "Select Item",  new { @class = "form-control" } )
 
                                             </th>
                                             <th>

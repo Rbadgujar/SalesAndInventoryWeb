@@ -4,8 +4,8 @@
     Layout = null;
 }
 
-@using (Html.BeginForm())
-{ 
+@using (Html.BeginForm("com", "Company", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
     <br />
     @*<h4>Company Iformation:</h4>
@@ -117,12 +117,11 @@
         <div class="row">
             <div class="col-md-4">
                 Company Logo:
-                @Html.TextBoxFor(model => model.AddLogo, new { type = "file" })
-                @Html.ValidationMessageFor(m => m.AddLogo)
+                <input type="file" name="postedFile "  />
                </div>
             <div class="col-md-4">
                 Singnature:
-                <input type="file" name="FileUpload" />
+                <input type="file" name="postedFile" />
             </div>
             <div class="col-md-4">
 
