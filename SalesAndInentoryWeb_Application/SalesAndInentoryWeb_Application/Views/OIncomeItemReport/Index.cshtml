@@ -1,53 +1,20 @@
-﻿@model  SalesAndInentoryWeb_Application.Models.tbl_CashAdjustment
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
 
 }
-<label style="font-size:20px; margin-left:15px ">Other Income Item Report</label>
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
-</head>
 <div class="container" style="height:100%; width:100%;">
-    <nav class="navbar navbar-default ">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse ">
-                <div class="row">
-                    <div class="form-group col-md-2">
-                        @Html.DevExpress().DropDownEditFor(m => m.BankName, settings =>
-                   {
-                       settings.Properties.NullText = "All Firms";
-                       settings.ControlStyle.CssClass = "form-control";
-                       settings.Style["margin-top"] = "15px";
-
-                       settings.SetDropDownWindowTemplateContent(c =>
-                       {
-                           ViewContext.Writer.Write("DropDown content");
-                       });
-                   }).GetHtml()
-                    </div>
-
-                    <a class="btn btn-success pull-right row" style="margin-top:15px;margin-right:5px;" onclick=""><span class="glyphicon glyphicon-print"></span> Print </a>
+    <nav class="navbar navbar-default " style="background-color:white">
+        <nav class="navbar navbar-default " style="background-color:white;height:60px; border:none">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse ">
+                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Other Income Item Report</h3></label>
+                    <a class="btn btn-success pull-right row" style="margin-top:7px; margin-right:21px;"><i class="fa fa-print"></i>Print</a>
                 </div>
             </div>
-        </div>
-    </nav>
-
-    <nav class="navbar navbar-default ">
+        </nav>
         <div class="container-fluid">
             <div class="collapse navbar-collapse ">
                 <table id="cash" class="table table-striped table-bordered" style="width:100%">
@@ -56,15 +23,12 @@
                             <th>Item Name</th>
                             <th>Quantity</th>
                             <th>Item Amount</th>
-                            <th></th>
                         </tr>
                     </thead>
                 </table>
             </div>
         </div>
-    </nav>
-    <nav class="navbar navbar-default ">
-        <div class="container-fluid">
+        @*<div class="container-fluid">
             <div class="collapse navbar-collapse ">
                 <div class="row">
                     <div class="form-group col-md-2">
@@ -86,113 +50,37 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </div>*@
+    </nav>  
 </div>
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
     <script>
-        @*var Popup, dataTable;
+        var Popup, dataTable;
         $(document).ready(function () {
             dataTable =  $("#cash").DataTable({
                 "ajax": {
-                    "url": "/CashInHand/Data",
+                    "url": "/OIncomeItemReport/Data",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "TableName" },
-                    { "data": "PartyName" },
-                    { "data": "InvoiceDate" },
-                    { "data": "Total" },
-                    {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
-                        "orderable": false,
-                        "searchable":false,
-                        "width":"150px"
-                    }
-
+                    { "data": "ItemName" },
+                    { "data": "Qty" },
+                    { "data": "ItemAmount" },
+                  
                 ],
                 "language": {
 
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
             });
-        });*@
+        });
 
-        function PopupForm(url) {
-            var formDiv = $('<div/>');
-            $.get(url)
-            .done(function (response) {
-                formDiv.html(response);
-
-                Popup = formDiv.dialog({
-                    autoOpen: true,
-                    resizable: false,
-                    title: 'Fill Cash In Hand Details',
-                    height: 500,
-                    width: 500,
-                    close: function () {
-                        Popup.dialog('destroy').remove();
-                    }
-
-                });
-            });
-        }
-
-        function SubmitForm(form) {
-            $.validator.unobtrusive.parse(form);
-            if($(form).valid()){
-                $.ajax({
-                    type : "POST",
-                    url : form.action,
-                    data : $(form).serialize(),
-                    success : function (data) {
-                        if(data.success)
-                        {
-                            Popup.dialog('close');
-                            dataTable.ajax.reload();
-
-                            $.notify(data.message,{
-                                globalPosition :"top center",
-                                className : "success"
-                            })
-
-                        }
-                    }
-                });
-            }
-            return false;
-        }
-
-        function Delete(id) {
-            if(confirm('Are You Sure to Delete this Employee Record ?'))
-            {
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("Delete","BankAccount")/' + id,
-                    success: function (data) {
-                        if (data.success)
-                        {
-                            dataTable.ajax.reload();
-
-                            $.notify(data.message, {
-                                globalPosition: "top center",
-                                className: "success"
-                            })
-
-                        }
-                    }
-
-                });
-            }
-        }
+        
     </script>
 }
 

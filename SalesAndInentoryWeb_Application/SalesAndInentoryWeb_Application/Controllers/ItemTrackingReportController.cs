@@ -8,10 +8,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ItemTrackingReportController : Controller
     {
-        // GET: ItemTrackingReport
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+
+         [HttpGet]
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult Data()
+        {
+            var tb = db.ItemTrackingReport("ItemTrackingReport", null, null, null, null,null,null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
     }
 }
