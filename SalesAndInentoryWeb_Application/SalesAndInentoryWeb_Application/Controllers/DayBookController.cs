@@ -35,5 +35,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return Json(new { data = applications }, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public ActionResult Data(string date)
+        {
+            var tb = db.DayBookReport("Select", null, null, null, null, null, null, Convert.ToDateTime(date)).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

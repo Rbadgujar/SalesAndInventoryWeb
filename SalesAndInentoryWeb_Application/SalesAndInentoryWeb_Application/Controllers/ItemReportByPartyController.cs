@@ -8,10 +8,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ItemReportByPartyController : Controller
     {
-        // GET: ItemReportByParty
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult Data()
+        {
+            var tb = db.ItemReportByParty("Select", null, null, null, null,null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
     }
 }

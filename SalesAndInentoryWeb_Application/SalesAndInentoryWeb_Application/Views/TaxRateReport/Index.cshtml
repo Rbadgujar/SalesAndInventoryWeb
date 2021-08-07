@@ -4,15 +4,14 @@
     Layout = "~/Views/Shared/ideal.cshtml";
 
 }
-
 <div class="container" style="height:100%; width:100%;">
     <nav class="navbar navbar-default " style="background-color:white">
         <nav class="navbar navbar-default " style="background-color:white;height:60px; border:none">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Tax Rate Report</h3></label>
-                    <a class="btn btn-success pull-right row" style="margin-top:7px; margin-right:21px;"><i class="fa fa-print"></i>Print</a>
-                  
+                    <a class="btn btn-success pull-right row" style="margin-top:7px; margin-right:21px;"><i class="fa fa-print"></i>Print</a>   
+                    <input type="text" class="pull-right row" style="height:34px; margin-top:6.5px;margin-right:25px; " placeholder="Party Name" />
                 </div>
             </div>
         </nav>
@@ -32,51 +31,44 @@
                 </table>
             </div>
         </div>
-    </nav>
-    <div class="row" >
-        <div class="form-group col-md-2" style="margin-left:835px;">
-            <label for="lname">Total Tax In:</label>
-            <input type="text" id="taxin" name="lname">
+        <div class="row">
+            <div class="form-group col-md-2" style="margin-left:835px;">
+                <label for="lname">Total Tax In:</label>
+                <input type="text" id="taxin" name="lname">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="lname">Total Tax Out:</label>
+                <input type="text" id="texout" name="lname">
+            </div>
         </div>
-        <div class="form-group col-md-2">
-            <label for="lname">Total Tax Out:</label>
-            <input type="text" id="texout" name="lname">
-        </div>
-    </div>
+    </nav> 
 </div>
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
     <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
     <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
     <script>
-        @*var Popup, dataTable;
+        var Popup, dataTable;
         $(document).ready(function () {
             dataTable =  $("#cash").DataTable({
                 "ajax": {
-                    "url": "/CashInHand/Data",
+                    "url": "/TaxRateReport/Data",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "TableName" },
-                    { "data": "PartyName" },
-                    { "data": "InvoiceDate" },
-                    { "data": "Total" },
-                    {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
-                        "orderable": false,
-                        "searchable":false,
-                        "width":"150px"
-                    }
-
+                    { "data": "ItemName" },
+                    { "data": "TaxForSale" },
+                    { "data": "SaleTaxAmount" },
+                    { "data": "TaxForPurchase" },
+                    { "data": "PurchaseTaxAmount" },
                 ],
                 "language": {
 
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
             });
-        });*@
+        });
 
         function PopupForm(url) {
             var formDiv = $('<div/>');
