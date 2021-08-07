@@ -94,12 +94,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
 			if (id == 0)
 			{
-
                 tbl_OtherIncome bt = new tbl_OtherIncome();
                 bt.ListOfAccounts = ListOfAccount();
                 bt.ListOfCategory = ListOfCategorys();
                 return View(bt);
-              //  return View(new tbl_OtherIncome());
 			}
 			else
 			{
@@ -204,8 +202,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				db.SubmitChanges();
 				return RedirectToAction("Index");
 			}
-	    }
-				       
+	    }			       
         [HttpPost]
         public ActionResult Delete(int id)
         {

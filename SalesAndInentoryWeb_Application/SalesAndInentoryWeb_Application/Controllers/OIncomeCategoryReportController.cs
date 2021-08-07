@@ -8,10 +8,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class OIncomeCategoryReportController : Controller
     {
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+
         // GET: OIncomeCategoryReport
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult Data()
+        {
+            var tb = db.OtherIncome("OtherSelect", null, null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
     }
 }
