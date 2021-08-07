@@ -110,7 +110,7 @@
                 $("#da").val(dis_count);
                 $("#sa").val(tax_cal);
                 $("#ca").val(finalcal);
-                $("#qty").val(1);
+                $("#qty").val(qty);
 
             });
 
@@ -130,7 +130,7 @@
                 $("#da").val(dis_count);
                 $("#sa").val(tax_cal);
                 $("#ca").val(finalcal);
-                $("#qty").val(1);
+                $("#qty").val(qty);
 
             });
             $("#Received").change(function () {
@@ -155,7 +155,7 @@
                 $("#da").val(dis_count);
                 $("#sa").val(tax_cal);
                 $("#ca").val(finalcal);
-                $("#qty").val(1);
+                $("#qty").val(qty)
 
             });
 
@@ -187,6 +187,15 @@
                 finding = finding + mm
 
                 $("#CalTotal").val(finding);
+            })
+
+            var finding1 = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(6)').text();
+                finding1 = finding1 + mm
+
+                $("#TaxAmount1").val(finding1);
             })
 
         }
@@ -236,8 +245,8 @@
             objcreditnote.StateOfSupply = $("#StateOfSupply option:selected").val();
             objcreditnote.Received = $("#Received").val();
             objcreditnote.RemainingBal = $("#RemainingBal").val();
-            objcreditnote.TransportName = $("#TransportName").val();
-
+            objcreditnote.TransportName = $("#TransportName").val(); 
+            objcreditnote.TaxAmount1 = $("#TaxAmount1").val();
             objcreditnote.DeliveryLocation = $("#DeliveryLocation").val();
             objcreditnote.DeliverDate = $("#DeliveryDate").val();
             objcreditnote.PaymentType = $("#PaymentType").val();
@@ -293,7 +302,9 @@
                                 <div class="pull-right">
                                     Challan No:
                                     @Html.TextBoxFor(model => model.ChallanNo, new { @class = "form-control datepicker", @style = "width:150px;" })
-                                    Order Date:
+                                   
+                                     @Html.TextBoxFor(model => model.TaxAmount1, new { @class = "form-control datepicker",@id= "TaxAmount1", @style = "width:150px; display:none" })
+                                     Order Date:
                                     @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker", @style = "width:150px;" })
                                     Barcode:
                                     @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })

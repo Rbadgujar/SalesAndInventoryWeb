@@ -15,6 +15,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public int RefNo { get; set; }
         public string Status { get; set; }
         public double Total { get; set; }
+        public int TaxAmount1 { get; set; }
         public string CategoryID { get; set; }
         public bool DeleteData { get; set; }
         public List<EstimateItem> ListOfEstimateDetails { get; set; }

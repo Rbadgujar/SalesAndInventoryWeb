@@ -170,20 +170,46 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult SaleInvoice(SaleInvoicePartyDetails objsalepartydetails)
         {
+            var gstcount = objsalepartydetails.TaxAmount1;
+            var gst = gstcount / 2;
+
             tbl_SaleInvoice sale = new tbl_SaleInvoice()
             {
                 PartyName = objsalepartydetails.PartyName,
-                BillingName = objsalepartydetails.BillingName,               
+                BillingName = objsalepartydetails.BillingName,
+                 ContactNo = objsalepartydetails.ContactNo,
+                RemainingBal = objsalepartydetails.RemainingBal,
+                CalTotal = objsalepartydetails.CalTotal,
+                TransportName = objsalepartydetails.TransportName,
+                DeliveryLocation = objsalepartydetails.DeliveryLocation,
+                Deliverydate = objsalepartydetails.DeliveryDate,
+                StateofSupply = objsalepartydetails.StateOfSupply,
+                SGST = gst,
+                CGST = gst,
+                InvoiceDate = Convert.ToDateTime(objsalepartydetails.InvoiceDate),
+                Barcode = objsalepartydetails.Barcode,
+                Status = objsalepartydetails.Status,
+                VehicleNumber = objsalepartydetails.VehicleNumber
             };
             db.tbl_SaleInvoices.InsertOnSubmit(sale);
             db.SubmitChanges();
 
             foreach (var item in objsalepartydetails.SaleInvoiceItemDetails)
             {
+                var gst1 = item.SaleTaxAmount;
+                var finalgsr = gst1 / 2;
                 tbl_SaleInvoiceInner inner = new tbl_SaleInvoiceInner()
                 {
                     ItemName = item.ItemName,
-                    SalePrice = item.SalePrice,                   
+                    SalePrice = item.SalePrice,
+                    TaxForSale = item.TaxForSale,
+                    Discount = item.Discount,
+                    CGST = finalgsr,
+                    SGST = finalgsr,
+                    DiscountAmount = item.DiscountAmount,
+                    SaleTaxAmount = item.SaleTaxAmount,
+                    ItemAmount = item.ItemAmount,
+                    Qty = item.Qty
                 };
                 db.tbl_SaleInvoiceInners.InsertOnSubmit(inner);
                 db.SubmitChanges();

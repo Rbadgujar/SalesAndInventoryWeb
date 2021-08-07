@@ -15,10 +15,13 @@
     <link href="~/css/css/montserrat-font.css" rel="stylesheet" />
     <link href="~/css/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet" />
     <link href="~/css/css/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    
     @*<link rel="stylesheet" type="text/css" href="file:///I:/colorlib-regform-36/css/montserrat-font.css">
         <link rel="stylesheet" type="text/css" href="file:///I:/colorlib-regform-36/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
          Main Style Css
-        <link rel="stylesheet" href="file:///I:/colorlib-regform-36/css/style.css" />*@
+        <link rel="stylesheet" href="file:///I:/colorlib-regform-36/css/style.css" />*@   
 </head>
 
 <body class="form-v10">
@@ -27,7 +30,7 @@
         <div class="form-v10-content">
             <form class="form-detail" action="#" method="post" id="myform">
                 <div class="form-left">
-                    <h2 style="text-align:center">Welcome To Ideal Billing Software </h2>
+                    <h2 style="text-align:center"></h2>
                     <div class="form-row" style="text-align:center">
                         <img src="~/css/img/icons8-paper-plane-100.png" alt="Girl in a jacket" width="200" height="220">
                                                 @*<select name="title">
@@ -109,8 +112,8 @@
 {
                     <h2>Company Registration</h2>
                     <div class="form-row">
-                        @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @placeholder = "Company Name", @id = "street" })
-                        
+                        @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @placeholder = "Company Name", @id = "street" , @Required = "Required"})
+
                         @*<input type="text" name="street" class="street" id="street" placeholder="Street + Nr" required>*@
                     </div>
                     <div class="form-row">
@@ -123,11 +126,10 @@
                         <div class="form-row form-row-1">
                             @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City", @id = "zip" })
 
-
                             @*<input type="text" name="zip" class="zip" id="zip" placeholder="Zip Code" required>*@
                         </div>
                         <div class="form-row form-row-2">
-                            <select name="State" id="State"  class = "form-control">
+                            <select name="State" id="State"  class = "form-control" Required="Required">
                                 <option>State</option>
                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -428,20 +430,19 @@
                     </div>
 
                     <div class="form-row">
-                        @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @placeholder = "Company Email", @id = "your_email" })
-
+                        @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @placeholder = "Company Email", @id = "txtEmailId" })
 
                         @*<input type="text" name="your_email" id="your_email" class="input-text" required }" placeholder="Your Email">*@
                     </div>
 
                     <div class="form-row">
-                        @Html.TextBoxFor(m => m.ReferaleCode, new { @class = "form-control", @placeholder = "Password", @id = "your_email" })
+                        @Html.TextBoxFor(m => m.ReferaleCode, new { @class = "form-control",@Type= "password", @placeholder = "Password", id = "password", @Required= "Required" })
 
 
                         @*<input type="text" name="your_email" id="your_email" class="input-text" required }" placeholder="Your Email">*@
                     </div>
                     <div class="form-row">
-                        @Html.TextBoxFor(m => m.AdditinalFeild1, new { @class = "form-control", @placeholder = "Confirm Password", @id = "your_email" })
+                        @Html.TextBoxFor(m => m.AdditinalFeild1, new { @class = "form-control",Type= "password", @placeholder = "Confirm Password", id = "confirm_password", @Required="Required" })
                         @*<input type="text" name="your_email" id="your_email" class="input-text" required }" placeholder="Your Email">*@
                     </div>
                     @*<div class="form-group">
@@ -460,13 +461,27 @@
                         </label>
                     </div>
                     <div class="form-row-last">
-                        <input type="submit"  name="register" class="register" value="Register">
+                        <input type="submit" id="submit"  name="register" class="register" value="Register">
                     </div>
 }
                 </div>
             </form>
         </div>
     </div>
+
+    
 </body>
 
 </html>
+<script>
+        $('#confirm_password').change('keyup', function () {
+            if ($('#password').val() == $('#confirm_password').val()) {
+
+            } else {
+                alert("conform Password Not Match !");
+                $("#confirm_password").val("");
+            }
+        });
+      
+</script>
+
