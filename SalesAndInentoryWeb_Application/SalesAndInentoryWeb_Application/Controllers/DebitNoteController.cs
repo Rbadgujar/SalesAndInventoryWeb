@@ -173,9 +173,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
 		public ActionResult AddOrEdit(PartyDetailsDebitNote objdebitnote)
 		{
+            var gstcount = objdebitnote.TaxAmount1;
+            var gst = gstcount / 2;
+
             tbl_DebitNote sale = new tbl_DebitNote()
             {
-
                 PartyName = objdebitnote.PartyName,
                 BillingName = objdebitnote.BillingName,
                 ContactNo = objdebitnote.ContactNo,
@@ -186,6 +188,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Deliverydate = objdebitnote.DeliveryDate,
                 StateofSupply = objdebitnote.StateOfSupply,
                 InvoiceDate = Convert.ToDateTime(objdebitnote.InvoiceDate),
+                CGST = gst,
+                SGST=gst,
                 DueDate = objdebitnote.DueDate,
                 Barcode = objdebitnote.Barcode,
                 Status = objdebitnote.Status,

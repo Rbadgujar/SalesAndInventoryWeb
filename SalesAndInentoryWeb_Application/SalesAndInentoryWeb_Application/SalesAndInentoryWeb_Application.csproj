@@ -3830,8 +3830,8 @@
     <Content Include="Views\TaxReport\Index.cshtml" />
     <Content Include="Views\TransactionSearch\Index.cshtml" />
     <Content Include="Views\StockSummaryreportbyItemCategory\Index.cshtml" />
-    <Content Include="Views\UnitHomepage\Index.cshtml" />
-    <Content Include="Views\UnitHomepage\AddUnit.cshtml" />
+    <Content Include="Views\TaxReport\UnitHomepage\Index.cshtml" />
+    <Content Include="Views\TaxReport\UnitHomepage\AddUnit.cshtml" />
     <Content Include="Views\ItemServices\Index.cshtml" />
     <Content Include="Views\ItemServices\AddServices.cshtml" />
     <Content Include="Views\demot\ItemAdjustHomepage\Index.cshtml" />
@@ -3883,6 +3883,11 @@
     <Folder Include="css\fonts\" />
     <Folder Include="images\Logo\" />
     <Folder Include="images\signatures\" />
+    <Folder Include="logincssfolder\css\" />
+    <Folder Include="logincssfolder\fonts\" />
+    <Folder Include="logincssfolder\images\" />
+    <Folder Include="logincssfolder\js\" />
+    <Folder Include="logincssfolder\vendor\" />
     <Folder Include="Views\index\" />
     <Folder Include="Views\OtherIncomeCategory\" />
     <Folder Include="Views\Seeting\" />

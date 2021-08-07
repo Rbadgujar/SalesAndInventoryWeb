@@ -179,7 +179,16 @@
                 finding = finding + mm
                 $("#Total").val(finding);
             });
-
+            var taxfinding = 0;
+            $("tr").each(function (indexTr) {
+                debugger
+                if (isNaN(taxfinding)) {
+                    taxfinding = 0;
+                }
+                var mm = +$(this).find('td:eq(6)').text();
+                taxfinding = taxfinding + mm;
+                $("#TaxAmount1").val(taxfinding);
+            })
         }
         function reset()
         {
@@ -221,6 +230,7 @@
             objsalepartydetails.Barcode = $("#Barcode").val();
             objsalepartydetails.StateOfSupply = $("#StateOfSupply").val();
             objsalepartydetails.Received = $("#Received").val();
+            objsalepartydetails.TaxAmount1 = $("#TaxAmount1").val();
             objsalepartydetails.RemainingBal = $("#RemainingBal").val();
             objsalepartydetails.TransportName = $("#TransportName").val();
             objsalepartydetails.DeliveryLocation = $("#DeliveryLocation").val();
@@ -280,6 +290,8 @@
                                            Po NO:                                     
                                                @Html.EditorFor(model => model.PoNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Po Number", @style = "width:150px;height:30px" } })
                                            @Html.ValidationMessageFor(model => model.PoNumber)
+                                         
+                                           @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control",@id= "TaxAmount1", placeholder = "Po Number", @style = "width:150px;height:30px;Display:none;" } })
                                            PO Date:
                                            <input placeholder="PO Date" class="textbox-n form-control"  style = "width:150px;height:30px;" type="text" onfocus="(this.type='date')" id="PODate">
                                            Barcode:

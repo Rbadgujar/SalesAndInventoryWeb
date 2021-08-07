@@ -136,6 +136,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(EstimateParty objEstimateDetails)
         {
+            var gstcount = objEstimateDetails.TaxAmount1;
+            var gst = gstcount / 2;
+
             tblQuotation sale = new tblQuotation()
             {
                 PartyName = objEstimateDetails.PartyName,
@@ -153,6 +156,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objEstimateDetails.ListOfEstimateDetails)
             {
+                var gst1 = item.SaleTaxAmount;
+                var finalgsr = gst1 / 2;
                 tbl_QuotationInner inner = new tbl_QuotationInner()
                 {
                     ItemName = item.ItemName,
@@ -160,12 +165,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     RefNo = sale.RefNo,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty,
+                    CGST=finalgsr,             
                     TaxForSale = item.TaxForSale,
                     SaleTaxAmount = item.SaleTaxAmount,
                     Discount = item.Discount,
                     DiscountAmount = item.DiscountAmount
-
-
                 };
                 db.tbl_QuotationInners.InsertOnSubmit(inner);
                 db.SubmitChanges();

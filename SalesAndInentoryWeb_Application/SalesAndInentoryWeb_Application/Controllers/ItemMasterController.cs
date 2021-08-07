@@ -22,7 +22,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult Data()
         {
-            var getdata = db.tbl_ItemMasterSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_ItemMasterSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,MainLoginController.companyid1, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
         }

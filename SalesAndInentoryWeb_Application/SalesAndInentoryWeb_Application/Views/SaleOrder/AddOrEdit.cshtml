@@ -121,7 +121,7 @@
                 $("#DiscountAmount").val(dis_count);
                 $("#SaleTaxAmount").val(tax_cal);
                 $("#ItemTotal").val(finalcal);
-                $("#Qty").val(1);
+                $("#Qty").val(qty);
 
             });
 
@@ -139,12 +139,12 @@
                 $("#DiscountAmount").val(dis_count);
                 $("#SaleTaxAmount").val(tax_cal);
                 $("#ItemTotal").val(finalcal);
-                $("#Qty").val(1);
+                $("#Qty").val(qty);
 
             });
 
 
-            $("#Recived").change(function () {
+            $("#Received").change(function () {
 
                 var recived = $("#Recived").val();
                 var pretotal = $("#Total").val();
@@ -166,10 +166,9 @@
                 $("#DiscountAmount").val(dis_count);
                 $("#SaleTaxAmount").val(tax_cal);
                 $("#ItemTotal").val(finalcal);
-                $("#Qty").val(1);
+                $("#Qty").val(qty);
 
             });
-
 
         });
         
@@ -228,8 +227,7 @@
                 }
                 var mm = +$(this).find('td:eq(6)').text();
                 taxfinding = taxfinding + mm;
-                gstamount = taxfinding;
-
+                $("#TaxAmount1").val(taxfinding);               
             })
 
 
@@ -272,7 +270,6 @@
                     ItemTotal : $(this).find("td:eq(7)").text()
                     });                                  
             });
-
             objpartydetails.PartyName = $("#PartiesID option:selected").val();
             objpartydetails.BillingName = $("#BillingName").val();
             objpartydetails.ContactNo = $("#ContactNo").val();
@@ -283,16 +280,14 @@
             objpartydetails.Received = $("#Received").val();
             objpartydetails.RemainingBal = $("#RemainingBal").val();
             objpartydetails.TransportName = $("#TransportName").val();
-            objpartydetails.TaxAmount1 = gstamount;
-            objpartydetails.DeliveryLocation = $("#DeliveryLocation").val();
-            objpartydetails.DeliverDate = $("#DeliveryDate").val();
+             objpartydetails.DeliveryLocation = $("#DeliveryLocation").val();
+            objpartydetails.DeliverDate = $("#DeliveryDate").val
+            objpartydetails.TaxAmount1 = $("#TaxAmount1").val();           
             objpartydetails.PaymentType = $("#PaymentType").val();
             objpartydetails.TransportName = $("#TransportName").val();
             objpartydetails.Status = $("#Status").val();
             objpartydetails.VehicleNumber = $("#VehicleNumber").val();
             objpartydetails.CalTotal = $("#CalTotal").val();
-
-
             objpartydetails.listofitemdetail = listofitemdetails;
 
 
@@ -356,6 +351,9 @@
                                 <div class="pull-right">
                                     Order No:
                                     @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control datepicker", @style = "width:150px;" })
+
+
+                                    @Html.TextBoxFor(model => model.TaxAmount1, new { @class = "form-control datepicker",@id= "TaxAmount1", @style = "width:150px;display:none" })
                                     Order Date:
                                     @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker", @style = "width:150px;" })
                                     Barcode:
@@ -491,11 +489,8 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                Item ID
-                                            </th>
-                                            <th>
-                                              Item Name                                             
-                                            </th>
+                                                Item Name   
+                                            </th>                                            
                                             <th>
                                                MRP
                                             </th>
@@ -513,9 +508,13 @@
                                             <th>
                                                 Tax Amount
                                             </th>
+                                           
                                             <th>
                                                 Total
-                                            </th>                                      
+                                            </th>
+                                            <th>
+                                                Action
+                                            </th>
                                         </tr>
                                     </thead>
                                 </table>

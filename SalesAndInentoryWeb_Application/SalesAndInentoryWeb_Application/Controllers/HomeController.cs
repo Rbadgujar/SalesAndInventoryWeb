@@ -16,6 +16,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult Dashboard()
         {
+            MainLoginController.companyid1 = 32;
               return View();
         }
 

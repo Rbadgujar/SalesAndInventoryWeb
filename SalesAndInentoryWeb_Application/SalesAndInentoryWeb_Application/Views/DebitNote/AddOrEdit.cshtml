@@ -103,7 +103,7 @@
                 $("#da").val(dis_count);
                 $("#sa").val(tax_cal);
                 $("#ca").val(finalcal);
-                $("#qty").val(1);
+                $("#qty").val(qty);
 
             });
 
@@ -123,7 +123,7 @@
                 $("#da").val(dis_count);
                 $("#sa").val(tax_cal);
                 $("#ca").val(finalcal);
-                $("#qty").val(1);
+                $("#qty").val(qty);
 
             });
             $("#Received").change(function () {
@@ -148,7 +148,7 @@
                 $("#da").val(dis_count);
                 $("#sa").val(tax_cal);
                 $("#ca").val(finalcal);
-                $("#qty").val(1);
+                $("#qty").val(qty);
 
             });
         });
@@ -180,6 +180,15 @@
                 finding = finding + mm
                 $("#Total").val(finding);
             });
+
+            var finding1 = 0;
+            $("tr").each(function (indexTr) {
+
+                var mm = +$(this).find('td:eq(7)').text();
+                finding1 = finding1 + mm
+                $("#TaxAmount1").val(finding1);
+            });
+
         }
         function minus() {
             var pretotal1 = $("#Total").val();
@@ -229,7 +238,7 @@
             objdebitnote.Received = $("#Received").val();
             objdebitnote.RemainingBal = $("#RemainingBal").val();
             objdebitnote.TransportName = $("#TransportName").val();
-
+            objdebitnote.TransportName = $("#TaxAmount1").val();        
             objdebitnote.DeliveryLocation = $("#DeliveryLocation").val();
             objdebitnote.DeliverDate = $("#DeliveryDate").val();
             objdebitnote.PaymentType = $("#PaymentType").val();
@@ -287,11 +296,16 @@
 								PO No:
 								@Html.EditorFor(model => model.PONumber, new { htmlAttributes = new { @class = "form-control", placeholder = "PO No.....", @style = "width:150px;height:32px" } })
 								@Html.ValidationMessageFor(model => model.PONumber)
-								PO Date:
+
+                                @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", placeholder = "PO No.....",@id= "TaxAmount1", @style = "width:150px;height:32px;display:none" } })
+
+                                PO Date:
 								@Html.TextBoxFor(model => model.PODate, new { @type = "date", @class = "form-control", @style = "width:150px;" })
-								Barcode:
-								@Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
-								@Html.ValidationMessageFor(model => model.Barcode)
+
+                                Barcode:
+                                @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
+
+                                @Html.ValidationMessageFor(model => model.Barcode)
 
 							</div>
 

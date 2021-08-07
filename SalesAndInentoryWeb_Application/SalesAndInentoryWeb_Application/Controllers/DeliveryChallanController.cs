@@ -172,6 +172,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(PartyDetailsDeliveryChallan objdeliverychallan)
         {
+            var gstcount = objdeliverychallan.TaxAmount1;
+            var gst = gstcount / 2;
+
             tbl_DeliveryChallan sale = new tbl_DeliveryChallan()
             {
                 PartyName = objdeliverychallan.PartyName,
@@ -182,6 +185,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 TransportName = objdeliverychallan.TransportName,
                 DeliveryLocation = objdeliverychallan.DeliveryLocation,
                 Deliverydate = objdeliverychallan.DeliveryDate,
+                CGST = gst,
+                SGST=gst,
                 StateofSupply = objdeliverychallan.StateOfSupply,
                 InvoiceDate = Convert.ToDateTime(objdeliverychallan.InvoiceDate),
                 DueDate = objdeliverychallan.DueDate,
@@ -195,6 +200,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objdeliverychallan.ListOfDeliveryChallan)
             {
+                var gst1 = item.SaleTaxAmount;
+                var finalgsr = gst1 / 2;
                 tbl_DeliveryChallanInner inner = new tbl_DeliveryChallanInner()
                 {
                     ItemName = item.ItemName,
@@ -202,6 +209,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     ChallanNo = sale.ChallanNo,
                     TaxForSale = item.TaxForSale,
                     Discount = item.Discount,
+                    SGST=finalgsr,
+                    CGST=finalgsr,
                     DiscountAmount = item.DiscountAmount,
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,

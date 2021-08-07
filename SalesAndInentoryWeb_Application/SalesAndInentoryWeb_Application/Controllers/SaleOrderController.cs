@@ -182,6 +182,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(PartyDetails objpartydetails)
         {
+            var gstcount = objpartydetails.TaxAmount1;
+            var gst = gstcount / 2;
 
             tbl_SaleOrder sale = new tbl_SaleOrder()
             {               
@@ -194,6 +196,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 DeliveryLocation = objpartydetails.DeliveryLocation,
                 Deliverydate = objpartydetails.DeliveryDate,
                 StateofSupply = objpartydetails.StateOfSupply,
+                SGST = gst,
+                CGST = gst,
                 OrderDate =Convert.ToDateTime(objpartydetails.OrderDate),
                 DueDate = objpartydetails.DueDate,
                 Barcode = objpartydetails.Barcode,
@@ -206,12 +210,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objpartydetails.listofitemdetail)
             {
+                var gst1 = item.SaleTaxAmount;
+                var finalgsr = gst1 / 2;
+
                 tbl_SaleOrderInner inner = new tbl_SaleOrderInner()
                 {
-                    ItemName=item.ItemName,
-                    SalePrice=item.SalePrice,
-                    OrderNo=sale.OrderNo,
-                    ItemID=item.ItemID,
+                    ItemName = item.ItemName,
+                    SalePrice = item.SalePrice,
+                    OrderNo = sale.OrderNo,
+                    ItemID = item.ItemID,
+                    CGST = finalgsr,
+                    SGST=finalgsr,
+               
                     TaxForSale=item.TaxForSale,
                     Discount=item.Discount,
                     DiscountAmount=item.DiscountAmount,
