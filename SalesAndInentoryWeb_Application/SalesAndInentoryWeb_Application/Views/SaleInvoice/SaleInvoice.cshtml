@@ -264,16 +264,7 @@
                            <div class="collapse navbar-collapse ">
                               
                                <div class="row">
-                                   <div class="form-group col-md-3">    
-                                       @*<div class="pull-right">                               
-                                           @Html.DevExpress().Label(settings =>
-                                           {
-                                               settings.Style["font-weight"] = "bold";
-                                               settings.Name = "Label1";
-                                               settings.Text = "Party Name   :";
-                                           }).GetHtml()
-                                           </div>*@
-                                       
+                                   <div class="form-group col-md-3">                                          
                                        Party Name:
                                        <br>
                                        @Html.DropDownListFor(model => model.ParitesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" } })                                  

@@ -318,7 +318,7 @@
                                   Barcode:
                                     @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "Barcod No", @style = "width:150px;height:30px" } })
                                     @Html.ValidationMessageFor(model => model.Barcode)
-                                    Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", id= "TaxAmount1", Style="display:none", placeholder = "Po Number" } })
+                                    @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", id= "TaxAmount1", Style="display:none", placeholder = "Po Number" } })
                                     @Html.ValidationMessageFor(model => model.TaxAmount1)
 
 

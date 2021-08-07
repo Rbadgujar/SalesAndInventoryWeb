@@ -4,80 +4,20 @@
     Layout = "~/Views/Shared/ideal.cshtml";
 
 }
-<label style="font-size:20px; margin-left:15px ">Item Wise Profit Loss Report</label>
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
-</head>
 <div class="container" style="height:100%; width:100%;">
-    <nav class="navbar navbar-default ">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse ">
-                <br>
-                <div class="row">
-                    <div class="form-group col-xs-1">
-                        @Html.DevExpress().Label(settings =>
-                   {
-                       settings.Style["font-weight"] = "bold";
-                       settings.Style["margin-top"] = "15px";
-
-                       settings.Name = "Label87";
-                       settings.Text = "From";
-                   }).GetHtml()
-                    </div>
-                    <div class="form-group col-md-2">
-                        @Html.DevExpress().DateEdit(settings =>
-                   {
-                       settings.ControlStyle.CssClass = "form-control";
-                       settings.Style["margin-bottom"] = "15px";
-                       settings.Name = "DateEdit1";
-                       settings.Properties.NullText = "dd/MM/YYYY";
-                       settings.ControlStyle.CssClass = "form-control";
-
-                   }).GetHtml()
-                    </div>
-                    <div class="form-group  col-xs-1">
-                        @Html.DevExpress().Label(settings =>
-                   {
-                       settings.Style["font-weight"] = "bold";
-                       settings.Style["margin-top"] = "15px";
-
-                       settings.Name = "Label82";
-                       settings.Text = "To";
-                   }).GetHtml()
-                    </div>
-                    <div class="form-group col-md-2">
-                        @Html.DevExpress().DateEdit(settings =>
-                   {
-                       settings.ControlStyle.CssClass = "form-control";
-                       settings.Style["margin-bottom"] = "15px";
-                       settings.Name = "DateEdit";
-                       settings.Properties.NullText = "dd/MM/YYYY";
-                       settings.ControlStyle.CssClass = "form-control";
-
-                   }).GetHtml()
-                    </div>
-               
-                    <a class="btn btn-success pull-right row" style="margin-right:10px; margin-bottom:15px;" onclick=""><span class="glyphicon glyphicon-print"></span> Print </a>
+    <nav class="navbar navbar-default " style="background-color:white">
+        <nav class="navbar navbar-default " style="background-color:white;height:60px; border:none">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse ">
+                    <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Item Wise Profit And Loss Report</h3></label>
+                    <a class="btn btn-success pull-right row" style="margin-top:7px; margin-right:21px;"><i class="fa fa-print"></i>Print</a>
+                    <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " id="fromdate" />
+                    <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
+                    <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " id="todate" />
                 </div>
             </div>
-        </div>
-    </nav>
-
-    <nav class="navbar navbar-default ">
+        </nav>
         <div class="container-fluid">
             <div class="collapse navbar-collapse ">
                 <table id="cash" class="table table-striped table-bordered" style="width:100%">
@@ -99,20 +39,21 @@
                 </table>
             </div>
         </div>
-    </nav>
-    <nav class="navbar navbar-default ">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse ">
-                <div class="row">
-                    <div class="form-group col-md-2">
-                        <label for="lname" style="color:black; text-align:left;">Closing Cash In Hand : </label>
-                        <input type="text" id="lname" name="lname" style="text-align:left;">
+     
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse ">
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label for="lname" style="color:black; text-align:left;">Closing Cash In Hand : </label>
+                            <input type="text" id="lname" name="lname" style="text-align:left;">
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
+       
     </nav>
+    
 </div>
 <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />

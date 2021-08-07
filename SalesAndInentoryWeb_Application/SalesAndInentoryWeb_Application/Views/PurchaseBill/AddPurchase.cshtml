@@ -326,8 +326,9 @@
                                         <b>Po NO</b>
                                         @Html.EditorFor(model => model.PONo, new { htmlAttributes = new { @class = "form-control", placeholder = "Po Number" } })
                                         @Html.ValidationMessageFor(model => model.PONo)
-                                     
-                                    Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", id= "TaxAmount1", Style="display:none", placeholder = "Po Number" } })
+
+                                   @* @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", placeholder = "Tax", @id = "TaxAmount1", @style = "display:none" } })*@                                     
+                                    @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", @id= "TaxAmount1", @style="display:none", placeholder = "Po Number" } })
                                     @Html.ValidationMessageFor(model => model.TaxAmount1)
 
 
