@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="idealtec_inventory" Class="CompanyDataClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=103.83.81.80;Initial Catalog=idealtec_inventory;User ID=idealtec_inventory;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="idealtec_inventoryConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.PasswordCheek" Member="PasswordCheeks">
-    <Type Name="PasswordCheek">
+  <Table Name="dbo.PasswordCheque" Member="PasswordCheques">
+    <Type Name="PasswordCheque">
       <Column Name="ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -496,8 +496,8 @@
       <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PasswordCheek" Member="PasswordCheek1s">
-    <Type Name="PasswordCheek1">
+  <Table Name="dbo.PasswordCheque" Member="PasswordCheque1s">
+    <Type Name="PasswordCheque1">
       <Column Name="ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />

@@ -11,18 +11,18 @@
 
 namespace SalesAndInentoryWeb_Application
 {
-    using System.Data.Linq;
-    using System.Data.Linq.Mapping;
-    using System.Data;
-    using System.Collections.Generic;
-    using System.Reflection;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.ComponentModel;
-    using System;
-    using System.Web.Mvc;
-
-    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="idealtec_inventory")]
+	using System.Data.Linq;
+	using System.Data.Linq.Mapping;
+	using System.Data;
+	using System.Collections.Generic;
+	using System.Reflection;
+	using System.Linq;
+	using System.Linq.Expressions;
+	using System.ComponentModel;
+	using System;
+	
+	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="idealtec_inventory")]
 	public partial class CompanyDataClassDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -206,11 +206,11 @@ namespace SalesAndInentoryWeb_Application
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<PasswordCheek> PasswordCheeks
+		public System.Data.Linq.Table<PasswordCheque> PasswordCheques
 		{
 			get
 			{
-				return this.GetTable<PasswordCheek>();
+				return this.GetTable<PasswordCheque>();
 			}
 		}
 		
@@ -350,11 +350,11 @@ namespace SalesAndInentoryWeb_Application
 			}
 		}
 		
-		public System.Data.Linq.Table<PasswordCheek1> PasswordCheek1s
+		public System.Data.Linq.Table<PasswordCheque1> PasswordCheque1s
 		{
 			get
 			{
-				return this.GetTable<PasswordCheek1>();
+				return this.GetTable<PasswordCheque1>();
 			}
 		}
 		
@@ -1714,8 +1714,8 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PasswordCheek")]
-	public partial class PasswordCheek
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PasswordCheque")]
+	public partial class PasswordCheque
 	{
 		
 		private string _ID;
@@ -1728,7 +1728,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private string _Feald2;
 		
-		public PasswordCheek()
+		public PasswordCheque()
 		{
 		}
 		
@@ -1816,9 +1816,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_SaleInvoice")]
 	public partial class tbl_SaleInvoice : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _InvoiceID;
 		
@@ -3285,9 +3284,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_PurchaseBill")]
 	public partial class tbl_PurchaseBill : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _BillNo;
 		
@@ -6254,9 +6252,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_BankAccount")]
 	public partial class tbl_BankAccount : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
@@ -7271,9 +7268,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_SaleOrder")]
 	public partial class tbl_SaleOrder : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _OrderNo;
 		
@@ -8528,9 +8524,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_LoanBank")]
 	public partial class tbl_LoanBank : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
@@ -9436,9 +9431,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Expenses")]
 	public partial class tbl_Expense : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfCategory { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID1;
 		
@@ -10272,9 +10266,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_OtherIncome")]
 	public partial class tbl_OtherIncome : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfCategory { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id1;
 		
@@ -10942,9 +10935,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblQuotation")]
 	public partial class tblQuotation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _RefNo;
 		
@@ -12999,8 +12991,8 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PasswordCheek")]
-	public partial class PasswordCheek1
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PasswordCheque")]
+	public partial class PasswordCheque1
 	{
 		
 		private string _ID;
@@ -13013,7 +13005,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private string _Feald2;
 		
-		public PasswordCheek1()
+		public PasswordCheque1()
 		{
 		}
 		
@@ -14386,9 +14378,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_BankAdjustment")]
 	public partial class tbl_BankAdjustment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
@@ -14617,9 +14608,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_CashAdjustment")]
 	public partial class tbl_CashAdjustment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
@@ -14848,9 +14838,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_CashInhand")]
 	public partial class tbl_CashInhand : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
@@ -16224,9 +16213,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_CreditNote1")]
 	public partial class tbl_CreditNote1 : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ReturnNo;
 		
@@ -18112,9 +18100,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_DebitNote")]
 	public partial class tbl_DebitNote : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ReturnNo;
 		
@@ -20024,9 +20011,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_DeliveryChallan")]
 	public partial class tbl_DeliveryChallan : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ChallanNo;
 		
@@ -24110,9 +24096,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_MakePayment")]
 	public partial class tbl_MakePayment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
@@ -26353,9 +26338,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_PurchaseOrder")]
 	public partial class tbl_PurchaseOrder : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _OrderNo;
 		
@@ -29906,9 +29890,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_BanktoBankTransfer")]
 	public partial class tbl_BanktoBankTransfer : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		

@@ -33,8 +33,8 @@ warning 6013: The table/view 'idealtec_inventory.dbo.Item_Seeting' does not have
           <Property Name="Description" Type="varchar" MaxLength="50" />
         </EntityType>-->
         <!--Errors Found During Generation:
-warning 6013: The table/view 'idealtec_inventory.dbo.PasswordCheek' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PasswordCheek">
+warning 6013: The table/view 'idealtec_inventory.dbo.PasswordCheque' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PasswordCheque">
           <Property Name="ID" Type="nchar" MaxLength="10" />
           <Property Name="Password" Type="varchar" MaxLength="20" />
           <Property Name="Company_ID" Type="varchar" MaxLength="50" />

@@ -3,7 +3,7 @@
   <DataContextMoniker Name="/CompanyDataClassDataContext" />
   <nestedChildShapes>
     <classShape Id="29da76c9-9796-428e-a7e2-52568d62cf70" absoluteBounds="0.75, 1.625, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/CompanyDataClassDataContext/PasswordCheek" />
+      <DataClassMoniker Name="/CompanyDataClassDataContext/PasswordCheque" />
       <nestedChildShapes>
         <elementListCompartment Id="78eeec42-7bbd-4371-88d7-0e4a611b38d4" absoluteBounds="0.765, 2.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
@@ -223,7 +223,7 @@
       </nestedChildShapes>
     </classShape>
     <classShape Id="ee369d9a-8b54-40a5-a53c-5446528373cf" absoluteBounds="12.375, 21.5, 2, 1.7708968098958344">
-      <DataClassMoniker Name="/CompanyDataClassDataContext/PasswordCheek1" />
+      <DataClassMoniker Name="/CompanyDataClassDataContext/PasswordCheque1" />
       <nestedChildShapes>
         <elementListCompartment Id="983743ae-1a7d-4a66-b065-9e298b856a4e" absoluteBounds="12.39, 21.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>

@@ -7078,7 +7078,7 @@
 	
 		lastIndexOf: __arrayProto.lastIndexOf || function (obj, start)
 		{
-			// Bit cheeky...
+			// Bit Chequey...
 			return this.indexOf.apply( this.toArray.reverse(), arguments );
 		},
 	

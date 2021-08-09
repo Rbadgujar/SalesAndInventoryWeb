@@ -12,8 +12,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         // GET: DayBook
         CompanyDataClassDataContext db = new CompanyDataClassDataContext();
         public ActionResult Index()
-        {
-          
+        {         
             return View();
         }
         public ActionResult Daybook(string sortOrder, int? page, DateTime? datePicker)
@@ -29,9 +28,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
             var applications = from s in db.tbl_SaleInvoices
                                where s.InvoiceDate >= startDate
                                select s;
-
-
-
 
             return Json(new { data = applications }, JsonRequestBehavior.AllowGet);
         }

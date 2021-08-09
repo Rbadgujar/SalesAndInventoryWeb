@@ -160,6 +160,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var finalgsr = gst1 / 2;
                 tbl_QuotationInner inner = new tbl_QuotationInner()
                 {
+
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     RefNo = sale.RefNo,

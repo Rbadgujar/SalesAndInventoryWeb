@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
+using Path = System.IO.Path;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
@@ -21,20 +22,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             if (id == 0)
             {
-                return View(new tbl_PartyMaster());
+                return View();
             }
             else
             {
                 var tb = db.tbl_PartyMasterSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.PartiesID == id);
-                var vm = new tbl_PartyMaster();
+                var vm = new tbl_PartyMasterSelectResult();
                 //PartiesID,PartyName,ContactNo,BillingAddress,EmailID,GSTType,State,OpeningBal,AsOfDate
                 //AddRemainder,PartyType,ShippingAddress,PartyGroup,PaidStatus,Type
                 vm.PartyName = tb.PartyName;
                 vm.ContactNo = tb.ContactNo;
                 vm.BillingAddress = tb.BillingAddress;
                 vm.EmailID = tb.EmailID;
-              //vm.GSTNo = tb.GSTNo;
-          
+              //vm.GSTNo = tb.GSTNo;         
                 vm.State = tb.State;
                 vm.OpeningBal = tb.OpeningBal;
                 vm.AsOfDate = Convert.ToDateTime(tb.AsOfDate);
@@ -47,16 +47,33 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(vm);
             }
         }
-
+        public string imagefile;
         [HttpPost]
-        public ActionResult Addparty(tbl_PartyMasterSelectResult party, int id = 0)
+        public ActionResult Addparty1(IEnumerable<HttpPostedFileBase> files, tbl_PartyMasterSelectResult party, int id = 0)
         {
             if (id == 0)
         {
                 try
                 {
+
+
+                  
+                    foreach (var file in files)
+                    {
+
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            file.SaveAs(Path.Combine(Server.MapPath("/images"), Guid.NewGuid() + Path.GetExtension(file.FileName)));
+                             imagefile = "~/images/"+file.FileName;
+
+                            var path = Path.Combine(Server.MapPath("~/images"), file.FileName);
+
+                        }
+                    }
+
+                  
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, null);
+                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, imagefile);
                     db.SubmitChanges();
                     return RedirectToAction("Index");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
