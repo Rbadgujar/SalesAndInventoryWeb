@@ -3874,6 +3874,7 @@
     <Content Include="Views\MakePayment\MakePaymentUpdate.cshtml" />
     <Content Include="Views\PartyReportByItem\Index.cshtml" />
     <Content Include="Views\BankStatement\Index.cshtml" />
+    <Content Include="Views\PurchaseBill\AddPurchaseUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

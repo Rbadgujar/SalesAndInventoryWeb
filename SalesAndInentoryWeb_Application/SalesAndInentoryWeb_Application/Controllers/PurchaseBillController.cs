@@ -50,14 +50,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
 			return View(tb);
 		}
-        [HttpGet]
-        public ActionResult AddPurchase()
-        {
-            tbl_PurchaseBill bt = new tbl_PurchaseBill();
-            bt.ListOfAccounts = ListOfItems();
-            bt.ListOfParties = ListOfParties();
-            return View(bt);
-        }
+     
         private static List<SelectListItem> ListOfItems()
         {
             string sql;
@@ -243,54 +236,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
 
-        //[HttpGet]
-        //public ActionResult AddPurchase(int id=0)
-        //{
-        //	if (id == 0)
-        //	{
-        //		return View(new tbl_PurchaseBill());
-        //	}
-        //	else
-
-
-        //	{
-        //		var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
-        //		var vm = new tbl_PurchaseBill();
-        //		vm.PONo = tb.PONo;
-        //		vm.PartyName = tb.PartyName;
-        //		vm.BillingName = tb.BillingName;
-        //		vm.ContactNo = tb.ContactNo;
-        //		vm.BillDate = Convert.ToDateTime(tb.BillDate);
-        //		vm.PoDate = Convert.ToDateTime(tb.PoDate);
-        //		vm.DueDate = Convert.ToDateTime(tb.DueDate);
-        //		vm.StateofSupply = tb.StateofSupply;
-        //		vm.PaymentType = tb.PaymentType;
-        //		vm.VehicleNumber = tb.VehicleNumber;
-        //		vm.DeliveryLocation = tb.DeliveryLocation;
-        //		vm.TransportName = tb.TransportName;
-        //		vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
-        //		vm.Description = tb.Description;
-        //		vm.TransportCharges = tb.TransportCharges;
-        //		vm.Tax1 = tb.Tax1;
-        //		vm.TaxAmount1 = tb.TaxAmount1;
-        //		vm.CGST = tb.CGST;
-        //		vm.SGST = tb.SGST;
-        //		vm.Paid = tb.Paid;
-        //		vm.DiscountAmount1 = tb.DiscountAmount1;
-        //		vm.TotalDiscount = tb.TotalDiscount;
-        //		vm.RoundFigure = tb.RoundFigure;
-        //		vm.Total = tb.Total;
-        //		vm.PaymentTerms = tb.PaymentTerms;
-        //		vm.RemainingBal = tb.RemainingBal;
-        //		vm.Status = tb.Status;
-        //		vm.Barcode = tb.Barcode;
-        //		vm.IGST = tb.IGST;
-        //		vm.Feild4 = tb.Feild4;
-        //		vm.Feild1 = tb.Feild1;
-        //		return View(vm);
-        //	}
-
-        //}
+        [HttpGet]
+        public ActionResult AddPurchase(int id = 0)
+        {
+          
+                tbl_PurchaseBill bt = new tbl_PurchaseBill();
+                bt.ListOfAccounts = ListOfItems();
+                bt.ListOfParties = ListOfParties();
+                return View(bt);
+           
+        }
 
         public ActionResult vits()
         {
@@ -317,9 +272,76 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult AddPurchaseUpdate(int id=0)
+        {
+            var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
+            var vm = new tbl_PurchaseBill();
+            vm.PONo = tb.PONo;
+            vm.BillingName = tb.BillingName;
+            vm.ContactNo = tb.ContactNo;
+            vm.BillDate = Convert.ToDateTime(tb.BillDate);
+            vm.PoDate = Convert.ToDateTime(tb.PoDate);
+            vm.DueDate = Convert.ToDateTime(tb.DueDate);
+            vm.StateofSupply = tb.StateofSupply;
+            vm.PaymentType = tb.PaymentType;
+            vm.VehicleNumber = tb.VehicleNumber;
+            vm.DeliveryLocation = tb.DeliveryLocation;
+            vm.TransportName = tb.TransportName;
+            vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
+            vm.Description = tb.Description;
+            vm.TransportCharges = tb.TransportCharges;
+            vm.Tax1 = tb.Tax1;
+            vm.TaxAmount1 = tb.TaxAmount1;
+            vm.CGST = tb.CGST;
+            vm.SGST = tb.SGST;
+            vm.Paid = tb.Paid;
+            vm.DiscountAmount1 = tb.DiscountAmount1;
+            vm.TotalDiscount = tb.TotalDiscount;
+            vm.RoundFigure = tb.RoundFigure;
+            vm.Total = tb.Total;
+            vm.PaymentTerms = tb.PaymentTerms;
+            vm.RemainingBal = tb.RemainingBal;
+            vm.Status = tb.Status;
+            vm.Barcode = tb.Barcode;
+            vm.IGST = tb.IGST;
+            vm.Feild4 = tb.Feild4;
+            vm.Feild1 = tb.Feild1;
+            GetFruitNameById5(id);
+            return View(vm);    
+        }
 
-
-
+        public static List<tbl_PurchaseBillInner> GetFruitNameById5(int id)
+        {
+            string sql;
+            List<tbl_PurchaseBillInner> items3 = new List<tbl_PurchaseBillInner>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_PurchaseBillInner WHERE ID = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_PurchaseBillInner()
+                            {
+                                ItemName = sdr["ItemName"].ToString(),
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
 
 
 
