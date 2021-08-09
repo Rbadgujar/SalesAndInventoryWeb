@@ -10,7 +10,7 @@
         padding: 20px;
     }
 </style>
-@using (Html.BeginForm("AddOrEdit", "CashInHand", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+@using (Html.BeginForm("AddOrEdit", "CashInHand", FormMethod.Post@*, new { onsubmit = "return SubmitForm(this)" }*@))
 {
     <div id="div">
         @Html.HiddenFor(model => model.ID)
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+                        <input type="submit" value="Submit" class="btn btn-primary pull-right" id="btnsubmit"/>
                         <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
                         <br>
                     </div>
@@ -96,7 +96,9 @@
                         $("input[type=text]").change(function () {
                             check();
                         });
-
+                        $("btnsubmit").change(function () {
+                            check1();
+                        });
                     });
                     function cal() {
                         var bal = $("#OpeningBal").val();
@@ -116,6 +118,14 @@
                         }
                         else if ($("#CashAdjustment").val() == "Cash In") {
                             cal1();
+                        }
+                    }
+                    function check1() {
+                        if ($("#CashAmount").val() < $("#OpeningBal").val()) {
+                            alert("Invalid Amount");
+                        }
+                        else {
+                            onsubmit = "return SubmitForm(this)";
                         }
                     }
                 </script>

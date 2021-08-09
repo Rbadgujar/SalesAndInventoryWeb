@@ -3354,6 +3354,7 @@
     <Compile Include="Controllers\BackupController.cs" />
     <Compile Include="Controllers\BankAccountController.cs" />
     <Compile Include="Controllers\BankAdjustmentController.cs" />
+    <Compile Include="Controllers\BankStatementController.cs" />
     <Compile Include="Controllers\BankToBankController.cs" />
     <Compile Include="Controllers\BarcodeController.cs" />
     <Compile Include="Controllers\CashFlowReportController.cs" />
@@ -3393,6 +3394,7 @@
     <Compile Include="Controllers\OtherIncomeReportController.cs" />
     <Compile Include="Controllers\ParchaseOrderController.cs" />
     <Compile Include="Controllers\PartyMasterController.cs" />
+    <Compile Include="Controllers\PartyReportByItemController.cs" />
     <Compile Include="Controllers\PartyStatementController.cs" />
     <Compile Include="Controllers\PaymentInController.cs" />
     <Compile Include="Controllers\PaymentOutController.cs" />
@@ -3870,6 +3872,9 @@
     <Content Include="Views\LoanAccount\AddOrEditPopUp.cshtml" />
     <Content Include="Views\MakePayment\MakePaymentPopUp.cshtml" />
     <Content Include="Views\MakePayment\MakePaymentUpdate.cshtml" />
+    <Content Include="Views\PartyReportByItem\Index.cshtml" />
+    <Content Include="Views\BankStatement\Index.cshtml" />
+    <Content Include="Views\PurchaseBill\AddPurchaseUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

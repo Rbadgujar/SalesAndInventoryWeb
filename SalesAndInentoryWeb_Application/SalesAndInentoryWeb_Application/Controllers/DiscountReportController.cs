@@ -8,10 +8,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class DiscountReportController : Controller
     {
-        // GET: DiscountReport
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult Data()
+        {
+            var tb = db.DiscountReport("Select", null, null, null,null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
     }
 }

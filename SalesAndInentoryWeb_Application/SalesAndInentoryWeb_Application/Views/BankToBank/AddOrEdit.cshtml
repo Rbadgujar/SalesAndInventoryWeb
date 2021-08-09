@@ -11,7 +11,7 @@
 }
 </style>
 
-    @using (Html.BeginForm("AddOrEdit", "BankToBank", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+    @using (Html.BeginForm("AddOrEdit", "BankToBank", FormMethod.Post@*, new { onsubmit = "return SubmitForm(this)" }*@))
     {
         <div id="div">
             @Html.HiddenFor(model => model.ID)
@@ -90,7 +90,9 @@
         $("input[type=text]").change(function () {
             cal();
         });      
-      
+        $("btnsubmit").change(function () {
+            check();
+        });
     });
     function cal()
     {
@@ -99,6 +101,13 @@
         var total = bal - amount;
         $("#Total").val(total);
     }
-   
+    function check() {
+        if ($("#Amount").val() < $("#OpeningBal").val()) {
+            alert("Invalid Amount");
+        }
+        else {
+            onsubmit = "return SubmitForm(this)";
+        }
+    }
 </script>
 

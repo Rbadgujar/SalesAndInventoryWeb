@@ -8,10 +8,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ProfitAndLossController : Controller
     {
-        // GET: ProfitAndLoss
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult Data()
+        {
+            var tb = db.ProfitOrLoss("Select", null, null, null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
     }
 }
