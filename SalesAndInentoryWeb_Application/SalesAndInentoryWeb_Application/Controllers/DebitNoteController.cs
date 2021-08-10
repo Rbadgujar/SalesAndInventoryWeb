@@ -182,20 +182,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 BillingName = objdebitnote.BillingName,
                 ContactNo = objdebitnote.ContactNo,
                 RemainingBal = objdebitnote.RemainingBal,
-                CalTotal = objdebitnote.CalTotal,
+                Total = objdebitnote.Total,
                 TransportName = objdebitnote.TransportName,
                 DeliveryLocation = objdebitnote.DeliveryLocation,
-                Deliverydate = objdebitnote.DeliveryDate,
+                Deliverydate = Convert.ToDateTime(objdebitnote.DeliveryDate),
                 StateofSupply = objdebitnote.StateOfSupply,
                 InvoiceDate = Convert.ToDateTime(objdebitnote.InvoiceDate),
                 CGST = gst,
                 SGST=gst,
-                DueDate = objdebitnote.DueDate,
                 Barcode = objdebitnote.Barcode,
                 Status = objdebitnote.Status,
                 VehicleNumber = objdebitnote.VehicleNumber,
                 PONumber=objdebitnote.PONumber,
-                PODate=objdebitnote.PODate,
+                PODate= Convert.ToDateTime(objdebitnote.PODate),
                 Received=objdebitnote.Received             
             };
             db.tbl_DebitNotes.InsertOnSubmit(sale);

@@ -223,7 +223,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 BillingName = objpurchaseorder.BillingName,
                 ContactNo = objpurchaseorder.ContactNo,
                 RemainingBal = objpurchaseorder.RemainingBal,
-                CalTotal = objpurchaseorder.CalTotal,
+                Total = objpurchaseorder.Total,
                 TransportName = objpurchaseorder.TransportName,
                 DeliveryLocation = objpurchaseorder.DeliveryLocation,
                 Deliverydate = objpurchaseorder.DeliveryDate,

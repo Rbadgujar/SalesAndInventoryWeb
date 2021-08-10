@@ -121,7 +121,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 BillingName = objpurchase.BillingName,
                 ContactNo = objpurchase.ContactNo,
                 RemainingBal = objpurchase.RemainingBal,
-                CalTotal = objpurchase.CalTotal,
+                Total = objpurchase.Total,
+                PONo = objpurchase.PONo,
+                Feild4 = objpurchase.Feild4,
                 TaxAmount1 = objpurchase.TaxAmount1,
                 TransportName = objpurchase.TransportName,
                 DeliveryLocation = objpurchase.DeliveryLocation,
@@ -158,7 +160,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     Qty = item.Qty
                 };
                 db.tbl_PurchaseBillInners.InsertOnSubmit(inner);
-
                 db.SubmitChanges();
             }
             //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
@@ -178,7 +179,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id");
+                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id and DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -272,44 +273,44 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult AddPurchaseUpdate(int id=0)
-        {
-            var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
-            var vm = new tbl_PurchaseBill();
-            vm.PONo = tb.PONo;
-            vm.BillingName = tb.BillingName;
-            vm.ContactNo = tb.ContactNo;
-            vm.BillDate = Convert.ToDateTime(tb.BillDate);
-            vm.PoDate = Convert.ToDateTime(tb.PoDate);
-            vm.DueDate = Convert.ToDateTime(tb.DueDate);
-            vm.StateofSupply = tb.StateofSupply;
-            vm.PaymentType = tb.PaymentType;
-            vm.VehicleNumber = tb.VehicleNumber;
-            vm.DeliveryLocation = tb.DeliveryLocation;
-            vm.TransportName = tb.TransportName;
-            vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
-            vm.Description = tb.Description;
-            vm.TransportCharges = tb.TransportCharges;
-            vm.Tax1 = tb.Tax1;
-            vm.TaxAmount1 = tb.TaxAmount1;
-            vm.CGST = tb.CGST;
-            vm.SGST = tb.SGST;
-            vm.Paid = tb.Paid;
-            vm.DiscountAmount1 = tb.DiscountAmount1;
-            vm.TotalDiscount = tb.TotalDiscount;
-            vm.RoundFigure = tb.RoundFigure;
-            vm.Total = tb.Total;
-            vm.PaymentTerms = tb.PaymentTerms;
-            vm.RemainingBal = tb.RemainingBal;
-            vm.Status = tb.Status;
-            vm.Barcode = tb.Barcode;
-            vm.IGST = tb.IGST;
-            vm.Feild4 = tb.Feild4;
-            vm.Feild1 = tb.Feild1;
-            GetFruitNameById5(id);
-            return View(vm);    
-        }
+        //[HttpGet]
+        //public ActionResult AddPurchaseUpdate(int id=0)
+        //{
+        //    var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
+        //    var vm = new tbl_PurchaseBill();
+        //    vm.PONo = tb.PONo;
+        //    vm.BillingName = tb.BillingName;
+        //    vm.ContactNo = tb.ContactNo;
+        //    vm.BillDate = Convert.ToDateTime(tb.BillDate);
+        //    vm.PoDate = Convert.ToDateTime(tb.PoDate);
+        //    vm.DueDate = Convert.ToDateTime(tb.DueDate);
+        //    vm.StateofSupply = tb.StateofSupply;
+        //    vm.PaymentType = tb.PaymentType;
+        //    vm.VehicleNumber = tb.VehicleNumber;
+        //    vm.DeliveryLocation = tb.DeliveryLocation;
+        //    vm.TransportName = tb.TransportName;
+        //    vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
+        //    vm.Description = tb.Description;
+        //    vm.TransportCharges = tb.TransportCharges;
+        //    vm.Tax1 = tb.Tax1;
+        //    vm.TaxAmount1 = tb.TaxAmount1;
+        //    vm.CGST = tb.CGST;
+        //    vm.SGST = tb.SGST;
+        //    vm.Paid = tb.Paid;
+        //    vm.DiscountAmount1 = tb.DiscountAmount1;
+        //    vm.TotalDiscount = tb.TotalDiscount;
+        //    vm.RoundFigure = tb.RoundFigure;
+        //    vm.Total = tb.Total;
+        //    vm.PaymentTerms = tb.PaymentTerms;
+        //    vm.RemainingBal = tb.RemainingBal;
+        //    vm.Status = tb.Status;
+        //    vm.Barcode = tb.Barcode;
+        //    vm.IGST = tb.IGST;
+        //    vm.Feild4 = tb.Feild4;
+        //    vm.Feild1 = tb.Feild1;
+        //    return Json(GetFruitNameById5(id),JsonRequestBehavior.AllowGet);
+        //    return View(vm);    
+        //}
 
         public static List<tbl_PurchaseBillInner> GetFruitNameById5(int id)
         {
