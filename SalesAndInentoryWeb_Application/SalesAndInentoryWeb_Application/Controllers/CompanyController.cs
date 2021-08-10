@@ -18,14 +18,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
     {
         // GET: Company
         CompanyDataClassDataContext db = new CompanyDataClassDataContext();
-        private string AddLogo;
-
+      
         public ActionResult Index()
         {
             return View();
         }
         [HttpGet]
-        public ActionResult com(int id=0)
+        public ActionResult com(int id = 0)
         {
 
             if (id == 0)
@@ -41,53 +40,84 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 vm.Address = tb.Address;
                 vm.EmailID = tb.EmailID;
                 vm.City = tb.City;
-               // vm.AddLogo = tb.AddLogo;
+                // vm.AddLogo = tb.AddLogo;
                 vm.PhoneNo = tb.ContactNo;
                 vm.GSTNumber = tb.GSTNumber;
                 vm.BusinessType = tb.BusinessType;
                 vm.State = tb.State;
-             
+
                 return View(vm);
             }
 
-          
+
         }
         [HttpPost]
 
-        public ActionResult com(HttpPostedFileBase postedFile, tbl_CompanyMasterSelectResult com, int id=0)
+        public ActionResult com(IEnumerable<HttpPostedFileBase> files, tbl_CompanyMasterSelectResult com, int id = 0)
         {
             try
             {
                 if (id == 0)
                 {
-                    if (postedFile != null)
-                    {
-                        string path = Server.MapPath("~/images/");
-                        if (!Directory.Exists(path))
-                        {
-                            Directory.CreateDirectory(path);
-                        }
+                    //if (postedFile != null)
+                    //{
+                    //    string path = Server.MapPath("~/images/");
+                    //    if (!Directory.Exists(path))
+                    //    {
+                    //        Directory.CreateDirectory(path);
+                    //    }
 
-                        postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
-   }
-                    //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                    db.tbl_CompanyMasterSelect("Insert", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
-                    
-                    db.SubmitChanges();
+                    //    postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
+                    //    string Filepath = Path.GetFileName(postedFile.FileName);
+
+                    // }
+
+                    String[] s1 = new String[2];
+                    int i = 0;
+                    foreach (var file in files)
+                    {
+                        
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            file.SaveAs(Path.Combine(Server.MapPath("/images"), Guid.NewGuid() + Path.GetExtension(file.FileName)));
+                            s1[i] = file.FileName;
+                            i++;
+                        }
+                    }
+
+
+
+                    string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        string sql = string.Format("insert into tbl_CompanyMaster(CompanyName, PhoneNo, EmailID, ReferaleCode, BusinessType, Address, City, State, GSTNumber, OwnerName, Signature, AddLogo, AdditinalFeild1, AdditinalFeild2, AdditinalFeild3,LogoPath) Values('" + com.CompanyName+"','"+com.ContactNo+"','"+com.EmailID+"','"+com.ReferaleCode+"', '"+com.BusinessType+"','"+com.Address+"','"+com.City+"', '"+com.State+"','"+com.GSTNumber+"','"+com.OwnerName+"','"+com.Signature+"','"+com.AddLogo+"','"+com.BankName+"', '"+com.AccountNo+"','"+com.IFSC_Code+"',"+s1[0]+")");                     
+                        SqlCommand cmd = new SqlCommand(sql, con);
+                        con.Open();
+                        cmd.ExecuteScalar();
+                   }
+
+
+                  //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
+
+                    //db.tbl_CompanyMasterSelect("Insert", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, s1[0], com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
+                    //db.SubmitChanges();
                     return RedirectToAction("Index");
+
                 }
                 else
                 {
                     db.tbl_CompanyMasterSelect("Update", id, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
                     db.SubmitChanges();
-                        return RedirectToAction("Index");
-                        //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);                   
+                    return RedirectToAction("Index");
+                    //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);                   
                 }
-            }
+        }
             catch (Exception ex)
             {
                 return View();
-            }
+    }
+
         }
 
         [HttpGet]
