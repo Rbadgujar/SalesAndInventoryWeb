@@ -117,6 +117,47 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             return items2;
         }
+
+
+        public JsonResult GetFruitName2(string id)
+        {
+            return Json(GetFruitNameById2(id), JsonRequestBehavior.AllowGet);
+        }
+
+        private static List<tbl_ItemMaster> GetFruitNameById2(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE Barcode = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                ItemName = sdr["ItemName"].ToString(),
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
+
+
+
         public JsonResult GetFruitName1(string id)
         {
             return Json(GetFruitNameById1(id), JsonRequestBehavior.AllowGet);
@@ -143,6 +184,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                                 SalePrice = Convert.ToDouble(sdr["SalePrice"]),
                                 TaxForSale = sdr["TaxForSale"].ToString(),
                                 SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+
                             });
                         }
                     }
@@ -169,7 +211,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         [HttpPost]
         public ActionResult SaleInvoice(SaleInvoicePartyDetails objsalepartydetails)
-        {
+      {
             var gstcount = objsalepartydetails.TaxAmount1;
             var gst = gstcount / 2;
 
@@ -206,6 +248,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     Discount = item.Discount,
                     CGST = finalgsr,
                     SGST = finalgsr,
+                    InvoiceID = sale.InvoiceID,
                     DiscountAmount = item.DiscountAmount,
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
@@ -214,7 +257,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 db.tbl_SaleInvoiceInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
             }
-      
+
+          
             return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
          
         }
