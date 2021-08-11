@@ -57,6 +57,7 @@
                                $("#SalePrice").val(data[x].SalePrice);
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               $("#Discount").val(data[x].Discount);
                            }
                        }
                    });
@@ -79,19 +80,26 @@
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
                                $("#ID option:selected").val(data[x].ItemName);
+                               $("#Discount").val(data[x].Discount);
 
                                var mrp = data[x].SalePrice;
                                var tax = data[x].TaxForSale;
-
+                               var dis = data[x].Discount;
 
                                var itempricecall = mrp * 1;
                                var tax_cal = itempricecall * tax / 100;
 
                                var finalcal = (itempricecall + tax_cal);
 
+                               var Dis_cal = itempricecall * dis / 100;
+
+                               var total = (mrp + tax_cal) - Dis_cal;
+
                                $("#SaleTaxAmount").val(tax_cal);
                                $("#ItemTotal").val(finalcal);
                                $("#Qty").val(1);
+                               $("#DiscountAmount").val(Dis_cal);
+                               $("#ItemAmount").val(total);
 
                                AddToItem();
                                $("#Barcode").val('');
@@ -514,9 +522,6 @@
 				</div>
 
                 <div class="form-group" style="width:100%;">
-
-
-
                     <table style="width:100%;">
                         <tr>
                             <td style="padding:3px">
@@ -563,14 +568,10 @@
                             </td>
                         </tr>
                     </table>
-
-
              </div>  
 
 
-                <div class="form-group scrolldown" style="height:200px;width:100%; border:1px solid">
-
-                   
+                <div class="form-group scrolldown" style="height:200px;width:100%; border:1px solid">                  
                         <table class="table table-striped table-bordered" style="width:100%;" id="tblPurchaseBill">
                             <thead>
                                 <tr>
