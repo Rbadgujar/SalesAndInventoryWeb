@@ -174,8 +174,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         [HttpPost]
         public ActionResult AddOrEdit(PartyDetailsCreditNote objcreditnote)
-        {
-
+         {
 
             var gstcount = objcreditnote.TaxAmount1;
             var gst = gstcount / 2;
@@ -186,20 +185,21 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 BillingName = objcreditnote.BillingName,
                 ContactNo = objcreditnote.ContactNo,
                 RemainingBal = objcreditnote.RemainingBal,
-                CalTotal = objcreditnote.CalTotal,
+                Total = objcreditnote.CalTotal,
                 TransportName = objcreditnote.TransportName,
                 DeliveryLocation = objcreditnote.DeliveryLocation,
                 Deliverydate = objcreditnote.DeliveryDate,
                 StateofSupply = objcreditnote.StateOfSupply,
                 InvoiceDate = Convert.ToDateTime(objcreditnote.InvoiceDate),
-                CGST=gst,
+                InvoiceNo= objcreditnote.InvoiceNo,
+                CGST =gst,
                 SGST=gst,
-                DueDate = objcreditnote.DueDate,
-                Barcode = objcreditnote.Barcode,
+                //DueDate = Convert.ToDateTime(objcreditnote.DueDate),
+                //Barcode = objcreditnote.Barcode,
                 Status = objcreditnote.Status,
                 VehicleNumber = objcreditnote.VehicleNumber,
                 PONumber = objcreditnote.PONumber,
-                PODate = objcreditnote.PODate,
+                PODate = Convert.ToDateTime(objcreditnote.PODate),
                 Received = objcreditnote.Received
             };
             db.tbl_CreditNote1s.InsertOnSubmit(sale);

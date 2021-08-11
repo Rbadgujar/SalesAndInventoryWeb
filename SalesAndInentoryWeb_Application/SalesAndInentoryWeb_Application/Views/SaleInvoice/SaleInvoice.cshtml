@@ -6,6 +6,14 @@
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
+
     <style>
         .scrolldown 
         {
@@ -37,7 +45,8 @@
 
                 var today = year + "-" + month + "-" + day;
                 $("#InvoiceDate").attr("value", today);
-         
+                $("#Deliverydate").attr("value", today);
+                
           
             $("#btnaddtolist").click(function () {
                 AddToItem();
@@ -60,6 +69,7 @@
                                $("#SalePrice").val(data[x].SalePrice);
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               caldata();
                            }
                        }
                    });
@@ -185,8 +195,8 @@
 
             });
 
-            $("#ID").change(function () {
-                debugger
+            function caldata() {
+             
 
 
                
@@ -205,8 +215,7 @@
                 $("#ItemTotal").val(finalcal);
                 $("#Qty").val(1);
 
-            });
-
+            }
 
             $("#Received").change(function () {
 

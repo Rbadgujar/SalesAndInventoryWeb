@@ -61,6 +61,8 @@
                                $("#SalePrice").val(data[x].SalePrice);
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               caldata();
+
                            }
                        }
                    });
@@ -130,7 +132,7 @@
                 }
             });
 
-            $("#ID").change(function () {
+           function caldata() {
                 debugger
                 var mrp = $("#SalePrice").val();
                 var tax = $("#TaxForSale").val();
@@ -146,8 +148,7 @@
                 $("#ItemTotal").val(finalcal);
                 $("#Qty").val(1);
 
-            });
-            
+            }            
 
             $("#SalePrice").change(function () {
                 debugger
