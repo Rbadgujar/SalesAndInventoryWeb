@@ -35,30 +35,10 @@
     </style>
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
-        $("#ItemName").change(function () {
-            var fruitId = $(this).find("option:selected").val();
-            if (fruitId != "") {
-                $.ajax({
-                    type: "POST",
-                    url: "/SaleOrder/GetFruitName",
-                    data: "id=" + fruitId,
-                    success: function (response) {
-                        if (response != "") {
-                            $("#SalePrice").val(response);
-                        } else {
-                            $("#txtopeningbal").val('');
-                        }
-                    }
-                });
-            } else {
-                $("#txtopeningbal").val('');
-            }
-        });
-      
-      
-
+       
         $(document).ready(function () {
             $("#success-alert").hide();
+
             $("#btnaddtolist").click(function () {
                 AddToItem();
             });
@@ -108,10 +88,10 @@
         });
       
         function minus() {
-            var pretotal1 = $("#Total").val();
-            var pretotal2 = $("#Balance").val();
+            var pretotal1 = $("#total1").val();
+            var pretotal2 = $("#Received").val();
             var find = pretotal1 - pretotal2
-            $("#Paid").val(find);
+            $("#Balance").val(find);
         };
         function  cal()
         {
@@ -141,7 +121,9 @@
             reset();
             var finding = 0;
             $("tr").each(function (indexTr) {
-             
+                if (isNaN(finding)) {
+                    finding = 0;
+                }
               var mm = +$(this).find('td:eq(3)').text();
               finding=finding+mm
              
@@ -221,7 +203,7 @@
                             <div class="form-group col-md-4">
                                
                                 <br />
-                                 Category :
+                                <b> Category :</b>
                                 @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory, "Select Category", new { @class="form-control"} )
 
 
@@ -230,17 +212,18 @@
                                 
                                     <br>
                                    
-                                Date:
-                                @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
-                       
-                              </div>
+                                <b>
+                                    Date:</b>
+                                    @Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control" })
+
+</div>
 
 
                             <div class="form-group col-md-4">
 
                                     <br />
-                                OtherIncome No:
-                                @Html.TextBoxFor(model => model.Id1, new { @class = "form-control" })
+                               <b> OtherIncome No:</b>
+                                @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
 								</div>               
                         </div>
 
@@ -256,21 +239,21 @@
                             <td style="padding:3px">
                                 <label>Item Name</label>
 
-                                @Html.DropDownListFor(model => model.Id1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control",@style="" })
+                                @Html.DropDownListFor(model => model.Id1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control",@style="width:350px" })
                             </td>
                             <td style="padding:3px;text-align:center">
                                 <label>MRP</label>
-                                <input style="text-align:center" type="text" name="sa" id="sp" class="form-control">
+                                <input style="text-align:center" type="text" name="sa" id="mrp" class="form-control" onchange="cal1()">
                             </td>
                           
                             <td style="padding:3px;text-align:center">
                                 <label>Qty</label>
-                                <input style="text-align:left" type="text" name="qty" id="qty" class="form-control">
+                                <input style="text-align:left" type="text" name="qty" id="qty" class="form-control" onchange="cal()">
                             </td>
                             
                             <td style="padding:3px;text-align:center">
                                 <label>Total</label>
-                                <input style="text-align:left" type="text" name="ca" id="ca" class="form-control">
+                                <input style="text-align:left" type="text" name="ca" id="Total" class="form-control">
                             </td>
                             <td style="padding:3px;text-align:center">
                                 <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
@@ -312,7 +295,7 @@
                              
                             </div>
                             <div class="col-md-2 form-group">
-                                Total :
+                            <b>    Total :</b>
                                 @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount", @id = "total1" } })
                                 @Html.ValidationMessageFor(model => model.total)
 
@@ -320,15 +303,13 @@
                             </div>
 
                             <div class="col-md-2">
-                                Recived:
+                              <b>  Recived:</b>
                                 @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount",@onchange="minus()" } })
                                 @Html.ValidationMessageFor(model => model.Received)
 
                             </div>
-                            <div class="col-md-2 form-group">
-                               
-                                      
-                                    Remining Bal:
+                            <div class="col-md-2 form-group">                                     
+                                   <b> Remaining Bal:</b>
                                     @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
                                     @Html.ValidationMessageFor(model => model.Balance)
                                 
