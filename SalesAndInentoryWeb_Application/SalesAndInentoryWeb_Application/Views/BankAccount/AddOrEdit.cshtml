@@ -9,11 +9,17 @@
         padding: 20px;
     }
 </style>
-@using (Html.BeginForm("AddOrEdit", "BankAccount", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+
+@using (Html.BeginForm("AddOrEdit", "BankAccount", FormMethod.Post))
 {
+    
     <div id="div">
     @Html.HiddenFor(model => model.ID)
     <div class="row">
+        <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px;">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Success! </strong> Data Sucessfully Inserted.
+        </div>
         <div class="form-group">
             <div class="col-md-6">
                 @Html.LabelFor(model => model.BankName, new { @class = "control-label" })
@@ -52,7 +58,7 @@
         </div>                
     </div>
         <div class="form-group footer">
-            <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+            <input type="submit" value="Submit" class="btn btn-primary pull-right" id="btnsubmit"/>
             <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
         </div>
         <br>
@@ -60,6 +66,16 @@
 }
 <script src="~/scripts/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
+    $(document).ready(function () {
+        debugger
+        
+        $("#btnsubmit").click(function () {
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+            });
+        });
+    });
+
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth() + 1;

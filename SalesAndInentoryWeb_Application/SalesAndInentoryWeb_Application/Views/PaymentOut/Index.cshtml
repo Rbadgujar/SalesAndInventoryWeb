@@ -10,19 +10,19 @@
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	@Html.DevExpress().GetStyleSheets(
-		new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-		new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-	)
-	@Html.DevExpress().GetScripts(
-		new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-		new Script { ExtensionSuite = ExtensionSuite.Editors }
-	)
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
 </head>
 <div class="container" style="height:100%; width:100%;">
+    <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px;">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <strong>Success! </strong> Data Sucessfully Inserted.
+    </div>
 	<nav class="navbar navbar-default " style="background-color:white;border:none">
 		<br />
 		<nav class="navbar navbar-default " style="border:none; background-color:white;">
@@ -195,6 +195,7 @@
 
 
         $(document).ready(function () {
+           
             var date = new Date();
 
             var day = date.getDate();
@@ -229,8 +230,9 @@
                     });
                 });
             }
-
+        debugger
             function SubmitForm(form) {
+                debugger
                 $.validator.unobtrusive.parse(form);
                 if ($(form).valid()) {
                     $.ajax({
@@ -238,14 +240,17 @@
                         url: form.action,
                         data: $(form).serialize(),
                         success: function (data) {
-                            if (data.success) {
-                                Popup.dialog('close');
+                            if (data.success==true) {
+                                $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                                    $("#success-alert").slideUp(500);
+                                });
                                 dataTable.ajax.reload();
 
-                                $.notify(data.message, {
-                                    globalPosition: "top center",
-                                    className: "success"
-                                })
+                                    //$.notify(data.message, {
+                                    //    globalPosition: "top center",
+                                    //    className: "success"
+
+                                    //})
 
                             }
                         }

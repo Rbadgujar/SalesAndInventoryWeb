@@ -5,6 +5,13 @@
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
     <title></title>
     <style>
         .scrolldown {
@@ -21,7 +28,8 @@
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function ()
-        {        
+        {
+            $("#success-alert").hide();
             $("#ID1").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
@@ -160,8 +168,10 @@
                 data: JSON.stringify(objExpensesDetails),
                 url: '/Expence/AddOrEdit',
                 success: function (data) {
-                    if (data.status == true) {
-                        alter(data.message);
+                    if (data.success == true) {
+                        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#success-alert").slideUp(500);
+                        });
                     }
                 },
                 error: function () {
@@ -175,6 +185,10 @@
     @using (Html.BeginForm())
     {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
+            <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px; margin-left:900px">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Success! </strong> Data Sucessfully Inserted.
+            </div>
             <div class="panel-heading"><a class="btn" href=@Url.Action("Index", "Expence") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;"> Add Expences</p></div>
             <div class="panel border-box">
 
