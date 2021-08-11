@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application.Models;
-
+using System.Data.SqlClient;
+using System.Configuration;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class LoanAccountController : Controller
@@ -68,7 +69,38 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult LoanStatement()
         {
-            return View();
+            tbl_CashAdjustment bt = new tbl_CashAdjustment();
+            bt.ListOfAccounts = ListOfCategorys();
+            return View(bt);
+        }
+        private static List<SelectListItem> ListOfCategorys()
+        {
+            string sql;
+            List<SelectListItem> items1 = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_LoanBank where DeleteData='1'");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items1.Add(new SelectListItem
+                            {
+                                Text = sdr["AccountName"].ToString(),
+                                Value = sdr["AccountName"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items1;
         }
         [HttpGet]
         public ActionResult AddOrEditPopUp(int id=0)

@@ -51,6 +51,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			return View(tb);
 		}
      
+        
         private static List<SelectListItem> ListOfItems()
         {
             string sql;
@@ -123,6 +124,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 RemainingBal = objpurchase.RemainingBal,
                 Total = objpurchase.Total,
                 PONo = objpurchase.PONo,
+                PoDate = objpurchase.PoDate,
                 Feild4 = objpurchase.Feild4,
                 TaxAmount1 = objpurchase.TaxAmount1,
                 TransportName = objpurchase.TransportName,
@@ -161,11 +163,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 };
                 db.tbl_PurchaseBillInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
-            }
-            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
-            //    return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
-            //
-            return View();
+                TempData["msg"] = "Insert Data Sucessfully...";
+            }        
+            return Json(data:  new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet } );
         }
 
         public JsonResult GetFruitName(string id)
@@ -273,45 +273,81 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
 
-        //[HttpGet]
-        //public ActionResult AddPurchaseUpdate(int id=0)
-        //{
-        //    var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
-        //    var vm = new tbl_PurchaseBill();
-        //    vm.PONo = tb.PONo;
-        //    vm.BillingName = tb.BillingName;
-        //    vm.ContactNo = tb.ContactNo;
-        //    vm.BillDate = Convert.ToDateTime(tb.BillDate);
-        //    vm.PoDate = Convert.ToDateTime(tb.PoDate);
-        //    vm.DueDate = Convert.ToDateTime(tb.DueDate);
-        //    vm.StateofSupply = tb.StateofSupply;
-        //    vm.PaymentType = tb.PaymentType;
-        //    vm.VehicleNumber = tb.VehicleNumber;
-        //    vm.DeliveryLocation = tb.DeliveryLocation;
-        //    vm.TransportName = tb.TransportName;
-        //    vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
-        //    vm.Description = tb.Description;
-        //    vm.TransportCharges = tb.TransportCharges;
-        //    vm.Tax1 = tb.Tax1;
-        //    vm.TaxAmount1 = tb.TaxAmount1;
-        //    vm.CGST = tb.CGST;
-        //    vm.SGST = tb.SGST;
-        //    vm.Paid = tb.Paid;
-        //    vm.DiscountAmount1 = tb.DiscountAmount1;
-        //    vm.TotalDiscount = tb.TotalDiscount;
-        //    vm.RoundFigure = tb.RoundFigure;
-        //    vm.Total = tb.Total;
-        //    vm.PaymentTerms = tb.PaymentTerms;
-        //    vm.RemainingBal = tb.RemainingBal;
-        //    vm.Status = tb.Status;
-        //    vm.Barcode = tb.Barcode;
-        //    vm.IGST = tb.IGST;
-        //    vm.Feild4 = tb.Feild4;
-        //    vm.Feild1 = tb.Feild1;
-        //    return Json(GetFruitNameById5(id),JsonRequestBehavior.AllowGet);
-        //    return View(vm);    
-        //}
+        [HttpGet]
+        public ActionResult AddPurchaseUpdate(int id = 0)
+        {
+            var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
+            var vm = new tbl_PurchaseBill();
+            vm.BillNo = tb.BillNo;
+            vm.PartyName = tb.PartyName;
+            vm.BillingName = tb.BillingName;
+            vm.ContactNo = tb.ContactNo;
+            vm.BillDate = Convert.ToDateTime(tb.BillDate);
+            vm.PoDate = Convert.ToDateTime(tb.PoDate);
+            vm.DueDate = Convert.ToDateTime(tb.DueDate);
+            vm.StateofSupply = tb.StateofSupply;
+            vm.PaymentType = tb.PaymentType;
+            vm.VehicleNumber = tb.VehicleNumber;
+            vm.DeliveryLocation = tb.DeliveryLocation;
+            vm.TransportName = tb.TransportName;
+            vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
+            vm.Description = tb.Description;
+            vm.TransportCharges = tb.TransportCharges;
+            vm.Tax1 = tb.Tax1;
+            vm.TaxAmount1 = tb.TaxAmount1;
+            vm.CGST = tb.CGST;
+            vm.SGST = tb.SGST;
+            vm.Paid = tb.Paid;
+            vm.DiscountAmount1 = tb.DiscountAmount1;
+            vm.TotalDiscount = tb.TotalDiscount;
+            vm.RoundFigure = tb.RoundFigure;
+            vm.Total = tb.Total;
+            vm.PaymentTerms = tb.PaymentTerms;
+            vm.RemainingBal = tb.RemainingBal;
+            vm.Status = tb.Status;
+            vm.Barcode = tb.Barcode;
+            vm.IGST = tb.IGST;
+            vm.Feild4 = tb.Feild4;
+            vm.Feild1 = tb.Feild1;
+            return Json(GetFruitNameById5(id), JsonRequestBehavior.AllowGet);
+            return View(vm);
+        }
+        public JsonResult GetFruitName2(string id)
+        {
+            return Json(GetFruitNameById2(id), JsonRequestBehavior.AllowGet);
+        }
 
+        private static List<tbl_ItemMaster> GetFruitNameById2(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE Barcode = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                ItemName = sdr["ItemName"].ToString(),
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
         public static List<tbl_PurchaseBillInner> GetFruitNameById5(int id)
         {
             string sql;

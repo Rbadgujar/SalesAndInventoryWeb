@@ -13,6 +13,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public string PONo { get; set; }
         public string ContactNo { get; set; }
         public DateTime BillDate { get; set; }
+        public DateTime PoDate { get; set; }
         public DateTime DueDate { get; set; }
         public string Feild4 { get; set; }
         public string StateOfSupply { get; set; }

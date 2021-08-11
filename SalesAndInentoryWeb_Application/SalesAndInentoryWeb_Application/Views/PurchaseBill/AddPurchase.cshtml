@@ -14,6 +14,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
+   
 	<style>
 		.scrolldown {
 			overflow-y: scroll;
@@ -25,51 +26,13 @@
 			margin: 0px;
 			resize: vertical;
 		}
-        .custom-combobox {
-      position: relative;
-      display: inline-block;
-    }
-    .custom-combobox-toggle {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      margin-left: -1px;
-      padding: 0;
-    }
-    .custom-combobox-input {
-      margin: 0;
-      padding: 5px 10px;
-    }
-   
 
-    /* Corner radius */
-    .ui-corner-all,
-    .ui-corner-top,
-    .ui-corner-left,
-    .ui-corner-tl {
-      border-top-left-radius: 0px !important;
-    }
-    .ui-corner-all,
-    .ui-corner-top,
-    .ui-corner-right,
-    .ui-corner-tr {
-      border-top-right-radius: 0px !important;
-    }
-    .ui-corner-all,
-    .ui-corner-bottom,
-    .ui-corner-left,
-    .ui-corner-bl {
-      border-bottom-left-radius: 0px !important;
-    }
-    .ui-corner-all,
-    .ui-corner-bottom,
-    .ui-corner-right,
-    .ui-corner-br {
-      border-bottom-right-radius: 0px !important;
-    }
+   
 	</style>
+   
 	<script src="~/scripts/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript">
+         
         $(document).ready(function () {
 
             $("#btnaddtolist").click(function () {
@@ -77,6 +40,7 @@
             });
             $("#btnsubmit").click(function (e) {
                 additems();
+                clear();
             });
             $("#ID").change(function () {
                 debugger
@@ -99,9 +63,47 @@
                 }
             });
 
+            $("#Barcode").change(function () {
+                debugger
+                var fruitId = $("#Barcode").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/PurchaseBill/GetFruitName2",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#SalePrice").val(data[x].SalePrice);
+                               $("#TaxForSale").val(data[x].TaxForSale);
+                               $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               $("#ID option:selected").val(data[x].ItemName);
+
+                               var mrp = data[x].SalePrice;
+                               var tax = data[x].TaxForSale;
 
 
+                               var itempricecall = mrp * 1;
+                               var tax_cal = itempricecall * tax / 100;
 
+                               var finalcal = (itempricecall + tax_cal);
+
+                               $("#SaleTaxAmount").val(tax_cal);
+                               $("#ItemTotal").val(finalcal);
+                               $("#Qty").val(1);
+
+                               AddToItem();
+                               $("#Barcode").val('');
+                               $("#qty").focus();
+                           }
+                       }
+                   });
+                }
+            });
+
+
+            
             var date = new Date();
             var day = date.getDate();
             var month = date.getMonth() + 1;
@@ -112,7 +114,7 @@
             $("#BillDate").attr("value", today);
             $("#DueDate").attr("value", today);
             $("#Deliverydate").attr("value", today);
-            $("#PODate").attr("value", today);
+            $("#PoDate").attr("value", today);
 
 
             $("#PartiesID").change(function () {
@@ -304,6 +306,35 @@
               })
 
         }
+          
+        
+        function clear()
+        {
+           $("#PartiesID option:selected").val('');
+           $("#BillingName").val('');
+           $("#ContactNo").val('');
+           $("#BillDate").val('');
+           $("#PONo").val('');
+           $("#PoDate").val('');
+           $("#Feild4").val('');
+           $("#DueDate").val('');
+           $("#Barcode").val('');
+           $("#StateOfSupply option:selected").val('');
+           $("#Paid").val('');
+           $("#RemainingBal").val('');
+           $("#TransportName").val('');
+           $("#DeliveryLocation").val('');
+           $("#Deliverydate").val('');
+           $("#PaymentType option:selected").val('');
+           $("#TransportName").val('');
+           $("#Status option:selected").val('');
+           $("#TaxAmount1").val('');
+           $("#VehicleNumber").val('');
+           $("#Total").val('');
+           $("#tblPurchaseBill").remove();
+        }
+       
+
         function reset()
         {
             $("#ItemName").val('0');
@@ -339,6 +370,7 @@
             objpurchase.ContactNo = $("#ContactNo").val();
             objpurchase.BillDate = $("#BillDate").val();
             objpurchase.PONo = $("#PONo").val();
+            objpurchase.PoDate = $("#PoDate").val();
             objpurchase.Feild4 = $("#Feild4").val();
             objpurchase.DueDate = $("#DueDate").val();
             objpurchase.Barcode = $("#Barcode").val();
@@ -364,8 +396,8 @@
                 data: JSON.stringify(objpurchase),
                 url: '/PurchaseBill/AddPurchase',
                 success: function (data) {
-                    if (data.status == true) {
-                        alter(data.message);
+                    if (data.success == true) {
+                        alert(data.message);
                     }
                 },
                 error: function () {
@@ -378,8 +410,7 @@
 	</script>
 </head>
 <body>
-	@using (Html.BeginForm())
-	{
+    
 		<div class="panel panel-primary container" style="height:100%; width:100%;">
 			<div class="panel-heading"><a class="btn" href=@Url.Action("Index","PurchaseBill") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Purchase Bill</p></div>
 			<div class="panel border-box"style="height:100vh; ">
@@ -673,28 +704,16 @@
 						<div class="col-md-3 form-group">
 							
 						</div>
-
-
 						<div class="col-md-1 form-group" style="margin-top:8px; ">
 
 						</div>
 						<div class="col-md-3 form-group">
-
 						</div>
-
 					</div>
-
-
 				</div>
 			</div>
 			<div>
-
 			</div>
 		</div>
-
-
-
-	}
-
 </body>
 </html>
