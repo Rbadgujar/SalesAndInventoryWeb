@@ -6,8 +6,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
- 
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
     <style>
         .scrolldown {
             overflow-y: scroll;
@@ -36,12 +41,26 @@
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            debugger           
+
+
+            var date = new Date();
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#OrderDate").attr("value", today);
+            $("#DueDate").attr("value", today);
+            $("#DeliveryDate").attr("value", today);
+                 
             $("#btnaddtolist").click(function () {
 
                 AddToItem();             
             });
-
             $("#btnsubmit").click(function (e) {
               
                   additems();
@@ -61,6 +80,8 @@
                                $("#SalePrice").val(data[x].SalePrice);
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               $("#Discount").val(data[x].Discount);
+
                                caldata();
 
                            }
@@ -85,16 +106,20 @@
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
                                $("#ID option:selected").val(data[x].ItemName);
+                               $("#Discount").val(data[x].Discount);
 
                                var mrp = data[x].SalePrice;
                                var tax = data[x].TaxForSale;
+                               var dis = data[x].Discount;
 
 
                                var itempricecall = mrp * 1;
                                var tax_cal = itempricecall * tax / 100;
+                               var Dis_cal = itempricecall * dis / 100;
 
-                               var finalcal = (itempricecall + tax_cal);
+                               var finalcal = (itempricecall + tax_cal) - Dis_cal;
 
+                               $("#SaleTaxAmount").val(tax_cal);
                                $("#SaleTaxAmount").val(tax_cal);
                                $("#ItemTotal").val(finalcal);
                                $("#Qty").val(1);
