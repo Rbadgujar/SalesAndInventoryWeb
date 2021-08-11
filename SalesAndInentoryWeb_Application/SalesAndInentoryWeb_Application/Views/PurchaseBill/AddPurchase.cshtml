@@ -34,32 +34,7 @@
 	<script type="text/javascript">
          
         $(document).ready(function () {
-
-
-
-
-            var date = new Date();
-
-            var day = date.getDate();
-            var month = date.getMonth() + 1;
-            var year = date.getFullYear();
-
-            if (month < 10) month = "0" + month;
-            if (day < 10) day = "0" + day;
-
-            var today = year + "-" + month + "-" + day;
-            $("#DueDate").attr("value", today);
-            $("#PoDate").attr("value", today);
-            $("#DeliveryDate").attr("value", today);
-
-              
-
-
-
-
-
-
-
+           
             $("#success-alert").hide();
             $("#btnaddtolist").click(function () {
                 AddToItem();
@@ -67,6 +42,17 @@
             $("#btnsubmit").click(function (e) {
                 additems();
                 clear();
+            });
+            $("#tblPurchaseBill").on('click', '#remove', function () {
+                debugger
+                var curentreo = $(this).closest("tr");
+                var pretotal = curentreo.find("td:eq(7)").text();
+                var pretotal1 = $("#total1").val();
+                var find = pretotal1 - pretotal
+
+                $("#total1").val(find);
+                $(curentreo).closest('tr').remove();
+
             });
             $("#ID").change(function () {
                 debugger
@@ -84,12 +70,25 @@
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
                                $("#Discount").val(data[x].Discount);
+                               caldata();
                            }
                        }
                    });
                 }
             });
+            var date = new Date();
 
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#DueDate").attr("value", today);
+            $("#PoDate").attr("value", today);
+            $("#DeliveryDate").attr("value", today);
             $("#Barcode").change(function () {
                 debugger
                 var fruitId = $("#Barcode").val();
@@ -135,8 +134,8 @@
                    });
                 }
             });
-
-
+           
+           
             
             var date = new Date();
             var day = date.getDate();
@@ -248,7 +247,7 @@
              $("#Received").change(function ()
              {
                  var recived = $("#Received").val();
-                 var pretotal = $("#Total").val();
+                 var pretotal = $("#total1").val();
                  var tototo = pretotal - recived;
                  $("#RemainingBal").val(tototo);
              });
@@ -306,7 +305,7 @@
                "</td><td>"
               + total +
                  "</td><td>" +
-                 "<input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/>" +
+                 "<input type='button' value='Remove' name='remove' class='btn btn-danger' id='remove'/>" +
 
                "</td></div></tr>"
               tableitemlist.append(itemlist);
@@ -322,7 +321,7 @@
                   var mm = +$(this).find('td:eq(7)').text();
                   finding = finding + mm;
                 
-                  $("#Total").val(finding);
+                  $("#total1").val(finding);
               })
             
 
@@ -364,10 +363,27 @@
            $("#Status option:selected").val('');
            $("#TaxAmount1").val('');
            $("#VehicleNumber").val('');
-           $("#Total").val('');
+           $("#total1").val('');
            $("#tblPurchaseBill").remove();
         }
-       
+
+        function caldata() {
+            var mrp = $("#SalePrice").val();
+            var tax = $("#TaxForSale").val();
+            var dis = $("#Discount").val();
+            var qty = $("#Qty").val();
+            var itempricecall = mrp * 1;
+
+            var tax_cal = itempricecall * tax / 100;
+            var dis_count = itempricecall * dis / 100;
+            var finalcal = (itempricecall + tax_cal) - dis_count;
+
+            $("#DiscountAmount").val(dis_count);
+            $("#SaleTaxAmount").val(tax_cal);
+            $("#ItemAmount").val(finalcal);
+            $("#Qty").val(1);
+
+        }
 
         function reset()
         {
@@ -700,7 +716,7 @@
                                     <div class="pull-right">
                                         <b>
                                             Total :</b>
-                                            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
+                                            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" ,@id="total1"} })
                                             @Html.ValidationMessageFor(model => model.Total)
                                         <b>
                                             Received:</b>

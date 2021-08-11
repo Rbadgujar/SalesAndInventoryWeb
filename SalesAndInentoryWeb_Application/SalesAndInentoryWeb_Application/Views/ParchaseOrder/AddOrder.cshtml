@@ -37,6 +37,18 @@
                 clear();
                
             });
+            $("#tblSaleInvoice").on('click', '#remove', function () {
+
+                var curentreo = $(this).closest("tr");
+
+                var pretotal = curentreo.find("td:eq(7)").text();
+                var pretotal1 = $("#Total").val();
+                var find = pretotal1 - pretotal
+
+                $("#Total").val(find);
+                $(curentreo).closest('tr').remove();
+
+            });
             $("#ID").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
@@ -53,6 +65,7 @@
                                $("#ts").val(data[x].TaxForSale);
                                $("#sa").val(data[x].SaleTaxAmount);
                                $("#ds").val(data[x].Discount);
+                               caldata();
                            }
                        }
                    });
@@ -264,7 +277,24 @@
             $("#Total").val('');
             $("#tblSaleInvoice").remove();
         }
+        function caldata() {
+            var mrp = $("#sp").val();
+            var tax = $("#ts").val();
+            var dis = $("#ds").val();
+            var qty = $("#qty").val();
+            var itempricecall = mrp * 1;
 
+            var tax_cal = itempricecall * tax / 100;
+            var dis_count = itempricecall * dis / 100;
+            var finalcal = (itempricecall + tax_cal) - dis_count;
+
+            $("#da").val(dis_count);
+            $("#sa").val(tax_cal);
+            $("#ca").val(finalcal);
+            $("#qty").val(1);
+
+        }
+     
         function AddToItem()
         {
             debugger
@@ -279,7 +309,7 @@
             var total = $("#ca").val();
 
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
-            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
+            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' id='remove' class='btn btn-danger'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
             var finding = 0;
