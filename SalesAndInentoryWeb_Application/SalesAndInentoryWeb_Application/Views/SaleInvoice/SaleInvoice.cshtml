@@ -23,7 +23,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            906093520253
+           
 
 
                 var date = new Date();
@@ -187,11 +187,15 @@
 
             $("#ID").change(function () {
                 debugger
+
+
+               
                 var mrp = $("#SalePrice").val();
                 var tax = $("#TaxForSale").val();
                 var dis = $("#Discount").val();
                 var qty = $("#Qty").val();
                 var itempricecall = mrp * 1;
+                
                 var tax_cal = itempricecall * tax / 100;
                 var dis_count = itempricecall * dis / 100;
                 var finalcal = (itempricecall + tax_cal) - dis_count;
@@ -587,7 +591,7 @@
                                            new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
 
                                        }, new { @class = "form-control" })
-
+                                                 
                                       <b> Chueque NO:</b>
                                        @Html.EditorFor(model => model.Feild3, new { htmlAttributes = new { @class = "form-control", placeholder = "Chueque no" } })
                                        @Html.ValidationMessageFor(model => model.Feild3)

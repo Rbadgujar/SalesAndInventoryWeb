@@ -149,6 +149,41 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return Json(GetFruitNameById1(id), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetFruitName2(string id)
+        {
+            return Json(GetFruitNameById2(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_ItemMaster> GetFruitNameById2(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE Barcode = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                ItemName = sdr["ItemName"].ToString(),
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
         private static List<tbl_ItemMaster> GetFruitNameById1(string id)
         {
             string sql;
@@ -191,10 +226,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 BillingName=objpartydetails.BillingName,
                 ContactNo = objpartydetails.ContactNo,                             
                 RemainingBal = objpartydetails.RemainingBal,
-                CalTotal = objpartydetails.CalTotal,
+                Total = objpartydetails.CalTotal,
                 TransportName = objpartydetails.TransportName,
                 DeliveryLocation = objpartydetails.DeliveryLocation,
                 Deliverydate = objpartydetails.DeliveryDate,
+                Feild3=objpartydetails.Feild3,
                 StateofSupply = objpartydetails.StateOfSupply,
                 SGST = gst,
                 CGST = gst,
@@ -220,8 +256,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     OrderNo = sale.OrderNo,
                     ItemID = item.ItemID,
                     CGST = finalgsr,
-                    SGST=finalgsr,
-               
+                    SGST=finalgsr,             
                     TaxForSale=item.TaxForSale,
                     Discount=item.Discount,
                     DiscountAmount=item.DiscountAmount,
