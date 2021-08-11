@@ -6,6 +6,14 @@
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
+
     <style>
         .scrolldown 
         {
@@ -23,7 +31,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            906093520253
+           
 
 
                 var date = new Date();
@@ -37,7 +45,8 @@
 
                 var today = year + "-" + month + "-" + day;
                 $("#InvoiceDate").attr("value", today);
-         
+                $("#Deliverydate").attr("value", today);
+                
           
             $("#btnaddtolist").click(function () {
                 AddToItem();
@@ -60,6 +69,8 @@
                                $("#SalePrice").val(data[x].SalePrice);
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               $("#Discount").val(data[x].Discount);
+                               caldata();
                            }
                        }
                    });
@@ -82,18 +93,22 @@
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
                                $("#ID option:selected").val(data[x].ItemName);
+                               $("#Discount").val(data[x].Discount);
 
                                var mrp = data[x].SalePrice;
                                var tax = data[x].TaxForSale;
-              
+                               var dis = data[x].Discount;
                                
                                var itempricecall = mrp * 1;
                                var tax_cal = itempricecall * tax / 100;
-                           
-                               var finalcal = (itempricecall + tax_cal);
+
+                               var Dis_cal = itempricecall * dis / 100;
+
+                               var finalcal = (itempricecall + tax_cal)-Dis_cal;
                                   
                                $("#SaleTaxAmount").val(tax_cal);
                                $("#ItemTotal").val(finalcal);
+                               $("#Dis_cal").val(Dis_cal);
                                $("#Qty").val(1);
                                
                                AddToItem();
@@ -185,13 +200,17 @@
 
             });
 
-            $("#ID").change(function () {
-                debugger
+            function caldata() {
+             
+
+
+               
                 var mrp = $("#SalePrice").val();
                 var tax = $("#TaxForSale").val();
                 var dis = $("#Discount").val();
                 var qty = $("#Qty").val();
                 var itempricecall = mrp * 1;
+                
                 var tax_cal = itempricecall * tax / 100;
                 var dis_count = itempricecall * dis / 100;
                 var finalcal = (itempricecall + tax_cal) - dis_count;
@@ -201,8 +220,7 @@
                 $("#ItemTotal").val(finalcal);
                 $("#Qty").val(1);
 
-            });
-
+            }
 
             $("#Received").change(function () {
 
@@ -587,7 +605,7 @@
                                            new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
 
                                        }, new { @class = "form-control" })
-
+                                                 
                                       <b> Chueque NO:</b>
                                        @Html.EditorFor(model => model.Feild3, new { htmlAttributes = new { @class = "form-control", placeholder = "Chueque no" } })
                                        @Html.ValidationMessageFor(model => model.Feild3)

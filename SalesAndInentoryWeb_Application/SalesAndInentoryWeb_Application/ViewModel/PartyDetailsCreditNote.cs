@@ -14,7 +14,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public string PONumber { get; set; }
         public DateTime PODate { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public DateTime DueDate { get; set; }
+     
         public string StateOfSupply { get; set; }
         public string PaymentType { get; set; }
         public string TransportName { get; set; }
@@ -27,6 +27,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public double RemainingBal { get; set; }
         public double CalTotal { get; set; }
         public string Status { get; set; }
+        public int InvoiceNo { get; set; }
 
         public List<ItemPurchase> ListOfCreditNote { get; set; }
     }

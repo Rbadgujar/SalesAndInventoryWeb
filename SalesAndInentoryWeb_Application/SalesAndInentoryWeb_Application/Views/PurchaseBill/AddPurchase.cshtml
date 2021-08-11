@@ -34,6 +34,32 @@
 	<script type="text/javascript">
          
         $(document).ready(function () {
+
+
+
+
+            var date = new Date();
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#DueDate").attr("value", today);
+            $("#PoDate").attr("value", today);
+            $("#DeliveryDate").attr("value", today);
+
+              
+
+
+
+
+
+
+
             $("#success-alert").hide();
             $("#btnaddtolist").click(function () {
                 AddToItem();
@@ -380,7 +406,7 @@
             objpurchase.PONo = $("#PONo").val();
             objpurchase.PoDate = $("#PoDate").val();
             objpurchase.Feild4 = $("#Feild4").val();
-            objpurchase.DueDate = $("#DueDate").val();
+            objpurchase.DueDate = $("#DueDate").val(); 
             objpurchase.Barcode = $("#Barcode").val();
             objpurchase.StateOfSupply = $("#StateOfSupply option:selected").val();
             objpurchase.Paid = $("#Paid").val();

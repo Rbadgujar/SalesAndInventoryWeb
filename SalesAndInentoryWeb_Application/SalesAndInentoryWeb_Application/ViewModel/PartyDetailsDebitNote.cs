@@ -20,6 +20,8 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public string DeliveryLocation { get; set; }
         public string VehicleNumber { get; set; }
         public DateTime DeliveryDate { get; set; }
+        public string InvoiceNo { get; set; }
+
         public string Barcode { get; set; }
         public double Received { get; set; }
         public int TaxAmount1 { get; set; }

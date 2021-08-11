@@ -336,7 +336,7 @@
             objdebitnote.Received = $("#Received").val();
             objdebitnote.RemainingBal = $("#RemainingBal").val();
             objdebitnote.TransportName = $("#TransportName").val();
-            objdebitnote.TransportName = $("#TaxAmount1").val();        
+            objdebitnote.TaxAmount1 = $("#TaxAmount1").val();        
             objdebitnote.DeliveryLocation = $("#DeliveryLocation").val();
             objdebitnote.DeliveryDate = $("#Deliverydate").val();
             objdebitnote.PaymentType = $("#PaymentType option:selected").val();
@@ -403,7 +403,7 @@
 								@Html.EditorFor(model => model.PONumber, new { htmlAttributes = new { @class = "form-control", placeholder = "PO No....."} })
 								@Html.ValidationMessageFor(model => model.PONumber)
 
-                                @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", placeholder = "PO No.....",@id= "TaxAmount1", @style = "display:none" } })
+                                @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", placeholder = "PO No.....", @style = "display:none" } })
 
                             <b>PO Date:</b>
 								@Html.TextBoxFor(model => model.PODate, new { @type = "date", @class = "form-control"})

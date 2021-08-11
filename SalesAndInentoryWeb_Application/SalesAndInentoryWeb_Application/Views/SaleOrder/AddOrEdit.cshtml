@@ -6,8 +6,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
- 
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
     <style>
         .scrolldown {
             overflow-y: scroll;
@@ -36,12 +41,26 @@
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            debugger           
+
+
+            var date = new Date();
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#OrderDate").attr("value", today);
+            $("#DueDate").attr("value", today);
+            $("#DeliveryDate").attr("value", today);
+                 
             $("#btnaddtolist").click(function () {
 
                 AddToItem();             
             });
-
             $("#btnsubmit").click(function (e) {
               
                   additems();
@@ -61,11 +80,62 @@
                                $("#SalePrice").val(data[x].SalePrice);
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               $("#Discount").val(data[x].Discount);
+
+                               caldata();
+
                            }
                        }
                    });
                 }
             });
+
+            $("#Barcode").change(function () {
+                debugger
+                var fruitId = $("#Barcode").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/SaleInvoice/GetFruitName2",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+                           var content = "";
+                           for (var x in data) {
+                               $("#SalePrice").val(data[x].SalePrice);
+                               $("#TaxForSale").val(data[x].TaxForSale);
+                               $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                               $("#ID option:selected").val(data[x].ItemName);
+                               $("#Discount").val(data[x].Discount);
+
+                               var mrp = data[x].SalePrice;
+                               var tax = data[x].TaxForSale;
+                               var dis = data[x].Discount;
+
+
+                               var itempricecall = mrp * 1;
+                               var tax_cal = itempricecall * tax / 100;
+                               var Dis_cal = itempricecall * dis / 100;
+
+                               var finalcal = (itempricecall + tax_cal) - Dis_cal;
+
+                               $("#SaleTaxAmount").val(tax_cal);
+                               $("#SaleTaxAmount").val(tax_cal);
+                               $("#ItemTotal").val(finalcal);
+                               $("#Qty").val(1);
+
+                               AddToItem();
+                               $("#Barcode").val('');
+                            
+                           }
+                       }
+                   });
+                }
+            });
+
+
+
+
             $("#PartiesID").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
@@ -86,8 +156,24 @@
                    });
                 }
             });
-          
-            
+
+           function caldata() {
+                debugger
+                var mrp = $("#SalePrice").val();
+                var tax = $("#TaxForSale").val();
+                var dis = $("#Discount").val();
+                var qty = $("#Qty").val();
+                var itempricecall = mrp * 1;
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count;
+
+                $("#DiscountAmount").val(dis_count);
+                $("#SaleTaxAmount").val(tax_cal);
+                $("#ItemTotal").val(finalcal);
+                $("#Qty").val(1);
+
+            }            
 
             $("#SalePrice").change(function () {
                 debugger
@@ -209,14 +295,19 @@
                 "</td></div></tr>"
             tableitemlist.append(itemlist);
             reset();
-            var finding = 0;
+          
+
+            var taxfinding1 = 0;
+        
             $("tr").each(function (indexTr) {
-
+                
+                if (isNaN(taxfinding)) {
+                    taxfinding1 = 0;
+                }
                 var mm = +$(this).find('td:eq(7)').text();
-                finding = finding + mm
-                $("#Total").val(finding);
-            });
-
+                taxfinding1 = taxfinding1 + mm;
+                $("#Total").val(taxfinding1);
+            })
 
             var taxfinding = 0;
             var gstamount;
@@ -287,7 +378,7 @@
             objpartydetails.TransportName = $("#TransportName").val();
             objpartydetails.Status = $("#Status").val();
             objpartydetails.VehicleNumber = $("#VehicleNumber").val();
-            objpartydetails.CalTotal = $("#CalTotal").val();
+            objpartydetails.CalTotal = $("#Total").val();
             objpartydetails.listofitemdetail = listofitemdetails;
 
 
@@ -336,193 +427,279 @@
                                     </div>*@
                                 <b>Party Name:</b>
                            <br>
-                                     @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" ,@id="PartyName",@style="height:30px;"} })
-                                <br>
+                                     @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control" } )                                
 
-                               Address:
+                             <b>Billing Address:</b>
                                 <br>
-                                @Html.TextAreaFor(model => model.BillingName, new { htmlAttributes = new { @class = "form-control" , @style = "width:220px" ,@id="BillingName"} })
-                                <br>
-                                Contact No:
-                                @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } })
+                                <textarea name='awesome' class="form-control" id="BillingName" style="width:230px;" placeholder="Billing Address "></textarea>
+              </div>
+                            <div class="form-group col-md-3">
+                               <b> Contact No:</b>                         
+                                @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No....." } })
                                 @Html.ValidationMessageFor(model => model.ContactNo)
-                            </div>
-                            <div class="form-group col-md-7">
-                                <div class="pull-right">
-                                    Order No:
-                                    @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control datepicker", @style = "width:150px;" })
 
+                               <b> State Of Supllay:</b>
+                                <select name="StateOfSupply" id="StateOfSupply" value="StateOfSupply" class="form-control" >
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Puducherry">Puducherry</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                </select>
 
-                                    @Html.TextBoxFor(model => model.TaxAmount1, new { @class = "form-control datepicker",@id= "TaxAmount1", @style = "width:150px;display:none" })
-                                    Order Date:
-                                    @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker", @style = "width:150px;" })
-                                    Barcode:
-                                    @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo", @style = "width:150px;height:30px" } })
-                                    @Html.ValidationMessageFor(model => model.Barcode)
+                                </div>
+                                <div class="form-group col-md-3">
+                                  
+                                       <b> Order No:</b>
+                                        @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control datepicker" })
+                                        @Html.TextBoxFor(model => model.TaxAmount1, new { @class = "form-control datepicker", @id = "TaxAmount1" ,Style="Display:None" })
+                                      <b> Order Date:</b>
+                                        @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker" })
+                                        @*Barcode:
+                                        @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo"} })
+                                        @Html.ValidationMessageFor(model => model.Barcode)*@
+                                   
+                                </div>
+                                <div class="form-group col-md-3">
+                                    
+                                       <b> Eway BillNo:</b>
+                                        <input type="text" id="Ewaybil" placeholder="Eway-Bill no" name="" class="form-control" >
+                                         <b>Due Date:</b>
+                                        @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker" })
+                                    
                                 </div>
                             </div>
-                            <div class="form-group col-md-2">
-                                <div class="pull-right">
-                                    Eway BillNo:
-                                    <input type="text" id="Ewaybil" value="Eway-Bill no" name="" class="form-control" style="width:150px;height:30px" >
-                                    State Of Supllay:
-                                    <select name="StateOfSupply" id="StateOfSupply" value="StateOfSupply" class="form-control" style="width:150px;height:30px">
-                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chandigarh">Chandigarh</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                        <option value="Daman and Diu">Daman and Diu</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Lakshadweep">Lakshadweep</option>
-                                        <option value="Puducherry">Puducherry</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="Odisha">Odisha</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Telangana">Telangana</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="Uttarakhand">Uttarakhand</option>
-                                        <option value="West Bengal">West Bengal</option>
-                                    </select>
-                                   Due Date:
-                                    @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker",@style = "width:150px;" })
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <br />
-                <nav class="navbar navbar-default " style="border:none; background-color:white">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse ">
-                            <div class="row">
-                               
+            
 
-                                <div class="form-group col-xs-2">
+                <div class="form-group" style="width:100%;">
 
-                                    <label>Item Name</label>
-                                   @Html.DropDownListFor(model => model.ID,Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { htmlAttributes = new { @class = "form-control" ,@id="ItemName",@name="ItemName"} })                                                                   
+
+
+                    <table style="width:100%;">
+                        <tr>
+                            <td style="padding:3px;text-align:center">
+
+
+                                <label>Barcode</label>
+                                <input style="text-align:center" type="text" name="SalePrice" id="Barcode" class="form-control">
+
+                                @*@Html.tex(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo" } })
+                        @Html.ValidationMessageFor(model => model.Barcode)*@
+
+                            </td>
+
+                            <td style="padding:3px;text-align:center">
+                                <label>Item Name</label>
+                                @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item",  new { @class = "form-control", @name = "ItemName"  })
+
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <label>MRP</label>
+                                <input style="text-align:center" type="text" name="SalePrice" id="SalePrice" class="form-control">
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <label>Tax%</label>
+                                <input style="text-align:left" type="text" name="TaxForSale" id="TaxForSale" class="form-control">
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <label>Discount</label>
+                                <input style="text-align:left" type="text" name="Discount" id="Discount" class="form-control">
+
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <label>Qty</label>
+                                <input style="text-align:left" type="text" name="Qty" id="Qty" class="form-control">
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <label>Dis AMT</label>
+                                <input style="text-align:left" type="text" name="DiscountAmount" id="DiscountAmount" class="form-control">
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <label>Tax AMT</label>
+                                <input style="text-align:left" type="text" name="SaleTaxAmount" id="SaleTaxAmount" class="form-control">
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <label>Total</label>
+                                <input style="text-align:left" type="text" name="ItemTotal" id="ItemTotal" class="form-control">
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
+       </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+
+                <div class="form-group scrolldown" style="height:200px;width:100%; border:1px solid">
+
+
+                    <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Item Name
+                                </th>
+                                <th>
+                                    MRP
+                                </th>
+                                <th>
+                                    Tax%
+                                </th>
+                                <th>
+                                    Discount
+                                <th>
+                                    Qty
+                                </th>
+                                <th>
+                                    Dis Amount
+                                </th>
+                                <th>
+                                    Tax Amount
+                                </th>
+                                <th>
+                                    Total
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+
+                 
+
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse ">
+                        <div class="row">
+                            <div class="col-md-3">
+
+                                <b>Transport Name:</b>
+                                @Html.EditorFor(model => model.TransportName, new
+                                  {
+                                      htmlAttributes = new
+                                      {
+                                          @class = "form-control",
+                                          placeholder = "Transport Name"
+
+                                      }
+                                  })
+                                @Html.ValidationMessageFor(model => model.DeliveryLocation)
+                                <b> Vehical Name:</b>
+                                @Html.EditorFor(model => model.VehicleNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Vehical No" } })
+                                @Html.ValidationMessageFor(model => model.VehicleNumber)
+
+                            </div>
+                            <div class="col-md-3 form-group">
+
+                                <b> Delivery Date:</b>
+
+                                @Html.TextBoxFor(model => model.Deliverydate, new { @type = "date", @class = "form-control" })
+                                <b>Payment Type:</b>
+                                <select name="cars" id="PaymentType" class="form-control">
+                                    <option value="Cash">Cash</option>
+                                    <option value="OnlinePayment">Online Payment</option>
+                                    <option value="Chuque">Cheque</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <b>Payment Status:</b>
+                                @Html.DropDownListFor(model => model.Status, new List<SelectListItem>
+                                       {
+                                           new SelectListItem {Text = "Paid", Value = "Paid", Selected = true },
+                                           new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
+
+                                       }, new { @class = "form-control" })
+
+                                <b> Chueque NO:</b>
+                                @Html.EditorFor(model => model.Feild3, new { htmlAttributes = new { @class = "form-control", placeholder = "Chueque no" } })
+                                @Html.ValidationMessageFor(model => model.Feild3)
+                                <br />
+                                <input type="button" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
+                                <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
+
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <div class="pull-right">
+                                    <b>Total :</b>
+                                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", id = "Total", placeholder = "Total Amount" } })
+                                    @Html.ValidationMessageFor(model => model.Total)
+
+                                    <b>Received Amt:</b>
+                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", id = "Received", placeholder = "Recive Ammount" } })
+                                    @Html.ValidationMessageFor(model => model.Received)
+                                    <b>Remaning Bal:</b>
+                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", id = "RemainingBal", placeholder = "Remining Balance" } })
+                                    @Html.ValidationMessageFor(model => model.RemainingBal)
                                 </div>
-                                <div class="form-group col-xs-1">
-
-                                    <label>MRP</label>
-                                 @*  @Html.TextBoxFor(model => model.tbl_SaleOrderInner2.SalePrice, htmlAttributes: new { @style = "width:130px;height:35px", @class = "form-control" })*@
-                                    <input style="text-align:left" type="text" name="SalePrice" id="SalePrice" class="form-control">
-                                </div>
-                                <div class="form-group col-xs-1">
-                                    <label>Tax%</label>
-                                   @* @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.TaxForSale, htmlAttributes: new { id = "ts", @style = "width:130px;height:35px", @class = "form-control" })*@
-                                    <input style="text-align:left" type="text" name="TaxForSale" id="TaxForSale" class="form-control">
-                                 
-                                </div>
-                                <div class="form-group col-xs-1">
-
-                                    <label>Descount</label>
-                                  @*  @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Discount, htmlAttributes: new { id = "ds", @style = "width:130px;height:35px", @class = "form-control" })*@
-                                    <input style="text-align:left" type="text" name="Discount" id="Discount" class="form-control">
-
-                                </div>
-                                <div class="form-group col-xs-1">
-                                    <label>Qty</label>
-                                  @*  @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.Qty, htmlAttributes: new { id = "qty", @style = "width:130px;height:35px", @class = "form-control" })*@                                 
-                                    <input style="text-align:left" type="text" name="Qty" id="Qty" class="form-control">
-
-                                </div>
-                                <div class="form-group col-xs-1">
-
-                                    <label>Dis Amt</label>
-                                   @* @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.DiscountAmount, htmlAttributes: new { id = "da", @style = "width:130px;height:35px", @class = "form-control" })*@
-
-                                    <input style="text-align:left" type="text" name="DiscountAmount" id="DiscountAmount" class="form-control">
-
-
-
-                                </div>
-                                <div class="form-group col-xs-2">
-                                    <label>Tax Amt</label>
-                                  @*  @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.SaleTaxAmount, htmlAttributes: new { id = "sa", @style = "width:130px;height:35px", @class = "form-control" })*@
-                                    <input style="text-align:left" type="text" name="SaleTaxAmount" id="SaleTaxAmount" class="form-control">
-
-
-
-                                
-                                </div>
-                                <div class="form-group col-xs-2">
-                                    <label>Total</label>
-                                    <input style="text-align:left" type="text" name="ItemTotal" id="ItemTotal" class="form-control">
-                                 
-                                    @*   @Html.TextBoxFor(item => item.tbl_SaleOrderInner2.ItemTotal, htmlAttributes: new { id = "ca", @style = "width:130px;height:35px;", @class = "form-control" })*@
-                                    </div>
-
-                                    <div class="col-xs-1">
-                                        <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                </nav>
-                <nav class="navbar navbar-default " style="border:none; background-color:white">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse ">
-                            <div class="form-group scrolldown" style="height:200px">
-                                <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                Item Name   
-                                            </th>                                            
-                                            <th>
-                                               MRP
-                                            </th>
-                                            <th>
-                                                Tax%                                            
-                                            </th>
-                                            <th>
-                                                Discount
-                                            <th>
-                                                Qty
-                                            </th>
-                                            <th>
-                                                Dis Amount
-                                            </th>
-                                            <th>
-                                                Tax Amount
-                                            </th>
-                                           
-                                            <th>
-                                                Total
-                                            </th>
-                                            <th>
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                </table>
                             </div>
                         </div>
                     </div>
-                </nav>
-                <div class="container-fluid">
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                @*<div class="container-fluid">
                     <div class="collapse navbar-collapse ">
                         <div class="row">
                             <div class="col-md-2">
@@ -570,7 +747,7 @@
                             <div class="col-md-8 form-group">
                                 <div class="pull-right">
                                     Total:
-                                    @Html.EditorFor(model => model.CalTotal, new { htmlAttributes = new { @class = "form-control",id= "Total", placeholder = "Total Amount" } })
+                                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control",id= "Total", placeholder = "Total Amount" } })
                                     @Html.ValidationMessageFor(model => model.CalTotal)
                                     Recived :
                                     @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" , id="Received "} })
@@ -581,9 +758,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1 form-group" style="margin-top:8px; ">
+                    </div>*@
+                    @*<div class="row">
+                        @*<div class="col-md-1 form-group" style="margin-top:8px; ">
                         </div>
                         <div class="col-md-3">
                         </div>
@@ -597,8 +774,8 @@
                         </div>
                         <div class="col-md-3 form-group">
                         </div>
-                    </div>
-                </div>
+                    </div>*@
+               
             </div>
         </div>
    }
