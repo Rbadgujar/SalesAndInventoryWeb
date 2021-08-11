@@ -26,6 +26,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public double CalTotal { get; set; }
         public int TaxAmount1 { get; set; }
         public string Status { get; set; }
+        public double Total { get; set; }
         public List<ItemDetails> ListOfPurchaseOrder { get; set; }
     }
 }

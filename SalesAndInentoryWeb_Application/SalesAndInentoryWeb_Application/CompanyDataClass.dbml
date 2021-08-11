@@ -581,18 +581,6 @@
       <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_BankAdjustment" Member="tbl_BankAdjustments">
-    <Type Name="tbl_BankAdjustment">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="BankAccount" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="EntryType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tbl_CashAdjustment" Member="tbl_CashAdjustments">
     <Type Name="tbl_CashAdjustment">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -603,19 +591,6 @@
       <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BankName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_CashInhand" Member="tbl_CashInhands">
-    <Type Name="tbl_CashInhand">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Adjustment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AdditionalFeild" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AdditionalFeild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_CategoryMaster" Member="tbl_CategoryMasters">
@@ -1010,19 +985,6 @@
       <Column Name="UserId" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_MakePayment" Member="tbl_MakePayments">
-    <Type Name="tbl_MakePayment">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PrincipleAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="InterestAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PaidFrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tbl_PartyGroup" Member="tbl_PartyGroups">
     <Type Name="tbl_PartyGroup">
       <Column Name="PartyGroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1301,6 +1263,47 @@
       <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_MakePayment" Member="tbl_MakePayments">
+    <Type Name="tbl_MakePayment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PrincipleAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InterestAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PaidFrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BankAdjustment" Member="tbl_BankAdjustments">
+    <Type Name="tbl_BankAdjustment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BankAccount" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_CashInhand" Member="tbl_CashInhands">
+    <Type Name="tbl_CashInhand">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Adjustment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AdditionalFeild" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AdditionalFeild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.tbl_CompanyMasterSelect" Method="tbl_CompanyMasterSelect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="CompanyID" Parameter="companyID" Type="System.Int32" DbType="Int" />
@@ -1452,24 +1455,6 @@
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.tbl_BankAdjustmentselect" Method="tbl_BankAdjustmentselect">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="BankAccount" Parameter="bankAccount" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="EntryType" Parameter="entryType" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Amount" Parameter="amount" Type="System.Double" DbType="Float" />
-    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="tbl_BankAdjustmentselectResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BankAccount" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="EntryType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.tbl_CashAdjustmentselect" Method="tbl_CashAdjustmentselect">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
@@ -1484,24 +1469,6 @@
       <Column Name="BankName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CashAdjustment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CashAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.tbl_CashInhandSelect" Method="tbl_CashInhandSelect">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Adjustment" Parameter="adjustment" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Amount" Parameter="amount" Type="System.Double" DbType="Float" />
-    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="AdditionalFeild" Parameter="additionalFeild" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="AdditionalFeild1" Parameter="additionalFeild1" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="tbl_CashInhandSelectResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Adjustment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
@@ -2126,26 +2093,6 @@
       <Column Name="LoanAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="BalAsOf" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.tbl_MakePaymentSelect" Method="tbl_MakePaymentSelect">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PrincipleAmount" Parameter="principleAmount" Type="System.Double" DbType="Float" />
-    <Parameter Name="InterestAmount" Parameter="interestAmount" Type="System.Double" DbType="Float" />
-    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Double" DbType="Float" />
-    <Parameter Name="PaidFrom" Parameter="paidFrom" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="AccountName" Parameter="accountName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="tbl_MakePaymentSelectResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PrincipleAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="InterestAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PaidFrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.tbl_otherIncomeCategorySelect" Method="tbl_otherIncomeCategorySelect">
@@ -3271,6 +3218,65 @@
       <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="RemainingBal" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.tbl_BankAdjustmentselect" Method="tbl_BankAdjustmentselect">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BankAccount" Parameter="bankAccount" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="EntryType" Parameter="entryType" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Double" DbType="Float" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
+    <ElementType Name="tbl_BankAdjustmentselectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BankAccount" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EntryType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.tbl_CashInhandSelect" Method="tbl_CashInhandSelect">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Adjustment" Parameter="adjustment" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Double" DbType="Float" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="AdditionalFeild" Parameter="additionalFeild" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="AdditionalFeild1" Parameter="additionalFeild1" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
+    <ElementType Name="tbl_CashInhandSelectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Adjustment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.tbl_MakePaymentSelect" Method="tbl_MakePaymentSelect">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrincipleAmount" Parameter="principleAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="InterestAmount" Parameter="interestAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="PaidFrom" Parameter="paidFrom" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="AccountName" Parameter="accountName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
+    <ElementType Name="tbl_MakePaymentSelectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PrincipleAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InterestAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PaidFrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

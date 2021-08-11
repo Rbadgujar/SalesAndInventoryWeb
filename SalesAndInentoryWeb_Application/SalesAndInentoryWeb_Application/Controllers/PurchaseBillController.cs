@@ -51,6 +51,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			return View(tb);
 		}
      
+        
         private static List<SelectListItem> ListOfItems()
         {
             string sql;
@@ -121,7 +122,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 BillingName = objpurchase.BillingName,
                 ContactNo = objpurchase.ContactNo,
                 RemainingBal = objpurchase.RemainingBal,
-                CalTotal = objpurchase.CalTotal,
+                Total = objpurchase.Total,
+                PONo = objpurchase.PONo,
+                PoDate = objpurchase.PoDate,
+                Feild4 = objpurchase.Feild4,
                 TaxAmount1 = objpurchase.TaxAmount1,
                 TransportName = objpurchase.TransportName,
                 DeliveryLocation = objpurchase.DeliveryLocation,
@@ -158,13 +162,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     Qty = item.Qty
                 };
                 db.tbl_PurchaseBillInners.InsertOnSubmit(inner);
-
                 db.SubmitChanges();
-            }
-            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
-            //    return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
-            //
-            return View();
+                TempData["msg"] = "Insert Data Sucessfully...";
+            }        
+            return Json(data:  new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet } );
         }
 
         public JsonResult GetFruitName(string id)
@@ -178,7 +179,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id");
+                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id and DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -273,11 +274,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 
         [HttpGet]
-        public ActionResult AddPurchaseUpdate(int id=0)
+        public ActionResult AddPurchaseUpdate(int id = 0)
         {
             var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
             var vm = new tbl_PurchaseBill();
-            vm.PONo = tb.PONo;
+            vm.BillNo = tb.BillNo;
+            vm.PartyName = tb.PartyName;
             vm.BillingName = tb.BillingName;
             vm.ContactNo = tb.ContactNo;
             vm.BillDate = Convert.ToDateTime(tb.BillDate);
@@ -307,10 +309,45 @@ namespace SalesAndInentoryWeb_Application.Controllers
             vm.IGST = tb.IGST;
             vm.Feild4 = tb.Feild4;
             vm.Feild1 = tb.Feild1;
-            GetFruitNameById5(id);
-            return View(vm);    
+            return Json(GetFruitNameById5(id), JsonRequestBehavior.AllowGet);
+            return View(vm);
+        }
+        public JsonResult GetFruitName2(string id)
+        {
+            return Json(GetFruitNameById2(id), JsonRequestBehavior.AllowGet);
         }
 
+        private static List<tbl_ItemMaster> GetFruitNameById2(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE Barcode = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                ItemName = sdr["ItemName"].ToString(),
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
         public static List<tbl_PurchaseBillInner> GetFruitNameById5(int id)
         {
             string sql;

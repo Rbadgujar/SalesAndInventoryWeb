@@ -182,20 +182,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 BillingName = objdebitnote.BillingName,
                 ContactNo = objdebitnote.ContactNo,
                 RemainingBal = objdebitnote.RemainingBal,
-                CalTotal = objdebitnote.CalTotal,
+                Total = objdebitnote.Total,
                 TransportName = objdebitnote.TransportName,
                 DeliveryLocation = objdebitnote.DeliveryLocation,
-                Deliverydate = objdebitnote.DeliveryDate,
+                Deliverydate = Convert.ToDateTime(objdebitnote.DeliveryDate),
                 StateofSupply = objdebitnote.StateOfSupply,
                 InvoiceDate = Convert.ToDateTime(objdebitnote.InvoiceDate),
                 CGST = gst,
                 SGST=gst,
-                DueDate = objdebitnote.DueDate,
                 Barcode = objdebitnote.Barcode,
                 Status = objdebitnote.Status,
                 VehicleNumber = objdebitnote.VehicleNumber,
                 PONumber=objdebitnote.PONumber,
-                PODate=objdebitnote.PODate,
+                PODate= Convert.ToDateTime(objdebitnote.PODate),
                 Received=objdebitnote.Received             
             };
             db.tbl_DebitNotes.InsertOnSubmit(sale);
@@ -241,7 +240,42 @@ namespace SalesAndInentoryWeb_Application.Controllers
             //	return RedirectToAction("DebitNote");
             //}
         }
+        public JsonResult GetFruitName2(string id)
+        {
+            return Json(GetFruitNameById2(id), JsonRequestBehavior.AllowGet);
+        }
 
+        private static List<tbl_ItemMaster> GetFruitNameById2(string id)
+        {
+            string sql;
+            List<tbl_ItemMaster> items3 = new List<tbl_ItemMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE Barcode = @Id");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items3.Add(new tbl_ItemMaster()
+                            {
+                                ItemName = sdr["ItemName"].ToString(),
+                                SalePrice = Convert.ToDouble(sdr["SalePrice"]),
+                                TaxForSale = sdr["TaxForSale"].ToString(),
+                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items3;
+        }
         [HttpPost]
         public ActionResult Delete(int id)
         {

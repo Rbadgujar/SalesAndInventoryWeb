@@ -11,7 +11,7 @@
         padding: 20px;
     }
 </style>
-@using (Html.BeginForm("AddOrEdit", "BankAdjustment", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+@using (Html.BeginForm("AddOrEdit", "BankAdjustment", FormMethod.Post))
 {
     <div id="div">
         @Html.HiddenFor(model => model.ID)
@@ -99,11 +99,21 @@
             }
         });
         $("input[type=text]").change(function () {
+            debugger
             check();
         });
         $("btnsubmit").change(function () {
+            debugger
             check1();
         });
+        var date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+        var today = year + "-" + month + "-" + day;
+        $("#Date").attr("value", today);
     });
     function cal()
     {
@@ -115,22 +125,25 @@
     function cal1() {
         var bal = $("#OpeningBal").val();
         var amount = $("#Amount").val();
-        var total =parseInt( bal) +parseInt(amount);
+        var total =parseInt(bal) + parseInt(amount);
         $("#Total").val(total);
     }
     function check()
     {
         if ($("#EntryType").val() == "Credit")
         {
-            cal();
+            cal1();
+         
         }
         else if ($("#EntryType").val() == "Debit")
         {
-            cal1();
+            debugger
+            cal();
+            check1();
         }
     }
     function check1() {
-        if ($("#Amount").val() < $("#OpeningBal").val()) {
+        if ($("#Amount").val() > $("#OpeningBal").val()) {
             alert("Invalid Amount");
         }
         else {

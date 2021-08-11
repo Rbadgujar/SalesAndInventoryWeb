@@ -23,7 +23,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
         public ActionResult makykdata()
         {
-            var getdata = db.tbl_MakePaymentSelect("Select1", null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_MakePaymentSelect("Select1", null, null, null, null, null, null, null, null,null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
@@ -61,17 +61,42 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
 		public ActionResult MakePaymentPopUp( tbl_MakePayment conn, int id=0)
 		{
-			
-				db.tbl_MakePaymentSelect("Insert", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null);
-				db.SubmitChanges();
-				ModelState.Clear();
-				return RedirectToAction("Makepayment");			
-		}
+            try
+            {
+                db.tbl_MakePaymentSelect("Insert1", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null, conn.Total);
+                db.SubmitChanges();
+                ModelState.Clear();
+                return RedirectToAction("Makepayment");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    string sql;
+                    sql = string.Format("Update tbl_LoanBank set LoanAmount=@openingbal WHERE AccountName = @Id");
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@Id", conn.AccountName);
+                        cmd.Parameters.AddWithValue("@openingbal", conn.TotalAmount);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+            }
+        }
 
 		[HttpPost]
 		public ActionResult Delete(int id)
 		{
-			var tb = db.tbl_MakePaymentSelect("Delete", id, null, null, null, null, null, null, null).ToList();
+			var tb = db.tbl_MakePaymentSelect("Delete", id, null, null, null, null, null, null, null,null).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
@@ -91,7 +116,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_BankAccount where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_LoanBank where DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -102,8 +127,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         {
                             items.Add(new SelectListItem
                             {
-                                Text = sdr["BankName"].ToString(),
-                                Value = sdr["BankName"].ToString()
+                                Text = sdr["AccountName"].ToString(),
+                                Value = sdr["AccountName"].ToString()
                             });
                         }
                     }
@@ -116,7 +141,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult MakePaymentUpdate(int id=0)
         {
-            var tb = db.tbl_MakePaymentSelect("Details", id, null, null, null, null, null, null, null).Single(x => x.ID == id);
+            var tb = db.tbl_MakePaymentSelect("Details", id, null, null, null, null, null, null, null,null).Single(x => x.ID == id);
             var vm = new tbl_MakePayment();
             vm.AccountName = tb.AccountName;
             vm.PrincipleAmount = tb.PrincipleAmount;
@@ -129,7 +154,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult MakePaymentUpdate(int id,tbl_MakePayment conn)
         {
-            db.tbl_MakePaymentSelect("Update", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null);
+            db.tbl_MakePaymentSelect("Update", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null,conn.Total);
             db.SubmitChanges();
             return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
         }
