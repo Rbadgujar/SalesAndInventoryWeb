@@ -139,7 +139,7 @@ function openCity(evt, cityName) {
                        Tax Rate:
                        <select name="TaxForSale" id="TaxForSale" onchange="displayVals();" class="form-control">
                            <option value="">---Select--</option>
-                           <option value="0.25">0.25%</option>S
+                           <option value="0.25">0.25%</option>
                            <option value="5">5%</option>
                            <option value="12">12%</option>
                            <option value="18">18%</option>
@@ -149,19 +149,27 @@ function openCity(evt, cityName) {
                    </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">              
             <div class="tab" style="margin-top:1px" id="div">
-                <h4><a class="tablinks" onclick="openCity(event, 'London')">Item Traking :</a></h4>
+                <h4><a class="tablinks" onclick="openCity(event, 'London')">Item Traking :</a></h4>               
+            </div>             
+            <hr style="margin-top:10px;width:250px; margin-left:1px" /></div>
+            <div class="col-md-4">
+                <div class="">
+                    <br />
+                    Discount (%):
+                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", Style = "width:230px" } })
+                    @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
+                </div>
             </div>
-            <hr style="margin-top:10px;width:300px; margin-left:1px" /></div>
-            <div class="col-md-6 " >
-                <br />
-              <div class="pull-right">
-                Item Barcode:
-                @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", Style="width:250px" } })
-                @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
-                  </div>
-              </div>
+                <div class="col-md-4">
+                    <br />
+                    <div class="pull-right">
+                        Item Barcode:
+                        @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", Style = "width:230px" } })
+                        @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
             <div id="London" class="tabcontent">
                 <div class="row">

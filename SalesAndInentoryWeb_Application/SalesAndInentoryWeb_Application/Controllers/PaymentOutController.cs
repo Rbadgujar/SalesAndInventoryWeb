@@ -103,9 +103,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 				db.tbl_Paymentoutselect("Insert", null, conn.CustomerName, conn.PaymentType, conn.ReceiptNo, conn.Date, conn.Description, conn.Paid, conn.Discount, conn.Total, conn.image, null, conn.Status, null);
 				db.SubmitChanges();
-				return RedirectToAction("Index");
-			}
-			else
+                return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
+                //return RedirectToAction("Index");
+            }
+            else
 			{
 				db.tbl_Paymentoutselect("Update", id, conn.CustomerName, conn.PaymentType, conn.ReceiptNo, conn.Date, conn.Description, conn.Paid, conn.Discount, conn.Total, conn.image, null, conn.Status, null);
 				db.SubmitChanges();
