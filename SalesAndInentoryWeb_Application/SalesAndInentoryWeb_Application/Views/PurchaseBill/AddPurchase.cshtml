@@ -37,7 +37,23 @@
            
             $("#success-alert").hide();
             $("#btnaddtolist").click(function () {
-                AddToItem();
+                var ItemName = $("#ID option:selected").val();
+                var mrp = $("#SalePrice").val();
+                var tax = $("#TaxForSale").val();
+                var dis = $("#Discount").val();
+                var qty = $("#Qty").val();
+                var disamt = $("#DiscountAmount").val();
+                var taxmat = $("#SaleTaxAmount").val();
+                var total = $("#ItemAmount").val();
+                var ItemID = $("#ItemID").val();
+
+                if ((ItemName == "") || (ItemName == "Select Item") || (mrp == "") || (mrp == 0) || (qty == "") || (qty == 0)) {
+                    alert("Invalid Data Insert All Feilds !")
+                }
+                else {
+                    AddToItem();
+                }
+
             });
             $("#btnsubmit").click(function (e) {
                 additems();
@@ -70,6 +86,7 @@
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
                                $("#Discount").val(data[x].Discount);
+                               $("#ItemID").val(data[x].ItemID);
                                caldata();
                            }
                        }
@@ -106,6 +123,7 @@
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
                                $("#ID option:selected").val(data[x].ItemName);
                                $("#Discount").val(data[x].Discount);
+                               $("#ItemID").val(data[x].ItemID);
 
                                var mrp = data[x].SalePrice;
                                var tax = data[x].TaxForSale;
@@ -148,7 +166,6 @@
             $("#DueDate").attr("value", today);
             $("#Deliverydate").attr("value", today);
             $("#PoDate").attr("value", today);
-
 
             $("#PartiesID").change(function () {
                 debugger
@@ -287,6 +304,7 @@
             var disamt = $("#DiscountAmount").val();
             var taxmat = $("#SaleTaxAmount").val();
             var total = $("#ItemAmount").val();
+            var ItemID = $("#ItemID").val();
 
             var itemlist = "<tr><div class='scrollit'><td>"
                 + ItemName +
@@ -307,10 +325,9 @@
                  "</td><td>" +
                  "<input type='button' value='Remove' name='remove' class='btn btn-danger' id='remove'/>" +
 
-               "</td></div></tr>"
+               "</td><td>"+ItemID+"</td></div></tr>"
               tableitemlist.append(itemlist);
-              reset();
-          
+              reset();         
               var finding = 0;
               $("tr").each(function (indexTr) {
                debugger
@@ -387,14 +404,15 @@
 
         function reset()
         {
-            $("#ItemName").val('0');
+            $("#ID").val('');
             $("#SalePrice").val('0');
             $("#TaxForSale").val('0');
             $("#Discount").val('0');
             $("#Qty").val('0');
             $("#DiscountAmount").val('0');
             $("#SaleTaxAmount").val('0');
-            $("#Total").val('0');
+            $("#ItemAmount").val('0');
+            $("#ItemID").val('');
         }
         function additems()
         {
@@ -412,7 +430,9 @@
                         Qty: $(this).find("td:eq(4)").text(),                 
                         DiscountAmount: $(this).find("td:eq(5)").text(),
                         SaleTaxAmount: $(this).find("td:eq(6)").text(),         
-                        ItemAmount: $(this).find("td:eq(7)").text()
+                        ItemAmount: $(this).find("td:eq(7)").text(),
+                        ItemID: $(this).find("td:eq(9)").text()
+                        
                     });
                 });
             objpurchase.PartyName = $("#PartiesID option:selected").val();
@@ -450,6 +470,7 @@
                         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
                             $("#success-alert").slideUp(500);
                         });
+                        location.reload(true);
                     }
                 },
                 error: function () {
@@ -589,6 +610,9 @@
                             <td style="padding:3px;text-align:center">
                                 <label>Tax%</label>
                                 <input style="text-align:left" type="text" name="TaxForSale" id="TaxForSale" class="form-control">
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <input style="display:none" type="text" name="Qty" id="ItemID" class="form-control">
                             </td>
                             <td style="padding:3px;text-align:center">
                                 <label>Discount</label>
@@ -764,5 +788,15 @@
 			<div>
 			</div>
 		</div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 </body>
 </html>

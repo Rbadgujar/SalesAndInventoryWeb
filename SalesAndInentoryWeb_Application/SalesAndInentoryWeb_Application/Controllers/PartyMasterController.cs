@@ -47,9 +47,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(vm);
             }
         }
-        public string imagefile;
+        public string imagefile=null;
         [HttpPost]
-        public ActionResult Addparty1(IEnumerable<HttpPostedFileBase> files, tbl_PartyMasterSelectResult party, int id = 0)
+        public ActionResult Addparty(IEnumerable<HttpPostedFileBase> files, tbl_PartyMasterSelectResult party, int id = 0)
         {
             if (id == 0)
         {
@@ -58,18 +58,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 
                   
-                    foreach (var file in files)
-                    {
+                    //foreach (var file in files)
+                    //{
 
-                        if (file != null && file.ContentLength > 0)
-                        {
-                            file.SaveAs(Path.Combine(Server.MapPath("/images"), Guid.NewGuid() + Path.GetExtension(file.FileName)));
-                             imagefile = "~/images/"+file.FileName;
+                    //    if (file != null && file.ContentLength > 0)
+                    //    {
+                    //        file.SaveAs(Path.Combine(Server.MapPath("/images"), Guid.NewGuid() + Path.GetExtension(file.FileName)));
+                    //         imagefile = "~/images/"+file.FileName;
 
-                            var path = Path.Combine(Server.MapPath("~/images"), file.FileName);
+                    //        var path = Path.Combine(Server.MapPath("~/images"), file.FileName);
 
-                        }
-                    }
+                    //    }
+                    //}
 
                   
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();

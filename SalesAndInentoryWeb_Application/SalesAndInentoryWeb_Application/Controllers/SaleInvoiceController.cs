@@ -214,7 +214,55 @@ namespace SalesAndInentoryWeb_Application.Controllers
             bt.ListOfParties = ListOfParties();
             return View(bt);
         }
+        public int openingstock,Minstock;
 
+        public void stock(int ItemID,int newqty)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+               string sql1 = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemID = @ItemID");
+                using (SqlCommand cmd = new SqlCommand(sql1))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@ItemID", ItemID);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+
+                           Minstock = Convert.ToInt32(sdr["MinimumStock"]);
+                           openingstock = Convert.ToInt32(sdr["OpeningQty"].ToString());
+                      
+                        }
+                        sdr.Close();
+                    }
+                    con.Close();
+                   
+
+                    int min = Minstock - newqty;
+                    int opening = openingstock - newqty;
+
+                    sotckcal(ItemID, min, opening);
+                }
+                
+            }
+        }
+
+        public void sotckcal(int ItemID, int min ,int opening)
+        {
+
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql1 = string.Format("Update tbl_ItemMaster set OpeningQty="+opening+" where ItemID="+ItemID+" ");
+                SqlCommand cmd = new SqlCommand(sql1,con);
+                con.Open();
+                cmd.ExecuteNonQuery();                                            
+            }
+
+        }
         [HttpPost]
         public ActionResult SaleInvoice(SaleInvoicePartyDetails objsalepartydetails)
       {
@@ -244,14 +292,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objsalepartydetails.SaleInvoiceItemDetails)
             {
+                stock(item.ItemID,item.Qty);
                 var gst1 = item.SaleTaxAmount;
                 var finalgsr = gst1 / 2;
                 tbl_SaleInvoiceInner inner = new tbl_SaleInvoiceInner()
-                {
+                {                   
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     TaxForSale = item.TaxForSale,
                     Discount = item.Discount,
+                    ItemID = item.ItemID,
                     CGST = finalgsr,
                     SGST = finalgsr,
                     InvoiceID = sale.InvoiceID,

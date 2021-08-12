@@ -49,17 +49,13 @@
             $("#PODate").attr("value", today);
 
 
-
-
-
-
+            $("#success-alert").hide();
             $("#btnaddtolist").click(function () {
               
                 AddToItem();
             });
             $("#btnsubmit").click(function (e) {
-                additems();
-                alert("Sucessfully Added....")
+                additems();           
             });
             $("#ID").change(function () {
                 debugger
@@ -68,7 +64,7 @@
                     $.ajax
                    ({
                        type: "POST",
-                       url: "/CreditNote/GetFruitName1",
+                       url: "/SaleInvoice/GetFruitName1",                      
                        data: "id=" + fruitId,
                        success: function (data) {
                            var content = "";
@@ -77,6 +73,8 @@
                                $("#ts").val(data[x].TaxForSale);
                                $("#sa").val(data[x].SaleTaxAmount);
                                $("#ds").val(data[x].Discount);
+                               $("#ItemID").val(data[x].ItemID);
+
                                datacal();
                            }
                        }
@@ -102,6 +100,7 @@
                                $("#sa").val(data[x].SaleTaxAmount);
                                $("#ID option:selected").val(data[x].ItemName);
                                $("#ds").val(data[x].Discount);
+                               $("#ItemID").val(data[x].ItemID);
 
                                var mrp = data[x].SalePrice;
                                var tax = data[x].TaxForSale;
@@ -147,8 +146,7 @@
                    });
                 }
             });
-
-           
+         
             $("#sp").change(function () {
               
                 var mrp = $("#sp").val();
@@ -270,9 +268,9 @@
             var disamt = $("#da").val();
             var taxmat = $("#sa").val();
             var total = $("#ca").val();
-
+            var ItemID = $("#ItemID").val();
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
-            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
+            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td><td>" + ItemID + "</td></tr>"
             tableitemlist.append(itemlist);
             reset();
             var finding = 0;
@@ -285,11 +283,11 @@
 
                 $("#Total").val(finding);
             })
-
             var taxfinding = 0;
             $("tr").each(function (indexTr) {
-                debugger
-                if (isNaN(taxfinding)) {
+
+             
+                if(isNaN(taxfinding)) {
                     taxfinding = 0;
                 }
                 var mm = +$(this).find('td:eq(6)').text();
@@ -306,7 +304,7 @@
         };
         function reset()
         {
-            $("#ID option:selected").val('');
+            $("#ID").val('');
             $("#sp").val('');
             $("#ts").val('');
             $("#ds").val('');
@@ -314,12 +312,12 @@
             $("#da").val('');
             $("#sa").val('');
             $("#ca").val('');
+            $("#ItemID").val('');
         }
         function additems() {
             debugger
             var objcreditnote = {};
             var listofcreditnote = [];
-
             $.each($("#tblSaleInvoice tbody tr"),
                 function () {
                     listofcreditnote.push({
@@ -330,10 +328,10 @@
                         Qty: $(this).find("td:eq(4)").text(),
                         DiscountAmount: $(this).find("td:eq(5)").text(),
                         SaleTaxAmount: $(this).find("td:eq(6)").text(),
-                        ItemAmount: $(this).find("td:eq(7)").text()
+                        ItemAmount: $(this).find("td:eq(7)").text(),
+                        ItemID: $(this).find("td:eq(9)").text()
                     });
                 });
-
             objcreditnote.PartyName = $("#PartiesID option:selected").val();
             objcreditnote.BillingName = $("#BillingName").val();
             objcreditnote.ContactNo = $("#ContactNo").val();
@@ -365,8 +363,11 @@
                 data: JSON.stringify(objcreditnote),
                 url: '/CreditNote/AddOrEdit',
                 success: function (data) {
-                    if (data.status == true) {
-                        alter(data.message);
+                    if (data.success == true) {
+                        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#success-alert").slideUp(500);
+                        });
+                        location.reload(true);
                     }
                 },
                 error: function () {
@@ -381,7 +382,11 @@
     @using (Html.BeginForm("AddOrEdit", "Creditnote", FormMethod.Post))
     {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
-            <div class="panel-heading"><a class="btn" href=@Url.Action("CreditNote", "CreditNote") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Credit Note</p></div>
+            <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px; margin-right:10px">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Success! </strong> Data Sucessfully Inserted.
+            </div>
+               <div class="panel-heading"><a class="btn" href=@Url.Action("CreditNote", "CreditNote") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Credit Note</p></div>
             <div class="panel border-box">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse ">
@@ -491,11 +496,8 @@
 
                             </td>
                             <td style="padding:3px;text-align:center">
-                                <label>Item Name</label>
-                              
+                                <label>Item Name</label>                              
                                 @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:150px" })
-
-
                             </td>
                             <td style="padding:3px;text-align:center">
                                 <label>MRP</label>
@@ -523,12 +525,15 @@
                                 <input style="text-align:left" type="text" name="sa" id="sa" class="form-control">
                             </td>
                             <td style="padding:3px;text-align:center">
+                                <input style="display:none" type="text" name="Qty" id="ItemID" class="form-control">
+                            </td>
+
+                            <td style="padding:3px;text-align:center">
                                 <label>Total</label>
                                 <input style="text-align:left" type="text" name="ItemTotal" id="ca" class="form-control">
                             </td>
                             <td style="padding:3px;text-align:center">
                                 <a class="btn btn-primary pull-left" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
-
                             </td>
                         </tr>
                     </table>

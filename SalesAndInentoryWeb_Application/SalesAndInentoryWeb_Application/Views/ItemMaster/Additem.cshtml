@@ -54,138 +54,169 @@ function openCity(evt, cityName) {
 }
   </script>*@
   @using (Html.BeginForm())
-    {
-      <div id="div">
+  {
+    <div id="div">
 
         @Html.AntiForgeryToken()
-      
+
         @*<h4>Company Iformation:</h4>s
             <hr style="margin-top:10px;width:300px;margin-left:1px" />*@
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="row">
             <div class="col-md-4">
                 Item Name:
-                @Html.EditorFor(model => model.ItemName, new { htmlAttributes = new { @class = "form-control", Required= "Required" } })
+                @Html.EditorFor(model => model.ItemName, new { htmlAttributes = new { @class = "form-control", Required = "Required" } })
                 @Html.ValidationMessageFor(model => model.ItemName, "", new { @class = "text-danger" })
-                </div>
+            </div>
             <div class="col-md-4">
                 HSN Code:
                 @Html.EditorFor(model => model.HSNCode, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.HSNCode, "", new { @class = "text-danger" })
 
-                  </div>
+            </div>
             <div class="col-md-4">
                 Baic Unit:
                 @Html.EditorFor(model => model.BasicUnit, new { htmlAttributes = new { @class = "form-control", style = "width:195px" } })
                 @Html.ValidationMessageFor(model => model.BasicUnit, "", new { @class = "text-danger" })
                 <button class="btn pull-right" type="button" onclick="PopupForm('@Url.Action("ItemTraking", "ItemMaster")')" style="margin-top:-34px"><i class="fa fa-plus"></i></button>
-        
+
                 @*<br />
-            Opening Qty:
-            @Html.EditorFor(model => model.OpeningQty, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.OpeningQty, "", new { @class = "text-danger" })*@
+                    Opening Qty:
+                    @Html.EditorFor(model => model.OpeningQty, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OpeningQty, "", new { @class = "text-danger" })*@
 
 
             </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                       Item Code:
-                    @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ItemCode, "", new { @class = "text-danger" })
-
-
-                  </div>
-                <div class="col-md-4">
-                    At Price:
-                    @Html.EditorFor(model => model.atPrice, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.atPrice, "", new { @class = "text-danger" })
-
-                </div>
-                <div class="col-md-4">
-                    Item Category:
-                    @Html.EditorFor(model => model.ItemCategory, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ItemCategory, "", new { @class = "text-danger" })
-
-
-                   
-                    @*<br />
-            <input type="button" class="btn btn-yahoo" value="Item Tracking Details" onclick="PopupForm('@Url.Action("AddOrEdit", "BankAdjustment")')" style="height:32px;width:45%" />*@
-
-                </div>
-               </div>
-               <div class="row">
-                   <div class="col-md-4">
-                       Sale price:
-                       @Html.EditorFor(model => model.SalePrice, new { htmlAttributes = new { @class = "form-control", id = "saleprice", onchange = "displayVals();", Style = "width:110px", Required = "Required", @type = "number" } })
-                       @Html.ValidationMessageFor(model => model.SalePrice, "", new { @class = "text-danger" })
-                       <select name="state" id="saletaxtype" onchange="displayVals();" class="form-control" style="width:110px;margin-left:117px;margin-top:-35px" ;>
-                           <option value="withtax">With Tax</option>
-                           <option value="withouttax">Without Tax</option>s
-
-                       </select>
-                   </div>
-                   <div class="col-md-4">
-                       Purchase Price:
-                       @Html.EditorFor(model => model.PurchasePrice, new { htmlAttributes = new { @class = "form-control", id = "purchaseprice", onchange = "displayVals();", Style = "width:110px", Required = "Required", @type = "number" } })
-                       @Html.ValidationMessageFor(model => model.PurchasePrice, "", new { @class = "text-danger" })
-                       <select name="state" id="purchastype" class="form-control" onchange="displayVals();" style="width:110px;margin-left:117px;margin-top:-35px" ;>
-                           <option value="withtax">With Tax</option>
-                           <option value="withouttax">Without Tax</option>
-
-                       </select>
-                      </div>
-                   <div class="col-md-4">
-                       Tax Rate:
-                       <select name="TaxForSale" id="TaxForSale" onchange="displayVals();" class="form-control">
-                           <option value="">---Select--</option>
-                           <option value="0.25">0.25%</option>
-                           <option value="5">5%</option>
-                           <option value="12">12%</option>
-                           <option value="18">18%</option>
-                           <option value="28">28%</option>
-                       </select>
-
-                   </div>
         </div>
         <div class="row">
-            <div class="col-md-4">              
-            <div class="tab" style="margin-top:1px" id="div">
-                <h4><a class="tablinks" onclick="openCity(event, 'London')">Item Traking :</a></h4>               
-            </div>             
-            <hr style="margin-top:10px;width:250px; margin-left:1px" /></div>
+            <div class="col-md-4">
+                Item Code:
+                @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ItemCode, "", new { @class = "text-danger" })
+
+
+            </div>
+            <div class="col-md-4">
+                At Price:
+                @Html.EditorFor(model => model.atPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.atPrice, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-md-4">
+                Item Category:
+                @Html.EditorFor(model => model.ItemCategory, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ItemCategory, "", new { @class = "text-danger" })
+
+
+
+                @*<br />
+                    <input type="button" class="btn btn-yahoo" value="Item Tracking Details" onclick="PopupForm('@Url.Action("AddOrEdit", "BankAdjustment")')" style="height:32px;width:45%" />*@
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                Purchase Price:
+                @Html.EditorFor(model => model.PurchasePrice, new { htmlAttributes = new { @class = "form-control", id = "purchaseprice", onchange = "displayVals();", Style = "width:110px", Required = "Required", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.PurchasePrice, "", new { @class = "text-danger" })
+                <select name="state" id="purchastype" class="form-control" onchange="displayVals();" style="width:110px;margin-left:117px;margin-top:-35px" ;>
+                    <option value="withtax">With Tax</option>
+                    <option value="withouttax">Without Tax</option>
+
+                </select>
+
+            </div>
+            <div class="col-md-4">
+                Sale price:
+                @Html.EditorFor(model => model.SalePrice, new { htmlAttributes = new { @class = "form-control", id = "saleprice", onchange = "displayVals();", Style = "width:110px", Required = "Required", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.SalePrice, "", new { @class = "text-danger" })
+                <select name="state" id="saletaxtype" onchange="displayVals();" class="form-control" style="width:110px;margin-left:117px;margin-top:-35px" ;>
+                    <option value="withtax">With Tax</option>
+                    <option value="withouttax">Without Tax</option>s
+
+                </select>
+
+            </div>
+            <div class="col-md-4">
+                Tax Rate:
+                <select name="TaxForSale" id="TaxForSale" onchange="displayVals();" class="form-control">
+                    <option value="">---Select--</option>
+                    <option value="0.25">0.25%</option>
+                    <option value="5">5%</option>
+                    <option value="12">12%</option>
+                    <option value="18">18%</option>
+                    <option value="28">28%</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+
+                Min Stock:
+                @Html.EditorFor(model => model.MinimumStock, new { htmlAttributes = new { @class = "form-control", Style = "width:230px", @value = "0" } })
+                @Html.ValidationMessageFor(model => model.MinimumStock, "", new { @class = "text-danger" })
+
+
+
+
+                @*<select name="state" id="saletaxtype" onchange="displayVals();" class="form-control" style="width:110px;margin-left:117px;margin-top:-35px" ;>
+                        <option value="withtax">With Tax</option>
+                        <option value="withouttax">Without Tax</option>s
+
+                    </select>*@
+
+                @*<div class="tab" style="margin-top:1px" id="div">
+                        <h4><a class="tablinks" onclick="openCity(event, 'London')">Item Traking :</a></h4>
+                    </div>
+                    <hr style="margin-top:10px;width:250px; margin-left:1px" />*@
+            </div>
+
+
             <div class="col-md-4">
                 <div class="">
-                    <br />
+                
                     Discount (%):
-                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", Style = "width:230px" ,@value="0"} })
+                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", Style = "width:230px", @value = "0" } })
                     @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
                 </div>
             </div>
-                <div class="col-md-4">
-                    <br />
-                    <div class="pull-right">
-                        Item Barcode:
-                        @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", Style = "width:230px" } })
-                        @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
-                    </div>
+            <div class="col-md-4">
+           
+                <div class="pull-right">
+                    Item Barcode:
+                    @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", Style = "width:230px" } })
+                    @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">             
+                <h4>Item Traking :</h4>           
+        <hr style="margin-top:10px;width:250px; margin-left:1px" />
+            </div>
+            <div class="col-md-4">  </div>
+
+            <div class="col-md-4">Opening Stock:
+@Html.EditorFor(model => model.OpeningQty, new { htmlAttributes = new { @class = "form-control", Style = "width:230px", @value = "0" } })
+@Html.ValidationMessageFor(model => model.OpeningQty, "", new { @class = "text-danger" })
+  </div>
+            
+
+                </div>
+
+
             <div id="London" class="tabcontent">
                 <div class="row">
                     <div class="col-md-3">
                         MRP Rate :
                         @Html.EditorFor(model => model.TrackingMRP, new { htmlAttributes = new { @class = "form-control", id = "mrp" } })
                         @Html.ValidationMessageFor(model => model.TrackingMRP, "", new { @class = "text-danger" })
-
-
                     </div>
                     <div class="col-md-3">
                         Size:
                         @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
-
-
                     </div>
                     <div class="col-md-3">
                         Batch No:
@@ -234,9 +265,9 @@ function openCity(evt, cityName) {
                         <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
                     </div>
                 </div>
-                </div>
-          </div>
-                }
+            </div>
+        </div>
+  }
 
 
                 <script>

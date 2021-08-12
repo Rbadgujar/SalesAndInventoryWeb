@@ -27,11 +27,58 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var tb = db.tbl_DebitNoteSelect("datetodate", null, null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
             }
-            var tb1 = db.tbl_DebitNoteSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var tb1 = db.tbl_DebitNoteSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
         }
+        public int openingstock, Minstock;
+        public void stock(int ItemID, int newqty)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql1 = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemID = @ItemID");
+                using (SqlCommand cmd = new SqlCommand(sql1))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@ItemID", ItemID);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
 
-		public ActionResult Detail(int id)
+                            Minstock = Convert.ToInt32(sdr["MinimumStock"]);
+                            openingstock = Convert.ToInt32(sdr["OpeningQty"].ToString());
+
+                        }
+                        sdr.Close();
+                    }
+                    con.Close();
+
+
+                    int min = Minstock - newqty;
+                    int opening = openingstock - newqty;
+
+                    sotckcal(ItemID, min, opening);
+                }
+
+            }
+        }
+
+        public void sotckcal(int ItemID, int min, int opening)
+        {
+
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql1 = string.Format("Update tbl_ItemMaster set OpeningQty=" + opening + " where ItemID=" + ItemID + " ");
+                SqlCommand cmd = new SqlCommand(sql1, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+        }
+        public ActionResult Detail(int id)
 		{
 			var tb = db.tbl_DebitNoteSelect("Details", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ReturnNo == id);
 			return View(tb);
@@ -203,6 +250,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objdebitnote.ListOfDebitNote)
             {
+                stock(item.ItemID, item.Qty);
                 var gst1 = item.SaleTaxAmount;
                 var finalgsr = gst1 / 2;
                 tbl_DebitNoteInner inner = new tbl_DebitNoteInner()
