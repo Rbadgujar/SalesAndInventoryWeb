@@ -15,6 +15,20 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+        public ActionResult OtpVerification()
+        {
+            return View();
+        }
+        public ActionResult OTP()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetFruitName1(string name)
+        {
+            TempData["Data"] = name;
+            return new RedirectResult(@"~\registration\");
+        }
         public static int companyid1;
         [HttpPost]
         public ActionResult checkpass(string userId, string pass)

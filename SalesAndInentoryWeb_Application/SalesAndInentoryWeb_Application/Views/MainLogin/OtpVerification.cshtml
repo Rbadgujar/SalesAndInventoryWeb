@@ -1,0 +1,159 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/logincssfolder/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/logincssfolder/css/main.css">
+    <!--===============================================================================================-->
+  
+
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                  
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                       OTP Verification
+                    </span>
+                   
+                    <div class="wrap-input100">
+                        <input class="input100" type="text" id="number"  placeholder="Mobile No">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+                    <div id="recaptcha-container"></div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="button" id="btnsendotp" onclick="phoneAuth();" >
+                            Send OTP
+                        </button>
+                    </div>
+                            </div>
+                        <div class="col-md-6">
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn" id="btnresendotp" onclick="phoneAuth();">
+                                    Resend OTP
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+                    <br>
+                    <div class="wrap-input100">
+                        <input class="input100" type="text" id="verificationCode" placeholder="Enter OTP" >
+                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+                 
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit" id="btnlogin" onclick="codeverify();">
+                            Login
+                        </button>
+
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+    <script src="~/logincssfolder/js/NV.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/logincssfolder/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/logincssfolder/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/logincssfolder/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/logincssfolder/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/logincssfolder/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/logincssfolder/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/logincssfolder/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/logincssfolder/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/logincssfolder/js/main.js"></script>
+    <script src="~/no_verification.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script>
+          // Your web app's Firebase configuration
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          var firebaseConfig = {
+            apiKey: "AIzaSyBCOpShvLqJW0yIUshF3-X-2E3T0h_zVwk",
+            authDomain: "idealinventory-33d59.firebaseapp.com",
+            projectId: "idealinventory-33d59",
+            storageBucket: "idealinventory-33d59.appspot.com",
+            messagingSenderId: "521968227117",
+            appId: "1:521968227117:web:1a6678619ed9f0e18cb9a4",
+            measurementId: "G-CFEHPXLYTT"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+
+
+          
+    </script>
+    <script src="~/scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger
+            $("#btnsendotp").click(function () {
+                var fruitId = $("#number").val();
+            });
+           
+            $("#btnlogin").click(function () {              
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/MainLogin/GetFruitName1",
+                       data: "id=" + fruitId,
+                       success: function (data) {
+
+                       }
+                   });
+                }
+            });
+            
+            });
+    </script>
+
+</body>
+</html>
+

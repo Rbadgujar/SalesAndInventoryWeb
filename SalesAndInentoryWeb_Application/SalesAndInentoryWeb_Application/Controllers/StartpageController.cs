@@ -30,15 +30,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             db.tbl_CompanyMasterSelect("Insert1", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
             db.SubmitChanges();
-            var tb = db.tbl_CompanyMasterSelect("max", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single();
-            companyid = tb.CompanyID;
+            //var tb = db.tbl_CompanyMasterSelect("max", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single();
+            //companyid = tb.CompanyID;
 
                //string idd = com.EmailID;
                //string pass = com.ReferaleCode;
                //db.tbl_LoginPassswordSelect("Insert",null,pass,null,ff,idd);
                //db.SubmitChanges();
 
-                return RedirectToAction("Dashboard", "Home");        
+                return RedirectToAction("Index", "MainLogin");        
         }
     }
 

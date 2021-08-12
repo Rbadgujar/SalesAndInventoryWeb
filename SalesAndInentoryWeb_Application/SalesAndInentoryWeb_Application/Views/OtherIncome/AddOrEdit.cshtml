@@ -232,37 +232,38 @@
                 </div>
 
                 <br />
+                <div class="container-fluid" style="background-color:white">
 
-                 <div class="form-group" style="width:100%;">
-                    <table style="width:100%;">
-                        <tr>
-                            <td style="padding:3px">
-                                <label>Item Name</label>
+                    <div class="form-group container-fluid" style="width:100%;">
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="padding:3px">
+                                    <label>Item Name</label>
 
-                                @Html.DropDownListFor(model => model.Id1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control",@style="width:350px" })
-                            </td>
-                            <td style="padding:3px;text-align:center">
-                                <label>MRP</label>
-                                <input style="text-align:center" type="text" name="sa" id="mrp" class="form-control" onchange="cal1()">
-                            </td>
-                          
-                            <td style="padding:3px;text-align:center">
-                                <label>Qty</label>
-                                <input style="text-align:left" type="text" name="qty" id="qty" class="form-control" onchange="cal()">
-                            </td>
-                            
-                            <td style="padding:3px;text-align:center">
-                                <label>Total</label>
-                                <input style="text-align:left" type="text" name="ca" id="Total" class="form-control">
-                            </td>
-                            <td style="padding:3px;text-align:center">
-                                <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>                 
-                              <div class="form-group scrolldown" style="height:200px;width:100%; border:1px solid">                  
-                        <table class="table table-striped table-bordered" style="width:100%;" id="tblSaleInvoice">
+                                    @Html.DropDownListFor(model => model.Id1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:350px" })
+                                </td>
+                                <td style="padding:3px;text-align:center">
+                                    <label>MRP</label>
+                                    <input style="text-align:center" type="text" name="sa" id="mrp" class="form-control" onchange="cal1()">
+                                </td>
+
+                                <td style="padding:3px;text-align:center">
+                                    <label>Qty</label>
+                                    <input style="text-align:left" type="text" name="qty" id="qty" class="form-control" onchange="cal()">
+                                </td>
+
+                                <td style="padding:3px;text-align:center">
+                                    <label>Total</label>
+                                    <input style="text-align:left" type="text" name="ca" id="Total" class="form-control">
+                                </td>
+                                <td style="padding:3px;text-align:center">
+                                    <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-group scrolldown container-fluid" style="height:200px;width:100%; border:1px solid">
+                        <table class="table table-striped table-bordered container-fluid    " style="width:100%;" id="tblSaleInvoice">
                             <thead>
                                 <tr>
                                     <th>
@@ -270,10 +271,10 @@
                                     </th>
                                     <th>
                                         MRP
-                                    </th>                             
+                                    </th>
                                     <th>
                                         Qty
-                                    </th>                                  
+                                    </th>
                                     <th>
                                         Total
                                     </th>
@@ -283,62 +284,65 @@
                                 </tr>
                             </thead>
                         </table>
-                    </div>         	
-
-                <div class="container-fluid">
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                             
-
-                             
-                            </div>
-                            <div class="col-md-2 form-group">
-                            <b>    Total :</b>
-                                @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount", @id = "total1" } })
-                                @Html.ValidationMessageFor(model => model.total)
-
-
-                            </div>
-
-                            <div class="col-md-2">
-                              <b>  Recived:</b>
-                                @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount",@onchange="minus()" } })
-                                @Html.ValidationMessageFor(model => model.Received)
-
-                            </div>
-                            <div class="col-md-2 form-group">                                     
-                                   <b> Remaining Bal:</b>
-                                    @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
-                                    @Html.ValidationMessageFor(model => model.Balance)                                
-                            </div>
-                        </div>                
-                    <div class="row">
-                        <div class="col-md-6">
-
-
-
-
-                        </div>
-                        <div class="col-md-3">
-
-
-
-
-                        </div>
-                        <div class="col-md-3">
-                            <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
-                            <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
-
-                        </div>
-                        
-
                     </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse ">
+                            <div class="row">
+
+                                <div class="col-md-2">
 
 
+
+                                </div>
+                                <div class="col-md-2 form-group">
+
+
+
+                                </div>
+
+                                <div class="col-md-2">
+
+
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <b>Total :</b>
+                                    @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount", @id = "total1" } })
+                                    @Html.ValidationMessageFor(model => model.total)
+                                    <b>Recived:</b>
+                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount", @onchange = "minus()" } })
+                                    @Html.ValidationMessageFor(model => model.Received)
+                                    <b>Remaining Bal:</b>
+                                    @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
+                                    @Html.ValidationMessageFor(model => model.Balance)
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+
+
+
+
+                                </div>
+                                <div class="col-md-3">
+
+
+
+
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
+                                    <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
                 </div>
-            </div>
             <div>
 
             </div>
