@@ -143,11 +143,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         {
                             items3.Add(new tbl_ItemMaster()
                             {
+                                ItemID=Convert.ToInt32(sdr["ItemID"].ToString()),
                                 ItemName = sdr["ItemName"].ToString(),
                                 SalePrice = Convert.ToDouble(sdr["SalePrice"]),
                                 TaxForSale = sdr["TaxForSale"].ToString(),
                                 SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
-                                Discount = Convert.ToDouble(sdr["Discount"]),
+                                Discount = Convert.ToDouble(sdr["Discount"])
+                               
                                 //Discount = Convert.ToDouble(sdr["Discount"]),
 
                             });
@@ -184,11 +186,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         {
                             items3.Add(new tbl_ItemMaster()
                             {
+                                ItemID = Convert.ToInt32(sdr["ItemID"].ToString()),
                                 SalePrice = Convert.ToDouble(sdr["SalePrice"]),
                                 TaxForSale = sdr["TaxForSale"].ToString(),
                                 SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
-                                Discount = Convert.ToDouble(sdr["Discount"]),
-
+                                Discount = Convert.ToDouble(sdr["Discount"])
                             });
                         }
                     }

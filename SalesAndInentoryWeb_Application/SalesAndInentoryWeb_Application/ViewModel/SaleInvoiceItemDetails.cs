@@ -15,6 +15,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public double DiscountAmount { get; set; }
         public double SaleTaxAmount { get; set; }
         public double ItemTotal { get; set; }
+        public int ItemID { get; set; }
         public int ItemAmount { get; set; }
     }
 }

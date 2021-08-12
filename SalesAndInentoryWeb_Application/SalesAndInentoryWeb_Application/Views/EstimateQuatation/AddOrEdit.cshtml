@@ -133,13 +133,18 @@
                                $("#ts").val(data[x].TaxForSale);
                                $("#sa").val(data[x].SaleTaxAmount);
                                $("#ID option:selected").val(data[x].ItemName);
+                               $("#ds").val(data[x].Discount);
+
                                var mrp = data[x].SalePrice;
                                var tax = data[x].TaxForSale;
+                               var dis = data[x].Discount;
+
                                var itempricecall = mrp * 1;
                                var tax_cal = itempricecall * tax / 100;
+                               var Dis_cal = itempricecall * dis / 100;
 
-                               var finalcal = (itempricecall + tax_cal);
-
+                               var finalcal = (itempricecall + tax_cal) - Dis_cal;
+                               $("#da").val(Dis_cal);
                                $("#sa").val(tax_cal);
                                $("#ca").val(finalcal);
                                $("#qty").val(1);
@@ -182,14 +187,16 @@
                     $.ajax
                    ({
                        type: "POST",
-                       url: "/EstimateQuatation/GetFruitName1",
-                       data: "id=" + fruitId,
+                       url: "/SaleInvoice/GetFruitName1",
+                        data: "id=" + fruitId,
                        success: function (data) {
                            var content = "";
                            for (var x in data) {
                                $("#sp").val(data[x].SalePrice);
                                $("#ts").val(data[x].TaxForSale);
                                $("#sa").val(data[x].SaleTaxAmount);
+                               $("#ds").val(data[x].Discount);
+
                                caldata();
                            }
                        }
@@ -227,11 +234,10 @@
 
         }
 
-
-
         function RemoveItem(ItemName)
         {
             $(ItemName).closest('tr').remove();
+
         }
         function AddToItem()
         {

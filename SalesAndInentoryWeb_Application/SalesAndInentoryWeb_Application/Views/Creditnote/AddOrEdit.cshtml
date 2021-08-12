@@ -76,6 +76,7 @@
                                $("#sp").val(data[x].SalePrice);
                                $("#ts").val(data[x].TaxForSale);
                                $("#sa").val(data[x].SaleTaxAmount);
+                               $("#ds").val(data[x].Discount);
                                datacal();
                            }
                        }
@@ -100,15 +101,18 @@
                                $("#ts").val(data[x].TaxForSale);
                                $("#sa").val(data[x].SaleTaxAmount);
                                $("#ID option:selected").val(data[x].ItemName);
-                           
+                               $("#ds").val(data[x].Discount);
+
                                var mrp = data[x].SalePrice;
                                var tax = data[x].TaxForSale;
-
+                               var dis = data[x].Discount;
 
                                var itempricecall = mrp * 1;
                                var tax_cal = itempricecall * tax / 100;
 
-                               var finalcal = (itempricecall + tax_cal);
+                               var Dis_cal = itempricecall * dis / 100;
+
+                               var finalcal = (itempricecall + tax_cal) - Dis_cal;
 
                                $("#sa").val(tax_cal);
                                $("#ca").val(finalcal);

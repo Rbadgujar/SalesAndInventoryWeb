@@ -31,9 +31,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-           
-
-
+          
                 var date = new Date();
 
                 var day = date.getDate();
@@ -70,6 +68,8 @@
                                $("#TaxForSale").val(data[x].TaxForSale);
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
                                $("#Discount").val(data[x].Discount);
+                               $("#ItemID").val(data[x].ItemID);
+                               
                                caldata();
                            }
                        }
@@ -94,6 +94,7 @@
                                $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
                                $("#ID option:selected").val(data[x].ItemName);
                                $("#Discount").val(data[x].Discount);
+                               $("#ItemID").val(data[x].ItemID);
 
                                var mrp = data[x].SalePrice;
                                var tax = data[x].TaxForSale;
@@ -203,8 +204,7 @@
             function caldata() {
              
 
-
-               
+        
                 var mrp = $("#SalePrice").val();
                 var tax = $("#TaxForSale").val();
                 var dis = $("#Discount").val();
@@ -263,9 +263,9 @@
             var disamt = $("#DiscountAmount").val();
             var taxmat = $("#SaleTaxAmount").val();
             var total = $("#ItemTotal").val();
-
+            var ItemID = $("#ItemID").val();
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
-            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></div></tr>"
+            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td><td>"+ItemID+"</td></div></tr>"
             tableitemlist.append(itemlist);
             reset();
 
@@ -309,7 +309,9 @@
             $("#Qty").val('');
             $("#DiscountAmount").val('');
             $("#SaleTaxAmount").val('');
+            $("#ItemID").val('');
             $("#ItemTotal").val('');
+            
         }
         function additems()
         {
@@ -328,7 +330,8 @@
                         Qty: $(this).find("td:eq(4)").text(),
                         DiscountAmount: $(this).find("td:eq(5)").text(),
                         SaleTaxAmount: $(this).find("td:eq(6)").text(),
-                        ItemTotal: $(this).find("td:eq(7)").text()
+                        ItemTotal: $(this).find("td:eq(7)").text(),
+                        ItemID: $(this).find("td:eq(9)").text()
                     });
                 });
 
@@ -496,6 +499,11 @@
                                    <input style="text-align:left" type="text" name="Discount" id="Discount" class="form-control">
 
                                </td>
+                               <td style="padding:3px;text-align:center">
+                          
+                                   <input style="display:none" type="text" name="Qty" id="ItemID" class="form-control">
+                               </td>
+                              
                                <td style="padding:3px;text-align:center">
                                    <label>Qty</label>
                                    <input style="text-align:left" type="text" name="Qty" id="Qty" class="form-control">
