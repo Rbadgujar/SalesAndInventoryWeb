@@ -139,12 +139,12 @@
         }
         function additems() {
           debugger
-            var objOtherIncomeDetails = {};
-            var listofotherincomedetails = [];
+            var objOtherIncome= {};
+            var listofotherincome = [];
 
             $.each($("#tblSaleInvoice tbody tr"),
                 function () {
-                    listofotherincomedetails.push({
+                    listofotherincome.push({
                         ItemName: $(this).find("td:eq(0)").text(),
                         SalePrice: $(this).find("td:eq(1)").text(),
                         Qty: $(this).find("td:eq(2)").text(),
@@ -152,13 +152,13 @@
                     });
                 });
 
-            objOtherIncomeDetails.IncomeCategory = $("#CategoryID option:selected").val();
-            objOtherIncomeDetails.Date = $("#Date").val();
-            objOtherIncomeDetails.Received = $("#Received").val();
-            objOtherIncomeDetails.Balance = $("#Balance").val();
-            objOtherIncomeDetails.total = $("#Total").val();
+            objOtherIncome.IncomeCategory = $("#CategoryID option:selected").val();
+            objOtherIncome.Date = $("#Date").val();
+            objOtherIncome.Received = $("#Received").val();
+            objOtherIncome.Balance = $("#Balance").val();
+            objOtherIncome.total = $("#total1").val();
          
-            objOtherIncomeDetails.ListOfOtherIncome = listofotherincomedetails;
+            objOtherIncome.ListOfOtherIncome = listofotherincome;
 
 
             $.ajax({
@@ -166,7 +166,7 @@
                 type: "POST",
                 datatype: 'JSON',
                 contentType: 'application/json;charset=utf-8',
-                data: JSON.stringify(objOtherIncomeDetails),
+                data: JSON.stringify(objOtherIncome),
                 url: '/OtherIncome/AddOrEdit',
                 success: function (data) {
                     if (data.success == true) {
@@ -329,7 +329,7 @@
 
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
+                                    <input type="button" value="button" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
                                     <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
 
                                 </div>

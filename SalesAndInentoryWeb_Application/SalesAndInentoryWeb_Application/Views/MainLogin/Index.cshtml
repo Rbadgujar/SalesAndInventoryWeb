@@ -37,6 +37,10 @@
 <body>
 
     <div class="limiter">
+        <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px; margin-left:900px">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Success! </strong> Data Sucessfully Inserted.
+        </div>
         <div class="container-login100" style="background-image: url('~/logincssfolder/images/bg-01.jpg');">
             <div class="wrap-login100">
                 <form class="login100-form validate-form">
@@ -59,16 +63,32 @@
                     </div>
 
                     <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-                            Remember me 
-                        </label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                                <label class="label-checkbox100" for="ckb1">
+                                    Remember me
+                                </label>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="">Forgot Password</a>
+                            </div>
+                        </div>      
+                      
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" id="btnlogin" onclick="javascript:ValidateUser();">
-                            Login
-                        </button>                      
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="login100-form-btn" id="btnlogin" type="button">
+                                    Login
+                                </button>   
+                                </div>
+                            <div class="col-md-6">
+                             
+                                <a class="login100-form-btn"  href="@Url.Action("OtpVerification","MainLogin")">SignUp</a>
+                            </div>
+                            </div>                   
                     </div>                  
                 </form>
             </div>
@@ -94,33 +114,39 @@
     <!--===============================================================================================-->
     <script src="~/logincssfolder/js/main.js"></script>
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
-    <script language="javascript">
-        function ValidateUser() {
-
-            var userid = $("#mobile").val();
-            debugger
-        var password = $("#pass").val();
-        var url = "/MainLogin/checkpass";
-        $("#btnlogin").val('Plesae wait..');
-        $.ajax({
-            url: url,
-            data: { userId: userid, pass: password },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                if (data.success == true) {
-                    $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
-                        $("#success-alert").slideUp(500);
-                    });
-                    window.location.href = '@Url.Action("Dashboard","Home")';
-                }
-            },
-            error: function (data) {
-                alert(data.error);
-            }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#success-alert").hide();
+            $('#btnlogin').click(function () {
+                debugger
+                var data = {
+                    "userid": $("#mobile").val(),
+                    "password": $("#pass").val()
+                };
+                $.ajax({
+                    url: "/MainLogin/ValidateUser",
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (response) {
+                        if (response.Success) {
+                            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                                $("#success-alert").slideUp(500);
+                            });
+                            window.location.href = '@Url.Action("Dashboard","Home")';
+                        }
+                        else {
+                            window.location.href = "@Url.Action("Index", "MainLogin")";
+                            alert("Invalid Username And Password");
+                        }s
+                    },
+                    error: function () {
+                        console.log('Login Fail!!!');
+                    }
+                });
+            });
         });
-
-    }
     </script>
 </body>
 </html>

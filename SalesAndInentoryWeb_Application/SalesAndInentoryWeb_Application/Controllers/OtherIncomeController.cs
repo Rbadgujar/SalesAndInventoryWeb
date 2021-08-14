@@ -31,7 +31,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 		public ActionResult Detail(int id)
 		{
-			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
+			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id1 == id);
 			return View(tb);
 		}
         private static List<SelectListItem> ListOfAccount()
@@ -101,7 +101,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			}
 			else
 			{
-				var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
+				var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id1 == id);
 				var vm = new tbl_OtherIncome();
 				vm.IncomeCategory = tb.IncomeCategory;
 				vm.Date = Convert.ToDateTime(tb.Date);
@@ -157,15 +157,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
             db.tbl_OtherIncomes.InsertOnSubmit(sale1other);
             db.SubmitChanges();
 
-            foreach (var item in objOtherIncomeDetails.ListOfOtherIncome)
+            foreach (var line in objOtherIncomeDetails.ListOfOtherIncome)
             {
                 tbl_OtherIncomeInner inner = new tbl_OtherIncomeInner()
                 {
-                    ItemName = item.ItemName,
+                    ItemName = line.ItemName,
                   //  SalePrice = item.SalePrice,
-                    ID1 = objOtherIncomeDetails.Id1,
-                    ItemAmount = item.ItemAmount,
-                    Qty = item.Qty
+                    ID1 = sale1other.Id1,
+                    ItemAmount = line.ItemAmount,
+                    Qty = line.Qty
                 };
                 db.tbl_OtherIncomeInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
