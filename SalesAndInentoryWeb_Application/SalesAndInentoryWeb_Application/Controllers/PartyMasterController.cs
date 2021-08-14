@@ -73,7 +73,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
                   
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, imagefile);
+                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, MainLoginController.companyid1, party.PaidStatus, imagefile);
                     db.SubmitChanges();
                     return RedirectToAction("Index");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -85,7 +85,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             else
             {
-                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, null);
+                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, MainLoginController.companyid1, party.PaidStatus, null);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
                 //return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -94,7 +94,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult ShowData()
         {
-            var getdata = db.tbl_PartyMasterSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_PartyMasterSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
@@ -167,7 +167,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             try
             {
-                var getdata = db.tbl_PartyMasterSelect("Delete", id,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var getdata = db.tbl_PartyMasterSelect("Delete", id,null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1, null, null).ToList();
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
                 //return RedirectToAction("Index");
@@ -208,7 +208,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 try
                 {
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                    db.tbl_PartyGroupSelect("Insert1",null,party.AddPartyGroup,null);
+                    db.tbl_PartyGroupSelect("Insert",null,party.AddPartyGroup, MainLoginController.companyid1);
                     db.SubmitChanges();
                     return RedirectToAction("index");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -220,7 +220,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             else
             {
-                db.tbl_PartyGroupSelect("Update", id,party.AddPartyGroup, null);
+                db.tbl_PartyGroupSelect("Update", id,party.AddPartyGroup, MainLoginController.companyid1);
                 db.SubmitChanges();
                 return RedirectToAction("index");
                 //return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -254,7 +254,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult partygroupshow()
         {
-            var getdata = db.tbl_PartyGroupSelect("Select1", null, null,null).ToList();
+            var getdata = db.tbl_PartyGroupSelect("Select", null, null, MainLoginController.companyid1).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
@@ -263,7 +263,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             try
             {
-                var getdata = db.tbl_PartyGroupSelect("Delete", id, null, null).ToList();
+                var getdata = db.tbl_PartyGroupSelect("Delete", id, null, MainLoginController.companyid1).ToList();
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
                 //return RedirectToAction("Index");
