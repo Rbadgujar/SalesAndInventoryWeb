@@ -43,10 +43,24 @@
 
             var today = year + "-" + month + "-" + day;
             $("#Date").attr("value", today);
-         
+            $("#success-alert").hide();
             $("#btnaddtolist").click(function () {
-                AddToItem();
+
+                var ItemName = $("#ID option:selected").val();
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+             
+                if ((ItemName == "") || (ItemName == "Select Item") || (mrp == "") || (mrp == 0) || (qty == "") || (qty == 0)) {
+                    alert("Invalid Data Insert All Feilds !")
+                } else {
+                    AddToItem();
+                }
+
             });
+
+
             $("#btnsubmit").click(function (e) {
                 additems();
             });
@@ -81,8 +95,6 @@
             });
 
             $("#ds").change(function () {
-
-
                 var mrp = $("#sp").val();
                 var tax = $("#ts").val();
                 var dis = $("#ds").val();
@@ -150,8 +162,7 @@
                                $("#qty").val(1);
 
                                AddToItem();
-                               $("#Barcode").val('');
-                         
+                               $("#Barcode").val('');                        
                            }
                        }
                    });
@@ -206,10 +217,8 @@
         });
 
 
-
         function caldata() {
-            debugger
-
+       
             var mrp = $("#sp").val();
             var tax = $("#ts").val();
             var dis = $("#ds").val();
@@ -234,6 +243,19 @@
 
         }
 
+        $("#tblSaleInvoice").on('click', '#remove', function () {
+
+            var curentreo = $(this).closest("tr");
+
+            var pretotal = curentreo.find("td:eq(7)").text();
+            var pretotal1 = $("#Total").val();
+            var find = pretotal1 - pretotal
+
+            $("#Total").val(find);
+            $(curentreo).closest('tr').remove();
+
+        });
+
         function RemoveItem(ItemName)
         {
             $(ItemName).closest('tr').remove();
@@ -252,8 +274,9 @@
             var total = $("#ca").val();
 
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
-            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' id='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
+            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' id='remove' class='btn btn-danger'/></td></tr>"
             tableitemlist.append(itemlist);
+
             reset();
             var finding = 0;
             $("tr").each(function (indexTr) {
@@ -327,8 +350,11 @@
                 data: JSON.stringify(objEstimateDetails),
                 url: '/EstimateQuatation/AddOrEdit',
                 success: function (data) {
-                    if (data.status == true) {
-                        alter(data.message);
+                    if (data.success == true) {
+                        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#success-alert").slideUp(500);
+                        });
+                        location.reload(true);
                     }
                 },
                 error: function () {
@@ -342,7 +368,11 @@
     @using (Html.BeginForm())
     {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
-            <div class="panel-heading"><a class="btn" href=@Url.Action("index", "EstimateQuatation") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Estiment/Qutation</p></div>
+            <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px; margin-left:900px">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Success! </strong> Data Sucessfully Inserted.
+            </div>
+                <div class="panel-heading"><a class="btn" href=@Url.Action("index", "EstimateQuatation") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:20px;">Estiment/Qutation</p></div>
             <div class="panel border-box">
 
                 <div class="container-fluid">

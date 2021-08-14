@@ -28,9 +28,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult showSaleOrder()
+        public ActionResult showSaleOrder(string date, string date2, string par)
         {
-            var getdata = db.tbl_SaleOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            if (par == "0")
+            {
+                var getdata1 = db.tbl_SaleOrderSelect("datetodate", null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2),null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = getdata1 }, JsonRequestBehavior.AllowGet);
+            }
+            var getdata = db.tbl_SaleOrderSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
@@ -47,8 +52,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
             //                              });
             //    return View(objbank);
             //}
-
-
             tbl_SaleOrder bt = new tbl_SaleOrder();
             bt.ListOfAccounts = ListOfAccount();
             bt.ListOfParties = ListOfParties();

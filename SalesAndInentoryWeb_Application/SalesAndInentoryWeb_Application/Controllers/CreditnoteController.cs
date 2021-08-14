@@ -24,10 +24,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
         //    return View();
         //}
         [HttpGet]
-        public ActionResult creditnotedata()
+        public ActionResult creditnotedata(string date, string date2, string par)
         {
-           var getdata = db.tbl_CreditNote1Select("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-           return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+            if (par == "0")
+            {
+                var getdata1 = db.tbl_CreditNote1Select("datetodate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                return Json(new { data = getdata1 }, JsonRequestBehavior.AllowGet);
+            }
+            var getdata = db.tbl_CreditNote1Select("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+
         }
 
         [HttpPost]
