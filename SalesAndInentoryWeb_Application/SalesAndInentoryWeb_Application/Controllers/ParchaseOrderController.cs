@@ -8,6 +8,10 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Configuration;
 using SalesAndInentoryWeb_Application.ViewModel;
+using Stimulsoft.Report.Mvc;
+using System.Data.SqlClient;
+using System.Data;
+using Stimulsoft.Report;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ParchaseOrderController : Controller
@@ -280,11 +284,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objpurchaseorder.ListOfPurchaseOrder)
             {
+                TempData["ID"] = sale.OrderNo;
                 var gst1 = item.SaleTaxAmount;
                 var finalgsr = gst1 / 2;
                 tbl_PurchaseOrderInner inner = new tbl_PurchaseOrderInner()
                 {
-
+                    
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     OrderNo = sale.OrderNo,
@@ -302,13 +307,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 db.SubmitChanges();
             }
             //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
-            return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
-
+            //return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
+            return RedirectToAction("GetReport");
         }
 
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.PhoneNo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.OrderNo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName,b.OrderDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.CGST, c.SGST,c.IGST,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b,tbl_PurchaseOrderInner as c where b.OrderNo=" + id + " and c.OrderNo=" + id+ " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "PurchaseOrder");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/PurchaseOrderReport.mrt"));
+            report.RegData("PurchaseOrder", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+        public ActionResult Report()
+        {
+            return View();
+        }
 
-
-		[HttpPost]
+        [HttpPost]
 		public ActionResult Dele(int id)
 		{
 			var tb = db.tbl_PurchaseOrderSelect("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();

@@ -1,5 +1,8 @@
 ﻿@model SalesAndInentoryWeb_Application.tbl_Expense
+
+@using Stimulsoft.Report.Mvc
 @{
+
     ViewBag.Title = "purchseBill";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
@@ -80,10 +83,10 @@
             if (day < 10) day = "0" + day;
             var today = year + "-" + month + "-" + day;
             $("#Date").attr("value", today);
-           
+
 
         });
-        function minus() 
+        function minus()
         {
             var pretotal1 = $("#Total").val();
             var pretotal2 = $("#Balance").val();
@@ -111,8 +114,8 @@
         {
             var tableitemlist = $("#tblExpenses");
             var ItemName = $("#ID1 option:selected").val();
-            var mrp = $("#sp").val();        
-            var qty = $("#qty").val();         
+            var mrp = $("#sp").val();
+            var qty = $("#qty").val();
             var total = $("#ca").val();
 
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemName + "</td><td>" + mrp + "</td><td>"
@@ -133,8 +136,8 @@
         function reset()
         {
             $("#ID1").val('');
-            $("#sp").val('');         
-            $("#qty").val('');         
+            $("#sp").val('');
+            $("#qty").val('');
             $("#ca").val('');
         }
         function additems() {
@@ -148,8 +151,8 @@
                 function () {
                     listofotherincomedetails.push({
                         ItemName: $(this).find("td:eq(0)").text(),
-                        SalePrice: $(this).find("td:eq(1)").text(),                                             
-                        Qty: $(this).find("td:eq(2)").text(),                        
+                        SalePrice: $(this).find("td:eq(1)").text(),
+                        Qty: $(this).find("td:eq(2)").text(),
                         ItemAmount: $(this).find("td:eq(3)").text()
                     });
                 });
@@ -159,13 +162,13 @@
             objExpensesDetails.Paid = $("#Paid").val();
             objExpensesDetails.Balance = $("#Balance").val();
             objExpensesDetails.Total = $("#Total").val();
-            objExpensesDetails.DeleteData = $("#DeleteData").val();
 
             objExpensesDetails.ListOfOtherIncomeDetails = listofotherincomedetails;
 
+
             debugger
             $.ajax({
-               
+
                 async: true,
                 type: "POST",
                 datatype: 'JSON',
@@ -177,17 +180,23 @@
                         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
                             $("#success-alert").slideUp(500);
                         });
+                        window.location.href = '@Url.Action("Report","Expence")';
+
                     }
                 },
                 error: function () {
-                    alert("error");
+                    $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#success-alert").slideUp(500);
+                        });
+                        window.location.href = '@Url.Action("Report","Expence")';
                 }
-            });         
+            });
         }
     </script>
 </head>
 <body>
 
+         
         <div class="panel panel-primary container" style="height:100%; width:100%;">
             <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px; margin-left:900px">
                 <button type="button" class="close" data-dismiss="alert">x</button>
@@ -202,7 +211,7 @@
 
                         <div class="row">
                             <div class="form-group col-md-4">
-                               
+                                
                                 <br />
                                 <b> Category :</b>
                                 @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory, "Select Category", new { @class="form-control"} )
