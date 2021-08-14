@@ -1,4 +1,4 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_CompanyMaster
+﻿@model SalesAndInentoryWeb_Application.tbl_CompanyMasterSelectResult
 
 @{
     Layout = null;
@@ -175,7 +175,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <select name="AdditinalFeild2" id="AdditinalFeild2">
+                        @*<select name="AdditinalFeild2" id="AdditinalFeild2">
                             <option>country</option>
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
@@ -426,7 +426,8 @@
                         </select>
                         <span class="select-btn">
                             <i class="zmdi zmdi-chevron-down"></i>
-                        </span>
+                        </span>*@
+                        @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control", @placeholder = "Contact NO", @id = "txtcontactno" })
                     </div>
 
                     <div class="form-row">
@@ -442,7 +443,7 @@
                         @*<input type="text" name="your_email" id="your_email" class="input-text" required }" placeholder="Your Email">*@
                     </div>
                     <div class="form-row">
-                        @Html.TextBoxFor(m => m.AdditinalFeild1, new { @class = "form-control",Type= "password", @placeholder = "Confirm Password", id = "confirm_password", @Required="Required" })
+                        @Html.TextBoxFor(m => m.BankName, new { @class = "form-control",Type= "password", @placeholder = "Confirm Password", id = "confirm_password", @Required="Required" })
                         @*<input type="text" name="your_email" id="your_email" class="input-text" required }" placeholder="Your Email">*@
                     </div>
                     @*<div class="form-group">

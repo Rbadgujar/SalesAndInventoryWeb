@@ -24,7 +24,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult registration(tbl_CompanyMasterSelectResult com)
         {
-            db.tbl_CompanyMasterSelect("Insert1", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID);
+            db.tbl_CompanyMasterSelect("Insert2", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID,null,null);
             db.SubmitChanges();         
             return RedirectToAction("Index", "MainLogin");        
         }

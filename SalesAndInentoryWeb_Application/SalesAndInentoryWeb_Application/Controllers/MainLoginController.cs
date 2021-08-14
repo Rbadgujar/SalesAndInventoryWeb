@@ -45,10 +45,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 if (reader.Read())
                 {
                     companyid1 = Convert.ToInt32(reader[0].ToString());
-                    return RedirectToAction("Dashboard", "Home");
+                   
                 }
-                return View("Index");
-                                      
+                return Json(data: new { success = true, message = "Login SucessFull", JsonRequestBehavior.AllowGet });
             }
         }
     }
