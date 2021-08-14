@@ -3997,6 +3997,9 @@
     <Content Include="Views\Expence\ReportAll.cshtml" />
     <Content Include="Views\DayBook\Report.cshtml" />
     <Content Include="Views\AllParties\Report.cshtml" />
+    <Content Include="Views\SaleOrder\Report.cshtml" />
+    <Content Include="Views\SaleInvoice\Report.cshtml" />
+    <Content Include="Views\Creditnote\Report.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

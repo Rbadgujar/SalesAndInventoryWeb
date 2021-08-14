@@ -47,7 +47,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT BankName FROM tbl_BankAccount where DeleteData='1' and Company_ID='" MainLoginController.companyid1"'");
+                sql = string.Format("SELECT BankName FROM tbl_BankAccount where DeleteData='1' and Company_ID="+MainLoginController.companyid1+" ");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
