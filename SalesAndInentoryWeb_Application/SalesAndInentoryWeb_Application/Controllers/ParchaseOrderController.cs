@@ -31,7 +31,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var tb = db.tbl_PurchaseOrderSelect("datetotdate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
             }
-            var tb1 = db.tbl_PurchaseOrderSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var tb1 = db.tbl_PurchaseOrderSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1, null, null, null).ToList();
             return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
         }
 
@@ -133,7 +133,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1' and Company_ID='"+ MainLoginController.companyid1 + "'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -162,7 +162,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_PartyMaster where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_PartyMaster where DeleteData='1' and Company_ID='" + MainLoginController.companyid1 + "'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -276,7 +276,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 DueDate = objpurchaseorder.DueDate,
                 Barcode = objpurchaseorder.Barcode,
                 Status = objpurchaseorder.Status,
-                VehicleNumber = objpurchaseorder.VehicleNumber
+                VehicleNumber = objpurchaseorder.VehicleNumber,
+                Company_ID= MainLoginController.companyid1
 
             };
             db.tbl_PurchaseOrders.InsertOnSubmit(sale);
@@ -300,7 +301,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     DiscountAmount = item.DiscountAmount,
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
-                    Qty = item.Qty
+                    Qty = item.Qty,
+                     Company_ID = MainLoginController.companyid1
                 };
                 db.tbl_PurchaseOrderInners.InsertOnSubmit(inner);
 
@@ -320,7 +322,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             int id = Convert.ToInt32(TempData["ID"]);
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.PhoneNo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.OrderNo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName,b.OrderDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.CGST, c.SGST,c.IGST,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b,tbl_PurchaseOrderInner as c where b.OrderNo=" + id + " and c.OrderNo=" + id+ " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1'");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.PhoneNo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.OrderNo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName,b.OrderDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.CGST, c.SGST,c.IGST,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b,tbl_PurchaseOrderInner as c where b.OrderNo=" + id + " and c.OrderNo=" + id+ " and a.CompanyID='" +  MainLoginController.companyid1 + "' and b.DeleteData='1' and c.DeleteData='1'");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "PurchaseOrder");
@@ -345,7 +347,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult GetReport1()
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.OrderNo,b.PartyName,b.ContactNo,b.OrderDate,b.Total,b.Paid,b.RemainingBal,b.Status,b.DeleteData FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b where a.CompanyID='1' and b.DeleteData = '1' ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.OrderNo,b.PartyName,b.ContactNo,b.OrderDate,b.Total,b.Paid,b.RemainingBal,b.Status,b.DeleteData FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1' ");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "PurchaseOrder");
@@ -357,7 +359,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
 		public ActionResult Dele(int id)
 		{
-			var tb = db.tbl_PurchaseOrderSelect("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+			var tb = db.tbl_PurchaseOrderSelect("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,  MainLoginController.companyid1, null, null, null).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}

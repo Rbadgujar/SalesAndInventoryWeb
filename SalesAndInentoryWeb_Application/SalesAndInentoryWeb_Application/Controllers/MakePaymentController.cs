@@ -23,7 +23,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
         public ActionResult makykdata()
         {
-            var getdata = db.tbl_MakePaymentSelect("Select1", null, null, null, null, null, null, null, null,null).ToList();
+            var getdata = db.tbl_MakePaymentSelect("Select", null, null, null, null, null, null, null, MainLoginController.companyid1, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
@@ -63,7 +63,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		{
             try
             {
-                db.tbl_MakePaymentSelect("Insert1", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null, conn.Total);
+                db.tbl_MakePaymentSelect("Insert", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, MainLoginController.companyid1, conn.Total);
                 db.SubmitChanges();
                 ModelState.Clear();
                 return RedirectToAction("Makepayment");
@@ -96,7 +96,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpPost]
 		public ActionResult Delete(int id)
 		{
-			var tb = db.tbl_MakePaymentSelect("Delete", id, null, null, null, null, null, null, null,null).ToList();
+			var tb = db.tbl_MakePaymentSelect("Delete", id, null, null, null, null, null, null, MainLoginController.companyid1, null).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
@@ -116,7 +116,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_LoanBank where DeleteData='1'");
+                sql = string.Format("SELECT AccountName FROM tbl_LoanBank where Company_ID='"+ MainLoginController.companyid1 + "' DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -154,7 +154,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult MakePaymentUpdate(int id,tbl_MakePayment conn)
         {
-            db.tbl_MakePaymentSelect("Update", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, null,conn.Total);
+            db.tbl_MakePaymentSelect("Update", null, conn.PrincipleAmount, conn.InterestAmount, conn.Date, conn.TotalAmount, conn.PaidFrom, conn.AccountName, MainLoginController.companyid1, conn.Total);
             db.SubmitChanges();
             return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
         }

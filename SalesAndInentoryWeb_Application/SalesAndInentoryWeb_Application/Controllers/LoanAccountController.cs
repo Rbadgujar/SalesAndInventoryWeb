@@ -20,7 +20,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
 		public ActionResult BankData()
 		{
-			var tb = db.tbl_LoanBankSelect("Select1", null, null, null, null, null, null, null,null,null,null,null,null,null,null,null,null).ToList();
+			var tb = db.tbl_LoanBankSelect("Select", null, null, null, null, null, null, null,null,null,null,null,null,null, MainLoginController.companyid1, null,null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
@@ -44,7 +44,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
            
             if (id == 0)
             {
-                db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
+                db.tbl_LoanBankSelect("Insert", null, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, MainLoginController.companyid1, null, emp.Total);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
 
@@ -52,7 +52,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             else
             {
-                db.tbl_LoanBankSelect("Update", id, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, null, null, emp.Total);
+                db.tbl_LoanBankSelect("Update", id, emp.AccountName, emp.AccountNo, emp.Description, emp.LendarBank, emp.FirmName, emp.CurrentBal, emp.BalAsOf, emp.LoanReceive, emp.Interest, emp.Duration, emp.ProcessingFees, emp.PaidBy, MainLoginController.companyid1, null, emp.Total);
                 db.SubmitChanges();
 				return RedirectToAction("Index");
 			}
@@ -61,7 +61,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			[HttpPost]
 		  public ActionResult Delete(int id)
 		  {
-			  var tb = db.tbl_LoanBankSelect("Delete", id, null, null, null, null, null,null,null,null,null,null,null,null,null,null,null).ToList();
+			  var tb = db.tbl_LoanBankSelect("Delete", id, null, null, null, null, null,null,null,null,null,null,null,null, MainLoginController.companyid1, null,null).ToList();
 			  db.SubmitChanges();
 			  return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		  }
