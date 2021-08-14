@@ -332,7 +332,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
             adapter.Fill(dataSet, "PurchaseBill");
 
 
-
             StiReport report = new StiReport();
 
             report.Load(Server.MapPath("~/Content/Report/PurchaseBillReport.mrt"));

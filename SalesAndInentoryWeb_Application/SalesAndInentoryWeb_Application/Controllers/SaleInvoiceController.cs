@@ -10,6 +10,8 @@ using SalesAndInentoryWeb_Application.ViewModel;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Mvc;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
@@ -55,6 +57,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items;
         }
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+
+            //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id + " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1' ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID, b.InvoiceID,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName, b.InvoiceDate, b.DueDate, b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.CGST, c.SGST,c.IGST,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_SaleInvoice as b,tbl_SaleInvoiceInner as c where a.CompanyID=1 and  b.InvoiceID=" + id+" and c.InvoiceID="+id+" ");
+
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+
+            DataSet dataSet = new DataSet("productsDataSet");
+
+            adapter.Fill(dataSet, "SaleInvoice");
+
+            StiReport report = new StiReport();
+
+            report.Load(Server.MapPath("~/Content/Report/SaleReport.mrt"));
+
+            report.RegData("SaleInvoice", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+
+        }
+        public ActionResult Report()
+        {
+            return View();
+        }
+
         private static List<SelectListItem> ListOfParties()
         {
             string sql;
@@ -263,6 +293,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
 
         }
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
         [HttpPost]
         public ActionResult SaleInvoice(SaleInvoicePartyDetails objsalepartydetails)
       {
@@ -292,6 +326,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objsalepartydetails.SaleInvoiceItemDetails)
             {
+                TempData["ID"] = sale.InvoiceID;
                 stock(item.ItemID,item.Qty);
                 var gst1 = item.SaleTaxAmount;
                 var finalgsr = gst1 / 2;
