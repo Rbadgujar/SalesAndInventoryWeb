@@ -6,6 +6,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
 
     <style>
         .scrolldown {
@@ -28,56 +35,168 @@
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#btnaddtolist").click(function ()
-            {
-                AddToItem();
+            $("#success-alert").hide();
+            $("#btnaddtolist").click(function () {
+
+                var ItemName = $("#ID option:selected").val();
+                var mrp = $("#sp").val();
+                var tax = $("#ts").val();
+                var dis = $("#ds").val();
+                var qty = $("#qty").val();
+
+                if ((ItemName == "") || (ItemName == "Select Item") || (mrp == "") || (mrp == 0) || (qty == "") || (qty == 0)) {
+                    alert("Invalid Data Insert All Feilds !")
+                }
+                else {
+                    AddToItem();
+                }
+
             });
-            $("#btnsubmit").click(function (e)
-            {
-                additems();
-                alert("Sucessfully Added....")
+            $("#btnsubmit").click(function (e) {
+                var mrp = $("#ContactNo").val();
+                var Paritesname = $("#ParitesID option:selected").val();
+                var rowCount = $("#tblSaleInvoice tr").length;
+
+                debugger
+                if ((mrp == "")) {
+
+                    alert("Enter Contact No !");
+                    $("#ContactNo").focus();
+                    //$("#ContactNo").focus(function () {
+                    //    $(this).addClass("focused");
+                    //});
+                } else if (Paritesname == "" || Paritesname == "Select Parties") {
+                    alert("Select Party Name!");
+                    $("#ParitesID").focus();
+                } else if (rowCount == 1) {
+                    alert("Please Add Item First !");
+                }
+                else {
+                    additems();
+                }
             });
+
             $("#ID").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
                 if (fruitId != "") {
                     $.ajax
-                   ({
-                       type: "POST",
-                       url: "/DeliveryChallan/GetFruitName1",
-                       data: "id=" + fruitId,
-                       success: function (data) {
-                           var content = "";
-                           for (var x in data) {
-                               $("#sp").val(data[x].SalePrice);
-                               $("#ts").val(data[x].TaxForSale);
-                               $("#sa").val(data[x].SaleTaxAmount);
-                           }
-                       }
-                   });
+                        ({
+                            type: "POST",
+                            url: "/DeliveryChallan/GetFruitName1",
+                            data: "id=" + fruitId,
+                            success: function (data) {
+                                var content = "";
+                                for (var x in data) {
+                                    $("#sp").val(data[x].SalePrice);
+                                    $("#ts").val(data[x].TaxForSale);
+                                    $("#sa").val(data[x].SaleTaxAmount);
+                                    $("#ds").val(data[x].Discount);
+                                    caldata();
+
+                                }
+                            }
+                        });
                 }
             });
+
+            $("#Barcode").change(function () {
+                debugger
+                var fruitId = $("#Barcode").val();
+                if (fruitId != "") {
+                    $.ajax
+                        ({
+                            type: "POST",
+                            url: "/SaleInvoice/GetFruitName2",
+                            data: "id=" + fruitId,
+                            success: function (data) {
+                                var content = "";
+                                for (var x in data) {
+                                    $("#SalePrice").val(data[x].SalePrice);
+                                    $("#TaxForSale").val(data[x].TaxForSale);
+                                    $("#SaleTaxAmount").val(data[x].SaleTaxAmount);
+                                    $("#ID option:selected").val(data[x].ItemName);
+                                    $("#Discount").val(data[x].Discount);
+                                    $("#ItemID").val(data[x].ItemID);
+
+                                    var mrp = data[x].SalePrice;
+                                    var tax = data[x].TaxForSale;
+                                    var dis = data[x].Discount;
+
+                                    var itempricecall = mrp * 1;
+                                    var tax_cal = itempricecall * tax / 100;
+
+                                    var Dis_cal = itempricecall * dis / 100;
+
+                                    var finalcal = (itempricecall + tax_cal) - Dis_cal;
+
+                                    $("#SaleTaxAmount").val(tax_cal);
+                                    $("#ItemTotal").val(finalcal);
+                                    $("#Dis_cal").val(Dis_cal);
+                                    $("#Qty").val(1);
+
+                                    AddToItem();
+                                    $("#Barcode").val('');
+                                    $("#qty").focus();
+                                }
+                            }
+                        });
+                }
+            });
+
+
+            $("#tblSaleInvoice").on('click', '#remove', function () {
+
+                var curentreo = $(this).closest("tr");
+
+                var pretotal = curentreo.find("td:eq(7)").text();
+                var pretotal1 = $("#Total").val();
+                var find = pretotal1 - pretotal
+
+                $("#Total").val(find);
+                $(curentreo).closest('tr').remove();
+
+            });
+
             $("#PartiesID").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
                 if (fruitId != "") {
                     $.ajax
-                   ({
-                       type: "POST",
-                       url: "/DeliveryChallan/GetFruitName",
-                       data: "id=" + fruitId,
-                       success: function (data) {
-                           var content = "";
-                           for (var x in data) {
-                               $("#BillingName").val(data[x].BillingAddress);
-                               $("#ContactNo").val(data[x].ContactNo);
-                           }
+                        ({
+                            type: "POST",
+                            url: "/DeliveryChallan/GetFruitName",
+                            data: "id=" + fruitId,
+                            success: function (data) {
+                                var content = "";
+                                for (var x in data) {
+                                    $("#BillingName").val(data[x].BillingAddress);
+                                    $("#ContactNo").val(data[x].ContactNo);
+                                }
 
-                       }
-                   });
+                            }
+                        });
                 }
             });
 
+            function caldata() {
+
+                var mrp = $("#SalePrice").val();
+                var tax = $("#TaxForSale").val();
+                var dis = $("#Discount").val();
+                var qty = $("#Qty").val();
+                var itempricecall = mrp * 1;
+
+                var tax_cal = itempricecall * tax / 100;
+                var dis_count = itempricecall * dis / 100;
+                var finalcal = (itempricecall + tax_cal) - dis_count;
+
+                $("#DiscountAmount").val(dis_count);
+                $("#SaleTaxAmount").val(tax_cal);
+                $("#ItemTotal").val(finalcal);
+                $("#Qty").val(1);
+
+            }
 
             $("#sp").change(function () {
                 debugger
@@ -114,8 +233,31 @@
 
             });
 
-            $("#ds").change(function () {
+            $("#ID").change(function () {
+                debugger
+                var fruitId = $(this).find("option:selected").val();
+                if (fruitId != "") {
+                    $.ajax
+                        ({
+                            type: "POST",
+                            url: "/SaleInvoice/GetFruitName1",
+                            data: "id=" + fruitId,
+                            success: function (data) {
+                                var content = "";
+                                for (var x in data) {
+                                    $("#sp").val(data[x].SalePrice);
+                                    $("#ts").val(data[x].TaxForSale);
+                                    $("#ta").val(data[x].SaleTaxAmount);
+                                    $("#Discount").val(data[x].Discount);
+                                    $("#ItemID").val(data[x].ItemID);
 
+                                    caldata();
+                                }
+                            }
+                        });
+                }
+            });
+            $("#ds").change(function () {
 
                 debugger
                 var mrp = $("#sp").val();
@@ -160,14 +302,12 @@
             });
 
         });
-        function RemoveItem(ItemName)
-        {
+        function RemoveItem(ItemName) {
             $(ItemName).closest('tr').remove();
         }
-        function AddToItem()
-        {
+        function AddToItem() {
             var tableitemlist = $("#tblSaleInvoice");
-            var ItemName=$("#ID option:selected").text();
+            var ItemName = $("#ID option:selected").text();
             var mrp = $("#sp").val();
             var tax = $("#ts").val();
             var qty = $("#qty").val();
@@ -177,7 +317,7 @@
             var total = $("#ca").val();
 
             var itemlist = "<tr><div class='scrollit' ><td>" + ItemId + "</td><td>" + ItemName + "</td><td>" + mrp + "</td><td>" + tax + "</td><td>" + dis + "</td><td>"
-            + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
+                + qty + "</td><td>" + disamt + "</td><td>" + taxmat + "</td><td>" + total + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)'/></td></tr>"
             tableitemlist.append(itemlist);
             reset();
             var finding = 0;
@@ -205,8 +345,7 @@
             var find = pretotal1 - pretotal2
             $("#Received").val(find);
         };
-        function reset()
-        {
+        function reset() {
             $("#ID option:selected").val('');
             $("#sp").val('');
             $("#ts").val('');
@@ -216,14 +355,14 @@
             $("#sa").val('');
             $("#ca").val('');
         }
+
         function additems() {
             debugger
             var objdeliverychallan = {};
             var listofdeliverychallan = [];
 
             $.each($("#tblSaleInvoice tbody tr"),
-                function ()
-                {
+                function () {
                     listofcreditnote.push({
                         ItemName: $(this).find("td:eq(0)").text(),
                         SalePrice: $(this).find("td:eq(1)").text(),
@@ -238,14 +377,14 @@
 
             objcreditnote.PartyName = $("#PartiesID option:selected").val();
             objcreditnote.BillingName = $("#BillingName").val();
-            objcreditnote.ContactNo = $("#ContactNo").val();         
+            objcreditnote.ContactNo = $("#ContactNo").val();
             objcreditnote.InvoiceDate = $("#InvoiceDate").val();
             objcreditnote.DueDate = $("#DueDate").val();
             objcreditnote.Barcode = $("#Barcode").val();
             objcreditnote.StateOfSupply = $("#StateOfSupply option:selected").val();
             objcreditnote.Received = $("#Received").val();
             objcreditnote.RemainingBal = $("#RemainingBal").val();
-            objcreditnote.TransportName = $("#TransportName").val(); 
+            objcreditnote.TransportName = $("#TransportName").val();
             objcreditnote.TaxAmount1 = $("#TaxAmount1").val();
             objcreditnote.DeliveryLocation = $("#DeliveryLocation").val();
             objcreditnote.DeliverDate = $("#DeliveryDate").val();
@@ -266,7 +405,7 @@
                 url: '/CreditNote/AddOrEdit',
                 success: function (data) {
                     if (data.status == true) {
-                     
+
                     }
                 },
                 error: function () {
