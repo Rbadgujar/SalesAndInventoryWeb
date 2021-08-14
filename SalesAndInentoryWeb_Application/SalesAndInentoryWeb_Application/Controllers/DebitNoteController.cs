@@ -300,6 +300,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return StiMvcViewer.ViewerEventResult();
         }
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
         [HttpPost]
         public ActionResult GetReport()
         {
@@ -317,6 +321,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult Report()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.PartyName,b.DueDate,b.InvoiceDate,b.Total,b.ReturnNo,b.Received,b.RemainingBal,b.Status,b.DeleteData FROM tbl_CompanyMaster as a, tbl_DebitNote as b where a.CompanyID='1' and b.DeleteData = '1' ");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "DebitNote");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/DebitNoteDataReport.mrt"));
+            report.RegData("DebitNote", dataSet);
+            return StiMvcViewer.GetReportResult(report);
         }
         public JsonResult GetFruitName2(string id)
         {

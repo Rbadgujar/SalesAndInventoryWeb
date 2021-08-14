@@ -333,7 +333,27 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
-
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult ReportAll()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.OrderNo,b.PartyName,b.ContactNo,b.OrderDate,b.Total,b.Paid,b.RemainingBal,b.Status,b.DeleteData FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b where a.CompanyID='1' and b.DeleteData = '1' ");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "PurchaseOrder");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/PurchaseOrderDataReport.mrt"));
+            report.RegData("PurchaseOrder", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
         [HttpPost]
 		public ActionResult Dele(int id)
 		{
