@@ -157,7 +157,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             db.tbl_OtherIncomes.InsertOnSubmit(sale1other);
             db.SubmitChanges();
 
-            foreach (var item in objOtherIncomeDetails.ListOfOtherIncomeDetails)
+            foreach (var item in objOtherIncomeDetails.ListOfOtherIncome)
             {
                 tbl_OtherIncomeInner inner = new tbl_OtherIncomeInner()
                 {
@@ -187,22 +187,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
              db.SubmitChanges();
             return RedirectToAction("Index");     
         }
-        [HttpPost]
-        public ActionResult AddOrEdit(tbl_OtherIncome emp,int id = 0)
-        {
-			if (id == 0)
-			{
-				var tb = db.tbl_OtherIncomeSelect("Insert",  null,emp.IncomeCategory, emp.Date, null, null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
-				db.SubmitChanges();
-				return RedirectToAction("Index");
-			}
-			else
-			{
-				var tb = db.tbl_OtherIncomeSelect("Update", id, emp.IncomeCategory, emp.Date, null,null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
-				db.SubmitChanges();
-				return RedirectToAction("Index");
-			}
-	    }			       
+   //     [HttpPost]
+   //     public ActionResult AddOrEdit(tbl_OtherIncome emp,int id = 0)
+   //     {
+			//if (id == 0)
+			//{
+			//	var tb = db.tbl_OtherIncomeSelect("Insert",  null,emp.IncomeCategory, emp.Date, null, null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
+			//	db.SubmitChanges();
+			//	return RedirectToAction("Index");
+			//}
+			//else
+			//{
+			//	var tb = db.tbl_OtherIncomeSelect("Update", id, emp.IncomeCategory, emp.Date, null,null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
+			//	db.SubmitChanges();
+			//	return RedirectToAction("Index");
+			//}
+	  //  }			       
         [HttpPost]
         public ActionResult Delete(int id)
         {

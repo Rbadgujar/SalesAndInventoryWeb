@@ -9,7 +9,9 @@ using SalesAndInentoryWeb_Application.ViewModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-
+using Stimulsoft.Report;
+using Stimulsoft.Report.Components;
+using Stimulsoft.Report.Mvc;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ExpenceController : Controller
@@ -79,6 +81,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items;
         }
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
         private static List<SelectListItem> ListOfCategorys()
         {
             string sql;
@@ -132,7 +138,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 }
             }
         }
-
+        public int losan, Id1 = 0;
         [HttpPost]
         public ActionResult AddOrEdit(OtherParties objExpensesDetails)
         {
@@ -145,43 +151,31 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Balance = objExpensesDetails.Balance,
                 Date = objExpensesDetails.Date,
                 Total = objExpensesDetails.Total ,
-                DeleteData = objExpensesDetails.DeleteData
+             
             };
             db.tbl_Expenses.InsertOnSubmit(sale);
             db.SubmitChanges();
 
             foreach (var item in objExpensesDetails.ListOfOtherIncomeDetails)
             {
+                TempData["ID"] = sale.ID1;
                 tbl_ExpensesInner inner = new tbl_ExpensesInner()
                 {
+
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     ID1 = sale.ID1,
                     ItemAmount = item.ItemAmount,
-                    Qty = item.Qty
+                    Qty = item.Qty,
+                   
                 };
                 db.tbl_ExpensesInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
-
-               
-
+              
             }
-            //DataSet ds = new DataSet();
-            //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo, a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.ID1, b.Date, b.ExpenseCategory, b.Paid,b.Balance,b.DeleteData,b.Status,b.Total,b.Company_ID,c.ID1,c.ItemName,c.SalePrice,c.Qty,c.ItemAmount,c.DeleteData,c.Company_ID FROM tbl_CompanyMaster  as a, tbl_Expenses as b,tbl_ExpensesInner as c where b.ID1='{0}' and b.DeleteData='1' and c.DeleteData='1' ", sale.ID1);
-            //SqlDataAdapter SDA = new SqlDataAdapter(Query, constr);
-            //SDA.Fill(ds);
-            //string reportPath = Server.MapPath("~/Content/Report/ExpenceReport.mrt");
-            //StiReport report = new StiReport();
-            //report.Load(reportPath);
+            return RedirectToAction("GetReport");
+            // return Json(data: new {success=true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
 
-            //report.Compile();
-            //StiPage page = report.Pages[0];
-            //report.RegData("Expences", "Expences", ds.Tables[0]);
-
-            //report.Dictionary.Synchronize();
-            //report.Render();
-            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
-            return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
         }
        
         [HttpPost]
@@ -190,6 +184,33 @@ namespace SalesAndInentoryWeb_Application.Controllers
             var tb = db.tbl_ExpensesSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             db.SubmitChanges();
             return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo, a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.ID1, b.Date, b.ExpenseCategory, b.Paid,b.Balance,b.DeleteData,b.Status,b.Total,b.Company_ID,c.ID1,c.ItemName,c.SalePrice,c.Qty,c.ItemAmount,c.DeleteData,c.Company_ID FROM tbl_CompanyMaster  as a, tbl_Expenses as b,tbl_ExpensesInner as c where b.ID1=" + id + " and c.ID1=" + id + " and b.DeleteData1='1' and c.DeleteData1='1' and a.CompanyID='1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+
+            DataSet dataSet = new DataSet("productsDataSet");
+
+            adapter.Fill(dataSet, "Expences");
+
+
+
+            StiReport report = new StiReport();
+
+            report.Load(Server.MapPath("~/Content/Report/ExpenceReport.mrt"));
+
+            report.RegData("Expences", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+
+        }
+        public ActionResult Report()
+        {
+            return View();
         }
     }
 }

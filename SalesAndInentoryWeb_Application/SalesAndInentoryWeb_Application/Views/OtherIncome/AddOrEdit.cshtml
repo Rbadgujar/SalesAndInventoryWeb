@@ -138,7 +138,7 @@
             $("#Total").val('');          
         }
         function additems() {
-          
+          debugger
             var objOtherIncomeDetails = {};
             var listofotherincomedetails = [];
 
@@ -152,14 +152,13 @@
                     });
                 });
 
-            objOtherIncomeDetails.ExpenseCategory = $("#CategoryID option:selected").val();
+            objOtherIncomeDetails.IncomeCategory = $("#CategoryID option:selected").val();
             objOtherIncomeDetails.Date = $("#Date").val();
             objOtherIncomeDetails.Received = $("#Received").val();
             objOtherIncomeDetails.Balance = $("#Balance").val();
-            objOtherIncomeDetails.Total = $("#Total").val();
-            objOtherIncomeDetails.DeleteData = $("#DeleteData").val();
-
-            objOtherIncomeDetails.ListOfOtherIncomeDetails = listofotherincomedetails;
+            objOtherIncomeDetails.total = $("#Total").val();
+         
+            objOtherIncomeDetails.ListOfOtherIncome = listofotherincomedetails;
 
 
             $.ajax({
@@ -168,7 +167,7 @@
                 datatype: 'JSON',
                 contentType: 'application/json;charset=utf-8',
                 data: JSON.stringify(objOtherIncomeDetails),
-                url: '/Expence/AddOrEdit',
+                url: '/OtherIncome/AddOrEdit',
                 success: function (data) {
                     if (data.success == true) {
                         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
@@ -186,8 +185,6 @@
     </script>
 </head>
 <body>
-    @using (Html.BeginForm())
-    {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
             <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px; margin-left:900px">
                 <button type="button" class="close" data-dismiss="alert">x</button>
@@ -332,7 +329,7 @@
 
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
+                                    <input type="button" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
                                     <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
 
                                 </div>
@@ -347,16 +344,6 @@
 
             </div>
         </div>
-
-
-
-    }
-
-
-
-
-
-
 
 
 

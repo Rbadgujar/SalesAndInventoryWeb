@@ -8,6 +8,10 @@ using System.Data.Entity;
 using SalesAndInentoryWeb_Application.ViewModel;
 using System.Data.SqlClient;
 using System.Configuration;
+using Stimulsoft.Report.Mvc;
+using System.Data.SqlClient;
+using System.Data;
+using Stimulsoft.Report;
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class PurchaseBillController : Controller
@@ -161,6 +165,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddPurchase(PartyDetailsForPurchase objpurchase)
         {
+            
             var gstcount = objpurchase.TaxAmount1;
             var gst = gstcount / 2;
 
@@ -193,6 +198,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objpurchase.listpurchasedetail)
             {
+                TempData["ID"] = sale.BillNo;
                 stock(item.ItemID, item.Qty);
                 var gst1 = item.SaleTaxAmount;
                 var finalgsr = gst1 / 2;
@@ -213,8 +219,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 db.tbl_PurchaseBillInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
                 TempData["msg"] = "Insert Data Sucessfully...";
-            }        
-            return Json(data:  new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet } );
+            }
+            //return Json(data:  new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet } );
+            return RedirectToAction("GetReport");
         }
 
         public JsonResult GetFruitName(string id)
@@ -287,7 +294,38 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             return items3;
         }
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
 
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id+" and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1' ");
+
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+
+            DataSet dataSet = new DataSet("productsDataSet");
+
+            adapter.Fill(dataSet, "PurchaseBill");
+
+
+
+            StiReport report = new StiReport();
+
+            report.Load(Server.MapPath("~/Content/Report/PurchaseBillReport.mrt"));
+
+            report.RegData("PurchaseBill", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+
+        }
+        public ActionResult Report()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult AddPurchase(int id = 0)
