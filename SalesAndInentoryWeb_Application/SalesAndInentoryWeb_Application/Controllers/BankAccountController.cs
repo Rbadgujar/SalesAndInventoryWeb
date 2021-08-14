@@ -22,7 +22,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
 		public ActionResult Data()
 		{
-			var tb = db.BankAccountSelect("Select1", null, null, null, null, null,null, null).ToList();
+			var tb = db.BankAccountSelect("Select", null, null, null, null, null,null, MainLoginController.companyid1).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
@@ -59,13 +59,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			if (id == 0)
 			{
 
-				db.BankAccountSelect("Insert", null, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null);
+				db.BankAccountSelect("Insert", null, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, MainLoginController.companyid1);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
 			}
 			else
 			{
-				db.BankAccountSelect("Update", id, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, null);
+				db.BankAccountSelect("Update", id, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, MainLoginController.companyid1);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
 			}

@@ -21,7 +21,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult Data()
         {
             
-				var tb = db.tbl_CashAdjustmentselect("Select1",  null, null, null, null, null, null,null).ToList();
+				var tb = db.tbl_CashAdjustmentselect("Select",  null, null, null, null, null, null, MainLoginController.companyid1).ToList();
 				return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
 
@@ -45,7 +45,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_BankAccount where DeleteData='1'");
+                sql = string.Format("SELECT BankName FROM tbl_BankAccount where Company_ID='" + MainLoginController.companyid1 + "' DeleteData='1' ");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -95,7 +95,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		public ActionResult AddOrEdit(int id, tbl_CashAdjustment emp)
 		{
 
-				db.tbl_CashAdjustmentselect("Insert", null, emp.CashAdjustment, emp.CashAmount,Convert.ToDateTime(emp.Date), emp.Description,emp.BankName,null);
+				db.tbl_CashAdjustmentselect("Insert", null, emp.CashAdjustment, emp.CashAmount,Convert.ToDateTime(emp.Date), emp.Description,emp.BankName, MainLoginController.companyid1);
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
 			
@@ -105,7 +105,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpPost]
 		public ActionResult Delete(int id)
 		{
-			var tb = db.tbl_CashAdjustmentselect("Delete", id, null, null, null, null, null,null).ToList();
+			var tb = db.tbl_CashAdjustmentselect("Delete", id, null, null, null, null, null, MainLoginController.companyid1).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
@@ -124,7 +124,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEditUpdate(int id,tbl_CashAdjustment emp)
         {
-            db.tbl_CashAdjustmentselect("Update", id, emp.CashAdjustment, emp.CashAmount, Convert.ToDateTime(emp.Date), emp.Description, emp.BankName, null);
+            db.tbl_CashAdjustmentselect("Update", id, emp.CashAdjustment, emp.CashAmount, Convert.ToDateTime(emp.Date), emp.Description, emp.BankName, MainLoginController.companyid1);
             db.SubmitChanges();
             return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
         }

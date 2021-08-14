@@ -23,7 +23,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
         public ActionResult GetData()
         {
-			var tb = db.Banktobank("Select1", null, null, null, null, null, null, null,null).ToList();
+			var tb = db.Banktobank("Select", null, null, null, null, null, null, null, MainLoginController.companyid1).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
@@ -47,7 +47,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_BankAccount where DeleteData='1'");
+                sql = string.Format("SELECT BankName FROM tbl_BankAccount where DeleteData='1' and Company_ID='" MainLoginController.companyid1"'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -98,7 +98,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             try
             {
-                db.Banktobank("Insert1", emp.ID, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition,emp.Total, null);
+                db.Banktobank("Insert", emp.ID, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition,emp.Total, MainLoginController.companyid1);
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
                 
@@ -133,7 +133,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
 		public ActionResult Delete(int id)
 		{
-				var tb = db.Banktobank("Delete", id, null, null, null, null, null, null,null).ToList();
+				var tb = db.Banktobank("Delete", id, null, null, null, null, null, null, MainLoginController.companyid1).ToList();
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
@@ -152,7 +152,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEditMain(int id,tbl_BanktoBankTransfer emp)
         {
-            db.Banktobank("Update", id, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition,emp.Total, null);
+            db.Banktobank("Update", id, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition,emp.Total, MainLoginController.companyid1);
             db.SubmitChanges();
             return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
         }

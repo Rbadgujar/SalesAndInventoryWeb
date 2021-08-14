@@ -21,7 +21,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
 		public ActionResult adjustdata()
 		{
-			var tb = db.tbl_BankAdjustmentselect("Select1", null, null, null, null, null, null, null,null).ToList();
+			var tb = db.tbl_BankAdjustmentselect("Select", null, null, null, null, null, null, null, MainLoginController.companyid1).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
