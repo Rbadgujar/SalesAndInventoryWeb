@@ -3337,6 +3337,12 @@
     <Content Include="Content\Report\PurchaseBillReport.mrt" />
     <Content Include="Content\Report\PurchaseOrderReport.mrt" />
     <Content Include="Content\Report\DebitNote.mrt" />
+    <Content Include="Content\Report\DebitNoteDataReport.mrt" />
+    <Content Include="Content\Report\ExpenceData.mrt" />
+    <Content Include="Content\Report\ExpensesCategoryData.mrt" />
+    <Content Include="Content\Report\ExpensesItemData.mrt" />
+    <Content Include="Content\Report\PurchaseBillData.mrt" />
+    <Content Include="Content\Report\PurchaseOrderDataReport.mrt" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -3983,6 +3989,8 @@
     <Content Include="Views\PurchaseBill\Report.cshtml" />
     <Content Include="Views\ParchaseOrder\Report.cshtml" />
     <Content Include="Views\DebitNote\Report.cshtml" />
+    <Content Include="Views\PurchaseBill\ReportAll.cshtml" />
+    <Content Include="Views\ParchaseOrder\ReportAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
