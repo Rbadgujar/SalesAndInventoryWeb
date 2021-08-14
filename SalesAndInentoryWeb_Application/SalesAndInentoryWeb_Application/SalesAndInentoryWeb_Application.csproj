@@ -3345,6 +3345,7 @@
     <Content Include="Content\Report\PurchaseOrderDataReport.mrt" />
     <Content Include="Content\Report\DayBookReport.mrt" />
     <Content Include="Content\Report\AllPartiesReport.mrt" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.min.js" />
