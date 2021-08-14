@@ -26,6 +26,9 @@
             margin: 0px;
             resize: vertical;
         }
+          .focused{
+                        border-color: #a94442 !important;
+                    }
     </style>
         <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
@@ -63,9 +66,31 @@
                         AddToItem();
                     }
                
-            });
-            $("#btnsubmit").click(function (e) {
-                additems();
+                });
+               
+
+                $("#btnsubmit").click(function (e) {
+                    var mrp = $("#ContactNo").val();
+                    var Paritesname = $("#ParitesID option:selected").val();
+                    var rowCount = $("#tblSaleInvoice tr").length;
+   
+                    debugger
+                    if ((mrp == "")) {
+                      
+                        alert("Enter Contact No !");
+                        $("#ContactNo").focus();
+                        //$("#ContactNo").focus(function () {
+                        //    $(this).addClass("focused");
+                        //});
+                    } else if (Paritesname ==""|| Paritesname == "Select Parties") {
+                        alert("Select Party Name!");
+                        $("#ParitesID").focus();
+                    }else if(rowCount==1){
+                        alert("Please Add Item First !");
+                    }
+                    else {
+                        additems();
+                    }
             });
             $("#ID").change(function () {
                 debugger
@@ -643,7 +668,7 @@
                                        }
                                    })
                                        @Html.ValidationMessageFor(model => model.DeliveryLocation)
-                                   <b> Vehical Name:</b>
+                                   <b> Vehical No:</b>
                                        @Html.EditorFor(model => model.VehicleNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Vehical No" } })
                                        @Html.ValidationMessageFor(model => model.VehicleNumber)
                                   

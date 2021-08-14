@@ -1538,3 +1538,15 @@ C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Ap
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.dll
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.pdb
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.csprojResolveAssemblyReference.cache
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\FireBase.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.Core.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.Interfaces.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.Linq.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.PlatformServices.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.Windows.Threading.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.Core.xml
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.Interfaces.xml
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.Linq.xml
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.PlatformServices.xml
+C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\System.Reactive.Windows.Threading.xml
