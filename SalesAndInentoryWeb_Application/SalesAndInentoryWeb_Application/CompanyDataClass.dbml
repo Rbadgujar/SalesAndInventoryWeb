@@ -309,7 +309,6 @@
       <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LoanAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="tbl_CompanyMaster_tbl_LoanBank" Member="tbl_CompanyMaster" ThisKey="CompanyID" OtherKey="CompanyID" Type="tbl_CompanyMaster" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_otherIncomeCaategory" Member="tbl_otherIncomeCaategories">
@@ -610,30 +609,6 @@
       <Association Name="tbl_CategoryMaster_tbl_PurchaseOrder" Member="tbl_PurchaseOrders" ThisKey="CategoryID" OtherKey="CategoryID" Type="tbl_PurchaseOrder" />
       <Association Name="tbl_CategoryMaster_tbl_PurchaseOrderInner" Member="tbl_PurchaseOrderInners" ThisKey="CategoryID" OtherKey="CategoryID" Type="tbl_PurchaseOrderInner" />
       <Association Name="tbl_CategoryMaster_tbl_CategoryMaster" Member="tbl_CategoryMaster1" ThisKey="CategoryID" OtherKey="CategoryID" Type="tbl_CategoryMaster" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_CompanyMaster" Member="tbl_CompanyMasters">
-    <Type Name="tbl_CompanyMaster">
-      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="EmailID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ReferaleCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BusinessType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="GSTNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OwnerName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="AddLogo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="AdditinalFeild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AdditinalFeild2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AdditinalFeild3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Defulatcompany" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="tbl_CompanyMaster_tbl_LoanBank" Member="tbl_LoanBanks" ThisKey="CompanyID" OtherKey="CompanyID" Type="tbl_LoanBank" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_CreditNote1" Member="tbl_CreditNote1s">
@@ -1289,6 +1264,32 @@
       <Column Name="saleTax" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="PurchaseTax" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Discount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_CompanyMaster" Member="tbl_CompanyMasters">
+    <Type Name="tbl_CompanyMaster">
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EmailID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReferaleCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BusinessType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GSTNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OwnerName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AddLogo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AdditinalFeild1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AdditinalFeild2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AdditinalFeild3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Defulatcompany" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LogoPath" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SingPath" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DeleteData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.addcompany" Method="addcompany">

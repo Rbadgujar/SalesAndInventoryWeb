@@ -15,6 +15,6 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public double Received { get; set; }
         public bool DeleteData { get; set; }
         public int ID1 { get; set; }
-        public List<ItemDetails> ListOfOtherIncome { get; set; }
+        public List<OtherItem> ListOfOtherIncome { get; set; }
     }
 }

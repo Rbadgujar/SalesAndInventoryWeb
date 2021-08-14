@@ -16,7 +16,7 @@ namespace SalesAndInentoryWeb_Application
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "home", action = "index", id = UrlParameter.Optional }
+                defaults: new { controller = "MainLogin", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
