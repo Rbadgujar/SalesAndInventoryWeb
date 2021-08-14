@@ -1558,4 +1558,3 @@ C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Ap
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\Stimulsoft.Report.Web.pdb
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\Stimulsoft.Report.WebDesign.pdb
 C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\bin\Stimulsoft.Svg.pdb
-C:\Users\Rahul Badgujar\source\repos\SalesAndInventoryWeb\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\obj\Debug\SalesAndInentoryWeb_Application.csprojResolveAssemblyReference.cache

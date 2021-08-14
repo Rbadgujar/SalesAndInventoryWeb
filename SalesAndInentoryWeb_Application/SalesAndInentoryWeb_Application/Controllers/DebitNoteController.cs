@@ -9,6 +9,11 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using SalesAndInentoryWeb_Application.ViewModel;
 using System.Configuration;
+using Stimulsoft.Report.Mvc;
+using System.Data.SqlClient;
+using System.Data;
+using Stimulsoft.Report;
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class DebitNoteController : Controller
@@ -250,6 +255,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objdebitnote.ListOfDebitNote)
             {
+                TempData["ID"] = sale.ReturnNo;
                 stock(item.ItemID, item.Qty);
                 var gst1 = item.SaleTaxAmount;
                 var finalgsr = gst1 / 2;
@@ -271,8 +277,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
                 db.SubmitChanges();
             }
+            return RedirectToAction("GetReport");
             //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
-            return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
+            // return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
 
             //if (id == 0)
             //{
@@ -288,6 +295,28 @@ namespace SalesAndInentoryWeb_Application.Controllers
             //	db.SubmitChanges();
             //	return RedirectToAction("DebitNote");
             //}
+        }
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.AddLogo,a.GSTNumber, a.PhoneNo, a.EmailID,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo, b.ReturnNo, b.InvoiceDate, b.DeliveryLocation,b.DeliveryDate,b.DueDate, b.Tax1, b.CGST, b.SGST, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.ItemCode,c.BasicUnit,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount,c.DeleteData FROM tbl_CompanyMaster  as a, tbl_DebitNote as b,tbl_DebitNoteInner as c where b.ReturnNo="+id+ " and c.ReturnNo=" + id + " and a.CompanyID='1' and c.DeleteData1='1' ");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "DebitNote");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/DebitNote.mrt"));
+            report.RegData("DebitNote", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+        public ActionResult Report()
+        {
+            return View();
         }
         public JsonResult GetFruitName2(string id)
         {
