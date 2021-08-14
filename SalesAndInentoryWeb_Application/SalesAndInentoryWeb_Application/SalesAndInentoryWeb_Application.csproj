@@ -3991,6 +3991,7 @@
     <Content Include="Views\DebitNote\Report.cshtml" />
     <Content Include="Views\PurchaseBill\ReportAll.cshtml" />
     <Content Include="Views\ParchaseOrder\ReportAll.cshtml" />
+    <Content Include="Views\DeliveryChallan\Dilaverychallen.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

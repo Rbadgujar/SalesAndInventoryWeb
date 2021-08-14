@@ -39,7 +39,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult AddOrEdit()
         {
-            tbl_CreditNote1 bt = new tbl_CreditNote1();
+            tbl_DeliveryChallan bt = new tbl_DeliveryChallan();
             bt.ListOfAccounts = ListOfItems();
             bt.ListOfParties = ListOfParties();
             return View(bt);
@@ -135,6 +135,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             return items2;
         }
+
+        [HttpGet]
+        public ActionResult Dilaverychallen()
+        {
+            tbl_DeliveryChallan bt = new tbl_DeliveryChallan();
+            bt.ListOfAccounts = ListOfItems();
+            bt.ListOfParties = ListOfParties();
+            return View(bt);
+        }
+
+
         public JsonResult GetFruitName1(string id)
         {
             return Json(GetFruitNameById1(id), JsonRequestBehavior.AllowGet);
@@ -180,8 +191,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 PartyName = objdeliverychallan.PartyName,
                 BillingName = objdeliverychallan.BillingName,
                 ContactNo = objdeliverychallan.ContactNo,
-                RemainingBal = objdeliverychallan.RemainingBal,
-                CalTotal = objdeliverychallan.CalTotal,
+                RemainingBal = objdeliverychallan.RemainingBal,                
+                Total = objdeliverychallan.CalTotal,
                 TransportName = objdeliverychallan.TransportName,
                 DeliveryLocation = objdeliverychallan.DeliveryLocation,
                 Deliverydate = objdeliverychallan.DeliveryDate,
@@ -191,6 +202,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 InvoiceDate = Convert.ToDateTime(objdeliverychallan.InvoiceDate),
                 DueDate = objdeliverychallan.DueDate,
                 Barcode = objdeliverychallan.Barcode,
+                Description=objdeliverychallan.Description,
                 Status = objdeliverychallan.Status,
                 VehicleNumber = objdeliverychallan.VehicleNumber,            
                 Received = objdeliverychallan.Received
