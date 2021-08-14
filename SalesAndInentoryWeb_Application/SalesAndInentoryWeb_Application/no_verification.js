@@ -47,6 +47,7 @@ function codeverify() {
         alert("Message Verified");
         var user = result.user;
         console.log(user);
+        window.location.href = "/StartPage/registration";    
     }).catch(function (error) {
         alert(error.message);
     });

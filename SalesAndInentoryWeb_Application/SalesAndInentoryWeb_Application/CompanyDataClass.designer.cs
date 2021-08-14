@@ -630,31 +630,6 @@ namespace SalesAndInentoryWeb_Application
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_CompanyMasterSelect")]
-		public ISingleResult<tbl_CompanyMasterSelectResult> tbl_CompanyMasterSelect(
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyID", DbType="Int")] System.Nullable<int> companyID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="NVarChar(MAX)")] string companyName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PhoneNo", DbType="NVarChar(MAX)")] string phoneNo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="EmailID", DbType="NVarChar(MAX)")] string emailID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReferaleCode", DbType="NVarChar(MAX)")] string referaleCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BusinessType", DbType="NVarChar(MAX)")] string businessType, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="City", DbType="NVarChar(MAX)")] string city, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="State", DbType="NVarChar(MAX)")] string state, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="GSTNumber", DbType="NVarChar(MAX)")] string gSTNumber, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OwnerName", DbType="NVarChar(MAX)")] string ownerName, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Signature", DbType="Image")] System.Data.Linq.Binary signature, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AddLogo", DbType="Image")] System.Data.Linq.Binary addLogo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdditinalFeild1", DbType="NVarChar(MAX)")] string additinalFeild1, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdditinalFeild2", DbType="NVarChar(MAX)")] string additinalFeild2, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdditinalFeild3", DbType="NVarChar(MAX)")] string additinalFeild3, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> def)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, companyID, companyName, phoneNo, emailID, referaleCode, businessType, address, city, state, gSTNumber, ownerName, signature, addLogo, additinalFeild1, additinalFeild2, additinalFeild3, def);
-			return ((ISingleResult<tbl_CompanyMasterSelectResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.addcompany")]
 		public ISingleResult<addcompanyResult> addcompany([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="NVarChar(MAX)")] string companyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContactNo", DbType="NVarChar(MAX)")] string contactNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EmailId", DbType="NVarChar(MAX)")] string emailId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReferralCode", DbType="NVarChar(MAX)")] string referralCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image1", DbType="Image")] System.Data.Linq.Binary image1)
 		{
@@ -1803,6 +1778,33 @@ namespace SalesAndInentoryWeb_Application
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemID, itemName, hSNCode, basicUnit, secondaryUnit, itemCode, itemCategory, salePrice, taxForSale, saleTaxAmount, purchasePrice, taxForPurchase, purchaseTaxAmount, openingQty, atPrice, date, cess, itemLocation, trackingMRP, batchNo, serialNo, mFgdate, expdate, size, description, minimumStock, image1, image2, image3, image4, image5, unitID, categoryID, barcode, compid, saleTax, purchaseTax, profit, discount);
 			return ((ISingleResult<tbl_ItemMasterSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_CompanyMasterSelect")]
+		public ISingleResult<tbl_CompanyMasterSelectResult> tbl_CompanyMasterSelect(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyID", DbType="Int")] System.Nullable<int> companyID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="NVarChar(MAX)")] string companyName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PhoneNo", DbType="NVarChar(MAX)")] string phoneNo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="EmailID", DbType="NVarChar(MAX)")] string emailID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReferaleCode", DbType="NVarChar(MAX)")] string referaleCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BusinessType", DbType="NVarChar(MAX)")] string businessType, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="City", DbType="NVarChar(MAX)")] string city, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="State", DbType="NVarChar(MAX)")] string state, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="GSTNumber", DbType="NVarChar(MAX)")] string gSTNumber, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OwnerName", DbType="NVarChar(MAX)")] string ownerName, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Signature", DbType="Image")] System.Data.Linq.Binary signature, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AddLogo", DbType="Image")] System.Data.Linq.Binary addLogo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdditinalFeild1", DbType="NVarChar(MAX)")] string additinalFeild1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdditinalFeild2", DbType="NVarChar(MAX)")] string additinalFeild2, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdditinalFeild3", DbType="NVarChar(MAX)")] string additinalFeild3, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> def, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LogoPath", DbType="NVarChar(MAX)")] string logoPath, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SingPath", DbType="NVarChar(MAX)")] string singPath)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, companyID, companyName, phoneNo, emailID, referaleCode, businessType, address, city, state, gSTNumber, ownerName, signature, addLogo, additinalFeild1, additinalFeild2, additinalFeild3, def, logoPath, singPath);
+			return ((ISingleResult<tbl_CompanyMasterSelectResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3377,11 +3379,11 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_PurchaseBill")]
 	public partial class tbl_PurchaseBill : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _BillNo;
+        private int _BillNo;
 		
 		private string _PartyName;
 		
@@ -22402,9 +22404,8 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private int _PartyGroupID;
+		
+		private int _PartyGroupID;
 		
 		private string _AddPartyGroup;
 		
@@ -22535,9 +22536,8 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_PartyMaster")]
 	public partial class tbl_PartyMaster : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _PartiesID;
 		
@@ -23927,11 +23927,11 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Paymentout")]
 	public partial class tbl_Paymentout : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
+        private int _ID;
 		
 		private string _CustomerName;
 		
@@ -28437,11 +28437,11 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_BankAdjustment")]
 	public partial class tbl_BankAdjustment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
+        private int _ID;
 		
 		private string _BankAccount;
 		
@@ -29866,302 +29866,6 @@ namespace SalesAndInentoryWeb_Application
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	public partial class tbl_CompanyMasterSelectResult
-	{
-		
-		private int _CompanyID;
-		
-		private string _CompanyName;
-		
-		private string _Address;
-		
-		private string _ContactNo;
-		
-		private string _EmailID;
-		
-		private string _ReferaleCode;
-		
-		private string _BusinessType;
-		
-		private string _OwnerName;
-		
-		private string _GSTNumber;
-		
-		private string _City;
-		
-		private string _State;
-		
-		private System.Data.Linq.Binary _AddLogo;
-		
-		private System.Data.Linq.Binary _Signature;
-		
-		private string _BankName;
-		
-		private string _AccountNo;
-		
-		private string _IFSC_Code;
-		
-		public tbl_CompanyMasterSelectResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyID", DbType="Int NOT NULL")]
-		public int CompanyID
-		{
-			get
-			{
-				return this._CompanyID;
-			}
-			set
-			{
-				if ((this._CompanyID != value))
-				{
-					this._CompanyID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(MAX)")]
-		public string CompanyName
-		{
-			get
-			{
-				return this._CompanyName;
-			}
-			set
-			{
-				if ((this._CompanyName != value))
-				{
-					this._CompanyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this._Address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactNo", DbType="NVarChar(MAX)")]
-		public string ContactNo
-		{
-			get
-			{
-				return this._ContactNo;
-			}
-			set
-			{
-				if ((this._ContactNo != value))
-				{
-					this._ContactNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailID", DbType="NVarChar(MAX)")]
-		public string EmailID
-		{
-			get
-			{
-				return this._EmailID;
-			}
-			set
-			{
-				if ((this._EmailID != value))
-				{
-					this._EmailID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReferaleCode", DbType="NVarChar(MAX)")]
-		public string ReferaleCode
-		{
-			get
-			{
-				return this._ReferaleCode;
-			}
-			set
-			{
-				if ((this._ReferaleCode != value))
-				{
-					this._ReferaleCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BusinessType", DbType="NVarChar(MAX)")]
-		public string BusinessType
-		{
-			get
-			{
-				return this._BusinessType;
-			}
-			set
-			{
-				if ((this._BusinessType != value))
-				{
-					this._BusinessType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerName", DbType="NVarChar(MAX)")]
-		public string OwnerName
-		{
-			get
-			{
-				return this._OwnerName;
-			}
-			set
-			{
-				if ((this._OwnerName != value))
-				{
-					this._OwnerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GSTNumber", DbType="NVarChar(MAX)")]
-		public string GSTNumber
-		{
-			get
-			{
-				return this._GSTNumber;
-			}
-			set
-			{
-				if ((this._GSTNumber != value))
-				{
-					this._GSTNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(MAX)")]
-		public string City
-		{
-			get
-			{
-				return this._City;
-			}
-			set
-			{
-				if ((this._City != value))
-				{
-					this._City = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(MAX)")]
-		public string State
-		{
-			get
-			{
-				return this._State;
-			}
-			set
-			{
-				if ((this._State != value))
-				{
-					this._State = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddLogo", DbType="Image")]
-		public System.Data.Linq.Binary AddLogo
-		{
-			get
-			{
-				return this._AddLogo;
-			}
-			set
-			{
-				if ((this._AddLogo != value))
-				{
-					this._AddLogo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Signature", DbType="Image")]
-		public System.Data.Linq.Binary Signature
-		{
-			get
-			{
-				return this._Signature;
-			}
-			set
-			{
-				if ((this._Signature != value))
-				{
-					this._Signature = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(MAX)")]
-		public string BankName
-		{
-			get
-			{
-				return this._BankName;
-			}
-			set
-			{
-				if ((this._BankName != value))
-				{
-					this._BankName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNo", DbType="NVarChar(MAX)")]
-		public string AccountNo
-		{
-			get
-			{
-				return this._AccountNo;
-			}
-			set
-			{
-				if ((this._AccountNo != value))
-				{
-					this._AccountNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IFSC_Code", DbType="NVarChar(MAX)")]
-		public string IFSC_Code
-		{
-			get
-			{
-				return this._IFSC_Code;
-			}
-			set
-			{
-				if ((this._IFSC_Code != value))
-				{
-					this._IFSC_Code = value;
-				}
 			}
 		}
 	}
@@ -42649,6 +42353,302 @@ namespace SalesAndInentoryWeb_Application
 				if ((this._Discount != value))
 				{
 					this._Discount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class tbl_CompanyMasterSelectResult
+	{
+		
+		private int _CompanyID;
+		
+		private string _CompanyName;
+		
+		private string _Address;
+		
+		private string _ContactNo;
+		
+		private string _EmailID;
+		
+		private string _ReferaleCode;
+		
+		private string _BusinessType;
+		
+		private string _OwnerName;
+		
+		private string _GSTNumber;
+		
+		private string _City;
+		
+		private string _State;
+		
+		private System.Data.Linq.Binary _AddLogo;
+		
+		private System.Data.Linq.Binary _Signature;
+		
+		private string _BankName;
+		
+		private string _AccountNo;
+		
+		private string _IFSC_Code;
+		
+		public tbl_CompanyMasterSelectResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyID", DbType="Int NOT NULL")]
+		public int CompanyID
+		{
+			get
+			{
+				return this._CompanyID;
+			}
+			set
+			{
+				if ((this._CompanyID != value))
+				{
+					this._CompanyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(MAX)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactNo", DbType="NVarChar(MAX)")]
+		public string ContactNo
+		{
+			get
+			{
+				return this._ContactNo;
+			}
+			set
+			{
+				if ((this._ContactNo != value))
+				{
+					this._ContactNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailID", DbType="NVarChar(MAX)")]
+		public string EmailID
+		{
+			get
+			{
+				return this._EmailID;
+			}
+			set
+			{
+				if ((this._EmailID != value))
+				{
+					this._EmailID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReferaleCode", DbType="NVarChar(MAX)")]
+		public string ReferaleCode
+		{
+			get
+			{
+				return this._ReferaleCode;
+			}
+			set
+			{
+				if ((this._ReferaleCode != value))
+				{
+					this._ReferaleCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BusinessType", DbType="NVarChar(MAX)")]
+		public string BusinessType
+		{
+			get
+			{
+				return this._BusinessType;
+			}
+			set
+			{
+				if ((this._BusinessType != value))
+				{
+					this._BusinessType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerName", DbType="NVarChar(MAX)")]
+		public string OwnerName
+		{
+			get
+			{
+				return this._OwnerName;
+			}
+			set
+			{
+				if ((this._OwnerName != value))
+				{
+					this._OwnerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GSTNumber", DbType="NVarChar(MAX)")]
+		public string GSTNumber
+		{
+			get
+			{
+				return this._GSTNumber;
+			}
+			set
+			{
+				if ((this._GSTNumber != value))
+				{
+					this._GSTNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(MAX)")]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this._City = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(MAX)")]
+		public string State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this._State = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddLogo", DbType="Image")]
+		public System.Data.Linq.Binary AddLogo
+		{
+			get
+			{
+				return this._AddLogo;
+			}
+			set
+			{
+				if ((this._AddLogo != value))
+				{
+					this._AddLogo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Signature", DbType="Image")]
+		public System.Data.Linq.Binary Signature
+		{
+			get
+			{
+				return this._Signature;
+			}
+			set
+			{
+				if ((this._Signature != value))
+				{
+					this._Signature = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(MAX)")]
+		public string BankName
+		{
+			get
+			{
+				return this._BankName;
+			}
+			set
+			{
+				if ((this._BankName != value))
+				{
+					this._BankName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNo", DbType="NVarChar(MAX)")]
+		public string AccountNo
+		{
+			get
+			{
+				return this._AccountNo;
+			}
+			set
+			{
+				if ((this._AccountNo != value))
+				{
+					this._AccountNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IFSC_Code", DbType="NVarChar(MAX)")]
+		public string IFSC_Code
+		{
+			get
+			{
+				return this._IFSC_Code;
+			}
+			set
+			{
+				if ((this._IFSC_Code != value))
+				{
+					this._IFSC_Code = value;
 				}
 			}
 		}
