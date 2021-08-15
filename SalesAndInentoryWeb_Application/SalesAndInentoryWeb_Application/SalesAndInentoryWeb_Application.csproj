@@ -3345,6 +3345,7 @@
     <Content Include="Content\Report\PurchaseOrderDataReport.mrt" />
     <Content Include="Content\Report\DayBookReport.mrt" />
     <Content Include="Content\Report\AllPartiesReport.mrt" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -3996,6 +3997,9 @@
     <Content Include="Views\Expence\ReportAll.cshtml" />
     <Content Include="Views\DayBook\Report.cshtml" />
     <Content Include="Views\AllParties\Report.cshtml" />
+    <Content Include="Views\SaleOrder\Report.cshtml" />
+    <Content Include="Views\SaleInvoice\Report.cshtml" />
+    <Content Include="Views\Creditnote\Report.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -44,7 +44,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             int id = Convert.ToInt32(TempData["ID"]);
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
 
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo, b.OrderNo, b.OrderDate, b.DueDate, b.DeliveryLocation,b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit, c.CGST, c.SGST,c.IGST, c.SaleTaxAmount,c.SalePrice,c.Qty,c.TaxForSale,c.ItemAmount FROM tbl_CompanyMaster  as a, tbl_SaleOrder as b,tbl_SaleOrderInner as c where b.OrderNo="+id+" and c.OrderNo="+id+" and a.CompanyID='1'");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo, b.OrderNo, b.OrderDate, b.DueDate, b.DeliveryLocation,b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit, c.CGST, c.SGST,c.IGST, c.SaleTaxAmount,c.SalePrice,c.Qty,c.TaxForSale,c.ItemAmount FROM tbl_CompanyMaster  as a, tbl_SaleOrder as b,tbl_SaleOrderInner as c where b.OrderNo="+id+" and c.OrderNo="+id+" and a.CompanyID="+MainLoginController.companyid1+" ");
 
             //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id + " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1' ");
 
@@ -102,7 +102,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where Company_ID=" + MainLoginController.companyid1 + " and  DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -131,7 +131,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_PartyMaster where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_PartyMaster where Company_ID=" + MainLoginController.companyid1 + " and DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -164,7 +164,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id");
+                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id and Company_ID=" + MainLoginController.companyid1 + "");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -201,7 +201,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE Barcode = @Id");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE Barcode = @Id and Company_ID=" + MainLoginController.companyid1 + "");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -280,6 +280,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 StateofSupply = objpartydetails.StateOfSupply,
                 SGST = gst,
                 CGST = gst,
+                Company_ID=MainLoginController.companyid1,
                 OrderDate =Convert.ToDateTime(objpartydetails.OrderDate),
                 DueDate = objpartydetails.DueDate,
                 Barcode = objpartydetails.Barcode,
@@ -305,6 +306,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     CGST = finalgsr,
                     SGST=finalgsr,             
                     TaxForSale=item.TaxForSale,
+                    Company_ID=MainLoginController.companyid1,
                     Discount=item.Discount,
                     DiscountAmount=item.DiscountAmount,
                     SaleTaxAmount=item.SaleTaxAmount,
