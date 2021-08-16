@@ -36,7 +36,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public string CategoryID { get; set; }
         public string Barcode { get; set; }
         public string DeleteData { get; set; }
-        public string Company_ID { get; set; }
+        public int Company_ID { get; set; }
         public string Cess { get; set; }
         public string Profit { get; set; }
 

@@ -36,7 +36,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
-       
+
         public ActionResult ExpenceData()
         { 
 			var tb = db.tbl_ExpensesSelect("Select", null, null, null, null, null, null,null, null, null, null, null, null,  MainLoginController.companyid1 ).ToList();
@@ -49,7 +49,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
             tbl_Expense bt = new tbl_Expense();
             bt.ListOfAccounts = ListOfItems();
             bt.ListOfCategory = ListOfCategorys();
-            return View(bt);               
+            return View(bt);       
+            
         }
        
         private static List<SelectListItem> ListOfItems()
