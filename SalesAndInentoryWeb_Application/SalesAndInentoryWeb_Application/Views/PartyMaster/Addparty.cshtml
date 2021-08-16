@@ -87,13 +87,13 @@
 
         <div class="row">
             <div class="tab" style="margin-top:30px;background-color:#f2f2f2" >
-                <div class="col-md-4" style="text-align:center" onclick="openCity(event, 'London')" id="m1"><a class="tablinks">Shiping Details </a></div>
-                <div class="col-md-4" style="text-align:center" id="m1" onclick="openCity(event, 'Paris')"><a class="tablinks">Account Details</a></div>
-                <div class="col-md-4" style="text-align:center" onclick="openCity(event, 'Tokyo')" id="m1"><a class="tablinks">Image</a></div>
+                <div class="col-md-4" style="text-align:center" id="m1" onclick="openCity(event, 'London')"><a class="tablinks">Shiping Details </a><button class="btn pull-right" type="button" style="margin-top:-43px"><i class="fa fa-plus"></i></button></div>
+                <div class="col-md-4" style="text-align:center" id="m1" onclick="openCity(event, 'Paris')"><a class="tablinks">Account Details</a><button class="btn pull-right" type="button" style="margin-top:-43px"><i class="fa fa-plus"></i></button></div>
+                <div class="col-md-4" style="text-align:center" onclick="openCity(event, 'Tokyo')" id="m1"><a class="tablinks">Image</a><button class="btn pull-right" type="button" style="margin-top:10px"><i class="fa fa-plus"></i></button></div>
             </div>
         </div>
         <hr style="margin-top:1px" />
-        <div id="London" class="tabcontent">
+        <div id="London" class="tabcontent" style="display:block">
 
             <div class="row">
                 <div class="col-md-4">
@@ -118,7 +118,7 @@
                 </div>
                 <div class="col-md-4">
                     <b>Party Group:</b>
-                    @Html.EditorFor(model => model.PartyGroup, new { htmlAttributes = new { @class = "form-control" } })
+                   @Html.DropDownListFor(model => model.PartyGroup, Model.ListOfPartyGroup, "Select PartyGroup", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.PartyGroup, "", new { @class = "text-danger" })
 
 
