@@ -2962,6 +2962,10 @@
     <Content Include="Localization\vi.xml" />
     <Content Include="Localization\zh-CHS.xml" />
     <Content Include="Localization\zh-CHT.xml" />
+    <Content Include="logincssfolder\css\main.css" />
+    <Content Include="logincssfolder\css\util.css" />
+    <Content Include="logincssfolder\images\bg-01.jpg" />
+    <Content Include="logincssfolder\images\icons\favicon.ico" />
     <Content Include="logincssfolder\js\NV.js" />
     <Content Include="Models\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -4000,6 +4004,7 @@
     <Content Include="Views\SaleOrder\Report.cshtml" />
     <Content Include="Views\SaleInvoice\Report.cshtml" />
     <Content Include="Views\Creditnote\Report.cshtml" />
+    <Content Include="Views\MainLogin\forgetpassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4013,9 +4018,7 @@
     <Folder Include="css\fonts\" />
     <Folder Include="images\Logo\" />
     <Folder Include="images\signatures\" />
-    <Folder Include="logincssfolder\css\" />
     <Folder Include="logincssfolder\fonts\" />
-    <Folder Include="logincssfolder\images\" />
     <Folder Include="logincssfolder\vendor\" />
     <Folder Include="Views\index\" />
     <Folder Include="Views\OtherIncomeCategory\" />

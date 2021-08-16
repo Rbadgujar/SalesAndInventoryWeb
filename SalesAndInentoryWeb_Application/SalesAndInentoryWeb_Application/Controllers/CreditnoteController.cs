@@ -311,7 +311,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 tbl_CreditNoteInner inner = new tbl_CreditNoteInner()
                 {
                      
-                      ItemName = item.ItemName,
+                    ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     ReturnNo = sale.ReturnNo,
                     TaxForSale = item.TaxForSale,

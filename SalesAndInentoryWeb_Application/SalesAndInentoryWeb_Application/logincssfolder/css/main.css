@@ -222,11 +222,11 @@ iframe {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background-color: #fff;
-  margin: 0 auto;
+  margin: -23px auto;
 }
 
 .login100-form-title {

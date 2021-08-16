@@ -7,7 +7,10 @@ function render() {
 }
 function phoneAuth() {
     debugger
-    var number = document.getElementById('number').value;
+    var a = document.getElementById('number').value;
+    var b = "+91";
+    var number=b+a;
+  
     firebase.auth().signInWithPhoneNumber(number, this.window.recaptchaVerifier).then(function (confirmationResult) {
         //s is in lowercase
         this.window.confirmationResult = confirmationResult;
@@ -42,6 +45,7 @@ function phoneAuth() {
 
 }
 function codeverify() {
+    debugger
     var code = document.getElementById('verificationCode').value;
     coderesult.confirm(code).then(function (result) {       
         alert("Message Verified");

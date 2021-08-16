@@ -13,6 +13,7 @@ using System.Configuration;
 using Stimulsoft.Report;
 using Stimulsoft.Report.Mvc;
 
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class SaleInvoiceController : Controller
@@ -21,24 +22,32 @@ namespace SalesAndInentoryWeb_Application.Controllers
         // GET: SaleInvoice
         //public ActionResult Index()
         //{
-           
+
         //    return View();
         //}
+      
+
+             
         public ActionResult SaleIndexpage()
         {
             return View();
         }
+
         private static List<SelectListItem> ListOfItems()
         {
+            
             string sql;
+                   
             List<SelectListItem> items = new List<SelectListItem>();
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster where Company_ID="+MainLoginController.companyid1+" and  DeleteData='1'");
+                  sql = string.Format("SELECT * FROM tbl_ItemMaster where Company_ID="+Convert.ToInt32(Session["UserId"].ToString())+" and  DeleteData='1'");
+              
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
+                   
                     con.Open();
                     using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
@@ -316,7 +325,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 StateofSupply = objsalepartydetails.StateOfSupply,
                 SGST = gst,
                 CGST = gst,
-                Company_ID =MainLoginController.companyid1,
+                Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                 InvoiceDate = Convert.ToDateTime(objsalepartydetails.InvoiceDate),
                 Barcode = objsalepartydetails.Barcode,
                 Status = objsalepartydetails.Status,
@@ -340,9 +349,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     ItemID = item.ItemID,
                     CGST = finalgsr,
                     SGST = finalgsr,
+
                     InvoiceID = sale.InvoiceID,
                     DiscountAmount = item.DiscountAmount,
-                    Company_ID= Convert.ToInt32(MainLoginController.companyid1),
+                    Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty
