@@ -442,8 +442,10 @@
 						<div class="form-group col-md-3">							
                             <b>
                                 Party Name:</b>
-                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Party Name", new { @class = "form-control" })
-                                 <b>Address:</b>
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Party Name", new { @class = "form-control", @style = "Width:230px;" })
+                             <button class="btn btn-success pull-right" type="button" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Addparty","PartyMaster")')"><i class="fa fa-plus"></i></button>
+                             
+                                <b>Address:</b>
                                 @Html.TextAreaFor(model => model.BillingName, new { @class = "form-control", placeholder = "Address" })
 
                             </div>
@@ -531,6 +533,9 @@
                             <label>Item Name</label>
 
                             @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control" })
+                        </td>
+                        <td style="padding:3px;text-align:center">
+                            <button class="btn btn-success" type="button" style="margin-top:25px"><i class="fa fa-plus" onclick="PopupForm1('@Url.Action("Additem","ItemMaster")')"></i></button>
                         </td>
                         <td style="padding:3px;text-align:center">
                             <label>MRP</label>
@@ -712,6 +717,104 @@
 
         </div>
     </div>
+    @section scripts{
+        <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+        <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+        <script>
+            var Popup, dataTable, Popup1;
+        $(document).ready(function () {
+
+        });
+
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Add Parties ',
+                    height: 480,
+                    width: 700,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+
+                });
+            });
+        }
+
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if($(form).valid()){
+                $.ajax({
+                    type : "POST",
+                    url : form.action,
+                    data : $(form).serialize(),
+                    success : function (data) {
+                        if(data.success)
+                        {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message,{
+                                globalPosition :"top center",
+                                className : "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+
+        function PopupForm1(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+                Popup1 = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Add Parties ',
+                    height: 550,
+                    width: 840,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+
+                });
+            });
+        }
+
+        function SubmitForm1(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            Popup1.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+        </script>
+    }
     <br />
     <br />
     <br />

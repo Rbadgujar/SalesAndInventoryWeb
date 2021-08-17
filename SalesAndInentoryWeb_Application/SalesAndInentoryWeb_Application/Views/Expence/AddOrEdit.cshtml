@@ -214,8 +214,8 @@
                                 
                                 <br />
                                 <b> Category :</b>
-                                @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory, "Select Category", new { @class="form-control"} )
-
+                                @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory, "Select Category", new { @class="form-control", @style = "Width:330px;" } )
+                                <button class="btn btn-success pull-right" type="button" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Expencescategory","Expence")')"><i class="fa fa-plus"></i></button>
 
                             </div>
                             <div class="form-group col-md-4">
@@ -346,12 +346,12 @@
                                         <b>Total :</b>
                                         @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount" } })
                                         @Html.ValidationMessageFor(model => model.Total)
-                                        <b>  Received:</b>
+                                        @*<b>  Received:</b>
                                         @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount", @onchange = "minus()" } })
                                         @Html.ValidationMessageFor(model => model.Balance)
                                         <b>Remaining Bal:</b>
                                         @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
-                                        @Html.ValidationMessageFor(model => model.Paid)
+                                        @Html.ValidationMessageFor(model => model.Paid)*@
                                     </div>
                                 </div>
                             </div>
@@ -375,7 +375,67 @@
                     </div>
 </div>
         </div>
- 
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    @section scripts{
+        <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+        <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+
+        <script>
+        var Popup, dataTable;
+        $(document).ready(function () {
+         
+        });
+                  function PopupForm(url) {
+                        var formDiv = $('<div/>');
+                        $.get(url)
+                        .done(function (response) {
+                            formDiv.html(response);
+
+                            Popup = formDiv.dialog({
+                                autoOpen: true,
+                                resizable: false,
+                                title: 'Add Expences Category ',
+                                height: 240,
+                                width: 300,
+                                close: function () {
+                                    Popup.dialog('destroy').remove();
+                                }
+
+                            });
+                        });
+                    }
+
+               
+                    function SubmitForm(form) {
+                        $.validator.unobtrusive.parse(form);
+                        if($(form).valid()){
+                            $.ajax({
+                                type : "POST",
+                                url : form.action,
+                                data : $(form).serialize(),
+                                success : function (data) {
+                                    if(data.success)
+                                    {
+                                        Popup.dialog('close');
+                                        dataTable.ajax.reload();
+
+                                        $.notify(data.message,{
+                                            globalPosition :"top center",
+                                            className : "success"
+                                        })
+
+                                    }
+                                }
+                            });
+                        }
+                        return false;
+                    }
+                 
+        </script>
+    }
+
+
     <br />
     <br />
     <br />
