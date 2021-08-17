@@ -21973,7 +21973,7 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_PartyMaster")]
 	public partial class tbl_PartyMaster : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-		
+		public IEnumerable<SelectListItem> ListOfPartyGroup { get; set; }
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _PartiesID;
