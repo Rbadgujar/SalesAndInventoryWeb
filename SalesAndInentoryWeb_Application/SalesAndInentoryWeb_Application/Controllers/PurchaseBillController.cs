@@ -32,13 +32,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             if (par == "0")
             {
-                var tb = db.tbl_PurchaseBillselect("datetodate", null, null, null, null, null,Convert.ToDateTime(date), null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).ToList();
+                var tb = db.tbl_PurchaseBillselect("datetodate", null, null, null, null, null, Convert.ToDateTime(date), null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).ToList();
                 return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
             }
-           
+            else {
                 var tb1 = db.tbl_PurchaseBillselect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).ToList();
                 return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
-            
+
+            }
+
 
         }
 
@@ -66,7 +68,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult GetReport1()
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.Company_ID = '"+ MainLoginController.companyid1 + "' and  b.DeleteData = '1'");
+            string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.CompanyID = '"+ MainLoginController.companyid1 + "' and  b.DeleteData = '1' and b.Company_ID = '" + MainLoginController.companyid1 + "'");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "PurchaseBillData");
@@ -210,8 +212,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Barcode = objpurchase.Barcode,
                 Status = objpurchase.Status,
                 VehicleNumber = objpurchase.VehicleNumber,
-                Company_ID = Convert.ToInt32(Session["UserId"])
-
+                Company_ID = Convert.ToInt32(Session["UserId"]),
+                DeleteData = Convert.ToBoolean(1)
             };
             db.tbl_PurchaseBills.InsertOnSubmit(sale);
             db.SubmitChanges();
@@ -235,7 +237,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     SGST=finalgsr,              
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty,
-                    Company_ID = Convert.ToInt32(Session["UserId"])
+                    Company_ID = Convert.ToInt32(Session["UserId"]),
+                    DeleteData = Convert.ToBoolean(1)
                 };
                 db.tbl_PurchaseBillInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
@@ -325,7 +328,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             int id = Convert.ToInt32(TempData["ID"]);
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
 
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id+ " and a.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1' and c.DeleteData='1' ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id+ " and a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and c.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1' and c.DeleteData='1' ");
 
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
 

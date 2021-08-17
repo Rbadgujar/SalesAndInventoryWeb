@@ -31,7 +31,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 		public ActionResult Detail(int id)
 		{
-			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id1 == id);
+			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
 			return View(tb);
 		}
         private static List<SelectListItem> ListOfAccount()
@@ -101,7 +101,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			}
 			else
 			{
-				var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id1 == id);
+				var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
 				var vm = new tbl_OtherIncome();
 				vm.IncomeCategory = tb.IncomeCategory;
 				vm.Date = Convert.ToDateTime(tb.Date);

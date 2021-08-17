@@ -32,14 +32,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult Expencescategory(tbl_ExpenseCategory emp)
         {
-            var tb = db.tbl_ExpenseCategorySelect("Insert1", null, emp.CategoryName, null);
+            var tb = db.tbl_ExpenseCategorySelect("Insert1", null, emp.CategoryName, Convert.ToInt32(Session["UserId"]));
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
 
         public ActionResult ExpenceData()
         { 
-			var tb = db.tbl_ExpensesSelect("Select", null, null, null, null, null, null,null, null, null, null, null, null,  MainLoginController.companyid1 ).ToList();
+			var tb = db.tbl_ExpensesSelect("Select", null, null, null, null, null, null,null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
     	}
 
@@ -152,7 +152,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Balance = objExpensesDetails.Balance,
                 Date = objExpensesDetails.Date,
                 Total = objExpensesDetails.Total ,
-             Company_ID=  MainLoginController.companyid1 
+             Company_ID= Convert.ToInt32(Session["UserId"]),
+             DeleteData=Convert.ToBoolean(1)
             };
             db.tbl_Expenses.InsertOnSubmit(sale);
             db.SubmitChanges();
@@ -168,7 +169,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     ID1 = sale.ID1,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty,
-                   Company_ID=  MainLoginController.companyid1
+                   Company_ID= Convert.ToInt32(Session["UserId"]),
+                   DeleteData=Convert.ToBoolean(1)
                 };
                 db.tbl_ExpensesInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
@@ -190,7 +192,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult GetReport1()
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.CompanyID = '"+ MainLoginController.companyid1  + "' and  b.DeleteData = '1'");
+            string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.CompanyID = '"+ MainLoginController.companyid1  + "' and b.Company_ID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1'");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "PurchaseBillData");
@@ -212,7 +214,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             int id = Convert.ToInt32(TempData["ID"]);
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
 
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo, a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.ID1, b.Date, b.ExpenseCategory, b.Paid,b.Balance,b.DeleteData,b.Status,b.Total,b.Company_ID,c.ID1,c.ItemName,c.SalePrice,c.Qty,c.ItemAmount,c.DeleteData,c.Company_ID FROM tbl_CompanyMaster  as a, tbl_Expenses as b,tbl_ExpensesInner as c where b.ID1=" + id + " and c.ID1=" + id + " and b.DeleteData='1' and c.DeleteData='1' and a.Company_ID='"+ MainLoginController.companyid1 + "'");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo, a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.ID1, b.Date, b.ExpenseCategory, b.Paid,b.Balance,b.DeleteData,b.Status,b.Total,b.Company_ID,c.ID1,c.ItemName,c.SalePrice,c.Qty,c.ItemAmount,c.DeleteData,c.Company_ID FROM tbl_CompanyMaster  as a, tbl_Expenses as b,tbl_ExpensesInner as c where b.ID1=" + id + " and c.ID1=" + id + " and b.DeleteData='1' and c.DeleteData='1' and a.CompanyID='"+ MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "'");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
 
             DataSet dataSet = new DataSet("productsDataSet");

@@ -277,8 +277,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Barcode = objpurchaseorder.Barcode,
                 Status = objpurchaseorder.Status,
                 VehicleNumber = objpurchaseorder.VehicleNumber,
-                Company_ID= Convert.ToInt32(Session["UserId"])
-
+                Company_ID= Convert.ToInt32(Session["UserId"]),
+                DeleteData=Convert.ToBoolean(1)
             };
             db.tbl_PurchaseOrders.InsertOnSubmit(sale);
             db.SubmitChanges();
@@ -302,7 +302,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty,
-                     Company_ID = Convert.ToInt32(Session["UserId"])
+                     Company_ID = Convert.ToInt32(Session["UserId"]),
+                     DeleteData = Convert.ToBoolean(1)
                 };
                 db.tbl_PurchaseOrderInners.InsertOnSubmit(inner);
 
@@ -322,7 +323,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             int id = Convert.ToInt32(TempData["ID"]);
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.PhoneNo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.OrderNo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName,b.OrderDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.CGST, c.SGST,c.IGST,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b,tbl_PurchaseOrderInner as c where b.OrderNo=" + id + " and c.OrderNo=" + id+ " and a.CompanyID='" +  MainLoginController.companyid1 + "' and b.DeleteData='1' and c.DeleteData='1'");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.PhoneNo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.OrderNo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName,b.OrderDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.CGST, c.SGST,c.IGST,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b,tbl_PurchaseOrderInner as c where b.OrderNo=" + id + " and c.OrderNo=" + id+ " and a.CompanyID='" +  MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and c.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1' and c.DeleteData='1'");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "PurchaseOrder");
@@ -347,7 +348,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult GetReport1()
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.OrderNo,b.PartyName,b.ContactNo,b.OrderDate,b.Total,b.Paid,b.RemainingBal,b.Status,b.DeleteData FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1' ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.OrderNo,b.PartyName,b.ContactNo,b.OrderDate,b.Total,b.Paid,b.RemainingBal,b.Status,b.DeleteData FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData1 = '1' ");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "PurchaseOrder");

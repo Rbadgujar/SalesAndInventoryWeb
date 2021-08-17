@@ -53,7 +53,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public string imagefile=null;
         [HttpPost]
-        public ActionResult Addparty(IEnumerable<HttpPostedFileBase> files, tbl_PartyMasterSelectResult party, int id = 0)
+        public ActionResult Addparty(IEnumerable<HttpPostedFileBase> files, tbl_PartyMaster party, int id = 0)
         {
             if (id == 0)
         {
@@ -77,7 +77,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
                   
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, imagefile);
+                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.PartyGroup, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, imagefile);
                     db.SubmitChanges();
                     return RedirectToAction("Index");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -89,7 +89,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             else
             {
-                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, null);
+                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.PartyGroup, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, null);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
                 //return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -137,7 +137,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return items;
         }
         [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
+        public ActionResult AddpartyUpdate(int id = 0)
         {
             if (id == 0)
             {
@@ -145,7 +145,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             else
             {
-                var tb = db.tbl_PartyMasterSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.PartiesID == id);
+                var tb = db.tbl_PartyMasterSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null,Convert.ToInt32(Session["UserId"]), null, null).Single(x => x.PartiesID == id);
                 var vm = new tbl_PartyMaster();
                 //PartiesID,PartyName,ContactNo,BillingAddress,EmailID,GSTType,State,OpeningBal,AsOfDate
                 //AddRemainder,PartyType,ShippingAddress,PartyGroup,PaidStatus,Type
@@ -168,30 +168,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         
         [HttpPost]
-        public ActionResult AddOrEdit(tbl_PartyMasterSelectResult party, int id=0)//int id = 0)
+        public ActionResult AddpartyUpdate(tbl_PartyMaster party, int id=0)//int id = 0)
         {
-            if (id == 0)
-            {
-                try
-                {
-                    //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, null);
-                    db.SubmitChanges();
-                    return RedirectToAction("Index");
-                    //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-                }
-                catch
-                {
-                    return View();
-                }
-            }
-            else
-            {
-                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTNo, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, null, party.PaidStatus, null);
+          
+                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.PartyGroup, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, null);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
-                //return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
-            }
+          
         }
 
         [HttpPost]
