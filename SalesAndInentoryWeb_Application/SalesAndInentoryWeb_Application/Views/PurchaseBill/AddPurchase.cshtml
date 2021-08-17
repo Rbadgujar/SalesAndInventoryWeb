@@ -29,7 +29,7 @@
 
    
 	</style>
-   
+
 	<script src="~/scripts/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript">
          
@@ -484,7 +484,9 @@
             });
         }
 
+       
 	</script>
+      
 </head>
 <body>
     
@@ -503,8 +505,8 @@
 							<div class="form-group col-md-3">							
 								<b>Party Name:</b>
                                 <br>
-                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item",new { @class = "form-control"} )
-
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item",new { @class = "form-control" ,@style = "Width:230px;" } )
+                                <button class="btn btn-success pull-right" type="button" style="margin-top:-34px"  onclick="PopupForm('@Url.Action("Addparty","PartyMaster")')"><i class="fa fa-plus"></i></button>
                                 <b>Address:	</b>
 
                                 <br>							
@@ -598,18 +600,20 @@
                     <table style="width:100%;">
                         <tr>
                             <td style="padding:3px">
-                                <b>Barcode:</b>
-                                @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo" } })
+                                <label>Barcode</label>        
+                                @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo",@style="width:100px" } })
                                 @Html.ValidationMessageFor(model => model.Barcode)
                             </td>
                             <td style="padding:3px">
-                                <label>Item Name</label>
-                              
+                                <label>Item Name</label>                            
                                 @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control"})
                             </td>
                             <td style="padding:3px;text-align:center">
+                                <button class="btn btn-success" type="button" style="margin-top:25px"><i class="fa fa-plus" onclick="PopupForm1('@Url.Action("Additem","ItemMaster")')"></i></button>
+                            </td>
+                            <td style="padding:3px;text-align:center">
                                 <label>MRP</label>
-                                <input style="text-align:center" type="text" name="SalePrice" id="SalePrice" class="form-control">
+                                <input style="text-align:center;width:80px" type="text" name="SalePrice" id="SalePrice" class="form-control" >
                             </td>
                             <td style="padding:3px;text-align:center">
                                 <label>Tax%</label>
@@ -792,6 +796,105 @@
 			<div>
 			</div>
 		</div>
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    @section scripts{
+        <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+        <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+        <script>
+            var Popup, dataTable, Popup1;
+        $(document).ready(function () {
+          
+        });
+
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Add Parties ',
+                    height: 480,
+                    width: 700,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+
+                });
+            });
+        }
+
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if($(form).valid()){
+                $.ajax({
+                    type : "POST",
+                    url : form.action,
+                    data : $(form).serialize(),
+                    success : function (data) {
+                        if(data.success)
+                        {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message,{
+                                globalPosition :"top center",
+                                className : "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+
+        function PopupForm1(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+                Popup1 = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: 'Add Parties ',
+                    height: 550,
+                    width: 840,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+
+                });
+            });
+        }
+
+        function SubmitForm1(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            Popup1.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+        </script>
+    }
     <br />
     <br />
     <br />
@@ -802,5 +905,6 @@
     <br />
     <br />
     <br />
+   
 </body>
 </html>

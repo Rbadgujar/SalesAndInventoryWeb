@@ -51,19 +51,12 @@
                 <option value="Cheque">Cheque</option>
                 <option value="From Bank Account">From Bank Account</option>
             </select>
-
-
         </div>
         <div class="col-md-2" style="text-align:right"> Date:</div>
         <div class="col-md-4">
-
-
             @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
             @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-
-
         </div>
-
     </div>
         <br />
         <div class="row">
@@ -79,10 +72,7 @@
                 @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Paid, "", new { @class = "text-danger" })
             </div>
-
         </div>
-
-
         <br />
         <div class="row">
             <div class="col-md-2" style="text-align:right">
@@ -93,12 +83,8 @@
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-4">
-
-
                 <input type="submit" value="Save" class="btn btn-primary" style="width:80px;font-size:14px;" />
-
                 <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
-
             </div>
         </div>
         </div>

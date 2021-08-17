@@ -28,16 +28,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             if (par == "0")
             {
-                var tb = db.tbl_PurchaseOrderSelect("datetotdate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var tb = db.tbl_PurchaseOrderSelect("datetotdate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).ToList();
                 return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
             }
-            var tb1 = db.tbl_PurchaseOrderSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1, null, null, null).ToList();
+            var tb1 = db.tbl_PurchaseOrderSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).ToList();
             return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
         }
 
 		public ActionResult Detail(int id)
 		{
-			var tb = db.tbl_PurchaseOrderSelect("Details", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.OrderNo == id);
+			var tb = db.tbl_PurchaseOrderSelect("Details", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).Single(x => x.OrderNo == id);
 			return View(tb);
 		}
 
@@ -277,7 +277,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Barcode = objpurchaseorder.Barcode,
                 Status = objpurchaseorder.Status,
                 VehicleNumber = objpurchaseorder.VehicleNumber,
-                Company_ID= MainLoginController.companyid1
+                Company_ID= Convert.ToInt32(Session["UserId"])
 
             };
             db.tbl_PurchaseOrders.InsertOnSubmit(sale);
@@ -302,7 +302,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty,
-                     Company_ID = MainLoginController.companyid1
+                     Company_ID = Convert.ToInt32(Session["UserId"])
                 };
                 db.tbl_PurchaseOrderInners.InsertOnSubmit(inner);
 
@@ -359,7 +359,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
 		public ActionResult Dele(int id)
 		{
-			var tb = db.tbl_PurchaseOrderSelect("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,  MainLoginController.companyid1, null, null, null).ToList();
+			var tb = db.tbl_PurchaseOrderSelect("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}

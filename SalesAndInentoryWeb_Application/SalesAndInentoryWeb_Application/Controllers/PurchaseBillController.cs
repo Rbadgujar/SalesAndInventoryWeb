@@ -32,11 +32,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             if (par == "0")
             {
-                var tb = db.tbl_PurchaseBillselect("datetodate", null, null, null, null, null,Convert.ToDateTime(date), null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var tb = db.tbl_PurchaseBillselect("datetodate", null, null, null, null, null,Convert.ToDateTime(date), null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).ToList();
                 return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
             }
            
-                var tb1 = db.tbl_PurchaseBillselect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1, null, null, null, null).ToList();
+                var tb1 = db.tbl_PurchaseBillselect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).ToList();
                 return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
             
 
@@ -51,7 +51,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult Detail(int id)
 		{
-			var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1, null, null, null, null).Single(x => x.BillNo == id);
+			var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).Single(x => x.BillNo == id);
 			return View(tb);
 		}
         public ActionResult ViewerEvent1()
@@ -209,8 +209,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 CGST = gst,
                 Barcode = objpurchase.Barcode,
                 Status = objpurchase.Status,
-                VehicleNumber = objpurchase.VehicleNumber
-               
+                VehicleNumber = objpurchase.VehicleNumber,
+                Company_ID = Convert.ToInt32(Session["UserId"])
+
             };
             db.tbl_PurchaseBills.InsertOnSubmit(sale);
             db.SubmitChanges();
@@ -233,7 +234,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     CGST = finalgsr,
                     SGST=finalgsr,              
                     ItemAmount = item.ItemAmount,
-                    Qty = item.Qty
+                    Qty = item.Qty,
+                    Company_ID = Convert.ToInt32(Session["UserId"])
                 };
                 db.tbl_PurchaseBillInners.InsertOnSubmit(inner);
                 db.SubmitChanges();
@@ -359,14 +361,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult vits()
         {
 
-            var tb = db.tbl_PurchaseBillselect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1, null, null, null, null).ToList();
+            var tb = db.tbl_PurchaseBillselect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
        [HttpPost]
         public ActionResult datewise(string m)
         {
 
-            var tb = db.tbl_PurchaseBillselect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1   , null, null, null, null).ToList();
+            var tb = db.tbl_PurchaseBillselect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
 
@@ -381,45 +383,45 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult AddPurchaseUpdate(int id = 0)
-        {
-            var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
-            var vm = new tbl_PurchaseBill();
-            vm.BillNo = tb.BillNo;
-            vm.PartyName = tb.PartyName;
-            vm.BillingName = tb.BillingName;
-            vm.ContactNo = tb.ContactNo;
-            vm.BillDate = Convert.ToDateTime(tb.BillDate);
-            vm.PoDate = Convert.ToDateTime(tb.PoDate);
-            vm.DueDate = Convert.ToDateTime(tb.DueDate);
-            vm.StateofSupply = tb.StateofSupply;
-            vm.PaymentType = tb.PaymentType;
-            vm.VehicleNumber = tb.VehicleNumber;
-            vm.DeliveryLocation = tb.DeliveryLocation;
-            vm.TransportName = tb.TransportName;
-            vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
-            vm.Description = tb.Description;
-            vm.TransportCharges = tb.TransportCharges;
-            vm.Tax1 = tb.Tax1;
-            vm.TaxAmount1 = tb.TaxAmount1;
-            vm.CGST = tb.CGST;
-            vm.SGST = tb.SGST;
-            vm.Paid = tb.Paid;
-            vm.DiscountAmount1 = tb.DiscountAmount1;
-            vm.TotalDiscount = tb.TotalDiscount;
-            vm.RoundFigure = tb.RoundFigure;
-            vm.Total = tb.Total;
-            vm.PaymentTerms = tb.PaymentTerms;
-            vm.RemainingBal = tb.RemainingBal;
-            vm.Status = tb.Status;
-            vm.Barcode = tb.Barcode;
-            vm.IGST = tb.IGST;
-            vm.Feild4 = tb.Feild4;
-            vm.Feild1 = tb.Feild1;
-            return Json(GetFruitNameById5(id), JsonRequestBehavior.AllowGet);
+        //[HttpGet]
+        //public ActionResult AddPurchaseUpdate(int id = 0)
+        //{
+        //    var tb = db.tbl_PurchaseBillselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.BillNo == id);
+        //    var vm = new tbl_PurchaseBill();
+        //    vm.BillNo = tb.BillNo;
+        //    vm.PartyName = tb.PartyName;
+        //    vm.BillingName = tb.BillingName;
+        //    vm.ContactNo = tb.ContactNo;
+        //    vm.BillDate = Convert.ToDateTime(tb.BillDate);
+        //    vm.PoDate = Convert.ToDateTime(tb.PoDate);
+        //    vm.DueDate = Convert.ToDateTime(tb.DueDate);
+        //    vm.StateofSupply = tb.StateofSupply;
+        //    vm.PaymentType = tb.PaymentType;
+        //    vm.VehicleNumber = tb.VehicleNumber;
+        //    vm.DeliveryLocation = tb.DeliveryLocation;
+        //    vm.TransportName = tb.TransportName;
+        //    vm.Deliverydate = Convert.ToDateTime(tb.Deliverydate);
+        //    vm.Description = tb.Description;
+        //    vm.TransportCharges = tb.TransportCharges;
+        //    vm.Tax1 = tb.Tax1;
+        //    vm.TaxAmount1 = tb.TaxAmount1;
+        //    vm.CGST = tb.CGST;
+        //    vm.SGST = tb.SGST;
+        //    vm.Paid = tb.Paid;
+        //    vm.DiscountAmount1 = tb.DiscountAmount1;
+        //    vm.TotalDiscount = tb.TotalDiscount;
+        //    vm.RoundFigure = tb.RoundFigure;
+        //    vm.Total = tb.Total;
+        //    vm.PaymentTerms = tb.PaymentTerms;
+        //    vm.RemainingBal = tb.RemainingBal;
+        //    vm.Status = tb.Status;
+        //    vm.Barcode = tb.Barcode;
+        //    vm.IGST = tb.IGST;
+        //    vm.Feild4 = tb.Feild4;
+        //    vm.Feild1 = tb.Feild1;
+        //    return Json(GetFruitNameById5(id), JsonRequestBehavior.AllowGet);
          
-        }
+        //}
         public JsonResult GetFruitName2(string id)
         {
             return Json(GetFruitNameById2(id), JsonRequestBehavior.AllowGet);
@@ -516,7 +518,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-			var tb = db.tbl_PurchaseBillselect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MainLoginController.companyid1, null, null, null, null).ToList();
+			var tb = db.tbl_PurchaseBillselect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}

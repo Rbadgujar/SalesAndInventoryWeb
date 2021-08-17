@@ -42,7 +42,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                  sql = string.Format("SELECT * FROM tbl_ItemMaster where Company_ID="+Convert.ToInt32(Session["UserId"].ToString())+" and  DeleteData='1'");
+                  sql = string.Format("SELECT * FROM tbl_ItemMaster where Company_ID="+MainLoginController.companyid1+" and  DeleteData='1'");
               
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
