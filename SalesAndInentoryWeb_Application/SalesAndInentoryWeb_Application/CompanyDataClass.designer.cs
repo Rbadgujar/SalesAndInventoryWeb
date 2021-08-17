@@ -22529,8 +22529,10 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
+        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+
+        public IEnumerable<SelectListItem> ListOfParties { get; set; }
+        private int _ID;
 		
 		private string _CustomerName;
 		

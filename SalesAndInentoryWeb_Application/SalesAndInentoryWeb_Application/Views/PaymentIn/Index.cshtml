@@ -34,8 +34,8 @@
                     <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" onclick="PopupForm('@Url.Action("AddOrEdit","PaymentIn")')"><i class="fa fa-plus"></i>Add PaymentIn</a>
                     <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
                     <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
-                    <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
-                    <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
+                    <label class="pull-right" id="fromdate" style="margin-top:12.5px;margin-right:34px;">To</label>
+                    <input type="date" id="todate" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
 
                 </div>
             </div>
@@ -121,7 +121,7 @@
                     autoOpen: true,
                     resizable: false,
                     title: 'Fill PaymentIn Details',
-                    height: 300,
+                    height: 400,
                     width: 700,
                     close: function () {
                         Popup.dialog('destroy').remove();
