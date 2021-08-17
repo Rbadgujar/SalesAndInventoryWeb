@@ -502,17 +502,17 @@
 					<div class="collapse navbar-collapse style="height:100vh;"">
 
 						<div class="row">
-							<div class="form-group col-md-3">							
-								<b>Party Name:</b>
+                            <div class="form-group col-md-3">
+                                <b>Party Name:</b>
                                 <br>
-                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item",new { @class = "form-control" ,@style = "Width:230px;" } )
-                                <button class="btn btn-success pull-right" type="button" style="margin-top:-34px"  onclick="PopupForm('@Url.Action("Addparty","PartyMaster")')"><i class="fa fa-plus"></i></button>
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "Width:230px;" })
+                                <button class="btn btn-success pull-right" type="button" style="margin-top:-34px" onclick="PopupForm('@Url.Action(" Addparty","PartyMaster")')"><i class="fa fa-plus"></i></button>
                                 <b>Address:	</b>
 
-                                <br>							
-								@Html.TextAreaFor(model => model.BillingName, new { @class = "form-control", placeholder = "Address" ,Style="120px"} )
-                              	
-							</div>
+                                <br>
+                                @Html.TextAreaFor(model => model.BillingName, new { @class = "form-control", placeholder = "Address", Style = "120px" })
+
+                            </div>
                             <div class="form-group col-md-3">
                                 <b>Contact No:</b>
                                 @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No....." } })

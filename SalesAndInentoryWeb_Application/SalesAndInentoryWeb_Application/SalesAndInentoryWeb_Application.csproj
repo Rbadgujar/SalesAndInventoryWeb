@@ -2869,6 +2869,7 @@
     <Content Include="Content\notify.css" />
     <Content Include="Content\notify.min.css" />
     <Content Include="Content\phone.js" />
+    <Content Include="Content\Report\SaleBillData.mrt" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -3349,6 +3350,10 @@
     <Content Include="Content\Report\PurchaseOrderDataReport.mrt" />
     <Content Include="Content\Report\DayBookReport.mrt" />
     <Content Include="Content\Report\AllPartiesReport.mrt" />
+    <Content Include="Content\Report\SaleOrderReport.mrt" />
+    <Content Include="Content\Report\SaleReport.mrt" />
+    <Content Include="Content\Report\CreditNoteReport.mrt" />
+    <Content Include="Content\Report\CreditNote.mrt" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
@@ -4005,6 +4010,10 @@
     <Content Include="Views\SaleInvoice\Report.cshtml" />
     <Content Include="Views\Creditnote\Report.cshtml" />
     <Content Include="Views\MainLogin\forgetpassword.cshtml" />
+    <Content Include="Views\SaleInvoice\Reportaall.cshtml" />
+    <Content Include="Views\SaleInvoice\ReportAll.cshtml" />
+    <Content Include="Views\SaleOrder\ReportAll.cshtml" />
+    <Content Include="Content\Report\SaleOrderData.mrt" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

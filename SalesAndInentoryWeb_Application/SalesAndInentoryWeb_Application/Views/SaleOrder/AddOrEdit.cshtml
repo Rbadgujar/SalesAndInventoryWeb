@@ -422,7 +422,7 @@
             objpartydetails.RemainingBal = $("#RemainingBal").val();
             objpartydetails.TransportName = $("#TransportName").val();
              objpartydetails.DeliveryLocation = $("#DeliveryLocation").val();
-            objpartydetails.DeliverDate = $("#DeliveryDate").val
+            objpartydetails.DeliveryDate = $("#DeliveryDate").val
             objpartydetails.TaxAmount1 = $("#TaxAmount1").val();           
             objpartydetails.PaymentType = $("#PaymentType").val();
             objpartydetails.TransportName = $("#TransportName").val();
@@ -542,7 +542,7 @@
                                         @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control datepicker" })
                                         @Html.TextBoxFor(model => model.TaxAmount1, new { @class = "form-control datepicker", @id = "TaxAmount1" ,Style="Display:None" })
                                       <b> Order Date:</b>
-                                        @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker" })
+                                        @Html.TextBoxFor(model => model.OrderDate, new { @type = "date", @class = "form-control datepicker" })
                                         @*Barcode:
                                         @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo"} })
                                         @Html.ValidationMessageFor(model => model.Barcode)*@

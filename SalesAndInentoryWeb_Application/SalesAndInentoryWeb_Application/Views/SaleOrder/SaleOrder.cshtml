@@ -1,22 +1,19 @@
-﻿@model IEnumerable<SalesAndInentoryWeb_Application.tbl_SaleOrderSelectResult
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-
 <div class="container" style="height:100%; width:100%;">
-   <nav class="navbar navbar-default " style="background-color:white;border:none">
+    <nav class="navbar navbar-default " style="background-color:white;border:none">
         <br />
         <nav class="navbar navbar-default " style="border:none; background-color:white;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-8.5px;"><h3>Sale Order </h3></label>
                     <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","SaleOrder")"><i class="fa fa-plus"></i>Add Saleorder</a>
-                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"  href="@Url.Action("ReportAll","SaleOrder")"  ><i class="glyphicon glyphicon-print"></i>Print</a>
                     <input type="date" class="pull-right row" name="From" id="fromdate" style="height:34px; margin-top:6.5px;margin-right:22px; " />
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
                     <input type="date" class="pull-right row" name="To" id="todate" style="height:34px; margin-top:6.5px;margin-right:25px; " />
-
                 </div>
             </div>
         </nav>

@@ -40148,7 +40148,7 @@ namespace SalesAndInentoryWeb_Application
 
         private string _ContactNo;
 
-        private System.Nullable<System.DateTime> _OrderDate;
+        private string _OrderDate;
 
         private System.Nullable<System.DateTime> _DueDate;
 
@@ -40299,7 +40299,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_OrderDate", DbType = "Date")]
-        public System.Nullable<System.DateTime> OrderDate
+        public string OrderDate
         {
             get
             {

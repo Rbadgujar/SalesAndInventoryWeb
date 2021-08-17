@@ -63,6 +63,32 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         }
 
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult ReportAll()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.OrderNo,b.PartyName,b.OrderDate,b.DueDate,b.Total,b.Received,b.RemainingBal,b.Status,b.DeleteData FROM tbl_CompanyMaster as a, tbl_SaleOrder as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1' ");
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.Company_ID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "SaleOrder");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/SaleOrderData.mrt"));
+            report.RegData("SaleOrder", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+
+
+
+
 
 
         [HttpGet]
@@ -267,22 +293,23 @@ namespace SalesAndInentoryWeb_Application.Controllers
             var gst = gstcount / 2;
 
             tbl_SaleOrder sale = new tbl_SaleOrder()
-            {               
+            {
                 PartyName = objpartydetails.PartyName,
-                BillingName=objpartydetails.BillingName,
-                ContactNo = objpartydetails.ContactNo,                             
+                BillingName = objpartydetails.BillingName,
+                ContactNo = objpartydetails.ContactNo,
                 RemainingBal = objpartydetails.RemainingBal,
                 Total = objpartydetails.CalTotal,
                 TransportName = objpartydetails.TransportName,
                 DeliveryLocation = objpartydetails.DeliveryLocation,
                 Deliverydate = objpartydetails.DeliveryDate,
-                Feild3=objpartydetails.Feild3,
+                Feild3 = objpartydetails.Feild3,
                 StateofSupply = objpartydetails.StateOfSupply,
                 SGST = gst,
                 CGST = gst,
-                Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
-                OrderDate =Convert.ToDateTime(objpartydetails.OrderDate),
+                Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
+                OrderDate = Convert.ToDateTime(objpartydetails.OrderDate),
                 DueDate = objpartydetails.DueDate,
+                DeleteData = Convert.ToBoolean(1),
                 Barcode = objpartydetails.Barcode,
                 Status = objpartydetails.Status,
                 VehicleNumber = objpartydetails.VehicleNumber
@@ -308,7 +335,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     TaxForSale=item.TaxForSale,
                     Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                     Discount=item.Discount,
-                    DiscountAmount=item.DiscountAmount,
+                    DeleteData = Convert.ToBoolean(1),
+                    DiscountAmount =item.DiscountAmount,
                     SaleTaxAmount=item.SaleTaxAmount,
                     ItemTotal=item.ItemTotal,
                     Qty=item.Qty
