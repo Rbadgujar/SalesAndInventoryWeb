@@ -31,7 +31,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult ShowData()
         {
-            var getdata = db.tbl_PaymentInSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_PaymentInSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null,Convert.ToInt32(Session["UserId"].ToString())).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
@@ -72,7 +72,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 try
                 {
                     //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-                    db.tbl_PaymentInSelect("Insert1", null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null, null);
+                    db.tbl_PaymentInSelect("Insert1", null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null,Convert.ToInt32(Session["UserId"].ToString()));
                     db.SubmitChanges();
                     return RedirectToAction("Index");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -141,7 +141,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 try
                 {
                     //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-                    db.tbl_PaymentInSelect("Insert1",null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null, null);
+                    db.tbl_PaymentInSelect("Insert1",null, pay.PartyName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null, Convert.ToInt32(Session["UserId"].ToString()));
                     db.SubmitChanges();
                     return RedirectToAction("Index");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -173,7 +173,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             try
             {
-                var getdata = db.tbl_PaymentInSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var getdata = db.tbl_PaymentInSelect("Delete", id, null, null, null, null, null, null, null, null, null, null, null,Convert.ToInt32(Session["UserId"].ToString())).ToList();
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
             }

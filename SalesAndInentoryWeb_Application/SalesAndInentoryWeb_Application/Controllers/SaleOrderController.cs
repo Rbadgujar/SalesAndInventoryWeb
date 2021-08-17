@@ -46,7 +46,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo, b.OrderNo, b.OrderDate, b.DueDate, b.DeliveryLocation,b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit, c.CGST, c.SGST,c.IGST, c.SaleTaxAmount,c.SalePrice,c.Qty,c.TaxForSale,c.ItemAmount FROM tbl_CompanyMaster  as a, tbl_SaleOrder as b,tbl_SaleOrderInner as c where b.OrderNo="+id+" and c.OrderNo="+id+" and a.CompanyID="+MainLoginController.companyid1+" ");
 
-            //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id + " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1' ");
+            //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id + " and a.CompanyID="++" and b.DeleteData1='1' and c.DeleteData1='1' ");
 
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
 
@@ -73,7 +73,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var getdata1 = db.tbl_SaleOrderSelect("datetodate", null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2),null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 return Json(new { data = getdata1 }, JsonRequestBehavior.AllowGet);
             }
-            var getdata = db.tbl_SaleOrderSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_SaleOrderSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,Convert.ToInt32(Session["UserId"].ToString()), null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
@@ -280,7 +280,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 StateofSupply = objpartydetails.StateOfSupply,
                 SGST = gst,
                 CGST = gst,
-                Company_ID=MainLoginController.companyid1,
+                Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                 OrderDate =Convert.ToDateTime(objpartydetails.OrderDate),
                 DueDate = objpartydetails.DueDate,
                 Barcode = objpartydetails.Barcode,
@@ -306,7 +306,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     CGST = finalgsr,
                     SGST=finalgsr,             
                     TaxForSale=item.TaxForSale,
-                    Company_ID=MainLoginController.companyid1,
+                    Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                     Discount=item.Discount,
                     DiscountAmount=item.DiscountAmount,
                     SaleTaxAmount=item.SaleTaxAmount,
