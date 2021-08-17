@@ -35,7 +35,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var getdata1 = db.tbl_CreditNote1Select("datetodate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
                 return Json(new { data = getdata1 }, JsonRequestBehavior.AllowGet);
             }
-            var getdata = db.tbl_CreditNote1Select("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,MainLoginController.companyid1, null, null, null).ToList();
+            var getdata = db.tbl_CreditNote1Select("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
         }
@@ -258,8 +258,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                                 TaxForSale = sdr["TaxForSale"].ToString(),
                                 SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
                                 Discount = Convert.ToDouble(sdr["Discount"]),
-
-
                             });
                         }
                     }
@@ -291,7 +289,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 CGST =gst,
                 SGST=gst,
                 //DueDate = Convert.ToDateTime(objcreditnote.DueDate),
-                Company_ID=MainLoginController.companyid1,
+                Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                 //Barcode = objcreditnote.Barcode,
                 Status = objcreditnote.Status,
                 VehicleNumber = objcreditnote.VehicleNumber,
@@ -318,7 +316,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     Discount = item.Discount,
                     DiscountAmount = item.DiscountAmount,
                     SGST=finalgsr,
-                    Company_ID=MainLoginController.companyid1,
+                    Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                     CGST=finalgsr,                   
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,

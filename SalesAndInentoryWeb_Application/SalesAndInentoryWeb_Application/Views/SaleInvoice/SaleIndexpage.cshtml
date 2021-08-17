@@ -22,9 +22,9 @@
                         <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Sale Invoices</h3> </label>
                         <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Add Sale</a>
                         <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
-                        <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+                        <input type="date" class="pull-right row" id="fromdate" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
                         <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
-                        <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
+                        <input type="date" class="pull-right row" id="todate" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
 
                     </div>
                 </div>
@@ -63,9 +63,57 @@
         <script>
             var Popup, dataTable;
             $(document).ready(function () {
+
+
                 dataTable = $("#saleinvoice").DataTable({
                     "ajax": {
                         "url": "/SaleInvoice/ShowInvoiceData",
+                        "type": "GET",
+                        data: { 'par': '1' },
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "InvoiceID" },
+                        { "data": "PartyName" },
+                        { "data": "ContactNo" },
+                        { "data": "InvoiceDate" },
+                        { "data": "PaymentType" },
+                        { "data": "Received" },
+                        { "data": "RemainingBal" },
+                        { "data": "Total" },
+
+                        {
+                            "data": "InvoiceID" , "render" : function (data) {
+                            return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        },
+                            "orderable": false,
+                            "searchable":false,
+                            "width":"150px"
+                        }
+
+                    ],
+                    "language": {
+
+                        "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
+
+
+
+
+                $("#todate").change(function () {
+                    var table1 = $('#saleinvoice').DataTable();
+                    table1.destroy();
+                    var da = new Date();
+                    var date = $("#todate").val();
+                    var date2 = $("#fromdate").val();
+                    par = 1;
+
+                
+                dataTable = $("#saleinvoice").DataTable({
+                    "ajax": {
+                        "url": "/SaleInvoice/ShowInvoiceData",
+                        data: { 'date': date, 'par': '0', 'date2': date2 },
                         "type": "GET",
                         "datatype": "json"
                     },
@@ -94,7 +142,64 @@
                         "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                     }
                 });
+                });
+
+
+
+
+
+                $("#fromdate").change(function () {
+                    var table1 = $('#saleinvoice').DataTable();
+                    table1.destroy();
+
+                    debugger
+
+                    var date = $("#todate").val();
+                    var date2 = $("#fromdate").val();
+                    par = 1;
+
+                    dataTable = $("#saleinvoice").DataTable({
+                        "ajax": {
+                            "url": "/SaleInvoice/ShowInvoiceData",
+                            data: { 'date': date, 'par': '0', 'date2': date2 },
+                            "type": "GET",
+                            "datatype": "json"
+                        },
+                        "columns": [
+                            { "data": "InvoiceID" },
+                            { "data": "PartyName" },
+                            { "data": "ContactNo" },
+                            { "data": "InvoiceDate" },
+                            { "data": "PaymentType" },
+                            { "data": "Received" },
+                            { "data": "RemainingBal" },
+                            { "data": "Total" },
+
+                            {
+                                "data": "InvoiceID", "render": function (data) {
+                                    return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
+                                },
+                                "orderable": false,
+                                "searchable": false,
+                                "width": "150px"
+                            }
+
+                        ],
+                        "language": {
+
+                            "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                        }
+                    });
+                });
+
+
             });
+
+
+
+
+
+
             function PopupForm(url) {
                 var formDiv = $('<div/>');
                 $.get(url)
@@ -114,6 +219,24 @@
                     });
                 });
             }
+
+
+            $(document).ready(function () {
+                var date = new Date();
+
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+
+                if (month < 10) month = "0" + month;
+                if (day < 10) day = "0" + day;
+
+                var today = year + "-" + month + "-" + day;
+                $("#todate").attr("value", today);
+                $("#fromdate").attr("value", today);
+
+
+            });
 
             function SubmitForm(form) {
                 $.validator.unobtrusive.parse(form);

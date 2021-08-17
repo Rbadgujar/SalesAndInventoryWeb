@@ -24,7 +24,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult EstimateData()
         {
-            var getdata = db.tbl_QuotationSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            var getdata = db.tbl_QuotationSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
 
@@ -82,7 +82,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where  Company_ID=" + MainLoginController.companyid1 + " and DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -111,7 +111,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_PartyMaster where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_PartyMaster where  Company_ID=" + MainLoginController.companyid1 + " and DeleteData='1'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -148,6 +148,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Date = objEstimateDetails.Date,
                 DeleteData = objEstimateDetails.DeleteData,
                 BillingAddress = objEstimateDetails.BillingAddress,
+                Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                 ContactNo = objEstimateDetails.ContactNo
 
             };
@@ -169,6 +170,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     CGST=finalgsr,             
                     TaxForSale = item.TaxForSale,
                     SaleTaxAmount = item.SaleTaxAmount,
+                    Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                     Discount = item.Discount,
                     DiscountAmount = item.DiscountAmount
                 };
@@ -206,7 +208,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName = @Id");
+                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE Company_ID="+MainLoginController.companyid1+" and  PartyName = @Id");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -239,7 +241,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemName = @Id");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster WHERE Company_ID="+MainLoginController.companyid1+" and ItemName = @Id");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
