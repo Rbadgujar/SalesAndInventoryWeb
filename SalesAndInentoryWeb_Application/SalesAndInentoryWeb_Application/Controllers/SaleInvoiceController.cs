@@ -159,7 +159,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT BillingAddress,ContactNo FROM tbl_PartyMaster WHERE PartyName =@Id AND  Company_ID=" + MainLoginController.companyid1 + " ");
+                sql = string.Format("SELECT BillingAddress,ContactNo,OpeningBal FROM tbl_PartyMaster WHERE PartyName =@Id AND  Company_ID=" + MainLoginController.companyid1 + " ");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -172,7 +172,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                             items2.Add(new tbl_PartyMaster()
                             {
                                 BillingAddress = sdr["BillingAddress"].ToString(),
-                                ContactNo = sdr["ContactNo"].ToString()
+                                ContactNo = sdr["ContactNo"].ToString(),
+                            
                             });
                         }
                     }
@@ -284,7 +285,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             bt.ListOfParties = ListOfParties();
             return View(bt);
         }
-        public int openingstock,Minstock;
+        public int openingstock,Minstock, minusamount;
 
         public void stock(int ItemID,int newqty)
         {
@@ -333,7 +334,72 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
 
         }
+        public int OpeningBal1=0;
+      public void partypaymnet(string pname,int Remaingbal,string Status,int totalbal)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql = string.Format("SELECT OpeningBal FROM tbl_PartyMaster WHERE PartyName =@Id AND  Company_ID=" + MainLoginController.companyid1 + " ");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", pname);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+
+                            OpeningBal1 = Convert.ToInt32(sdr["OpeningBal"].ToString());
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            if (Status == "Paid")
+            {
+
+                minusamount = OpeningBal1 - Remaingbal;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    string sql = string.Format("update tbl_PartyMaster Set OpeningBal=" + minusamount + " WHERE PartyName =@Id AND  Company_ID=" + MainLoginController.companyid1 + " ");
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@Id", pname);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+
+            }
+            else
+            {
+
+                 minusamount = OpeningBal1 - totalbal;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    string sql = string.Format("update tbl_PartyMaster Set OpeningBal="+ minusamount+" WHERE PartyName =@Id AND  Company_ID=" + MainLoginController.companyid1 + " ");
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@Id", pname);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+
+            }
+            
+
+        }
+
+
         
+
         public ActionResult ViewerEvent()
         {
             return StiMvcViewer.ViewerEventResult();
@@ -343,6 +409,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
       {
             var gstcount = objsalepartydetails.TaxAmount1;
             var gst = gstcount / 2;
+            partypaymnet(objsalepartydetails.PartyName,Convert.ToInt32(objsalepartydetails.RemainingBal),objsalepartydetails.Status,Convert.ToInt32(objsalepartydetails.CalTotal));
 
             tbl_SaleInvoice sale = new tbl_SaleInvoice()
             {
@@ -350,11 +417,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 BillingName = objsalepartydetails.BillingName,
                 ContactNo = objsalepartydetails.ContactNo,
                 RemainingBal = objsalepartydetails.RemainingBal,
-                CalTotal = objsalepartydetails.CalTotal,
+                PoDate=objsalepartydetails.PODate,
+                PoNumber=objsalepartydetails.PONumber,
+                Total = objsalepartydetails.CalTotal,
+                E_Way_Bill=objsalepartydetails.EwayBillNo,
                 TransportName = objsalepartydetails.TransportName,
                 DeliveryLocation = objsalepartydetails.DeliveryLocation,
                 Deliverydate = objsalepartydetails.DeliveryDate,
+                PaymentType=objsalepartydetails.PaymentType,
+                Feild3 = objsalepartydetails.Feild3,
                 StateofSupply = objsalepartydetails.StateOfSupply,
+                Received=objsalepartydetails.Received,
                 SGST = gst,
                 CGST = gst,
                 Company_ID = Convert.ToInt32(Session["UserId"].ToString()),

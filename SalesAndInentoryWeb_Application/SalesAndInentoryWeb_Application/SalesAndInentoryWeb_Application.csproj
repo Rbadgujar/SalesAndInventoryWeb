@@ -3354,9 +3354,9 @@
     <Content Include="Content\Report\SaleReport.mrt" />
     <Content Include="Content\Report\CreditNoteReport.mrt" />
     <Content Include="Content\Report\CreditNote.mrt" />
-    <Content Include="Content\Report\DebitNoteReport.mrt" />
-    <Content Include="Content\Report\OtherIncomeReport1.mrt" />
+    <Content Include="Content\Report\PaymentIn.mrt" />
     <Content Include="Content\Report\PaymentOutDataReport.mrt" />
+    <Content Include="Content\Report\PaymetinData.mrt" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
@@ -3850,7 +3850,7 @@
     <Compile Include="ViewModel\Exportpartyes.cs" />
     <Compile Include="ViewModel\ItemDetails.cs" />
     <Compile Include="ViewModel\ItemPurchase.cs" />
-    <Compile Include="ViewModel\OtherIncome.cs" />
+    <Compile Include="ViewModel\otherincome.cs" />
     <Compile Include="ViewModel\OtherItem.cs" />
     <Compile Include="ViewModel\OtherParties.cs" />
     <Compile Include="ViewModel\PartyDetailPurchaseOrder.cs" />
@@ -4017,17 +4017,8 @@
     <Content Include="Views\SaleInvoice\ReportAll.cshtml" />
     <Content Include="Views\SaleOrder\ReportAll.cshtml" />
     <Content Include="Content\Report\SaleOrderData.mrt" />
-    <Content Include="Views\DebitNote\ReportAll.cshtml" />
-    <Content Include="Views\PaymentOut\PaymentOutUpdate.cshtml" />
-    <Content Include="Views\PaymentOut\ReportAll.cshtml" />
-    <Content Include="Views\PartyMaster\AddpartyUpdate.cshtml" />
-    <Content Include="Views\OtherIncome\Report.cshtml" />
-    <Content Include="Views\ParchaseOrder\Additem.cshtml" />
-    <Content Include="Views\ParchaseOrder\Addparty.cshtml" />
-    <Content Include="Views\DebitNote\Additem.cshtml" />
-    <Content Include="Views\DebitNote\Addparty.cshtml" />
-    <Content Include="Views\PurchaseBill\Additem.cshtml" />
-    <Content Include="Views\PurchaseBill\Addparty.cshtml" />
+    <Content Include="Views\PaymentIn\Updateview.cshtml" />
+    <Content Include="Views\PaymentIn\ReportAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
