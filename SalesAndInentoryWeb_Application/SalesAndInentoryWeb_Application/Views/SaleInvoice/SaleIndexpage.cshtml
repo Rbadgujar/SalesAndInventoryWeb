@@ -12,49 +12,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-    <div class="container" style="height:100%; width:100%;">
+ <div class="container" style="height:100%; width:100%;">
 
-        <nav class="navbar navbar-default " style="background-color:white;border:none">
-            <br />
-            <nav class="navbar navbar-default " style="border:none; background-color:white;">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse ">
-                        <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Sale Invoices</h3> </label>
-                        <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Add Sale</a>
-                        <a class="btn btn-success pull-right row"  href="@Url.Action("ReportAll","SaleInvoice")" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
-                        <input type="date" class="pull-right row" id="fromdate" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
-                        <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
-                        <input type="date" class="pull-right row" id="todate" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
+     <nav class="navbar navbar-default " style="background-color:white;border:none">
+         <br />
+         <nav class="navbar navbar-default " style="border:none; background-color:white;">
+             <div class="container-fluid">
+                 <div class="collapse navbar-collapse ">
+                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Sale Invoices</h3> </label>
+                     <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Add Sale</a>
+                     <a class="btn btn-success pull-right row" href="@Url.Action("ReportAll","SaleInvoice")" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+                     <input type="date" class="pull-right row" id="fromdate" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
+                     <input type="date" class="pull-right row" id="todate" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
 
-                    </div>
-                </div>
-            </nav>
-
-
+                 </div>
+             </div>
+         </nav>
 
 
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse ">
-                    <table id="saleinvoice" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Invoice No</th>
-                                <th>Party Name</th>
-                                <th>Contact No</th>
-                                <th>Invoice Date</th>
-                                <th>Payment Type</th>
-                                <th>Received</th>
-                                <th>RemainingBal</th>
-                                <th>Total</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </nav>
 
-    </div>
+
+         <div class="container-fluid">
+             <div class="collapse navbar-collapse ">
+                 <table id="saleinvoice" class="table table-striped table-bordered" style="width:100%">
+                     <thead>
+                         <tr>
+                             <th>Invoice No</th>
+                             <th>Party Name</th>
+                             <th>Contact No</th>
+                             <th>Invoice Date</th>
+                             <th>Payment Type</th>
+                             <th>Received</th>
+                             <th>RemainingBal</th>
+                             <th>Total</th>
+                             <th>Action</th>
+                         </tr>
+                     </thead>
+                 </table>
+             </div>
+         </div>
+     </nav>
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+
+ </div>
     <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
     @section scripts{
         <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>

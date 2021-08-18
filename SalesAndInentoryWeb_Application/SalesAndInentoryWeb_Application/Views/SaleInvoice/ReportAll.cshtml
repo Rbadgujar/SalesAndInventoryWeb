@@ -5,7 +5,7 @@
 }
 
 <h2>All Sale Invoice </h2>
-<input type="button" value="Back to Sale " href=@Url.Action("SaleInvoice","SaleInvoice") />
+<button value="Back to List " href='@Url.Action("SaleIndex","SaleInvoice")' />
 <div style="height:100%;">
 @Html.Stimulsoft().StiMvcViewer("MvcViewer1", new StiMvcViewerOptions()
 {
@@ -17,9 +17,6 @@
         GetReport = "GetReport1",
                 ViewerEvent = "ViewerEvent1"
             }
-
-
-
 
 })
 </div>
