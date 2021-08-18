@@ -4019,10 +4019,23 @@
     <Content Include="Content\Report\SaleOrderData.mrt" />
     <Content Include="Views\PaymentIn\Updateview.cshtml" />
     <Content Include="Views\PaymentIn\ReportAll.cshtml" />
-    <Content Include="Views\ParchaseOrder\Additem.cshtml" />
-    <Content Include="Views\ParchaseOrder\Addparty.cshtml" />
+    <Content Include="Views\DebitNote\Additem.cshtml" />
+    <Content Include="Views\DebitNote\Addparty.cshtml" />
+    <Content Include="Views\DebitNote\ReportAll.cshtml" />
+    <Content Include="Views\OtherIncome\Report.cshtml" />
     <Content Include="Views\PurchaseBill\Additem.cshtml" />
     <Content Include="Views\PurchaseBill\Addparty.cshtml" />
+    <Content Include="Views\AllTransaction\Report.cshtml" />
+    <Content Include="Views\ProfitAndLoss\Report.cshtml" />
+    <Content Include="Views\CashFlowReport\Report.cshtml" />
+    <Content Include="Views\PartyReportByItem\Report.cshtml" />
+    <Content Include="Views\SPPartyGroup\Report.cshtml" />
+    <Content Include="Views\ItemReportByParty\Report.cshtml" />
+    <Content Include="Views\LowStockSummary\Report.cshtml" />
+    <Content Include="Views\ItemTrackingReport\Report.cshtml" />
+    <Content Include="Views\DiscountReport\Report.cshtml" />
+    <Content Include="Views\TaxReport\Report.cshtml" />
+    <Content Include="Views\TaxRateReport\Report.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

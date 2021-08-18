@@ -39,7 +39,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult Data(string date)
         {
-            var tb = db.DayBookReport("Select", null, null, null, null, null, null, Convert.ToDateTime(date)).ToList();
+            var tb = db.DayBookReport("Select", null, null, null, null, null, null, Convert.ToDateTime(date), Convert.ToInt32(Session["UserId"])).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 
         }

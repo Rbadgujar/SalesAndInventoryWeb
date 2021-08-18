@@ -1604,20 +1604,6 @@ namespace SalesAndInentoryWeb_Application
 			return ((ISingleResult<ReportsResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ExpensesReport")]
-		public ISingleResult<ExpensesReportResult> ExpensesReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpenseCategory", DbType="NVarChar(MAX)")] string expenseCategory, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Paid", DbType="Float")] System.Nullable<double> paid, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalePrice", DbType="Float")] System.Nullable<double> salePrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, expenseCategory, paid, itemName, salePrice, qty, itemAmount);
-			return ((ISingleResult<ExpensesReportResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ExpensesInnerReport")]
-		public ISingleResult<ExpensesInnerReportResult> ExpensesInnerReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="NVarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemName, action, qty, itemAmount);
-			return ((ISingleResult<ExpensesInnerReportResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.OtherIncome")]
 		public ISingleResult<OtherIncomeResult> OtherIncome([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IncomeCategory", DbType="NVarChar(MAX)")] string incomeCategory, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received)
 		{
@@ -1632,109 +1618,11 @@ namespace SalesAndInentoryWeb_Application
 			return ((ISingleResult<OtherIncomeInnerResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.LowStockSummary")]
-		public ISingleResult<LowStockSummaryResult> LowStockSummary([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningQty", DbType="Float")] System.Nullable<double> openingQty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MinimumStock", DbType="Float")] System.Nullable<double> minimumStock, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> atPrice)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemName, openingQty, minimumStock, atPrice);
-			return ((ISingleResult<LowStockSummaryResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ItemTrackingReport")]
-		public ISingleResult<ItemTrackingReportResult> ItemTrackingReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BatchNo", DbType="NVarChar(MAX)")] string batchNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SerialNo", DbType="NVarChar(MAX)")] string serialNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Size", DbType="NVarChar(MAX)")] string size, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MFgdate", DbType="Date")] System.Nullable<System.DateTime> mFgdate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Expdate", DbType="Date")] System.Nullable<System.DateTime> expdate)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemName, batchNo, serialNo, size, mFgdate, expdate);
-			return ((ISingleResult<ItemTrackingReportResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ItemReportByParty")]
-		public ISingleResult<ItemReportByPartyResult> ItemReportByParty([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, itemName, qty, itemAmount);
-			return ((ISingleResult<ItemReportByPartyResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.PartyReportByItem")]
-		public ISingleResult<PartyReportByItemResult> PartyReportByItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, qty, itemAmount);
-			return ((ISingleResult<PartyReportByItemResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SalePurchaseByPartyGroup")]
-		public ISingleResult<SalePurchaseByPartyGroupResult> SalePurchaseByPartyGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, itemName, qty, itemAmount);
-			return ((ISingleResult<SalePurchaseByPartyGroupResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SalePurchaseOrderItemReport")]
-		public ISingleResult<SalePurchaseOrderItemReportResult> SalePurchaseOrderItemReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> freeQty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemName, qty, freeQty, itemAmount);
-			return ((ISingleResult<SalePurchaseOrderItemReportResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TaxRateReport")]
-		public ISingleResult<TaxRateReportResult> TaxRateReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxForSale", DbType="NVarChar(MAX)")] string taxForSale, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleTaxAmount", DbType="Float")] System.Nullable<double> saleTaxAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxForPurchase", DbType="NVarChar(MAX)")] string taxForPurchase, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseTaxAmount", DbType="Float")] System.Nullable<double> purchaseTaxAmount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemName, taxForSale, saleTaxAmount, taxForPurchase, purchaseTaxAmount);
-			return ((ISingleResult<TaxRateReportResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TaxReport")]
-		public ISingleResult<TaxReportResult> TaxReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxAmountShow", DbType="Float")] System.Nullable<double> taxAmountShow, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleTaxOrPurchaseTax", DbType="NVarChar(MAX)")] string saleTaxOrPurchaseTax)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, partyName, taxAmountShow, tableName, saleTaxOrPurchaseTax);
-			return ((ISingleResult<TaxReportResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DiscountReport")]
-		public ISingleResult<DiscountReportResult> DiscountReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="Float")] System.Nullable<double> discount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleDiscountOrPurchaseDiscount", DbType="NVarChar(MAX)")] string saleDiscountOrPurchaseDiscount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, discount, saleDiscountOrPurchaseDiscount);
-			return ((ISingleResult<DiscountReportResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CashFlow")]
 		public ISingleResult<CashFlowResult> CashFlow([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="DateTime")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CashInOrCashOut", DbType="Float")] System.Nullable<double> cashInOrCashOut)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, invoiceDate, cashInOrCashOut);
 			return ((ISingleResult<CashFlowResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ProfitOrLoss")]
-		public ISingleResult<ProfitOrLossResult> ProfitOrLoss([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="DateTime")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProfitOrLoss", DbType="Float")] System.Nullable<double> profitOrLoss)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, invoiceDate, profitOrLoss);
-			return ((ISingleResult<ProfitOrLossResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AllTransaction")]
-		public ISingleResult<AllTransactionResult> AllTransaction([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="Date")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(MAX)")] string status)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, invoiceDate, total, received, remainingBal, status);
-			return ((ISingleResult<AllTransactionResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.BankStatement")]
-		public ISingleResult<BankStatementResult> BankStatement([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="Date")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ToBank", DbType="NVarChar(MAX)")] string toBank, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="NVarChar(MAX)")] string amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(MAX)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningBal", DbType="Float")] System.Nullable<double> openingBal)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, date, toBank, description, amount, bankName, openingBal);
-			return ((ISingleResult<BankStatementResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DayBookReport")]
-		public ISingleResult<DayBookReportResult> DayBookReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="DateTime")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="Date")] System.Nullable<System.DateTime> date)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, invoiceDate, total, received, remainingBal, date);
-			return ((ISingleResult<DayBookReportResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.PartyStatement")]
-		public ISingleResult<PartyStatementResult> PartyStatement([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="DateTime")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, invoiceDate, total, received, remainingBal);
-			return ((ISingleResult<PartyStatementResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_BankAdjustmentselect")]
@@ -1830,6 +1718,118 @@ namespace SalesAndInentoryWeb_Application
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, companyID, companyName, phoneNo, emailID, referaleCode, businessType, address, city, state, gSTNumber, ownerName, signature, addLogo, additinalFeild1, additinalFeild2, additinalFeild3, def, logoPath, singPath);
 			return ((ISingleResult<tbl_CompanyMasterSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AllTransaction")]
+		public ISingleResult<AllTransactionResult> AllTransaction([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="Date")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(MAX)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, invoiceDate, total, received, remainingBal, status, compid);
+			return ((ISingleResult<AllTransactionResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.BankStatement")]
+		public ISingleResult<BankStatementResult> BankStatement([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="Date")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ToBank", DbType="NVarChar(MAX)")] string toBank, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="NVarChar(MAX)")] string amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(MAX)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningBal", DbType="Float")] System.Nullable<double> openingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, date, toBank, description, amount, bankName, openingBal, compid);
+			return ((ISingleResult<BankStatementResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DayBookReport")]
+		public ISingleResult<DayBookReportResult> DayBookReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="DateTime")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="Date")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, invoiceDate, total, received, remainingBal, date, compid);
+			return ((ISingleResult<DayBookReportResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DiscountReport")]
+		public ISingleResult<DiscountReportResult> DiscountReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="Float")] System.Nullable<double> discount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleDiscountOrPurchaseDiscount", DbType="NVarChar(MAX)")] string saleDiscountOrPurchaseDiscount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, discount, saleDiscountOrPurchaseDiscount, compid);
+			return ((ISingleResult<DiscountReportResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ExpensesInnerReport")]
+		public ISingleResult<ExpensesInnerReportResult> ExpensesInnerReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="NVarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), itemName, action, qty, itemAmount, compid);
+			return ((ISingleResult<ExpensesInnerReportResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ExpensesReport")]
+		public ISingleResult<ExpensesReportResult> ExpensesReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpenseCategory", DbType="NVarChar(MAX)")] string expenseCategory, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Paid", DbType="Float")] System.Nullable<double> paid, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalePrice", DbType="Float")] System.Nullable<double> salePrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, expenseCategory, paid, itemName, salePrice, qty, itemAmount, compid);
+			return ((ISingleResult<ExpensesReportResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ItemReportByParty")]
+		public ISingleResult<ItemReportByPartyResult> ItemReportByParty([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, itemName, qty, itemAmount, compid);
+			return ((ISingleResult<ItemReportByPartyResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ItemTrackingReport")]
+		public ISingleResult<ItemTrackingReportResult> ItemTrackingReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BatchNo", DbType="NVarChar(MAX)")] string batchNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SerialNo", DbType="NVarChar(MAX)")] string serialNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Size", DbType="NVarChar(MAX)")] string size, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MFgdate", DbType="Date")] System.Nullable<System.DateTime> mFgdate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Expdate", DbType="Date")] System.Nullable<System.DateTime> expdate, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemName, batchNo, serialNo, size, mFgdate, expdate, compid);
+			return ((ISingleResult<ItemTrackingReportResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.LowStockSummary")]
+		public ISingleResult<LowStockSummaryResult> LowStockSummary([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningQty", DbType="Float")] System.Nullable<double> openingQty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MinimumStock", DbType="Float")] System.Nullable<double> minimumStock, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> atPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemName, openingQty, minimumStock, atPrice, compid);
+			return ((ISingleResult<LowStockSummaryResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.PartyReportByItem")]
+		public ISingleResult<PartyReportByItemResult> PartyReportByItem([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, qty, itemAmount, compid);
+			return ((ISingleResult<PartyReportByItemResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.PartyStatement")]
+		public ISingleResult<PartyStatementResult> PartyStatement([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="DateTime")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Float")] System.Nullable<double> total, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Received", DbType="Float")] System.Nullable<double> received, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RemainingBal", DbType="Float")] System.Nullable<double> remainingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, partyName, invoiceDate, total, received, remainingBal, compid);
+			return ((ISingleResult<PartyStatementResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ProfitOrLoss")]
+		public ISingleResult<ProfitOrLossResult> ProfitOrLoss([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceDate", DbType="DateTime")] System.Nullable<System.DateTime> invoiceDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProfitOrLoss", DbType="Float")] System.Nullable<double> profitOrLoss, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, invoiceDate, profitOrLoss, compid);
+			return ((ISingleResult<ProfitOrLossResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TaxRateReport")]
+		public ISingleResult<TaxRateReportResult> TaxRateReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxForSale", DbType="NVarChar(MAX)")] string taxForSale, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleTaxAmount", DbType="Float")] System.Nullable<double> saleTaxAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxForPurchase", DbType="NVarChar(MAX)")] string taxForPurchase, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseTaxAmount", DbType="Float")] System.Nullable<double> purchaseTaxAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemName, taxForSale, saleTaxAmount, taxForPurchase, purchaseTaxAmount, compid);
+			return ((ISingleResult<TaxRateReportResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TaxReport")]
+		public ISingleResult<TaxReportResult> TaxReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartyName", DbType="NVarChar(MAX)")] string partyName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TaxAmountShow", DbType="Float")] System.Nullable<double> taxAmountShow, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SaleTaxOrPurchaseTax", DbType="NVarChar(MAX)")] string saleTaxOrPurchaseTax, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, partyName, taxAmountShow, tableName, saleTaxOrPurchaseTax, compid);
+			return ((ISingleResult<TaxReportResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SalePurchaseByPartyGroup")]
+		public ISingleResult<SalePurchaseByPartyGroupResult> SalePurchaseByPartyGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, tableName, itemName, qty, itemAmount, compid);
+			return ((ISingleResult<SalePurchaseByPartyGroupResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SalePurchaseOrderItemReport")]
+		public ISingleResult<SalePurchaseOrderItemReportResult> SalePurchaseOrderItemReport([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemName", DbType="NVarChar(MAX)")] string itemName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> freeQty, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ItemAmount", DbType="Float")] System.Nullable<double> itemAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, itemName, qty, freeQty, itemAmount, compid);
+			return ((ISingleResult<SalePurchaseOrderItemReportResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3639,11 +3639,11 @@ namespace SalesAndInentoryWeb_Application
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_BankAccount")]
 	public partial class tbl_BankAccount : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
+        private int _ID;
 		
 		private string _AccountName;
 		
@@ -13205,7 +13205,7 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccount { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
         private int _ID;
 		
@@ -13861,8 +13861,8 @@ namespace SalesAndInentoryWeb_Application
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
         private int _ID;
-		
-		private System.Nullable<double> _PrincipleAmount;
+      
+        private System.Nullable<double> _PrincipleAmount;
 		
 		private System.Nullable<double> _InterestAmount;
 		
@@ -14826,7 +14826,8 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-      
+        public IEnumerable<SelectListItem> ListOfAccount { get; set; }
+        public IEnumerable<SelectListItem> ListOfParties { get; set; }
         private int _ID1;
 		
 		private string _ItemName;
@@ -15303,8 +15304,9 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id_inner;
+        public IEnumerable<SelectListItem> ListOfAccount { get; set; }
+        public IEnumerable<SelectListItem> ListOfParties { get; set; }
+        private int _Id_inner;
 		
 		private string _ItemName;
 		
@@ -15708,7 +15710,7 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccount { get; set; }
         public IEnumerable<SelectListItem> ListOfPartyGroup { get; set; }
         private int _PartiesID;
 		
@@ -16203,7 +16205,7 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccount { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
         private int _ID;
 		
@@ -17000,7 +17002,7 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+        public IEnumerable<SelectListItem> ListOfAccount { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
         private int _ID;
 		
@@ -20419,10 +20421,8 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private int _ID;
+		
+		private int _ID;
 		
 		private System.Nullable<int> _ItemID;
 		
@@ -31337,7 +31337,7 @@ namespace SalesAndInentoryWeb_Application
 
         private string _ExpenseCategory;
 
-        private string _Date;
+        private System.Nullable<System.DateTime> _Date;
 
         private string _Description;
 
@@ -31415,7 +31415,21 @@ namespace SalesAndInentoryWeb_Application
                 }
             }
         }
-
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Date", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                if ((this._Date != value))
+                {
+                    this._Date = value;
+                }
+            }
+        }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Image", DbType = "Image")]
         public System.Data.Linq.Binary Image
@@ -33464,7 +33478,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<int> _ReceiptNo;
 		
-		private string _Date;
+		private System.Nullable<System.DateTime> _Date;
 		
 		private string _Description;
 		
@@ -33547,7 +33561,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public string Date
+		public System.Nullable<System.DateTime> Date
 		{
 			get
 			{
@@ -37559,7 +37573,8 @@ namespace SalesAndInentoryWeb_Application
 
         private string _PoNumber;
 
-        private string _InvoiceDate;
+        private System.Nullable<System.DateTime> _InvoiceDate;
+
 
         private string _StateofSupply;
 
@@ -37728,7 +37743,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_InvoiceDate", DbType = "Date")]
-        public string InvoiceDate
+        public System.Nullable<System.DateTime> InvoiceDate
         {
             get
             {
@@ -38400,11 +38415,11 @@ namespace SalesAndInentoryWeb_Application
                 }
             }
         }
-
     }
 	
 	public partial class tbl_SaleOrderSelectResult
 	{
+
         private int _OrderNo;
 
         private string _PartyName;
@@ -38413,7 +38428,7 @@ namespace SalesAndInentoryWeb_Application
 
         private string _ContactNo;
 
-        private string _OrderDate;
+        private System.Nullable<System.DateTime> _OrderDate;
 
         private System.Nullable<System.DateTime> _DueDate;
 
@@ -38564,7 +38579,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_OrderDate", DbType = "Date")]
-        public string OrderDate
+        public System.Nullable<System.DateTime> OrderDate
         {
             get
             {
@@ -39218,10 +39233,9 @@ namespace SalesAndInentoryWeb_Application
                 }
             }
         }
-
     }
-
-    public partial class tbl_TransactionPassswordSelectResult
+	
+	public partial class tbl_TransactionPassswordSelectResult
 	{
 		
 		private int _ID;
@@ -39855,112 +39869,6 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
-	public partial class ExpensesReportResult
-	{
-		
-		private string _ExpenseCategory;
-		
-		private System.Nullable<double> _Paid;
-		
-		public ExpensesReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpenseCategory", DbType="NVarChar(MAX)")]
-		public string ExpenseCategory
-		{
-			get
-			{
-				return this._ExpenseCategory;
-			}
-			set
-			{
-				if ((this._ExpenseCategory != value))
-				{
-					this._ExpenseCategory = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Float")]
-		public System.Nullable<double> Paid
-		{
-			get
-			{
-				return this._Paid;
-			}
-			set
-			{
-				if ((this._Paid != value))
-				{
-					this._Paid = value;
-				}
-			}
-		}
-	}
-	
-	public partial class ExpensesInnerReportResult
-	{
-		
-		private string _ItemName;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<double> _ItemAmount;
-		
-		public ExpensesInnerReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-			set
-			{
-				if ((this._ItemName != value))
-				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this._Qty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Float")]
-		public System.Nullable<double> ItemAmount
-		{
-			get
-			{
-				return this._ItemAmount;
-			}
-			set
-			{
-				if ((this._ItemAmount != value))
-				{
-					this._ItemAmount = value;
-				}
-			}
-		}
-	}
-	
 	public partial class OtherIncomeResult
 	{
 		
@@ -40067,762 +39975,6 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
-	public partial class LowStockSummaryResult
-	{
-		
-		private string _ItemName;
-		
-		private System.Nullable<double> _OpeningQty;
-		
-		private System.Nullable<int> _MinimumStock;
-		
-		private System.Nullable<double> _atPrice;
-		
-		public LowStockSummaryResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-			set
-			{
-				if ((this._ItemName != value))
-				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OpeningQty", DbType="Float")]
-		public System.Nullable<double> OpeningQty
-		{
-			get
-			{
-				return this._OpeningQty;
-			}
-			set
-			{
-				if ((this._OpeningQty != value))
-				{
-					this._OpeningQty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinimumStock", DbType="Int")]
-		public System.Nullable<int> MinimumStock
-		{
-			get
-			{
-				return this._MinimumStock;
-			}
-			set
-			{
-				if ((this._MinimumStock != value))
-				{
-					this._MinimumStock = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_atPrice", DbType="Float")]
-		public System.Nullable<double> atPrice
-		{
-			get
-			{
-				return this._atPrice;
-			}
-			set
-			{
-				if ((this._atPrice != value))
-				{
-					this._atPrice = value;
-				}
-			}
-		}
-	}
-	
-	public partial class ItemTrackingReportResult
-	{
-		
-		private string _ItemName;
-		
-		private string _BatchNo;
-		
-		private string _SerialNo;
-		
-		private string _Size;
-		
-		private System.Nullable<System.DateTime> _MFgdate;
-		
-		private System.Nullable<System.DateTime> _Expdate;
-		
-		public ItemTrackingReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-			set
-			{
-				if ((this._ItemName != value))
-				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BatchNo", DbType="NVarChar(MAX)")]
-		public string BatchNo
-		{
-			get
-			{
-				return this._BatchNo;
-			}
-			set
-			{
-				if ((this._BatchNo != value))
-				{
-					this._BatchNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SerialNo", DbType="NVarChar(MAX)")]
-		public string SerialNo
-		{
-			get
-			{
-				return this._SerialNo;
-			}
-			set
-			{
-				if ((this._SerialNo != value))
-				{
-					this._SerialNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Size", DbType="NVarChar(MAX)")]
-		public string Size
-		{
-			get
-			{
-				return this._Size;
-			}
-			set
-			{
-				if ((this._Size != value))
-				{
-					this._Size = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MFgdate", DbType="Date")]
-		public System.Nullable<System.DateTime> MFgdate
-		{
-			get
-			{
-				return this._MFgdate;
-			}
-			set
-			{
-				if ((this._MFgdate != value))
-				{
-					this._MFgdate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Expdate", DbType="Date")]
-		public System.Nullable<System.DateTime> Expdate
-		{
-			get
-			{
-				return this._Expdate;
-			}
-			set
-			{
-				if ((this._Expdate != value))
-				{
-					this._Expdate = value;
-				}
-			}
-		}
-	}
-	
-	public partial class ItemReportByPartyResult
-	{
-		
-		private string _TableName;
-		
-		private string _PartyName;
-		
-		private string _ItemName;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<int> _ItemAmount;
-		
-		public ItemReportByPartyResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
-		public string TableName
-		{
-			get
-			{
-				return this._TableName;
-			}
-			set
-			{
-				if ((this._TableName != value))
-				{
-					this._TableName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
-		public string PartyName
-		{
-			get
-			{
-				return this._PartyName;
-			}
-			set
-			{
-				if ((this._PartyName != value))
-				{
-					this._PartyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-			set
-			{
-				if ((this._ItemName != value))
-				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this._Qty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
-		public System.Nullable<int> ItemAmount
-		{
-			get
-			{
-				return this._ItemAmount;
-			}
-			set
-			{
-				if ((this._ItemAmount != value))
-				{
-					this._ItemAmount = value;
-				}
-			}
-		}
-	}
-	
-	public partial class PartyReportByItemResult
-	{
-		
-		private string _TableName;
-		
-		private string _PartyName;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<int> _ItemAmount;
-		
-		public PartyReportByItemResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
-		public string TableName
-		{
-			get
-			{
-				return this._TableName;
-			}
-			set
-			{
-				if ((this._TableName != value))
-				{
-					this._TableName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
-		public string PartyName
-		{
-			get
-			{
-				return this._PartyName;
-			}
-			set
-			{
-				if ((this._PartyName != value))
-				{
-					this._PartyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this._Qty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
-		public System.Nullable<int> ItemAmount
-		{
-			get
-			{
-				return this._ItemAmount;
-			}
-			set
-			{
-				if ((this._ItemAmount != value))
-				{
-					this._ItemAmount = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SalePurchaseByPartyGroupResult
-	{
-		
-		private string _TableName;
-		
-		private string _ItemName;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<int> _ItemAmount;
-		
-		public SalePurchaseByPartyGroupResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
-		public string TableName
-		{
-			get
-			{
-				return this._TableName;
-			}
-			set
-			{
-				if ((this._TableName != value))
-				{
-					this._TableName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-			set
-			{
-				if ((this._ItemName != value))
-				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this._Qty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
-		public System.Nullable<int> ItemAmount
-		{
-			get
-			{
-				return this._ItemAmount;
-			}
-			set
-			{
-				if ((this._ItemAmount != value))
-				{
-					this._ItemAmount = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SalePurchaseOrderItemReportResult
-	{
-		
-		private string _ItemName;
-		
-		private System.Nullable<int> _Qty;
-		
-		private System.Nullable<int> _freeQty;
-		
-		private System.Nullable<int> _ItemAmount;
-		
-		public SalePurchaseOrderItemReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-			set
-			{
-				if ((this._ItemName != value))
-				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
-		public System.Nullable<int> Qty
-		{
-			get
-			{
-				return this._Qty;
-			}
-			set
-			{
-				if ((this._Qty != value))
-				{
-					this._Qty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_freeQty", DbType="Int")]
-		public System.Nullable<int> freeQty
-		{
-			get
-			{
-				return this._freeQty;
-			}
-			set
-			{
-				if ((this._freeQty != value))
-				{
-					this._freeQty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
-		public System.Nullable<int> ItemAmount
-		{
-			get
-			{
-				return this._ItemAmount;
-			}
-			set
-			{
-				if ((this._ItemAmount != value))
-				{
-					this._ItemAmount = value;
-				}
-			}
-		}
-	}
-	
-	public partial class TaxRateReportResult
-	{
-		
-		private string _ItemName;
-		
-		private string _TaxForSale;
-		
-		private System.Nullable<double> _SaleTaxAmount;
-		
-		private string _TaxForPurchase;
-		
-		private System.Nullable<double> _PurchaseTaxAmount;
-		
-		public TaxRateReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-			set
-			{
-				if ((this._ItemName != value))
-				{
-					this._ItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxForSale", DbType="NVarChar(MAX)")]
-		public string TaxForSale
-		{
-			get
-			{
-				return this._TaxForSale;
-			}
-			set
-			{
-				if ((this._TaxForSale != value))
-				{
-					this._TaxForSale = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SaleTaxAmount", DbType="Float")]
-		public System.Nullable<double> SaleTaxAmount
-		{
-			get
-			{
-				return this._SaleTaxAmount;
-			}
-			set
-			{
-				if ((this._SaleTaxAmount != value))
-				{
-					this._SaleTaxAmount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxForPurchase", DbType="NVarChar(MAX)")]
-		public string TaxForPurchase
-		{
-			get
-			{
-				return this._TaxForPurchase;
-			}
-			set
-			{
-				if ((this._TaxForPurchase != value))
-				{
-					this._TaxForPurchase = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseTaxAmount", DbType="Float")]
-		public System.Nullable<double> PurchaseTaxAmount
-		{
-			get
-			{
-				return this._PurchaseTaxAmount;
-			}
-			set
-			{
-				if ((this._PurchaseTaxAmount != value))
-				{
-					this._PurchaseTaxAmount = value;
-				}
-			}
-		}
-	}
-	
-	public partial class TaxReportResult
-	{
-		
-		private string _Type;
-		
-		private string _PartyName;
-		
-		private System.Nullable<double> _SaleTax_PurchaseTax;
-		
-		public TaxReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(MAX)")]
-		public string Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this._Type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
-		public string PartyName
-		{
-			get
-			{
-				return this._PartyName;
-			}
-			set
-			{
-				if ((this._PartyName != value))
-				{
-					this._PartyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[SaleTax/PurchaseTax]", Storage="_SaleTax_PurchaseTax", DbType="Float")]
-		public System.Nullable<double> SaleTax_PurchaseTax
-		{
-			get
-			{
-				return this._SaleTax_PurchaseTax;
-			}
-			set
-			{
-				if ((this._SaleTax_PurchaseTax != value))
-				{
-					this._SaleTax_PurchaseTax = value;
-				}
-			}
-		}
-	}
-	
-	public partial class DiscountReportResult
-	{
-		
-		private string _Type;
-		
-		private string _PartyName;
-		
-		private System.Nullable<double> _SaleDiscountOrPurchaseDiscount;
-		
-		public DiscountReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(MAX)")]
-		public string Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this._Type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
-		public string PartyName
-		{
-			get
-			{
-				return this._PartyName;
-			}
-			set
-			{
-				if ((this._PartyName != value))
-				{
-					this._PartyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SaleDiscountOrPurchaseDiscount", DbType="Float")]
-		public System.Nullable<double> SaleDiscountOrPurchaseDiscount
-		{
-			get
-			{
-				return this._SaleDiscountOrPurchaseDiscount;
-			}
-			set
-			{
-				if ((this._SaleDiscountOrPurchaseDiscount != value))
-				{
-					this._SaleDiscountOrPurchaseDiscount = value;
-				}
-			}
-		}
-	}
-	
 	public partial class CashFlowResult
 	{
 		
@@ -40898,586 +40050,6 @@ namespace SalesAndInentoryWeb_Application
 				if ((this._CashInOrCashOut != value))
 				{
 					this._CashInOrCashOut = value;
-				}
-			}
-		}
-	}
-	
-	public partial class ProfitOrLossResult
-	{
-		
-		private System.Nullable<System.DateTime> _Date;
-		
-		private string _Type;
-		
-		private System.Nullable<double> _ProfitOrLoss;
-		
-		public ProfitOrLossResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this._Date = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(MAX)")]
-		public string Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this._Type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfitOrLoss", DbType="Float")]
-		public System.Nullable<double> ProfitOrLoss
-		{
-			get
-			{
-				return this._ProfitOrLoss;
-			}
-			set
-			{
-				if ((this._ProfitOrLoss != value))
-				{
-					this._ProfitOrLoss = value;
-				}
-			}
-		}
-	}
-	
-	public partial class AllTransactionResult
-	{
-		
-		private string _TableName;
-		
-		private string _PartyName;
-		
-		private System.Nullable<System.DateTime> _InvoiceDate;
-		
-		private System.Nullable<double> _Total;
-		
-		private System.Nullable<double> _Received;
-		
-		private System.Nullable<double> _RemainingBal;
-		
-		private string _Status;
-		
-		public AllTransactionResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
-		public string TableName
-		{
-			get
-			{
-				return this._TableName;
-			}
-			set
-			{
-				if ((this._TableName != value))
-				{
-					this._TableName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
-		public string PartyName
-		{
-			get
-			{
-				return this._PartyName;
-			}
-			set
-			{
-				if ((this._PartyName != value))
-				{
-					this._PartyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> InvoiceDate
-		{
-			get
-			{
-				return this._InvoiceDate;
-			}
-			set
-			{
-				if ((this._InvoiceDate != value))
-				{
-					this._InvoiceDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float")]
-		public System.Nullable<double> Total
-		{
-			get
-			{
-				return this._Total;
-			}
-			set
-			{
-				if ((this._Total != value))
-				{
-					this._Total = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Received", DbType="Float")]
-		public System.Nullable<double> Received
-		{
-			get
-			{
-				return this._Received;
-			}
-			set
-			{
-				if ((this._Received != value))
-				{
-					this._Received = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemainingBal", DbType="Float")]
-		public System.Nullable<double> RemainingBal
-		{
-			get
-			{
-				return this._RemainingBal;
-			}
-			set
-			{
-				if ((this._RemainingBal != value))
-				{
-					this._RemainingBal = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(MAX)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class BankStatementResult
-	{
-		
-		private System.Nullable<System.DateTime> _Date;
-		
-		private string _ToBank;
-		
-		private string _Descripition;
-		
-		private System.Nullable<double> _Amount;
-		
-		private string _BankName;
-		
-		private System.Nullable<double> _OpeningBal;
-		
-		public BankStatementResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this._Date = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToBank", DbType="NVarChar(MAX)")]
-		public string ToBank
-		{
-			get
-			{
-				return this._ToBank;
-			}
-			set
-			{
-				if ((this._ToBank != value))
-				{
-					this._ToBank = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripition", DbType="NVarChar(MAX)")]
-		public string Descripition
-		{
-			get
-			{
-				return this._Descripition;
-			}
-			set
-			{
-				if ((this._Descripition != value))
-				{
-					this._Descripition = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Float")]
-		public System.Nullable<double> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this._Amount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(MAX)")]
-		public string BankName
-		{
-			get
-			{
-				return this._BankName;
-			}
-			set
-			{
-				if ((this._BankName != value))
-				{
-					this._BankName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OpeningBal", DbType="Float")]
-		public System.Nullable<double> OpeningBal
-		{
-			get
-			{
-				return this._OpeningBal;
-			}
-			set
-			{
-				if ((this._OpeningBal != value))
-				{
-					this._OpeningBal = value;
-				}
-			}
-		}
-	}
-	
-	public partial class DayBookReportResult
-	{
-		
-		private string _TableName;
-		
-		private string _PartyName;
-		
-		private System.Nullable<System.DateTime> _InvoiceDate;
-		
-		private System.Nullable<double> _Total;
-		
-		private System.Nullable<double> _Received;
-		
-		private System.Nullable<double> _RemainingBal;
-		
-		private string _Status;
-		
-		public DayBookReportResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
-		public string TableName
-		{
-			get
-			{
-				return this._TableName;
-			}
-			set
-			{
-				if ((this._TableName != value))
-				{
-					this._TableName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
-		public string PartyName
-		{
-			get
-			{
-				return this._PartyName;
-			}
-			set
-			{
-				if ((this._PartyName != value))
-				{
-					this._PartyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> InvoiceDate
-		{
-			get
-			{
-				return this._InvoiceDate;
-			}
-			set
-			{
-				if ((this._InvoiceDate != value))
-				{
-					this._InvoiceDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float")]
-		public System.Nullable<double> Total
-		{
-			get
-			{
-				return this._Total;
-			}
-			set
-			{
-				if ((this._Total != value))
-				{
-					this._Total = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Received", DbType="Float")]
-		public System.Nullable<double> Received
-		{
-			get
-			{
-				return this._Received;
-			}
-			set
-			{
-				if ((this._Received != value))
-				{
-					this._Received = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemainingBal", DbType="Float")]
-		public System.Nullable<double> RemainingBal
-		{
-			get
-			{
-				return this._RemainingBal;
-			}
-			set
-			{
-				if ((this._RemainingBal != value))
-				{
-					this._RemainingBal = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(MAX)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class PartyStatementResult
-	{
-		
-		private string _TableName;
-		
-		private string _PartyName;
-		
-		private System.Nullable<System.DateTime> _InvoiceDate;
-		
-		private System.Nullable<double> _Total;
-		
-		private System.Nullable<double> _Received;
-		
-		private System.Nullable<double> _RemainingBal;
-		
-		private string _Status;
-		
-		public PartyStatementResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
-		public string TableName
-		{
-			get
-			{
-				return this._TableName;
-			}
-			set
-			{
-				if ((this._TableName != value))
-				{
-					this._TableName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
-		public string PartyName
-		{
-			get
-			{
-				return this._PartyName;
-			}
-			set
-			{
-				if ((this._PartyName != value))
-				{
-					this._PartyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> InvoiceDate
-		{
-			get
-			{
-				return this._InvoiceDate;
-			}
-			set
-			{
-				if ((this._InvoiceDate != value))
-				{
-					this._InvoiceDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float")]
-		public System.Nullable<double> Total
-		{
-			get
-			{
-				return this._Total;
-			}
-			set
-			{
-				if ((this._Total != value))
-				{
-					this._Total = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Received", DbType="Float")]
-		public System.Nullable<double> Received
-		{
-			get
-			{
-				return this._Received;
-			}
-			set
-			{
-				if ((this._Received != value))
-				{
-					this._Received = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemainingBal", DbType="Float")]
-		public System.Nullable<double> RemainingBal
-		{
-			get
-			{
-				return this._RemainingBal;
-			}
-			set
-			{
-				if ((this._RemainingBal != value))
-				{
-					this._RemainingBal = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(MAX)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
 				}
 			}
 		}
@@ -42778,6 +41350,1448 @@ namespace SalesAndInentoryWeb_Application
 				if ((this._IFSC_Code != value))
 				{
 					this._IFSC_Code = value;
+				}
+			}
+		}
+	}
+	
+	public partial class AllTransactionResult
+	{
+		
+		private string _TableName;
+		
+		private string _PartyName;
+		
+		private System.Nullable<System.DateTime> _InvoiceDate;
+		
+		private System.Nullable<double> _Total;
+		
+		private System.Nullable<double> _Received;
+		
+		private System.Nullable<double> _RemainingBal;
+		
+		private string _Status;
+		
+		public AllTransactionResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this._TableName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
+		public string PartyName
+		{
+			get
+			{
+				return this._PartyName;
+			}
+			set
+			{
+				if ((this._PartyName != value))
+				{
+					this._PartyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InvoiceDate
+		{
+			get
+			{
+				return this._InvoiceDate;
+			}
+			set
+			{
+				if ((this._InvoiceDate != value))
+				{
+					this._InvoiceDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float")]
+		public System.Nullable<double> Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Received", DbType="Float")]
+		public System.Nullable<double> Received
+		{
+			get
+			{
+				return this._Received;
+			}
+			set
+			{
+				if ((this._Received != value))
+				{
+					this._Received = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemainingBal", DbType="Float")]
+		public System.Nullable<double> RemainingBal
+		{
+			get
+			{
+				return this._RemainingBal;
+			}
+			set
+			{
+				if ((this._RemainingBal != value))
+				{
+					this._RemainingBal = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(MAX)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class BankStatementResult
+	{
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private string _ToBank;
+		
+		private string _Descripition;
+		
+		private System.Nullable<double> _Amount;
+		
+		private string _BankName;
+		
+		private System.Nullable<double> _OpeningBal;
+		
+		public BankStatementResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToBank", DbType="NVarChar(MAX)")]
+		public string ToBank
+		{
+			get
+			{
+				return this._ToBank;
+			}
+			set
+			{
+				if ((this._ToBank != value))
+				{
+					this._ToBank = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripition", DbType="NVarChar(MAX)")]
+		public string Descripition
+		{
+			get
+			{
+				return this._Descripition;
+			}
+			set
+			{
+				if ((this._Descripition != value))
+				{
+					this._Descripition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Float")]
+		public System.Nullable<double> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(MAX)")]
+		public string BankName
+		{
+			get
+			{
+				return this._BankName;
+			}
+			set
+			{
+				if ((this._BankName != value))
+				{
+					this._BankName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OpeningBal", DbType="Float")]
+		public System.Nullable<double> OpeningBal
+		{
+			get
+			{
+				return this._OpeningBal;
+			}
+			set
+			{
+				if ((this._OpeningBal != value))
+				{
+					this._OpeningBal = value;
+				}
+			}
+		}
+	}
+	
+	public partial class DayBookReportResult
+	{
+		
+		private string _TableName;
+		
+		private string _PartyName;
+		
+		private System.Nullable<System.DateTime> _InvoiceDate;
+		
+		private System.Nullable<double> _Total;
+		
+		private System.Nullable<double> _Received;
+		
+		private System.Nullable<double> _RemainingBal;
+		
+		private string _Status;
+		
+		public DayBookReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this._TableName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
+		public string PartyName
+		{
+			get
+			{
+				return this._PartyName;
+			}
+			set
+			{
+				if ((this._PartyName != value))
+				{
+					this._PartyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InvoiceDate
+		{
+			get
+			{
+				return this._InvoiceDate;
+			}
+			set
+			{
+				if ((this._InvoiceDate != value))
+				{
+					this._InvoiceDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float")]
+		public System.Nullable<double> Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Received", DbType="Float")]
+		public System.Nullable<double> Received
+		{
+			get
+			{
+				return this._Received;
+			}
+			set
+			{
+				if ((this._Received != value))
+				{
+					this._Received = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemainingBal", DbType="Float")]
+		public System.Nullable<double> RemainingBal
+		{
+			get
+			{
+				return this._RemainingBal;
+			}
+			set
+			{
+				if ((this._RemainingBal != value))
+				{
+					this._RemainingBal = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(MAX)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class DiscountReportResult
+	{
+		
+		private string _Type;
+		
+		private string _PartyName;
+		
+		private System.Nullable<double> _SaleDiscountOrPurchaseDiscount;
+		
+		public DiscountReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(MAX)")]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
+		public string PartyName
+		{
+			get
+			{
+				return this._PartyName;
+			}
+			set
+			{
+				if ((this._PartyName != value))
+				{
+					this._PartyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SaleDiscountOrPurchaseDiscount", DbType="Float")]
+		public System.Nullable<double> SaleDiscountOrPurchaseDiscount
+		{
+			get
+			{
+				return this._SaleDiscountOrPurchaseDiscount;
+			}
+			set
+			{
+				if ((this._SaleDiscountOrPurchaseDiscount != value))
+				{
+					this._SaleDiscountOrPurchaseDiscount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class ExpensesInnerReportResult
+	{
+		
+		private string _ItemName;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<double> _ItemAmount;
+		
+		public ExpensesInnerReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Float")]
+		public System.Nullable<double> ItemAmount
+		{
+			get
+			{
+				return this._ItemAmount;
+			}
+			set
+			{
+				if ((this._ItemAmount != value))
+				{
+					this._ItemAmount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class ExpensesReportResult
+	{
+		
+		private string _ExpenseCategory;
+		
+		private System.Nullable<double> _Paid;
+		
+		public ExpensesReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpenseCategory", DbType="NVarChar(MAX)")]
+		public string ExpenseCategory
+		{
+			get
+			{
+				return this._ExpenseCategory;
+			}
+			set
+			{
+				if ((this._ExpenseCategory != value))
+				{
+					this._ExpenseCategory = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Float")]
+		public System.Nullable<double> Paid
+		{
+			get
+			{
+				return this._Paid;
+			}
+			set
+			{
+				if ((this._Paid != value))
+				{
+					this._Paid = value;
+				}
+			}
+		}
+	}
+	
+	public partial class ItemReportByPartyResult
+	{
+		
+		private string _TableName;
+		
+		private string _PartyName;
+		
+		private string _ItemName;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _ItemAmount;
+		
+		public ItemReportByPartyResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this._TableName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
+		public string PartyName
+		{
+			get
+			{
+				return this._PartyName;
+			}
+			set
+			{
+				if ((this._PartyName != value))
+				{
+					this._PartyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
+		public System.Nullable<int> ItemAmount
+		{
+			get
+			{
+				return this._ItemAmount;
+			}
+			set
+			{
+				if ((this._ItemAmount != value))
+				{
+					this._ItemAmount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class ItemTrackingReportResult
+	{
+		
+		private string _ItemName;
+		
+		private string _BatchNo;
+		
+		private string _SerialNo;
+		
+		private string _Size;
+		
+		private System.Nullable<System.DateTime> _MFgdate;
+		
+		private System.Nullable<System.DateTime> _Expdate;
+		
+		public ItemTrackingReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BatchNo", DbType="NVarChar(MAX)")]
+		public string BatchNo
+		{
+			get
+			{
+				return this._BatchNo;
+			}
+			set
+			{
+				if ((this._BatchNo != value))
+				{
+					this._BatchNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SerialNo", DbType="NVarChar(MAX)")]
+		public string SerialNo
+		{
+			get
+			{
+				return this._SerialNo;
+			}
+			set
+			{
+				if ((this._SerialNo != value))
+				{
+					this._SerialNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Size", DbType="NVarChar(MAX)")]
+		public string Size
+		{
+			get
+			{
+				return this._Size;
+			}
+			set
+			{
+				if ((this._Size != value))
+				{
+					this._Size = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MFgdate", DbType="Date")]
+		public System.Nullable<System.DateTime> MFgdate
+		{
+			get
+			{
+				return this._MFgdate;
+			}
+			set
+			{
+				if ((this._MFgdate != value))
+				{
+					this._MFgdate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Expdate", DbType="Date")]
+		public System.Nullable<System.DateTime> Expdate
+		{
+			get
+			{
+				return this._Expdate;
+			}
+			set
+			{
+				if ((this._Expdate != value))
+				{
+					this._Expdate = value;
+				}
+			}
+		}
+	}
+	
+	public partial class LowStockSummaryResult
+	{
+		
+		private string _ItemName;
+		
+		private System.Nullable<double> _OpeningQty;
+		
+		private System.Nullable<int> _MinimumStock;
+		
+		private System.Nullable<double> _atPrice;
+		
+		public LowStockSummaryResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OpeningQty", DbType="Float")]
+		public System.Nullable<double> OpeningQty
+		{
+			get
+			{
+				return this._OpeningQty;
+			}
+			set
+			{
+				if ((this._OpeningQty != value))
+				{
+					this._OpeningQty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinimumStock", DbType="Int")]
+		public System.Nullable<int> MinimumStock
+		{
+			get
+			{
+				return this._MinimumStock;
+			}
+			set
+			{
+				if ((this._MinimumStock != value))
+				{
+					this._MinimumStock = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_atPrice", DbType="Float")]
+		public System.Nullable<double> atPrice
+		{
+			get
+			{
+				return this._atPrice;
+			}
+			set
+			{
+				if ((this._atPrice != value))
+				{
+					this._atPrice = value;
+				}
+			}
+		}
+	}
+	
+	public partial class PartyReportByItemResult
+	{
+		
+		private string _TableName;
+		
+		private string _PartyName;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _ItemAmount;
+		
+		public PartyReportByItemResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this._TableName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
+		public string PartyName
+		{
+			get
+			{
+				return this._PartyName;
+			}
+			set
+			{
+				if ((this._PartyName != value))
+				{
+					this._PartyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
+		public System.Nullable<int> ItemAmount
+		{
+			get
+			{
+				return this._ItemAmount;
+			}
+			set
+			{
+				if ((this._ItemAmount != value))
+				{
+					this._ItemAmount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class PartyStatementResult
+	{
+		
+		private string _TableName;
+		
+		private string _PartyName;
+		
+		private System.Nullable<System.DateTime> _InvoiceDate;
+		
+		private System.Nullable<double> _Total;
+		
+		private System.Nullable<double> _Received;
+		
+		private System.Nullable<double> _RemainingBal;
+		
+		private string _Status;
+		
+		public PartyStatementResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this._TableName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
+		public string PartyName
+		{
+			get
+			{
+				return this._PartyName;
+			}
+			set
+			{
+				if ((this._PartyName != value))
+				{
+					this._PartyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InvoiceDate
+		{
+			get
+			{
+				return this._InvoiceDate;
+			}
+			set
+			{
+				if ((this._InvoiceDate != value))
+				{
+					this._InvoiceDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float")]
+		public System.Nullable<double> Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Received", DbType="Float")]
+		public System.Nullable<double> Received
+		{
+			get
+			{
+				return this._Received;
+			}
+			set
+			{
+				if ((this._Received != value))
+				{
+					this._Received = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemainingBal", DbType="Float")]
+		public System.Nullable<double> RemainingBal
+		{
+			get
+			{
+				return this._RemainingBal;
+			}
+			set
+			{
+				if ((this._RemainingBal != value))
+				{
+					this._RemainingBal = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(MAX)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class ProfitOrLossResult
+	{
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private string _Type;
+		
+		private System.Nullable<double> _ProfitOrLoss;
+		
+		public ProfitOrLossResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(MAX)")]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfitOrLoss", DbType="Float")]
+		public System.Nullable<double> ProfitOrLoss
+		{
+			get
+			{
+				return this._ProfitOrLoss;
+			}
+			set
+			{
+				if ((this._ProfitOrLoss != value))
+				{
+					this._ProfitOrLoss = value;
+				}
+			}
+		}
+	}
+	
+	public partial class TaxRateReportResult
+	{
+		
+		private string _ItemName;
+		
+		private string _TaxForSale;
+		
+		private System.Nullable<double> _SaleTaxAmount;
+		
+		private string _TaxForPurchase;
+		
+		private System.Nullable<double> _PurchaseTaxAmount;
+		
+		public TaxRateReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxForSale", DbType="NVarChar(MAX)")]
+		public string TaxForSale
+		{
+			get
+			{
+				return this._TaxForSale;
+			}
+			set
+			{
+				if ((this._TaxForSale != value))
+				{
+					this._TaxForSale = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SaleTaxAmount", DbType="Float")]
+		public System.Nullable<double> SaleTaxAmount
+		{
+			get
+			{
+				return this._SaleTaxAmount;
+			}
+			set
+			{
+				if ((this._SaleTaxAmount != value))
+				{
+					this._SaleTaxAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxForPurchase", DbType="NVarChar(MAX)")]
+		public string TaxForPurchase
+		{
+			get
+			{
+				return this._TaxForPurchase;
+			}
+			set
+			{
+				if ((this._TaxForPurchase != value))
+				{
+					this._TaxForPurchase = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseTaxAmount", DbType="Float")]
+		public System.Nullable<double> PurchaseTaxAmount
+		{
+			get
+			{
+				return this._PurchaseTaxAmount;
+			}
+			set
+			{
+				if ((this._PurchaseTaxAmount != value))
+				{
+					this._PurchaseTaxAmount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class TaxReportResult
+	{
+		
+		private string _Type;
+		
+		private string _PartyName;
+		
+		private System.Nullable<double> _SaleTax_PurchaseTax;
+		
+		public TaxReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(MAX)")]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartyName", DbType="NVarChar(MAX)")]
+		public string PartyName
+		{
+			get
+			{
+				return this._PartyName;
+			}
+			set
+			{
+				if ((this._PartyName != value))
+				{
+					this._PartyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[SaleTax/PurchaseTax]", Storage="_SaleTax_PurchaseTax", DbType="Float")]
+		public System.Nullable<double> SaleTax_PurchaseTax
+		{
+			get
+			{
+				return this._SaleTax_PurchaseTax;
+			}
+			set
+			{
+				if ((this._SaleTax_PurchaseTax != value))
+				{
+					this._SaleTax_PurchaseTax = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SalePurchaseByPartyGroupResult
+	{
+		
+		private string _TableName;
+		
+		private string _ItemName;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _ItemAmount;
+		
+		public SalePurchaseByPartyGroupResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableName", DbType="NVarChar(MAX)")]
+		public string TableName
+		{
+			get
+			{
+				return this._TableName;
+			}
+			set
+			{
+				if ((this._TableName != value))
+				{
+					this._TableName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
+		public System.Nullable<int> ItemAmount
+		{
+			get
+			{
+				return this._ItemAmount;
+			}
+			set
+			{
+				if ((this._ItemAmount != value))
+				{
+					this._ItemAmount = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SalePurchaseOrderItemReportResult
+	{
+		
+		private string _ItemName;
+		
+		private System.Nullable<int> _Qty;
+		
+		private System.Nullable<int> _freeQty;
+		
+		private System.Nullable<int> _ItemAmount;
+		
+		public SalePurchaseOrderItemReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(MAX)")]
+		public string ItemName
+		{
+			get
+			{
+				return this._ItemName;
+			}
+			set
+			{
+				if ((this._ItemName != value))
+				{
+					this._ItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Qty", DbType="Int")]
+		public System.Nullable<int> Qty
+		{
+			get
+			{
+				return this._Qty;
+			}
+			set
+			{
+				if ((this._Qty != value))
+				{
+					this._Qty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_freeQty", DbType="Int")]
+		public System.Nullable<int> freeQty
+		{
+			get
+			{
+				return this._freeQty;
+			}
+			set
+			{
+				if ((this._freeQty != value))
+				{
+					this._freeQty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemAmount", DbType="Int")]
+		public System.Nullable<int> ItemAmount
+		{
+			get
+			{
+				return this._ItemAmount;
+			}
+			set
+			{
+				if ((this._ItemAmount != value))
+				{
+					this._ItemAmount = value;
 				}
 			}
 		}
