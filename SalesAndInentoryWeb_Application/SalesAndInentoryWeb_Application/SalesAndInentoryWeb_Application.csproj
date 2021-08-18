@@ -4019,6 +4019,10 @@
     <Content Include="Content\Report\SaleOrderData.mrt" />
     <Content Include="Views\PaymentIn\Updateview.cshtml" />
     <Content Include="Views\PaymentIn\ReportAll.cshtml" />
+    <Content Include="Views\ParchaseOrder\Additem.cshtml" />
+    <Content Include="Views\ParchaseOrder\Addparty.cshtml" />
+    <Content Include="Views\PurchaseBill\Additem.cshtml" />
+    <Content Include="Views\PurchaseBill\Addparty.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

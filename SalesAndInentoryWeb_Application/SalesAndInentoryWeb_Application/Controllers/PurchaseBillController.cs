@@ -542,7 +542,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult Addparty(int id = 0)
         {
             tbl_PartyMaster bt = new tbl_PartyMaster();
-            bt.ListOfPartyGroup = ListOfItems();
+            bt.ListOfPartyGroup = ListOfItems();          
             return View(bt);
         }
         public string imagefile = null;

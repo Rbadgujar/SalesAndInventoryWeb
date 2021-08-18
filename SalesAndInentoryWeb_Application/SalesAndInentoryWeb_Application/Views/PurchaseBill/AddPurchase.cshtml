@@ -505,7 +505,7 @@
                             <div class="form-group col-md-3">
                                 <b>Party Name:</b>
                                 <br>
-                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "Width:230px;" })
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "Width:220px;" })
                                 <a class="btn btn-success pull-right" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Addparty","PurchaseBill")')"><i class="fa fa-plus"></i></a>
                                 <b>Address:	</b>
 

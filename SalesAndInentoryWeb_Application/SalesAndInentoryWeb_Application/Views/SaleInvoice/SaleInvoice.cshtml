@@ -471,8 +471,8 @@
                         <div class="form-group col-md-3">
                             <b>Party Name:</b>
                             <br>
-                            @Html.DropDownListFor(model => model.ParitesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Parties", new { @class = "form-control" })
-                            <button class="btn btn-success pull-right" type="button" style="margin-top:-34px" onclick="PopupForm('@Url.Action(" Addparty","PartyMaster")')"><i class="fa fa-plus"></i></button>
+                            @Html.DropDownListFor(model => model.ParitesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Parties", new { @class = "form-control" ,@Style="Width:220px" })
+                            <a class="btn btn-success pull-right" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Addparty","PurchaseBill")')"><i class="fa fa-plus"></i></a>
                             <b> Party Address:</b>
                             <textarea name='awesome' class="form-control" id="BillingName" style="width:230px;" placeholder="Billing Address "></textarea>
                         </div>
