@@ -18,7 +18,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult Data()
         {
-            var tb = db.ExpensesReport("ExpensesSelect", null, null,null,null,null,null).ToList();
+            var tb = db.ExpensesReport("ExpensesSelect", null, null,null,null,null,null, Convert.ToInt32(Session["UserId"])).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
     }

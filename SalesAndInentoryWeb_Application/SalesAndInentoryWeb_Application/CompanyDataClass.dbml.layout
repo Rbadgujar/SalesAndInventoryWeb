@@ -332,14 +332,14 @@
         <elementListCompartment Id="844df8a6-50d8-4258-8b7d-d7177f362568" absoluteBounds="30.765, 9.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 2.54890055338542); (3.5 : 2.54890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 2.54890055338542); (3.5 : 2.54890055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/CompanyDataClassDataContext/tbl_OtherIncome/tbl_OtherIncome_tbl_OtherIncomeInner1" />
       <nodes>
         <classShapeMoniker Id="db22babb-dd6c-4b3d-b133-cf3c336aee6b" />
         <classShapeMoniker Id="334c8641-d537-41bb-95ec-2b0c13be5468" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.16905843098958); (3.5 : 5.16905843098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.16905843098958); (3.5 : 5.16905843098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/CompanyDataClassDataContext/tbl_OtherIncome/tbl_OtherIncome_tbl_OtherIncomeInner3" />
       <nodes>
         <classShapeMoniker Id="db22babb-dd6c-4b3d-b133-cf3c336aee6b" />

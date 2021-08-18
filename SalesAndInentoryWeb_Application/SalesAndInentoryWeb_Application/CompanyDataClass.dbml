@@ -2794,30 +2794,6 @@
       <Column Name="ReceivedOrPaid" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.ExpensesReport" Method="ExpensesReport">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ExpenseCategory" Parameter="expenseCategory" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Paid" Parameter="paid" Type="System.Double" DbType="Float" />
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="SalePrice" Parameter="salePrice" Type="System.Double" DbType="Float" />
-    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
-    <ElementType Name="ExpensesReportResult">
-      <Column Name="ExpenseCategory" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Paid" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.ExpensesInnerReport" Method="ExpensesInnerReport">
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
-    <ElementType Name="ExpensesInnerReportResult">
-      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ItemAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.OtherIncome" Method="OtherIncome">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="IncomeCategory" Parameter="incomeCategory" Type="System.String" DbType="NVarChar(MAX)" />
@@ -2838,129 +2814,6 @@
       <Column Name="ItemAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.LowStockSummary" Method="LowStockSummary">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="OpeningQty" Parameter="openingQty" Type="System.Double" DbType="Float" />
-    <Parameter Name="MinimumStock" Parameter="minimumStock" Type="System.Double" DbType="Float" />
-    <Parameter Name="atPrice" Type="System.Double" DbType="Float" />
-    <ElementType Name="LowStockSummaryResult">
-      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OpeningQty" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="MinimumStock" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="atPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.ItemTrackingReport" Method="ItemTrackingReport">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="BatchNo" Parameter="batchNo" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="SerialNo" Parameter="serialNo" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Size" Parameter="size" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="MFgdate" Parameter="mFgdate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="Expdate" Parameter="expdate" Type="System.DateTime" DbType="Date" />
-    <ElementType Name="ItemTrackingReportResult">
-      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BatchNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="SerialNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Size" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="MFgdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Expdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.ItemReportByParty" Method="ItemReportByParty">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
-    <ElementType Name="ItemReportByPartyResult">
-      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.PartyReportByItem" Method="PartyReportByItem">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
-    <ElementType Name="PartyReportByItemResult">
-      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SalePurchaseByPartyGroup" Method="SalePurchaseByPartyGroup">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
-    <ElementType Name="SalePurchaseByPartyGroupResult">
-      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SalePurchaseOrderItemReport" Method="SalePurchaseOrderItemReport">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="freeQty" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
-    <ElementType Name="SalePurchaseOrderItemReportResult">
-      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="freeQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.TaxRateReport" Method="TaxRateReport">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="TaxForSale" Parameter="taxForSale" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="SaleTaxAmount" Parameter="saleTaxAmount" Type="System.Double" DbType="Float" />
-    <Parameter Name="TaxForPurchase" Parameter="taxForPurchase" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="PurchaseTaxAmount" Parameter="purchaseTaxAmount" Type="System.Double" DbType="Float" />
-    <ElementType Name="TaxRateReportResult">
-      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TaxForSale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="SaleTaxAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TaxForPurchase" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PurchaseTaxAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.TaxReport" Method="TaxReport">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="TaxAmountShow" Parameter="taxAmountShow" Type="System.Double" DbType="Float" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="SaleTaxOrPurchaseTax" Parameter="saleTaxOrPurchaseTax" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="TaxReportResult">
-      <Column Name="Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="[SaleTax/PurchaseTax]" Member="SaleTax_PurchaseTax" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.DiscountReport" Method="DiscountReport">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Discount" Parameter="discount" Type="System.Double" DbType="Float" />
-    <Parameter Name="SaleDiscountOrPurchaseDiscount" Parameter="saleDiscountOrPurchaseDiscount" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="DiscountReportResult">
-      <Column Name="Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="SaleDiscountOrPurchaseDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.CashFlow" Method="CashFlow">
     <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
@@ -2971,90 +2824,6 @@
       <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="CashInOrCashOut" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.ProfitOrLoss" Method="ProfitOrLoss">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="ProfitOrLoss" Parameter="profitOrLoss" Type="System.Double" DbType="Float" />
-    <ElementType Name="ProfitOrLossResult">
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ProfitOrLoss" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.AllTransaction" Method="AllTransaction">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
-    <Parameter Name="Received" Parameter="received" Type="System.Double" DbType="Float" />
-    <Parameter Name="RemainingBal" Parameter="remainingBal" Type="System.Double" DbType="Float" />
-    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="AllTransactionResult">
-      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="RemainingBal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.BankStatement" Method="BankStatement">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="ToBank" Parameter="toBank" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Amount" Parameter="amount" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="BankName" Parameter="bankName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="OpeningBal" Parameter="openingBal" Type="System.Double" DbType="Float" />
-    <ElementType Name="BankStatementResult">
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ToBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Descripition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="BankName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OpeningBal" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.DayBookReport" Method="DayBookReport">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
-    <Parameter Name="Received" Parameter="received" Type="System.Double" DbType="Float" />
-    <Parameter Name="RemainingBal" Parameter="remainingBal" Type="System.Double" DbType="Float" />
-    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
-    <ElementType Name="DayBookReportResult">
-      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="RemainingBal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.PartyStatement" Method="PartyStatement">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
-    <Parameter Name="Received" Parameter="received" Type="System.Double" DbType="Float" />
-    <Parameter Name="RemainingBal" Parameter="remainingBal" Type="System.Double" DbType="Float" />
-    <ElementType Name="PartyStatementResult">
-      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="RemainingBal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.tbl_BankAdjustmentselect" Method="tbl_BankAdjustmentselect">
@@ -3234,6 +3003,253 @@
       <Column Name="BankName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="AccountNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="IFSC_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AllTransaction" Method="AllTransaction">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
+    <Parameter Name="Received" Parameter="received" Type="System.Double" DbType="Float" />
+    <Parameter Name="RemainingBal" Parameter="remainingBal" Type="System.Double" DbType="Float" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="AllTransactionResult">
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RemainingBal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BankStatement" Method="BankStatement">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="ToBank" Parameter="toBank" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="BankName" Parameter="bankName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="OpeningBal" Parameter="openingBal" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="BankStatementResult">
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ToBank" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Descripition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BankName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OpeningBal" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DayBookReport" Method="DayBookReport">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
+    <Parameter Name="Received" Parameter="received" Type="System.Double" DbType="Float" />
+    <Parameter Name="RemainingBal" Parameter="remainingBal" Type="System.Double" DbType="Float" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DayBookReportResult">
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RemainingBal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DiscountReport" Method="DiscountReport">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Discount" Parameter="discount" Type="System.Double" DbType="Float" />
+    <Parameter Name="SaleDiscountOrPurchaseDiscount" Parameter="saleDiscountOrPurchaseDiscount" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DiscountReportResult">
+      <Column Name="Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SaleDiscountOrPurchaseDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ExpensesInnerReport" Method="ExpensesInnerReport">
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ExpensesInnerReportResult">
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ExpensesReport" Method="ExpensesReport">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ExpenseCategory" Parameter="expenseCategory" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Paid" Parameter="paid" Type="System.Double" DbType="Float" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="SalePrice" Parameter="salePrice" Type="System.Double" DbType="Float" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ExpensesReportResult">
+      <Column Name="ExpenseCategory" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Paid" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ItemReportByParty" Method="ItemReportByParty">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ItemReportByPartyResult">
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ItemTrackingReport" Method="ItemTrackingReport">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="BatchNo" Parameter="batchNo" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="SerialNo" Parameter="serialNo" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Size" Parameter="size" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="MFgdate" Parameter="mFgdate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Expdate" Parameter="expdate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ItemTrackingReportResult">
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BatchNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SerialNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Size" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MFgdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Expdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.LowStockSummary" Method="LowStockSummary">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="OpeningQty" Parameter="openingQty" Type="System.Double" DbType="Float" />
+    <Parameter Name="MinimumStock" Parameter="minimumStock" Type="System.Double" DbType="Float" />
+    <Parameter Name="atPrice" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="LowStockSummaryResult">
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OpeningQty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MinimumStock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="atPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.PartyReportByItem" Method="PartyReportByItem">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="PartyReportByItemResult">
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.PartyStatement" Method="PartyStatement">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Total" Parameter="total" Type="System.Double" DbType="Float" />
+    <Parameter Name="Received" Parameter="received" Type="System.Double" DbType="Float" />
+    <Parameter Name="RemainingBal" Parameter="remainingBal" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="PartyStatementResult">
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Received" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RemainingBal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ProfitOrLoss" Method="ProfitOrLoss">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ProfitOrLoss" Parameter="profitOrLoss" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ProfitOrLossResult">
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProfitOrLoss" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TaxRateReport" Method="TaxRateReport">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="TaxForSale" Parameter="taxForSale" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="SaleTaxAmount" Parameter="saleTaxAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="TaxForPurchase" Parameter="taxForPurchase" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PurchaseTaxAmount" Parameter="purchaseTaxAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TaxRateReportResult">
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TaxForSale" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SaleTaxAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TaxForPurchase" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PurchaseTaxAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TaxReport" Method="TaxReport">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="PartyName" Parameter="partyName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="TaxAmountShow" Parameter="taxAmountShow" Type="System.Double" DbType="Float" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="SaleTaxOrPurchaseTax" Parameter="saleTaxOrPurchaseTax" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TaxReportResult">
+      <Column Name="Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PartyName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="[SaleTax/PurchaseTax]" Member="SaleTax_PurchaseTax" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SalePurchaseByPartyGroup" Method="SalePurchaseByPartyGroup">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TableName" Parameter="tableName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SalePurchaseByPartyGroupResult">
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SalePurchaseOrderItemReport" Method="SalePurchaseOrderItemReport">
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ItemName" Parameter="itemName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="freeQty" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ItemAmount" Parameter="itemAmount" Type="System.Double" DbType="Float" />
+    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SalePurchaseOrderItemReportResult">
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="freeQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

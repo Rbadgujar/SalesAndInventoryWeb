@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>All Transaction Report</h3></label>
-                    <a class="btn btn-success pull-right row" style="margin-top:7px; margin-right:21px;"><i class="fa fa-print"></i>Print</a>
+                    <a class="btn btn-success pull-right row" style="margin-top:7px; margin-right:21px;" href="@Url.Action("Report","AllTransaction")"><i class="fa fa-print"></i>Print</a>
                     <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " id="fromdate" />
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
                     <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " id="todate" />
@@ -64,6 +64,22 @@
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
             });
+
+
+           
+                var date = new Date();
+
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+
+                if (month < 10) month = "0" + month;
+                if (day < 10) day = "0" + day;
+
+                var today = year + "-" + month + "-" + day;
+                $("#todate").attr("value", today);
+                $("#fromdate").attr("value", today);
+
         });
     </script>
 }

@@ -17,7 +17,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult Data()
         {
-            var tb = db.PartyStatement("Select", null, null, null,null,null,null).ToList();
+            var tb = db.PartyStatement("Select", null, null, null,null,null,null, Convert.ToInt32(Session["UserId"])).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
     }
