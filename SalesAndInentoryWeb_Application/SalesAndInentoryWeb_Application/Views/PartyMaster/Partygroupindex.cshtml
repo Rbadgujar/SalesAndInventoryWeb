@@ -126,7 +126,7 @@
             {
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("Delete","PartyMaster")/' + id,
+                    url: '@Url.Action("deletepartygroup", "PartyMaster")/' + id,
                     success: function (data) {
                         if (data.success)
                         {

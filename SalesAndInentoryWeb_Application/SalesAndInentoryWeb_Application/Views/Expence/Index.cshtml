@@ -34,7 +34,7 @@
                         <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Expences</h3></label>
                         <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","Expence")"><i class="fa fa-plus"></i>Add Expences</a>
                         <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:23px" onclick="PopupForm('@Url.Action("Expencescategory","Expence")')"><i class="fa fa-plus"></i>Add Category</a>
-                        <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+                        <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;" href="@Url.Action("ReportAll","Expence")"><i class="glyphicon glyphicon-print"></i>Print</a>
                         <input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " id="fromdate"/>
                         <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
                         <input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " id="todate"/>
@@ -62,7 +62,6 @@
                             <th>Balance</th>
                             <th>Paid</th>
                             <th>Total</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -94,7 +93,6 @@
 				    { "data": "Balance" },
                     { "data": "Paid" },
 					{ "data": "Total" },
-					{ "data": "Status" },
                     { "data": "ID1", "render": function (data) {
                         return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "Expence")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },
@@ -118,6 +116,93 @@
             var today = year + "-" + month + "-" + day;
             $("#todate").attr("value", today);
             $("#fromdate").attr("value", today);
+
+
+            $("#todate").change(function () {
+                var table1 = $('#expenses').DataTable();
+                table1.destroy();
+
+
+                var da= new Date();
+                var date  = $("#todate").val();
+                var date2 = $("#fromdate").val();
+
+                par = 1;
+
+                dataTable1 = $("#expenses").DataTable({
+                    "ajax": {
+                        "url": "/Expence/ExpenceData",
+                        data: { 'date':date ,'par':'0','date2':date2 },
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                    { "data": "ID1" },
+                    { "data": "ExpenseCategory" },
+					{ "data": "Date" },
+				    { "data": "Balance" },
+                    { "data": "Paid" },
+					{ "data": "Total" },
+                    { "data": "ID1", "render": function (data) {
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "Expence")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+
+                ],
+                    "language": {
+
+                        "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
+            });
+
+            $("#fromdate").change(function () {
+                var table1 = $('#expenses').DataTable();
+                table1.destroy();
+
+                debugger
+
+                var date  = $("#todate").val();
+                var date2 = $("#fromdate").val();
+                par = 1;
+
+                dataTable1 = $("#expenses").DataTable({
+                    "ajax": {
+                        "url": "/Expence/ExpenceData",
+                        data: { 'date':date ,'par':'0','date2':date2 },
+
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                    { "data": "ID1" },
+                    { "data": "ExpenseCategory" },
+					{ "data": "Date" },
+				    { "data": "Balance" },
+                    { "data": "Paid" },
+					{ "data": "Total" },
+                    { "data": "ID1", "render": function (data) {
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "Expence")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+
+                ],
+                    "language": {
+
+                        "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
+            });
+
+
+
+
 
         });
                   function PopupForm(url) {

@@ -443,7 +443,7 @@
                             <b>
                                 Party Name:</b>
                                 @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Party Name", new { @class = "form-control", @style = "Width:230px;" })
-                             <button class="btn btn-success pull-right" type="button" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Addparty","PartyMaster")')"><i class="fa fa-plus"></i></button>
+                             <a class="btn btn-success pull-right" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Addparty","DebitNote")')"><i class="fa fa-plus"></i></a>
                              
                                 <b>Address:</b>
                                 @Html.TextAreaFor(model => model.BillingName, new { @class = "form-control", placeholder = "Address" })
@@ -535,7 +535,7 @@
                             @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control" })
                         </td>
                         <td style="padding:3px;text-align:center">
-                            <button class="btn btn-success" type="button" style="margin-top:25px"><i class="fa fa-plus" onclick="PopupForm1('@Url.Action("Additem","ItemMaster")')"></i></button>
+                            <a class="btn btn-success"style="margin-top:25px"><i class="fa fa-plus" onclick="PopupForm1('@Url.Action("Additem","DebitNote")')"></i></a>
                         </td>
                         <td style="padding:3px;text-align:center">
                             <label>MRP</label>
@@ -783,7 +783,7 @@
                     height: 550,
                     width: 840,
                     close: function () {
-                        Popup.dialog('destroy').remove();
+                        Popup1.dialog('destroy').remove();
                     }
 
                 });

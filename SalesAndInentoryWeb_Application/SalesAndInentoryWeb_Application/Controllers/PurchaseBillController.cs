@@ -525,5 +525,35 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
+        [HttpPost]
+        public ActionResult Additem(tbl_ItemMaster item, int id = 0)
+        {
+            // ItemName,HSNCode ,BasicUnit,SecondaryUnit ,                      ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,                                                                  PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,                           Date,ItemLocation,TrackingMRP,                      BatchNo,       SerialNo,    MFgdate,     Expdate,      Siz,     Description ,    MinimumStock,     Image1,     Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
+            db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode, Convert.ToInt32(Session["UserId"].ToString()), null, null, item.Profit, item.Discount);
+            db.SubmitChanges();
+            return RedirectToAction("AddPurchase");
+        }
+        [HttpGet]
+        public ActionResult Additem(int id = 0)
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Addparty(int id = 0)
+        {
+            tbl_PartyMaster bt = new tbl_PartyMaster();
+            bt.ListOfPartyGroup = ListOfItems();
+            return View(bt);
+        }
+        public string imagefile = null;
+        [HttpPost]
+        public ActionResult Addparty(IEnumerable<HttpPostedFileBase> files, tbl_PartyMaster party, int id = 0)
+        {
+
+            //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
+            db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTType, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, imagefile);
+            db.SubmitChanges();
+            return RedirectToAction("AddPurchase");
+        }
     }
 }

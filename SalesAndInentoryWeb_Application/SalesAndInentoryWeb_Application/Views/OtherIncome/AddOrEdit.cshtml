@@ -57,7 +57,7 @@
             $("#btnsubmit").click(function (e) {
                 additems();
             });
-            $("#Id1").change(function () {
+            $("#Company_ID").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
                 if (fruitId != "") {
@@ -110,7 +110,7 @@
         function AddToItem()
         {
             var tableitemlist = $("#tblSaleInvoice");
-            var ItemName = $("#Id1 option:selected").val();
+            var ItemName = $("#Category_ID option:selected").val();
             var mrp = $("#mrp").val();  
             var qty = $("#qty").val();        
             var total = $("#Total").val();
@@ -173,10 +173,14 @@
                         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
                             $("#success-alert").slideUp(500);
                         });
+                        window.location.href = '@Url.Action("Report","Expence")';
                     }
                 },
                 error: function () {
-                    alert("error");
+                    $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#success-alert").slideUp(500);
+                    });
+                    window.location.href = '@Url.Action("Report","OtherIncome")';
                 }
 
             });
@@ -201,7 +205,8 @@
                                
                                 <br />
                                 <b> Category :</b>
-                                @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory, "Select Category", new { @class="form-control"} )
+                                @Html.DropDownListFor(model => model.CategoryID, Model.ListOfCategory, "Select Category", new { @class="form-control", @style = "Width:330px;" })
+                                <button class="btn btn-success pull-right" type="button" style="margin-top:-34px" onclick="PopupForm('@Url.Action("otcategory","OtherIncome")')"><i class="fa fa-plus"></i></button>
 
 
                             </div>
@@ -220,7 +225,7 @@
 
                                     <br />
                                <b> OtherIncome No:</b>
-                                @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.Id1, new { @class = "form-control" })
 								</div>               
                         </div>
 
@@ -237,7 +242,7 @@
                                 <td style="padding:3px">
                                     <label>Item Name</label>
 
-                                    @Html.DropDownListFor(model => model.Id1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:350px" })
+                                    @Html.DropDownListFor(model => model.Company_ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:350px" })
                                 </td>
                                 <td style="padding:3px;text-align:center">
                                     <label>MRP</label>
@@ -287,31 +292,31 @@
                         <div class="collapse navbar-collapse ">
                             <div class="row">
 
-                                <div class="col-md-2">
+                                <div class="col-md-4">
 
 
 
                                 </div>
-                                <div class="col-md-2 form-group">
+                                <div class="col-md-4 form-group">
 
 
 
                                 </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-4">
 
 
                                 </div>
-                                <div class="col-md-8 form-group">
+                                <div class="col-md-4 form-group">
                                     <b>Total :</b>
                                     @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Amount", @id = "total1" } })
                                     @Html.ValidationMessageFor(model => model.total)
-                                    <b>Recived:</b>
+                                    @*<b>Recived:</b>
                                     @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount", @onchange = "minus()" } })
                                     @Html.ValidationMessageFor(model => model.Received)
                                     <b>Remaining Bal:</b>
                                     @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance" } })
-                                    @Html.ValidationMessageFor(model => model.Balance)
+                                    @Html.ValidationMessageFor(model => model.Balance)*@
                                 </div>
                             </div>
                             </div>
@@ -329,7 +334,7 @@
 
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" value="button" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
+                                    <input type="Submit" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
                                     <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
 
                                 </div>
@@ -346,7 +351,101 @@
         </div>
 
 
+    @section scripts{
+        <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+        <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
+        <script>
+             var Popup, dataTable;
+                         $(document).ready(function () {
+                             @*dataTable = $("#other").DataTable({
+                  "ajax": {
+					  "url": "/OtherIncome/Data",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+					{ "data": "Id" },
+					{ "data": "IncomeCategory" },
+					{ "data": "Date" },
+					{ "data": "Received" },
+					{ "data": "Balance" },
+					{ "data": "total" },
+					{ "data": "Status" },
+					{ "data": "Id", "render": function (data) {
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "OtherIncome")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+
+					},
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+
+                ],
+                "language": {
+
+                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                }
+                             });*@
+                             var date = new Date();
+                             var day = date.getDate();
+                             var month = date.getMonth() + 1;
+                             var year = date.getFullYear();
+                             if (month < 10) month = "0" + month;
+                             if (day < 10) day = "0" + day;
+                             var today = year + "-" + month + "-" + day;
+                             $("#todate").attr("value", today);
+                             $("#fromdate").attr("value", today);
+        });
+
+                function PopupForm(url) {
+                    var formDiv = $('<div/>');
+                    $.get(url)
+                    .done(function (response) {
+                        formDiv.html(response);
+
+                        Popup = formDiv.dialog({
+                            autoOpen: true,
+                            resizable: false,
+                            title: 'Fill Add Category',
+                            height: 200,
+                            width: 300,
+                            close: function () {
+                                Popup.dialog('destroy').remove();
+                            }
+
+                        });
+                    });
+                }
+
+                function SubmitForm(form) {
+                    $.validator.unobtrusive.parse(form);
+                    if($(form).valid()){
+                        $.ajax({
+                            type : "POST",
+                            url : form.action,
+                            data : $(form).serialize(),
+                            success : function (data) {
+                                if(data.success)
+                                {
+                                    Popup.dialog('close');
+                                    dataTable.ajax.reload();
+
+                                    $.notify(data.message,{
+                                        globalPosition :"top center",
+                                        className : "success"
+                                    })
+
+                                }
+                            }
+                        });
+                    }
+                    return false;
+                }
+
+               
+        </script>
+    }
     <br />
 
     <br />

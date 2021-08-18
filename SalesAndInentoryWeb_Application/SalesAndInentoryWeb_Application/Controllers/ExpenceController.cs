@@ -32,21 +32,29 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult Expencescategory(tbl_ExpenseCategory emp)
         {
-            var tb = db.tbl_ExpenseCategorySelect("Insert1", null, emp.CategoryName, Convert.ToInt32(Session["UserId"]));
+            var tb = db.tbl_ExpenseCategorySelect("Insert", null, emp.CategoryName, Convert.ToInt32(Session["UserId"]));
             db.SubmitChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            return View();
         }
 
-        public ActionResult ExpenceData()
-        { 
-			var tb = db.tbl_ExpensesSelect("Select", null, null, null, null, null, null,null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+        public ActionResult ExpenceData(string date, string date2, string par)
+        {
+            if (par == "0")
+            {
+                var tb1 = db.tbl_ExpensesSelect("datetodate", null, null, Convert.ToDateTime(date), null, null, null, null, null, date2, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+                return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+            }
+            var tb = db.tbl_ExpensesSelect("Select", null, null, null, null, null, null,null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
     	}
 
         [HttpGet]
-        public ActionResult AddOrEdit()
+        public ActionResult AddOrEdit(int id=0)
         {
-            tbl_Expense bt = new tbl_Expense();
+            var bb = db.tbl_ExpensesSelect("ID1", null, null, null, null, null, null, null, null, null, null, null, null, null).Single();               
+            var bt = new tbl_Expense();
+            bt.ID1 = Convert.ToInt32(bb.ID1) + 1;
             bt.ListOfAccounts = ListOfItems();
             bt.ListOfCategory = ListOfCategorys();
             return View(bt);       
@@ -180,6 +188,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             // return Json(data: new {success=true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
 
         }
+     
         public ActionResult ViewerEvent1()
         {
             return StiMvcViewer.ViewerEventResult();
@@ -192,13 +201,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult GetReport1()
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.CompanyID = '"+ MainLoginController.companyid1  + "' and b.Company_ID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1'");
+            string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID, b.ID1, b.Date, b.ExpenseCategory, b.Total,b.Company_ID from tbl_Expenses as b,tbl_CompanyMaster as c where b.Company_ID = '" + MainLoginController.companyid1 + "' and c.CompanyID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1'");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
-            adapter.Fill(dataSet, "PurchaseBillData");
+            adapter.Fill(dataSet, "ExpencesData");
             StiReport report = new StiReport();
-            report.Load(Server.MapPath("~/Content/Report/PurchaseBillData.mrt"));
-            report.RegData("PurchaseBillData", dataSet);
+            report.Load(Server.MapPath("~/Content/Report/ExpenceData.mrt"));
+            report.RegData("ExpencesData", dataSet);
             return StiMvcViewer.GetReportResult(report);
         }
         [HttpPost]

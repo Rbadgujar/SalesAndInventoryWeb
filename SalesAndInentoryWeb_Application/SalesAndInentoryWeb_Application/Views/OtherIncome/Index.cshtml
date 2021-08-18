@@ -8,17 +8,6 @@
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	@Html.DevExpress().GetStyleSheets(
-		new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-		new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-	)
-	@Html.DevExpress().GetScripts(
-		new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-		new Script { ExtensionSuite = ExtensionSuite.Editors }
-	)
 </head>
 <div class="container" style="height:100%; width:100%;">
 	<nav class="navbar navbar-default " style="background-color:white;border:none">
@@ -104,7 +93,7 @@
                 "language": {
 
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
-                } 
+                }
                              });
                              var date = new Date();
                              var day = date.getDate();
@@ -115,6 +104,94 @@
                              var today = year + "-" + month + "-" + day;
                              $("#todate").attr("value", today);
                              $("#fromdate").attr("value", today);
+
+
+                             $("#todate").change(function () {
+                                 var table1 = $('#other').DataTable();
+                                 table1.destroy();
+
+
+                                 var da= new Date();
+                                 var date  = $("#todate").val();
+                                 var date2 = $("#fromdate").val();
+
+                                 par = 1;
+
+                                 dataTable1 = $("#other").DataTable({
+                                     "ajax": {
+                                         "url": "/OtherIncome/Data",
+                                         data: { 'date':date ,'par':'0','date2':date2 },
+                                         "type": "GET",
+                                         "datatype": "json"
+                                     },
+                                   "columns": [
+					                { "data": "Id" },
+					                { "data": "IncomeCategory" },
+					                { "data": "Date" },
+					                { "data": "Received" },
+					                { "data": "Balance" },
+					                { "data": "total" },
+					                { "data": "Status" },
+					                { "data": "Id", "render": function (data) {
+                                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "OtherIncome")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+
+					                },
+                                        "orderable": false,
+                                        "searchable":false,
+                                        "width":"150px"
+                                    }
+
+                                ],
+                                     "language": {
+
+                                         "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                                     }
+                                 });
+                             });
+
+                             $("#fromdate").change(function () {
+                                 var table1 = $('#other').DataTable();
+                                 table1.destroy();
+
+                                 debugger
+
+                                 var date  = $("#todate").val();
+                                 var date2 = $("#fromdate").val();
+                                 par = 1;
+
+                                 dataTable1 = $("#other").DataTable({
+                                     "ajax": {
+                                         "url": "/OtherIncome/Data",
+                                         data: { 'date':date ,'par':'0','date2':date2 },
+
+                                         "type": "GET",
+                                         "datatype": "json"
+                                     },
+                                    "columns": [
+					                { "data": "Id" },
+					                { "data": "IncomeCategory" },
+					                { "data": "Date" },
+					                { "data": "Received" },
+					                { "data": "Balance" },
+					                { "data": "total" },
+					                { "data": "Status" },
+					                { "data": "Id", "render": function (data) {
+                                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "OtherIncome")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+
+					                },
+                                        "orderable": false,
+                                        "searchable":false,
+                                        "width":"150px"
+                                    }
+
+                                ],
+                                     "language": {
+
+                                         "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                                     }
+                                 });
+                             });
+
         });
 
                 function PopupForm(url) {
