@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/ideal.cshtml";
 }
 <h2>Sale Report</h2>
-
-<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Add Sale</a>
+<input type="text"value="Back To Sale" href='@Url.Action("SaleInvoice","SaleInvoice")' />
+@*<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Add Sale</a>*@
 <br />
 @Html.Stimulsoft().StiMvcViewer("MvcViewer1", new StiMvcViewerOptions()
 {

@@ -74,7 +74,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
 
             //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id + " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1' ");
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID, b.InvoiceID,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName, b.InvoiceDate, b.DueDate, b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.CGST, c.SGST,c.IGST,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_SaleInvoice as b,tbl_SaleInvoiceInner as c where a.CompanyID="+MainLoginController.companyid1+" and b.InvoiceID=" + id+" and c.InvoiceID="+id+" ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID, b.InvoiceID,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName, b.InvoiceDate, b.DueDate, b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.CGST, c.SGST,c.IGST,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_SaleInvoice as b,tbl_SaleInvoiceInner as c where a.CompanyID=" + MainLoginController.companyid1+" and b.InvoiceID=" + id+" and c.InvoiceID="+id+" ");
 
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
 
@@ -398,17 +398,62 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
 
-        
 
+        string Comanystate;
         public ActionResult ViewerEvent()
         {
             return StiMvcViewer.ViewerEventResult();
         }
+        public int stateget(string state)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql = string.Format("Select  State from tbl_CompanyMaster where CompanyID="+MainLoginController.companyid1+"");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;                   
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+
+                            Comanystate =sdr["State"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            
+            if(state==Comanystate)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+
+        }
+        public int result;
         [HttpPost]
         public ActionResult SaleInvoice(SaleInvoicePartyDetails objsalepartydetails)
-      {
-            var gstcount = objsalepartydetails.TaxAmount1;
-            var gst = gstcount / 2;
+          {
+            float gst = 0;
+            float igst = 0;
+            float finalgsr = 0;
+           result =stateget(objsalepartydetails.StateOfSupply);
+            if (result == 1)
+            {
+                float gstcount = (float)objsalepartydetails.TaxAmount1;
+                 gst = (float)(gstcount / 2);
+            }
+            else
+            {
+                igst = (float)objsalepartydetails.TaxAmount1;
+            }
             partypaymnet(objsalepartydetails.PartyName,Convert.ToInt32(objsalepartydetails.RemainingBal),objsalepartydetails.Status,Convert.ToInt32(objsalepartydetails.CalTotal));
 
             tbl_SaleInvoice sale = new tbl_SaleInvoice()
@@ -430,6 +475,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Received=objsalepartydetails.Received,
                 SGST = gst,
                 CGST = gst,
+                IGST=igst,
                 Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                 InvoiceDate = Convert.ToDateTime(objsalepartydetails.InvoiceDate),
                 Barcode = objsalepartydetails.Barcode,
@@ -444,8 +490,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
             {
                 TempData["ID"] = sale.InvoiceID;
                 stock(item.ItemID,item.Qty);
-                var gst1 = item.SaleTaxAmount;
-                var finalgsr = gst1 / 2;
+                if (result == 1)
+                {
+                    float gst1 = (float)item.SaleTaxAmount;
+                   finalgsr = (float)(gst1 / 2);
+                }
+                else
+                {
+                    igst = (float)item.SaleTaxAmount;
+                }
                 tbl_SaleInvoiceInner inner = new tbl_SaleInvoiceInner()
                 {                   
                     ItemName = item.ItemName,
@@ -455,6 +508,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     ItemID = item.ItemID,
                     CGST = finalgsr,
                     SGST = finalgsr,
+                    IGST= igst,
                     DeleteData = Convert.ToBoolean(1),
                     InvoiceID = sale.InvoiceID,
                     DiscountAmount = item.DiscountAmount,
