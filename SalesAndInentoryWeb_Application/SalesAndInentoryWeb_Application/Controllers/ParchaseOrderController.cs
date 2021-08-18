@@ -16,34 +16,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class ParchaseOrderController : Controller
     {
-		CompanyDataClassDataContext db = new CompanyDataClassDataContext();
-		// GET: ParchaseOrder
-		public ActionResult PurchaseOrder()
+        CompanyDataClassDataContext db = new CompanyDataClassDataContext();
+        // GET: ParchaseOrder
+        public ActionResult PurchaseOrder()
         {
             return View();
         }
-       
+
         [HttpGet]
         public ActionResult Purchaseorderdata(string date, string date2, string par)
         {
             if (par == "0")
             {
-                var tb = db.tbl_PurchaseOrderSelect("datetotdate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).ToList();
+                var tb = db.tbl_PurchaseOrderSelect("datetotdate", null, null, null, null, null, Convert.ToDateTime(date), Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).ToList();
                 return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
             }
             var tb1 = db.tbl_PurchaseOrderSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).ToList();
             return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
         }
 
-		public ActionResult Detail(int id)
-		{
-			var tb = db.tbl_PurchaseOrderSelect("Details", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).Single(x => x.OrderNo == id);
-			return View(tb);
-		}
+        public ActionResult Detail(int id)
+        {
+            var tb = db.tbl_PurchaseOrderSelect("Details", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).Single(x => x.OrderNo == id);
+            return View(tb);
+        }
 
-		[HttpGet]
-		public ActionResult AddOrder(int id=0)
-		{
+        [HttpGet]
+        public ActionResult AddOrder(int id = 0)
+        {
             //if (id == 0)
             //{
             //	return View(new tbl_PurchaseOrder());
@@ -133,7 +133,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1' and Company_ID='"+ MainLoginController.companyid1 + "'");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1' and Company_ID='" + MainLoginController.companyid1 + "'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -254,8 +254,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpPost]
-		public ActionResult AddOrder(PartyDetailPurchaseOrder objpurchaseorder)
-		{
+        public ActionResult AddOrder(PartyDetailPurchaseOrder objpurchaseorder)
+        {
             var gstcount = objpurchaseorder.TaxAmount1;
             var gst = gstcount / 2;
 
@@ -277,8 +277,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Barcode = objpurchaseorder.Barcode,
                 Status = objpurchaseorder.Status,
                 VehicleNumber = objpurchaseorder.VehicleNumber,
-                Company_ID= Convert.ToInt32(Session["UserId"]),
-                DeleteData=Convert.ToBoolean(1)
+                Company_ID = Convert.ToInt32(Session["UserId"]),
+                DeleteData = Convert.ToBoolean(1)
             };
             db.tbl_PurchaseOrders.InsertOnSubmit(sale);
             db.SubmitChanges();
@@ -290,7 +290,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var finalgsr = gst1 / 2;
                 tbl_PurchaseOrderInner inner = new tbl_PurchaseOrderInner()
                 {
-                    
+
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     OrderNo = sale.OrderNo,
@@ -302,8 +302,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty,
-                     Company_ID = Convert.ToInt32(Session["UserId"]),
-                     DeleteData = Convert.ToBoolean(1)
+                    Company_ID = Convert.ToInt32(Session["UserId"]),
+                    DeleteData = Convert.ToBoolean(1)
                 };
                 db.tbl_PurchaseOrderInners.InsertOnSubmit(inner);
 
@@ -323,13 +323,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             int id = Convert.ToInt32(TempData["ID"]);
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.PhoneNo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.OrderNo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName,b.OrderDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.CGST, c.SGST,c.IGST,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b,tbl_PurchaseOrderInner as c where b.OrderNo=" + id + " and c.OrderNo=" + id+ " and a.CompanyID='" +  MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and c.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1' and c.DeleteData='1'");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.PhoneNo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.OrderNo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName,b.OrderDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.CGST, c.SGST,c.IGST,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseOrder as b,tbl_PurchaseOrderInner as c where b.OrderNo=" + id + " and c.OrderNo=" + id + " and a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and c.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1' and c.DeleteData='1'");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "PurchaseOrder");
             StiReport report = new StiReport();
             report.Load(Server.MapPath("~/Content/Report/PurchaseOrderReport.mrt"));
             report.RegData("PurchaseOrder", dataSet);
+            StiOptions.Viewer.Windows.Zoom = 0.5;
             return StiMvcViewer.GetReportResult(report);
         }
         public ActionResult Report()
@@ -355,14 +356,45 @@ namespace SalesAndInentoryWeb_Application.Controllers
             StiReport report = new StiReport();
             report.Load(Server.MapPath("~/Content/Report/PurchaseOrderDataReport.mrt"));
             report.RegData("PurchaseOrder", dataSet);
+         
             return StiMvcViewer.GetReportResult(report);
         }
         [HttpPost]
-		public ActionResult Dele(int id)
-		{
-			var tb = db.tbl_PurchaseOrderSelect("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).ToList();
-			db.SubmitChanges();
-			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
-		}
-	}
+        public ActionResult Dele(int id)
+        {
+            var tb = db.tbl_PurchaseOrderSelect("Delete", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null).ToList();
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult Additem(tbl_ItemMaster item, int id = 0)
+        {
+            // ItemName,HSNCode ,BasicUnit,SecondaryUnit ,                      ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,                                                                  PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,                           Date,ItemLocation,TrackingMRP,                      BatchNo,       SerialNo,    MFgdate,     Expdate,      Siz,     Description ,    MinimumStock,     Image1,     Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
+            db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode, Convert.ToInt32(Session["UserId"].ToString()), null, null, item.Profit, item.Discount);
+            db.SubmitChanges();
+            return RedirectToAction("AddOrder");
+        }
+        [HttpGet]
+        public ActionResult Additem(int id = 0)
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Addparty(int id = 0)
+        {
+                tbl_PartyMaster bt = new tbl_PartyMaster();
+                bt.ListOfPartyGroup = ListOfItems();
+                return View(bt);          
+        }
+        public string imagefile = null;
+        [HttpPost]
+        public ActionResult Addparty(IEnumerable<HttpPostedFileBase> files, tbl_PartyMaster party, int id = 0)
+        {
+
+            //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
+            db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTType, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, imagefile);
+            db.SubmitChanges();
+            return RedirectToAction("AddOrder");
+        }
+    }
 }

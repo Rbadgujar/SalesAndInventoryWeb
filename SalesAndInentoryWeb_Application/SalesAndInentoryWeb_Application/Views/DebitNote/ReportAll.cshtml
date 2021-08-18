@@ -1,0 +1,14 @@
+﻿@using Stimulsoft.Report.Mvc;
+@{
+    ViewBag.Title = "ReportAll";
+    Layout = "~/Views/Shared/ideal.cshtml";
+}
+
+@Html.Stimulsoft().StiMvcViewer("MvcViewer2", new StiMvcViewerOptions()
+{
+    Actions =
+            {
+                GetReport = "GetReport1",
+                ViewerEvent = "ViewerEvent1"
+            }
+})

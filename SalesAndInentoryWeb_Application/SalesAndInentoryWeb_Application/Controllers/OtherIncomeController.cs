@@ -7,6 +7,12 @@ using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Components;
+using Stimulsoft.Report.Mvc;
 using SalesAndInentoryWeb_Application.ViewModel;
 
 namespace SalesAndInentoryWeb_Application.Controllers
@@ -23,15 +29,20 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
 		[HttpGet]
-		public ActionResult Data()
+		public ActionResult Data(string date, string date2, string par)
         {
-			var tb = db.tbl_OtherIncomeSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+            if (par == "0")
+            {
+                var tb1 = db.tbl_OtherIncomeSelect("datetodate", null, null, Convert.ToDateTime(date), null, null, null, null, null, null, null, date2, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+                return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+            }
+            var tb = db.tbl_OtherIncomeSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
 		public ActionResult Detail(int id)
 		{
-			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
+			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single(x => x.Id == id);
 			return View(tb);
 		}
         private static List<SelectListItem> ListOfAccount()
@@ -41,7 +52,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_ItemMaster where DeleteData='1' and Company_ID='"+MainLoginController.companyid1+"'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -90,26 +101,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
+        public ActionResult AddOrEdit()
         {
-			if (id == 0)
-			{
+			
                 tbl_OtherIncome bt = new tbl_OtherIncome();
                 bt.ListOfAccounts = ListOfAccount();
                 bt.ListOfCategory = ListOfCategorys();
                 return View(bt);
-			}
-			else
-			{
-				var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.Id == id);
-				var vm = new tbl_OtherIncome();
-				vm.IncomeCategory = tb.IncomeCategory;
-				vm.Date = Convert.ToDateTime(tb.Date);
-				vm.total = tb.total;
-				vm.Received = tb.Received;
-				vm.Balance = tb.Balance;
-				return View(vm);
-			}
+			
         }
 
         
@@ -121,7 +120,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                sql = string.Format("SELECT * FROM tbl_otherIncomeCaategory where DeleteData='1'");
+                sql = string.Format("SELECT * FROM tbl_otherIncomeCaategory where DeleteData='1'  and Company_ID='" + MainLoginController.companyid1 + "'");
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.Connection = con;
@@ -144,7 +143,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return items1;
         }
         [HttpPost]
-        public ActionResult AddOrEdit(otherincome objOtherIncomeDetails)
+        public ActionResult AddOrEdit(OtherIncome objOtherIncomeDetails)
         {
             tbl_OtherIncome sale1other = new tbl_OtherIncome()
             {
@@ -152,27 +151,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 total = objOtherIncomeDetails.total,
                 Balance = objOtherIncomeDetails.Balance,
                 Date = objOtherIncomeDetails.Date,
-                Received = objOtherIncomeDetails.Received
+                Received = objOtherIncomeDetails.Received,
+                Company_ID= Convert.ToInt32(Session["UserId"]),
+                DeleteData=Convert.ToBoolean(1)
             };
             db.tbl_OtherIncomes.InsertOnSubmit(sale1other);
             db.SubmitChanges();
 
             foreach (var line in objOtherIncomeDetails.ListOfOtherIncome)
             {
-                tbl_OtherIncomeInner inner = new tbl_OtherIncomeInner()
+                TempData["ID"] = sale1other.Id1;
+                tbl_OtherIncomeInner3 inner = new tbl_OtherIncomeInner3()
                 {
-                    ItemName = line.ItemName,
-                  //  SalePrice = item.SalePrice,
-                    ID1 = sale1other.Id1,
+                   
+                ItemName = line.ItemName,
+                    SalePrice = line.SalePrice,
+                    Id1 = sale1other.Id1,
                     ItemAmount = line.ItemAmount,
-                    Qty = line.Qty
+                    Qty = line.Qty,
+                     Company_ID = Convert.ToInt32(Session["UserId"]),
+                    DeleteData = Convert.ToBoolean(1)
                 };
-                db.tbl_OtherIncomeInners.InsertOnSubmit(inner);
+                db.tbl_OtherIncomeInner3s.InsertOnSubmit(inner);
                 db.SubmitChanges();
-            }
-            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
-            return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
         }
+            //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
+            //return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
+             return RedirectToAction("GetReport");
+    }
 
 
         [HttpGet]
@@ -183,7 +189,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult otcategory(tbl_otherIncomeCaategory emp)
         {      
-              var tb = db.tbl_otherIncomeCategorySelect("Insert1", null,emp.OtherIncome,null);
+              var tb = db.tbl_otherIncomeCategorySelect("Insert1", null,emp.OtherIncome, Convert.ToInt32(Session["UserId"]));
              db.SubmitChanges();
             return RedirectToAction("Index");     
         }
@@ -206,9 +212,32 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-			var tb = db.tbl_OtherIncomeSelect("Delete", id,null,null,null,null,null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+			var tb = db.tbl_OtherIncomeSelect("Delete", id,null,null,null,null,null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
-	}
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+     
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            string Query = string.Format("select c.AdditinalFeild1,c.AdditinalFeild2,c.AdditinalFeild3,a.Id1,a.ItemName,a.SalePrice,a.DeleteData,a.Qty,a.ItemAmount,b.Id1,b.IncomeCategory,b.Date,b.Balance,b.Received,b.Status,b.Company_ID,b.DeleteData,c.CompanyName,c.CompanyID,c.Address,c.PhoneNo,c.EmailID,c.AddLogo,c.GSTNumber  from tbl_OtherIncomeInner3 as a,tbl_OtherIncome as b,tbl_CompanyMaster as c where a.Id1=" + id + " and b.Id1=" + id+" and c.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1' and a.DeleteData='1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "OtherIncome");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/OtherIncomeReport1.mrt"));
+            report.RegData("OtherIncome", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+        public ActionResult Report()
+        {
+            return View();
+        }
+    }
 }

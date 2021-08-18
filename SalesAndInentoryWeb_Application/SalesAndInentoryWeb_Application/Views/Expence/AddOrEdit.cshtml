@@ -232,7 +232,7 @@
 
                                     <br />
                               <b>  Expense No:</b>
-                                @Html.TextBoxFor(model => model.Company_ID, new {  @class = "form-control" })
+                                @Html.TextBoxFor(model => model.ID1, new {  @class = "form-control" })
 
 
 								</div>               
@@ -247,7 +247,7 @@
                                 <td style="padding:3px">
                                     <label>Item Name</label>
 
-                                    @Html.DropDownListFor(model => model.ID1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:350px" })
+                                    @Html.DropDownListFor(model => model.ID1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:350px" ,@id="ID1"})
                                 </td>
                                 <td style="padding:3px;text-align:center">
                                     <label>MRP</label>

@@ -56,40 +56,24 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult Addparty(IEnumerable<HttpPostedFileBase> files, tbl_PartyMaster party, int id = 0)
         {
             if (id == 0)
-        {
+             {
                 try
-                {
-
-
-                  
-                    //foreach (var file in files)
-                    //{
-
-                    //    if (file != null && file.ContentLength > 0)
-                    //    {
-                    //        file.SaveAs(Path.Combine(Server.MapPath("/images"), Guid.NewGuid() + Path.GetExtension(file.FileName)));
-                    //         imagefile = "~/images/"+file.FileName;
-
-                    //        var path = Path.Combine(Server.MapPath("~/images"), file.FileName);
-
-                    //    }
-                    //}
-
-                  
+                {                 
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.PartyGroup, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, imagefile);
+                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTType, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, imagefile);
                     db.SubmitChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("index");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return View();
+                    //return View(ex);
                 }
+                return View();
             }
             else
             {
-                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.PartyGroup, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, null);
+                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTType, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, null);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
                 //return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
