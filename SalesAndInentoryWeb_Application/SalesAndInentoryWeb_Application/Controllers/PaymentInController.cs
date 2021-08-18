@@ -7,6 +7,9 @@ using SalesAndInentoryWeb_Application.Models;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Configuration;
+using Stimulsoft.Report.Mvc;
+using System.Data;
+using Stimulsoft.Report;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
@@ -32,8 +35,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 
         [HttpGet]
-        public ActionResult ShowData()
+        public ActionResult ShowData(string date, string date2, string par)
         {
+            if (par == "0")
+            {
+                //var tb = db.tbl_PurchaseBillselect("datetodate", null, null, null, null, null, Convert.ToDateTime(date), null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var getinvoice1 = db.tbl_PaymentInSelect("datetodate", null, null, null, null,Convert.ToDateTime(date),date2, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString())).ToList();
+                return Json(new { data = getinvoice1 }, JsonRequestBehavior.AllowGet);
+            }
             var getdata = db.tbl_PaymentInSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null,Convert.ToInt32(Session["UserId"].ToString())).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
@@ -57,8 +66,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 //vm.PartyName = tb.PartyName;
                 vm.PaymentType = tb.PaymentType;
                 vm.ReceiptNo = tb.ReceiptNo;
-                vm.Date = tb.Date
-                    ;
+                           
                 vm.Description = tb.Description;
                 vm.ReceivedAmount = tb.ReceivedAmount;
                 vm.UnusedAmount = tb.UnusedAmount;
@@ -68,6 +76,64 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(vm);
             }
         }
+
+
+
+        [HttpGet]
+        public ActionResult Updateview(int id)
+        {
+            var tb = db.tbl_PaymentInSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
+            var vm = new tbl_PaymentIn();
+            //ID,CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount
+            //UnusedAmount,Total,Status,image
+            vm.CustomerName = tb.PartyName;
+            vm.PaymentType = tb.PaymentType;
+            vm.ReceiptNo = tb.ReceiptNo;
+           
+            vm.Description = tb.Description;
+            vm.ReceivedAmount = tb.ReceivedAmount;
+            vm.UnusedAmount = tb.UnusedAmount;
+            vm.Total = tb.Total;
+            vm.Status = tb.Status;
+            //vm.image = tb.image;
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult Updateview(tbl_PaymentIn pay,int id)
+        {
+            db.tbl_PaymentInSelect("Update1", id, pay.CustomerName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null, null);
+            db.SubmitChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult ReportAll()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.ReceiptNo,b.CustomerName,b.PaymentType,b.ReceivedAmount,b.UnusedAmount,b.Total,b.DeleteData FROM tbl_CompanyMaster as a, tbl_PaymentIn as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1+ "' and b.DeleteData='1' ");
+
+            //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.OrderNo,b.PartyName,b.OrderDate,b.DueDate,b.Total,b.Received,b.RemainingBal,b.Status,b.DeleteData FROM tbl_CompanyMaster as a, tbl_SaleOrder as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1' ");
+            ////string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.Company_ID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "PaymentinData");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/PaymetinData.mrt"));
+            report.RegData("PaymentinData", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+
+
+
         public JsonResult GetFruitName(string id)
         {
             return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
@@ -212,7 +278,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 //vm.PartyName = tb.PartyName;
                 vm.PaymentType = tb.PaymentType;
                 vm.ReceiptNo = tb.ReceiptNo;
-                vm.Date = tb.Date;
+                vm.Date =Convert.ToDateTime(tb.Date);
                 vm.Description = tb.Description;
                 vm.ReceivedAmount = tb.ReceivedAmount;
                 vm.UnusedAmount = tb.UnusedAmount;

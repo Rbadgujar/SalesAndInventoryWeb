@@ -4,22 +4,14 @@
     Layout = "~/Views/Shared/ideal.cshtml";
 }
 
-<h2>All Sale Invoice </h2>
-<input type="button" value="Back to Sale " href=@Url.Action("SaleInvoice","SaleInvoice") />
-<div style="height:100%;">
+<h2>Payment All Record</h2>
+
 @Html.Stimulsoft().StiMvcViewer("MvcViewer1", new StiMvcViewerOptions()
 {
-    Width =800,
-    Height=800, 
-
     Actions =
             {
-        GetReport = "GetReport1",
+                GetReport = "GetReport1",
                 ViewerEvent = "ViewerEvent1"
             }
-
-
-
-
 })
-</div>
+

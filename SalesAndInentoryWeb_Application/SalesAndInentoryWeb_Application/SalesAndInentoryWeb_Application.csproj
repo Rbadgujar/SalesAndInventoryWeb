@@ -3354,6 +3354,9 @@
     <Content Include="Content\Report\SaleReport.mrt" />
     <Content Include="Content\Report\CreditNoteReport.mrt" />
     <Content Include="Content\Report\CreditNote.mrt" />
+    <Content Include="Content\Report\PaymentIn.mrt" />
+    <Content Include="Content\Report\PaymentOutDataReport.mrt" />
+    <Content Include="Content\Report\PaymetinData.mrt" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
@@ -4014,6 +4017,8 @@
     <Content Include="Views\SaleInvoice\ReportAll.cshtml" />
     <Content Include="Views\SaleOrder\ReportAll.cshtml" />
     <Content Include="Content\Report\SaleOrderData.mrt" />
+    <Content Include="Views\PaymentIn\Updateview.cshtml" />
+    <Content Include="Views\PaymentIn\ReportAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
