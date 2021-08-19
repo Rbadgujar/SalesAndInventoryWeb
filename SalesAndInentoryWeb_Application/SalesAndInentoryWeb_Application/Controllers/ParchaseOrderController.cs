@@ -278,7 +278,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Status = objpurchaseorder.Status,
                 VehicleNumber = objpurchaseorder.VehicleNumber,
                 Company_ID = Convert.ToInt32(Session["UserId"]),
-                DeleteData = Convert.ToBoolean(1)
+                DeleteData = Convert.ToBoolean(1),
+                TableName=Convert.ToString("Purchase Order")
             };
             db.tbl_PurchaseOrders.InsertOnSubmit(sale);
             db.SubmitChanges();
@@ -304,6 +305,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     Qty = item.Qty,
                     Company_ID = Convert.ToInt32(Session["UserId"]),
                     DeleteData = Convert.ToBoolean(1)
+
                 };
                 db.tbl_PurchaseOrderInners.InsertOnSubmit(inner);
 

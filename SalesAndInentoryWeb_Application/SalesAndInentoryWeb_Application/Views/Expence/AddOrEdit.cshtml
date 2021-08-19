@@ -36,7 +36,7 @@
             debugger
             $("#success-alert").hide();
 
-            $("#ID1").change(function () {
+            $("#Company_ID").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
                 if (fruitId != "") {
@@ -113,7 +113,7 @@
         function AddToItem()
         {
             var tableitemlist = $("#tblExpenses");
-            var ItemName = $("#ID1 option:selected").val();
+            var ItemName = $("#Company_ID option:selected").val();
             var mrp = $("#sp").val();
             var qty = $("#qty").val();
             var total = $("#ca").val();
@@ -135,7 +135,7 @@
         }
         function reset()
         {
-            $("#ID1").val('');
+            $("#Company_ID").val('');
             $("#sp").val('');
             $("#qty").val('');
             $("#ca").val('');
@@ -247,7 +247,7 @@
                                 <td style="padding:3px">
                                     <label>Item Name</label>
 
-                                    @Html.DropDownListFor(model => model.ID1, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:350px" ,@id="ID1"})
+                                    @Html.DropDownListFor(model => model.Company_ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:350px"})
                                 </td>
                                 <td style="padding:3px;text-align:center">
                                     <label>MRP</label>

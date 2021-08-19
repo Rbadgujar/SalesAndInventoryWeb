@@ -456,7 +456,7 @@
             objpurchase.Status = $("#Status option:selected").val();
             objpurchase.TaxAmount1 = $("#TaxAmount1").val();
             objpurchase.VehicleNumber = $("#VehicleNumber").val();
-            objpurchase.Total = $("#Total").val();
+            objpurchase.Total = $("#total1").val();
             objpurchase.listpurchasedetail = listpurchases;
 
             $.ajax({
@@ -691,7 +691,7 @@
 
 							<div class="col-md-3">
 								<b>Payment Type:</b>
-								<select name="cars" id="PaymentType" class="form-control">
+								<select  id="PaymentType" class="form-control">
                                     <option value="Payment Status">Select Payment Status</option>
 									<option value="Cash">Cash</option>
 									<option value="Onliepayment">Online Payment</option>

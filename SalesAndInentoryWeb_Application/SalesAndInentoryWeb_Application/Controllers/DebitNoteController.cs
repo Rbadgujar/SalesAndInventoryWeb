@@ -250,7 +250,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 PODate= Convert.ToDateTime(objdebitnote.PODate),
                 Received=objdebitnote.Received  ,
                 Company_ID= Convert.ToInt32(Session["UserId"]),
-                DeleteData = Convert.ToBoolean(1)
+                DeleteData = Convert.ToBoolean(1),
+                TableName=Convert.ToString("DebitNote")
             };
             db.tbl_DebitNotes.InsertOnSubmit(sale);
             db.SubmitChanges();

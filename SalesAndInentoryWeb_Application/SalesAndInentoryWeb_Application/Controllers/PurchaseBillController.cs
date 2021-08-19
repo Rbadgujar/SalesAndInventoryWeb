@@ -213,7 +213,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Status = objpurchase.Status,
                 VehicleNumber = objpurchase.VehicleNumber,
                 Company_ID = Convert.ToInt32(Session["UserId"]),
-                DeleteData = Convert.ToBoolean(1)
+                DeleteData = Convert.ToBoolean(1),
+                TableName = Convert.ToString("Purchase Bill")
             };
             db.tbl_PurchaseBills.InsertOnSubmit(sale);
             db.SubmitChanges();
