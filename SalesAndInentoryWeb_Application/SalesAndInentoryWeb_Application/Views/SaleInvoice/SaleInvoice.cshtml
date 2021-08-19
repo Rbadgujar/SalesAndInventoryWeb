@@ -472,7 +472,7 @@
                             <b>Party Name:</b>
                             <br>
                             @Html.DropDownListFor(model => model.ParitesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Parties", new { @class = "form-control" ,@Style="Width:220px" })
-                            <a class="btn btn-success pull-right" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Addparty","PurchaseBill")')"><i class="fa fa-plus"></i></a>
+                            <a class="btn btn-success pull-right" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Addparty","SaleInvoice")')"><i class="fa fa-plus"></i></a>
                             <b> Party Address:</b>
                             <textarea name='awesome' class="form-control" id="BillingName" style="width:230px;" placeholder="Billing Address "></textarea>
                         </div>
@@ -491,7 +491,7 @@
                             @Html.EditorFor(model => model.PoNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "PO No" } })
                             @Html.ValidationMessageFor(model => model.PoNumber)
 
-                            @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", id="TaxAmount1", placeholder = "Po Number", @style ="width:150px;" } })
+                            @Html.EditorFor(model => model.TaxAmount1, new { htmlAttributes = new { @class = "form-control", id="TaxAmount1", placeholder = "Po Number", @style ="width:150px;display:none;" } })
 
                             <b> PO Date:</b>
                             <input type="Date" class="textbox-n form-control" id="PODate">
@@ -560,13 +560,16 @@
                             <input style="text-align:center" type="text" name="SalePrice" id="Barcode" class="form-control">
 
                             @*@Html.tex(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo" } })
-                                @Html.ValidationMessageFor(model => model.Barcode)*@
+            @Html.ValidationMessageFor(model => model.Barcode)*@
 
                         </td>
                         <td style="padding:3px;text-align:center">
                             <label>Item Name</label>
                             @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control" })
 
+                        </td>
+                        <td style="padding:3px;text-align:center">
+                            <a class="btn btn-success" style="margin-top:25px"><i class="fa fa-plus" onclick="PopupForm1('@Url.Action("Additem","SaleInvoice")')"></i></a>
                         </td>
                         <td style="padding:3px;text-align:center">
                             <label>MRP</label>
@@ -818,7 +821,7 @@
                         height: 550,
                         width: 840,
                         close: function () {
-                            Popup.dialog('destroy').remove();
+                            Popup1.dialog('destroy').remove();
                         }
 
                     });

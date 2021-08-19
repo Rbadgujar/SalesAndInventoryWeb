@@ -23,20 +23,18 @@
             height: 40px;
             margin: 0px;
             resize: vertical;
-
         }
-        yourCustomClass{
-         height: 40px;
+
+        yourCustomClass {
+            height: 40px;
             margin: 0px;
             resize: vertical;
-          
-        }
-        #Party{
-            height:200px;
-            width:30px;
         }
 
-
+        #Party {
+            height: 200px;
+            width: 30px;
+        }
     </style>
     <script src="~/scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
@@ -55,7 +53,7 @@
             var today = year + "-" + month + "-" + day;
             $("#OrderDate").attr("value", today);
             $("#DueDate").attr("value", today);
-            $("#DeliveryDate").attr("value", today);      
+            $("#Deliverydate").attr("value", today);
             $("#btnaddtolist").click(function () {
 
                 var ItemName = $("#ID option:selected").val();
@@ -73,7 +71,7 @@
                 } else {
                     AddToItem();
                 }
-                  
+
             });
             $("#success-alert").hide();
             $("#btnsubmit").click(function (e) {
@@ -103,7 +101,7 @@
 
 
 
-                 
+
             });
             $("#ID").change(function () {
                 debugger
@@ -166,7 +164,7 @@
 
                                AddToItem();
                                $("#Barcode").val('');
-                            
+
                            }
                        }
                    });
@@ -211,7 +209,7 @@
                 $("#ItemTotal").val(finalcal);
                 $("#Qty").val(1);
 
-            }            
+            }
 
             $("#SalePrice").change(function () {
                 debugger
@@ -282,8 +280,8 @@
 
 
             $("#Received").change(function () {
-
-                var recived = $("#Recived").val();
+                debugger
+                var recived = $("#Received").val();
                 var pretotal = $("#Total").val();
                 var tototo = pretotal - recived;
                 $("#RemainingBal").val(tototo);
@@ -308,14 +306,14 @@
             });
 
         });
-        
+
         function RemoveItem(ItemName)
         {
             $(ItemName).closest('tr').remove();
         }
         function AddToItem()
         {
-            var tableitemlist = $("#tblSaleInvoice");          
+            var tableitemlist = $("#tblSaleInvoice");
             var ItemName=$("#ID option:selected").val();
             var mrp = $("#SalePrice").val();
             var tax = $("#TaxForSale").val();
@@ -341,16 +339,16 @@
             + taxmat +
             "</td><td>"
             + total +
-            "</td><td>"+           
+            "</td><td>"+
             "<input type='button' value='Remove' name='remove' class='btn btn-danger' id='remove'/>" +
                 "</td></div></tr>"
             tableitemlist.append(itemlist);
             reset();
-          
+
             var taxfinding1 = 0;
-        
+
             $("tr").each(function (indexTr) {
-                
+
                 if (isNaN(taxfinding)) {
                     taxfinding1 = 0;
                 }
@@ -368,7 +366,7 @@
                 }
                 var mm = +$(this).find('td:eq(6)').text();
                 taxfinding = taxfinding + mm;
-                $("#TaxAmount1").val(taxfinding);               
+                $("#TaxAmount1").val(taxfinding);
             })
 
 
@@ -384,12 +382,7 @@
             $("#SaleTaxAmount").val('0');
             $("#ItemTotal").val('0');
         }
-        function minus() {
-            var pretotal1 = $("#Total").val();
-            var pretotal2 = $("#RemainingBal").val();
-            var find = pretotal1 - pretotal2
-            $("#Received").val(find);
-        };
+
         function additems()
         {
             debugger
@@ -399,7 +392,7 @@
             //var tablemarks = $("#tblSaleInvoice").find("tr:gt(0)");
 
             $.each($("#tblSaleInvoice tbody tr"),
-                function () {               
+                function () {
                     listofitemdetails.push({
                     ItemName : $(this).find("td:eq(0)").text(),
                     SalePrice :$(this).find("td:eq(1)").text(),
@@ -409,7 +402,7 @@
                     DiscountAmount : $(this).find("td:eq(5)").text(),
                     SaleTaxAmount :$(this).find("td:eq(6)").text(),
                     ItemTotal : $(this).find("td:eq(7)").text()
-                    });                                  
+                    });
             });
             objpartydetails.PartyName = $("#PartiesID option:selected").val();
             objpartydetails.BillingName = $("#BillingName").val();
@@ -422,8 +415,8 @@
             objpartydetails.RemainingBal = $("#RemainingBal").val();
             objpartydetails.TransportName = $("#TransportName").val();
              objpartydetails.DeliveryLocation = $("#DeliveryLocation").val();
-            objpartydetails.DeliveryDate = $("#DeliveryDate").val
-            objpartydetails.TaxAmount1 = $("#TaxAmount1").val();           
+            objpartydetails.DeliveryDate = $("#Deliverydate").val
+            objpartydetails.TaxAmount1 = $("#TaxAmount1").val();
             objpartydetails.PaymentType = $("#PaymentType").val();
             objpartydetails.TransportName = $("#TransportName").val();
             objpartydetails.Status = $("#Status").val();
@@ -440,7 +433,7 @@
                 data: JSON.stringify(objpartydetails),
                 url: '/SaleOrder/AddOrEdit',
                 success: function (data) {
-                   
+
                     if (data.success == true) {
                         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
                             $("#success-alert").slideUp(500);
@@ -456,13 +449,13 @@
                 });
 
         }
-       
-       
+
+
     </script>
 </head>
 <body>
-        @using (Html.BeginForm("AddOrEdit", "SaleOrder", FormMethod.Post))
-        {
+    @using (Html.BeginForm("AddOrEdit", "SaleOrder", FormMethod.Post))
+    {
         <div class="panel panel-primary container" style="height:100%; width:100%;">
             <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px; margin-left:900px">
                 <button type="button" class="close" data-dismiss="alert">x</button>
@@ -483,20 +476,21 @@
                                     }).GetHtml()
                                     </div>*@
                                 <b>Party Name:</b>
-                           <br>
-                                     @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control" } )                                
+                                <br>
+                                @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control" })
+                                <a class="btn btn-success pull-right" style="margin-top:-34px" onclick="PopupForm('@Url.Action("Addparty","SaleOrder")')"><i class="fa fa-plus"></i></a>
 
-                             <b>Billing Address:</b>
+                                <b>Billing Address:</b>
                                 <br>
                                 <textarea name='awesome' class="form-control" id="BillingName" style="width:230px;" placeholder="Billing Address "></textarea>
-              </div>
+                            </div>
                             <div class="form-group col-md-3">
-                               <b> Contact No:</b>                         
+                                <b> Contact No:</b>
                                 @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No....." } })
                                 @Html.ValidationMessageFor(model => model.ContactNo)
 
-                               <b> State Of Supllay:</b>
-                                <select name="StateOfSupply" id="StateOfSupply" value="StateOfSupply" class="form-control" >
+                                <b> State Of Supllay:</b>
+                                <select name="StateOfSupply" id="StateOfSupply" value="StateOfSupply" class="form-control">
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -535,31 +529,31 @@
                                     <option value="West Bengal">West Bengal</option>
                                 </select>
 
-                                </div>
-                                <div class="form-group col-md-3">
-                                  
-                                       <b> Order No:</b>
-                                        @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control datepicker" })
-                                        @Html.TextBoxFor(model => model.TaxAmount1, new { @class = "form-control datepicker", @id = "TaxAmount1" ,Style="Display:None" })
-                                      <b> Order Date:</b>
-                                        @Html.TextBoxFor(model => model.OrderDate, new { @type = "date", @class = "form-control datepicker" })
-                                        @*Barcode:
-                                        @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo"} })
-                                        @Html.ValidationMessageFor(model => model.Barcode)*@
-                                   
-                                </div>
-                                <div class="form-group col-md-3">
-                                    
-                                       <b> Eway BillNo:</b>
-                                        <input type="text" id="Ewaybil" placeholder="Eway-Bill no" name="" class="form-control" >
-                                         <b>Due Date:</b>
-                                        @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker" })
-                                    
-                                </div>
                             </div>
+                            <div class="form-group col-md-3">
+
+                                <b> Order No:</b>
+                                @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control datepicker" })
+                                @Html.TextBoxFor(model => model.TaxAmount1, new { @class = "form-control datepicker", @id = "TaxAmount1", Style = "Display:None" })
+                                <b> Order Date:</b>
+                                @Html.TextBoxFor(model => model.OrderDate, new { @type = "date", @class = "form-control datepicker" })
+                                @*Barcode:
+                                    @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo"} })
+                                    @Html.ValidationMessageFor(model => model.Barcode)*@
+
+                            </div>
+                            <div class="form-group col-md-3">
+
+                                <b> Eway BillNo:</b>
+                                <input type="text" id="Ewaybil" placeholder="Eway-Bill no" name="" class="form-control">
+                                <b>Due Date:</b>
+                                @Html.TextBoxFor(model => model.DueDate, new { @type = "date", @class = "form-control datepicker" })
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-            
+
 
                 <div class="form-group" style="width:100%;">
 
@@ -574,14 +568,17 @@
                                 <input style="text-align:center" type="text" name="SalePrice" id="Barcode" class="form-control">
 
                                 @*@Html.tex(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", placeholder = "BarcodNo" } })
-                        @Html.ValidationMessageFor(model => model.Barcode)*@
+                                    @Html.ValidationMessageFor(model => model.Barcode)*@
 
                             </td>
 
                             <td style="padding:3px;text-align:center">
                                 <label>Item Name</label>
-                                @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item",  new { @class = "form-control", @name = "ItemName"  })
+                                @Html.DropDownListFor(model => model.ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @name = "ItemName" })
 
+                            </td>
+                            <td style="padding:3px;text-align:center">
+                                <a class="btn btn-success" style="margin-top:25px"><i class="fa fa-plus" onclick="PopupForm1('@Url.Action("Additem","SaleOrder")')"></i></a>
                             </td>
                             <td style="padding:3px;text-align:center">
                                 <label>MRP</label>
@@ -614,7 +611,7 @@
                             </td>
                             <td style="padding:3px;text-align:center">
                                 <a class="btn btn-success pull-right" style="margin-top:20px;" id="btnaddtolist"><i class="fa fa-plus"></i>Add Item</a>
-       </td>
+                            </td>
                         </tr>
                     </table>
 
@@ -659,7 +656,7 @@
                     </table>
                 </div>
 
-                 
+
 
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse ">
@@ -798,7 +795,7 @@
                                    {
                                        new SelectListItem {Text = "Paid", Value = "Paid", Selected = true },
                                        new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
-                                      
+
                                    }, new { @class = "form-control", @style = "width:150px" })
                             </div>
                             <div class="col-md-8 form-group">
@@ -807,7 +804,9 @@
                                     @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control",id= "Total", placeholder = "Total Amount" } })
                                     @Html.ValidationMessageFor(model => model.CalTotal)
                                     Recived :
-                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" , id="Received "} })
+                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", placeholder = "Recive Ammount" , id="
+
+                    "} })
                                     @Html.ValidationMessageFor(model => model.Received)
                                    Remaining Balance:
                                     @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", placeholder = "Remining Balance",id= "RemainingBal" } })
@@ -816,7 +815,7 @@
                             </div>
                         </div>
                     </div>*@
-                    @*<div class="row">
+                @*<div class="row">
                         @*<div class="col-md-1 form-group" style="margin-top:8px; ">
                         </div>
                         <div class="col-md-3">
@@ -832,10 +831,10 @@
                         <div class="col-md-3 form-group">
                         </div>
                     </div>*@
-               
+
             </div>
         </div>
-   }
+    }
 
     <br />
 
@@ -851,3 +850,102 @@
 
 </body>
 </html>
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+@section scripts{
+    <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        var Popup, dataTable, Popup1;
+        $(document).ready(function () {
+
+        });
+
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: 'Add Parties ',
+                        height: 480,
+                        width: 700,
+                        close: function () {
+                            Popup.dialog('destroy').remove();
+                        }
+
+                    });
+                });
+        }
+
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+
+        function PopupForm1(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+                    Popup1 = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: 'Add Parties ',
+                        height: 550,
+                        width: 840,
+                        close: function () {
+                            Popup1.dialog('destroy').remove();
+                        }
+
+                    });
+                });
+        }
+
+        function SubmitForm1(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            Popup1.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+    </script>
+}
+

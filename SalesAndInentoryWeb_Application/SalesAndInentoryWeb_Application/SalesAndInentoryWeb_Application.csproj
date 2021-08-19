@@ -4036,6 +4036,10 @@
     <Content Include="Views\DiscountReport\Report.cshtml" />
     <Content Include="Views\TaxReport\Report.cshtml" />
     <Content Include="Views\TaxRateReport\Report.cshtml" />
+    <Content Include="Views\SaleInvoice\Addparty.cshtml" />
+    <Content Include="Views\SaleInvoice\Additem.cshtml" />
+    <Content Include="Views\SaleOrder\Additem.cshtml" />
+    <Content Include="Views\SaleOrder\Addparty.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

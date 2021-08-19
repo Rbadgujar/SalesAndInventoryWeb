@@ -207,7 +207,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-              var final = old - bal;
+              var final = old + bal;
               string  sql1 = string.Format("update tbl_PartyMaster set OpeningBal="+ final + " where PartyName='"+name+"' and  DeleteData='1' and Company_ID=" + MainLoginController.companyid1 + "");
                 SqlCommand cmd = new SqlCommand(sql1);      
                     cmd.Connection = con;
