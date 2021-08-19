@@ -46,9 +46,7 @@
 							<th>Party Name</th>
 							<th>Payment Type</th>
 							<th>Receipt No</th>
-							<th>Paid</th>
-							<th>Discount</th>
-							<th>Total</th>
+							<th>Paid</th>							
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -89,11 +87,9 @@
                         { "data": "CustomerName" },
                         { "data": "PaymentType" },
                         { "data": "ReceiptNo" },
-                        { "data": "Paid" },
-                        { "data": "Discount" },
-                        { "data": "Total" },
+                        { "data": "Paid" },                       
                         {"data": "Id", "render": function (data) {
-                            return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("PaymentOutUpdate", "PaymentOut")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                            return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "PaymentOut")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "PaymentOut")/" + data + "><i class='fa fa-print'></i></a>";
                     },
                             "orderable": false,
                             "searchable": false,
@@ -134,7 +130,7 @@
                             { "data": "Total" },
                             {
                                 "data": "Id", "render": function (data) {
-                                    return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "PaymentOut")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
+                                    return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "PaymentOut")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "PaymentOut")/" + data + "><i class='fa fa-print'></i></a>";
                                 },
                                 "orderable": false,
                                 "searchable": false,
@@ -154,7 +150,7 @@
                     var table1 = $('#payment').DataTable();
                     table1.destroy();
 
-                
+
 
                     var date = $("#todate").val();
                     var date2 = $("#fromdate").val();
@@ -177,7 +173,7 @@
                             { "data": "Total" },
                             {
                                 "data": "Id", "render": function (data) {
-                                    return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "PaymentOut")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
+                                    return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "PaymentOut")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "PaymentOut")/" + data + "><i class='fa fa-print'></i></a>";
                                 },
                                 "orderable": false,
                                 "searchable": false,
@@ -202,7 +198,7 @@
                     autoOpen: true,
                     resizable: false,
                     title: 'Add PaymentOut',
-                    height: 320,
+                    height: 350,
                     width: 700,
                     close: function () {
                         Popup.dialog('destroy').remove();
@@ -262,7 +258,7 @@
         }
 
         $(document).ready(function () {
-           
+
             var date = new Date();
 
             var day = date.getDate();
@@ -278,7 +274,7 @@
 
 
         });
-           
+
 	</script>
 }
 

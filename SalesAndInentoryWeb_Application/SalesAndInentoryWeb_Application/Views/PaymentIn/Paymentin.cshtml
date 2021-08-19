@@ -8,18 +8,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
-    </script>
     <script>
 $(document).ready(function(){
     $("#it").click(function () {
@@ -39,8 +27,7 @@ $(document).ready(function(){
 
                 <nav class="navbar navbar-default " style="background-color:white;border:none">
                     <div class="container-fluid">
-                        <div class="collapse navbar-collapse ">
-                          
+                        <div class="collapse navbar-collapse ">                          
                               <br />
                             <div class="row">
                                 <div class="form-group col-md-2 " style="text-align:right;">
@@ -132,7 +119,7 @@ $(document).ready(function(){
                                         @Html.DevExpress().Label(settings =>
                                {
                                    settings.Style["font-weight"] = "bold";
-                                   settings.Name = "dESCRIPTION";
+                                   settings.Name = "Description";
                                    settings.Text = "Description   :";
 
                                }).GetHtml()

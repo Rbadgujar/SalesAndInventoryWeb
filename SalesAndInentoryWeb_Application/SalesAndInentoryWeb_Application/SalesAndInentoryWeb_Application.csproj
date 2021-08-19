@@ -4043,6 +4043,7 @@
     <Content Include="Views\OIncomeItemReport\Report.cshtml" />
     <Content Include="Views\PaymentOut\PaymentOutUpdate.cshtml" />
     <Content Include="Views\PaymentOut\ReportAll.cshtml" />
+    <Content Include="Views\PaymentOut\Report.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -77,7 +77,7 @@
 					{ "data": "Total" },
 					{ "data": "Status" },
 					{"data":"ReturnNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "DebitNote")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+					    return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit", "DebitNote")/" + data + "><i class='fa fa-pencil'></i> </a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "DebitNote")/" + data + "><i class='fa fa-print'></i></a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -118,7 +118,7 @@
                         { "data": "Status" },
                         {
                             "data": "ReturnNo", "render": function (data) {
-                                return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "DebitNote")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
+                                return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit", "DebitNote")/" + data + "><i class='fa fa-pencil'></i> </a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "DebitNote")/" + data + "><i class='fa fa-print'></i></a>";
                             },
                             "orderable": false,
                             "searchable": false,
@@ -138,7 +138,7 @@
             $("#fromdate").change(function () {
 
                 var table1 = $('#debitnote').DataTable();
-                table1.destroy();               
+                table1.destroy();
                 var date = $("#todate").val();
                 var date2 = $("#fromdate").val();
                 par = 1;
@@ -159,7 +159,7 @@
 					{ "data": "Total" },
 					{ "data": "Status" },
 					{"data":"ReturnNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "DebitNote")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+					    return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit", "DebitNote")/" + data + "><i class='fa fa-pencil'></i> </a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "DebitNote")/" + data + "><i class='fa fa-print'></i></a>";
                     },
                         "orderable": false,
                         "searchable":false,

@@ -62,6 +62,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult ReportAll()
         {
+            
             return View();
         }
         [HttpPost]
@@ -135,7 +136,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items1;
         }
-        public int openingstock, Minstock;
+        public int openingstock, Minstock, minusamount;
         public void stock(int ItemID, int newqty)
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
@@ -183,13 +184,122 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
 
         }
+     
+        public int OpeningBal1 = 0;
+        public void partypaymnet(string pname, int Remaingbal, string Status, int totalbal)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql = string.Format("SELECT OpeningBal FROM tbl_PartyMaster WHERE PartyName =@Id AND  Company_ID=" + MainLoginController.companyid1 + " ");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", pname);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+
+                            OpeningBal1 = Convert.ToInt32(sdr["OpeningBal"].ToString());
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            if (Status == "Paid")
+            {
+
+                minusamount = OpeningBal1 + Remaingbal;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    string sql = string.Format("update tbl_PartyMaster Set OpeningBal=" + minusamount + " WHERE PartyName =@Id AND  Company_ID=" + MainLoginController.companyid1 + " ");
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@Id", pname);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+
+            }
+            else
+            {
+
+                minusamount = OpeningBal1 - totalbal;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    string sql = string.Format("update tbl_PartyMaster Set OpeningBal=" + minusamount + " WHERE PartyName =@Id AND  Company_ID=" + MainLoginController.companyid1 + " ");
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.Connection = con;
+                        cmd.Parameters.AddWithValue("@Id", pname);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+
+            }
+
+
+        }
+        string Comanystate;
+        public int stateget(string state)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql = string.Format("Select  State from tbl_CompanyMaster where CompanyID=" + MainLoginController.companyid1 + "");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+
+                            Comanystate = sdr["State"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            if (state == Comanystate)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+
+        }
+        public int result;
         [HttpPost]
         public ActionResult AddPurchase(PartyDetailsForPurchase objpurchase)
         {
-            
-            var gstcount = objpurchase.TaxAmount1;
-            var gst = gstcount / 2;
 
+            float gst = 0;
+            float igst = 0;
+            float finalgsr = 0;
+            result = stateget(objpurchase.StateOfSupply);
+            if (result == 1)
+            {
+                float gstcount = (float)objpurchase.TaxAmount1;
+                gst = (float)(gstcount / 2);
+            }
+            else
+            {
+                igst = (float)objpurchase.TaxAmount1;
+            }
+            partypaymnet(objpurchase.PartyName, Convert.ToInt32(objpurchase.RemainingBal), objpurchase.Status, Convert.ToInt32(objpurchase.Total));
             tbl_PurchaseBill sale = new tbl_PurchaseBill()
             {
                 PartyName = objpurchase.PartyName,
@@ -209,6 +319,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 DueDate = objpurchase.DueDate,
                 SGST = gst,
                 CGST = gst,
+                IGST = igst,
                 Barcode = objpurchase.Barcode,
                 Status = objpurchase.Status,
                 VehicleNumber = objpurchase.VehicleNumber,
@@ -223,8 +334,15 @@ namespace SalesAndInentoryWeb_Application.Controllers
             {
                 TempData["ID"] = sale.BillNo;
                 stock(item.ItemID, item.Qty);
-                var gst1 = item.SaleTaxAmount;
-                var finalgsr = gst1 / 2;
+                if (result == 1)
+                {
+                    float gst1 = (float)item.SaleTaxAmount;
+                    finalgsr = (float)(gst1 / 2);
+                }
+                else
+                {
+                    igst = (float)item.SaleTaxAmount;
+                }
                 tbl_PurchaseBillInner inner = new tbl_PurchaseBillInner()
                 {
                     ItemName = item.ItemName,
@@ -234,8 +352,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     Discount = item.Discount,
                     DiscountAmount = item.DiscountAmount,
                     SaleTaxAmount = item.SaleTaxAmount,
+                    ItemID = item.ItemID,
                     CGST = finalgsr,
-                    SGST=finalgsr,              
+                    SGST = finalgsr,
+                    IGST = igst,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty,
                     Company_ID = Convert.ToInt32(Session["UserId"]),
@@ -346,8 +466,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return StiMvcViewer.GetReportResult(report);
 
         }
-        public ActionResult Report()
+        public ActionResult Report(int id=0)
         {
+            if (id != 0)
+            {
+                TempData["ID"] = id;
+            }
             return View();
         }
 
@@ -483,10 +607,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         {
                             items3.Add(new tbl_PurchaseBillInner()
                             {
+                                ItemID = Convert.ToInt32(sdr["ItemID"].ToString()),
                                 ItemName = sdr["ItemName"].ToString(),
                                 SalePrice = Convert.ToDouble(sdr["SalePrice"]),
                                 TaxForSale = sdr["TaxForSale"].ToString(),
                                 SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
+                                Discount = Convert.ToDouble(sdr["Discount"]).ToString(),
                             });
                         }
                     }

@@ -67,10 +67,10 @@
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
-            <div class="col-md-2" style="text-align:right"> Received :</div>
+            <div class="col-md-2" style="text-align:right"> Debit :</div>
             <div class="col-md-4">
-                @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Paid, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TableName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TableName, "", new { @class = "text-danger" })
             </div>
         </div>
         <br />
@@ -81,11 +81,19 @@
             <div class="col-md-4">
                 <input type="file" name="updatefiel" class="form-control" />
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-2" style="text-align:right"> Payment Out :</div>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Paid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Paid, "", new { @class = "text-danger" })
+            </div>
+            <br>
+            <div class="col-md-4"> </div>
+          
             <div class="col-md-4">
                 <input type="submit" value="Save" class="btn btn-primary" style="width:80px;font-size:14px;" />
                 <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
             </div>
+          
         </div>
         </div>
 }
@@ -99,4 +107,31 @@
     if (day < 10) day = "0" + day;
     var today = year + "-" + month + "-" + day;
     $("#Date").attr("value", today);
+
+    $("#Paid").change(function () {
+
+        var creditamount = $("#TableName").val();
+        var recive = $("#Paid").val();
+        var remaing = creditamount + recive;
+
+    });
+
+    $("#CustomerName").change(function () {
+        debugger
+        var fruitId = $(this).find("option:selected").val();
+        if (fruitId != "") {
+            $.ajax
+                ({
+                    type: "POST",
+                    url: "/PaymentOut/GetFruitName",
+                    data: "id=" + fruitId,
+                    success: function (data) {
+                        var content = "";
+                        for (var x in data) {
+                            $("#TableName").val(data[x].OpeningBal);
+                        }
+                    }
+                });
+        }
+    });
 </script>

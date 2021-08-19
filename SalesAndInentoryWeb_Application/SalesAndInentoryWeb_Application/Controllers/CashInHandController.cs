@@ -38,6 +38,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 bt.ListOfAccounts = ListOfItems();
                 return View(bt);         
 		}
+        [HttpGet]
+        public ActionResult CashInHand()
+        {
+            var tb = db.tbl_SaleInvoiceSelect("CashInHand", null, null, null, null, null,null,null,null,null,null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null,null,null,null,null,null,null).ToList();
+            return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
+        }
         private static List<SelectListItem> ListOfItems()
         {
             string sql;

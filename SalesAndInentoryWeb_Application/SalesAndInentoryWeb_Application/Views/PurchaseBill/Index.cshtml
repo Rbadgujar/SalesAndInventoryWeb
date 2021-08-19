@@ -76,7 +76,7 @@
                     { "data": "Total" },
                      { "data": "Status" },
                     {"data": "BillNo", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddPurchaseUpdate", "PurchaseBill")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-info btn-sm' href=@Url.Action("AddPurchaseUpdate", "PurchaseBill")/" + data + "><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "PurchaseBill")/" + data + "><i class='fa fa-print'></i></a>";
 
 					},
                         "orderable": false,
@@ -95,17 +95,17 @@
                                  var table1 = $('#PrchaseBill').DataTable();
                                  table1.destroy();
 
-                            
+
                                  var da= new Date();
                              var date  = $("#todate").val();
                              var date2 = $("#fromdate").val();
-                            
+
                               par = 1;
-                                
+
                                  dataTable1 = $("#PrchaseBill").DataTable({
                                      "ajax": {
                                          "url": "/PurchaseBill/Data",
-                                         data: { 'date':date ,'par':'0','date2':date2 },                                     
+                                         data: { 'date':date ,'par':'0','date2':date2 },
                                          "type": "GET",
                                          "datatype": "json"
                                      },
@@ -118,7 +118,7 @@
                                          { "data": "Total" },
                                           { "data": "Status" },
                                          {"data": "BillNo", "render": function (data) {
-                                             return "<a class='btn btn-default btn-sm' href=@Url.Action("AddPurchaseUpdate", "PurchaseBill")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                                             return "<a class='btn btn-info btn-sm' href=@Url.Action("AddPurchaseUpdate", "PurchaseBill")/" + data + "><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "PurchaseBill")/" + data + "><i class='fa fa-print'></i></a>";
 
                                          },
                                              "orderable": false,
@@ -139,16 +139,16 @@
                                  table1.destroy();
 
                                  debugger
-                               
+
                                  var date  = $("#todate").val();
                                  var date2 = $("#fromdate").val();
                                  par = 1;
-                                
+
                                  dataTable1 = $("#PrchaseBill").DataTable({
                                      "ajax": {
                                          "url": "/PurchaseBill/Data",
                                          data: { 'date':date ,'par':'0','date2':date2 },
-                                     
+
                                          "type": "GET",
                                          "datatype": "json"
                                      },
@@ -161,7 +161,7 @@
                                          { "data": "Total" },
                                           { "data": "Status" },
                                          {"data": "BillNo", "render": function (data) {
-                                             return "<a class='btn btn-default btn-sm' href=@Url.Action("AddPurchaseUpdate", "PurchaseBill")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                                             return "<a class='btn btn-info btn-sm' href=@Url.Action("AddPurchaseUpdate", "PurchaseBill")/" + data + "><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "PurchaseBill")/" + data + "><i class='fa fa-print'></i></a>";
 
                                          },
                                              "orderable": false,
@@ -180,10 +180,10 @@
 
 
 
-           
+
 
                          });
-        
+
         $(document).ready(function () {
             var date = new Date();
 
@@ -201,7 +201,7 @@
 
         });
 
-          
+
                      function PopupForm(url) {
                     var formDiv = $('<div/>');
                     $.get(url)
