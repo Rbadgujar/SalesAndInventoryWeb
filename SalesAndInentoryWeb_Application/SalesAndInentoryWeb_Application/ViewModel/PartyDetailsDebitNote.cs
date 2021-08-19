@@ -24,7 +24,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
 
         public string Barcode { get; set; }
         public double Received { get; set; }
-        public int TaxAmount1 { get; set; }
+        public float TaxAmount1 { get; set; }
         public double RemainingBal { get; set; }
         public double Total { get; set; }
         public string Status { get; set; }

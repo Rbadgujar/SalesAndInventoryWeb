@@ -9,17 +9,7 @@
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	@Html.DevExpress().GetStyleSheets(
-		new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-		new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-	)
-	@Html.DevExpress().GetScripts(
-		new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-		new Script { ExtensionSuite = ExtensionSuite.Editors }
-	)
+
 </head>
 <div class="container" style="height:100%; width:100%;">
 
@@ -32,7 +22,13 @@
 				<div class="collapse navbar-collapse ">
 					<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Cash In Hand</h3></label>
 					<a class="btn btn-success pull-right row" style="margin-top:6.5px; margin-right:1px" onclick="PopupForm('@Url.Action("AddOrEdit","CashInHand")')"><i class="fa fa-plus"></i> Add Cash In Hand </a>
-				</div>
+                    <select id="Mode" class="form-control" style="height:34px; margin-top:6.5px;margin-right:25px;">
+                        <option value="Cash">Cash</option>
+                        <option value="PhonePay">PhonePay</option>
+                        <option value="GooglePay">GooglePay</option>
+                        <option value="Chuque">Cheque</option>
+                    </select>
+                </div>
 			</div>
 		</nav>
 
@@ -41,12 +37,16 @@
 				<table id="cash" class="table table-striped table-bordered" style="width:100%">
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>Bank Name</th>
-							<th>Cash Adjustment</th>
-							<th>Amount</th>
+							<th>Transaction Type</th>
+							<th>Party Name</th>
+                            <th>Address</th>
+                            <th>Contact No</th>
 							<th>Date</th>
-							<th>Action</th>
+							<th>Payment Type</th>
+							<th>Paid</th>
+                            <th>Remaining Bal</th>
+                            <th>Total</th>
+                            <th></th>
 						</tr>
 					</thead>
 				</table>
@@ -63,24 +63,27 @@
 
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
-	<script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
-
-
+    <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 	<script>
         var Popup, dataTable;
         $(document).ready(function () {
             dataTable =  $("#cash").DataTable({
                 "ajax": {
-                    "url": "/CashInHand/Data",
+                    "url": "/CashInHand/CashInHand",
                     "type": "GET",
                     "datatype": "json"
                 },
 				"columns": [
-                    { "data": "ID" },
-					{ "data": "BankName" },
-					{ "data": "CashAdjustment" },
-					{ "data": "CashAmount" },
-					{ "data": "Date" },
+                    { "data": "TableName" },
+                        { "data": "PartyName" },
+                         { "data": "ContactNo" },
+                        { "data": "ContactNo" },
+                        { "data": "InvoiceDate" },
+                        { "data": "PaymentType" },
+                        { "data": "Received" },
+                        { "data": "RemainingBal" },
+                        { "data": "Total" },
                     {"data":"ID" , "render" : function (data) {
                         return "<a class='btn btn-default btn-sm' onclick=PopupForm1('@Url.Action("AddOrEditUpdate", "CashInHand")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
                     },

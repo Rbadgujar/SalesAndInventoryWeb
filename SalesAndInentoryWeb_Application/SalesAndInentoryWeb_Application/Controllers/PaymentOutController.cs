@@ -75,6 +75,39 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items1;
         }
+        public JsonResult GetFruitName(string id)
+        {
+            return Json(GetFruitNameById(id), JsonRequestBehavior.AllowGet);
+        }
+        private static List<tbl_PartyMaster> GetFruitNameById(string id)
+        {
+            string sql;
+            List<tbl_PartyMaster> items2 = new List<tbl_PartyMaster>();
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                sql = string.Format("SELECT OpeningBal from tbl_PartyMaster WHERE PartyName =@Id and  Company_ID=" + MainLoginController.companyid1 + " ");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items2.Add(new tbl_PartyMaster()
+                            {
+                                OpeningBal = Convert.ToInt32(sdr["OpeningBal"].ToString())
+
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return items2;
+        }
         [HttpGet]
 		public ActionResult paymentoutdata(string date, string date2, string par)
 		{
@@ -93,14 +126,28 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			var tb = db.tbl_Paymentoutselect("Details", id, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single(x => x.Id == id);
 			return View(tb);
 		}
+        public void paymenymagment(string name, int bal, int old)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                var final = old - bal;
+                string sql1 = string.Format("update tbl_PartyMaster set OpeningBal=" + final + " where PartyName='" + name + "' and  DeleteData='1' and Company_ID=" + MainLoginController.companyid1 + "");
+                SqlCommand cmd = new SqlCommand(sql1);
+                cmd.Connection = con;
+                con.Open();
+                cmd.ExecuteNonQuery();
 
-		[HttpGet]
+            }
+        }
+        [HttpGet]
 		public ActionResult AddOrEdit(int id = 0)
 		{
 			    var bb = db.tbl_Paymentoutselect("RecipitNo", null, null, null, null, null, null, null, null, null, null, null, null, null).Single();
                 var vm = new tbl_Paymentout();
                 vm.ReceiptNo = Convert.ToInt32(bb.ReceiptNo) + 1;
                 vm.ListOfParties = ListOfParties();
+
                 return View(vm);			
 		}
         [HttpGet]
@@ -128,8 +175,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         [HttpPost]
 		public ActionResult AddOrEdit(tbl_Paymentout conn, int id=0)
-		{		
-				db.tbl_Paymentoutselect("Insert", null, conn.CustomerName, conn.PaymentType, conn.ReceiptNo, conn.Date, conn.Description, conn.Paid, conn.Discount, conn.Total, conn.image, null, conn.Status, Convert.ToInt32(Session["UserId"]));
+		{
+              paymenymagment(conn.CustomerName, Convert.ToInt32(conn.Paid), Convert.ToInt32(conn.TableName));
+                db.tbl_Paymentoutselect("Insert", null, conn.CustomerName, conn.PaymentType, conn.ReceiptNo, conn.Date, conn.Description, conn.Paid, conn.Discount, conn.Total, conn.image, null, conn.Status, Convert.ToInt32(Session["UserId"]));
 				db.SubmitChanges();
                 return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });
                 //return RedirectToAction("Index");         
@@ -142,5 +190,32 @@ namespace SalesAndInentoryWeb_Application.Controllers
 				db.SubmitChanges();
 			   return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);			
 		}
-	}
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.PhoneNo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.ID,b.CustomerName,b.Date,b.PaymentType,b.Company_ID,b.Description,b.Paid from tbl_CompanyMaster as a,tbl_PaymentOut as b where b.ID="+id+" and a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and a.DeleteData='1' and b.DeleteData='1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "PaymentOut");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/PaymentOut1.mrt"));
+            report.RegData("PaymentOut", dataSet);
+            StiOptions.Viewer.Windows.Zoom = 0.5;
+            return StiMvcViewer.GetReportResult(report);
+        }
+        public ActionResult Report(int id = 0)
+        {
+            if (id != 0)
+            {
+                TempData["ID"] = id;
+            }
+            return View();
+        }
+    }
 }

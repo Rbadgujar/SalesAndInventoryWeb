@@ -335,8 +335,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
             StiOptions.Viewer.Windows.Zoom = 0.5;
             return StiMvcViewer.GetReportResult(report);
         }
-        public ActionResult Report()
+        public ActionResult Report(int id=0)
         {
+            if (id != 0)
+            {
+                TempData["ID"] = id;
+            }
             return View();
         }
         public ActionResult ViewerEvent1()

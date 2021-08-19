@@ -18,7 +18,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
         public ActionResult Data()
         {
-			var tb = db.sp_CompanyBanckAccount("Select", null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+			var tb = db.sp_CompanyBanckAccount("Select1", null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
@@ -55,17 +55,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			if (id == 0)
 			{
 
-				db.sp_CompanyBanckAccount("Insert", null, conn.BankName, conn.AccountName,Convert.ToInt32(conn.AccountNo), conn.OpeningBal,Convert.ToString( conn.Date), null);
+				db.sp_CompanyBanckAccount("Insert", null, conn.BankName, conn.AccountName,Convert.ToInt32(conn.AccountNo), conn.OpeningBal,Convert.ToString( conn.Date), Convert.ToInt32(Session["UserId"]));
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index");
 			}
 			else
 			{
 				db.sp_CompanyBanckAccount("Update", id, conn.BankName, conn.AccountName, Convert.ToInt32(conn.AccountNo), conn.OpeningBal, (conn.Date).ToString(), Convert.ToInt32(Session["UserId"]));
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Update Data Successfully" }, JsonRequestBehavior.AllowGet);
-			}
-		}
+                return RedirectToAction("Index");
+
+            }
+        }
 
 		[HttpPost]
 		public ActionResult Delete(int id)
