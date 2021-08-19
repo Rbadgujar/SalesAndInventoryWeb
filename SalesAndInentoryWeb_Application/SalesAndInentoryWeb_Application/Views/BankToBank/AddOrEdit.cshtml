@@ -10,6 +10,9 @@
   padding: 20px;
 }
 </style>
+@using (Html.BeginForm("AddOrEdit", "BankToBank", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+
         <div id="div">
             @Html.HiddenFor(model => model.ID)
             <div class="row">
@@ -17,7 +20,7 @@
                 <div class="col-md-6">
                     @Html.LabelFor(model => model.FromBank, new { @class = "control-label" })
                     <br>
-                     @Html.DropDownListFor(model => model.FromBank, Model.ListOfAccounts, "Select Bank", new { @class = "form-control"})
+                     @Html.DropDownListFor(model => model.FromBank, Model.ListOfAccounts, "Select Bank", new { @class = "form-control" })
                     <br>
                 </div>
                     <div class="col-md-6">
@@ -47,7 +50,7 @@
                 <div class="form-group">
                     <div class="col-md-6">
                         @Html.LabelFor(model => model.Descripition, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.Descripition, new { @class = "form-control" ,@style="height:35px"})
+                        @Html.TextAreaFor(model => model.Descripition, new { @class = "form-control", @style = "height:35px" })
                     </div>
                 <div class="col-md-6">
                     @Html.LabelFor(model => model.Date, new { @class = "control-label" })
@@ -57,11 +60,11 @@
                     </div>
                 </div>
             <br>
-            <input type="submit" value="Submit" class="btn btn-primary pull-right" id="btnsubmit"/>
+            <input type="submit" value="Submit" class="btn btn-primary pull-right" @*id="btnsubmit"*@/>
             <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
             <br>
             </div>
-
+}
     <script type="text/javascript">
     $(document).ready(function () {
         $("#FromBank").change(function () {
@@ -86,9 +89,9 @@
         $("input[type=text]").change(function () {
             cal();
         });      
-        $("btnsubmit").change(function () {
-            check();
-        });
+        //$("btnsubmit").change(function () {
+        //    check();
+        //});
         var date = new Date();
         var day = date.getDate();
         var month = date.getMonth() + 1;

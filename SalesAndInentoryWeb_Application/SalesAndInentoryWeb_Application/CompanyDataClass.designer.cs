@@ -693,7 +693,7 @@ namespace SalesAndInentoryWeb_Application
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_CompanyBanckAccount")]
 		public ISingleResult<sp_CompanyBanckAccountResult> sp_CompanyBanckAccount([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(MAX)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountName", DbType="NVarChar(MAX)")] string accountName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountNo", DbType="Int")] System.Nullable<int> accountNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningBal", DbType="Float")] System.Nullable<double> openingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(MAX)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, bankName, accountName, accountNo, openingBal, date, compid);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, bankName, accountName, accountNo, openingBal,date, compid);
 			return ((ISingleResult<sp_CompanyBanckAccountResult>)(result.ReturnValue));
 		}
 		
@@ -1080,7 +1080,7 @@ namespace SalesAndInentoryWeb_Application
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_OtherIncomeSelect")]
 		public ISingleResult<tbl_OtherIncomeSelectResult> tbl_OtherIncomeSelect(
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id1", DbType="Int")] System.Nullable<int> id1, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IncomeCategory", DbType="NVarChar(MAX)")] string incomeCategory, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="Date")] System.Nullable<System.DateTime> date, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string paymentType, 
@@ -1098,7 +1098,7 @@ namespace SalesAndInentoryWeb_Application
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, id, incomeCategory, date, paymentType, description, image, roundOFF, total, received, balance, additionalFeild1, additional2, additional3, additional4, status, tableName, compid);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, id1, incomeCategory, date, paymentType, description, image, roundOFF, total, received, balance, additionalFeild1, additional2, additional3, additional4, status, tableName, compid);
 			return ((ISingleResult<tbl_OtherIncomeSelectResult>)(result.ReturnValue));
 		}
 		
@@ -28771,7 +28771,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<double> _OpeningBal;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		public sp_CompanyBankAccountResult()
 		{
@@ -28857,8 +28857,8 @@ namespace SalesAndInentoryWeb_Application
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="nvarchar(max)")]
+		public string Date
 		{
 			get
 			{
@@ -32798,7 +32798,7 @@ namespace SalesAndInentoryWeb_Application
 	public partial class tbl_OtherIncomeSelectResult
 	{
 		
-		private int _Id;
+		private int _Id1;
 		
 		private string _IncomeCategory;
 		
@@ -32840,18 +32840,18 @@ namespace SalesAndInentoryWeb_Application
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
-		public int Id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id1", DbType="Int NOT NULL")]
+		public int Id1
 		{
 			get
 			{
-				return this._Id;
+				return this._Id1;
 			}
 			set
 			{
-				if ((this._Id != value))
+				if ((this._Id1 != value))
 				{
-					this._Id = value;
+					this._Id1 = value;
 				}
 			}
 		}

@@ -79,7 +79,7 @@
                             if (fruitId != "") {
                                 $.ajax({
                                     type: "POST",
-                                    url: "/BankToBank/GetFruitName",
+                                    url: "/CashInHand/GetFruitName",
                                     data: "id=" + fruitId,
                                     success: function (response) {
                                         if (response != "") {

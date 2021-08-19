@@ -42,7 +42,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 		public ActionResult Detail(int id)
 		{
-			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single(x => x.Id == id);
+			var tb = db.tbl_OtherIncomeSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single(x => x.Id1 == id);
 			return View(tb);
 		}
         private static List<SelectListItem> ListOfAccount()

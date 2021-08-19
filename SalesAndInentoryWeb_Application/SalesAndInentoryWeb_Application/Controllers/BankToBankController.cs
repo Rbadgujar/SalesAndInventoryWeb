@@ -23,7 +23,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
         public ActionResult GetData()
         {
-			var tb = db.Banktobank("Select", null, null, null, null, null, null, null, MainLoginController.companyid1).ToList();
+			var tb = db.Banktobank("Select", null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
@@ -98,7 +98,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             try
             {
-                db.Banktobank("Insert", emp.ID, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition,emp.Total, MainLoginController.companyid1);
+                db.Banktobank("Insert", emp.ID, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, Convert.ToInt32(Session["UserId"]), emp.Total);
                 db.SubmitChanges();
                 return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
                 
@@ -133,14 +133,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
 		public ActionResult Delete(int id)
 		{
-				var tb = db.Banktobank("Delete", id, null, null, null, null, null, null, MainLoginController.companyid1).ToList();
+				var tb = db.Banktobank("Delete", id, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null).ToList();
 				db.SubmitChanges();
 				return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}
         [HttpGet]
         public ActionResult AddOrEditMain(int id)
         {
-            var tb = db.Banktobank("Details", id, null, null, null, null, null, null,null).Single(x => x.ID == id);
+            var tb = db.Banktobank("Details", id, null, null, null, null, null,Convert.ToInt32(Session["UserId"]), null).Single(x => x.ID == id);
             var vm = new tbl_BanktoBankTransfer();
             vm.FromBank = tb.FromBank;
             vm.ToBank = tb.ToBank;
@@ -152,7 +152,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult AddOrEditMain(int id,tbl_BanktoBankTransfer emp)
         {
-            db.Banktobank("Update", id, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition,emp.Total, MainLoginController.companyid1);
+            db.Banktobank("Update", id, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, Convert.ToInt32(Session["UserId"]), emp.Total);
             db.SubmitChanges();
             return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
         }

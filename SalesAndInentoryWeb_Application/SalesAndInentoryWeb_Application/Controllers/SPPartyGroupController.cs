@@ -36,7 +36,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult GetReport()
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("select a.TableName,b.ItemName,b.Qty,b.freeQty,b.ItemAmount from tbl_PurchaseBillInner as b,tbl_PurchaseBill as a where b.Company_ID='" + MainLoginController.companyid1+ "' and b.DeleteData='1'union ( select a.TableName,b.ItemName,b.Qty,b.freeQty,b.ItemAmount from tbl_SaleInvoiceInner as b,tbl_saleinvoice as a where b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1')");
+            string Query = string.Format("select a.TableName,b.ItemName,b.Qty,b.freeQty,b.ItemAmount from tbl_PurchaseBillInner as b,tbl_PurchaseBill as a where b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1'union ( select a.TableName,b.ItemName,b.Qty,b.freeQty,b.ItemAmount from tbl_SaleInvoiceInner as b,tbl_saleinvoice as a where b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1')");
+
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "saleparty");

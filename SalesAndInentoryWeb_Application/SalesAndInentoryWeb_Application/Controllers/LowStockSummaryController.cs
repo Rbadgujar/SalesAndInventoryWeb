@@ -37,7 +37,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult GetReport()
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("select a.ItemName,a.OpeningQty,a.MinimumStock,a.atPrice,c.CompanyName,c.CompanyID,c.Address,c.PhoneNo,c.EmailID,c.AddLogo,c.GSTNumber from tbl_ItemMaster as a,tbl_CompanyMaster as c where a.OpeningQty >= a.MinimumStock and a.Company_ID='" + MainLoginController.companyid1 + "' and a.DeleteData='1'");
+            string Query = string.Format("select a.ItemName,a.OpeningQty,a.MinimumStock,a.atPrice,c.CompanyName,c.CompanyID,c.Address,c.PhoneNo,c.EmailID,c.AddLogo,c.GSTNumber from tbl_ItemMaster as a,tbl_CompanyMaster as c where a.OpeningQty >= a.MinimumStock and a.Company_ID='" + MainLoginController.companyid1 + "' and c.CompanyID='" + MainLoginController.companyid1 + "' and a.DeleteData='1' and c.DeleteData='1'");
 
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
