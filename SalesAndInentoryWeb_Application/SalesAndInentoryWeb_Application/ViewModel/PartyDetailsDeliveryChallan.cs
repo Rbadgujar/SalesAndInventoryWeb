@@ -21,11 +21,12 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public DateTime DeliveryDate { get; set; }
         public string Barcode { get; set; }
         public double Received { get; set; }
+        public string BillingAddress{get;set;}
         public string Description { get; set; }
         public double RemainingBal { get; set; }
         public double CalTotal { get; set; }
         public string Status { get; set; }
-        public  int TaxAmount1 { get; set; }
+        public  float TaxAmount1 { get; set; }
    
         public List<ItemPurchase> ListOfDeliveryChallan { get; set; }
     }

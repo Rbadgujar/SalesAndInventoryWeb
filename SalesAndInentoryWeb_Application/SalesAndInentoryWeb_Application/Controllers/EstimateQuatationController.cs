@@ -22,8 +22,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult EstimateData()
+        public ActionResult EstimateData(string date, string date2, string par)
         {
+            if (par == "0")
+            {
+                //var tb = db.tbl_PurchaseBillselect("datetodate", null, null, null, null, null, Convert.ToDateTime(date), null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var getdata1 = db.tbl_QuotationSelect("datetodate", null, null, null,Convert.ToDateTime(date),date2,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null).ToList();
+                return Json(new { data = getdata1 }, JsonRequestBehavior.AllowGet);
+            }
             var getdata = db.tbl_QuotationSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }

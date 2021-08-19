@@ -3359,6 +3359,8 @@
     <Content Include="Content\Report\PaymetinData.mrt" />
     <Content Include="Content\Report\AllTransactionDataReport.mrt" />
     <Content Include="Content\Report\BankStatementData.mrt" />
+    <Content Include="Content\Report\DeliveryChallan.mrt" />
+    <Content Include="Content\Report\DeliveryChallanDataReport.mrt" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
@@ -4050,6 +4052,9 @@
     <Content Include="Views\SaleOrder\Addparty.cshtml" />
     <Content Include="Views\SaleOrder\Additem.cshtml" />
     <Content Include="Views\PaymentIn\Report.cshtml" />
+    <Content Include="Views\DeliveryChallan\Dilaverychallen.cshtml" />
+    <Content Include="Views\DeliveryChallan\Report.cshtml" />
+    <Content Include="Views\DeliveryChallan\ReportAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -376,7 +376,7 @@
                 });
 
             objcreditnote.PartyName = $("#PartiesID option:selected").val();
-            objcreditnote.BillingName = $("#BillingName").val();
+            objcreditnote.BillingName = $("#BillingName").val(); 
             objcreditnote.ContactNo = $("#ContactNo").val();
             objcreditnote.InvoiceDate = $("#InvoiceDate").val();
             objcreditnote.DueDate = $("#DueDate").val();
@@ -431,7 +431,7 @@
                                 @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties, "Select Item", new { @class = "form-control", @style = "width:220px" })
                                 Address:
                                 <br>
-                                @Html.TextAreaFor(model => model.BillingName,new { @class = "form-control", @style = "width:220px", @id = "BillingName" } )
+                                @Html.TextAreaFor(model => model.BillingName,new { @class = "form-control", @style = "width:220px" } )
                                 <br>
                                 Contact No:
                                 @Html.EditorFor(model => model.ContactNo, new { @class = "form-control", placeholder = "Mobile No.....", @style = "width:220px;height:32px" } )

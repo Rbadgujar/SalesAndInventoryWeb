@@ -18,6 +18,7 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public int SGST { get; set;}
         public int ItemID { get; set; }
         public int IGST { get; set; }
+        public float ItemTotal { get; set; }
         public int ItemAmount { get; set; }
     }
 }
