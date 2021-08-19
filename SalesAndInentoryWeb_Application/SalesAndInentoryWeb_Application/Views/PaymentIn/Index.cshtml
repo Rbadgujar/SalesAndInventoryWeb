@@ -33,7 +33,7 @@
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-8.5px;"><h3>Payment In </h3></label>
                     <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" onclick="PopupForm('@Url.Action("AddOrEdit","PaymentIn")')"><i class="fa fa-plus"></i>Add PaymentIn</a>
                     <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;" href="@Url.Action("ReportAll","PaymentIn")"><i class="glyphicon glyphicon-print"></i>Print</a>
-                    <input type="date" class="pull-right row" id ="fromdate" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+                    <input type="date" class="pull-right row" id="fromdate" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
                     <input type="date" id="todate" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
 
@@ -48,11 +48,9 @@
                             <th>ID</th>
                             <th>CustomerName</th>
                             <th>PaymentType</th>
-                           
+
                             <th>Date</th>
                             <th>ReceivedAmount</th>
-                         
-                           
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -60,7 +58,18 @@
             </div>
         </div>
     </nav>
-
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 </div>
 @*<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -105,7 +114,7 @@
              
 
                     {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("Updateview", "PaymentIn")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("Updateview", "PaymentIn")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "PaymentIn")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
                     },
                         "orderable": false,
                         "searchable":false,

@@ -91,8 +91,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         }
 
-        public ActionResult Report()
+        public ActionResult Report(int Id=0)
         {
+            if (Id != 0)
+            {
+                TempData["ID"] = Id;
+            }
             return View();
         }
 
