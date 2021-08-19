@@ -243,6 +243,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 InvoiceDate = Convert.ToDateTime(objdebitnote.InvoiceDate),
                 CGST = gst,
                 SGST=gst,
+                PaymentType = objdebitnote.PaymentType,
                 Barcode = objdebitnote.Barcode,
                 Status = objdebitnote.Status,
                 VehicleNumber = objdebitnote.VehicleNumber,

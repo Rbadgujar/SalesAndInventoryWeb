@@ -709,13 +709,10 @@
 						<div class="row">
 
 							<div class="col-md-3">
-								<b>Payment Type:</b>
-								<select  id="PaymentType" class="form-control">
-                                    <option value="Payment Status">Select Payment Status</option>
-									<option value="Cash">Cash</option>
-									<option value="Onliepayment">Online Payment</option>
-									<option value="Cheque">Cheue</option>
-								</select>
+                                Cheque No:
+                                @Html.EditorFor(model => model.Feild1, new { htmlAttributes = new { @class = "form-control", placeholder = "Cheque no" } })
+                                @Html.ValidationMessageFor(model => model.Feild1)
+                                
                                 <b>
                                     Transport Name:</b>
                                     @Html.EditorFor(model => model.TransportName, new
@@ -748,9 +745,14 @@
                                     @Html.TextBoxFor(model => model.Deliverydate, new { @type = "date", @class = "form-control" })
 </div>
                                 <div class="col-md-3 form-group">
-                                    Cheque No:
-                                    @Html.EditorFor(model => model.Feild1, new { htmlAttributes = new { @class = "form-control", placeholder = "Cheque no"} })
-                                    @Html.ValidationMessageFor(model => model.Feild1)                                  
+                                    <b>Payment Type:</b>
+                                    <select id="PaymentType" class="form-control">
+                                        <option value="Payment Status">Select Payment Status</option>
+                                        <option value="Cash">Cash</option>
+                                        <option value="Onliepayment">Online Payment</option>
+                                        <option value="Cheque">Cheue</option>
+                                    </select>
+                                                                   
                                     <b>
                                         Payment Status:</b>
                                         <select name="cars" id="Status" class="form-control">

@@ -114,10 +114,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             if (par == "0")
             {
-                var tb = db.tbl_Paymentoutselect("datetodate", null,date2,null, null,Convert.ToDateTime(date), null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+                var tb = db.tbl_Paymentoutselect("datetodate", null,null,null, null,Convert.ToDateTime(date), null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
                 return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
             }
-            var tb1 = db.tbl_Paymentoutselect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+            var tb1 = db.tbl_Paymentoutselect("Select", null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
             return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
         }
 

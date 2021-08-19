@@ -10,13 +10,7 @@
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
+  
 </head>
 <div class="container" style="height:100%; width:100%;">
     <div class="alert alert-success" id="success-alert" style="position:absolute;width:300px;">
@@ -79,7 +73,6 @@
                     "ajax": {
 						"url": "/PaymentOut/paymentoutdata",
 						"type": "GET",
-						data: { 'par': '1' },
                         "datatype": "json"
                     },
                     "columns": [
@@ -102,64 +95,16 @@
                         "emptyTable": "No data found, Please click on <b>Add New</b> Button"
                     }
                 });
+                debugger
                 $("#todate").change(function () {
-                    var table1 = $('#payment').DataTable();
-                    table1.destroy();
-
-
+                    var table = $('#payment').DataTable();
+                    table.destroy();
                     var da = new Date();
-                    var date = $("#todate").val();
-                    var date2 = $("#fromdate").val();
-
-                    par = 1;
-
-                    dataTable1 = $("#payment").DataTable({
-                        "ajax": {
-                            "url": "/PaymentOut/paymentoutdata",
-                            data: { 'date': date, 'par': '0', 'date2': date2 },
-                            "type": "GET",
-                            "datatype": "json"
-                        },
-                        "columns": [
-                            { "data": "Id" },
-                            { "data": "CustomerName" },
-                            { "data": "PaymentType" },
-                            { "data": "ReceiptNo" },
-                            { "data": "Paid" },
-                            { "data": "Discount" },
-                            { "data": "Total" },
-                            {
-                                "data": "Id", "render": function (data) {
-                                    return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "PaymentOut")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' style='margin-left:5px' href=@Url.Action("Report", "PaymentOut")/" + data + "><i class='fa fa-print'></i></a>";
-                                },
-                                "orderable": false,
-                                "searchable": false,
-                                "width": "150px"
-                            }
-
-                        ],
-                        "language": {
-
-                            "emptyTable": "No data found, Please click on <b>Add New</b> Button"
-                        }
-                    });
-                });
-
-                $("#fromdate").change(function () {
-
-                    var table1 = $('#payment').DataTable();
-                    table1.destroy();
-
-
-
-                    var date = $("#todate").val();
-                    var date2 = $("#fromdate").val();
-                    par = 1;
-
+                    var date = $("#todate").val();                  
                     dataTable = $("#payment").DataTable({
                         "ajax": {
                             "url": "/PaymentOut/paymentoutdata",
-                            data: { 'date': date, 'par': '0', 'date2': date2 },
+                            data: { 'date': date, 'par': '0'},
                             "type": "GET",
                             "datatype": "json"
                         },
@@ -187,6 +132,8 @@
                         }
                     });
                 });
+
+             
             });
         function PopupForm(url) {
             var formDiv = $('<div/>');
