@@ -8,6 +8,10 @@ using System.Data.Entity;
 using SalesAndInentoryWeb_Application.ViewModel;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Mvc;
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class DeliveryChallanController : Controller
@@ -23,11 +27,43 @@ namespace SalesAndInentoryWeb_Application.Controllers
         //'The DELETE statement conflicted with the REFERENCE constraint "FK__tbl_Deliv__Chall__68D28DBC". The conflict occurred in database "idealtec_inventory", table "dbo.tbl_DeliveryChallanInner", column 'ChallanNo'. The statement has been terminated.'
 
         [HttpGet]
-        public ActionResult ShowChallanData()
+        public ActionResult ShowChallanData(string date, string date2, string par)
         {
+            if (par == "0")
+            {
+                //var tb = db.tbl_PurchaseBillselect("datetodate", null, null, null, null, null, Convert.ToDateTime(date), null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var getdata1 = db.tbl_DeliveryChallanSelect("datetodate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null).ToList();
+                return Json(new { data = getdata1 }, JsonRequestBehavior.AllowGet);
+            }
             var getdata = db.tbl_DeliveryChallanSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,Convert.ToInt32(Session["UserId"].ToString()), null, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult ReportAll()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.InvoiceDate, b.InvoiceID, b.PartyName, b.PaymentType, b.Total, b.Received, b.RemainingBal,b.DeleteData, b.Status,b.Company_ID from tbl_SaleInvoice as b,tbl_CompanyMaster as c where b.Company_ID = '" + MainLoginController.companyid1 + "' and c.CompanyID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1'");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.ChallanNo,b.PartyName,b.BillingName,b.InvoiceDate,b.Total,b.Received,b.RemainingBal,b.DeleteData FROM tbl_CompanyMaster as a, tbl_DeliveryChallan as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1' ");
+
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.Company_ID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "DeliveryChallan");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/DeliveryChallanDataReport.mrt"));
+            report.RegData("DeliveryChallan", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+
 
         [HttpPost]
         public ActionResult Delete(int id)
@@ -180,30 +216,118 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             return items3;
         }
+        public string Comanystate;
+        public int stateget(string state)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql = string.Format("Select  State from tbl_CompanyMaster where CompanyID=" + MainLoginController.companyid1 + "");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+
+                            Comanystate = sdr["State"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            if (state == Comanystate)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+
+        }
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+
+            //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id + " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1' ");
+            //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID, b.InvoiceID,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName, b.InvoiceDate, b.DueDate, b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.CGST, c.SGST,c.IGST,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_SaleInvoice as b,tbl_SaleInvoiceInner as c where a.CompanyID=" + MainLoginController.companyid1 + " and b.InvoiceID=" + id + " and c.InvoiceID=" + id + " ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo, b.ChallanNo,b.Deliverydate,b.DeliveryLocation,b.TransportName ,b.BillingAddress  , b.Company_ID,b.InvoiceDate, b.DueDate, b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount,c.CalTotal, c.CGST, c.SGST,c.IGST FROM tbl_CompanyMaster as a, tbl_DeliveryChallan as b,tbl_DeliveryChallanInner as c where b.ChallanNo=" + id+" and c.ChallanNo="+id+" and c.Company_ID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1' and a.CompanyID='" + MainLoginController.companyid1 + "' ");
+
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+
+            DataSet dataSet = new DataSet("productsDataSet");
+
+            adapter.Fill(dataSet, "DeliveryChallan1");
+
+            StiReport report = new StiReport();
+
+            report.Load(Server.MapPath("~/Content/Report/DeliveryChallan.mrt"));
+
+            report.RegData("DeliveryChallan1", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+
+        }
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult Report(int Id = 0)
+        {
+            if (Id != 0)
+            {
+                TempData["ID"] = Id;
+            }
+            return View();
+        }
+
+        public int result;
         [HttpPost]
         public ActionResult AddOrEdit(PartyDetailsDeliveryChallan objdeliverychallan)
         {
-            var gstcount = objdeliverychallan.TaxAmount1;
-            var gst = gstcount / 2;
+
+            float gst = 0;
+            float igst = 0;        
+            result = stateget(objdeliverychallan.StateOfSupply);
+            if (result == 1)
+            {
+                float gstcount1 = (float)objdeliverychallan.TaxAmount1;
+                gst = (float)(gstcount1 / 2);
+            }
+            else
+            {
+                igst = (float)objdeliverychallan.TaxAmount1;
+            }
+            //var gstcount = objdeliverychallan.TaxAmount1;
+            //var gst = gstcount / 2;
 
             tbl_DeliveryChallan sale = new tbl_DeliveryChallan()
             {
                 PartyName = objdeliverychallan.PartyName,
-                BillingName = objdeliverychallan.BillingName,
+                BillingAddress = objdeliverychallan.BillingName,
                 ContactNo = objdeliverychallan.ContactNo,
-                RemainingBal = objdeliverychallan.RemainingBal,                
+                RemainingBal = objdeliverychallan.RemainingBal,
                 Total = objdeliverychallan.CalTotal,
                 TransportName = objdeliverychallan.TransportName,
+                PartyAddress=objdeliverychallan.BillingAddress,
                 DeliveryLocation = objdeliverychallan.DeliveryLocation,
                 Deliverydate = objdeliverychallan.DeliveryDate,
                 CGST = gst,
-                SGST=gst,
+                SGST = gst,
+                IGST = igst,
                 StateofSupply = objdeliverychallan.StateOfSupply,
                 InvoiceDate = Convert.ToDateTime(objdeliverychallan.InvoiceDate),
                 DueDate = objdeliverychallan.DueDate,
                 Barcode = objdeliverychallan.Barcode,
                 Description=objdeliverychallan.Description,
                 Company_ID=Convert.ToInt32(Session["UserId"].ToString()),
+                DeleteData= Convert.ToBoolean(1),
                 Status = objdeliverychallan.Status,
                 VehicleNumber = objdeliverychallan.VehicleNumber,            
                 Received = objdeliverychallan.Received
@@ -213,8 +337,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objdeliverychallan.ListOfDeliveryChallan)
             {
-                var gst1 = item.SaleTaxAmount;
-                var finalgsr = gst1 / 2;
+                float finalgsr2 = 0;
+                if (result == 1)
+                {
+                    float gst1 = (float)item.SaleTaxAmount;
+                    finalgsr2 = (float)(gst1 / 2);
+                }
+                else
+                {
+                    igst = (float)item.SaleTaxAmount;
+                }
+                
                 tbl_DeliveryChallanInner inner = new tbl_DeliveryChallanInner()
                 {
                     ItemName = item.ItemName,
@@ -222,8 +355,11 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     ChallanNo = sale.ChallanNo,
                     TaxForSale = item.TaxForSale,
                     Discount = item.Discount,
-                    SGST=finalgsr,
-                    CGST=finalgsr,
+                    SGST=finalgsr2,
+                    CGST=finalgsr2,
+                    IGST=igst,
+                    CalTotal=item.ItemTotal,
+                    DeleteData =Convert.ToBoolean(1),
                     DiscountAmount = item.DiscountAmount,
                     Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                     SaleTaxAmount = item.SaleTaxAmount,
@@ -233,6 +369,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 db.tbl_DeliveryChallanInners.InsertOnSubmit(inner);
 
                 db.SubmitChanges();
+                TempData["ID"] = sale.ChallanNo;
             }
             //return Json(data: new {msg= "Data sucessfully inserted", status=true}, JsonRequestBehavior.AllowGet);
             return Json(data: new { success = true, message = "Insert Data Successfully", JsonRequestBehavior.AllowGet });

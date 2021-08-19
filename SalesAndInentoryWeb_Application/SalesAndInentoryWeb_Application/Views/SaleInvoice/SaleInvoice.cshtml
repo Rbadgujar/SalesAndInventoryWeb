@@ -13,7 +13,6 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
-
     <style>
         .scrolldown {
             overflow-y: scroll;
@@ -87,6 +86,10 @@
                     }
 
             });
+
+
+
+
             $("#ID").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
@@ -192,7 +195,7 @@
                 }
             });
 
-
+            $('#ck').hide();
 
 
             $("#SalePrice").on(function () {
@@ -230,6 +233,17 @@
                 $("#Qty").val(qty);
 
             });
+
+            $("#PaymentType").change(function () {
+                debugger
+                var paymenttype = $("#PaymentType").val();
+                if (paymenttype == "Chuque") {
+                    $("#ck").show();
+                } else {
+                    $('#ck').hide();
+                }
+            });
+            
 
             $("#Discount").change(function () {
                 debugger
@@ -697,10 +711,10 @@
                                 new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
 
                             }, new { @class = "form-control" })
-
+                            <div id="ck">
                             <b> Chueque NO:</b>
                             @Html.EditorFor(model => model.Feild3, new { htmlAttributes = new { @class = "form-control", placeholder = "Chueque no" } })
-                            @Html.ValidationMessageFor(model => model.Feild3)
+                            @Html.ValidationMessageFor(model => model.Feild3)</div>
                             <br />
                             <input type="button" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
                             <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />

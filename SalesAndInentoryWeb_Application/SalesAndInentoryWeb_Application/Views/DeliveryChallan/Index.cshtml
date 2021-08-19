@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<SalesAndInentoryWeb_Application.tbl_DeliveryChallanSelectResult>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -22,8 +20,6 @@
     )
 </head>
 <div class="container" style="height:100%; width:100%;">
-
-
     <nav class="navbar navbar-default " style="background-color:white;border:none">
         <br />
         <nav class="navbar navbar-default " style="border:none; background-color:white;">
@@ -31,10 +27,10 @@
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Delivery Challan </h3></label>
                     <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("Dilaverychallen","DeliveryChallan")"><i class="fa fa-plus"></i>Add DeliveryChallan</a>
-                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
-                    <input type="date" class="pull-right row" id="todate" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
+                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;" href="@Url.Action("ReportAll","DeliveryChallan")"><i class="glyphicon glyphicon-print"></i>Print</a>
+                    <input type="date" class="pull-right row" id="fromdate" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
-                    <input type="date" class="pull-right row" id ="fromdate" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
+                    <input type="date" class="pull-right row" id="todate" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
                 </div>
             </div>
         </nav>
@@ -57,20 +53,74 @@
             </div>
         </div>
     </nav>
-
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 </div>
 
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
 @section scripts{
+
     <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
     <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 
     <script>
-        var Popup, dataTable;
+        var Popup, dataTable, dataTable1;
         $(document).ready(function () {
+
+
             dataTable =  $("#challan").DataTable({
                 "ajax": {
                     "url": "/DeliveryChallan/ShowChallanData",
+                    "type": "GET",
+                    data: { 'par': '1' },
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "ChallanNo" },
+                    { "data": "PartyName" },
+                    { "data": "BillingName" },
+                    { "data": "InvoiceDate" },                     
+                    { "data": "Received" },
+                    { "data": "RemainingBal" },
+                    { "data": "Total" },
+                    {
+                        "data":"ChallanNo" , "render" : function (data) {
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i>Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+
+                ],
+                "language": {
+
+                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                }
+            });
+
+
+
+
+            $("#todate").change(function () {
+                var table1 = $('#challan').DataTable();
+                table1.destroy();
+                var da = new Date();
+                var date = $("#todate").val();
+                var date2 = $("#fromdate").val();
+                par = 1;
+
+               dataTable =  $("#challan").DataTable({
+                "ajax": {
+                    "url": "/DeliveryChallan/ShowChallanData",
+                    data: { 'date': date, 'par': '0', 'date2': date2 },
                     "type": "GET",
                     "datatype": "json"
                 },
@@ -84,7 +134,7 @@
                     { "data": "Total" },
                     {
                         "data":"ChallanNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i>Delete</a>";
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i>Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -96,6 +146,51 @@
 
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
+               });  
+
+            });
+
+
+
+              $("#fromdate").change(function () {
+                  var table1 = $('#challan').DataTable();
+                table1.destroy();
+                var da = new Date();
+                var date = $("#todate").val();
+                var date2 = $("#fromdate").val();
+                par = 1;
+
+               dataTable =  $("#challan").DataTable({
+                "ajax": {
+                    "url": "/DeliveryChallan/ShowChallanData",
+                    data: { 'date': date, 'par': '0', 'date2': date2 },
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "ChallanNo" },
+                    { "data": "PartyName" },
+                    { "data": "BillingName" },
+                    { "data": "InvoiceDate" },                     
+                    { "data": "Received" },
+                    { "data": "RemainingBal" },
+                    { "data": "Total" },
+                    {
+                        "data":"ChallanNo" , "render" : function (data) {
+                        return "<a class='btn btn-default btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i>Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+
+                ],
+                "language": {
+
+                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                }
+               });  
+
             });
         });
 

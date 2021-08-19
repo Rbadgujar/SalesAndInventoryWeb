@@ -1,0 +1,22 @@
+﻿@using Stimulsoft.Report.Mvc;
+@{
+    ViewBag.Title = "ReportAll";
+    Layout = "~/Views/Shared/ideal.cshtml";
+}
+
+<h2>All Delivery Challans  </h2>
+<button value="Back to List " href='@Url.Action("SaleIndex","SaleInvoice")' />
+<div style="height:100%;">
+    @Html.Stimulsoft().StiMvcViewer("MvcViewer1", new StiMvcViewerOptions()
+    {
+        Width =800,
+        Height=800,
+
+        Actions =
+                {
+            GetReport = "GetReport1",
+                    ViewerEvent = "ViewerEvent1"
+                }
+
+    })
+</div>

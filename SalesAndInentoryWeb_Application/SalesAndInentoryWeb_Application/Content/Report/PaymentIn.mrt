@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<StiSerializer version="1.0" application="StiReport">
+<StiSerializer version="1.02" type="Net" application="StiReport">
   <Dictionary Ref="1" type="Dictionary" isKey="true">
     <BusinessObjects isList="true" count="0" />
     <Databases isList="true" count="1">
       <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
         <Alias>Connection</Alias>
-        <ConnectionString>Data Source=DESKTOP-V77UKDV;Initial Catalog=InventoryMgnt;Integrated Security=True</ConnectionString>
+        <ConnectionStringEncrypted>9MiBoe9K85lqe71Edlzhf9Fq+0NWBYKBf1y5gGfY4xvkcM1ITEwTEXJJTdx1TKhP1Tj3Schow5lpT6HwTRgiE9la28LEVgGUTX7VHPkc4T+QLA==</ConnectionStringEncrypted>
         <Name>Connection</Name>
-        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
       </Connection>
     </Databases>
     <DataSources isList="true" count="14">
@@ -464,8 +463,9 @@
               <Name>Text3</Name>
               <Page isRef="17" />
               <Parent isRef="20" />
-              <Text>{PaymentIn.Address}</Text>
+              <Text>{PaymentIn.ReceivedAmount}</Text>
               <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
             </Text3>
             <Text4 Ref="25" type="Text" isKey="true">
               <Brush>White</Brush>
@@ -812,13 +812,13 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>3/12/2021 11:14:20 AM</ReportChanged>
+  <ReportChanged>8/19/2021 1:01:54 PM</ReportChanged>
   <ReportCreated>3/12/2021 11:08:28 AM</ReportCreated>
-  <ReportFile />
-  <ReportGuid>280dc7fcfa444306bfa7b6911be66d7f</ReportGuid>
+  <ReportFile>C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\Content\Report\PaymentIn.mrt</ReportFile>
+  <ReportGuid>e4cb8ec3f9284d9fbeeb40191b6864b7</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
-  <ReportVersion>2010.1.700</ReportVersion>
+  <ReportVersion>2012.3.1500</ReportVersion>
   <Script>using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -839,7 +839,8 @@ namespace Reports
         {
             this.InitializeComponent();
         }
-        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
     }
 }
 </Script>

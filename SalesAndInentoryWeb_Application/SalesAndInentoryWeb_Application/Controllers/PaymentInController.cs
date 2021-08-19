@@ -88,8 +88,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             //UnusedAmount,Total,Status,image
             vm.CustomerName = tb.PartyName;
             vm.PaymentType = tb.PaymentType;
-            vm.ReceiptNo = tb.ReceiptNo;
-           
+            vm.ReceiptNo = tb.ReceiptNo;          
             vm.Description = tb.Description;
             vm.ReceivedAmount = tb.ReceivedAmount;
             vm.UnusedAmount = tb.UnusedAmount;
@@ -98,10 +97,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
             //vm.image = tb.image;
             return View(vm);
         }
+      public void paymentUpdate(int id,float newamount)
+        {
+            var tb = db.tbl_PaymentInSelect("Details", id, null, null, null, null, null, null, null, null, null, null, null, null).Single(x => x.ID == id);
+            var prevalue = tb.ReceivedAmount;
+            if(newamount>prevalue)
+            {
 
+            }
+
+        }
         [HttpPost]
         public ActionResult Updateview(tbl_PaymentIn pay,int id)
         {
+
+
+
             db.tbl_PaymentInSelect("Update1", id, pay.CustomerName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null, null);
             db.SubmitChanges();
             return RedirectToAction("Index");
@@ -200,7 +211,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items1;
         }
-
+       
+       
 
         public void  paymenymagment(string name,int bal,int old)
         {
@@ -226,11 +238,17 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 try
                 {
                     paymenymagment(pay.CustomerName, Convert.ToInt32(pay.ReceivedAmount), Convert.ToInt32(pay.TableName));
+                    var cc = Convert.ToInt32(pay.ReceivedAmount);
+                    var cc2 = Convert.ToInt32(pay.TableName);
+                    var cc3 = cc - cc2;
 
                     //CustomerName as PartyName,PaymentType,ReceiptNo,Date,Description,ReceivedAmount, UnusedAmount,Total,Status,image
-                    db.tbl_PaymentInSelect("Insert1", null, pay.CustomerName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount, pay.UnusedAmount, pay.image, pay.Total, pay.Status, null,Convert.ToInt32(Session["UserId"].ToString()));
+                    db.tbl_PaymentInSelect("Insert1", null, pay.CustomerName, pay.PaymentType, pay.ReceiptNo, Convert.ToDateTime(pay.Date), pay.Description, pay.ReceivedAmount,cc3, pay.image, pay.Total, pay.Status, null,Convert.ToInt32(Session["UserId"].ToString()));
                     db.SubmitChanges();
-                    return RedirectToAction("Index");
+                    var bb = db.tbl_PaymentInSelect("reciptno", null, null, null, null, null, null, null, null, null, null, null, null, null).Single();
+
+                    TempData["ID"] = bb.ReceiptNo;
+                    return RedirectToAction("Report");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
                 }
                 catch(Exception ew)
@@ -338,5 +356,43 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View();
             }
         }
+
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.Company_ID,b.ReceiptNo,b.ID,b.CustomerName,b.PaymentType,b.ReceivedAmount,b.Date,b.UnusedAmount,b.Total,b.DeleteData FROM tbl_CompanyMaster as a, tbl_PaymentIn as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID='" + MainLoginController.companyid1 + "' and b.DeleteData='1'and b.ID="+id+" ");
+
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+
+            DataSet dataSet = new DataSet("productsDataSet");
+
+            adapter.Fill(dataSet, "Payin");
+
+            StiReport report = new StiReport();
+
+            report.Load(Server.MapPath("~/Content/Report/PaymentInReport1.mrt"));
+
+            report.RegData("Payin", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+
+        }
+
+        public ActionResult Report(int Id = 0)
+        {
+            if (Id != 0)
+            {
+                TempData["ID"] = Id;
+            }
+            return View();
+        }
+
+
     }
 }

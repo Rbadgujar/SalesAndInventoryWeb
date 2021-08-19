@@ -3357,6 +3357,10 @@
     <Content Include="Content\Report\PaymentIn.mrt" />
     <Content Include="Content\Report\PaymentOutDataReport.mrt" />
     <Content Include="Content\Report\PaymetinData.mrt" />
+    <Content Include="Content\Report\AllTransactionDataReport.mrt" />
+    <Content Include="Content\Report\BankStatementData.mrt" />
+    <Content Include="Content\Report\DeliveryChallan.mrt" />
+    <Content Include="Content\Report\DeliveryChallanDataReport.mrt" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
@@ -4043,8 +4047,14 @@
     <Content Include="Views\OIncomeItemReport\Report.cshtml" />
     <Content Include="Views\PaymentOut\PaymentOutUpdate.cshtml" />
     <Content Include="Views\PaymentOut\ReportAll.cshtml" />
-    <Content Include="Views\PaymentOut\Report.cshtml" />
-    <Content Include="Views\PartyStatement\Report.cshtml" />
+    <Content Include="Views\SaleInvoice\Additem.cshtml" />
+    <Content Include="Views\SaleInvoice\Addparty.cshtml" />
+    <Content Include="Views\SaleOrder\Addparty.cshtml" />
+    <Content Include="Views\SaleOrder\Additem.cshtml" />
+    <Content Include="Views\PaymentIn\Report.cshtml" />
+    <Content Include="Views\DeliveryChallan\Dilaverychallen.cshtml" />
+    <Content Include="Views\DeliveryChallan\Report.cshtml" />
+    <Content Include="Views\DeliveryChallan\ReportAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
