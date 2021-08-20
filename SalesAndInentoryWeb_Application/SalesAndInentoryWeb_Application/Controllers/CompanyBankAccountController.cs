@@ -18,13 +18,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpGet]
         public ActionResult Data()
         {
-			var tb = db.sp_CompanyBanckAccount("Select1", null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+			var tb = db.sp_CompanyBankAccount("Select1", null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
 		public ActionResult Detail(int id)
 		{
-			var tb = db.sp_CompanyBanckAccount("Details", id, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single(x => x.ID == id);
+			var tb = db.sp_CompanyBankAccount("Details", id, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single(x => x.ID == id);
 			return View(tb);
 		}
 
@@ -38,7 +38,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			else
 			{
 
-				var tb = db.sp_CompanyBanckAccount("Details", id, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single(x => x.ID == id);
+				var tb = db.sp_CompanyBankAccount("Details", id, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single(x => x.ID == id);
 				var vm = new CompanyBankAccount();
 				vm.AccountName = tb.AccountName;
 				vm.BankName = tb.BankName;
@@ -55,13 +55,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
 			if (id == 0)
 			{
 
-				db.sp_CompanyBanckAccount("Insert", null, conn.BankName, conn.AccountName,Convert.ToInt32(conn.AccountNo), conn.OpeningBal,Convert.ToString( conn.Date), Convert.ToInt32(Session["UserId"]));
+				db.sp_CompanyBankAccount("Insert", null, conn.BankName, conn.AccountName,conn.AccountNo, conn.OpeningBal,Convert.ToString( conn.Date), Convert.ToInt32(Session["UserId"]));
 				db.SubmitChanges();
                 return RedirectToAction("Index");
 			}
 			else
 			{
-				db.sp_CompanyBanckAccount("Update", id, conn.BankName, conn.AccountName, Convert.ToInt32(conn.AccountNo), conn.OpeningBal, (conn.Date).ToString(), Convert.ToInt32(Session["UserId"]));
+				db.sp_CompanyBankAccount("Update", id, conn.BankName, conn.AccountName,conn.AccountNo, conn.OpeningBal, (conn.Date).ToString(), Convert.ToInt32(Session["UserId"]));
 				db.SubmitChanges();
                 return RedirectToAction("Index");
 
@@ -71,7 +71,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 		[HttpPost]
 		public ActionResult Delete(int id)
 		{
-			var tb = db.sp_CompanyBanckAccount("Delete", id, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+			var tb = db.sp_CompanyBankAccount("Delete", id, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
 			db.SubmitChanges();
 			return Json(new { success = true, message = "Delete Data Successfully" }, JsonRequestBehavior.AllowGet);
 		}

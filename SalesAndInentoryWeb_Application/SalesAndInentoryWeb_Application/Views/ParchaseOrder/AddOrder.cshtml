@@ -590,13 +590,17 @@
                         <div class="row">
 
                             <div class="col-md-3">
-                                <b>Payment Type:</b>
-                                <select name="cars" id="PaymentType" class="form-control">
-                                    <option value="Select PaymentType">Select Payment Type</option>
-                                    <option value="Cash">Cash</option>
-                                    <option value="OnlinePayment">Online Payment</option>
-                                    <option value="Cheque">Cheque</option>
-                                </select>
+                                <b>Vehicle No:</b>
+                                @Html.EditorFor(model => model.VehicleNumber, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   @class = "form-control",
+                                   placeholder = "Vehicle Number",
+
+                               }
+                           })
+                                @Html.ValidationMessageFor(model => model.VehicleNumber)
                                 <b>Transport Name:</b>  
                                 @Html.EditorFor(model => model.TransportName, new { htmlAttributes = new { @class = "form-control", placeholder = "Transport Name" } })
 
@@ -612,17 +616,16 @@
                                    
                                 </div>
                             <div class="col-md-3 form-group">
-                                <b>Vehicle No:</b>
-                                @Html.EditorFor(model => model.VehicleNumber, new
-                           {
-                               htmlAttributes = new
-                               {
-                                   @class = "form-control",
-                                   placeholder = "Vehicle Number",
-
-                               }
-                           })
-                                @Html.ValidationMessageFor(model => model.VehicleNumber)
+                                <b>Payment Type:</b>
+                                <select name="cars" id="PaymentType" class="form-control">
+                                    <option value="Select PaymentType">Select Payment Type</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="OnlinePayment">Online Payment</option>
+                                    <option value="PhonePay">PhonePay</option>
+                                    <option value="GooglePay">GooglePay</option>
+                                    <option value="Cheque">Cheque</option>
+                                </select>
+                               
                                 <b> Payment Status:</b> 
                                 <select name="cars" id="Status" class="form-control">
                                     <option value="Select PaymentType">Select Payment Status</option>

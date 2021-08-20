@@ -317,6 +317,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 StateofSupply = objpurchase.StateOfSupply,
                 BillDate = objpurchase.BillDate,
                 DueDate = objpurchase.DueDate,
+                PaymentType=objpurchase.PaymentType,
                 SGST = gst,
                 CGST = gst,
                 IGST = igst,

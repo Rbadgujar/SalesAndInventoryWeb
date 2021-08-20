@@ -39,11 +39,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(bt);         
 		}
         [HttpGet]
-        public ActionResult CashInHand()
+        public ActionResult CashInHand(string paymenttype,string par,string date)
         {
+            if (par == "0")
+            {
+                var tb1 = db.tbl_SaleInvoiceSelect("CashInHand1", null, null, null, null, null, null, null, null, paymenttype, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null, null, null, null).ToList();
+                return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+            }
+            if (par == "1")
+            {
+                var tb2 = db.tbl_SaleInvoiceSelect("search", null, null, null, null, null, null, Convert.ToDateTime(date), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null, null, null, null).ToList();
+                return Json(new { data = tb2 }, JsonRequestBehavior.AllowGet);
+            }
             var tb = db.tbl_SaleInvoiceSelect("CashInHand", null, null, null, null, null,null,null,null,null,null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null,null,null,null,null,null,null).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
+      
         private static List<SelectListItem> ListOfItems()
         {
             string sql;

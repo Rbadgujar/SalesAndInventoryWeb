@@ -21,12 +21,14 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse ">
 					<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Cash In Hand</h3></label>
-					<a class="btn btn-success pull-right row" style="margin-top:6.5px; margin-right:1px" onclick="PopupForm('@Url.Action("AddOrEdit","CashInHand")')"><i class="fa fa-plus"></i> Add Cash In Hand </a>
-                    <select id="Mode" class="form-control" style="height:34px; margin-top:6.5px;margin-right:25px;">
+					<a class="btn btn-success pull-right row" style="margin-top:6.5px; margin-right:1px"><i class="fa fa-plus"></i>Print</a>
+                    <input type="date" class="pull-right row" id="todate" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
+                    <select id="Mode" class="form-control" style="height:34px;width:150px; margin-top:6.5px;margin-left:780px;">
                         <option value="Cash">Cash</option>
                         <option value="PhonePay">PhonePay</option>
                         <option value="GooglePay">GooglePay</option>
                         <option value="Chuque">Cheque</option>
+                        <option value="OnlinePayment">OnlinePayment</option>
                     </select>
                 </div>
 			</div>
@@ -46,7 +48,7 @@
 							<th>Paid</th>
                             <th>Remaining Bal</th>
                             <th>Total</th>
-                            <th></th>
+              
 						</tr>
 					</thead>
 				</table>
@@ -66,8 +68,20 @@
     <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
     <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
 	<script>
-        var Popup, dataTable;
+        var Popup, dataTable,datatable1;
         $(document).ready(function () {
+            var date = new Date();
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#todate").attr("value", today);
+            var date = $("#todate").val();
             dataTable =  $("#cash").DataTable({
                 "ajax": {
                     "url": "/CashInHand/CashInHand",
@@ -84,19 +98,75 @@
                         { "data": "Received" },
                         { "data": "RemainingBal" },
                         { "data": "Total" },
-                    {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm1('@Url.Action("AddOrEditUpdate", "CashInHand")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
-                        "orderable": false,
-                        "searchable":false,
-                        "width":"150px"
-                    }
-
+                   
                 ],
                 "language": {
 
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
+            });
+
+            $("#Mode").change(function () {
+                var table1 = $('#cash').DataTable();
+                table1.destroy();              
+                var date = $("#Mode option:selected").val();
+                dataTable = $("#cash").DataTable({
+                    "ajax": {
+                        "url": "/CashInHand/CashInHand",
+                        data: { 'paymenttype': date, 'par': '0' },
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "TableName" },
+                            { "data": "PartyName" },
+                             { "data": "ContactNo" },
+                            { "data": "ContactNo" },
+                            { "data": "InvoiceDate" },
+                            { "data": "PaymentType" },
+                            { "data": "Received" },
+                            { "data": "RemainingBal" },
+                            { "data": "Total" },
+                        
+                       
+
+                    ],
+                    "language": {
+
+                        "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
+            });
+            $("#todate").change(function () {
+                var table = $('#cash').DataTable();
+                table.destroy();
+                var date = $("#todate").val();
+                dataTable = $("#cash").DataTable({
+                    "ajax": {
+                        "url": "/CashInHand/CashInHand",
+                        data: { 'date': date ,'par': '1' },
+
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                             { "data": "TableName" },
+                            { "data": "PartyName" },
+                             { "data": "ContactNo" },
+                            { "data": "ContactNo" },
+                            { "data": "InvoiceDate" },
+                            { "data": "PaymentType" },
+                            { "data": "Received" },
+                            { "data": "RemainingBal" },
+                            { "data": "Total" },
+
+
+                    ],
+                    "language": {
+
+                        "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
             });
         });
 

@@ -1328,24 +1328,6 @@
       <Column Name="ReferralCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_CompanyBanckAccount" Method="sp_CompanyBanckAccount">
-    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="BankName" Parameter="bankName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="AccountName" Parameter="accountName" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="AccountNo" Parameter="accountNo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="OpeningBal" Parameter="openingBal" Type="System.Double" DbType="Float" />
-    <Parameter Name="Date" Parameter="date" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="compid" Type="System.Int32" DbType="Int" />
-    <ElementType Name="sp_CompanyBanckAccountResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BankName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AccountName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AccountNo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OpeningBal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.Sp_loginpassword" Method="Sp_loginpassword">
     <Parameter Name="ComId" Parameter="comId" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="password" Type="System.String" DbType="VarChar(50)" />
@@ -3241,7 +3223,7 @@
     <Parameter Name="AccountName" Parameter="accountName" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="AccountNo" Parameter="accountNo" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="OpeningBal" Parameter="openingBal" Type="System.Double" DbType="Float" />
-    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Date" Parameter="date" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="compid" Type="System.Int32" DbType="Int" />
     <ElementType Name="sp_CompanyBankAccountResult">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />

@@ -272,6 +272,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 StateofSupply = objpurchaseorder.StateOfSupply,
                 SGST = gst,
                 CGST = gst,
+                PaymentType=objpurchaseorder.PaymentType,
                 OrderDate = Convert.ToDateTime(objpurchaseorder.OrderDate),
                 DueDate = objpurchaseorder.DueDate,
                 Barcode = objpurchaseorder.Barcode,

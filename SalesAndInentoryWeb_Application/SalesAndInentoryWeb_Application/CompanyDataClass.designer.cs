@@ -690,13 +690,6 @@ namespace SalesAndInentoryWeb_Application
 			return ((ISingleResult<ReferralCodeSelectResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_CompanyBanckAccount")]
-		public ISingleResult<sp_CompanyBanckAccountResult> sp_CompanyBanckAccount([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(MAX)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountName", DbType="NVarChar(MAX)")] string accountName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountNo", DbType="Int")] System.Nullable<int> accountNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningBal", DbType="Float")] System.Nullable<double> openingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(MAX)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, bankName, accountName, accountNo, openingBal,Convert.ToDateTime( date), compid);
-			return ((ISingleResult<sp_CompanyBanckAccountResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_loginpassword")]
 		public int Sp_loginpassword([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ComId", DbType="VarChar(50)")] string comId, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(50)")] string action)
 		{
@@ -1073,7 +1066,7 @@ namespace SalesAndInentoryWeb_Application
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tbl_OtherIncomeSelect")]
 		public ISingleResult<tbl_OtherIncomeSelectResult> tbl_OtherIncomeSelect(
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id1", DbType="Int")] System.Nullable<int> id1, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IncomeCategory", DbType="NVarChar(MAX)")] string incomeCategory, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="Date")] System.Nullable<System.DateTime> date, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string paymentType, 
@@ -1091,7 +1084,7 @@ namespace SalesAndInentoryWeb_Application
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TableName", DbType="NVarChar(MAX)")] string tableName, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, id1, incomeCategory, date, paymentType, description, image, roundOFF, total, received, balance, additionalFeild1, additional2, additional3, additional4, status, tableName, compid);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, id, incomeCategory, date, paymentType, description, image, roundOFF, total, received, balance, additionalFeild1, additional2, additional3, additional4, status, tableName, compid);
 			return ((ISingleResult<tbl_OtherIncomeSelectResult>)(result.ReturnValue));
 		}
 		
@@ -1826,7 +1819,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_CompanyBankAccount")]
-		public ISingleResult<sp_CompanyBankAccountResult> sp_CompanyBankAccount([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(MAX)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountName", DbType="NVarChar(MAX)")] string accountName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountNo", DbType="NVarChar(MAX)")] string accountNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningBal", DbType="Float")] System.Nullable<double> openingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="DateTime")] System.Nullable<System.DateTime> date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
+		public ISingleResult<sp_CompanyBankAccountResult> sp_CompanyBankAccount([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(MAX)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountName", DbType="NVarChar(MAX)")] string accountName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountNo", DbType="NVarChar(MAX)")] string accountNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningBal", DbType="Float")] System.Nullable<double> openingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(MAX)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, bankName, accountName, accountNo, openingBal, date, compid);
 			return ((ISingleResult<sp_CompanyBankAccountResult>)(result.ReturnValue));
@@ -3643,6 +3636,7 @@ namespace SalesAndInentoryWeb_Application
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
+
         private int _ID;
 		
 		private string _AccountName;
@@ -4129,6 +4123,7 @@ namespace SalesAndInentoryWeb_Application
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
         public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
+
         private int _ID;
 		
 		private string _FromBank;
@@ -4382,7 +4377,7 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
+		public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
         public IEnumerable<SelectListItem> ListOfParties { get; set; }
         private int _ID;
 		
@@ -11904,9 +11899,8 @@ namespace SalesAndInentoryWeb_Application
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public IEnumerable<SelectListItem> ListOfAccounts { get; set; }
-        public IEnumerable<SelectListItem> ListOfParties { get; set; }
-        private int _ItemID;
+		
+		private int _ItemID;
 		
 		private string _ItemName;
 		
@@ -28640,122 +28634,6 @@ namespace SalesAndInentoryWeb_Application
 		}
 	}
 	
-	public partial class sp_CompanyBanckAccountResult
-	{
-		
-		private int _ID;
-		
-		private string _BankName;
-		
-		private string _AccountName;
-		
-		private string _AccountNo;
-		
-		private System.Nullable<double> _OpeningBal;
-		
-		private System.Nullable<System.DateTime> _Date;
-		
-		public sp_CompanyBanckAccountResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(50)")]
-		public string BankName
-		{
-			get
-			{
-				return this._BankName;
-			}
-			set
-			{
-				if ((this._BankName != value))
-				{
-					this._BankName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(50)")]
-		public string AccountName
-		{
-			get
-			{
-				return this._AccountName;
-			}
-			set
-			{
-				if ((this._AccountName != value))
-				{
-					this._AccountName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNo", DbType="NVarChar(MAX)")]
-		public string AccountNo
-		{
-			get
-			{
-				return this._AccountNo;
-			}
-			set
-			{
-				if ((this._AccountNo != value))
-				{
-					this._AccountNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OpeningBal", DbType="Float")]
-		public System.Nullable<double> OpeningBal
-		{
-			get
-			{
-				return this._OpeningBal;
-			}
-			set
-			{
-				if ((this._OpeningBal != value))
-				{
-					this._OpeningBal = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this._Date = value;
-				}
-			}
-		}
-	}
-	
 	public partial class tbl_CashAdjustmentselectResult
 	{
 		
@@ -39129,7 +39007,6 @@ namespace SalesAndInentoryWeb_Application
 	
 	public partial class tbl_SaleOrderSelectResult
 	{
-
         private int _OrderNo;
 
         private string _PartyName;
@@ -39942,7 +39819,8 @@ namespace SalesAndInentoryWeb_Application
                     this._Discount = value;
                 }
             }
-        }
+        }   
+
     }
 	
 	public partial class tbl_TransactionPassswordSelectResult
