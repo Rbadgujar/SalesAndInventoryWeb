@@ -94,6 +94,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 if (reader.Read())
                 {
                     Session["UserId"] = reader[0].ToString();
+                    //Session["CompanyName"] = reader[1].ToString();
                     companyid1 =Convert.ToInt32(Session["UserId"].ToString());
                     return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
                 }

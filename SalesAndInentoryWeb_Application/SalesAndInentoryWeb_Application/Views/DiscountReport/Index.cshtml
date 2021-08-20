@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SalesAndInentoryWeb_Application.tbl_DebitNote
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
@@ -10,7 +11,7 @@
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>Discount Report</h3></label>
                     <a class="btn btn-success pull-right row" style="margin-top:7px; margin-right:21px;" href="@Url.Action("Report","DiscountReport")"><i class="fa fa-print"></i>Print</a>
-                    <input type="text" class="pull-right row" style="height:34px; margin-top:6.5px;margin-right:25px; " placeholder="Party Name" />
+                    @Html.DropDownListFor(model => model.PartiesID, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Parties", new { @class = "form-control", @style = "Width:180px;margin-left:850px;margin-top:6.5px;" })
                 </div>
             </div>
         </nav>
@@ -19,7 +20,7 @@
                 <table id="cash" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Type</th>
+                            <th>Transaction Type</th>
                             <th>Party Name</th>
                             <th>Discount</th>
                         </tr>
@@ -62,7 +63,7 @@
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "Type" },
+                    { "data": "TableName" },
                     { "data": "PartyName" },
                     { "data": "SaleDiscountOrPurchaseDiscount" },
                     
@@ -71,6 +72,28 @@
 
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
+            });
+            $("#PartiesID").change(function () {
+                var table1 = $('#cash').DataTable();
+                table1.destroy();
+                var date = $("#PartiesID option:selected").val();
+                dataTable = $("#cash").DataTable({
+                    "ajax": {
+                        "url": "/DiscountReport/Data",
+                        data: { 'paymenttype': date, 'par': '0' },
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "TableName" },
+                    { "data": "PartyName" },
+                    { "data": "SaleDiscountOrPurchaseDiscount" },
+                    ],
+                    "language": {
+
+                        "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
             });
         });
     </script>

@@ -117,6 +117,77 @@
                 });
             });
 
+            $("#todate").change(function () {
+                var table1 = $('#cash').DataTable();
+                table1.destroy();
+                var da = new Date();
+                var date = $("#todate").val();
+                var date2 = $("#fromdate").val();
+
+                dataTable1 = $("#cash").DataTable({
+                    "ajax": {
+                        "url": "/PartyStatement/Data",
+                        data: { 'date': date, 'par': '1', 'date2': date2 },
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                           { "data": "TableName" },
+                    { "data": "PartyName" },
+                    { "data": "InvoiceDate" },
+                     { "data": "Received" },
+                     { "data": "RemainingBal" },
+                    { "data": "Total" },
+                    ],
+                    "language": {
+
+                        "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
+            });
+
+
+            $("#fromdate").change(function () {
+                var table = $('#cash').DataTable();
+                table.destroy();
+
+                debugger
+
+                var date = $("#todate").val();
+                var date2 = $("#fromdate").val();
+                dataTable2 = $("#cash").DataTable({
+                    "ajax": {
+                        "url": "/PartyStatement/Data",
+                        data: { 'date': date, 'par': '1', 'date2': date2 },
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "TableName" },
+                    { "data": "PartyName" },
+                    { "data": "InvoiceDate" },
+                     { "data": "Received" },
+                     { "data": "RemainingBal" },
+                    { "data": "Total" },
+                    ],
+                    "language": {
+
+                        "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
+            });
+            var date = new Date();
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            if (month < 10) month = "0" + month;
+            if (day < 10) day = "0" + day;
+
+            var today = year + "-" + month + "-" + day;
+            $("#todate").attr("value", today);
+            $("#fromdate").attr("value", today);
         });     
     </script>
 }

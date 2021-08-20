@@ -56,6 +56,30 @@
                     "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
                 }
             });
+
+            $("#todate").change(function () {
+                var table1 = $('#cash').DataTable();
+                table1.destroy();
+                var date = $("#todate").val();
+                dataTable1 = $("#cash").DataTable({
+                    "ajax": {
+                        "url": "/ProfitAndLoss/Data",
+                        data: { 'date': date ,'par':'0'},
+
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                          { "data": "Type" },
+                    { "data": "Date" },
+                    { "data": "ProfitOrLoss" },
+                    ],
+                    "language": {
+
+                        "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                    }
+                });
+            });
             var date = new Date();
 
             var day = date.getDate();

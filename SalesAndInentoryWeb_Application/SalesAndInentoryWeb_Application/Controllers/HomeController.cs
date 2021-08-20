@@ -45,7 +45,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     con.Close();
                 }
             }
-            ViewBag.CompanyName = com.CompanyName;
+            Session["CompanyName"] = com.CompanyName;
             return View();
         }
     }

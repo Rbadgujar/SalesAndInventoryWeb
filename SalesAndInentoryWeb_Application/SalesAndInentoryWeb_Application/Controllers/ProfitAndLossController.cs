@@ -19,8 +19,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Data()
+        public ActionResult Data(string date,string par)
         {
+            if (par == "0")
+            {
+                var tb1 = db.ProfitOrLoss("Select1", null,Convert.ToDateTime(date), null, Convert.ToInt32(Session["UserId"])).ToList();
+                return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+            }
             var tb = db.ProfitOrLoss("Select", null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
