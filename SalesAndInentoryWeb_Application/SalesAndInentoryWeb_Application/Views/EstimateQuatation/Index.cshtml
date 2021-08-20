@@ -101,111 +101,24 @@
             });
 
 
+           var date = new Date();
 
-       $("#todate").change(function () {
-                var table1 = $('#estimate').DataTable();
-                table1.destroy();
-                var da = new Date();
-                var date = $("#todate").val();
-                var date2 = $("#fromdate").val();
-                par = 1;
-            
-            dataTable = $("#estimate").DataTable({
-                "ajax": {
-                    "url": "/EstimateQuatation/EstimateData",
-                    data: { 'date': date, 'par': '0', 'date2': date2 },
-                    "type": "GET",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "RefNo" },
-                    { "data": "PartyName" },
-                    { "data": "ContactNo" },
-                    { "data": "Date" },
-                    { "data": "Status" },
-                    { "data": "Total" },
-					
-                    {
-                        "data": "RefNo", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
-                        "orderable": false,
-                        "searchable":false,
-                        "width":"150px"
-                    }
+           var day = date.getDate();
+           var month = date.getMonth() + 1;
+           var year = date.getFullYear();
 
-                ],
-                "language": {
+           if (month < 10) month = "0" + month;
+           if (day < 10) day = "0" + day;
 
-                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
-                }
-           });
-
-
-           $("#fromdate").change(function () {
-
-                var table1 = $('#estimate').DataTable();
-                table1.destroy();
-                var da = new Date();
-                var date = $("#todate").val();
-                var date2 = $("#fromdate").val();
-                par = 1;
-            
-            dataTable = $("#estimate").DataTable({
-                "ajax": {
-                    "url": "/EstimateQuatation/EstimateData",
-                    data: { 'date': date, 'par': '0', 'date2': date2 },
-                    "type": "GET",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "RefNo" },
-                    { "data": "PartyName" },
-                    { "data": "ContactNo" },
-                    { "data": "Date" },
-                    { "data": "Status" },
-                    { "data": "Total" },
-					
-                    {
-                        "data": "RefNo", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
-                        "orderable": false,
-                        "searchable":false,
-                        "width":"150px"
-                    }
-
-                ],
-                "language": {
-
-                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
-                }
-           });
-
-
-
-
-
-
-            });
-
+           var today = year + "-" + month + "-" + day;
+           $("#todate").attr("value", today);
+           $("#fromdate").attr("value", today);
 
 
 
         });
 
-        var date = new Date();
-
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
-
-        if (month < 10) month = "0" + month;
-        if (day < 10) day = "0" + day;
-
-        var today = year + "-" + month + "-" + day;
-        $("#todate").attr("value", today);
-        $("#fromdate").attr("value", today);
+        
 
 
                     function PopupForm(url) {

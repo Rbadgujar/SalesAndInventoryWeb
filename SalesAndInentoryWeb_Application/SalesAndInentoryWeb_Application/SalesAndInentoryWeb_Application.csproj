@@ -4055,6 +4055,7 @@
     <Content Include="Views\DeliveryChallan\Dilaverychallen.cshtml" />
     <Content Include="Views\DeliveryChallan\Report.cshtml" />
     <Content Include="Views\DeliveryChallan\ReportAll.cshtml" />
+    <Content Include="Views\EstimateQuatation\Report.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
