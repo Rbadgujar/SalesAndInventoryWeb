@@ -4,14 +4,35 @@
 }
 
 @*@using (Html.BeginForm("AddOrEdit", "BankAccount", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))*@
-@using(Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.UnitName)
+<script src="~/scripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
 
-    <div class="form-group">
-        Primary Unit:
-        <input type="text" list="Uniyts" class="form-control"/>
-        <datalist id="Uniyts">
+            $("#submit").click(function () {
+                debugger
+                var fruitId = $("#UnitName").val();
+                if (fruitId != "") {
+                    $.ajax
+                   ({
+                       type: "POST",
+                       url: "/ItemMaster/ItemTraking",
+                       data: "id=" + fruitId,
+                            success: function (data) {
+                                if (data.success == true) {
+                                    alert("Unit Stored Successfully");
+                                        }
+                       }
+                   });
+                }
+            });
+    });
+    </script>
+<div class="form-group">
+    Unit Name:
+    @Html.EditorFor(model => model.UnitName, new { htmlAttributes = new { @class = "form-control", Required = "Required" } })
+    @Html.ValidationMessageFor(model => model.UnitName, "", new { @class = "text-danger" })
+
+    @* <datalist id="Uniyts">
             <option value="option"></option>
             <option value="bag"> Bags(Bag)</option>
             <option value="Bottles">Bottles(Btl)</option>
@@ -34,40 +55,11 @@
             <option value="Square Feet">SquareFeet(Sqf)</option>
             <option value="Square Meters">Square Meter(Sqm)</option>
             <option value="Tablets">Tablets(Tbs)</option>
-        </datalist>
-    </div>
-    <div class="form-group">
-        <input type="text" list="subunit" class="form-control" />
-        <datalist id="Uniyts">
-            <option value="bag"> Bags(Bag)</option>
-            <option value="Bottles">Bottles(Btl)</option>
-            <option value="Box"> Box(Box))</option>
-            <option value="Bundel">Bandal(Bdl)</option>
-            <option value="Cans"> Can(can)</option>
-            <option value="Cartons">Cartons(ctn)</option>
-            <option value="Dozens">Dozens(Dzn)</option>
-            <option value="Grammes">Grammes(gm)</option>
-            <option value="Kilogams">Kilogarms(kg)</option>
-            <option value="Litre">Litre(Ltr)</option>
-            <option value="Meters">Meter(mtr)</option>
-            <option value="Mililiter">Mililitre(ml)</option>
-            <option value="Numbers">Numbers(Nos)</option>
-            <option value="Packs"> Packs(pac)</option>
-            <option value="Pairs">Pairs(Pac)</option>
-            <option value="Pieces">Pieces(Pcs)</option>
-            <option value="Quintal">Quintal(Qtl)</option>
-            <option value="Rolls">Rolls(rol)</option>
-            <option value="Square Feet">SquareFeet(Sqf)</option>
-            <option value="Square Meters">Square Meter(Sqm)</option>
-            <option value="Tablets">Tablets(Tbs)</option>
-            </datalist>
-            @*@Html.LabelFor(model => model.SubUnitName, new { @class = "control-label" })
-            @Html.EditorFor(model => model.SubUnitName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Account Name....." } })
-            @Html.ValidationMessageFor(model => model.SubUnitName)*@
+        </datalist>*@
 </div>
 
-    <div class="form-group footer">
-        <input type="submit" value="Submit" class="btn btn-primary pull-right" />
-        <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
-    </div>
-}
+
+<div class="form-group footer">
+    <input type="submit" value="Submit"  id="submit" class="btn btn-primary pull-right" />
+    <input type="reset" value="Reset" class="btn btn-info pull-right" style="margin-right:10px;" />
+</div>

@@ -10,7 +10,7 @@
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-8.5px;"><h3>Sale Order </h3></label>
                     <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","SaleOrder")"><i class="fa fa-plus"></i>Add Saleorder</a>
-                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"  href="@Url.Action("ReportAll","SaleOrder")"  ><i class="glyphicon glyphicon-print"></i>Print</a>
+                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;" href="@Url.Action("ReportAll","SaleOrder")"><i class="glyphicon glyphicon-print"></i>Print</a>
                     <input type="date" class="pull-right row" name="From" id="fromdate" style="height:34px; margin-top:6.5px;margin-right:22px; " />
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
                     <input type="date" class="pull-right row" name="To" id="todate" style="height:34px; margin-top:6.5px;margin-right:25px; " />
@@ -37,6 +37,18 @@
             </div>
         </div>
     </nav>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 </div>
 
@@ -66,7 +78,7 @@
                     { "data": "Total" },
 
                     { "data":"OrderNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","SaleOrder")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "SaleOrder")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
+                        return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","SaleOrder")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' style='margin-left:5px' href='@Url.Action("Report", "SaleOrder")/" + data + "'><i class='fa fa-print'></i></a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -111,8 +123,8 @@
 
                         {
                             "data": "OrderNo", "render": function (data) {
-                            return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "SaleOrder")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-
+                             return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","SaleOrder")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' style='margin-left:5px' href='@Url.Action("Report", "SaleOrder")/" + data + "'><i class='fa fa-print'></i></a>";
+             
                         },
                             "orderable": false,
                             "searchable":false,
@@ -156,8 +168,8 @@
 
                         {
                             "data": "OrderNo", "render": function (data) {
-                            return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "SaleOrder")/" + data + "><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-
+                             return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","SaleOrder")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' style='margin-left:5px' href='@Url.Action("Report", "SaleOrder")/" + data + "'><i class='fa fa-print'></i></a>";
+             
                         },
                             "orderable": false,
                             "searchable":false,

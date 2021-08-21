@@ -74,6 +74,7 @@
 
             });
             $("#success-alert").hide();
+            $('#ck').hide();
             $("#btnsubmit").click(function (e) {
 
                 var mrp = $("#ContactNo").val();
@@ -103,6 +104,16 @@
 
 
             });
+            $("#PaymentType").change(function () {
+                debugger
+                var paymenttype = $("#PaymentType").val();
+                if (paymenttype == "Chuque") {
+                    $("#ck").show();
+                } else {
+                    $('#ck').hide();
+                }
+            });
+
             $("#ID").change(function () {
                 debugger
                 var fruitId = $(this).find("option:selected").val();
@@ -699,30 +710,32 @@
                                            new SelectListItem {Text = "Unpaid", Value = "Unpaid" },
 
                                        }, new { @class = "form-control" })
-
-                                <b> Chueque NO:</b>
-                                @Html.EditorFor(model => model.Feild3, new { htmlAttributes = new { @class = "form-control", placeholder = "Chueque no" } })
-                                @Html.ValidationMessageFor(model => model.Feild3)
+                                <div id="ck">
+                                    <b> Chueque NO:</b>
+                                    @Html.EditorFor(model => model.Feild3, new { htmlAttributes = new { @class = "form-control", placeholder = "Chueque no" } })
+                                    @Html.ValidationMessageFor(model => model.Feild3)
+                                    <br />
+                                    </div>
                                 <br />
-                                <input type="button" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
-                                <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
+                                    <input type="button" value="Submit" class="btn btn-primary pull-left" style="margin-right:12px; width:100px;" id="btnsubmit" />
+                                    <input type="reset" value="Clear" class="btn btn-primary pull-right" style="margin-right:12px; width:100px;" />
 
-                            </div>
-                            <div class="col-md-3 form-group">
-                                <div class="pull-right">
-                                    <b>Total :</b>
-                                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", id = "Total", placeholder = "Total Amount" } })
-                                    @Html.ValidationMessageFor(model => model.Total)
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <div class="pull-right">
+                                        <b>Total :</b>
+                                        @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", id = "Total", placeholder = "Total Amount" } })
+                                        @Html.ValidationMessageFor(model => model.Total)
 
-                                    <b>Received Amt:</b>
-                                    @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", id = "Received", placeholder = "Recive Ammount" } })
-                                    @Html.ValidationMessageFor(model => model.Received)
-                                    <b>Remaning Bal:</b>
-                                    @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", id = "RemainingBal", placeholder = "Remining Balance" } })
-                                    @Html.ValidationMessageFor(model => model.RemainingBal)
+                                        <b>Received Amt:</b>
+                                        @Html.EditorFor(model => model.Received, new { htmlAttributes = new { @class = "form-control", id = "Received", placeholder = "Recive Ammount" } })
+                                        @Html.ValidationMessageFor(model => model.Received)
+                                        <b>Remaning Bal:</b>
+                                        @Html.EditorFor(model => model.RemainingBal, new { htmlAttributes = new { @class = "form-control", id = "RemainingBal", placeholder = "Remining Balance" } })
+                                        @Html.ValidationMessageFor(model => model.RemainingBal)
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
 
                 </div>

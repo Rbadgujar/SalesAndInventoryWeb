@@ -79,7 +79,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(vm);
             }
         }
-        public string pataa;
+        public string pataa="";
         [HttpPost]
         public ActionResult Additem(HttpPostedFileBase file ,tbl_ItemMaster item, int id = 0)
         {
@@ -98,13 +98,19 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             if (id == 0)
             {
-
-                if (file.ContentLength > 0)
+                try
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/images/Iteimage"), fileName);
-                    file.SaveAs(path);
-                     pataa= path;
+                    if (file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/images/Iteimage"), fileName);
+                        file.SaveAs(path);
+                        pataa = "~/images/Iteimage" + fileName;
+                    }
+                }
+                catch(Exception ew)
+                {
+                   
                 }
                 // ItemName,HSNCode ,BasicUnit,SecondaryUnit ,                      ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,                                                                  PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,                           Date,ItemLocation,TrackingMRP,                      BatchNo,       SerialNo,    MFgdate,     Expdate,      Siz,     Description ,    MinimumStock,     Image1,     Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
                 db.tbl_ItemMasterSelect("Insert1", null, item.ItemName, item.HSNCode, item.BasicUnit,pataa, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode,Convert.ToInt32(Session["UserId"].ToString()), null, null, item.Profit,item.Discount);
@@ -113,24 +119,47 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             else
             {
-                db.tbl_ItemMasterSelect("Update", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode,Convert.ToInt32(Session["UserId"].ToString()), null, null, item.Profit, item.Discount);
+
+                try
+                {
+                    if (file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/images/Iteimage"), fileName);
+                        file.SaveAs(path);
+                        pataa = "~/images/Iteimage" + fileName;
+                    }
+                }
+                catch (Exception ew)
+                {
+
+                }
+                db.tbl_ItemMasterSelect("Update", null, item.ItemName, item.HSNCode, item.BasicUnit,pataa, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode,Convert.ToInt32(Session["UserId"].ToString()), null, null, item.Profit, item.Discount);
                 db.SubmitChanges();
                 return RedirectToAction("Index");
                 //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
             }
         }
+        [HttpGet]
         public ActionResult ItemTraking()
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult ItemTraking( string id)
+        {
+            db.tbl_UnitMasterUnit("Insert", null,id,null, null,null, Convert.ToInt32(Session["UserId"].ToString()));
+            db.SubmitChanges();
+            return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+
+        }
 
 
-   
-           
-             
-          
 
-            
+
+
+
+
         private static List<SelectListItem> ListOfParties()
         {
             string sql;
@@ -186,48 +215,71 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpGet]
         public ActionResult AddOrEdit(int id=0)
         {
+            var tb = db.tbl_ItemMasterSelect("Detail", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null).Single(x => x.ItemID == id);
+            var vm = new tbl_ItemMaster();
+            vm.ItemName = tb.ItemName;
+            vm.BasicUnit = tb.BasicUnit;
+            vm.ItemCode = tb.ItemCode;
+            vm.ItemCategory = tb.ItemCategory;
+            vm.TaxForSale = tb.TaxForSale;
+            vm.TrackingMRP = tb.TrackingMRP;
+            vm.Size = tb.Size;
+            vm.BatchNo = tb.BatchNo;
+            vm.SerialNo = tb.SerialNo;
+            vm.MFgdate = tb.MFgdate;
+            vm.OpeningQty = tb.OpeningQty;
+            vm.MinimumStock = tb.MinimumStock;
+            vm.Expdate = tb.Expdate;
+            vm.HSNCode = tb.HSNCode;
+            vm.OpeningQty = tb.OpeningQty;
+            vm.PurchasePrice = tb.PurchasePrice;
+            vm.SalePrice = tb.SalePrice;
+            vm.atPrice = tb.atPrice;
+            return View(vm);
 
-            if (id == 0)
-            {
-                return View(new tbl_ItemMaster());
-            }
-            else
-            {
-                var tb = db.tbl_ItemMasterSelect("Detail", id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null,null).Single(x => x.ItemID == id);
-                var vm = new tbl_ItemMaster();
-                vm.ItemName = tb.ItemName;
-                vm.HSNCode = tb.HSNCode;
-                vm.OpeningQty = tb.OpeningQty;
-                vm.PurchasePrice = tb.PurchasePrice;
-                //m.SalePrice = tb.SalePrice;
-                vm.atPrice = tb.atPrice;
-                return View(vm);
-            }
-         
+
+
         }
 
-      
-        [HttpPost]
-        public ActionResult AddOrEdit(tbl_ItemMaster item,int id=0)
-        {
-           
-                if (id == 0)
-                {
-                    // ItemName,HSNCode ,BasicUnit,SecondaryUnit ,                      ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount ,TaxForPurchase ,                                                                  PurchasePrice,PurchaseTaxAmount ,OpeningQty,atPrice ,                           Date,ItemLocation,TrackingMRP,                      BatchNo,       SerialNo,    MFgdate,     Expdate,      Siz,     Description ,    MinimumStock,     Image1,     Barcode,Company_ID,Cess,saleTax,PurchaseTax,Profit
-                    db.tbl_ItemMasterSelect("Insert", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode, null, null, null, item.Profit, item.Discount);
-                    db.SubmitChanges();
-                    return RedirectToAction("Index");
-                }
-                else
-                {
 
-                    db.tbl_ItemMasterSelect("Update", null, item.ItemName, item.HSNCode, item.BasicUnit, item.SecondaryUnit, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode, null, null, null, item.Profit, item.Discount);
-                    db.SubmitChanges();
-                    return RedirectToAction("Index");
-                    //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
-                    
+       
+
+        [HttpPost]
+        public ActionResult AddOrEdit(HttpPostedFileBase file,tbl_ItemMaster item,int id=0)
+        {
+
+            if (item.MinimumStock == null)
+            {
+                item.MinimumStock = 0;
+
+            }
+            if (item.OpeningQty == null)
+            {
+                item.OpeningQty = 0;
+            }
+            if (item.Discount == null)
+            {
+                item.Discount = 0;
+            }
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/Iteimage"), fileName);
+                    file.SaveAs(path);
+                    pataa = "~/images/Iteimage" + fileName;
                 }
-            
+            }
+            catch (Exception ew)
+            {
+
+            }
+            db.tbl_ItemMasterSelect("Update1",id, item.ItemName, item.HSNCode, item.BasicUnit, pataa, item.ItemCode, item.ItemCategory, item.SalePrice, item.TaxForSale, item.SaleTaxAmount, item.PurchasePrice, item.TaxForPurchase, item.PurchaseTaxAmount, item.PurchaseTaxAmount, item.OpeningQty, item.Date, item.atPrice, item.ItemLocation, item.TrackingMRP, item.BatchNo, item.SerialNo, item.MFgdate, item.Expdate, item.Size, item.Description, item.MinimumStock, item.Image1, null, null, null, null, null, null, item.Barcode, Convert.ToInt32(Session["UserId"].ToString()), null, null, item.Profit, item.Discount);
+            db.SubmitChanges();
+            return RedirectToAction("Index");
+
+
         }
         //public ActionResult itemdata()
         //{

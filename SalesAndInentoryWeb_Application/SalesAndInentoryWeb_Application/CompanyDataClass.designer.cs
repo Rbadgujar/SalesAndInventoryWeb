@@ -34911,7 +34911,7 @@ namespace SalesAndInentoryWeb_Application
 		
 		private System.Nullable<int> _ReceiptNo;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _Date;
 		
 		private string _Description;
 		
@@ -34994,7 +34994,7 @@ namespace SalesAndInentoryWeb_Application
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		public string Date
 		{
 			get
 			{
@@ -39679,8 +39679,7 @@ namespace SalesAndInentoryWeb_Application
 
         private string _PoNumber;
 
-        private System.Nullable<System.DateTime> _InvoiceDate;
-
+        private string _InvoiceDate;
 
         private string _StateofSupply;
 
@@ -39849,7 +39848,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_InvoiceDate", DbType = "Date")]
-        public System.Nullable<System.DateTime> InvoiceDate
+        public string InvoiceDate
         {
             get
             {
@@ -40533,7 +40532,7 @@ namespace SalesAndInentoryWeb_Application
 
         private string _ContactNo;
 
-        private System.Nullable<System.DateTime> _OrderDate;
+        private string _OrderDate;
 
         private System.Nullable<System.DateTime> _DueDate;
 
@@ -40684,7 +40683,7 @@ namespace SalesAndInentoryWeb_Application
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_OrderDate", DbType = "Date")]
-        public System.Nullable<System.DateTime> OrderDate
+        public string OrderDate
         {
             get
             {

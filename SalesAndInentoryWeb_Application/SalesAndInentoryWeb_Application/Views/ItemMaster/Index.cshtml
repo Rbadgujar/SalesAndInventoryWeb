@@ -11,8 +11,10 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>All Items</h3></label>
-                    <a class="btn btn-info pull-right row" style="margin-top:12.5px;margin-right:6px; "onclick="PopupFormw('@Url.Action("Additem","ItemMaster")')"><i class="fa fa-plus"></i>Add New Item</a>                  
-             </div>
+                    <a class="btn btn-info pull-right row" style="margin-top:12.5px;margin-right:6px; " onclick="PopupFormw('@Url.Action("Additem","ItemMaster")')"><i class="fa fa-plus"></i>Add New Item</a>
+                    <a class="btn btn-success pull-right row" onclick="PopupForm1('@Url.Action("ItemTraking","ItemMaster")')" style="margin-top:12.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>+Add Unit</a>
+
+                </div>
             </div>
         </nav>
         <div class="container-fluid">
@@ -77,7 +79,7 @@
                     { "data": "OpeningQty" },
 
                     {"data": "ItemID", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm'  onclick=PopupForm('@Url.Action("Additem", "ItemMaster")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        return "<a class='btn btn-default btn-sm'  onclick=PopupForm('@Url.Action("AddOrEdit", "ItemMaster")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
 
                     },
                         "orderable": false,
@@ -125,6 +127,31 @@
                             title: 'Fill Item Master Details',
                             height: 550,
                             width: 840,
+                            close: function () {
+                                Popup.dialog('destroy').remove();
+                                var url = '/ItemMaster/Index';
+                                window.location.href = url;
+                            }
+
+                        });
+                    });
+            }
+
+
+
+
+            function PopupForm1(url) {
+                var formDiv = $('<div/>');
+                debugger
+                $.get(url)
+                    .done(function (response) {
+                        formDiv.html(response);
+                        Popup = formDiv.dialog({
+                            autoOpen: true,
+                            resizable: false,
+                            title: '+ Add Unit',
+                            height: 200,
+                            width: 300,
                             close: function () {
                                 Popup.dialog('destroy').remove();
                                 var url = '/ItemMaster/Index';

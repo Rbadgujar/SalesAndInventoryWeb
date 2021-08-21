@@ -51,16 +51,42 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 return View(vm);
             }
         }
-        public string imagefile=null;
+        public ActionResult dublication(string id)
+        {
+            var getdata = db.tbl_PartyMasterSelect("dublication", null, id, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null).ToList();
+
+            //var getdata = db.tbl_ItemMasterSelect("dublication", null, id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null).ToList();
+             return Json(new { data = getdata.Count }, JsonRequestBehavior.AllowGet);
+
+        }
+        public string pataa = "";
         [HttpPost]
-        public ActionResult Addparty(IEnumerable<HttpPostedFileBase> files, tbl_PartyMaster party, int id = 0)
+        public ActionResult Addparty(HttpPostedFileBase file, tbl_PartyMaster party, int id = 0)
         {
             if (id == 0)
              {
+                if(party.OpeningBal==null)
+                {
+                    party.OpeningBal = 0;
+                }
                 try
-                {                 
+                {
+                    try
+                    {
+                        if (file.ContentLength > 0)
+                        {
+                            var fileName = Path.GetFileName(file.FileName);
+                            var path = Path.Combine(Server.MapPath("~/images/Partyimage"), fileName);
+                            file.SaveAs(path);
+                            pataa = "~/images/Partyimage" + fileName;
+                        }
+                    }
+                    catch (Exception ew)
+                    {
+
+                    }
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
-                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTType, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, imagefile);
+                    db.tbl_PartyMasterSelect("Insert1", null, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.GSTType, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, pataa);
                     db.SubmitChanges();
                     return RedirectToAction("index");
                     //return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
@@ -137,12 +163,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 vm.ContactNo = tb.ContactNo;
                 vm.BillingAddress = tb.BillingAddress;
                 vm.EmailID = tb.EmailID;
-               // vm.GSTNo = tb.GSTNo;
+                vm.GSTType = tb.GSTNo;
                 vm.State = tb.State;
                 vm.OpeningBal = tb.OpeningBal;
                 vm.AsOfDate = Convert.ToDateTime(tb.AsOfDate);
                 vm.AddRemainder = tb.AddRemainder;
                 vm.PartyType = tb.PartyType;
+                vm.type = tb.Type;          
                 vm.ShippingAddress = tb.ShippingAddress;
                 vm.PartyGroup = tb.PartyGroup;
                 vm.PaidStatus = tb.PaidStatus;
@@ -152,12 +179,29 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         
         [HttpPost]
-        public ActionResult AddpartyUpdate(tbl_PartyMaster party, int id=0)//int id = 0)
+        public ActionResult AddpartyUpdate(HttpPostedFileBase file,tbl_PartyMaster party, int id=0)//int id = 0)
         {
-          
-                db.tbl_PartyMasterSelect("Update", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.PartyGroup, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus, null);
-                db.SubmitChanges();
-                return RedirectToAction("Index");
+            if (party.OpeningBal == null)
+            {
+                party.OpeningBal = 0;
+            }
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/Partyimage"),fileName);
+                    file.SaveAs(path);
+                    pataa = "~/images/Partyimage" + fileName;
+                }
+            }
+            catch (Exception ew)
+            {
+
+            }
+            db.tbl_PartyMasterSelect("Update1", id, party.PartyName, party.ContactNo, party.BillingAddress, party.EmailID, party.PartyGroup, party.State, party.OpeningBal, Convert.ToDateTime(party.AsOfDate), party.AddRemainder, party.PartyType, party.ShippingAddress, party.PartyGroup, Convert.ToInt32(Session["UserId"]), party.PaidStatus,pataa);
+           db.SubmitChanges();
+           return RedirectToAction("Index");
           
         }
 

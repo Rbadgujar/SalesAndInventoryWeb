@@ -3,17 +3,18 @@
     ViewBag.Title = "Report";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-<h2>Sale Report</h2>
-<input type="text"value="Back To Sale" href='@Url.Action("SaleInvoice","SaleInvoice")' />
-@*<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Add Sale</a>*@
-<br />
+<p>
+<a class="btn btn-info pull-left row" style="margin-top:12.5px;margin-left:20px;" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Back to List</a>
+    </p>
 @Html.Stimulsoft().StiMvcViewer("MvcViewer1", new StiMvcViewerOptions()
 {
+
     Actions =
             {
-                GetReport = "GetReport",
+        GetReport = "GetReport",
                 ViewerEvent = "ViewerEvent"
             }
+
 })
 <br />
 <br />
@@ -21,4 +22,7 @@
 <br />
 <br />
 <br />
-
+<br />
+<br />
+<br />
+<br />

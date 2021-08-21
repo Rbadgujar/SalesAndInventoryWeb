@@ -55,7 +55,45 @@
     }
 </style>
 
-@using (Html.BeginForm())
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
+
+<script src="~/scripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#PartyName").change(function () {
+            debuggers
+            var fruitId = $("#PartyName").val();
+            if (fruitId != "") {
+                $.ajax
+                    ({
+
+                        type: "POST",
+                        url: "/PartyMaster/dublication",
+                        data: "id=" + fruitId,
+                        success: function (data) {
+                            debugger
+                            if (data.data == 1) {
+                                alert("Party Name Already Register please Enter Other Name");
+                                $("#PartyName").val('');
+                                $("#PartyName").focus();
+                            }
+                        }
+                    });
+            }
+        });
+
+
+
+    });
+</script>
+@using (Html.BeginForm("AddpartyUpdate", "PartyMaster", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div id="div">
         @Html.AntiForgeryToken()
@@ -189,11 +227,12 @@
         <div id="Tokyo" class="tabcontent">
             <div class="row">
                 <div class="col-md-4">
+
                     <b>Upload Image Image:</b>
-                    <input type="file" name="file" />
+                    <input type="file" name="file" id="file" class="form-control" />
                 </div>
                 <div class="col-md-4">
-
+                    <img src="@Url.Content(Model.type)" alt="Image" />
                 </div>
                 <div class="col-md-4">
 
@@ -220,19 +259,19 @@
 }
 
 <script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
 </script>
 
 

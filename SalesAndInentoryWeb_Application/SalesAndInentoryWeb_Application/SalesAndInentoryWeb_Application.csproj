@@ -4060,6 +4060,7 @@
     <Content Include="Views\EstimateQuatation\Report.cshtml" />
     <Content Include="Views\EstimateQuatation\ReportAll.cshtml" />
     <Content Include="Views\Creditnote\ReportAll.cshtml" />
+    <Content Include="Views\PartyMaster\AddpartyUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4073,6 +4074,7 @@
     <Folder Include="css\fonts\" />
     <Folder Include="images\Iteimage\" />
     <Folder Include="images\Logo\" />
+    <Folder Include="images\Partyimage\" />
     <Folder Include="images\signatures\" />
     <Folder Include="logincssfolder\fonts\" />
     <Folder Include="logincssfolder\vendor\" />

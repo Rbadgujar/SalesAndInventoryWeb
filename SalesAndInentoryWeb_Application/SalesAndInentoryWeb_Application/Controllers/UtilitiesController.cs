@@ -104,7 +104,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     SqlConnection con = new SqlConnection(conn);
                     //string query = "insert into tbl_ItemMaster(ItemName,HSNCode) Values('" + ds.Tables[0].Rows[i]["ItemName"].ToString() + "','" + ds.Tables[0].Rows[i]["HSNCode"].ToString() + "')";
 
-                   string query = "insert into tbl_ItemMaster(ItemName,HSNCode ,BasicUnit,SecondaryUnit,ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount,PurchasePrice,TaxForPurchase,PurchaseTaxAmount ,atPrice,OpeningQty ,Date,ItemLocation,TrackingMRP,BatchNo) Values('" + ds.Tables[0].Rows[i]["ItemName"].ToString() + "','" + ds.Tables[0].Rows[i]["HSNCode"].ToString() + "','" + ds.Tables[0].Rows[i]["BaseUnit"].ToString() + "','" + ds.Tables[0].Rows[i]["SecondaryUnit"].ToString() + "','" + ds.Tables[0].Rows[i]["ItemCode"].ToString() + "','" + ds.Tables[0].Rows[i]["ItemCategory"].ToString() + "','" + ds.Tables[0].Rows[i]["SalePrice"].ToString() + "','" + ds.Tables[0].Rows[i]["TaxForSale"].ToString() + "','" + ds.Tables[0].Rows[i]["SaleTaxAmount"].ToString() + "','" + ds.Tables[0].Rows[i]["PurchasePrice"].ToString() + "','" + ds.Tables[0].Rows[i]["TaxForPurchase"].ToString() + "','" + ds.Tables[0].Rows[i]["PurchaseTaxAmount"].ToString() + "','" + ds.Tables[0].Rows[i]["OpeningQty"].ToString() + "','" + ds.Tables[0].Rows[i]["atPrice"].ToString() + "','" + Convert.ToDateTime(ds.Tables[0].Rows[i]["Date"].ToString() )+ "','" + ds.Tables[0].Rows[i]["ItemLocation"].ToString() + "','" + ds.Tables[0].Rows[i]["TrackingMRP"].ToString() + "','" + ds.Tables[0].Rows[i]["BatchNo"].ToString() + "')";
+                   string query = "insert into tbl_ItemMaster(ItemName,HSNCode ,BasicUnit,SecondaryUnit,ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount,PurchasePrice,TaxForPurchase,PurchaseTaxAmount ,atPrice,OpeningQty ,Date,ItemLocation,TrackingMRP,BatchNo,Company_ID) Values('" + ds.Tables[0].Rows[i]["ItemName"].ToString() + "','" + ds.Tables[0].Rows[i]["HSNCode"].ToString() + "','" + ds.Tables[0].Rows[i]["BaseUnit"].ToString() + "','" + ds.Tables[0].Rows[i]["SecondaryUnit"].ToString() + "','" + ds.Tables[0].Rows[i]["ItemCode"].ToString() + "','" + ds.Tables[0].Rows[i]["ItemCategory"].ToString() + "','" + ds.Tables[0].Rows[i]["SalePrice"].ToString() + "','" + ds.Tables[0].Rows[i]["TaxForSale"].ToString() + "','" + ds.Tables[0].Rows[i]["SaleTaxAmount"].ToString() + "','" + ds.Tables[0].Rows[i]["PurchasePrice"].ToString() + "','" + ds.Tables[0].Rows[i]["TaxForPurchase"].ToString() + "','" + ds.Tables[0].Rows[i]["PurchaseTaxAmount"].ToString() + "','" + ds.Tables[0].Rows[i]["OpeningQty"].ToString() + "','" + ds.Tables[0].Rows[i]["atPrice"].ToString() + "','" + Convert.ToDateTime(ds.Tables[0].Rows[i]["Date"].ToString() )+ "','" + ds.Tables[0].Rows[i]["ItemLocation"].ToString() + "','" + ds.Tables[0].Rows[i]["TrackingMRP"].ToString() + "','" + ds.Tables[0].Rows[i]["BatchNo"].ToString() + "',"+MainLoginController.companyid1+")";
                     con.Open();
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
@@ -206,7 +206,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         string conn = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
                         SqlConnection con = new SqlConnection(conn);
                         //string query = "insert into tbl_ItemMaster(ItemName,HSNCode) Values('" + ds.Tables[0].Rows[i]["ItemName"].ToString() + "','" + ds.Tables[0].Rows[i]["HSNCode"].ToString() + "')";
-                        string query = "insert into tbl_PartyMaster (PartyName,ContactNo,BillingAddress,EmailID,GSTType,State,OpeningBal,AsOfDate,AddRemainder,PartyType,ShippingAddress,PartyGroup,PaidStatus) Values('" + ds.Tables[0].Rows[i]["PartyName"].ToString() + "','" + ds.Tables[0].Rows[i]["ContactNo"].ToString() + "','" + ds.Tables[0].Rows[i]["BillingAddress"].ToString() + "','" + ds.Tables[0].Rows[i]["EmailID"].ToString() + "','" + ds.Tables[0].Rows[i]["GSTType"].ToString() + "','" + ds.Tables[0].Rows[i]["State"].ToString() + "','" + ds.Tables[0].Rows[i]["OpeningBal"].ToString() + "','" +ds.Tables[0].Rows[i]["AsOfDate"].ToString() + "','" + ds.Tables[0].Rows[i]["AddRemainder"].ToString() + "','" + ds.Tables[0].Rows[i]["PartyType"].ToString() + "','" + ds.Tables[0].Rows[i]["ShippingAddress"].ToString() + "','" + ds.Tables[0].Rows[i]["PartyGroup"].ToString() + "','" + ds.Tables[0].Rows[i]["PaidStatus"].ToString() + "')";
+                        string query = "insert into tbl_PartyMaster (PartyName,ContactNo,BillingAddress,EmailID,GSTType,State,OpeningBal,AsOfDate,AddRemainder,PartyType,ShippingAddress,PartyGroup,PaidStatus,Company_ID) Values('" + ds.Tables[0].Rows[i]["PartyName"].ToString() + "','" + ds.Tables[0].Rows[i]["ContactNo"].ToString() + "','" + ds.Tables[0].Rows[i]["BillingAddress"].ToString() + "','" + ds.Tables[0].Rows[i]["EmailID"].ToString() + "','" + ds.Tables[0].Rows[i]["GSTType"].ToString() + "','" + ds.Tables[0].Rows[i]["State"].ToString() + "','" + ds.Tables[0].Rows[i]["OpeningBal"].ToString() + "','" +ds.Tables[0].Rows[i]["AsOfDate"].ToString() + "','" + ds.Tables[0].Rows[i]["AddRemainder"].ToString() + "','" + ds.Tables[0].Rows[i]["PartyType"].ToString() + "','" + ds.Tables[0].Rows[i]["ShippingAddress"].ToString() + "','" + ds.Tables[0].Rows[i]["PartyGroup"].ToString() + "','" + ds.Tables[0].Rows[i]["PaidStatus"].ToString() + "',"+MainLoginController.companyid1+")";
                         con.Open();
                         SqlCommand cmd = new SqlCommand(query, con);
                         cmd.ExecuteNonQuery();
@@ -278,7 +278,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string CS = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_ItemMaster", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_ItemMaster where Company_ID="+MainLoginController.companyid1+" and DeleteData='1'", con);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -363,7 +363,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string CS = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_PartyMaster", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_PartyMaster where Company_ID="+MainLoginController.companyid1+"", con);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();

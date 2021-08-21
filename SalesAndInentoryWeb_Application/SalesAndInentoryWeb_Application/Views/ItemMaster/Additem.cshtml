@@ -114,11 +114,11 @@
             </div>
             <div class="col-md-4">
                 Baic Unit:
-                @Html.DropDownListFor(model => model.BasicUnit, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Unit", new { @class = "form-control", @Style = "Width:220px" })
+                @Html.DropDownListFor(model => model.BasicUnit, Model.ListOfParties as IEnumerable<SelectListItem>, "Select Unit", new { @class = "form-control" })
 
                 @*@Html.EditorFor(model => model.BasicUnit, new { htmlAttributes = new { @class = "form-control", style = "width:195px" } })
                     @Html.ValidationMessageFor(model => model.BasicUnit, "", new { @class = "text-danger" })*@
-                <button class="btn pull-right" type="button" onclick="PopupForm('@Url.Action("ItemTraking", "ItemMaster")')" style="margin-top:-34px"><i class="fa fa-plus"></i></button>
+                @*<button class="btn pull-right" type="button" onclick="PopupForm1('@Url.Action("ItemTraking", "ItemMaster")')" style="margin-top:-34px"><i class="fa fa-plus"></i></button>*@
 
                 @*<br />
                     Opening Qty:
@@ -133,7 +133,6 @@
                 Item Code:
                 @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ItemCode, "", new { @class = "text-danger" })
-
 
             </div>
             <div class="col-md-4">
@@ -194,7 +193,7 @@
             <div class="col-md-4">
 
                 Min Stock:
-                @Html.EditorFor(model => model.MinimumStock, new { htmlAttributes = new { @class = "form-control", Style = "width:230px", default_value = "0" } })
+                @Html.EditorFor(model => model.MinimumStock, new { htmlAttributes = new { @class = "form-control", type = "number", Style = "width:230px", default_value = "0" } })
                 @Html.ValidationMessageFor(model => model.MinimumStock, "", new { @class = "text-danger" })
 
 
@@ -217,7 +216,7 @@
                 <div class="">
 
                     Discount (%):
-                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", Style = "width:230px", value = "0" } })
+                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", type = "number", Style = "width:230px", value = "0" } })
                     @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -239,7 +238,7 @@
 
             <div class="col-md-4">
                 Opening Stock:
-                @Html.EditorFor(model => model.OpeningQty, new { htmlAttributes = new { @class = "form-control", Style = "width:230px", value = "0" } })
+                @Html.EditorFor(model => model.OpeningQty, new { htmlAttributes = new { @class = "form-control", type = "number", Style = "width:230px", value = "0" } })
                 @Html.ValidationMessageFor(model => model.OpeningQty, "", new { @class = "text-danger" })
             </div>
 
@@ -300,7 +299,7 @@
                     @Html.ValidationMessageFor(model => model.BatchNo, "", new { @class = "text-danger" })
 
                 </div>
-                <div class="col-md-3">a
+                <div class="col-md-3">
                     <br />
                     <input type="submit" value="Save" class="btn btn-primary pull-right" style="width:80px;font-size:14px;" />
                     <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
