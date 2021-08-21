@@ -32,7 +32,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             if (par == "0")
             {
-                var getdata1 = db.tbl_CreditNote1Select("datetodate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+                var getdata1 = db.tbl_CreditNote1Select("datetodate", null, null, null, null, null,Convert.ToDateTime(date),Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null).ToList();
                 return Json(new { data = getdata1 }, JsonRequestBehavior.AllowGet);
             }
             var getdata = db.tbl_CreditNote1Select("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null).ToList();
@@ -40,9 +40,37 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         }
 
-
-        public ActionResult Report()
+        public ActionResult ViewerEvent1()
         {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult ReportAll()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.InvoiceDate, b.InvoiceID, b.PartyName, b.PaymentType, b.Total, b.Received, b.RemainingBal,b.DeleteData, b.Status,b.Company_ID from tbl_SaleInvoice as b,tbl_CompanyMaster as c where b.Company_ID = '" + MainLoginController.companyid1 + "' and c.CompanyID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1'");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.AddLogo,a.GSTNumber,b.InvoiceDate,b.PartyName,b.ReturnNo,b.Total,b.Received ,b.Company_ID, b.RemainingBal ,b.Status,b.DueDate FROM tbl_CompanyMaster as a, tbl_CreditNote1 as b where a.CompanyID='" + MainLoginController.companyid1 + "' and b.Company_ID="+MainLoginController.companyid1+" and b.DeleteData='1' ");
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData,b.Company_ID, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.Company_ID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "CreditNoteData");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/CreditNoteData.mrt"));
+            report.RegData("CreditNoteData", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+
+
+        public ActionResult Report(int Id=0)
+        {
+            if (Id != 0)
+            {
+                TempData["ID"] = Id;
+            }
             return View();
         }
         public ActionResult ViewerEvent()
@@ -65,13 +93,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             DataSet dataSet = new DataSet("productsDataSet");
 
-            adapter.Fill(dataSet, "CreditNote");
+            adapter.Fill(dataSet, "CreditnoteDataset");
 
             StiReport report = new StiReport();
 
-            report.Load(Server.MapPath("~/Content/Report/CreditNoteReport.mrt"));
+            report.Load(Server.MapPath("~/Content/Report/CreditNote1.mrt"));
 
-            report.RegData("CreditNote", dataSet);
+            report.RegData("CreditnoteDataset", dataSet);
             return StiMvcViewer.GetReportResult(report);
 
         }
@@ -111,7 +139,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         while (sdr.Read())
                         {
 
-                            Minstock = Convert.ToInt32(sdr["MinimumStock"]);
                             openingstock = Convert.ToInt32(sdr["OpeningQty"].ToString());
 
                         }
@@ -120,16 +147,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     con.Close();
 
 
-                    int min = Minstock - newqty;
+                  
                     int opening = openingstock + newqty;
 
-                    sotckcal(ItemID, min, opening);
+                    sotckcal(ItemID, opening);
                 }
 
             }
         }
 
-        public void sotckcal(int ItemID, int min, int opening)
+        public void sotckcal(int ItemID, int opening)
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
@@ -266,15 +293,65 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             return items3;
         }
+        public string Comanystate;
+        public int stateget(string state)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql = string.Format("Select  State from tbl_CompanyMaster where CompanyID=" + MainLoginController.companyid1 + "");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+
+                            Comanystate = sdr["State"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            if (state == Comanystate)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+
+        }
+        public int result;
         [HttpPost]
         public ActionResult AddOrEdit(PartyDetailsCreditNote objcreditnote)
          {
 
-            var gstcount = objcreditnote.TaxAmount1;
-            var gst = gstcount / 2;
+            float gst = 0;
+            float igst = 0;
+    
+            result = stateget(objcreditnote.StateOfSupply);
+            if (result == 1)
+            {
+                float gstcount = (float)objcreditnote.TaxAmount1;
+                gst = (float)(gstcount / 2);
+            }
+            else
+            {
+                igst = (float)objcreditnote.TaxAmount1;
+            }
+
+            //var gstcount = objcreditnote.TaxAmount1;
+            //var gst = gstcount / 2;
 
             tbl_CreditNote1 sale = new tbl_CreditNote1()
             {
+
                 PartyName = objcreditnote.PartyName,
                 BillingName = objcreditnote.BillingName,
                 ContactNo = objcreditnote.ContactNo,
@@ -292,6 +369,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                 //Barcode = objcreditnote.Barcode,
                 Status = objcreditnote.Status,
+                DeleteData=Convert.ToBoolean(1),
                 VehicleNumber = objcreditnote.VehicleNumber,
                 PONumber = objcreditnote.PONumber,
                 PODate = Convert.ToDateTime(objcreditnote.PODate),
@@ -302,10 +380,21 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             foreach (var item in objcreditnote.ListOfCreditNote)
             {
+                float finalgsr = 0;
+                float gst1 = 0;
                 TempData["ID"] = sale.ReturnNo;
+                if (result == 1)
+                {
+                     gst1 = (float)item.SaleTaxAmount;
+                    finalgsr = (float)(gst1 / 2);
+                }
+                else
+                {
+                    igst = (float)item.SaleTaxAmount;
+                }
                 stock(item.ItemID, item.Qty);
-                var gst1 = item.SaleTaxAmount;
-                var finalgsr = gst1 / 2;
+                //var gst1 = item.SaleTaxAmount;
+                //var finalgsr = gst1 / 2;
                 tbl_CreditNoteInner inner = new tbl_CreditNoteInner()
                 {
                      
@@ -317,7 +406,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     DiscountAmount = item.DiscountAmount,
                     SGST=finalgsr,
                     Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
-                    CGST=finalgsr,                   
+                    DeleteData = Convert.ToBoolean(1),
+                    IGST=igst,
+                    CGST =finalgsr,                   
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty

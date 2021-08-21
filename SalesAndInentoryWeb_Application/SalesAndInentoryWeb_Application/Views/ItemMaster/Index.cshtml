@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-4.5px;"><h3>All Items</h3></label>
-                    <a class="btn btn-info pull-right row" style="margin-top:12.5px;margin-right:6px; "onclick="PopupForm('@Url.Action("Additem","ItemMaster")')"><i class="fa fa-plus"></i>Add New Item</a>                  
+                    <a class="btn btn-info pull-right row" style="margin-top:12.5px;margin-right:6px; "onclick="PopupFormw('@Url.Action("Additem","ItemMaster")')"><i class="fa fa-plus"></i>Add New Item</a>                  
              </div>
             </div>
         </nav>
@@ -25,7 +25,7 @@
                             <th>Item Name</th>
                             <th>SalePrice</th>
                             <th>PurchasePrice</th>
-                            <th>MinimumStock</th>
+                            <th>Qty</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -94,6 +94,7 @@
 
         function PopupForm(url) {
             var formDiv = $('<div/>');
+            debugger
             $.get(url)
             .done(function (response) {
                 formDiv.html(response);
@@ -104,13 +105,35 @@
                     height: 550,
                     width: 840,
                     close: function () {
-                        Popup.dialog('destroy').remove();
+                        Popup.dialog('destroy').remove();                   
                     }
 
                 });
             });
         }
 
+
+            function PopupFormw(url) {
+                var formDiv = $('<div/>');
+                debugger
+                $.get(url)
+                    .done(function (response) {
+                        formDiv.html(response);
+                        Popup = formDiv.dialog({
+                            autoOpen: true,
+                            resizable: false,
+                            title: 'Fill Item Master Details',
+                            height: 550,
+                            width: 840,
+                            close: function () {
+                                Popup.dialog('destroy').remove();
+                                var url = '/ItemMaster/Index';
+                                window.location.href = url;
+                            }
+
+                        });
+                    });
+            }
         function SubmitForm(form) {
             $.validator.unobtrusive.parse(form);
             if($(form).valid()){

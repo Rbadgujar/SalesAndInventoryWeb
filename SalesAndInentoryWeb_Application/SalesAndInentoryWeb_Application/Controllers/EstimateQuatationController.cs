@@ -150,6 +150,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items;
         }
+
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult ReportAll()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.CompanyID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1' and b.Company_ID = '" + MainLoginController.companyid1 + "'");
+            string Query = string.Format("SELECT a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.Date,b.Total,b.Status FROM tbl_CompanyMaster as a, tblQuotation as b where a.CompanyID='" +MainLoginController.companyid1 + "' and b.Company_ID='" +MainLoginController.companyid1+ "' and b.DeleteData = '1' ");
+
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "Estimate");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/EstimateHomeReport.mrt"));
+            report.RegData("Estimate", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+
+
+
         private static List<SelectListItem> ListOfCategorys()
         {
             string sql;

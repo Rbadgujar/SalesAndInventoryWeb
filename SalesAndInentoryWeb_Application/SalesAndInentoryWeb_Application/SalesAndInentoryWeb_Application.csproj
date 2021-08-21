@@ -3361,6 +3361,8 @@
     <Content Include="Content\Report\BankStatementData.mrt" />
     <Content Include="Content\Report\DeliveryChallan.mrt" />
     <Content Include="Content\Report\DeliveryChallanDataReport.mrt" />
+    <Content Include="Content\Report\EstimateHomeReport.mrt" />
+    <Content Include="Content\Report\CreditNoteData.mrt" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
@@ -4056,6 +4058,8 @@
     <Content Include="Views\DeliveryChallan\Report.cshtml" />
     <Content Include="Views\DeliveryChallan\ReportAll.cshtml" />
     <Content Include="Views\EstimateQuatation\Report.cshtml" />
+    <Content Include="Views\EstimateQuatation\ReportAll.cshtml" />
+    <Content Include="Views\Creditnote\ReportAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4067,6 +4071,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\App_Data\" />
     <Folder Include="css\fonts\" />
+    <Folder Include="images\Iteimage\" />
     <Folder Include="images\Logo\" />
     <Folder Include="images\signatures\" />
     <Folder Include="logincssfolder\fonts\" />

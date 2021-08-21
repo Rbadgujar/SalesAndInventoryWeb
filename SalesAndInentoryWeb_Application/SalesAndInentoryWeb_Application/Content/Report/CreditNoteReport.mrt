@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<StiSerializer version="1.0" application="StiReport">
+<StiSerializer version="1.02" type="Net" application="StiReport">
   <Dictionary Ref="1" type="Dictionary" isKey="true">
     <BusinessObjects isList="true" count="0" />
     <Databases isList="true" count="1">
       <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
         <Alias>Connection</Alias>
-        <ConnectionString>Data Source=DESKTOP-V77UKDV;Initial Catalog=InventoryMgnt;Integrated Security=True</ConnectionString>
+        <ConnectionStringEncrypted>9MiBoe9K85lqe71Edlzhf9Fq+0NWBYKBf1y5gGfY4xvkcM1ITEwTEXJJTdx1TKhP1Tj3Schow5lpT6HwTRgiE9la28LEVgGUTX7VHPkc4T+QLA==</ConnectionStringEncrypted>
         <Name>Connection</Name>
-        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
       </Connection>
     </Databases>
     <DataSources isList="true" count="24">
@@ -562,7 +561,7 @@
   <EngineVersion>EngineV2</EngineVersion>
   <GlobalizationStrings isList="true" count="0" />
   <MetaTags isList="true" count="0" />
-  <Pages isList="true" count="1">
+  <Pages isList="true" count="2">
     <Page1 Ref="27" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
@@ -1071,8 +1070,24 @@
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page1>
+    <Page2 Ref="68" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="0" />
+      <Conditions isList="true" count="0" />
+      <Guid>7c720dab896f4447939d2a01d442640b</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page2</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="69" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page2>
   </Pages>
-  <PrinterSettings Ref="68" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <PrinterSettings Ref="70" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
   <ReferencedAssemblies isList="true" count="8">
     <value>System.Dll</value>
     <value>System.Drawing.Dll</value>
@@ -1084,13 +1099,13 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>3/16/2021 2:50:41 PM</ReportChanged>
+  <ReportChanged>8/20/2021 12:13:26 PM</ReportChanged>
   <ReportCreated>3/15/2021 2:39:21 PM</ReportCreated>
-  <ReportFile>C:\Users\Rukmini\Desktop\shritej\shritej\CreditNoteReport.mrt</ReportFile>
-  <ReportGuid>8aaf5537cc1d423ba2667f867d7b2654</ReportGuid>
+  <ReportFile>C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\Content\Report\CreditNoteReport.mrt</ReportFile>
+  <ReportGuid>119d7a2763964764a7cb33bf43bf556d</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
-  <ReportVersion>2010.1.700</ReportVersion>
+  <ReportVersion>2012.3.1500</ReportVersion>
   <Script>using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -1111,7 +1126,8 @@ namespace Reports
         {
             this.InitializeComponent();
         }
-        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
     }
 }
 </Script>
