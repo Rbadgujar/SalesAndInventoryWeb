@@ -3850,10 +3850,13 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Dashborddata.cs" />
     <Compile Include="ViewModel\EstimateItem.cs" />
     <Compile Include="ViewModel\EstimateParty.cs" />
     <Compile Include="ViewModel\exportitem.cs" />
     <Compile Include="ViewModel\Exportpartyes.cs" />
+    <Compile Include="ViewModel\Exportpurchase.cs" />
+    <Compile Include="ViewModel\Exportsaledata.cs" />
     <Compile Include="ViewModel\ItemDetails.cs" />
     <Compile Include="ViewModel\ItemPurchase.cs" />
     <Compile Include="ViewModel\otherincome.cs" />

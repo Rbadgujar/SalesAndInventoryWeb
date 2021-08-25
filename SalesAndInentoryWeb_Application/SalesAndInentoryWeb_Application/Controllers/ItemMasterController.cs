@@ -29,6 +29,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
         }
+        [HttpGet]
+        public ActionResult Data1()
+        {
+            var getdata = db.tbl_ItemMasterSelect("Maxcount", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null).ToList();
+            return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
+
+        }
         public ActionResult unit()
         {
             return View();

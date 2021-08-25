@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SalesAndInentoryWeb_Application.ViewModel.Dashborddata
+@{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
@@ -10,98 +11,132 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <style>
- 
-    .highcharts-figure, .highcharts-data-table table {
-    min-width: 320px; 
-    max-width: 800px;
-    margin: 1em auto;
-}
 
-.highcharts-data-table table {
-	font-family: Verdana, sans-serif;
-	border-collapse: collapse;
-	border: 1px solid #EBEBEB;
-	margin: 10px auto;
-	text-align: center;
-	width: 100%; 
-	max-width: 500px;
-}
-.highcharts-data-table caption {
-    padding: 1em 0;
-    font-size: 1.2em;
-    color: #555;
-}
-.highcharts-data-table th {
-	font-weight: 600;
-    padding: 0.5em;
-}
-.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
-    padding: 0.5em;
-}
-.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
-    background: #f8f8f8;
-}
-.highcharts-data-table tr:hover {
-    background: #f1f7ff;
-}
+        .highcharts-figure, .highcharts-data-table table {
+            min-width: 320px;
+            max-width: 800px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
 
 
-input[type="number"] {
-	min-width: 50px;
-}
+        input[type="number"] {
+            min-width: 50px;
+        }
+        .saleamount{
+            font-family: Georgia, serif;
+            font-size: 28px;
+            letter-spacing: 2.6px;
+            word-spacing: 2.6px;
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none solid rgb(68, 68, 68);
+            font-style: normal;
+            font-variant: normal;
+            text-transform: none;
+        }
     </style>
 </head>
 <body>
-    <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
-        <div class="col-md-3">
+    <table style="width:100%;">
+        <tr>
+            <td style="padding:3px;text-align:center">
+                <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
+                    <div style="text-align:center"><label style="margin-top:7px;font-size:20px; ">Sale</label></div>
+                    <div class="pull-left">
+                        <label style="color: black;font-size: 18px; font-family: Helvetica, Arial, sans-serif;opacity: .6;">Total:</label>
 
-            <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
-                <div style="text-align:center"><label style="margin-top:7px;font-size:20px; ">Sale</label></div>
-                <div class="pull-left">
-                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Total:</label>
-                    <br />
-                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Pending:</label>
+                        <label style="font-size: 15px;margin-right: -66px">  @Html.DisplayFor(model => model.saleamount, new { htmlAttributes = new { @class = "form-control", @Style = "font-size:30px;" } })</label>
+                        <br />
+                        <label style="color: black; font-size: 18px; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Pending:</label>
+                        <label style="font-size: 15px;margin-right: -66px"> @Html.DisplayFor(model => model.salpending)</label>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3">
+            </td>
+            <td style="padding:3px;text-align:center">
+                <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
+                    <div style="text-align:center"><label style="margin-top:7px;font-size:20px">Purchase </label></div>
+                    <div class="pull-left">
+                        <label style="color: black;font-size: 18px; font-family: Helvetica, Arial, sans-serif;opacity: .6;">Total:</label>
+                        <label style="font-size: 15px;margin-right: -66px">
+                            @Html.DisplayFor(model => model.purchaseamount)
+                        </label>
+                        <br />
+                        <label style="color: black;font-size: 18px; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Remaning:</label>
+                        <label style="font-size: 15px;margin-right: -66px">
+                            @Html.DisplayFor(model => model.purchasepending)
+                        </label>
+                    </div>
+                    </div>
+</td>
+           
+            <td style="padding:3px;text-align:center">
+                <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
+                    <div style="text-align:center"><label style="margin-top:7px;font-size:20px">Payment In</label></div>
+                    <div class="pull-left">
+                        <label style="color: black; font-size: 18px;font-family: Helvetica, Arial, sans-serif;opacity: .6;">Recived:</label>
+                        <label style="font-size: 15px;margin-right: -66px">
+                            @Html.DisplayFor(model => model.PaymentIn)
+                            </label>
+                            <br />
+                            <label style="color: black;font-size: 18px; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Remaning:</label>
+                            <label style="font-size: 15px;margin-right: -66px">
+                                @Html.DisplayFor(model => model.remaining)
+                                </label>
 
-            <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; height:110px;background-color:white">
-                <div style="text-align:center"><label style="margin-top:7px;font-size:20px">Purchase</label></div>
-                <div class="pull-left">
-                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Total:</label>
-                    <br />
-                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Pending:</label>
-
+</div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-
-            <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
-                <div style="text-align:center"><label style="margin-top:7px;font-size:20px">Payment In</label></div>
-                <div class="pull-left">
-                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Recives:</label>
-                    <br />
-                    <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Remaning:</label>
-
+            </td>
+            <td style="padding:3px;text-align:center">
+                <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
+                    <div style="text-align:center"><label style="margin-top:7px;font-size:20px">Payment Out</label></div>
+                    <div class="pull-left">
+                        <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Recived:</label>
+                        <label style="font-size: 15px;margin-right: -66px">
+                            @Html.DisplayFor(model => model.paymnetout)
+                        </label>
+                        <br />
+                        <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Remaning:</label>
+                        <label style="font-size: 15px;margin-right: -66px">
+                            @Html.DisplayFor(model => model.remaining)
+                            </label>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-
-            <div style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;height:110px;background-color:white">
-                <div style="text-align:center"><label style="margin-top:7px;font-size:20px">Payment Out</label></div>
-                <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Recives:</label>
-                <br />
-                <label style="color: black; font-family: Helvetica, Arial, sans-serif;opacity: .6; margin-left:11px">Remaning:</label>
-
-            </div>
-
-        </div>
-    </div>
-
-
+</td>
+        </tr>
+    </table>
 
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
         <div class="col-md-6">
@@ -122,263 +157,369 @@ input[type="number"] {
 
                 </p>
             </figure>
-         
+
 
         </div>
     </div>
+
     <div style="margin-left:5px;margin-top:10px;width:100%" class="row">
+
         <div class="col-md-6">
             <figure class="highcharts-figure">
-                <div id="container1"></div>
-                <p class="highcharts-description">
+                <div id="container4"></div>
 
-                </p>
             </figure>
-</div>
-<div class="col-md-6">
-    <figure class="highcharts-figure">
-        <div id="container3"></div>
-        <p class="highcharts-description">
-           
-        </p>
-    </figure>
-
-     </div>
-            <br />
-            <br />
-            <br />
-            <br /><br />
-            <br />
-            <br />
-            <br /><br />
-            <br />
-            <br />
-            <br /><br />
-            <br />
-            <br />
-            <br /><br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br /><br />
-            <br />
-            <br />
-            <br /><br />
-            <br />
-            <br />
-            <br /><br />
-            <br />
-            <br />
-            <br />
         </div>
+        <div class="col-md-6">
+            <center><label><b>OutStock!</b></label></center>
+
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse ">
+                    <table id="itemdata" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+
+                                <th>Item Name</th>
+                                <th>Qty</th>
+                                <th style="display:none"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br /><br />
+        <br />
+        <br />
+        <br /><br />
+        <br />
+        <br />
+        <br /><br />
+        <br />
+        <br />
+        <br /><br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br /><br />
+        <br />
+        <br />
+        <br /><br />
+        <br />
+        <br />
+        <br /><br />
+        <br />
+        <br />
+        <br />
+    </div>
+
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    @section scripts{
+        <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
+        <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+        @*<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*@
+
+        @*@section scripts{
+            <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>*@
+
         <script>
+        var Popup, dataTable;
+        $(document).ready(function () {
+            dataTable =  $("#itemdata").DataTable({
+                "ajax": {
+                    "url": "/ItemMaster/Data1",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    
+                    { "data": "ItemName" },
+                                  
+                    { "data": "OpeningQty" },
 
-            $(document).ready(function () {
-                $.ajax({
-                    type: "POST",
-                    url: '/PurchaseBill/order',
-                    data: JSON.stringify({}),
-                    ContentType: 'application/json:charset=utf-8',
-                    dataType: "json",
-                    success: function (json) {
-
-
-                        //for(var i=0;i<=20;i++) {
-
-                        var total = parseInt(json.data[0].Total);
-                        var party = parseInt(json.data[0].RemainingBal);
-                        var paid = parseInt(json.data[0].Paid);
-
-                        Highcharts.chart('container', {
-                            chart: {
-                                plotBackgroundColor: null,
-                                plotBorderWidth: null,
-                                plotShadow: false,
-                                type: 'pie'
-                            },
-                            title: {
-                                text: 'Payment Information !'
-                            },
-                            tooltip: {
-                                pointFormat: total
-                            },
-                            accessibility: {
-                                point: {
-                                    valueSuffix: '%'
-                                }
-                            },
-                            plotOptions: {
-                                pie: {
-                                    allowPointSelect: true,
-                                    cursor: 'pointer',
-                                    dataLabels: {
-                                        enabled: true,
-                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                                    }
-                                }
-                            },
-                            series: [{
-                                name: 'Brands',
-                                colorByPoint: true,
-                                data: [{
-                                    name: 'Paid',
-                                    y: total,
-                                    sliced: true,
-                                    selected: true
-                                }, {
-                                    name: 'Remaing Bal',
-                                    y: party
-                                },
-
-                                {
-                                    name: 'Other',
-                                    y: party
-                                }]
-                            }]
-                        });
-
-
-                        //}
-
+                    {"data": "ItemID", "render": function (data) {
+                      
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
                     }
+                ],
+                "language": {
+
+                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
+                }
+            });
+        });
+
+        </script>
+    }
 
 
-                });
 
-                $.ajax({
-                    type: "POST",
-                    url: '/PurchaseBill/vits',
-                    data: JSON.stringify({}),
-                    ContentType: 'application/json:charset=utf-8',
-                    dataType: "json",
-                    success: function (json) {
-                        Highcharts.chart('container2', {
 
-                            title: {
-                                text: 'Sale'
-                            },
 
-                            subtitle: {
-                                text: 'Source: thesolarfoundation.com'
-                            },
 
-                            yAxis: {
-                                title: {
-                                    text: 'Number of Employees'
-                                }
-                            },
+    <script>
 
-                            xAxis: {
-                                accessibility: {
-                                    rangeDescription: 'Range: 2010 to 2017'
-                                }
-                            },
-                            legend: {
-                                layout: 'vertical',
-                                align: 'right',
-                                verticalAlign: 'middle'
-                            },
-                            plotOptions: {
-                                series: {
-                                    label: {
-                                        connectorAllowed: false
-                                    },
-                                    pointStart: 2010
-                                }
-                            },
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: '/Home/order',
+                data: JSON.stringify({}),
+                ContentType: 'application/json:charset=utf-8',
+                dataType: "json",
+                success: function (json) {
+                    //for(var i=0;i<=20;i++) {
 
-                            series: [{
-                                name: 'Installation',
-                                data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-                            }, {
-                                name: 'Manufacturing',
-                                data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-                            }, {
-                                name: 'Sales & Distribution',
-                                data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-                            }, {
-                                name: 'Project Development',
-                                data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-                            }, {
-                                name: 'Other',
-                                data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-                            }],
+                    var total = json.data.Total;
+                    var party = json.data.RemainingBal;
+                    var Purchase = json.data1.Total;
+                    var Purchasepending = json.data1.RemainingBal;
 
-                            responsive: {
-                                rules: [{
-                                    condition: {
-                                        maxWidth: 500
-                                    },
-                                    chartOptions: {
-                                        legend: {
-                                            layout: 'horizontal',
-                                            align: 'center',
-                                            verticalAlign: 'bottom'
-                                        }
-                                    }
-                                }]
+                    Highcharts.chart('container', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie'
+                        },
+                        title: {
+                            text: 'Payment Related Data !'
+                        },
+                        tooltip: {
+                            pointFormat: total
+                        },
+                        accessibility: {
+                            point: {
+                                valueSuffix: '%'
                             }
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Brands',
+                            colorByPoint: true,
+                            data: [{
+                                name: 'Paid',
+                                y: total,
+                                sliced: true,
+                                selected: true
+                            }, {
+                                name: 'Remaing Bal',
+                                y: party
+                            },
 
-                        });
+                            {
+                                name: 'Purchase',
+                                y: Purchase
+                            },
+                            {
+                                name: 'Purchase Pending',
+                                y: Purchasepending
+                            }]
+                        }]
+                    });
 
+
+                    //}
+
+                }
+
+
+            });
+
+            $.ajax({
+                type: "POST",
+                url: '/Home/salecount',
+                data: JSON.stringify({}),
+                ContentType: 'application/json:charset=utf-8',
+                dataType: "json",
+                success: function (json) {
+
+                    var total = [];
+                    var dates1 = [];
+                    for (var i = 0; i < json.data.length; i++) {
+
+                        total.push(json.data[i].Total);
+                        dates1.push(json.data[i].InvoiceDate);
                     }
-                });
 
-                $.ajax({
-                    type: "POST",
-                    url: '/PurchaseBill/vits',
-                    data: JSON.stringify({}),
-                    ContentType: 'application/json:charset=utf-8',
-                    dataType: "json",
-                    success: function (json) {
-                        debugger
-                        var To = [];
-                        for (var i = 0; i <= 30; i++) {
+                    Highcharts.chart('container2', {
 
-                            To.push(json.data[i].Total);
+                        title: {
+                            text: 'Daily Sale Record !'
+                        },
 
+                        subtitle: {
+                            text: 'Daily Sale Record'
+                        },
+
+                        yAxis: {
+                            title: {
+                                text: 'Amount'
+                            }
+                        },
+                        xAxis: {
+                            accessibility: {
+                                rangeDescription: dates1
+                            }
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle'
+                        },
+                        plotOptions: {
+                            series: {
+                                label: {
+                                    connectorAllowed: false
+                                },
+                                pointStart: 1
+                            }
+                        },
+
+                        series: [{
+                            name: 'Sale',
+                            data: total
+                        }],
+
+                        responsive: {
+                            rules: [{
+                                condition: {
+                                    maxWidth: 500
+                                },
+                                chartOptions: {
+                                    legend: {
+                                        layout: 'horizontal',
+                                        align: 'center',
+                                        verticalAlign: 'bottom'
+                                    }
+                                }
+                            }]
                         }
 
-                        Highcharts.chart('container1', {
+                    });
 
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+            $.ajax({
+                type: "POST",
+                url: '/Home/todayrecord',
+                data: JSON.stringify({}),
+                ContentType: 'application/json:charset=utf-8',
+                dataType: "json",
+                success: function (json) {
+                    //for(var i=0;i<=20;i++) {
+                    debugger
+                    var purchase = json.data4;
+                    var sale = json.data3;
+                    var Payout = json.date2;
+                    var payin = json.data1;
+
+                    Highcharts.chart('container4', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Daily Sale Purchase Payment Out Payment In Record !'
+                        },
+                        subtitle: {
+                            text: 'Todays Data !'
+                        },
+                        accessibility: {
+                            announceNewData: {
+                                enabled: true
+                            }
+                        },
+                        xAxis: {
+                            type: 'category'
+                        },
+                        yAxis: {
                             title: {
-                                text: 'Daily Sale Data'
-                            },
+                                text: 'Amount'
+                            }
 
-                            xAxis: {
-                                tickInterval: 1,
-                                type: 'logarithmic',
-                                accessibility: {
-                                    rangeDescription: 'Range: 1 to 10000'
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            series: {
+                                borderWidth: 0,
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.y:.1f}'
                                 }
-                            },
+                            }
+                        },
 
-                            yAxis: {
-                                type: 'logarithmic',
-                                minorTickInterval: 0.1,
-                                accessibility: {
-                                    rangeDescription: 'Range: 0.1 to 1000'
-                                }
-                            },
+                        tooltip: {
+                            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total<br/>'
+                        },
 
-                            tooltip: {
-                                headerFormat: '<b>{series.name}</b><br />',
-                                pointFormat: 'x = {point.x}, y = {point.y}'
-                            },
+                        series: [
+                            {
+                                name: "Daily Record ",
+                                colorByPoint: true,
+                                data: [
+                                    {
+                                        name: "Sale",
+                                        y: sale,
+                                        drilldown: "Sale Amount"
+                                    },
+                                    {
+                                        name: "Purchase",
+                                        y: purchase,
+                                        drilldown: "Purchase"
+                                    },
+                                    {
+                                        name: "Paymnet In",
+                                        y: payin,
+                                        drilldown: "Paymnet In"
+                                    },
+                                    {
+                                        name: "Paymnet Out",
+                                        y: Payout,
+                                        drilldown: "Payment Out"
+                                    }
+                                ]
+                            }
+                        ]
+                    });
+                }
+            });
 
-                            series: [{
-                                data: To,
-                                pointStart: 4
-                            }]
-                        });
 
-                    }
-
-
-                });
 
 
             //    $.ajax({
@@ -464,90 +605,90 @@ input[type="number"] {
 
 
 
-                $.ajax({
-                    type: "POST",
-                    url: '/PurchaseBill/vits',
-                    data: JSON.stringify({}),
-                    ContentType: 'application/json:charset=utf-8',
-                    dataType: "json",
-                    success: function (json) {
+            $.ajax({
+                type: "POST",
+                url: '/PurchaseBill/vits',
+                data: JSON.stringify({}),
+                ContentType: 'application/json:charset=utf-8',
+                dataType: "json",
+                success: function (json) {
 
-                        Highcharts.chart('container3', {
-                            chart: {
-                                type: 'column'
-                            },
+                    Highcharts.chart('container3', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Monthly Average Rainfall'
+                        },
+                        subtitle: {
+                            text: 'Source: WorldClimate.com'
+                        },
+                        xAxis: {
+                            categories: [
+                                'Jan',
+                                'Feb',
+                                'Mar',
+                                'Apr',
+                                'May',
+                                'Jun',
+                                'Jul',
+                                'Aug',
+                                'Sep',
+                                'Oct',
+                                'Nov',
+                                'Dec'
+                            ],
+                            crosshair: true
+                        },
+                        yAxis: {
+                            min: 0,
                             title: {
-                                text: 'Monthly Average Rainfall'
-                            },
-                            subtitle: {
-                                text: 'Source: WorldClimate.com'
-                            },
-                            xAxis: {
-                                categories: [
-                                    'Jan',
-                                    'Feb',
-                                    'Mar',
-                                    'Apr',
-                                    'May',
-                                    'Jun',
-                                    'Jul',
-                                    'Aug',
-                                    'Sep',
-                                    'Oct',
-                                    'Nov',
-                                    'Dec'
-                                ],
-                                crosshair: true
-                            },
-                            yAxis: {
-                                min: 0,
-                                title: {
-                                    text: 'Rainfall (mm)'
-                                }
-                            },
-                            tooltip: {
-                                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                                footerFormat: '</table>',
-                                shared: true,
-                                useHTML: true
-                            },
-                            plotOptions: {
-                                column: {
-                                    pointPadding: 0.2,
-                                    borderWidth: 0
-                                }
-                            },
-                            series: [{
-                                name: 'Tokyo',
-                                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+                                text: 'Rainfall (mm)'
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                            footerFormat: '</table>',
+                            shared: true,
+                            useHTML: true
+                        },
+                        plotOptions: {
+                            column: {
+                                pointPadding: 0.2,
+                                borderWidth: 0
+                            }
+                        },
+                        series: [{
+                            name: 'Tokyo',
+                            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
 
-                            }, {
-                                name: 'New York',
-                                data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+                        }, {
+                            name: 'New York',
+                            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
 
-                            }, {
-                                name: 'London',
-                                data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+                        }, {
+                            name: 'London',
+                            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
 
-                            }, {
-                                name: 'Berlin',
-                                data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+                        }, {
+                            name: 'Berlin',
+                            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
 
-                            }]
-                        });
+                        }]
+                    });
 
 
-                    }
-
-                });
-
-
+                }
 
             });
 
-        </script>
+
+
+        });
+
+    </script>
 </body>
 
 </html>
