@@ -91,8 +91,10 @@
                     { "data": "RemainingBal" },
                     { "data": "Total" },
                     {
-                        "data":"ChallanNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i>Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
+                        "data": "ChallanNo", "render": function (data) {
+                                         
+                  
+                        return "<a class='btn btn-info btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> </a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -134,8 +136,8 @@
                     { "data": "Total" },
                     {
                         "data":"ChallanNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i>Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
-                    },
+            return "<a class='btn btn-info btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> </a>";
+          },
                         "orderable": false,
                         "searchable":false,
                         "width":"150px"
@@ -177,8 +179,8 @@
                     { "data": "Total" },
                     {
                         "data":"ChallanNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i>Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
-                    },
+                        return "<a class='btn btn-info btn-sm' href=@Url.Action("Dilaverychallen", "DeliveryChallan")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "DeliveryChallan")/" + data + "'><i class='fa fa-pencil'></i> </a>";
+                         },
                         "orderable": false,
                         "searchable":false,
                         "width":"150px"

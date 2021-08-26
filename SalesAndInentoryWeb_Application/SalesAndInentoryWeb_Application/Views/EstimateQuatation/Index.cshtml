@@ -47,7 +47,7 @@
                             <th>PartyName</th>
                             <th>ContactNo</th>
                             <th>Date</th>
-                            <th>Status</th>
+                           
                             <th>Total</th>
                             <th>Action</th>
                         </tr>
@@ -89,12 +89,12 @@
                     { "data": "PartyName" },
                     { "data": "ContactNo" },
                     { "data": "Date" },
-                    { "data": "Status" },
+                 
                     { "data": "Total" },
 					
                     {
                         "data": "RefNo", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "EstimateQuatation")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
+                        return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "EstimateQuatation")/" + data + "'><i class='fa fa-print'></i> </a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -131,13 +131,13 @@
                     { "data": "PartyName" },
                     { "data": "ContactNo" },
                     { "data": "Date" },
-                    { "data": "Status" },
+                    
                     { "data": "Total" },
 					
                     {
                         "data": "RefNo", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "EstimateQuatation")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
-                    },
+                    return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "EstimateQuatation")/" + data + "'><i class='fa fa-print'></i> </a>";
+                           },
                         "orderable": false,
                         "searchable":false,
                         "width":"150px"
@@ -174,13 +174,13 @@
                     { "data": "PartyName" },
                     { "data": "ContactNo" },
                     { "data": "Date" },
-                    { "data": "Status" },
+                 
                     { "data": "Total" },
 					
                     {
                         "data": "RefNo", "render": function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "EstimateQuatation")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
-                    },
+                   return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit", "EstimateQuatation")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> </a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "EstimateQuatation")/" + data + "'><i class='fa fa-print'></i> </a>";
+                                 },
                         "orderable": false,
                         "searchable":false,
                         "width":"150px"

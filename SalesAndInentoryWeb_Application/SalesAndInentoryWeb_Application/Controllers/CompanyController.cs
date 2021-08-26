@@ -23,6 +23,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+        public ActionResult reg()
+        {
+            return View();
+        }
         [HttpGet]
         public ActionResult com(int id = 0)
         {

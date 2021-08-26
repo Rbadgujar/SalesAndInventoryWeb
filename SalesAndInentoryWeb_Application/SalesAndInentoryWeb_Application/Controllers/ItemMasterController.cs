@@ -46,7 +46,12 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(new { data = getdata.Count }, JsonRequestBehavior.AllowGet);
 
         }
+        public ActionResult brdublication(string id)
+        {
+            var getdata1 = db.tbl_ItemMasterSelect("dublication1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, id, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null).ToList();
+            return Json(new { data = getdata1.Count }, JsonRequestBehavior.AllowGet);
 
+        }
         public ActionResult Addparty()
         {
             return View();

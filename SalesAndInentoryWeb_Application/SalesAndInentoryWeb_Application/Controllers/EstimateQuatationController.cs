@@ -267,13 +267,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
             tblQuotation sale = new tblQuotation()
             {
                 PartyName = objEstimateDetails.PartyName,
-                Total = objEstimateDetails.Total,
+                Total = Math.Round(objEstimateDetails.Total,2),
                 Status = objEstimateDetails.Status,
                 StateofSupply = objEstimateDetails.StateOfSupply,
                 Date = objEstimateDetails.Date,
-                CGST=gst,
-                SGST=gst,
-                IGST=igst,
+                CGST= Math.Round(gst,2),
+                SGST= Math.Round(gst,2),
+                IGST= Math.Round(igst,2),
                 DeleteData = Convert.ToBoolean(1),
                 BillingAddress = objEstimateDetails.BillingAddress,
                 Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
@@ -299,21 +299,20 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 tbl_QuotationInner inner = new tbl_QuotationInner()
                 {
 
- 
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     RefNo = sale.RefNo,
-                    ItemAmount = item.ItemAmount,
+                    ItemAmount = Convert.ToInt32(item.ItemAmount),
                     Qty = item.Qty,
-                    CGST=finalgsr,
-                    SGST=finalgsr,
-                    IGST=igst,
+                    CGST= Math.Round(finalgsr,2),
+                    SGST= Math.Round(finalgsr,2),
+                    IGST=Math.Round(igst,2),
                     TaxForSale = item.TaxForSale,
                     DeleteData = Convert.ToBoolean(1),
                     SaleTaxAmount = item.SaleTaxAmount,
                     Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                     Discount = item.Discount,
-                    DiscountAmount = item.DiscountAmount
+                    DiscountAmount = Math.Round(item.DiscountAmount,2)
                 };
                 db.tbl_QuotationInners.InsertOnSubmit(inner);
                 db.SubmitChanges();

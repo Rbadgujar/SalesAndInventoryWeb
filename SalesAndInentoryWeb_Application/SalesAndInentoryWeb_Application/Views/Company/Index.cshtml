@@ -65,7 +65,7 @@
                             { "data": "ContactNo" },
                             { "data": "EmailID" },
                             {"data":"CompanyID" , "render" : function (data) {
-                                return "<a class='btn btn-default btn-sm'  onclick=PopupForm('@Url.Action("com", "Company")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                                return "<a class='btn btn-default btn-sm'  onclick=PopupForm('@Url.Action("com", "Company")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data +")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm'  onclick=PopupFormnew('@Url.Action("reg", "Company")')><i class='fa fa-pencil'></i>Open</a>";
                             },
                                 "orderable": false,
                                 "searchable":false,
@@ -99,6 +99,26 @@
                         });
                     });
                 }
+
+        function PopupFormnew(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: true,
+                        title: 'Change Company',
+                        height: 150,
+                        width: 300
+                        //close: function () {
+                        //    Popup.dialog('destroy').remove();
+                        //}
+
+                    });
+                });
+        }
 
                 function SubmitForm(form) {
                     $.validator.unobtrusive.parse(form);

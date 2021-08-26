@@ -4064,6 +4064,7 @@
     <Content Include="Views\EstimateQuatation\ReportAll.cshtml" />
     <Content Include="Views\Creditnote\ReportAll.cshtml" />
     <Content Include="Views\PartyMaster\AddpartyUpdate.cshtml" />
+    <Content Include="Views\Company\reg.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
