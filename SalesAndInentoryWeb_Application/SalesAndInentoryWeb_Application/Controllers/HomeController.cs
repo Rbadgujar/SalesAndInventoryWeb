@@ -56,19 +56,25 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         public ActionResult salecount()
         {
+            try
+            {
+                DateTime myDateTime = DateTime.Now;
+                string year = myDateTime.Year.ToString();
+                string mont = myDateTime.Month.ToString();
+                var date = myDateTime.Year.ToString();
+                var date1 = Convert.ToInt32(date) + 1;
+                var date2 = "01-" + mont + "-" + date + "";
+                var date3 = myDateTime.Date.ToString("dd-MM-yyyy");
+                IList<tbl_SaleInvoice> FoodList = new List<tbl_SaleInvoice>();
+                var vc = db.tbl_SaleInvoiceSelect("salecount", null, null, null, null, null, Convert.ToDateTime(date3), Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null, null, null, null).ToList();
+                //var tb = db.tbl_PurchaseBillselect("sum", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 
-            DateTime myDateTime = DateTime.Now;
-            string year = myDateTime.Year.ToString();
-            string mont = myDateTime.Month.ToString();
-            var date = myDateTime.Year.ToString();
-            var date1 = Convert.ToInt32(date) + 1;
-            var date2 = "01-"+mont+"-" + date + "";
-            var date3 = myDateTime.Date.ToString("dd-MM-yyyy");
-            IList<tbl_SaleInvoice> FoodList = new List<tbl_SaleInvoice>();
-         var vc = db.tbl_SaleInvoiceSelect("salecount", null, null, null, null, null, Convert.ToDateTime(date3), Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null, null, null, null).ToList();
-            //var tb = db.tbl_PurchaseBillselect("sum", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
-           
-            return Json(new { data = vc }, JsonRequestBehavior.AllowGet);
+                return Json(new { data = vc }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return View("Dashboard");
+            }
         }
         public ActionResult Dashboard()
         {
@@ -123,8 +129,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             catch
             {
-                return
-                     View();
+                return View();
             }
         }
     }
