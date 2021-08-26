@@ -72,52 +72,60 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public ActionResult Dashboard()
         {
-            tbl_CompanyMaster com = new tbl_CompanyMaster();
-            string sql;          
-            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+            try
             {
-                sql = string.Format("SELECT CompanyName FROM tbl_CompanyMaster where DeleteData='1' and CompanyID='"+MainLoginController.companyid1+"'");
-                using (SqlCommand cmd = new SqlCommand(sql))
+                tbl_CompanyMaster com = new tbl_CompanyMaster();
+                string sql;
+                string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
                 {
-                    cmd.Connection = con;
-                    con.Open();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    sql = string.Format("SELECT CompanyName FROM tbl_CompanyMaster where DeleteData='1' and CompanyID='" + MainLoginController.companyid1 + "'");
+                    using (SqlCommand cmd = new SqlCommand(sql))
                     {
-                        while (sdr.Read())
+                        cmd.Connection = con;
+                        con.Open();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
-                             com.CompanyName=sdr["CompanyName"].ToString();
+                            while (sdr.Read())
+                            {
+                                com.CompanyName = sdr["CompanyName"].ToString();
+                            }
                         }
+                        con.Close();
                     }
-                    con.Close();
                 }
+
+                ViewBag.CompanyName = com.CompanyName;
+                var ds = new Dashborddata();
+
+
+                DateTime myDateTime = DateTime.Now;
+                string year = myDateTime.Year.ToString();
+                var date = myDateTime.Year.ToString();
+                var date1 = Convert.ToInt32(date) + 1;
+                var date2 = "01-04-" + date + "";
+                var date3 = "01-04-" + date1 + "";
+                var fd = db.tbl_SaleInvoiceSelect("totalsalecount", null, null, null, null, null, Convert.ToDateTime(date3), Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null, null, null, null).Single();
+                var tb = db.tbl_PurchaseBillselect("totalsalecount1", null, null, null, null, null, Convert.ToDateTime(date2), Convert.ToDateTime(date3), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).Single();
+                var ww = db.tbl_PaymentInSelect("totalsalecount2", null, date3, null, null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, null).Single();
+                var tb1 = db.tbl_Paymentoutselect("amuntcount", null, date3, null, null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single();
+                var tb2 = db.tbl_Paymentoutselect("remingcount", null, null, null, null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single();
+
+                ds.saleamount = (float)fd.Total;
+                ds.salpending = (float)fd.RemainingBal;
+                ds.purchaseamount = (float)tb.Total;
+                ds.purchasepending = (float)tb.RemainingBal;
+                ds.PaymentIn = (float)ww.ReceivedAmount;
+                ds.remaining = (float)ww.UnusedAmount;
+                ds.paymnetout = (float)tb1.Paid;
+                ds.remaining = (float)tb2.Paid;
+                return View(ds);
             }
-
-            ViewBag.CompanyName = com.CompanyName;
-            var ds = new Dashborddata();
-
-           
-            DateTime myDateTime = DateTime.Now;
-            string year = myDateTime.Year.ToString();
-            var date = myDateTime.Year.ToString();
-            var date1 =Convert.ToInt32(date)+1;
-            var date2 = "01-04-" + date + "";
-            var date3 = "01-04-"+date1+"";
-            var fd = db.tbl_SaleInvoiceSelect("totalsalecount", null, null, null, null, null, Convert.ToDateTime(date3), Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null, null, null, null).Single();
-            var tb = db.tbl_PurchaseBillselect("totalsalecount1", null, null, null, null, null, Convert.ToDateTime(date2), Convert.ToDateTime(date3),null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"]), null, null, null, null).Single();
-            var ww = db.tbl_PaymentInSelect("totalsalecount2", null,date3, null, null,Convert.ToDateTime(date2), null, null, null, null, null, null, null, null).Single();
-            var tb1 = db.tbl_Paymentoutselect("amuntcount", null,date3, null, null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single();
-            var tb2 = db.tbl_Paymentoutselect("remingcount", null, null, null, null, Convert.ToDateTime(date2), null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).Single();
-
-            ds.saleamount =(float)fd.Total;
-            ds.salpending = (float)fd.RemainingBal; 
-            ds.purchaseamount = (float)tb.Total;
-            ds.purchasepending = (float)tb.RemainingBal;
-            ds.PaymentIn = (float)ww.ReceivedAmount;
-            ds.remaining = (float)ww.UnusedAmount;
-            ds.paymnetout = (float)tb1.Paid;
-            ds.remaining = (float)tb2.Paid;
-            return View(ds);
+            catch
+            {
+                return
+                     View();
+            }
         }
     }
 }

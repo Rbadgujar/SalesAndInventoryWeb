@@ -429,7 +429,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                                 SalePrice = Convert.ToDouble(sdr["SalePrice"]),
                                 TaxForSale = sdr["TaxForSale"].ToString(),
                                 SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
-                                Discount = Convert.ToDouble(sdr["Discount"]),
+                              
                                 ItemID = Convert.ToInt32(sdr["ItemID"])
                                 
                             });
@@ -577,7 +577,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                                 ItemName = sdr["ItemName"].ToString(),
                                 SalePrice = Convert.ToDouble(sdr["SalePrice"]),
                                 TaxForSale = sdr["TaxForSale"].ToString(),
-                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
                                 Discount = Convert.ToDouble(sdr["Discount"]),
                                 ItemID = Convert.ToInt32(sdr["ItemID"])
                             });

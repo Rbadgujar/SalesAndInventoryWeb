@@ -8,10 +8,11 @@
         border: 1px solid #000;
         margin: 10px 5px 0 0;
     }
-
     img {
         max-width: 50px;
     }
+
+   
 </style>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -24,8 +25,8 @@
     @Html.AntiForgeryToken()
     <br />
     <br />
-
-
+ 
+ 
     @*<h4>Company Iformation:</h4>
         <hr style="margin-top:10px;width:300px;margin-left:1px" />*@
     <center>
@@ -125,7 +126,7 @@
                     <input type="text" id="refrfewrew" class="form-control" />
 
                     @*@Html.EditorFor(model => model.ReferaleCode, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ReferaleCode, "", new { @class = "text-danger" })*@
+        @Html.ValidationMessageFor(model => model.ReferaleCode, "", new { @class = "text-danger" })*@
                 </div>
                 <div class="col-md-4">
                     Business Type:
@@ -140,14 +141,6 @@
                         <option value=" Benefit corporation"> Benefit corporation</option>
 
                     </select>
-
-
-
-
-
-
-                    @*@Html.EditorFor(model => model.BusinessType, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.BusinessType, "", new { @class = "text-danger" })*@
 
                 </div>
                 <div class="col-md-4">
@@ -167,7 +160,7 @@
                     Account No :
                     @Html.EditorFor(model => model.AccountNo, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.AccountNo, "", new { @class = "text-danger" })
-
+                  
 
                 </div>
                 <div class="col-md-4">
@@ -175,14 +168,14 @@
                     @Html.EditorFor(model => model.IFSC_Code, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.IFSC_Code, "", new { @class = "text-danger" })
 
-
+                  
 
                 </div>
                 <div class="col-md-4">
                     Bank Name:
                     @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
-
+                   
                 </div>
             </div>
             <br />
@@ -196,40 +189,40 @@
                 <div class="col-md-4">
                     Confrom Password
                     <input type="text" id="Conformpassword" class="form-control" />
-
+               
 
 
                 </div>
                 <div class="col-md-2">
                     Logo :
-                    <input type='file' name="file" id="file" />
-                    
+                    <input type='file' onchange="readURL(this);" />
+                   
                 </div>
                 <div class="col-md-2">
                     <img id="blah" src="" alt="your image" />
                 </div>
 
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        @*Company Logo:
+
+                <input type="file" accept="image/*" class="single" name="files" id="postedFile" onchange="loadFile(event)">
+                <img id="output" />*@
+
+                    </div>
+                    <div class="col-md-4">
+                        <br />
+                        <input type="reset" value="Clear" class="btn btn-primary" style="width:130px;font-size:14px;" />
+                        <input type="submit" value="Next" class="btn btn-primary" style="width:130px;font-size:14px;" />
+                    </div>
+
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    @*Company Logo:
-
-                        <input type="file" accept="image/*" class="single" name="files" id="postedFile" onchange="loadFile(event)">
-                        <img id="output" />*@
-
-                </div>
-                <div class="col-md-4">
-                    <br />
-                    <input type="reset" value="Clear" class="btn btn-primary" style="width:130px;font-size:14px;" />
-                    <input type="submit" value="Next" class="btn btn-primary" style="width:130px;font-size:14px;" />
-                </div>
-
-                <div class="col-md-4">
-
-                </div>
-            </div>
-        </div>
     </center>
 }
 <script>

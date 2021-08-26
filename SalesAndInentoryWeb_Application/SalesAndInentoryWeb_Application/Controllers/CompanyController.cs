@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application;
 using SalesAndInentoryWeb_Application.Models;
+using SalesAndInentoryWeb_Application.ViewModel;
 using DocumentFormat.OpenXml.Drawing;
 using System.IO;
 using System.Data;
@@ -26,6 +27,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult reg()
         {
             return View();
+        }
+        public ActionResult NewCompanyregistration()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewCompanyregistration(Companymaster com)
+        {
+            db.tbl_CompanyMasterSelect("Insert2", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.banlname, com.Accountno, com.IFScCode, com.CompanyID, null, com.Password);
+            db.SubmitChanges();
+
+            return RedirectToAction("Index", "MainLogin");
         }
         [HttpGet]
         public ActionResult com(int id = 0)
