@@ -104,7 +104,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     SqlConnection con = new SqlConnection(conn);
                     //string query = "insert into tbl_ItemMaster(ItemName,HSNCode) Values('" + ds.Tables[0].Rows[i]["ItemName"].ToString() + "','" + ds.Tables[0].Rows[i]["HSNCode"].ToString() + "')";
 
-                   string query = "insert into tbl_ItemMaster(ItemName,HSNCode ,BasicUnit,SecondaryUnit,ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount,PurchasePrice,TaxForPurchase,PurchaseTaxAmount ,atPrice,OpeningQty ,Date,ItemLocation,TrackingMRP,BatchNo) Values('" + ds.Tables[0].Rows[i]["ItemName"].ToString() + "','" + ds.Tables[0].Rows[i]["HSNCode"].ToString() + "','" + ds.Tables[0].Rows[i]["BaseUnit"].ToString() + "','" + ds.Tables[0].Rows[i]["SecondaryUnit"].ToString() + "','" + ds.Tables[0].Rows[i]["ItemCode"].ToString() + "','" + ds.Tables[0].Rows[i]["ItemCategory"].ToString() + "','" + ds.Tables[0].Rows[i]["SalePrice"].ToString() + "','" + ds.Tables[0].Rows[i]["TaxForSale"].ToString() + "','" + ds.Tables[0].Rows[i]["SaleTaxAmount"].ToString() + "','" + ds.Tables[0].Rows[i]["PurchasePrice"].ToString() + "','" + ds.Tables[0].Rows[i]["TaxForPurchase"].ToString() + "','" + ds.Tables[0].Rows[i]["PurchaseTaxAmount"].ToString() + "','" + ds.Tables[0].Rows[i]["OpeningQty"].ToString() + "','" + ds.Tables[0].Rows[i]["atPrice"].ToString() + "','" + Convert.ToDateTime(ds.Tables[0].Rows[i]["Date"].ToString() )+ "','" + ds.Tables[0].Rows[i]["ItemLocation"].ToString() + "','" + ds.Tables[0].Rows[i]["TrackingMRP"].ToString() + "','" + ds.Tables[0].Rows[i]["BatchNo"].ToString() + "')";
+                   string query = "insert into tbl_ItemMaster(ItemName,HSNCode ,BasicUnit,SecondaryUnit,ItemCode ,ItemCategory,SalePrice,TaxForSale ,SaleTaxAmount,PurchasePrice,TaxForPurchase,PurchaseTaxAmount ,atPrice,OpeningQty ,Date,ItemLocation,TrackingMRP,BatchNo,Company_ID) Values('" + ds.Tables[0].Rows[i]["ItemName"].ToString() + "','" + ds.Tables[0].Rows[i]["HSNCode"].ToString() + "','" + ds.Tables[0].Rows[i]["BaseUnit"].ToString() + "','" + ds.Tables[0].Rows[i]["SecondaryUnit"].ToString() + "','" + ds.Tables[0].Rows[i]["ItemCode"].ToString() + "','" + ds.Tables[0].Rows[i]["ItemCategory"].ToString() + "','" + ds.Tables[0].Rows[i]["SalePrice"].ToString() + "','" + ds.Tables[0].Rows[i]["TaxForSale"].ToString() + "','" + ds.Tables[0].Rows[i]["SaleTaxAmount"].ToString() + "','" + ds.Tables[0].Rows[i]["PurchasePrice"].ToString() + "','" + ds.Tables[0].Rows[i]["TaxForPurchase"].ToString() + "','" + ds.Tables[0].Rows[i]["PurchaseTaxAmount"].ToString() + "','" + ds.Tables[0].Rows[i]["OpeningQty"].ToString() + "','" + ds.Tables[0].Rows[i]["atPrice"].ToString() + "','" + Convert.ToDateTime(ds.Tables[0].Rows[i]["Date"].ToString() )+ "','" + ds.Tables[0].Rows[i]["ItemLocation"].ToString() + "','" + ds.Tables[0].Rows[i]["TrackingMRP"].ToString() + "','" + ds.Tables[0].Rows[i]["BatchNo"].ToString() + "',"+MainLoginController.companyid1+")";
                     con.Open();
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
@@ -206,7 +206,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         string conn = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
                         SqlConnection con = new SqlConnection(conn);
                         //string query = "insert into tbl_ItemMaster(ItemName,HSNCode) Values('" + ds.Tables[0].Rows[i]["ItemName"].ToString() + "','" + ds.Tables[0].Rows[i]["HSNCode"].ToString() + "')";
-                        string query = "insert into tbl_PartyMaster (PartyName,ContactNo,BillingAddress,EmailID,GSTType,State,OpeningBal,AsOfDate,AddRemainder,PartyType,ShippingAddress,PartyGroup,PaidStatus) Values('" + ds.Tables[0].Rows[i]["PartyName"].ToString() + "','" + ds.Tables[0].Rows[i]["ContactNo"].ToString() + "','" + ds.Tables[0].Rows[i]["BillingAddress"].ToString() + "','" + ds.Tables[0].Rows[i]["EmailID"].ToString() + "','" + ds.Tables[0].Rows[i]["GSTType"].ToString() + "','" + ds.Tables[0].Rows[i]["State"].ToString() + "','" + ds.Tables[0].Rows[i]["OpeningBal"].ToString() + "','" +ds.Tables[0].Rows[i]["AsOfDate"].ToString() + "','" + ds.Tables[0].Rows[i]["AddRemainder"].ToString() + "','" + ds.Tables[0].Rows[i]["PartyType"].ToString() + "','" + ds.Tables[0].Rows[i]["ShippingAddress"].ToString() + "','" + ds.Tables[0].Rows[i]["PartyGroup"].ToString() + "','" + ds.Tables[0].Rows[i]["PaidStatus"].ToString() + "')";
+                        string query = "insert into tbl_PartyMaster (PartyName,ContactNo,BillingAddress,EmailID,GSTType,State,OpeningBal,AsOfDate,AddRemainder,PartyType,ShippingAddress,PartyGroup,PaidStatus,Company_ID) Values('" + ds.Tables[0].Rows[i]["PartyName"].ToString() + "','" + ds.Tables[0].Rows[i]["ContactNo"].ToString() + "','" + ds.Tables[0].Rows[i]["BillingAddress"].ToString() + "','" + ds.Tables[0].Rows[i]["EmailID"].ToString() + "','" + ds.Tables[0].Rows[i]["GSTType"].ToString() + "','" + ds.Tables[0].Rows[i]["State"].ToString() + "','" + ds.Tables[0].Rows[i]["OpeningBal"].ToString() + "','" +ds.Tables[0].Rows[i]["AsOfDate"].ToString() + "','" + ds.Tables[0].Rows[i]["AddRemainder"].ToString() + "','" + ds.Tables[0].Rows[i]["PartyType"].ToString() + "','" + ds.Tables[0].Rows[i]["ShippingAddress"].ToString() + "','" + ds.Tables[0].Rows[i]["PartyGroup"].ToString() + "','" + ds.Tables[0].Rows[i]["PaidStatus"].ToString() + "',"+MainLoginController.companyid1+")";
                         con.Open();
                         SqlCommand cmd = new SqlCommand(query, con);
                         cmd.ExecuteNonQuery();
@@ -278,7 +278,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string CS = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_ItemMaster", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_ItemMaster where Company_ID="+MainLoginController.companyid1+" and DeleteData='1'", con);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -353,6 +353,142 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
         }
 
+        public void saleinvoicedata()
+        {
+
+
+            List<Exportsaledata> data = new List<Exportsaledata>();
+            string CS = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_SaleInvoice where Company_ID=" + MainLoginController.companyid1 + " and Deletedata='1'", con);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    var list = new Exportsaledata();
+                    //list. = Convert.ToInt32(rdr["id"]);
+                    list.InvoiceID = rdr["InvoiceID"].ToString();
+                    list.PartyName = rdr["PartyName"].ToString();
+                    list.BillingName = rdr["BillingName"].ToString();
+                    list.ContactNo = rdr["ContactNo"].ToString();
+                    list.PONumber = rdr["PoNumber"].ToString();
+                    list.InvoiceDate =rdr["InvoiceDate"].ToString();
+                    list.StateOfSupply = rdr["StateofSupply"].ToString();
+
+                    list.PaymentType = rdr["PaymentType"].ToString();
+                    list.TransportName = rdr["TransportName"].ToString();
+                    list.CGST = rdr["CGST"].ToString();
+                    list.SGST = rdr["SGST"].ToString();
+                    list.IGST = rdr["IGST"].ToString();
+
+                    
+                    //list.TaxAmount1 = rdr["TaxAmount1"].ToString();
+                    list.TotalDiscount = rdr["TotalDiscount"].ToString();
+                    list.Received =rdr["Received"].ToString();
+                    list.RemainingBal = rdr["RemainingBal"].ToString(); 
+                    list.Total = rdr["Total"].ToString();
+                    data.Add(list);
+                }
+
+            }
+
+
+
+
+            ExcelPackage excel = new ExcelPackage();
+            var workSheet = excel.Workbook.Worksheets.Add("Sheet1");
+            workSheet.Cells[1, 1].LoadFromCollection(data, true);
+            workSheet.Column(1).Width = 50;
+            workSheet.Column(2).Width = 20;
+            workSheet.Column(3).Width = 20;
+            workSheet.Column(4).Width = 20;
+            workSheet.Column(5).Width = 20;
+            workSheet.Column(6).Width = 20;
+            workSheet.Column(7).Width = 20;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                //here i have set filname as Students.xlsx
+                Response.AddHeader("content-disposition", "attachment;  filename=All Parties Data.xlsx");
+                excel.SaveAs(memoryStream);
+                memoryStream.WriteTo(Response.OutputStream);
+                Response.Flush();
+                Response.End();
+            }
+        }
+
+
+        public void purchasebilldata()
+        {
+
+
+            List<Exportpurchase> data = new List<Exportpurchase>();
+            string CS = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_PurchaseBill where Company_ID=" + MainLoginController.companyid1 + " and Deletedata='1'", con);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    var list = new Exportpurchase();
+                    //list. = Convert.ToInt32(rdr["id"]);s
+                    list.BillNo = rdr["BillNo"].ToString();
+                    list.PartyName = rdr["PartyName"].ToString();
+                    list.BillingName = rdr["BillingName"].ToString();
+                    list.ContactNo = rdr["ContactNo"].ToString();
+                    list.PONumber = rdr["PONo"].ToString();
+                    list.BillDate = rdr["BillDate"].ToString();
+                    list.StateOfSupply = rdr["StateofSupply"].ToString();
+
+                    list.PaymentType = rdr["PaymentType"].ToString();
+                    list.TransportName = rdr["TransportName"].ToString();
+                    list.CGST = rdr["CGST"].ToString();
+                    list.SGST = rdr["SGST"].ToString();
+                    list.IGST = rdr["IGST"].ToString();
+
+
+                    //list.TaxAmount1 = rdr["TaxAmount1"].ToString();
+                    list.TotalDiscount = rdr["TotalDiscount"].ToString();
+                    //list.Received = rdr["Received"].ToString();
+                  list.RemainingBal = rdr["RemainingBal"].ToString();
+                    list.Total = rdr["Total"].ToString();
+                    data.Add(list);
+                }
+
+            }
+            
+
+
+
+            ExcelPackage excel = new ExcelPackage();
+            var workSheet = excel.Workbook.Worksheets.Add("Sheet1");
+            workSheet.Cells[1, 1].LoadFromCollection(data, true);
+            workSheet.Column(1).Width = 50;
+            workSheet.Column(2).Width = 20;
+            workSheet.Column(3).Width = 20;
+            workSheet.Column(4).Width = 20;
+            workSheet.Column(5).Width = 20;
+            workSheet.Column(6).Width = 20;
+            workSheet.Column(7).Width = 20;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                //here i have set filname as Students.xlsx
+                Response.AddHeader("content-disposition", "attachment;  filename=All Parties Data.xlsx");
+                excel.SaveAs(memoryStream);
+                memoryStream.WriteTo(Response.OutputStream);
+                Response.Flush();
+                Response.End();
+            }
+        }
+
+
 
 
         public void exportpartyes()
@@ -363,7 +499,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string CS = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_PartyMaster", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_PartyMaster where Company_ID="+MainLoginController.companyid1+"", con);
 
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();

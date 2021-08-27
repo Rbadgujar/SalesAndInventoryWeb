@@ -9,6 +9,9 @@ using System.Configuration;
 using System.Data.SqlClient;
 using SalesAndInentoryWeb_Application.ViewModel;
 using System.Data;
+using Stimulsoft.Report.Mvc;
+using Stimulsoft.Report;
+
 namespace SalesAndInentoryWeb_Application.Controllers
 {
     public class EstimateQuatationController : Controller
@@ -81,6 +84,43 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View(bt);
 
         }
+
+        [HttpPost]
+        public ActionResult GetReport()
+        {
+            int id = Convert.ToInt32(TempData["ID"]);
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+
+            //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id + " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1' ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,a.AddLogo,b.PartyName,b.BillingAddress,b.ContactNo, b.RefNo, b.Date, b.Tax1, b.TaxAmount1,b.TotalDiscount,b.BillingAddress,b.DiscountAmount1,b.Total,c.ID,c.ItemName,c.ItemCode,c.BasicUnit,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount,c.TaxForSale,c.SaleTaxAmount,c.CGST,c.IGST,c.SGST FROM tbl_CompanyMaster  as a, tblQuotation as b,tbl_QuotationInner as c where b.RefNo="+id+" and c.RefNo="+id+" and a.CompanyID='" +MainLoginController.companyid1+ "' ");
+            
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+
+            DataSet dataSet = new DataSet("productsDataSet");
+
+            adapter.Fill(dataSet, "Estimate");
+
+            StiReport report = new StiReport();
+
+            report.Load(Server.MapPath("~/Content/Report/EstimateReport.mrt"));
+
+            report.RegData("Estimate", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+
+        }
+        public ActionResult ViewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult Report(int Id = 0)
+        {
+            if (Id != 0)
+            {
+                TempData["ID"] = Id;
+            }
+            return View();
+        }
+
         private static List<SelectListItem> ListOfItems()
         {
             string sql;
@@ -110,6 +150,34 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items;
         }
+
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult ReportAll()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.CompanyID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1' and b.Company_ID = '" + MainLoginController.companyid1 + "'");
+            string Query = string.Format("SELECT a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,b.PartyName,b.Date,b.Total,b.Status FROM tbl_CompanyMaster as a, tblQuotation as b where a.CompanyID='" +MainLoginController.companyid1 + "' and b.Company_ID='" +MainLoginController.companyid1+ "' and b.DeleteData = '1' ");
+
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "Estimate");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/EstimateHomeReport.mrt"));
+            report.RegData("Estimate", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
+
+
+
         private static List<SelectListItem> ListOfCategorys()
         {
             string sql;
@@ -139,20 +207,74 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items1;
         }
+
+        string Comanystate;
+        public int stateget(string state)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql = string.Format("Select  State from tbl_CompanyMaster where CompanyID=" + MainLoginController.companyid1 + "");
+                using (SqlCommand cmd = new SqlCommand(sql))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+
+                            Comanystate = sdr["State"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            if (state == Comanystate)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+
+        }
+        public int result;
         [HttpPost]
         public ActionResult AddOrEdit(EstimateParty objEstimateDetails)
         {
-            var gstcount = objEstimateDetails.TaxAmount1;
-            var gst = gstcount / 2;
+
+
+            float gst = 0;
+            float igst = 0;
+         
+            result = stateget(objEstimateDetails.StateOfSupply);
+            if (result == 1)
+            {
+                float gstcount = (float)objEstimateDetails.TaxAmount1;
+                gst = (float)(gstcount / 2);
+            }
+            else
+            {
+                igst = (float)objEstimateDetails.TaxAmount1;
+            }
+            //var gstcount = objEstimateDetails.TaxAmount1;
+            //var gst = gstcount / 2;
 
             tblQuotation sale = new tblQuotation()
             {
                 PartyName = objEstimateDetails.PartyName,
-                Total = objEstimateDetails.Total,
+                Total = Math.Round(objEstimateDetails.Total,2),
                 Status = objEstimateDetails.Status,
                 StateofSupply = objEstimateDetails.StateOfSupply,
                 Date = objEstimateDetails.Date,
-                DeleteData = objEstimateDetails.DeleteData,
+                CGST= Math.Round(gst,2),
+                SGST= Math.Round(gst,2),
+                IGST= Math.Round(igst,2),
+                DeleteData = Convert.ToBoolean(1),
                 BillingAddress = objEstimateDetails.BillingAddress,
                 Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                 ContactNo = objEstimateDetails.ContactNo
@@ -160,25 +282,37 @@ namespace SalesAndInentoryWeb_Application.Controllers
             };
             db.tblQuotations.InsertOnSubmit(sale);
             db.SubmitChanges();
-
+            TempData["ID"] = sale.RefNo;
             foreach (var item in objEstimateDetails.ListOfEstimateDetails)
             {
-                var gst1 = item.SaleTaxAmount;
-                var finalgsr = gst1 / 2;
+                //var gst1 = item.SaleTaxAmount;
+                float finalgsr = 0;
+                if (result == 1)
+                {
+                    float gst12 = (float)item.SaleTaxAmount;
+                    finalgsr = (float)(gst12 / 2);
+                }
+                else
+                {
+                    igst = (float)item.SaleTaxAmount;
+                }
                 tbl_QuotationInner inner = new tbl_QuotationInner()
                 {
 
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     RefNo = sale.RefNo,
-                    ItemAmount = item.ItemAmount,
+                    ItemAmount = Convert.ToInt32(item.ItemAmount),
                     Qty = item.Qty,
-                    CGST=finalgsr,             
+                    CGST= Math.Round(finalgsr,2),
+                    SGST= Math.Round(finalgsr,2),
+                    IGST=Math.Round(igst,2),
                     TaxForSale = item.TaxForSale,
+                    DeleteData = Convert.ToBoolean(1),
                     SaleTaxAmount = item.SaleTaxAmount,
                     Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                     Discount = item.Discount,
-                    DiscountAmount = item.DiscountAmount
+                    DiscountAmount = Math.Round(item.DiscountAmount,2)
                 };
                 db.tbl_QuotationInners.InsertOnSubmit(inner);
                 db.SubmitChanges();

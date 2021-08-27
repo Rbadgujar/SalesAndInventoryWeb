@@ -120,7 +120,7 @@
                     $.ajax
                    ({
                        type: "POST",
-                       url: "/PurchaseBill/GetFruitName1",
+                            url: "/SaleInvoice/GetFruitName1",
                        data: "id=" + fruitId,
                        success: function (data) {
                            var content = "";
@@ -655,7 +655,7 @@
                         <div class="col-md-3 form-group">
                             <b> Payment Type:</b>
                             <select name="cars" id="PaymentType" class="form-control">
-                                <option value="Select Payment Type">Select Payment Type</option>
+                            
                                 <option value="Cash">Cash</option>
                                 <option value="OnlinePayment">Online Payment</option>
                                 <option value="PhonePay">PhonePay</option>

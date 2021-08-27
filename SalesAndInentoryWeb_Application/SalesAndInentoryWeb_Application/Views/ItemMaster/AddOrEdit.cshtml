@@ -1,687 +1,554 @@
-﻿@model SalesAndInentoryWeb_Application.Models.tbl_ItemMaster
+﻿@model SalesAndInentoryWeb_Application.tbl_ItemMaster
+
 @{
-    ViewBag.Title = "itemmaster";
-    Layout = "~/Views/Shared/ideal.cshtml";
+    Layout = null;
 }
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-    )
-    @Html.DevExpress().GetScripts(
-        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new Script { ExtensionSuite = ExtensionSuite.Editors }
-    )
+<style>
+    #div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    .tab {
+        overflow: hidden;
+        background-color: white;
+    }
+
+        /* Style the buttons inside the tab */
+        .tab a {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+
+
+    /* Style the tab content */
+    .tabcontent {
+        padding: 6px 12px;
+        -webkit-animation: fadeEffect 1s;
+        animation: fadeEffect 1s;
+    }
+</style>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
+
+<script src="~/scripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#ewewewew").change(function () {
+
+            var fruitId = $("#ItemName").val();
+            if (fruitId != "") {
+                $.ajax
+                    ({
+
+                        type: "POST",
+                        url: "/ItemMaster/dublication",
+                        data: "id=" + fruitId,
+                        success: function (data) {
+                            debugger
+                            if (data.data == 1) {
+                                alert("Item Name Already Register");
+                                $("#ItemName").val('');
+                                $("#ItemName").focus();
+                            }
+                        }
+                    });
+            }
+        });
+
+
+
+    });
+</script>
+
+@*<script>
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+      </script>*@
+@using (Html.BeginForm("AddOrEdit", "ItemMaster", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="div">
+
+        @Html.AntiForgeryToken()
+
+        @*<h4>Company Iformation:</h4>s
+            <hr style="margin-top:10px;width:300px;margin-left:1px" />*@
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-4">
+                Item Name:
+                @Html.EditorFor(model => model.ItemName, new { htmlAttributes = new { @class = "form-control", Required = "Required" } })
+                @Html.ValidationMessageFor(model => model.ItemName, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                HSN Code:
+                @Html.EditorFor(model => model.HSNCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HSNCode, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-md-4">
+                Baic Unit:
+                @Html.EditorFor(model => model.BasicUnit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BasicUnit, "", new { @class = "text-danger" })
+              
+                @*@Html.EditorFor(model => model.BasicUnit, new { htmlAttributes = new { @class = "form-control", style = "width:195px" } })
+        @Html.ValidationMessageFor(model => model.BasicUnit, "", new { @class = "text-danger" })*@
+                @*<button class="btn pull-right" type="button" onclick="PopupForm1('@Url.Action("ItemTraking", "ItemMaster")')" style="margin-top:-34px"><i class="fa fa-plus"></i></button>*@
+
+                @*<br />
+        Opening Qty:
+        @Html.EditorFor(model => model.OpeningQty, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.OpeningQty, "", new { @class = "text-danger" })*@
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
-    </script>
-    <script>
-$(document).ready(function(){
-    $("#it").click(function () {
-        $('#itemtracking').toggle("slider");
-  });
-});
-    </script>
-</head>
-<body>
-    @using (Html.BeginForm())
-    {
-        <div class="panel panel-primary container" style="width:100%;background-color:white">
-            @*<div class="panel-heading text-center"><h4>Item Master</h4><a class="btn-primary pull-right" style="margin-top:-45px;"> <i class="fa fa-times" style="color:white; font-size:20px;"></i></a></div>*@
-            <div class="panel-heading "><a class="btn" href=@Url.Action("Index","PaymentOut") style="background-color:#05445E;color:white">Back To List</a><p style="margin-left:486px;margin-top: -31px;font-weight:bold;font-size:17px;">Item Master</p></div>
 
-             <div class="panel border-box">
-                <nav class="navbar navbar-default " style="background-color:white;border:none" >
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse ">
-                            <br />
-                            <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-                                    @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "Label1";
-                                   settings.Text = "Item Name   :";                                
-                               }).GetHtml()
-                                        </div>
-                                    </div>
-                                <div class="form-group col-md-4">
-                                    @Html.DevExpress().TextBoxFor(m => m.ItemName, settings =>
-                               {
-                                   settings.Properties.NullText = "Enter Item Name ...";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["height"] = "20px";
-                                   settings.Style["border"] = "1px solid black";
-
-                               }).GetHtml()
-
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "Label3";
-                                   settings.Text = "Has Code : ";
-
-                               }).GetHtml()
-                                        </div>
-                                    </div>
-
-                                <div class="form-group col-md-4">
-                                    @Html.DevExpress().TextBoxFor(m => m.HSNCode, settings =>
-                               {
-                                   settings.Properties.NullText = "Enter Hsn Code...";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Height = 30;
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-                                </div>
-   
-                                                                         
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "codelablr";
-                                   settings.Text = "Item Code   :";
-
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.DevExpress().TextBoxFor(m => m.ItemCode, settings =>
-                               {
-                                   settings.Properties.NullText = "Enter Item Code...";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "lablelocation";
-                                   settings.Text = "Catergory";
-
-                               }).GetHtml()
-                                        </div>
-                                    </div>
-                                <div class="form-group col-md-4">
-                                    <select name="state" id="state" class="form-control" style="border: 1px solid black" ;>
-                                        <option value=""></option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Isla</option>
-
-                                        </select>
-
-</div>
-                                </div>
-                            <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "lablesaleprice";
-                                   settings.Text = "Purchase Price :";
-
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.DevExpress().TextBoxFor(m => m.SalePrice, settings =>
-                               {
-                                   settings.Properties.NullText = "Amount";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-
-                                </div>
-
-
-
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "lablesaletax";
-                                   settings.Text = "Tax Type :";
-
-                               }).GetHtml()
-                                        </div>
-                                    </div>
-                                <div class="form-group col-md-4">
-                                    <select name="state" id="purchasetax" class="form-control" style="border: 1px solid black" ;>
-                                        <option value="">---Select--</option>
-                                        <option value="withtax">With Tax</option>
-                                        <option value="withouttax">Without Tax</option>
-
-                                    </select>
-
-
-                                    </div>
-
-                               
-                                </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "salelable";
-                                   settings.Text = "Sale Price :";
-
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.DevExpress().TextBoxFor(m => m.PurchasePrice, settings =>
-                               {
-                                   settings.Properties.NullText = "Amount";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-
-                                </div>
-
-
-
-
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "labeltax2";
-                                   settings.Text = "Tax Type :";
-
-                               }).GetHtml()
-                                        </div>
-                                    </div>
-                                <div class="form-group col-md-4">
-                                    <select name="state" id="saletal" class="form-control" style="border: 1px solid black" ;>
-                                        <option value="">---Select--</option>
-                                        <option value="withtax">With Tax</option>
-                                        <option value="withouttax">Without Tax</option>
-
-                                    </select>
-
-
-                                    </div>
-                                </div>
-                            <div class="row">
-
-
-
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "ratelable";
-                                   settings.Text = "Select Tax Rate :";
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @*@Html.DevExpress().ComboBox(settings =>
-                                   {
-                                       settings.Name = "taxrate";
-                                       settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.StartsWith;
-                                       settings.Properties.DropDownStyle = DropDownStyle.DropDown;
-
-                                       settings.Properties.Items.Add("0.25%");
-                                       settings.Properties.Items.Add("5%");
-
-                                       settings.Properties.Items.Add("12%");
-                                       settings.Properties.Items.Add("18%");
-                                       settings.Properties.Items.Add("28%");
-                                       settings.ControlStyle.CssClass = "form-control";
-
-
-                                   }).GetHtml()*@
-
-                                    <select name="state" id="saletal" class="form-control" style="border: 1px solid black" ;>
-                                        <option value="">---Select--</option>
-                                        <option value="0.25">0.25%</option>
-                                        <option value="5">5%</option>
-                                        <option value="12">12%</option>
-                                        <option value="18">18%</option>
-                                        <option value="28">28%</option>
-
-                                    </select>
-
-                                </div>
-
-
-
-
-
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "labe cess";
-                                   settings.Text = "Cass Per Unit :";
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-
-                                    @Html.DevExpress().TextBoxFor(m => m.Cess, settings =>
-                               {
-                                   settings.Properties.NullText = "Amount";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-                                </div>
-
-</div>
-                            <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "labelbarcode";
-                                   settings.Text = "Item Barcode    :";
-
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.DevExpress().TextBoxFor(m => m.Barcode, settings =>
-                               {
-                                   settings.Properties.NullText = "Enter ITem Barcode  ...";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                              @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-                                   settings.Name = "labatprice";
-                                   settings.Text = "At Price:";
-                               }).GetHtml()
-                                        </div>
-                                    </div>
-                                <div class="form-group col-md-4">
-
-                                    @Html.DevExpress().TextBoxFor(m => m.atPrice, settings =>
-                               {
-                                   settings.Properties.NullText = "Amount";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-                                </div>
-                                    </div>
-                            <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-
-                                        @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "labeopening qtys";
-                                   settings.Text = "Opening  Quntity:";
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-
-                                    @Html.DevExpress().TextBoxFor(m => m.OpeningQty, settings =>
-                               {
-                                   settings.Properties.NullText = "Amount";
-                                   settings.ControlStyle.CssClass = "form-control";
-                                   settings.Style["border"] = "1px solid black";
-                               }).GetHtml()
-
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                              @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "Datelable";
-                                   settings.Text = "Date :";
-
-                               }).GetHtml()
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-
-                                    <input type="date" class="form-control" style="border: 1px solid black" />
-
-                                </div>
-                            </div>
-                                         <div class="row">
-                                <div class="form-group col-md-2 " style="text-align:right;">
-                                    <div style="margin-top:10px;">
-
-                                     
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-
-                                    <input type="button" class="btn btn-yahoo" value="Item Tracking Details" onclick="PopupForm('@Url.Action("unit","ItemMaster")')"  style="height:32px;width:45%" />
-                                    <input type="button" value="Select Unit" onclick="PopupFormf('@Url.Action("ItemTraking","ItemMaster")')" class="btn btn-yahoo" style="height:31px; width:45%" />
-
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <div style="margin-top:10px;text-align:right">
-                                       
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input type="reset" value="Clear" class="btn btn-primary pull-left" style="margin-right:12px; margin-top:2px; width:35%;color:black " />
-                                    <input type="submit" value="Save" class="btn btn-primary pull-left" style="margin-right:12px;margin-top:2px;width:35% ;color:black" />
-                                   
-                                </div>
-                            </div>              
-                             
-                                    <div class="row" style="background-color:white; border:1px solid; display:none" id="itemtracking">
-                                        <div class="form-group col-md-2">
-
-                                            @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = " lablemrp";
-                                   settings.Text = "MRP Rate :";
-
-                               }).GetHtml()
-
-                                            @Html.DevExpress().TextBoxFor(m => m.TrackingMRP, settings =>
-                                       {
-                                           settings.Properties.NullText = "Amounr";
-                                           settings.ControlStyle.CssClass = "form-control";
-                                           settings.Style["border"] = "1px solid black";
-                                       }).GetHtml()
-
-                                        </div>
-                                        <div class="form-group col-xs-2">
-
-                                            @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "sizelable";
-                                   settings.Text = "Size:";
-
-                               }).GetHtml()
-
-                                            @Html.DevExpress().TextBoxFor(m => m.Size, settings =>
-                                       {
-                                           settings.Properties.NullText = "Size";
-                                           settings.ControlStyle.CssClass = "form-control";
-                                           settings.Style["border"] = "1px solid black";
-                                       }).GetHtml()
-
-                                        </div>
-
-
-                                        <div class="form-group col-xs-2">
-
-                                            @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "lablebatch no";
-                                   settings.Text = "Batch no :";
-
-                               }).GetHtml()
-
-                                            @Html.DevExpress().TextBoxFor(m => m.BatchNo, settings =>
-                                       {
-                                           settings.Properties.NullText = "Amount";
-                                           settings.ControlStyle.CssClass = "form-control";
-                                           settings.Style["border"] = "1px solid black";
-                                       }).GetHtml()
-
-                                        </div>
-
-                                        <div class="form-group col-xs-2">
-
-                                            @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "lableserale";
-                                   settings.Text = "Serial No:";
-
-                               }).GetHtml()
-
-                                            @Html.DevExpress().TextBoxFor(m => m.SerialNo, settings =>
-                                       {
-                                           settings.Properties.NullText = "Serial no";
-                                           settings.ControlStyle.CssClass = "form-control";
-                                           settings.Style["border"] = "1px solid black";
-
-                                       }).GetHtml()
-
-                                        </div>
-
-
-
-
-                                        <div class="form-group col-xs-2">
-
-                                            @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "labelexpdate";
-                                   settings.Text = "Exp.Date :";
-
-                               }).GetHtml()
-
-
-                                            @Html.DevExpress().DateEdit(settings =>
-                                       {
-                                           settings.Name = "expdate";
-                                           settings.Properties.NullText = "Date";
-                                           settings.ControlStyle.CssClass = "form-control";
-                                           settings.Style["border"] = "1px solid black";
-                                       }).GetHtml()
-
-
-
-
-                                        </div>
-
-
-
-                                        <div class="form-group col-xs-2">
-
-                                            @Html.DevExpress().Label(settings =>
-                               {
-                                   settings.Style["font-weight"] = "bold";
-
-                                   settings.Name = "labelmfdate";
-                                   settings.Text = "Mfg.Date :";
-
-                               }).GetHtml()
-
-
-                                            @Html.DevExpress().DateEdit(settings =>
-                                   {
-                                       settings.Name = "mfddate";
-                                       settings.Properties.NullText = "Date";
-                                       settings.ControlStyle.CssClass = "form-control";
-                                   }).GetHtml()
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                </nav>         
-                
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                Item Code:
+                @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ItemCode, "", new { @class = "text-danger" })
 
-    }
-    @section scripts{
-        <script src="~/scripts/DataTables/jquery.dataTables.min.js"></script>
-        <script src="~/scripts/DataTables/dataTables.bootstrap.min.js"></script>
-        <script>
-        var Popup, dataTable;
-        $(document).ready(function () {
-			dataTable = $("#bankaccount").DataTable({
-                "ajax": {
-					"url": "/BankAccount/Data",
-                    "type": "GET",
-                   "datatype": "json"
+            </div>
+            <div class="col-md-4">
+                At Price:
+                @Html.EditorFor(model => model.atPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.atPrice, "", new { @class = "text-danger" })
 
-                },
-				"columns": [
-					{ "data": "ID" },
-					{ "data": "AccountName" },
-					{ "data": "BankName" },
-                    { "data": "AccountNo" },
-					{ "data": "OpeningBal" },
-					{ "data": "Date" },
-                    {"data":"ID" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "BankAccount")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
-                        "orderable": false,
-                        "searchable":false,
-                        "width":"150px"
-                    }
+            </div>
+            <div class="col-md-4">
+                Item Category:
+                @Html.EditorFor(model => model.ItemCategory, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ItemCategory, "", new { @class = "text-danger" })
 
-                ],
-                "language": {
 
-                    "emptyTable" : "No data found, Please click on <b>Add New</b> Button"
-                }
-            });
-        });
-        function PopupForm(url) {
-            var formDiv = $('<div/>');
-            $.get(url)
-            .done(function (response) {
-                formDiv.html(response);
 
-                Popup = formDiv.dialog({
-                    autoOpen: true,
-                    resizable: false,
-                    title: 'Select ItemTraking',
-                    height: 350,
-                    width:520,
-                    close: function () {
-                        Popup.dialog('destroy').remove();
-                    }
-                });
-            });
-        }
-        function PopupFormf(url) {
-            var formDiv = $('<div/>');
-            $.get(url)
-            .done(function (response) {
-                formDiv.html(response);
+                @*<br />
+                    <input type="button" class="btn btn-yahoo" value="Item Tracking Details" onclick="PopupForm('@Url.Action("AddOrEdit", "BankAdjustment")')" style="height:32px;width:45%" />*@
 
-                Popup = formDiv.dialog({
-                    autoOpen: true,
-                    resizable: false,
-                    title: 'Select Unit',
-                    height: 250,
-                    width: 300,
-                    close: function () {
-                        Popup.dialog('destroy').remove();
-                    }
-                });
-            });
-        }
-        function SubmitForm(form) {
-            $.validator.unobtrusive.parse(form);
-            if($(form).valid()){
-                $.ajax({
-                    type : "POST",
-                    url : form.action,
-                    data : $(form).serialize(),
-                    success : function (data) {
-                        if(data.success)
-                        {
-                            Popup.dialog('close');
-                            dataTable.ajax.reload();
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                Purchase Price:
+                @Html.EditorFor(model => model.PurchasePrice, new { htmlAttributes = new { @class = "form-control", id = "purchaseprice", onchange = "displayVals();", Style = "width:110px", Required = "Required", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.PurchasePrice, "", new { @class = "text-danger" })
+                <select name="state" id="purchastype" class="form-control" onchange="displayVals();" style="width:110px;margin-left:117px;margin-top:-35px" ;>
+                    <option value="withtax">With Tax</option>
+                    <option value="withouttax">Without Tax</option>
 
-                            $.notify(data.message,{
-                                globalPosition :"top center",
-                                className : "success"
-                            })
+                </select>
+
+            </div>
+            <div class="col-md-4">
+                Sale price:
+                @Html.EditorFor(model => model.SalePrice, new { htmlAttributes = new { @class = "form-control", id = "saleprice", onchange = "displayVals();", Style = "width:110px", Required = "Required", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.SalePrice, "", new { @class = "text-danger" })
+                <select name="state" id="saletaxtype" onchange="displayVals();" class="form-control" style="width:110px;margin-left:117px;margin-top:-35px" ;>
+                    <option value="withtax">With Tax</option>
+                    <option value="withouttax">Without Tax</option>s
+
+                </select>
+
+            </div>
+            <div class="col-md-4">
+                Tax Rate:
+                <select name="TaxForSale" id="TaxForSale" onchange="displayVals();" class="form-control">
+                    <option value="">---Select--</option>
+                    <option value="0.25">0.25%</option>
+                    <option value="5">5%</option>
+                    <option value="12">12%</option>
+                    <option value="18">18%</option>
+                    <option value="28">28%</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+
+                Min Stock:
+                @Html.EditorFor(model => model.MinimumStock, new { htmlAttributes = new { @class = "form-control", Style = "width:230px", type = "number", default_value = "0" } })
+                @Html.ValidationMessageFor(model => model.MinimumStock, "", new { @class = "text-danger" })
+
+
+
+
+                @*<select name="state" id="saletaxtype" onchange="displayVals();" class="form-control" style="width:110px;margin-left:117px;margin-top:-35px" ;>
+                        <option value="withtax">With Tax</option>
+                        <option value="withouttax">Without Tax</option>s
+
+                    </select>*@
+
+                @*<div class="tab" style="margin-top:1px" id="div">
+                        <h4><a class="tablinks" onclick="openCity(event, 'London')">Item Traking :</a></h4>
+                    </div>
+                    <hr style="margin-top:10px;width:250px; margin-left:1px" />*@
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="">
+
+                    Discount (%):
+                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", type = "number", Style = "width:230px", value = "0" } })
+                    @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                <div class="pull-right">
+                    Item Barcode:
+                    @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control", Style = "width:230px" } })
+                    @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Item Traking :</h4>
+                <hr style="margin-top:10px;width:250px; margin-left:1px" />
+            </div>
+            <div class="col-md-4">  </div>
+
+            <div class="col-md-4">
+                Opening Stock:
+                @Html.EditorFor(model => model.OpeningQty, new { htmlAttributes = new { @class = "form-control", Style = "width:230px", value = "0" , type = "number" } })
+                @Html.ValidationMessageFor(model => model.OpeningQty, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+
+        <div id="London" class="tabcontent">
+            <div class="row">
+                <div class="col-md-3">
+                    MRP Rate :
+                    @Html.EditorFor(model => model.TrackingMRP, new { htmlAttributes = new { @class = "form-control", id = "mrp" } })
+                    @Html.ValidationMessageFor(model => model.TrackingMRP, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    Size:
+                    @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    Batch No:
+                    @Html.EditorFor(model => model.BatchNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BatchNo, "", new { @class = "text-danger" })
+
+                    @Html.EditorFor(model => model.PurchaseTaxAmount, new { htmlAttributes = new { @class = "form-control", ID = "PUR", style = "Display:none" } })
+                    @Html.ValidationMessageFor(model => model.PurchaseTaxAmount, "", new { @class = "text-danger" })
+
+
+                    <br />
+                </div>
+                <div class="col-md-3">
+                    serial No:
+                    @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SerialNo, "", new { @class = "text-danger" })
+
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+
+                    Mfg Date:
+                    @Html.TextBoxFor(model => model.MFgdate, new { @type = "date", @class = "form-control" })
+
+
+                </div>
+                <div class="col-md-3">
+                    Exp Date:
+                    @Html.TextBoxFor(model => model.Expdate, new { @type = "date", @class = "form-control" })
+
+
+                </div>
+                <div class="col-md-3">
+                    Item img:
+                    <input type="file" name="file" id="file" class="form-control" />
+                    @Html.EditorFor(model => model.SaleTaxAmount, new { htmlAttributes = new { @class = "form-control", ID = "SaleTaxAmount", style = "Display:none" } })
+                    @Html.ValidationMessageFor(model => model.BatchNo, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-md-3">
+                    <br />
+                    <input type="submit" value="Save" class="btn btn-primary pull-right" style="width:80px;font-size:14px;" />
+                    <input type="reset" value="Clear" class="btn btn-primary" style="width:80px;font-size:14px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+                    function displayVals() {
+                        var saletype = $("#saletaxtype").val();
+                        var purchastype = $("#purchastype").val();
+                        var tax = $("#TaxForSale").val();
+                        var saleprice = $("#saleprice").val();
+                        var purchaseprice = $("#purchaseprice").val();
+                        debugger
+                        if (saletype == "withtax") {
+
+                            var m = (saleprice * tax) / 100;
+                            var b = saleprice - m;
+                            $("#SaleTaxAmount").val(m);
+
+
+                        }
+                        else if (saletype == "withouttax") {
+
+                            var m = (saleprice * tax) / 100;
+                            $("#SaleTaxAmount").val(m);
+
+                        }
+
+                        if (purchastype == "withtax") {
+                            var w = (purchaseprice * tax) / 100;
+                            var p = purchaseprice - w;
+                            $("#PUR").val(w);
+                            @*$('#@Html.IdFor(m=>m.PurchaseTaxAmount)').val(w);*@
+                            @*$('#@Html.IdFor(m=>m.PurchasePrice)').val(p);*@
+
+                        }
+                        else if (purchastype == "withouttax") {
+
+                            var w = (purchaseprice * tax) / 100;
+                            $("#PUR").val(w);
 
                         }
                     }
-                });
-            }
-            return false;
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ItemLocation, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ItemLocation, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ItemLocation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TrackingMRP, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TrackingMRP, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TrackingMRP, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BatchNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BatchNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BatchNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SerialNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SerialNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MFgdate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MFgdate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MFgdate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Expdate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Expdate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Expdate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MinimumStock, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MinimumStock, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MinimumStock, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UnitID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UnitID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UnitID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Barcode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DeleteData, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DeleteData, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DeleteData, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Company_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Company_ID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Company_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cess, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cess, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cess, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Profit, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Profit, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Profit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
         }
 
-        function Delete(id) {
-            if(confirm('Are You Sure to Delete this Employee Record ?'))
-            {
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("Delete","BankAccount")/' + id,
-                    success: function (data) {
-                        if (data.success)
-                        {
-                            dataTable.ajax.reload();
-
-                            $.notify(data.message, {
-                                globalPosition: "top center",
-                                className: "success"
-                            })
-
-                        }
-                    }
-
-                });
-            }
-        }
-        </script>
-    }
-
-
-
-</body>
-</html>
-
-
-
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </body>
+    </html>*@

@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/ideal.cshtml";
 }
 
-<h2>Sale Order Report </h2>
-<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","SaleOrder")"><i class="fa fa-plus"></i>Add SaleOrder</a>
-<br />
+<p>
+<a class="btn btn-primary pull-left row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","SaleOrder")"><i class="fa fa-plus"></i>Add SaleOrder</a>
+</p>
 @Html.Stimulsoft().StiMvcViewer("MvcViewer1", new StiMvcViewerOptions()
 {
     Actions =

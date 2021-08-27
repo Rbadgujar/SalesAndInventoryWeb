@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse ">
                     <label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Credit Note </h3></label>
                     <a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","Creditnote")"><i class="fa fa-plus"></i>Add CreditNote</a>
-                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+                    <a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"  href="@Url.Action("ReportAll","Creditnote")"><i class="glyphicon glyphicon-print"></i>Print</a>
                     <input type="date" class="pull-right row" id="fromdate" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " />
                     <label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
                     <input type="date" class="pull-right row" id="todate"name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " />
@@ -86,8 +86,10 @@
 					{ "data": "Received" },
                     { "data": "RemainingBal" },
                     { "data": "Total" },
-                    { "data":"ReturnNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","Creditnote")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    {
+                        "data": "ReturnNo", "render": function (data) {
+                              
+                        return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit","Creditnote")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "Creditnote")/" + data + "'><i class='fa fa-print'></i></a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -103,7 +105,7 @@
 
 
             $("#todate").change(function () {
-                var table1 = $('#Saleorder').DataTable();
+                var table1 = $('#creditnote').DataTable();
                 table1.destroy();
 
 
@@ -130,8 +132,9 @@
                     { "data": "RemainingBal" },
                     { "data": "Total" },
                     { "data":"ReturnNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","Creditnote")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
+                           
+                        return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit","Creditnote")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "Creditnote")/" + data + "'><i class='fa fa-print'></i></a>";
+                      },
                         "orderable": false,
                         "searchable":false,
                         "width":"150px"
@@ -150,7 +153,7 @@
 
 
             $("#fromdate").change(function () {
-                var table1 = $('#Saleorder').DataTable();
+                var table1 = $('#creditnote').DataTable();
                 table1.destroy();
 
                 var da= new Date();
@@ -176,8 +179,9 @@
                     { "data": "RemainingBal" },
                     { "data": "Total" },
                     { "data":"ReturnNo" , "render" : function (data) {
-                        return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","Creditnote")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
-                    },
+                        
+                        return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit","Creditnote")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i></a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "Creditnote")/" + data + "'><i class='fa fa-print'></i></a>";
+                         },
                         "orderable": false,
                         "searchable":false,
                         "width":"150px"

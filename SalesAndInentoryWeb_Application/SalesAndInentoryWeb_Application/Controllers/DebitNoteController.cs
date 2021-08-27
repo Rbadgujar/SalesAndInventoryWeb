@@ -36,7 +36,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
         }
         public int openingstock, Minstock;
-        public void stock(int ItemID, int newqty)
+        public string stock(int ItemID, int newqty)
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
@@ -51,26 +51,26 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     {
                         while (sdr.Read())
                         {
-
-                            Minstock = Convert.ToInt32(sdr["MinimumStock"]);
+                          
                             openingstock = Convert.ToInt32(sdr["OpeningQty"].ToString());
-
+                            unitofitem = sdr["BasicUnit"].ToString();
                         }
                         sdr.Close();
                     }
                     con.Close();
 
 
-                    int min = Minstock - newqty;
+              
                     int opening = openingstock - newqty;
 
-                    sotckcal(ItemID, min, opening);
+                    sotckcal(ItemID, opening);
+                    return unitofitem;
                 }
 
             }
         }
-
-        public void sotckcal(int ItemID, int min, int opening)
+        public string unitofitem;
+        public void sotckcal(int ItemID, int opening)
         {
 
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
@@ -260,7 +260,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             foreach (var item in objdebitnote.ListOfDebitNote)
             {
                 TempData["ID"] = sale.ReturnNo;
-                stock(item.ItemID, item.Qty);
+                unitofitem=stock(item.ItemID, item.Qty);
                 var gst1 = item.SaleTaxAmount;
                 var finalgsr = gst1 / 2;
                 tbl_DebitNoteInner inner = new tbl_DebitNoteInner()
@@ -272,7 +272,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     Discount = item.Discount,
                     DiscountAmount = item.DiscountAmount,
                     SGST = finalgsr,
-                    CGST=finalgsr,               
+                    CGST=finalgsr,           
+                    BasicUnit= unitofitem,
                     SaleTaxAmount = item.SaleTaxAmount,
                     ItemAmount = item.ItemAmount,
                     Qty = item.Qty,
@@ -315,7 +316,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             int id = Convert.ToInt32(TempData["ID"]);
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.AddLogo,a.GSTNumber, a.PhoneNo, a.EmailID,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo, b.ReturnNo, b.InvoiceDate, b.DeliveryLocation,b.DeliveryDate,b.DueDate, b.Tax1, b.CGST, b.SGST, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.ItemCode,c.BasicUnit,c.SalePrice,c.Qty,c.freeQty,c.ItemAmount,c.DeleteData FROM tbl_CompanyMaster  as a, tbl_DebitNote as b,tbl_DebitNoteInner as c where b.ReturnNo="+id+ " and c.ReturnNo=" + id + " and b.Company_ID='"+ MainLoginController.companyid1 + "' and a.CompanyID='" + MainLoginController.companyid1 + "' and c.Company_ID='" + MainLoginController.companyid1 + "' and c.DeleteData='1' ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address,a.AddLogo,a.GSTNumber, a.PhoneNo, a.EmailID,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo, b.ReturnNo, b.InvoiceDate, b.DeliveryLocation,b.DeliveryDate,b.DueDate, b.Tax1, b.CGST, b.SGST, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.ItemCode,c.BasicUnit,c.SalePrice,c.Qty,c.SaleTaxAmount,c.freeQty,c.ItemAmount,c.DeleteData FROM tbl_CompanyMaster  as a, tbl_DebitNote as b,tbl_DebitNoteInner as c where b.ReturnNo=" + id+ " and c.ReturnNo=" + id + " and b.Company_ID='"+ MainLoginController.companyid1 + "' and a.CompanyID='" + MainLoginController.companyid1 + "' and c.Company_ID='" + MainLoginController.companyid1 + "' and c.DeleteData='1' ");
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
             DataSet dataSet = new DataSet("productsDataSet");
             adapter.Fill(dataSet, "DebitNote");

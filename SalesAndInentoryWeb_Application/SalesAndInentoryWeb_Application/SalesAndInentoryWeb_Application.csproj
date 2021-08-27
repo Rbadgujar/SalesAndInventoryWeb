@@ -3361,6 +3361,8 @@
     <Content Include="Content\Report\BankStatementData.mrt" />
     <Content Include="Content\Report\DeliveryChallan.mrt" />
     <Content Include="Content\Report\DeliveryChallanDataReport.mrt" />
+    <Content Include="Content\Report\EstimateHomeReport.mrt" />
+    <Content Include="Content\Report\CreditNoteData.mrt" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="scripts\DataTables\autoFill.bootstrap.js" />
@@ -3848,10 +3850,14 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Companymaster.cs" />
+    <Compile Include="ViewModel\Dashborddata.cs" />
     <Compile Include="ViewModel\EstimateItem.cs" />
     <Compile Include="ViewModel\EstimateParty.cs" />
     <Compile Include="ViewModel\exportitem.cs" />
     <Compile Include="ViewModel\Exportpartyes.cs" />
+    <Compile Include="ViewModel\Exportpurchase.cs" />
+    <Compile Include="ViewModel\Exportsaledata.cs" />
     <Compile Include="ViewModel\ItemDetails.cs" />
     <Compile Include="ViewModel\ItemPurchase.cs" />
     <Compile Include="ViewModel\otherincome.cs" />
@@ -4055,6 +4061,12 @@
     <Content Include="Views\DeliveryChallan\Dilaverychallen.cshtml" />
     <Content Include="Views\DeliveryChallan\Report.cshtml" />
     <Content Include="Views\DeliveryChallan\ReportAll.cshtml" />
+    <Content Include="Views\EstimateQuatation\Report.cshtml" />
+    <Content Include="Views\EstimateQuatation\ReportAll.cshtml" />
+    <Content Include="Views\Creditnote\ReportAll.cshtml" />
+    <Content Include="Views\PartyMaster\AddpartyUpdate.cshtml" />
+    <Content Include="Views\Company\reg.cshtml" />
+    <Content Include="Views\Company\NewCompanyregistration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4066,7 +4078,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\App_Data\" />
     <Folder Include="css\fonts\" />
+    <Folder Include="images\Iteimage\" />
     <Folder Include="images\Logo\" />
+    <Folder Include="images\Partyimage\" />
     <Folder Include="images\signatures\" />
     <Folder Include="logincssfolder\fonts\" />
     <Folder Include="logincssfolder\vendor\" />

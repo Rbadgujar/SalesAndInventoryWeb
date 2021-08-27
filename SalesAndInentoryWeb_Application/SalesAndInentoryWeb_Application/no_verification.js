@@ -47,11 +47,13 @@ function phoneAuth() {
 function codeverify() {
     debugger
     var code = document.getElementById('verificationCode').value;
+    var number = document.getElementById('number').value;
+
     coderesult.confirm(code).then(function (result) {       
         alert("Message Verified");
         var user = result.user;
         console.log(user);
-        window.location.href = "/StartPage/registration";    
+        window.location.href = '/StartPage/registration?number=' + number;    
     }).catch(function (error) {
         alert(error.message);
     });

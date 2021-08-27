@@ -357,13 +357,13 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     Discount = item.Discount,
                     SGST=finalgsr2,
                     CGST=finalgsr2,
-                    IGST=igst,
-                    CalTotal=item.ItemTotal,
+                    IGST=igst,        
+                    CalTotal =item.ItemTotal,
                     DeleteData =Convert.ToBoolean(1),
                     DiscountAmount = item.DiscountAmount,
                     Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                     SaleTaxAmount = item.SaleTaxAmount,
-                    ItemAmount = item.ItemAmount,
+                    ItemAmount =Convert.ToInt32(item.ItemTotal),
                     Qty = item.Qty
                 };
                 db.tbl_DeliveryChallanInners.InsertOnSubmit(inner);

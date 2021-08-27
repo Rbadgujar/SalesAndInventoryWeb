@@ -96,7 +96,7 @@
 
                         {
                             "data": "InvoiceID" , "render" : function (data) {
-                            return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "SaleInvoice")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
+                                return "<a class='btn btn-info btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i></a><a class='btn btn-success btn-sm' href='@Url.Action("Report", "SaleInvoice")/" + data + "'><i class='fa fa-print'></i></a>";
                         },
                             "orderable": false,
                             "searchable":false,
@@ -141,7 +141,7 @@
 
                         {
                             "data": "InvoiceID" , "render" : function (data) {
-                            return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "SaleInvoice")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
+                            return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "SaleInvoice")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
                         },
                             "orderable": false,
                             "searchable":false,
@@ -189,13 +189,12 @@
 
                             {
                                 "data": "InvoiceID", "render": function (data) {
-                                    return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "SaleInvoice")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
+                                    return "<a class='btn btn-default btn-sm' href=@Url.Action("AddOrEdit","SaleInvoice")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-default btn-sm' href='@Url.Action("Report", "SaleInvoice")/" + data + "'><i class='fa fa-pencil'></i> Print</a>";
                                 },
                                 "orderable": false,
                                 "searchable": false,
                                 "width": "150px"
                             }
-
                         ],
                         "language": {
 

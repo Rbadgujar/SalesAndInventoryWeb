@@ -160,6 +160,33 @@ namespace SalesAndInentoryWeb_Application.Controllers
             bt.ListOfParties = ListOfParties();
             return View(bt);
         }
+
+        public string Basicunit;
+        public string stock(string ItemID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string sql1 = string.Format("SELECT * FROM tbl_ItemMaster WHERE ItemName= @ItemID and Company_ID=" + MainLoginController.companyid1 + " and DeleteData='1' ");
+                using (SqlCommand cmd = new SqlCommand(sql1))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@ItemID", ItemID);
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {                     
+                            Basicunit = sdr["Basicunit"].ToString();
+                        }
+                        sdr.Close();
+                    }
+                    con.Close();                 
+                    return Basicunit;
+                }
+
+            }
+        }
         private static List<SelectListItem> ListOfAccount()
         {
             string sql;
@@ -350,18 +377,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 PartyName = objpartydetails.PartyName,
                 BillingName = objpartydetails.BillingName,
                 ContactNo = objpartydetails.ContactNo,
-                RemainingBal = objpartydetails.RemainingBal,
-                Received=objpartydetails.Received,
+                RemainingBal =Math.Round(objpartydetails.RemainingBal,2),
+                Received= Math.Round(objpartydetails.Received,2),
                 PaymentType=objpartydetails.PaymentType,
-                Total = objpartydetails.CalTotal,
+                Total = Math.Round(objpartydetails.CalTotal,2),
                 TransportName = objpartydetails.TransportName,
                 DeliveryLocation = objpartydetails.DeliveryLocation,
                 Deliverydate = objpartydetails.DeliveryDate,
                 Feild3 = objpartydetails.Feild3,
                 StateofSupply = objpartydetails.StateOfSupply,
-                SGST = gst,
-                CGST = gst,
-                IGST=igst,
+                SGST =Math.Round(gst,2),
+                CGST = Math.Round(gst,2),
+                IGST= Math.Round(igst,2),
                 Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                 OrderDate = Convert.ToDateTime(objpartydetails.OrderDate),
                 DueDate = objpartydetails.DueDate,
@@ -369,15 +396,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 Barcode = objpartydetails.Barcode,
                 Status = objpartydetails.Status,
                 VehicleNumber = objpartydetails.VehicleNumber
-
             };
             db.tbl_SaleOrders.InsertOnSubmit(sale);
             db.SubmitChanges();
 
             foreach (var item in objpartydetails.listofitemdetail)
             {
+                
                 TempData["ID"] = sale.OrderNo;
-
                 float finalgsr1 = 0;
                 if (result == 1)
                 {
@@ -390,23 +416,24 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 }
                 //var gst1 = item.SaleTaxAmount;
                 //var finalgsr = gst1 / 2;
-
+               Basicunit= stock(item.ItemName);
                 tbl_SaleOrderInner inner = new tbl_SaleOrderInner()
                 {
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     OrderNo = sale.OrderNo,
                     ItemID = item.ItemID,
-                    CGST = finalgsr1,
-                    SGST = finalgsr1,
-                    IGST = igst,
+                    CGST =Math.Round(finalgsr1,2),
+                    SGST =Math.Round(finalgsr1,2),
+                    IGST =Math.Round(igst,2),
                     TaxForSale=item.TaxForSale,
                     Company_ID= Convert.ToInt32(Session["UserId"].ToString()),
                     Discount=item.Discount,
                     DeleteData = Convert.ToBoolean(1),
+                    BasicUnit=Basicunit,
                     DiscountAmount =item.DiscountAmount,
                     SaleTaxAmount=item.SaleTaxAmount,
-                    ItemTotal=item.ItemTotal,
+                   ItemTotal=Math.Round(item.ItemTotal,2),
                     Qty=item.Qty
                 };
                 db.tbl_SaleOrderInners.InsertOnSubmit(inner);

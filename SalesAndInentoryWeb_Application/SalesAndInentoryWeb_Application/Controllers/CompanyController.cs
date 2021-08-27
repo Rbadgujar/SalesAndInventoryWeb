@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SalesAndInentoryWeb_Application;
 using SalesAndInentoryWeb_Application.Models;
+using SalesAndInentoryWeb_Application.ViewModel;
 using DocumentFormat.OpenXml.Drawing;
 using System.IO;
 using System.Data;
@@ -22,6 +23,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult reg()
+        {
+            return View();
+        }
+        public ActionResult NewCompanyregistration()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewCompanyregistration(Companymaster com)
+        {
+            db.tbl_CompanyMasterSelect("Insert2", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.banlname, com.Accountno, com.IFScCode, com.CompanyID, null, com.Password);
+            db.SubmitChanges();
+
+            return RedirectToAction("Index", "MainLogin");
         }
         [HttpGet]
         public ActionResult com(int id = 0)
@@ -87,7 +104,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
                     //("Insert", null, com.CompanyName, com.PhoneNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature, com.AddLogo, com.AdditinalFeild1, com.AdditinalFeild2, com.AdditinalFeild3, null).FirstOrDefault();
 
-                    db.tbl_CompanyMasterSelect("Insert", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, s1[0], com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID,null,null);
+                    db.tbl_CompanyMasterSelect("InsertAll", null, com.CompanyName, com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, s1[0], com.Signature, com.AddLogo, com.BankName, com.AccountNo, com.IFSC_Code,MainLoginController.companyid1,null,null);
                     db.SubmitChanges();
                     return RedirectToAction("Index");
 
@@ -121,7 +138,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult showdata()
         {
           
-            var getdata = db.tbl_CompanyMasterSelect("Select",null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null, null,null,null).ToList();
+            var getdata = db.tbl_CompanyMasterSelect("Select",null,null,null,null, null, null, null, null, null, null, null, null, null, null, null, null,MainLoginController.companyid1,null,null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
         }

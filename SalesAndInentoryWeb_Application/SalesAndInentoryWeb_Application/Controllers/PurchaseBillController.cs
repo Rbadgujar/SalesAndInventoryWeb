@@ -429,7 +429,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                                 SalePrice = Convert.ToDouble(sdr["SalePrice"]),
                                 TaxForSale = sdr["TaxForSale"].ToString(),
                                 SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
-                                Discount = Convert.ToDouble(sdr["Discount"]),
+                              
                                 ItemID = Convert.ToInt32(sdr["ItemID"])
                                 
                             });
@@ -506,8 +506,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
         public ActionResult order()
         {
-
-            var tb = db.tbl_PurchaseBillselect("sum", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+             var tb = db.tbl_PurchaseBillselect("sum", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
 
@@ -578,7 +577,6 @@ namespace SalesAndInentoryWeb_Application.Controllers
                                 ItemName = sdr["ItemName"].ToString(),
                                 SalePrice = Convert.ToDouble(sdr["SalePrice"]),
                                 TaxForSale = sdr["TaxForSale"].ToString(),
-                                SaleTaxAmount = Convert.ToDouble(sdr["SaleTaxAmount"].ToString()),
                                 Discount = Convert.ToDouble(sdr["Discount"]),
                                 ItemID = Convert.ToInt32(sdr["ItemID"])
                             });

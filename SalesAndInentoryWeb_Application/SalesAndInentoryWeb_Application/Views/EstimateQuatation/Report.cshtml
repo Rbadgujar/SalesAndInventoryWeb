@@ -1,0 +1,23 @@
+﻿@using Stimulsoft.Report.Mvc;
+@{
+                /**/
+
+                ViewBag.Title = "Report";
+                Layout = "~/Views/Shared/ideal.cshtml";
+}
+<a class="btn btn-primary pull-left row" style="margin-top:6.5px; margin-left:5px" href="@Url.Action("SaleInvoice","SaleInvoice")"><i class="fa fa-plus"></i>Add Sale</a>
+@Html.Stimulsoft().StiMvcViewer("MvcViewer1", new StiMvcViewerOptions()
+{
+    Actions =
+            {
+                GetReport = "GetReport",
+                ViewerEvent = "ViewerEvent"
+            }
+})
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+

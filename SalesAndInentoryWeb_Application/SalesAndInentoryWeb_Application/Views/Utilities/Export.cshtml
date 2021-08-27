@@ -14,7 +14,7 @@
             background-color: blue;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 8px 24px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -55,17 +55,54 @@
 <body>
     @using (Html.BeginForm("Importitem1", "Utilities", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <div class="panel panel-primary container" style="width:100%;height:100vh">
+        <div class="panel panel-primary container" style="width:100%;">
             <div class="panel-heading text-center"><h4 style="margin-top:-4px;">Export Data </h4></div>
             <div class="panel border-box">
                 <nav class="navbar navbar-default " style="background-color:white;border:none">
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse ">
+                            <br />
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <br />
-                                    <div style="height:100vh;border:2px solid;text-align:center">
-                                        <br /><br />
+
+                                    <div style="height:50%;border:2px solid;text-align:center">
+
+                                        <h3>Export Sale Invoices </h3><br />
+                                        <h4>
+                                            Download .xls/xslx(Excel Sheet)<br />
+                                            Templet File to enter Data
+                                        </h4>
+
+                                        @*<img src="~/bower_components/bootstrap/dist/fonts/excel.png" style="width:100px;height:50px" />*@
+
+                                        <img src="~/bower_components/bootstrap/dist/fonts/excel (1).png" style="height:80px; width:80px" />
+                                        <br />
+                                        <br />
+                                        <input type="button" onclick="location.href='@Url.Action("saleinvoicedata", "Utilities")'" class="button" value="Download Sale Data ">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+
+                                    <div style="height:50%;border:2px solid;text-align:center">
+
+                                        <h3>Export Purchase Bills </h3><br />
+                                        <h4>
+                                            Download .xls/xslx(Excel Sheet)<br />
+                                            Templet File to enter Data
+                                        </h4>
+                                        @*<img src="~/bower_components/bootstrap/dist/fonts/excel.png" style="width:100px;height:50px" />*@
+                                        <img src="~/bower_components/bootstrap/dist/fonts/excel (1).png" style="height:80px; width:80px" />
+                                        <br />
+                                        <br />
+                                        <input type="button" onclick="location.href='@Url.Action("backuptpdrive", "Backup")'" class="button" value="Download Purchase Data">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+
+                                    <div style="height:50%;border:2px solid;text-align:center">
+
                                         <h3>Export Items </h3><br />
                                         <h4>
                                             Download .xls/xslx(Excel Sheet)<br />
@@ -74,31 +111,42 @@
 
                                         @*<img src="~/bower_components/bootstrap/dist/fonts/excel.png" style="width:100px;height:50px" />*@
 
-                                        <img src="~/bower_components/bootstrap/dist/fonts/excel (1).png" />
-                                        <br />
+                                        <img src="~/bower_components/bootstrap/dist/fonts/excel (1).png" style="width:80px;height:80px" />
                                         <br />
 
+                                        <br />
                                         <input type="button" onclick="location.href='@Url.Action("ExportListUsingEPPlus", "Utilities")'" class="button" value="Download Items">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <br />
-                                    <div style="height:100vh;border:2px solid;text-align:center">
-                                        <br /><br />
+
+                                    <div style="height:50%;border:2px solid;text-align:center">
+
                                         <h3>Export Parties </h3><br />
                                         <h4>
                                             Download .xls/xslx(Excel Sheet)<br />
                                             Templet File to enter Data
                                         </h4><br />
                                         @*<img src="~/bower_components/bootstrap/dist/fonts/excel.png" style="width:100px;height:50px" />*@
-                                        <img src="~/bower_components/bootstrap/dist/fonts/excel (1).png" />
+                                        <img src="~/bower_components/bootstrap/dist/fonts/excel (1).png" style="width:80px;height:80px" />
                                         <br />
                                         <br />
                                         <input type="button" onclick="location.href='@Url.Action("exportpartyes", "Utilities")'" class="button" value="Download Parties">
                                     </div>
                                 </div>
                             </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                         </div>
+                     
+
                     </div>
                 </nav>
             </div>

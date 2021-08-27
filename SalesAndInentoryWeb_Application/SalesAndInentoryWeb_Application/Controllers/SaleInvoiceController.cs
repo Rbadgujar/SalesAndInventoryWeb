@@ -74,7 +74,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
 
             //string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID,b.BillNo,b.PONo,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName   , b.PoDate, b.DueDate, b.Tax1,  b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Paid,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.freeQty,c.CGST, c.SGST,c.IGST,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_PurchaseBill as b,tbl_PurchaseBillInner as c where b.BillNo=" + id + " and c.BillNo=" + id + " and a.CompanyID='1' and b.DeleteData1='1' and c.DeleteData1='1' ");
-            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID, b.InvoiceID,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName, b.InvoiceDate, b.DueDate, b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.CGST, c.SGST,c.IGST,c.freeQty,c.ItemAmount FROM tbl_CompanyMaster as a, tbl_SaleInvoice as b,tbl_SaleInvoiceInner as c where a.CompanyID=" + MainLoginController.companyid1+" and b.InvoiceID=" + id+" and c.InvoiceID="+id+" ");
+            string Query = string.Format("SELECT a.CompanyID,a.CompanyName, a.Address, a.PhoneNo, a.EmailID,a.GSTNumber,a.AddLogo,a.AdditinalFeild1,a.AdditinalFeild2,a.AdditinalFeild3,b.PartyName,b.BillingName,b.ContactNo,b.Company_ID, b.InvoiceID,b.Deliverydate,b.DeliveryLocation,b.TransportName,b.BillingName, b.InvoiceDate, b.DueDate, b.Tax1, b.TaxAmount1,b.TotalDiscount,b.DiscountAmount1,b.Total,b.Received,b.RemainingBal,c.ID,c.ItemName,c.BasicUnit,c.SaleTaxAmount,c.TaxForSale,c.ItemCode,c.SalePrice,c.Qty,c.CGST, c.SGST,c.IGST,c.freeQty,c.CalTotal FROM tbl_CompanyMaster as a, tbl_SaleInvoice as b,tbl_SaleInvoiceInner as c where a.CompanyID=" + MainLoginController.companyid1+" and b.InvoiceID=" + id+" and c.InvoiceID="+id+" ");
 
             SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
 
@@ -290,8 +290,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View(bt);
         }
         public int openingstock,Minstock, minusamount;
-
-        public void stock(int ItemID,int newqty)
+        public string Basicunit;
+        public string stock(int ItemID,int newqty)
         {
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
@@ -307,25 +307,28 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         while (sdr.Read())
                         {
 
-                           Minstock = Convert.ToInt32(sdr["MinimumStock"]);
+                        
                            openingstock = Convert.ToInt32(sdr["OpeningQty"].ToString());
-                      
+                            Basicunit = sdr["Basicunit"].ToString();
+
+
                         }
                         sdr.Close();
                     }
                     con.Close();
                    
 
-                    int min = Minstock - newqty;
+                    
                     int opening = openingstock - newqty;
 
-                    sotckcal(ItemID, min, opening);
+                    sotckcal(ItemID, opening);
+                    return Basicunit;
                 }
                 
             }
         }
 
-        public void sotckcal(int ItemID, int min ,int opening)
+        public void sotckcal(int ItemID,int opening)
         {
 
             string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
@@ -465,21 +468,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 PartyName = objsalepartydetails.PartyName,
                 BillingName = objsalepartydetails.BillingName,
                 ContactNo = objsalepartydetails.ContactNo,
-                RemainingBal = objsalepartydetails.RemainingBal,
-                PoDate=objsalepartydetails.PODate,
-                PoNumber=objsalepartydetails.PONumber,
-                Total = objsalepartydetails.CalTotal,
-                E_Way_Bill=objsalepartydetails.EwayBillNo,
+                RemainingBal = Math.Round(objsalepartydetails.RemainingBal, 2),
+
+                PoDate = objsalepartydetails.PODate,
+                PoNumber = objsalepartydetails.PONumber,
+                Total = Math.Round(objsalepartydetails.CalTotal, 2),
+                E_Way_Bill = objsalepartydetails.EwayBillNo,
                 TransportName = objsalepartydetails.TransportName,
                 DeliveryLocation = objsalepartydetails.DeliveryLocation,
                 Deliverydate = objsalepartydetails.DeliveryDate,
-                PaymentType=objsalepartydetails.PaymentType,
+                PaymentType = objsalepartydetails.PaymentType,
                 Feild3 = objsalepartydetails.Feild3,
                 StateofSupply = objsalepartydetails.StateOfSupply,
-                Received=objsalepartydetails.Received,
-                SGST = gst,
-                CGST = gst,
-                IGST=igst,
+                Received = Math.Round(objsalepartydetails.Received, 2),
+                SGST = Math.Round(gst,2),
+                CGST = Math.Round(gst,2),
+                IGST= Math.Round(igst,2),
                 Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                 InvoiceDate = Convert.ToDateTime(objsalepartydetails.InvoiceDate),
                 Barcode = objsalepartydetails.Barcode,
@@ -493,7 +497,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             foreach (var item in objsalepartydetails.SaleInvoiceItemDetails)
             {
                 TempData["ID"] = sale.InvoiceID;
-                stock(item.ItemID,item.Qty);
+                Basicunit=stock(item.ItemID,item.Qty);
                 if (result == 1)
                 {
                     float gst1 = (float)item.SaleTaxAmount;
@@ -504,21 +508,22 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     igst = (float)item.SaleTaxAmount;
                 }
                 tbl_SaleInvoiceInner inner = new tbl_SaleInvoiceInner()
-                {                   
+                {
                     ItemName = item.ItemName,
                     SalePrice = item.SalePrice,
                     TaxForSale = item.TaxForSale,
                     Discount = item.Discount,
                     ItemID = item.ItemID,
-                    CGST = finalgsr,
-                    SGST = finalgsr,
-                    IGST= igst,
+                    CGST = Math.Round(finalgsr, 2),
+                    SGST = Math.Round(finalgsr, 2),
+                    IGST = Math.Round(igst, 2),
+                    BasicUnit= Basicunit,
                     DeleteData = Convert.ToBoolean(1),
                     InvoiceID = sale.InvoiceID,
                     DiscountAmount = item.DiscountAmount,
                     Company_ID = Convert.ToInt32(Session["UserId"].ToString()),
                     SaleTaxAmount = item.SaleTaxAmount,
-                    ItemAmount = item.ItemAmount,
+                    CalTotal = Math.Round(item.ItemTotal, 2),
                     Qty = item.Qty
                 };
                 db.tbl_SaleInvoiceInners.InsertOnSubmit(inner);
