@@ -1821,7 +1821,7 @@ namespace SalesAndInentoryWeb_Application
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_CompanyBankAccount")]
 		public ISingleResult<sp_CompanyBankAccountResult> sp_CompanyBankAccount([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(20)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="NVarChar(MAX)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountName", DbType="NVarChar(MAX)")] string accountName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AccountNo", DbType="NVarChar(MAX)")] string accountNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OpeningBal", DbType="Float")] System.Nullable<double> openingBal, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Date", DbType="NVarChar(MAX)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> compid)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, bankName, accountName, accountNo, openingBal, date, compid);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), action, iD, bankName, accountName, accountNo, openingBal,DateTime.Parse(date), compid);
 			return ((ISingleResult<sp_CompanyBankAccountResult>)(result.ReturnValue));
 		}
 	}
