@@ -18,9 +18,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Data()
+        public ActionResult Data(string par,string date)
         {
-            var tb = db.CashFlow("Select", null, null, null).ToList();
+            if (par == "0")
+            {
+                var tb1 = db.CashFlow("Select1", null, Convert.ToDateTime(date), null).ToList();
+                return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+            }
+            var tb = db.CashFlow("Select", null, null,null).ToList();
             return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult ViewerEvent()

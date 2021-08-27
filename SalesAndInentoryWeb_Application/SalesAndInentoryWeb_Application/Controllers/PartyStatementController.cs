@@ -21,11 +21,16 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return View(bt);
         }
         [HttpGet]
-        public ActionResult Data(string paymenttype,string par)
+        public ActionResult Data(string paymenttype,string par,string date,string date2)
         {
             if (par == "0")
             {
                 var tb1 = db.PartyStatement("Select1", null, paymenttype, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+                return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
+            }
+            if (par == "1")
+            {
+                var tb1 = db.tbl_SaleInvoiceSelect("PartyStatement", null, null, null, null, null, Convert.ToDateTime(date), Convert.ToDateTime(date2), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"].ToString()), null, null, null, null, null, null, null).ToList();
                 return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
             }
             var tb = db.PartyStatement("Select", null, null, null,null,null,null, Convert.ToInt32(Session["UserId"])).ToList();
