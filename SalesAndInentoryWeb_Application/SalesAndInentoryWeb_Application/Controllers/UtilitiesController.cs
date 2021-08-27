@@ -110,14 +110,18 @@ namespace SalesAndInentoryWeb_Application.Controllers
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
-                return Json(new { result = false, msg = "Suucessfully Stored" });
+                    ViewBag.messeage = "Successfully Stored ";
+                    return View("importitem");
+                    //return Json(new { result = false, msg = "Suucessfully Stored" });
             }
 
-            return Json(new { result = false, msg = "Select file" });
-                }
+                ViewBag.messeage = "Select File ";
+                return View("importitem");
+            }
             catch(Exception ew)
             {
-                return Json(new { result = false, msg = ew });
+                ViewBag.messeage = "Invalid Information ";
+                return View("importitem");
             }
 
         }
@@ -212,11 +216,14 @@ namespace SalesAndInentoryWeb_Application.Controllers
                         cmd.ExecuteNonQuery();
                         con.Close();
                     }
-                    return Json(new { result = false, msg = "Suucessfully Stored" });
-                }
+                ViewBag.messeage = "Successfully Stored ";
+                //return Json(new { result = false, msg = "Suucessfully Stored" });
+                return View("ImportParty");
 
-                return Json(new { result = false, msg = "Select file" });
-           
+            }
+            ViewBag.messeage = "Select File";
+            //return Json(new { result = false, msg = "Select file" });     
+            return View("ImportParty");
         }
 
         public FileResult DownloadFile1(string Name)

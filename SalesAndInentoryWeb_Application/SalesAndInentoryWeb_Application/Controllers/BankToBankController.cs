@@ -100,8 +100,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
             {
                 db.Banktobank("Insert", emp.ID, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, Convert.ToInt32(Session["UserId"]), emp.Total);
                 db.SubmitChanges();
-                return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
-                
+                ViewBag.meg = "Stored Suucessfully";
+                return View("Index");
+                //return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
+
             }
             catch (Exception)
             {
@@ -154,7 +156,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             db.Banktobank("Update", id, emp.FromBank, emp.ToBank, emp.Amount, emp.Date, emp.Descripition, Convert.ToInt32(Session["UserId"]), emp.Total);
             db.SubmitChanges();
-            return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+            ViewBag.msg = "Stored Successfully";
+            return View("Index");
+            //return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

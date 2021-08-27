@@ -96,7 +96,9 @@ namespace SalesAndInentoryWeb_Application.Controllers
             {
                 db.tbl_BankAdjustmentselect("Insert", null, conn.BankAccount, conn.EntryType, conn.Amount, conn.Date, conn.Description,Convert.ToInt32(Session["UserId"]), conn.Total);
                 db.SubmitChanges();
-                return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+                ViewBag.msg = "Stored Suucessfully";
+                return View("Index");
+            //    return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception)
             {

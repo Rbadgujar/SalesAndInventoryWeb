@@ -408,7 +408,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             return RedirectToAction("AddOrEdit");
         }
         [HttpGet]
-        public ActionResult Additem(int id = 0)
+        public ActionResult Additem()
         {
             return View();
         }

@@ -6,7 +6,7 @@
     <DataSources isList="true" count="1">
       <SaleOrder Ref="2" type="DataTableSource" isKey="true">
         <Alias>SaleOrder</Alias>
-        <Columns isList="true" count="32">
+        <Columns isList="true" count="33">
           <value>CompanyName,System.String</value>
           <value>Address,System.String</value>
           <value>AddLogo,System.String</value>
@@ -39,6 +39,7 @@
           <value>AdditinalFeild3,System.String</value>
           <value>IGST,System.String</value>
           <value>TaxShow,System.String</value>
+          <value>ItemTotal,System.String</value>
         </Columns>
         <Dictionary isRef="1" />
         <Name>SaleOrder</Name>
@@ -1227,8 +1228,9 @@ GST</Text>
               <Page isRef="3" />
               <Parent isRef="93" />
               <ShrinkFontToFit>True</ShrinkFontToFit>
-              <Text>{SaleOrder.ItemAmount}</Text>
+              <Text>{SaleOrder.ItemTotal}</Text>
               <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
               <VertAlignment>Center</VertAlignment>
             </Text35>
             <Text9 Ref="103" type="Text" isKey="true">
@@ -2593,10 +2595,10 @@ GST</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>8/25/2021 1:01:33 PM</ReportChanged>
+  <ReportChanged>8/26/2021 5:49:36 PM</ReportChanged>
   <ReportCreated>3/18/2021 4:25:09 PM</ReportCreated>
   <ReportFile>C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\Content\Report\SaleOrderReport.mrt</ReportFile>
-  <ReportGuid>25d3012e577d4e328804367cad576e19</ReportGuid>
+  <ReportGuid>0dc41638276c4f17817f7f98507456bf</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2012.3.1500</ReportVersion>

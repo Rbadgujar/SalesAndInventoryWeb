@@ -61,8 +61,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
 				db.BankAccountSelect("Insert", null, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, MainLoginController.companyid1);
 				db.SubmitChanges();
-				return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
-			}
+                ViewBag.meg = "Stored Suucessfully";
+                return View("Index");
+   //             return Json(new { success = true, message = "Saved Data Successfully" }, JsonRequestBehavior.AllowGet);
+		}
 			else
 			{
 				db.BankAccountSelect("Update", id, conn.AccountName, conn.BankName, conn.AccountNo, conn.OpeningBal, conn.Date, MainLoginController.companyid1);

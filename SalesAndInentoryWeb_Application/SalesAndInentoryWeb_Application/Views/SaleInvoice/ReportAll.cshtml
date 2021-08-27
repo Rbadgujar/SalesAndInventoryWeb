@@ -3,7 +3,10 @@
     ViewBag.Title = "ReportAll";
     Layout = "~/Views/Shared/ideal.cshtml";
 }
-
+<p>
+    <a class="btn btn-primary pull-left row" style="margin-top:6.5px; margin-left:10px" href="@Url.Action("SaleIndexpage","Saleinvice")"><i class="fa fa-plus"></i>Back To List </a>
+</p>
+<br />
 @Html.Stimulsoft().StiMvcViewer("MvcViewer1", new StiMvcViewerOptions()
 {
     Actions =

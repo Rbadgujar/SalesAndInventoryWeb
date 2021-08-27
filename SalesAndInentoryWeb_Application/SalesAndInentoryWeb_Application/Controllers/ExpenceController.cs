@@ -34,8 +34,8 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             var tb = db.tbl_ExpenseCategorySelect("Insert", null, emp.CategoryName, Convert.ToInt32(Session["UserId"]));
             db.SubmitChanges();
-            //return RedirectToAction("Index");
-            return View();
+           return RedirectToAction("Index");
+            //return View();
         }
 
         public ActionResult ExpenceData(string date, string date2, string par)
