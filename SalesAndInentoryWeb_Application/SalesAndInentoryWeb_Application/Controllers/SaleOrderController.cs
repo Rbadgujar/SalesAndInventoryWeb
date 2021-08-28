@@ -377,6 +377,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 PartyName = objpartydetails.PartyName,
                 BillingName = objpartydetails.BillingName,
                 ContactNo = objpartydetails.ContactNo,
+                TableName = "SaleTable",
                 RemainingBal =Math.Round(objpartydetails.RemainingBal,2),
                 Received= Math.Round(objpartydetails.Received,2),
                 PaymentType=objpartydetails.PaymentType,

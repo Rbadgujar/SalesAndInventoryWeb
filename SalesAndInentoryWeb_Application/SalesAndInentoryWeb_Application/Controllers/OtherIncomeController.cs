@@ -36,7 +36,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
                 var tb1 = db.tbl_OtherIncomeSelect("datetodate", null, null, Convert.ToDateTime(date), null, null, null, null, null, null, null, date2, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
                 return Json(new { data = tb1 }, JsonRequestBehavior.AllowGet);
             }
-            var tb = db.tbl_OtherIncomeSelect("Select1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
+            var tb = db.tbl_OtherIncomeSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Convert.ToInt32(Session["UserId"])).ToList();
 			return Json(new { data = tb }, JsonRequestBehavior.AllowGet);
 		}
 
@@ -142,16 +142,37 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             return items1;
         }
+
+        int maxdata;
+
+        public int maxcount()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+              string  sql = string.Format("Select Max(id1) from tbl_OtherIncome");
+                SqlCommand cmd = new SqlCommand(sql,con);
+                con.Open();
+                maxdata =Convert.ToInt32(cmd.ExecuteScalar());
+               
+            }
+            return maxdata;
+
+        }
         [HttpPost]
         public ActionResult AddOrEdit(OtherIncome objOtherIncomeDetails)
         {
+            maxdata = maxcount();
+            int dinmax = maxdata + 1;
             tbl_OtherIncome sale1other = new tbl_OtherIncome()
             {
                 IncomeCategory = objOtherIncomeDetails.IncomeCategory,
                 total = objOtherIncomeDetails.total,
                 Balance = objOtherIncomeDetails.Balance,
+                Id1 = dinmax,
                 Date = objOtherIncomeDetails.Date,
                 Received = objOtherIncomeDetails.Received,
+                
                 Company_ID= Convert.ToInt32(Session["UserId"]),
                 DeleteData=Convert.ToBoolean(1)
             };
@@ -189,26 +210,53 @@ namespace SalesAndInentoryWeb_Application.Controllers
         [HttpPost]
         public ActionResult otcategory(tbl_otherIncomeCaategory emp)
         {      
-              var tb = db.tbl_otherIncomeCategorySelect("Insert1", null,emp.OtherIncome, Convert.ToInt32(Session["UserId"]));
+              var tb = db.tbl_otherIncomeCategorySelect("Insert", null,emp.OtherIncome, Convert.ToInt32(Session["UserId"]));
              db.SubmitChanges();
             return RedirectToAction("Index");     
         }
-   //     [HttpPost]
-   //     public ActionResult AddOrEdit(tbl_OtherIncome emp,int id = 0)
-   //     {
-			//if (id == 0)
-			//{
-			//	var tb = db.tbl_OtherIncomeSelect("Insert",  null,emp.IncomeCategory, emp.Date, null, null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
-			//	db.SubmitChanges();
-			//	return RedirectToAction("Index");
-			//}
-			//else
-			//{
-			//	var tb = db.tbl_OtherIncomeSelect("Update", id, emp.IncomeCategory, emp.Date, null,null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
-			//	db.SubmitChanges();
-			//	return RedirectToAction("Index");
-			//}
-	  //  }			       
+        //     [HttpPost]
+        //     public ActionResult AddOrEdit(tbl_OtherIncome emp,int id = 0)
+        //     {
+        //if (id == 0)
+        //{
+        //	var tb = db.tbl_OtherIncomeSelect("Insert",  null,emp.IncomeCategory, emp.Date, null, null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
+        //	db.SubmitChanges();
+        //	return RedirectToAction("Index");
+        //}
+        //else
+        //{
+        //	var tb = db.tbl_OtherIncomeSelect("Update", id, emp.IncomeCategory, emp.Date, null,null, null, emp.RoundOFF, emp.total, emp.Received, emp.Balance, null, null, null, null, null, null, null);
+        //	db.SubmitChanges();
+        //	return RedirectToAction("Index");
+        //}
+        //  }		
+
+
+
+        public ActionResult ViewerEvent1()
+        {
+            return StiMvcViewer.ViewerEventResult();
+        }
+        public ActionResult ReportAll()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetReport1()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.InvoiceDate, b.InvoiceID, b.PartyName, b.PaymentType, b.Total, b.Received, b.RemainingBal,b.DeleteData, b.Status,b.Company_ID from tbl_SaleInvoice as b,tbl_CompanyMaster as c where b.Company_ID = '" + MainLoginController.companyid1 + "' and c.CompanyID='" + MainLoginController.companyid1 + "' and b.DeleteData = '1'");
+           string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.ItemName,b.Qty,b.ItemAmount,b.Company_ID from tbl_OtherIncomeInner3 as b,tbl_CompanyMaster as c where b.Company_ID = '" + MainLoginController.companyid1 + "' and c.CompanyID='" +MainLoginController.companyid1 + "' and b.DeleteData = '1'");
+
+            //string Query = string.Format("select c.CompanyID,c.CompanyName,c.Address,c.AddLogo,c.PhoneNo,c.GSTNumber,c.EmailID,b.BillDate,b.Company_ID, b.BillNo, b.PartyName, b.PaymentType, b.Total, b.Paid, b.RemainingBal,b.DeleteData, b.Status from tbl_PurchaseBill as b,tbl_CompanyMaster as c where c.Company_ID = '" + MainLoginController.companyid1 + "' and  b.DeleteData = '1'");
+            SqlDataAdapter adapter = new SqlDataAdapter(Query, constr);
+            DataSet dataSet = new DataSet("productsDataSet");
+            adapter.Fill(dataSet, "OtherIncomeItemData");
+            StiReport report = new StiReport();
+            report.Load(Server.MapPath("~/Content/Report/OtherIncomeItemData.mrt"));
+            report.RegData("OtherIncomeItemData", dataSet);
+            return StiMvcViewer.GetReportResult(report);
+        }
         [HttpPost]
         public ActionResult Delete(int id)
         {

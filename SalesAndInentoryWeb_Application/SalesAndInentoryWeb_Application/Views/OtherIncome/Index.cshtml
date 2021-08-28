@@ -18,7 +18,7 @@
 					<label class="pull-left" style="margin-left:18px; color:blue; margin-top:-12.5px;"><h3>Other Income </h3></label>
 					<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:1px" href="@Url.Action("AddOrEdit","OtherIncome")"><i class="fa fa-plus"></i>Add Other Income</a>
 					<a class="btn btn-primary pull-right row" style="margin-top:6.5px; margin-right:23px" onclick="PopupForm('@Url.Action("otcategory","OtherIncome")')"><i class="fa fa-plus"></i>Add Category</a>
-					<a class="btn btn-success pull-right row" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
+					<a class="btn btn-success pull-right row"  href="@Url.Action("ReportAll","OtherIncome")" style="margin-top:6.5px;margin-right:21px;"><i class="glyphicon glyphicon-print"></i>Print</a>
 					<input type="date" class="pull-right row" name="From" style="height:34px; margin-top:6.5px;margin-right:22px; " id="fromdate"/>
 					<label class="pull-right" style="margin-top:12.5px;margin-right:34px;">To</label>
 					<input type="date" class="pull-right row" name="To" style="height:34px; margin-top:6.5px;margin-right:25px; " id="todate"/>

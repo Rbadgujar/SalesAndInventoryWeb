@@ -40,7 +40,20 @@
             $("#success-alert").hide();
 
             $("#btnaddtolist").click(function () {
-                AddToItem();
+                         
+                var ItemName = $("#Company_ID").val();
+                var mrp = $("#mrp").val();
+                var qty = $("#qty").val();
+                var total = $("#Total").val();
+
+
+                if ((ItemName == "") || (ItemName == "Select Item") || (mrp == "") || (mrp == 0) || (qty == "") || (qty == 0) || (total == "") || (total == 0)) {
+                    alert("Invalid Data Insert All Feilds !")
+                } else {
+                    AddToItem();
+                }
+
+              
             });
             $("#tblSaleInvoice").on('click', '#remove', function () {
 
@@ -55,7 +68,24 @@
 
             });
             $("#btnsubmit").click(function (e) {
-                additems();
+
+                var mrp = $("#CategoryID").val();
+                var rowCount = $("#tblSaleInvoice tr").length;
+
+                if ((mrp == "")) {
+
+                    alert("Select Category !");
+                    $("#CategoryID").focus();
+                    //$("#ContactNo").focus(function () {
+                    //    $(this).addClass("focused");
+                    //});
+                } else if (rowCount == 1) {
+                    alert("Please Add Item First !");
+                }
+                else {
+                    additems();
+                }
+             
             });
             $("#Company_ID").change(function () {
                 debugger
@@ -109,8 +139,9 @@
         }
         function AddToItem()
         {
+            debugger
             var tableitemlist = $("#tblSaleInvoice");
-            var ItemName = $("#Category_ID option:selected").val();
+            var ItemName = $("#Company_ID").val();
             var mrp = $("#mrp").val();  
             var qty = $("#qty").val();        
             var total = $("#Total").val();
@@ -132,7 +163,7 @@
         }
         function reset()
         {
-            $("#ItemName").val('');
+            $("#Company_ID").val('');
             $("#mrp").val('');
             $("#qty").val('');
             $("#Total").val('');          
@@ -243,6 +274,7 @@
                                     <label>Item Name</label>
 
                                     @Html.DropDownListFor(model => model.Company_ID, Model.ListOfAccounts as IEnumerable<SelectListItem>, "Select Item", new { @class = "form-control", @style = "width:350px" })
+                                  
                                 </td>
                                 <td style="padding:3px;text-align:center">
                                     <label>MRP</label>

@@ -466,10 +466,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
             tbl_SaleInvoice sale = new tbl_SaleInvoice()
             {
                 PartyName = objsalepartydetails.PartyName,
-                BillingName = objsalepartydetails.BillingName,
+                BillingName = objsalepartydetails.BillingName,        
+                TableName="SaleTable",
                 ContactNo = objsalepartydetails.ContactNo,
                 RemainingBal = Math.Round(objsalepartydetails.RemainingBal, 2),
-
                 PoDate = objsalepartydetails.PODate,
                 PoNumber = objsalepartydetails.PONumber,
                 Total = Math.Round(objsalepartydetails.CalTotal, 2),

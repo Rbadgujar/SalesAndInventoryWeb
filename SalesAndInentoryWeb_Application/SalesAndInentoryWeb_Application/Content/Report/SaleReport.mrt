@@ -290,7 +290,7 @@
           <Components isList="true" count="57">
             <Image1 Ref="27" type="Image" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>10.6,-0.2,2,1.8</ClientRectangle>
+              <ClientRectangle>10.4,0.2,2,1.8</ClientRectangle>
               <Conditions isList="true" count="0" />
               <DataColumn>SaleInvoice.AddLogo</DataColumn>
               <ImageURL>C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\images\Partyimage\1</ImageURL>
@@ -2615,10 +2615,10 @@ GST</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>8/25/2021 10:00:28 AM</ReportChanged>
+  <ReportChanged>8/27/2021 4:06:54 PM</ReportChanged>
   <ReportCreated>3/17/2021 9:22:05 PM</ReportCreated>
   <ReportFile>C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\Content\Report\SaleReport.mrt</ReportFile>
-  <ReportGuid>1471a8f9115d412eb6782a68c7301953</ReportGuid>
+  <ReportGuid>6e02b6b04f844ed192f8912e2d67fa49</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2012.3.1500</ReportVersion>

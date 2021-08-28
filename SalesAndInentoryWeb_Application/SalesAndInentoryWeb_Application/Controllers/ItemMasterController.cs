@@ -107,6 +107,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             {
                 item.Discount = 0;
             }
+            
 
             if (id == 0)
             {

@@ -4067,6 +4067,7 @@
     <Content Include="Views\PartyMaster\AddpartyUpdate.cshtml" />
     <Content Include="Views\Company\reg.cshtml" />
     <Content Include="Views\Company\NewCompanyregistration.cshtml" />
+    <Content Include="Views\OtherIncome\ReportAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

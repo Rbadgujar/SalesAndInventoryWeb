@@ -44,7 +44,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             {
 
             }
-            db.tbl_CompanyMasterSelect("Insert2", null, com.CompanyName,com.ContactNo, com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature,bytes, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID,null,null);
+            db.tbl_CompanyMasterSelect("Insert2", null, com.CompanyName,Session["number"].ToString(), com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature,bytes, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID,null,null);
             db.SubmitChanges();         
             return RedirectToAction("Index", "MainLogin");        
         }

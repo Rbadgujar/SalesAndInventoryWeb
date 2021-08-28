@@ -635,7 +635,7 @@
   <MetaTags isList="true" count="0" />
   <Pages isList="true" count="1">
     <Page1 Ref="29" type="Page" isKey="true">
-      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Border>All;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
       <Components isList="true" count="45">
         <PageFooterBand1 Ref="30" type="PageFooterBand" isKey="true">
@@ -811,7 +811,7 @@
           <Components isList="true" count="72">
             <Text1 Ref="44" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>2.4,0,7.4,1</ClientRectangle>
+              <ClientRectangle>0.4,0,7.4,1</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,14,Bold</Font>
               <Guid>ef1dbbfa52b64fb2aa2d7e13b4aae13b</Guid>
@@ -826,7 +826,7 @@
             </Text1>
             <Text2 Ref="45" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>4,1,7.4,0.6</ClientRectangle>
+              <ClientRectangle>1.8,0.8,7.4,0.6</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,8</Font>
               <Guid>40e3fa522ecf430eaf6ff802531c16d2</Guid>
@@ -1229,9 +1229,8 @@
             </Text10>
             <Image1 Ref="73" type="Image" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0.2,0.2,2,2</ClientRectangle>
+              <ClientRectangle>16.8,1.2,2,2</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <DataColumn>DebitNote.AddLogo</DataColumn>
               <Guid>688366516a564c1a949b2d059b4eaca3</Guid>
               <Name>Image1</Name>
               <Page isRef="29" />
@@ -1362,7 +1361,7 @@ GST</Text>
             </Text14>
             <Text43 Ref="82" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>2.4,1,1.6,0.6</ClientRectangle>
+              <ClientRectangle>0.4,0.8,1.6,0.6</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>8a1590046dee405b9888c7415913d892</Guid>
@@ -2940,10 +2939,10 @@ GST</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>8/20/2021 12:57:34 PM</ReportChanged>
+  <ReportChanged>8/27/2021 7:03:38 PM</ReportChanged>
   <ReportCreated>8/20/2021 12:13:49 PM</ReportCreated>
   <ReportFile>C:\Users\abc\Source\Repos\SalesAndInventoryWeb44\SalesAndInentoryWeb_Application\SalesAndInentoryWeb_Application\Content\Report\CreditNote1.mrt</ReportFile>
-  <ReportGuid>300a0d4ddacc44fdad48d881eeaaea61</ReportGuid>
+  <ReportGuid>8e64dfcc2b264814bd135a3b8cabcc22</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2012.3.1500</ReportVersion>

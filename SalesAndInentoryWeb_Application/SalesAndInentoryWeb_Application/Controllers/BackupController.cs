@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Web.UI.HtmlControls;
 
 using System.Web.Mvc;
+using System.Configuration;
 
 namespace SalesAndInentoryWeb_Application.Controllers
 {
@@ -26,29 +27,31 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
              return View();
         }
-        [HttpPost]
-        public ActionResult backuptpdrive(string xyz)
+        [HttpGet]
+        public ActionResult backuptpdrive1()
         {
-            con.ConnectionString= @"Data Source=103.83.81.80;Initial Catalog=idealtec_inventory;User ID=idealtec_inventory;Password=***********;MultipleActiveResultSets=True;Application Name=EntityFramework";
-            string backdir ="";
-            if(!System.IO.Directory.Exists(backdir))
+            string constr = ConfigurationManager.ConnectionStrings["idealtec_inventoryConnectionString"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+
+            string backupDIR = "f:\\BackupDB";
+
+            if (!System.IO.Directory.Exists(backupDIR))
             {
-                System.IO.Directory.CreateDirectory(backdir);
+                System.IO.Directory.CreateDirectory(backupDIR);
             }
             try
             {
                 con.Open();
-                cmd = new SqlCommand("backup database test to disk '" + backdir + "\\" + DateTime.Now.ToString("ddmmyyyy_HHmmss") + ".Bak'", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                //lblError.Text("Backup data successfully ");
+              SqlCommand  sqlcmd = new SqlCommand("backup database idealtec_inventory to disk='" + backupDIR + "\\" + DateTime.Now.ToString("ddMMyyyy_HHmmss") + ".Bak'", con);
+                sqlcmd.ExecuteNonQuery();
+            
+              
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                //lblError.Text = "Error Occured During DB backup process !<br>" + ex.ToString();
+              
             }
             return View();
-
         }
 
         public ActionResult backupdatabase()
