@@ -2925,6 +2925,8 @@
     <Content Include="css\img\wfysS.png" />
     <Content Include="css\mm.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\Logo\illustration-plate-paiements-facture-bill-payer-concept-dessin-anime-reception-ligne_151150-808-removebg-preview.png" />
+    <Content Include="images\Logo\illustration-plate-paiements-facture-bill-payer-concept-dessin-anime-reception-ligne_151150-808.jpg" />
     <Content Include="Localization\ar.xml" />
     <Content Include="Localization\be.xml" />
     <Content Include="Localization\bg.xml" />
@@ -3527,6 +3529,7 @@
     <Compile Include="Controllers\PartyStatementController.cs" />
     <Compile Include="Controllers\PaymentInController.cs" />
     <Compile Include="Controllers\PaymentOutController.cs" />
+    <Compile Include="Controllers\PosController.cs" />
     <Compile Include="Controllers\ProfitAndLossController.cs" />
     <Compile Include="Controllers\PurchaseBillController.cs" />
     <Compile Include="Controllers\SaleAgingController.cs" />
@@ -3871,6 +3874,7 @@
     <Compile Include="ViewModel\PartyDetailsForPurchase.cs" />
     <Compile Include="ViewModel\SaleInvoiceItemDetails.cs" />
     <Compile Include="ViewModel\SaleInvoicePartyDetails.cs" />
+    <Compile Include="ViewModel\Tempdata.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -4068,6 +4072,8 @@
     <Content Include="Views\Company\reg.cshtml" />
     <Content Include="Views\Company\NewCompanyregistration.cshtml" />
     <Content Include="Views\OtherIncome\ReportAll.cshtml" />
+    <Content Include="Views\Home\firstdashbord.cshtml" />
+    <Content Include="Views\Pos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4080,7 +4086,6 @@
     <Folder Include="bin\App_Data\" />
     <Folder Include="css\fonts\" />
     <Folder Include="images\Iteimage\" />
-    <Folder Include="images\Logo\" />
     <Folder Include="images\Partyimage\" />
     <Folder Include="images\signatures\" />
     <Folder Include="logincssfolder\fonts\" />

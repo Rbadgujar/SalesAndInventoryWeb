@@ -26,6 +26,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         }
         public static int companyid;
         byte[] bytes;
+        string pataa;
         [HttpPost]
         public ActionResult registration(HttpPostedFileBase file,tbl_CompanyMasterSelectResult com)
         {
@@ -33,18 +34,25 @@ namespace SalesAndInentoryWeb_Application.Controllers
 
             try
             {
-               
-                using (BinaryReader br = new BinaryReader(file.InputStream))
+                
+                if (file.ContentLength > 0)
                 {
-                    bytes = br.ReadBytes(file.ContentLength);
+                    var fileName = Path.GetFileName(file.FileName);
+                  var pata = Path.Combine(Server.MapPath("~/images/Logo"), fileName);
+                    file.SaveAs(pata);
+                    pataa = "~/images/Logo/" + fileName;
                 }
+                //using (BinaryReader br = new BinaryReader(file.InputStream))
+                //{
+                //    bytes = br.ReadBytes(file.ContentLength);
+                //}
 
             }
             catch (Exception ew)
             {
 
             }
-            db.tbl_CompanyMasterSelect("Insert2", null, com.CompanyName,Session["number"].ToString(), com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature,bytes, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID,null,null);
+            db.tbl_CompanyMasterSelect("Insert2", null, com.CompanyName,Session["number"].ToString(), com.EmailID, com.ReferaleCode, com.BusinessType, com.Address, com.City, com.State, com.GSTNumber, com.OwnerName, com.Signature,null, com.BankName, com.AccountNo, com.IFSC_Code, com.CompanyID,pataa, null);
             db.SubmitChanges();         
             return RedirectToAction("Index", "MainLogin");        
         }

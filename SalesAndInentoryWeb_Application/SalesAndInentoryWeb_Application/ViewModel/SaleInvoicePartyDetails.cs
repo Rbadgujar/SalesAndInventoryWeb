@@ -29,5 +29,6 @@ namespace SalesAndInentoryWeb_Application.ViewModel
         public double TaxAmount1 { get; set; }
         public string Status { get; set; }
         public List<SaleInvoiceItemDetails> SaleInvoiceItemDetails { get; set; }
+        public List<Tempdata> SaleInvoiceItemDetails1 { get; set; }
     }
 }

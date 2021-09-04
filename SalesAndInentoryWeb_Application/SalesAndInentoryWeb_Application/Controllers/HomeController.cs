@@ -17,6 +17,10 @@ namespace SalesAndInentoryWeb_Application.Controllers
         {
             return View();
         }
+        public  ActionResult firstdashbord()
+        {
+            return View();
+        }
         //public ActionResult Dashboard()
         //{
            
@@ -73,7 +77,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             catch
             {
-                return View("Dashboard");
+                return View("firstdashbord");
             }
         }
         public ActionResult Dashboard()
@@ -129,7 +133,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
             }
             catch
             {
-                return View();
+                return View("firstdashbord");
             }
         }
     }

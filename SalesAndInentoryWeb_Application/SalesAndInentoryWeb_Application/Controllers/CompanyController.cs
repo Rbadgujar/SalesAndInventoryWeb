@@ -148,7 +148,7 @@ namespace SalesAndInentoryWeb_Application.Controllers
         public ActionResult comifo()
         {
 
-            var getdata = db.tbl_CompanyMasterSelect("Select", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,MainLoginController.companyid1, null, null).ToList();
+            var getdata = db.tbl_CompanyMasterSelect("comdata1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,MainLoginController.companyid1, null, null).ToList();
             return Json(new { data = getdata }, JsonRequestBehavior.AllowGet);
 
         }
